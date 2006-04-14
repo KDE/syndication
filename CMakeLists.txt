@@ -7,78 +7,78 @@ include_directories( ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_D
 ########### next target ###############
 
 set(librss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/category.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/cloud.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/document.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/enclosure.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/image.cpp
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/item.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/parser.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/source.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/textinput.cpp
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rss2/tools_p.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/category.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/cloud.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/document.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/enclosure.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/image.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/item.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/parser.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/source.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/textinput.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/rss2/tools_p.cpp
 	)
 
 
 set(librdflocal_la_SRCS
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/parser.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/dublincorevocab.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/dublincore.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/syndicationvocab.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/syndication.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/contentvocab.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/item.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/image.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/textinput.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/document.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/rssvocab.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/node.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/property.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/literal.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/resource.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/model.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/modelmaker.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/rdfvocab.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/sequence.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/statement.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/resourcewrapper.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/rdf/nodevisitor.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/parser.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/dublincorevocab.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/dublincore.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/syndicationvocab.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/syndication.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/contentvocab.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/item.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/image.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/textinput.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/document.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/rssvocab.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/node.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/property.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/literal.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/resource.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/model.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/modelmaker.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/rdfvocab.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/sequence.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/statement.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/resourcewrapper.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/rdf/nodevisitor.cpp
 )
 
 set(libatomlocal_SRCS 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/category.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/constants.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/content.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/document.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/entry.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/generator.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/link.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/parser.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/person.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/source.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/atom/atomtools.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/category.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/constants.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/content.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/document.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/entry.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/generator.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/link.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/parser.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/person.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/source.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/atom/atomtools.cpp 
 )
 
 
 set(libmapperrss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/feedrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/itemrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/enclosurerss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/categoryrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/imagerss2impl.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itemrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/enclosurerss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/categoryrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/imagerss2impl.cpp
 )
 
 set(libmapperrdflocal_SRCS 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/feedrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/itemrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/imagerdfimpl.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedrdfimpl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itemrdfimpl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/imagerdfimpl.cpp
 )
 
 set(libmapperatomlocal_SRCS
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/feedatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/itematomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/enclosureatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/akregator/src/libsyndication/mapper/categoryatomimpl.cpp
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedatomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itematomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/enclosureatomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/libsyndication/mapper/categoryatomimpl.cpp
 )
 
 set(syndication_LIB_SRCS 
