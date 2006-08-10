@@ -25,7 +25,7 @@
 
 #include <syndication/person.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <ctime>
 

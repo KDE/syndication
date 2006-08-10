@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef SYNDICATION_SYNDICATION_H
-#define SYNDICATION_SYNDICATION_H
+#ifndef SYNDICATION_KSYNDICATION_H
+#define SYNDICATION_KSYNDICATION_H
 
 #include <kdemacros.h>
 
@@ -35,9 +35,4 @@
 #define SYNDICATION_EXPORT KDE_EXPORT
 #endif
 
-/**
- * TODO
- */
-namespace Syndication {}
-
-#endif // SYNDICATION_SYNDICATION_H
+#endif // SYNDICATION_KSYNDICATION_H

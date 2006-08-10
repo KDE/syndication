@@ -25,7 +25,7 @@
 
 #include <syndication/specificdocument.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 class QString;
 

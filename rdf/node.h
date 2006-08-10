@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_NODE_H
 #define SYNDICATION_RDF_NODE_H
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <syndication/sharedptr.h>
 

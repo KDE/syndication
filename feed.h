@@ -25,7 +25,7 @@
 
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 template <class T> class QList;
 class QString;

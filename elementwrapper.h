@@ -26,7 +26,7 @@
 
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 class QDomElement;
 template <class T> class QList;

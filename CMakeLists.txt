@@ -120,8 +120,10 @@ install(TARGETS syndication  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
-install( FILES syndication.h specificdocument.h abstractparser.h
+install( FILES ksyndication.h syndication.h specificdocument.h abstractparser.h
                parsercollection.h documentvisitor.h documentsource.h
                elementwrapper.h item.h feed.h category.h image.h         
                enclosure.h person.h global.h dataretriever.h loader.h 
+               sharedptr.h constants.h mapper.h specificitem.h
+               specificitemvisitor.h tools.h
          DESTINATION ${INCLUDE_INSTALL_DIR}/syndication )

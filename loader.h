@@ -14,7 +14,7 @@
 #include <syndication/global.h>
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <QtCore/QObject>
 

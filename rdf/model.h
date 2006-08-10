@@ -29,7 +29,7 @@
 #include <syndication/rdf/statement.h>
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <QtCore/QString>
 

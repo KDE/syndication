@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_SPECIFICITEM_H
 #define SYNDICATION_SPECIFICITEM_H
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <syndication/sharedptr.h>
 

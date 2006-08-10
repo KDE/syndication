@@ -25,7 +25,7 @@
 
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 class QByteArray;
 class QDomDocument;

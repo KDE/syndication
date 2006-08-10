@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_MAPPER_H
 #define SYNDICATION_MAPPER_H
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 template <class T> class SharedPtr;
 

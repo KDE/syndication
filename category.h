@@ -25,7 +25,7 @@
 
 #include <syndication/sharedptr.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 namespace Syndication {
 

@@ -24,7 +24,7 @@
 
 #include <syndication/feed.h>
 
-#include "syndication.h"
+#include "ksyndication.h"
 
 #include <QtCore/QString>
 
