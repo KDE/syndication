@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_TOOLS_H
-#define LIBSYNDICATION_TOOLS_H
+#ifndef SYNDICATION_TOOLS_H
+#define SYNDICATION_TOOLS_H
 
 #include <syndication/person.h>
 
@@ -221,4 +221,4 @@ PersonPtr personFromString(const QString& str);
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_TOOLS_H
+#endif // SYNDICATION_TOOLS_H

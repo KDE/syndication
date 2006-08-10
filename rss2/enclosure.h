@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_ENCLOSURE_H
-#define LIBSYNDICATION_RSS2_ENCLOSURE_H
+#ifndef SYNDICATION_RSS2_ENCLOSURE_H
+#define SYNDICATION_RSS2_ENCLOSURE_H
 
 #include <syndication/elementwrapper.h>
 
@@ -84,4 +84,4 @@ class SYNDICATION_EXPORT Enclosure : public ElementWrapper
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_ENCLOSURE_H
+#endif // SYNDICATION_RSS2_ENCLOSURE_H

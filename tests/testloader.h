@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef TEST_TESTLIBSYNDICATION_H
-#define TEST_TESTLIBSYNDICATION_H
+#ifndef TEST_TESTSYNDICATION_H
+#define TEST_TESTSYNDICATION_H
 
 #include "loader.h"
 
@@ -41,4 +41,4 @@ class TestLibSyndication : public QObject
                             Syndication::ErrorCode error);
 };
 
-#endif // TEST_TESTLIBSYNDICATION_H
+#endif // TEST_TESTSYNDICATION_H

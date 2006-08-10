@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_CLOUD_H
-#define LIBSYNDICATION_RSS2_CLOUD_H
+#ifndef SYNDICATION_RSS2_CLOUD_H
+#define SYNDICATION_RSS2_CLOUD_H
 
 #include <syndication/elementwrapper.h>
 
@@ -97,4 +97,4 @@ class SYNDICATION_EXPORT Cloud : public ElementWrapper
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_CLOUD_H
+#endif // SYNDICATION_RSS2_CLOUD_H

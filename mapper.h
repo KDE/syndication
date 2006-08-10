@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_H
-#define LIBSYNDICATION_MAPPER_H
+#ifndef SYNDICATION_MAPPER_H
+#define SYNDICATION_MAPPER_H
 
 #include "syndication.h"
 
@@ -131,4 +131,4 @@ class SYNDICATION_EXPORT Mapper
 
 } // namespace libsyndication
 
-#endif // LIBSYNDICATION_MAPPER_H
+#endif // SYNDICATION_MAPPER_H

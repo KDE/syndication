@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_IMAGE_H
-#define LIBSYNDICATION_IMAGE_H
+#ifndef SYNDICATION_IMAGE_H
+#define SYNDICATION_IMAGE_H
 
 #include <syndication/sharedptr.h>
 
@@ -108,4 +108,4 @@ class SYNDICATION_EXPORT Image
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_IMAGE_H
+#endif // SYNDICATION_IMAGE_H

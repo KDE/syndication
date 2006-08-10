@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef LIBSYNDICATION_SPECIFICITEM_H
-#define LIBSYNDICATION_SPECIFICITEM_H
+#ifndef SYNDICATION_SPECIFICITEM_H
+#define SYNDICATION_SPECIFICITEM_H
 
 #include "syndication.h"
 
@@ -70,5 +70,5 @@ class SYNDICATION_EXPORT SpecificItem
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_SPECIFICITEM_H
+#endif // SYNDICATION_SPECIFICITEM_H
 

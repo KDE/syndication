@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_DOCUMENT_H
-#define LIBSYNDICATION_RSS2_DOCUMENT_H
+#ifndef SYNDICATION_RSS2_DOCUMENT_H
+#define SYNDICATION_RSS2_DOCUMENT_H
 
 #include <syndication/specificdocument.h>
 #include <syndication/elementwrapper.h>
@@ -282,4 +282,4 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_DOCUMENT_H
+#endif // SYNDICATION_RSS2_DOCUMENT_H

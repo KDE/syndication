@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_FEEDRDFIMPL_H
-#define LIBSYNDICATION_MAPPER_FEEDRDFIMPL_H
+#ifndef SYNDICATION_MAPPER_FEEDRDFIMPL_H
+#define SYNDICATION_MAPPER_FEEDRDFIMPL_H
 
 #include <rdf/document.h>
 #include <feed.h>
@@ -69,4 +69,4 @@ class FeedRDFImpl : public Syndication::Feed
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_FEEDRDFIMPL_H
+#endif // SYNDICATION_MAPPER_FEEDRDFIMPL_H

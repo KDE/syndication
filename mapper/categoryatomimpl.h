@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_CATEGORYATOMIMPL_H
-#define LIBSYNDICATION_MAPPER_CATEGORYATOMIMPL_H
+#ifndef SYNDICATION_MAPPER_CATEGORYATOMIMPL_H
+#define SYNDICATION_MAPPER_CATEGORYATOMIMPL_H
 
 #include <category.h>
 #include <atom/category.h>
@@ -56,4 +56,4 @@ class CategoryAtomImpl : public Syndication::Category
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_CATEGORYATOMIMPL_H
+#endif // SYNDICATION_MAPPER_CATEGORYATOMIMPL_H

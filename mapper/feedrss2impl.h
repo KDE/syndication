@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_FEEDRSS2IMPL_H
-#define LIBSYNDICATION_MAPPER_FEEDRSS2IMPL_H
+#ifndef SYNDICATION_MAPPER_FEEDRSS2IMPL_H
+#define SYNDICATION_MAPPER_FEEDRSS2IMPL_H
 
 #include <rss2/document.h>
 #include <feed.h>
@@ -69,4 +69,4 @@ class FeedRSS2Impl : public Syndication::Feed
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_FEEDRSS2IMPL_H
+#endif // SYNDICATION_MAPPER_FEEDRSS2IMPL_H

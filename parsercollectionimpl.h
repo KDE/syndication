@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_PARSERCOLLECTIONIMPL_H
-#define LIBSYNDICATION_PARSERCOLLECTIONIMPL_H
+#ifndef SYNDICATION_PARSERCOLLECTIONIMPL_H
+#define SYNDICATION_PARSERCOLLECTIONIMPL_H
 
 #include <syndication/specificdocument.h>
 #include <syndication/abstractparser.h>
@@ -179,4 +179,4 @@ ParserCollectionImpl<T>& ParserCollectionImpl<T>::operator=(const ParserCollecti
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_PARSERCOLLECTIONIMPL_H
+#endif // SYNDICATION_PARSERCOLLECTIONIMPL_H

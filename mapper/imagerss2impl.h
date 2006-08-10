@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_IMAGERSS2IMPL_H
-#define LIBSYNDICATION_MAPPER_IMAGERSS2IMPL_H
+#ifndef SYNDICATION_MAPPER_IMAGERSS2IMPL_H
+#define SYNDICATION_MAPPER_IMAGERSS2IMPL_H
 
 #include <image.h>
 #include <rss2/image.h>
@@ -62,4 +62,4 @@ class ImageRSS2Impl : public Syndication::Image
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_IMAGERSS2IMPL_H
+#endif // SYNDICATION_MAPPER_IMAGERSS2IMPL_H

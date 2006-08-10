@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RDF_PROPERTY_H
-#define LIBSYNDICATION_RDF_PROPERTY_H
+#ifndef SYNDICATION_RDF_PROPERTY_H
+#define SYNDICATION_RDF_PROPERTY_H
 
 #include <syndication/rdf/resource.h>
 
@@ -51,4 +51,4 @@ class SYNDICATION_EXPORT Property : public Resource
 } // namespace RDF
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RDF_PROPERTY_H
+#endif // SYNDICATION_RDF_PROPERTY_H

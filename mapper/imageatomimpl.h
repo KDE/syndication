@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_IMAGEATOMIMPL_H
-#define LIBSYNDICATION_MAPPER_IMAGEATOMIMPL_H
+#ifndef SYNDICATION_MAPPER_IMAGEATOMIMPL_H
+#define SYNDICATION_MAPPER_IMAGEATOMIMPL_H
 
 #include <image.h>
 
@@ -65,4 +65,4 @@ class ImageAtomImpl : public Syndication::Image
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_IMAGEATOMIMPL_H
+#endif // SYNDICATION_MAPPER_IMAGEATOMIMPL_H

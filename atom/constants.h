@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef LIBSYNDICATION_ATOM_CONSTANTS_H
-#define LIBSYNDICATION_ATOM_CONSTANTS_H
+#ifndef SYNDICATION_ATOM_CONSTANTS_H
+#define SYNDICATION_ATOM_CONSTANTS_H
 
 #include "syndication.h"
 
@@ -44,4 +44,4 @@ QString atom0_3Namespace();
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_CONSTANTS_H
+#endif // SYNDICATION_ATOM_CONSTANTS_H

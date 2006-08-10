@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RDF_DOCUMENT_H
-#define LIBSYNDICATION_RDF_DOCUMENT_H
+#ifndef SYNDICATION_RDF_DOCUMENT_H
+#define SYNDICATION_RDF_DOCUMENT_H
 
 #include <syndication/rdf/resourcewrapper.h>
 
@@ -108,4 +108,4 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
 } // namespace RDF
 } // namespace Syndication
 
-#endif //  LIBSYNDICATION_RDF_DOCUMENT_H
+#endif //  SYNDICATION_RDF_DOCUMENT_H

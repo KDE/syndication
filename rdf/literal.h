@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RDF_LITERAL_H
-#define LIBSYNDICATION_RDF_LITERAL_H
+#ifndef SYNDICATION_RDF_LITERAL_H
+#define SYNDICATION_RDF_LITERAL_H
 
 #include <syndication/rdf/node.h>
 
@@ -72,4 +72,4 @@ class SYNDICATION_EXPORT Literal : public Node
 } // namespace RDF
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RDF_LITERAL_H
+#endif // SYNDICATION_RDF_LITERAL_H

@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_ITEMATOMIMPL_H
-#define LIBSYNDICATION_MAPPER_ITEMATOMIMPL_H
+#ifndef SYNDICATION_MAPPER_ITEMATOMIMPL_H
+#define SYNDICATION_MAPPER_ITEMATOMIMPL_H
 
 #include <atom/entry.h>
 #include <item.h>
@@ -79,4 +79,4 @@ class ItemAtomImpl : public Syndication::Item
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_ITEMATOMIMPL_H
+#endif // SYNDICATION_MAPPER_ITEMATOMIMPL_H

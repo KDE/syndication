@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_FEED_H
-#define LIBSYNDICATION_FEED_H
+#ifndef SYNDICATION_FEED_H
+#define SYNDICATION_FEED_H
 
 #include <syndication/sharedptr.h>
 
@@ -159,4 +159,4 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_FEED_H
+#endif // SYNDICATION_FEED_H

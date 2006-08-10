@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_FEEDATOMIMPL_H
-#define LIBSYNDICATION_MAPPER_FEEDATOMIMPL_H
+#ifndef SYNDICATION_MAPPER_FEEDATOMIMPL_H
+#define SYNDICATION_MAPPER_FEEDATOMIMPL_H
 
 #include <atom/document.h>
 #include <feed.h>
@@ -69,4 +69,4 @@ class FeedAtomImpl : public Syndication::Feed
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_FEEDATOMIMPL_H
+#endif // SYNDICATION_MAPPER_FEEDATOMIMPL_H

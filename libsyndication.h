@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_LIBSYNDICATION_H
-#define LIBSYNDICATION_LIBSYNDICATION_H
+#ifndef SYNDICATION_SYNDICATION_H
+#define SYNDICATION_SYNDICATION_H
 
 #include <syndication/specificdocument.h>
 #include <syndication/abstractparser.h>
@@ -50,4 +50,4 @@
  */
 namespace Syndication {}
 
-#endif // LIBSYNDICATION_LIBSYNDICATION_H
+#endif // SYNDICATION_SYNDICATION_H

@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_CATEGORY_H
-#define LIBSYNDICATION_ATOM_CATEGORY_H
+#ifndef SYNDICATION_ATOM_CATEGORY_H
+#define SYNDICATION_ATOM_CATEGORY_H
 
 #include <syndication/elementwrapper.h>
 
@@ -100,4 +100,4 @@ class SYNDICATION_EXPORT Category : public ElementWrapper
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_CATEGORY_H
+#endif // SYNDICATION_ATOM_CATEGORY_H

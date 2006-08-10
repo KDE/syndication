@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_PERSONIMPL_H
-#define LIBSYNDICATION_PERSONIMPL_H
+#ifndef SYNDICATION_PERSONIMPL_H
+#define SYNDICATION_PERSONIMPL_H
 
 #include <syndication/person.h>
 #include <syndication/sharedptr.h>
@@ -62,4 +62,4 @@ class SYNDICATION_EXPORT PersonImpl : public Person
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_PERSONIMPL_H
+#endif // SYNDICATION_PERSONIMPL_H

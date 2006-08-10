@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RDF_DUBLINCORE_H
-#define LIBSYNDICATION_RDF_DUBLINCORE_H
+#ifndef SYNDICATION_RDF_DUBLINCORE_H
+#define SYNDICATION_RDF_DUBLINCORE_H
 
 #include <syndication/rdf/resourcewrapper.h>
 
@@ -249,4 +249,4 @@ class SYNDICATION_EXPORT DublinCore : public ResourceWrapper
 } // namespace RDF
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RDF_DUBLINCORE_H
+#endif // SYNDICATION_RDF_DUBLINCORE_H

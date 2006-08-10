@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_DOCUMENTSOURCE_H
-#define LIBSYNDICATION_DOCUMENTSOURCE_H
+#ifndef SYNDICATION_DOCUMENTSOURCE_H
+#define SYNDICATION_DOCUMENTSOURCE_H
 
 #include <syndication/sharedptr.h>
 
@@ -134,4 +134,4 @@ class SYNDICATION_EXPORT DocumentSource
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_DOCUMENTSOURCE_H
+#endif // SYNDICATION_DOCUMENTSOURCE_H

@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_CATEGORY_H
-#define LIBSYNDICATION_CATEGORY_H
+#ifndef SYNDICATION_CATEGORY_H
+#define SYNDICATION_CATEGORY_H
 
 #include <syndication/sharedptr.h>
 
@@ -100,4 +100,4 @@ class SYNDICATION_EXPORT Category
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_CATEGORY_H
+#endif // SYNDICATION_CATEGORY_H

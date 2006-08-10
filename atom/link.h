@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_LINK_H
-#define LIBSYNDICATION_ATOM_LINK_H
+#ifndef SYNDICATION_ATOM_LINK_H
+#define SYNDICATION_ATOM_LINK_H
 
 #include <syndication/elementwrapper.h>
 
@@ -128,4 +128,4 @@ class SYNDICATION_EXPORT Link : public Syndication::ElementWrapper
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_LINK_H
+#endif // SYNDICATION_ATOM_LINK_H

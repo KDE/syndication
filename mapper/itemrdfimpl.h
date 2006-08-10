@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_ITEMRDFIMPL_H
-#define LIBSYNDICATION_MAPPER_ITEMRDFIMPL_H
+#ifndef SYNDICATION_MAPPER_ITEMRDFIMPL_H
+#define SYNDICATION_MAPPER_ITEMRDFIMPL_H
 
 #include <rdf/item.h>
 #include <item.h>
@@ -81,4 +81,4 @@ class ItemRDFImpl : public Syndication::Item
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_ITEMRDFIMPL_H
+#endif // SYNDICATION_MAPPER_ITEMRDFIMPL_H

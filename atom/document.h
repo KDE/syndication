@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_DOCUMENT_H
-#define LIBSYNDICATION_ATOM_DOCUMENT_H
+#ifndef SYNDICATION_ATOM_DOCUMENT_H
+#define SYNDICATION_ATOM_DOCUMENT_H
 
 #include <syndication/specificdocument.h>
 #include <syndication/elementwrapper.h>
@@ -243,4 +243,4 @@ class SYNDICATION_EXPORT EntryDocument : public Syndication::SpecificDocument, p
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_DOCUMENT_H
+#endif // SYNDICATION_ATOM_DOCUMENT_H

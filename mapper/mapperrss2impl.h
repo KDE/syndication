@@ -21,8 +21,8 @@
  */
 
 
-#ifndef LIBSYNDICATION_MAPPERRSS2IMPL_H
-#define LIBSYNDICATION_MAPPERRSS2IMPL_H
+#ifndef SYNDICATION_MAPPERRSS2IMPL_H
+#define SYNDICATION_MAPPERRSS2IMPL_H
 
 #include "feedrss2impl.h"
 
@@ -46,4 +46,4 @@ class RSS2Mapper : public Mapper<Feed>
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPERRSS2IMPL_H
+#endif // SYNDICATION_MAPPERRSS2IMPL_H

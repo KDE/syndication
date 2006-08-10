@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef LIBSYNDICATION_GLOBAL_H
-#define LIBSYNDICATION_GLOBAL_H
+#ifndef SYNDICATION_GLOBAL_H
+#define SYNDICATION_GLOBAL_H
 
 #include <syndication/feed.h>
 
@@ -28,7 +28,7 @@
 
 #include <QtCore/QString>
 
-#define LIBSYNDICATION_VERSION "0.1"
+#define SYNDICATION_VERSION "0.1"
 
 namespace Syndication {
 
@@ -118,4 +118,4 @@ enum ErrorCode
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_GLOBAL_H
+#endif // SYNDICATION_GLOBAL_H

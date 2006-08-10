@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_PARSER_H
-#define LIBSYNDICATION_RSS2_PARSER_H
+#ifndef SYNDICATION_RSS2_PARSER_H
+#define SYNDICATION_RSS2_PARSER_H
 
 #include <syndication/rss2/document.h>
 #include <syndication/abstractparser.h>
@@ -93,4 +93,4 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_PARSER_H
+#endif // SYNDICATION_RSS2_PARSER_H

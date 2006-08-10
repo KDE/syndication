@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef LIBSYNDICATION_RDF_CONTENTVOCAB_H
-#define LIBSYNDICATION_RDF_CONTENTVOCAB_H
+#ifndef SYNDICATION_RDF_CONTENTVOCAB_H
+#define SYNDICATION_RDF_CONTENTVOCAB_H
 
 #include "syndication.h"
 
@@ -62,4 +62,4 @@ class SYNDICATION_EXPORT ContentVocab
 } // namespace RDF
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RDF_CONTENTVOCAB_H
+#endif // SYNDICATION_RDF_CONTENTVOCAB_H

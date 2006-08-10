@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_PARSER_H
-#define LIBSYNDICATION_ATOM_PARSER_H
+#ifndef SYNDICATION_ATOM_PARSER_H
+#define SYNDICATION_ATOM_PARSER_H
 
 #include <syndication/abstractparser.h>
 
@@ -92,4 +92,4 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_PARSER_H
+#endif // SYNDICATION_ATOM_PARSER_H

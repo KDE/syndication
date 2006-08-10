@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ENCLOSURE_H
-#define LIBSYNDICATION_ENCLOSURE_H
+#ifndef SYNDICATION_ENCLOSURE_H
+#define SYNDICATION_ENCLOSURE_H
 
 #include <syndication/sharedptr.h>
 
@@ -109,4 +109,4 @@ class SYNDICATION_EXPORT Enclosure
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ENCLOSURE_H
+#endif // SYNDICATION_ENCLOSURE_H

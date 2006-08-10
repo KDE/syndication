@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_RSS2_H
-#define LIBSYNDICATION_RSS2_RSS2_H
+#ifndef SYNDICATION_RSS2_RSS2_H
+#define SYNDICATION_RSS2_RSS2_H
 
 #include <syndication/rss2/category.h>
 #include <syndication/rss2/cloud.h>
@@ -43,4 +43,4 @@ namespace RSS2 {}
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_RSS2_H
+#endif // SYNDICATION_RSS2_RSS2_H

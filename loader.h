@@ -8,8 +8,8 @@
  * FOR A PARTICULAR PURPOSE. For licensing and distribution details, check the
  * accompanying file 'COPYING'.
  */
-#ifndef LIBSYNDICATION_LOADER_H
-#define LIBSYNDICATION_LOADER_H
+#ifndef SYNDICATION_LOADER_H
+#define SYNDICATION_LOADER_H
 
 #include <syndication/global.h>
 #include <syndication/sharedptr.h>
@@ -181,4 +181,4 @@ class SYNDICATION_EXPORT Loader : public QObject
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_LOADER_H
+#endif // SYNDICATION_LOADER_H

@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#ifndef LIBSYNDICATION_RDF_MODELMAKER_H
-#define LIBSYNDICATION_RDF_MODELMAKER_H
+#ifndef SYNDICATION_RDF_MODELMAKER_H
+#define SYNDICATION_RDF_MODELMAKER_H
 
 class QDomDocument;
 class QDomElement;
@@ -62,4 +62,4 @@ class SYNDICATION_EXPORT ModelMaker
 } // namespace RDF
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RDF_MODELMAKER_H
+#endif // SYNDICATION_RDF_MODELMAKER_H

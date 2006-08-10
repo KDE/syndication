@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_CONSTANTS_H
-#define LIBSYNDICATION_CONSTANTS_H
+#ifndef SYNDICATION_CONSTANTS_H
+#define SYNDICATION_CONSTANTS_H
 
 #include "syndication.h"
 
@@ -60,4 +60,4 @@ QString slashNamespace();
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_CONSTANTS_H
+#endif // SYNDICATION_CONSTANTS_H

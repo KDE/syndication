@@ -21,8 +21,8 @@
  */
 
 
-#ifndef LIBSYNDICATION_RDF_IMAGE_H
-#define LIBSYNDICATION_RDF_IMAGE_H
+#ifndef SYNDICATION_RDF_IMAGE_H
+#define SYNDICATION_RDF_IMAGE_H
 
 #include <syndication/rdf/resourcewrapper.h>
 
@@ -58,4 +58,4 @@ class SYNDICATION_EXPORT Image : public ResourceWrapper
 } // namespace RDF
 } // namespace Syndication
 
-#endif //  LIBSYNDICATION_RDF_IMAGE_H
+#endif //  SYNDICATION_RDF_IMAGE_H

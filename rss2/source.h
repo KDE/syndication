@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_SOURCE_H
-#define LIBSYNDICATION_RSS2_SOURCE_H
+#ifndef SYNDICATION_RSS2_SOURCE_H
+#define SYNDICATION_RSS2_SOURCE_H
 
 #include <syndication/elementwrapper.h>
 
@@ -87,4 +87,4 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_SOURCE_H
+#endif // SYNDICATION_RSS2_SOURCE_H

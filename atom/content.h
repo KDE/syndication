@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_CONTENT_H
-#define LIBSYNDICATION_ATOM_CONTENT_H
+#ifndef SYNDICATION_ATOM_CONTENT_H
+#define SYNDICATION_ATOM_CONTENT_H
 
 #include <syndication/elementwrapper.h>
 #include <syndication/sharedptr.h>
@@ -198,4 +198,4 @@ class SYNDICATION_EXPORT Content : public ElementWrapper
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_CONTENT_H
+#endif // SYNDICATION_ATOM_CONTENT_H

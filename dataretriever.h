@@ -7,8 +7,8 @@
  * accompanying file 'COPYING'.
  */
 
-#ifndef LIBSYNDICATION_DATARETRIEVER_H
-#define LIBSYNDICATION_DATARETRIEVER_H
+#ifndef SYNDICATION_DATARETRIEVER_H
+#define SYNDICATION_DATARETRIEVER_H
 
 #include "syndication.h"
 
@@ -219,4 +219,4 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_DATARETRIEVER_H
+#endif // SYNDICATION_DATARETRIEVER_H

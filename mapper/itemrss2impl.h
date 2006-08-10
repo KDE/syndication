@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_ITEMRSS2IMPL_H
-#define LIBSYNDICATION_MAPPER_ITEMRSS2IMPL_H
+#ifndef SYNDICATION_MAPPER_ITEMRSS2IMPL_H
+#define SYNDICATION_MAPPER_ITEMRSS2IMPL_H
 
 #include <rss2/item.h>
 #include <item.h>
@@ -79,4 +79,4 @@ class ItemRSS2Impl : public Syndication::Item
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_ITEMRSS2IMPL_H
+#endif // SYNDICATION_MAPPER_ITEMRSS2IMPL_H

@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_TOOLS_H
-#define LIBSYNDICATION_ATOM_TOOLS_H
+#ifndef SYNDICATION_ATOM_TOOLS_H
+#define SYNDICATION_ATOM_TOOLS_H
 
 class QString;
 
@@ -50,4 +50,4 @@ namespace Atom {
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_TOOLS_H
+#endif // SYNDICATION_ATOM_TOOLS_H

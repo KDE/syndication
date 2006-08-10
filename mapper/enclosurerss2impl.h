@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H
-#define LIBSYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H
+#ifndef SYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H
+#define SYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H
 
 #include <enclosure.h>
 #include <rss2/enclosure.h>
@@ -63,4 +63,4 @@ class EnclosureRSS2Impl : public Syndication::Enclosure
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H
+#endif // SYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H

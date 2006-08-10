@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_TOOLS_H
-#define LIBSYNDICATION_RSS2_TOOLS_H
+#ifndef SYNDICATION_RSS2_TOOLS_H
+#define SYNDICATION_RSS2_TOOLS_H
 
 class QDomNode;
 class QDomElement;
@@ -45,4 +45,4 @@ QString extractContent(const ElementWrapper& parent);
 } // RSS2
 } // LibSyndication
 
-#endif // LIBSYNDICATION_RSS2_TOOLS_H
+#endif // SYNDICATION_RSS2_TOOLS_H

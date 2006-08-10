@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_IMAGERDFIMPL_H
-#define LIBSYNDICATION_MAPPER_IMAGERDFIMPL_H
+#ifndef SYNDICATION_MAPPER_IMAGERDFIMPL_H
+#define SYNDICATION_MAPPER_IMAGERDFIMPL_H
 
 #include <image.h>
 #include <rdf/image.h>
@@ -62,4 +62,4 @@ class ImageRDFImpl : public Syndication::Image
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_IMAGERDFIMPL_H
+#endif // SYNDICATION_MAPPER_IMAGERDFIMPL_H

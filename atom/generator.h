@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_GENERATOR_H
-#define LIBSYNDICATION_ATOM_GENERATOR_H
+#ifndef SYNDICATION_ATOM_GENERATOR_H
+#define SYNDICATION_ATOM_GENERATOR_H
 
 #include <syndication/elementwrapper.h>
 
@@ -83,4 +83,4 @@ class SYNDICATION_EXPORT Generator : public ElementWrapper
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_GENERATOR_H
+#endif // SYNDICATION_ATOM_GENERATOR_H

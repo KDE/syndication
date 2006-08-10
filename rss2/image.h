@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_IMAGE_H
-#define LIBSYNDICATION_RSS2_IMAGE_H
+#ifndef SYNDICATION_RSS2_IMAGE_H
+#define SYNDICATION_RSS2_IMAGE_H
 
 #include <syndication/elementwrapper.h>
 
@@ -104,4 +104,4 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
 } // namespace RSS2
 }  // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_IMAGE_H
+#endif // SYNDICATION_RSS2_IMAGE_H

@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_RSS2_CATEGORY_H
-#define LIBSYNDICATION_RSS2_CATEGORY_H
+#ifndef SYNDICATION_RSS2_CATEGORY_H
+#define SYNDICATION_RSS2_CATEGORY_H
 
 #include <syndication/elementwrapper.h>
 
@@ -90,4 +90,4 @@ class SYNDICATION_EXPORT Category : public ElementWrapper
 } // namespace RSS2
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_RSS2_CATEGORY_H
+#endif // SYNDICATION_RSS2_CATEGORY_H

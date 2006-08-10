@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ATOM_PERSON_H
-#define LIBSYNDICATION_ATOM_PERSON_H
+#ifndef SYNDICATION_ATOM_PERSON_H
+#define SYNDICATION_ATOM_PERSON_H
 
 #include <syndication/elementwrapper.h>
 
@@ -88,4 +88,4 @@ class SYNDICATION_EXPORT Person : public ElementWrapper
 } // namespace Atom
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ATOM_PERSON_H
+#endif // SYNDICATION_ATOM_PERSON_H

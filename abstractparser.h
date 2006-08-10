@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_ABSTRACTPARSER_H
-#define LIBSYNDICATION_ABSTRACTPARSER_H
+#ifndef SYNDICATION_ABSTRACTPARSER_H
+#define SYNDICATION_ABSTRACTPARSER_H
 
 #include <syndication/specificdocument.h>
 
@@ -84,4 +84,4 @@ class SYNDICATION_EXPORT AbstractParser
 
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_ABSTRACTPARSER_H
+#endif // SYNDICATION_ABSTRACTPARSER_H

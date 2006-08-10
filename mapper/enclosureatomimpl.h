@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef LIBSYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
-#define LIBSYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
+#ifndef SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
+#define SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
 
 #include <enclosure.h>
 #include <atom/link.h>
@@ -60,4 +60,4 @@ class EnclosureAtomImpl : public Syndication::Enclosure
     
 } // namespace Syndication
 
-#endif // LIBSYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
+#endif // SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
