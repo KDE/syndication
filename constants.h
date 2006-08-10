@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_CONSTANTS_H
 #define LIBSYNDICATION_CONSTANTS_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 class QString;
 
@@ -38,7 +38,7 @@ QString xhtmlNamespace();
 SYNDICATION_EXPORT
 QString dublinCoreNamespace();
 
-SYNDICATION_EXPORT 
+SYNDICATION_EXPORT
 QString contentNameSpace();
 
 SYNDICATION_EXPORT
@@ -55,7 +55,7 @@ QString commentApiNamespace();
  * "slash" namespace
  * http://purl.org/rss/1.0/modules/slash/
  */
-SYNDICATION_EXPORT 
+SYNDICATION_EXPORT
 QString slashNamespace();
 
 } // namespace Syndication

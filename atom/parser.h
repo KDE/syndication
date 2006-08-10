@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_ATOM_PARSER_H
 #define LIBSYNDICATION_ATOM_PARSER_H
 
-#include <libsyndication/abstractparser.h>
+#include <syndication/abstractparser.h>
 
 class QDomDocument;
 class QDomNode;
@@ -39,7 +39,7 @@ namespace Atom {
 
 /**
  * parser implementation for Atom 1.0 and 0.3.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
@@ -48,7 +48,7 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 
         /** default constructor */
         Parser();
-        
+
         /** destructor */
         virtual ~Parser();
 
@@ -68,22 +68,22 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
          */
         Syndication::SpecificDocumentPtr parse(
                 const Syndication::DocumentSource& source) const;
-        
+
         /**
          * returns the format string for this parser implementation, which is
          * @c "atom"
          * @return @c "atom"
          */
         QString format() const;
-    
+
     protected:
-        
+
         /** @internal */
         Parser(const Parser& other);
-        
+
         /** @internal */
         Parser& operator=(const Parser& other);
-        
+
     private:
         class ParserPrivate;
         ParserPrivate* d;

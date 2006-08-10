@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_GLOBAL_H
 #define LIBSYNDICATION_GLOBAL_H
 
-#include <libsyndication/feed.h>
+#include <syndication/feed.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 #include <QtCore/QString>
 
@@ -36,26 +36,26 @@ class DocumentSource;
 template <class T> class ParserCollection;
 
 /**
- * 
- * The default ParserCollection instance parsing 
+ *
+ * The default ParserCollection instance parsing
  * a DocumentSource into a Feed object.
- * 
- * Use this to parse a local file or a otherwise 
+ *
+ * Use this to parse a local file or a otherwise
  * manually created DocumentSource object.
- 
+
 * To retrieve a feed from the web, use Loader instead.
- * 
+ *
  * Example code:
- * 
+ *
  * @code
  * ...
  * QFile someFile(somePath);
- * ... 
+ * ...
  * DocumentSource src(someFile.readAll());
  * someFile.close();
- * 
+ *
  * FeedPtr feed = parserCollection()->parse(src);
- * 
+ *
  * if (feed)
  * {
  *     QString title = feed->title();
@@ -72,7 +72,7 @@ ParserCollection<Feed>* parserCollection();
  * wrapping the feed content.
  * Shortcut for parserCollection()->parse().
  * See ParserCollection::parse() for more details.
- * 
+ *
  * @param src the document source to parse
  * @param formatHint an optional hint which format to test first
  */
@@ -85,15 +85,15 @@ FeedPtr parse(const DocumentSource& src, const QString& formatHint=QString());
 enum ErrorCode
 {
     Success = 0, /**< No error occurred, feed was fetched and parsed
-                  * successfully 
+                  * successfully
                   */
     Aborted = 1, /**< file downloading/parsing was aborted by the user */
     Timeout = 2, /**< file download timed out */
-    
+
     UnknownHost = 3, /**< The hostname couldn't get resolved to an IP address */
-    
+
     FileNotFound = 4, /**< the host was contacted successfully, but reported a
-                       * 404 error 
+                       * 404 error
                        */
     OtherRetrieverError = 5, /**< retriever error not covered by the error codes
                               * above. This is returned if a custom
@@ -115,7 +115,7 @@ enum ErrorCode
                         */
 };
 
-        
+
 } // namespace Syndication
 
 #endif // LIBSYNDICATION_GLOBAL_H

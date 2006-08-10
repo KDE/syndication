@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_ATOM_SOURCE_H
 #define LIBSYNDICATION_ATOM_SOURCE_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 #include <ctime>
 
@@ -43,7 +43,7 @@ class Person;
 /**
  * If an entry was copied from another feed, this class contains
  * a description of the source feed.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Source : public ElementWrapper
@@ -54,12 +54,12 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          * creates a null source object
          */
         Source();
-        
+
         /**
          * creates a Source object wrapping a atom:source element.
-         * 
+         *
          * @param element a DOM element, should be a atom:source element
-         * (although not enforced), otherwise this object will not parse 
+         * (although not enforced), otherwise this object will not parse
          * anything useful
          */
         Source(const QDomElement& element);
@@ -87,7 +87,7 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
 
         /**
          * URL of an image serving as a feed icon (optional)
-         * 
+         *
          * @return icon URL, or a null string if not specified
          */
         QString icon() const;
@@ -108,14 +108,14 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
 
         /**
          * URL of an image, the logo of the source feed (optional)
-         * 
+         *
          * @return image URL, or a null string if not specified in the feed.
          */
         QString logo() const;
 
         /**
          * copyright information (optional)
-         * 
+         *
          * @return copyright information for the source,
          * or a null string if not specified
          */
@@ -123,15 +123,15 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
 
         /**
          * description or subtitle of the source feed (optional).
-         * 
+         *
          * @return subtitle string as HTML, or a null string
          * if not specified.
          */
         QString subtitle() const;
-        
+
         /**
          * source feed title (optional).
-         * 
+         *
          * @return title string as HTML, or a null string if not specified
          */
         QString title() const;
@@ -139,7 +139,7 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
         /**
          * The datetime of the last modification of the source feed
          * content. (optional)
-         * 
+         *
          * @return the modification date in seconds since epoch
          */
         time_t updated() const;

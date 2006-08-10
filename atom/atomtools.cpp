@@ -22,8 +22,8 @@
 #include "constants.h"
 #include "tools.h"
 
-#include <libsyndication/elementwrapper.h>
-#include <libsyndication/tools.h>
+#include <syndication/elementwrapper.h>
+#include <syndication/tools.h>
 
 #include <QDomElement>
 #include <QString>
@@ -35,20 +35,20 @@ namespace Atom {
 QString extractAtomText(const Syndication::ElementWrapper& parent, const QString& tagname)
 {
     QString str;
-    
+
     QDomElement el = parent.firstElementByTagNameNS(atom1Namespace(), tagname);
-    
+
     bool isCDATA = el.firstChild().isCDATASection();
-    
+
     QString type = el.attribute(QString::fromUtf8("type"), QString::fromUtf8("text"));
-    
+
     if (type == QString::fromUtf8("text"))
     {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).simplified();
         if (isCDATA)
             str = resolveEntities(str);
-            
-        str = escapeSpecialCharacters(str);    
+
+        str = escapeSpecialCharacters(str);
     }
     else if (type == QString::fromUtf8("html"))
     {
@@ -58,7 +58,7 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
     {
         str = ElementWrapper::childNodesAsXML(el).simplified();
     }
-    
+
     return str;
 }
 

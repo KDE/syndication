@@ -6,78 +6,78 @@ add_subdirectory( tests )
 ########### next target ###############
 
 set(librss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/category.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/cloud.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/document.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/enclosure.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/image.cpp
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/item.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/parser.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/source.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/textinput.cpp
-	${CMAKE_SOURCE_DIR}/libsyndication/rss2/tools_p.cpp
+	${CMAKE_SOURCE_DIR}/syndication/rss2/category.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/cloud.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/document.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/enclosure.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/image.cpp
+	${CMAKE_SOURCE_DIR}/syndication/rss2/item.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/parser.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/source.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rss2/textinput.cpp
+	${CMAKE_SOURCE_DIR}/syndication/rss2/tools_p.cpp
 	)
 
 
 set(librdflocal_la_SRCS
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/parser.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/dublincorevocab.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/dublincore.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/syndicationvocab.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/syndicationinfo.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/contentvocab.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/item.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/image.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/textinput.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/document.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/rssvocab.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/node.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/property.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/literal.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/resource.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/model.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/modelmaker.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/rdfvocab.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/sequence.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/statement.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/resourcewrapper.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/rdf/nodevisitor.cpp
+	${CMAKE_SOURCE_DIR}/syndication/rdf/parser.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/dublincorevocab.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/dublincore.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/syndicationvocab.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/syndicationinfo.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/contentvocab.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/item.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/image.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/textinput.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/document.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/rssvocab.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/node.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/property.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/literal.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/resource.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/model.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/modelmaker.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/rdfvocab.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/sequence.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/statement.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/resourcewrapper.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/rdf/nodevisitor.cpp
 )
 
 set(libatomlocal_SRCS 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/category.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/constants.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/content.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/document.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/entry.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/generator.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/link.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/parser.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/person.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/source.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/atom/atomtools.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/category.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/constants.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/content.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/document.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/entry.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/generator.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/link.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/parser.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/person.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/source.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/atom/atomtools.cpp 
 )
 
 
 set(libmapperrss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itemrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/enclosurerss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/categoryrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/imagerss2impl.cpp
+	${CMAKE_SOURCE_DIR}/syndication/mapper/feedrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/itemrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/enclosurerss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/categoryrss2impl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/imagerss2impl.cpp
 )
 
 set(libmapperrdflocal_SRCS 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itemrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/imagerdfimpl.cpp
+	${CMAKE_SOURCE_DIR}/syndication/mapper/feedrdfimpl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/itemrdfimpl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/imagerdfimpl.cpp
 )
 
 set(libmapperatomlocal_SRCS
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/feedatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/itematomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/enclosureatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/libsyndication/mapper/categoryatomimpl.cpp
+	${CMAKE_SOURCE_DIR}/syndication/mapper/feedatomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/itematomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/enclosureatomimpl.cpp 
+	${CMAKE_SOURCE_DIR}/syndication/mapper/categoryatomimpl.cpp
 )
 
 set(syndication_LIB_SRCS 
@@ -120,54 +120,8 @@ install(TARGETS syndication  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
-install( FILES specificdocument.h abstractparser.h parsercollection.h
-                documentvisitor.h documentsource.h elementwrapper.h item.h feed.h category.h image.h         
-                enclosure.h person.h global.h dataretriever.h loader.h 
-        DESTINATION ${INCLUDE_INSTALL_DIR}/libsyndication )
-
-
-#original Makefile.am contents follow:
-
-##SUBDIRS = rss2 rdf atom
-#SUBDIRS = rss2 rdf atom mapper
-#
-#INCLUDES = $(all_includes)
-#
-#METASOURCES = AUTO
-#
-#lib_LTLIBRARIES = libsyndication.la
-#
-#libsyndication_la_SOURCES = parsercollection.cpp documentsource.cpp \
-#                            documentvisitor.cpp elementwrapper.cpp constants.cpp \
-#                            feed.cpp item.cpp enclosure.cpp category.cpp \
-#                            image.cpp tools.cpp person.cpp \
-#                            loader.cpp dataretriever.cpp
-#
-#libsyndication_include_HEADERS = specificdocument.h abstractparser.h \
-#                                 parsercollection.h documentvisitor.h \
-#                                 documentsource.h elementwrapper.h \
-#                                 item.h feed.h category.h image.h \
-#                                 enclosure.h person.h global.h \
-#                                 dataretriever.h loader.h
-#
-#libsyndication_includedir = $(includedir)/libsyndication
-#
-#libsyndication_la_LDFLAGS = $(all_libraries) $(LIB_KDECORE) $(LIB_KIO) -no-undefined -version-info 1:0:0
-#libsyndication_la_LIBADD = rss2/librss2local.la \
-#                           rdf/librdflocal.la \
-#                           atom/libatomlocal.la \
-#                           mapper/libmapperrss2local.la \
-#                           mapper/libmapperrdflocal.la \
-#                           mapper/libmapperatomlocal.la \
-#                           mapper/libmappercommonlocal.la
-#
-##bin_SCRIPTS = libsyndication-config
-#
-##pkgconfigdir = $(libdir)/pkgconfig
-##pkgconfig_DATA = libsyndication.pc
-#
-## EXTRA_DIST = $(libsyndication_la_SOURCES) $(libsyndication_include_HEADERS) 
-## $(pkgconfig_DATA)
-#
-#DOXYGEN_EXCLUDE = mapper
-#include $(top_srcdir)/admin/Doxyfile.am
+install( FILES syndication.h specificdocument.h abstractparser.h
+               parsercollection.h documentvisitor.h documentsource.h
+               elementwrapper.h item.h feed.h category.h image.h         
+               enclosure.h person.h global.h dataretriever.h loader.h 
+         DESTINATION ${INCLUDE_INSTALL_DIR}/syndication )

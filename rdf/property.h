@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RDF_PROPERTY_H
 #define LIBSYNDICATION_RDF_PROPERTY_H
 
-#include <libsyndication/rdf/resource.h>
+#include <syndication/rdf/resource.h>
 
 class QString;
 
@@ -37,13 +37,13 @@ typedef SharedPtr<Property> PropertyPtr;
 class SYNDICATION_EXPORT Property : public Resource
 {
     public:
-        
+
         Property();
         Property(const QString& uri);
         virtual ~Property();
-        
+
         virtual void accept(NodeVisitor* visitor, NodePtr ptr);
-        
+
         virtual bool isProperty() const;
         virtual Property* clone() const;
 };

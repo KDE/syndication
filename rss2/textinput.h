@@ -22,7 +22,7 @@
 #ifndef LIBSYNDICATION_RSS2_TEXTINPUT_H
 #define LIBSYNDICATION_RSS2_TEXTINPUT_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QString;
 class QDomElement;
@@ -61,29 +61,29 @@ class SYNDICATION_EXPORT TextInput : public ElementWrapper
          * @return TODO
          */
         QString title() const;
-    
+
         /**
          * The name of the text object in the text input area.
          *
          * @return TODO
          */
         QString name() const;
-    
+
         /**
          * Explains the text input area.
          *
          * @return TODO
          */
         QString description() const;
-    
+
         /**
          * The URL of the CGI script that processes text input requests.
          *
          * @return TODO
          */
         QString link() const;
-    
-    
+
+
         /**
          * Returns a description of the object for debugging purposes.
          *

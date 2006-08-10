@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RSS2_SOURCE_H
 #define LIBSYNDICATION_RSS2_SOURCE_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -32,7 +32,7 @@ namespace Syndication {
 namespace RSS2 {
 
 /**
- * Class representing the @c &lt;source&gt; element in RSS2. 
+ * Class representing the @c &lt;source&gt; element in RSS2.
  * "The purpose of this element is to propogate credit for links, to publicize
  * the sources of news items. It's used in the post command in the Radio
  * UserLand aggregator. It should be generated automatically when forwarding an
@@ -50,15 +50,15 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          * @c true.
          */
         Source();
-        
+
         /**
          * Creates a source object wrapping a @c &lt;source&gt; XML element.
          *
          * @param element The @c &lt;source&gt; element to wrap
          */
         Source(const QDomElement& element);
-        
-        /** 
+
+        /**
          * The name of the RSS channel that the item came from, derived from
          * its &lt;title>. Example: "Tomalak's Realm"
          *
@@ -66,7 +66,7 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          * (and for null objects)
          */
         QString source() const;
-    
+
         /**
          * Required attribute, links to the XMLization of the source.
          *
@@ -74,8 +74,8 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          * the spec), and for null objects
          */
         QString url() const;
-    
-    
+
+
         /**
          * Returns a description of the object for debugging purposes.
          *

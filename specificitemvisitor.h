@@ -22,7 +22,7 @@
 #ifndef LIBSYNDICATION_SPECIFICITEMVISITOR_H
 #define LIBSYNDICATION_SPECIFICITEMVISITOR_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 namespace Syndication {
 
@@ -38,7 +38,7 @@ namespace RDF
     class Item;
 }
 
-namespace RSS2 
+namespace RSS2
 {
     class Item;
 }
@@ -50,11 +50,11 @@ class SYNDICATION_EXPORT SpecificItemVisitor
         virtual ~SpecificItemVisitor();
 
         virtual bool visit(SpecificItem* item);
-        
+
         virtual bool visitRSS2Item(Syndication::RSS2::Item* item);
-        
+
         virtual bool visitRDFItem(Syndication::RDF::Item* item);
-        
+
         virtual bool visitAtomEntry(Syndication::Atom::Entry* item);
 };
 

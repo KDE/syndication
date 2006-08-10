@@ -19,13 +19,13 @@
  * Boston, MA 02110-1301, USA.
  *
  */
- 
+
 #ifndef LIBSYNDICATION_RDF_RESOURCE_H
 #define LIBSYNDICATION_RDF_RESOURCE_H
 
-#include <libsyndication/rdf/node.h>
+#include <syndication/rdf/node.h>
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 class QString;
 
@@ -46,30 +46,30 @@ typedef SharedPtr<Resource> ResourcePtr;
 class SYNDICATION_EXPORT Resource : public Node
 {
     friend class Model;
-    
+
     public:
-    
+
         Resource();
         Resource(const Resource& other);
         Resource(const QString& uri);
-        
+
         virtual ~Resource();
-        
+
         virtual Resource& operator=(const Resource& other);
         virtual bool operator==(const Node& other) const;
-    
+
         virtual void accept(NodeVisitor* visitor,  NodePtr ptr);
         virtual Resource* clone() const;
-    
+
         virtual Model model() const;
-    
+
         virtual bool hasProperty(PropertyPtr property) const;
         virtual StatementPtr property(PropertyPtr property) const;
         virtual QList<StatementPtr> properties(PropertyPtr property) const;
-    
+
         virtual bool isNull() const;
 
-        virtual unsigned int id() const;    
+        virtual unsigned int id() const;
         virtual bool isResource() const;
         virtual bool isLiteral() const;
         virtual bool isProperty() const;
@@ -77,12 +77,12 @@ class SYNDICATION_EXPORT Resource : public Node
         virtual bool isSequence() const;
 
         virtual QString uri() const;
-    
+
         virtual void setModel(const Model& model);
         virtual void setId(unsigned int id);
-                
+
     private:
-    
+
         class ResourcePrivate;
         SharedPtr<ResourcePrivate> d;
 };

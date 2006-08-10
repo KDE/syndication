@@ -23,9 +23,9 @@
 #ifndef LIBSYNDICATION_ABSTRACTPARSER_H
 #define LIBSYNDICATION_ABSTRACTPARSER_H
 
-#include <libsyndication/specificdocument.h>
+#include <syndication/specificdocument.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 class QString;
 
@@ -43,7 +43,7 @@ class SYNDICATION_EXPORT AbstractParser
 {
     public:
 
-        /** 
+        /**
          * virtual destructor
          */
         virtual ~AbstractParser();

@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_RDF_STATEMENT_H
 #define LIBSYNDICATION_RDF_STATEMENT_H
 
-#include <libsyndication/rdf/property.h>
+#include <syndication/rdf/property.h>
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 class QString;
 
@@ -42,27 +42,27 @@ typedef SharedPtr<Statement> StatementPtr;
 class SYNDICATION_EXPORT Statement
 {
     public:
-    
+
         Statement();
         Statement(const Statement& other);
         Statement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
         virtual ~Statement();
-    
+
         Statement& operator=(const Statement& other);
         virtual bool operator==(const Statement& other) const;
-    
+
         virtual bool isNull() const;
-    
+
         /**
          * the subject of the statement.
          */
         virtual ResourcePtr subject() const;
-        
+
         /**
-         * the predicate of the statement 
+         * the predicate of the statement
          */
         virtual PropertyPtr predicate() const;
-        
+
         /**
          * the object of the statement
          */
@@ -70,21 +70,21 @@ class SYNDICATION_EXPORT Statement
 
         /**
          * returns the object of this statement as resource, if possible.
-         * 
+         *
          * @return the object node as Resource, or @c null if the object
          * is not a resource
          */
         virtual ResourcePtr asResource() const;
-        
+
         /**
          * returns the object of this statement as string, if possible.
-         * 
+         *
          * @return the literal text as QString, or a null string if the object
          * is not a literal
          */
         virtual QString asString() const;
 
-    
+
     private:
         class StatementPrivate;
         SharedPtr<StatementPrivate> d;

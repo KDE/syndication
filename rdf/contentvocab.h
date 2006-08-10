@@ -22,14 +22,14 @@
 #ifndef LIBSYNDICATION_RDF_CONTENTVOCAB_H
 #define LIBSYNDICATION_RDF_CONTENTVOCAB_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 class QString;
 
 namespace Syndication {
-    
+
 template <class T> class SharedPtr;
-    
+
 namespace RDF {
 
 class Property;
@@ -40,21 +40,21 @@ class SYNDICATION_EXPORT ContentVocab
     public:
 
         virtual ~ContentVocab();
-        
+
         static ContentVocab* self();
-        
+
         const QString& namespaceURI() const;
 
         PropertyPtr encoded() const;
-        
+
     protected:
-        
+
         ContentVocab();
-        
+
     private:
-        
+
         static ContentVocab* m_self;
-        
+
         class ContentVocabPrivate;
         ContentVocabPrivate* d;
 };

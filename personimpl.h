@@ -23,9 +23,9 @@
 #ifndef LIBSYNDICATION_PERSONIMPL_H
 #define LIBSYNDICATION_PERSONIMPL_H
 
-#include <libsyndication/person.h>
-#include <libsyndication/sharedptr.h>
-#include <kdepim_export.h>
+#include <syndication/person.h>
+#include <syndication/sharedptr.h>
+#include "syndication.h"
 
 #include <QtCore/QString>
 
@@ -43,23 +43,23 @@ class SYNDICATION_EXPORT PersonImpl : public Person
 
         PersonImpl();
         PersonImpl(const QString& name, const QString& uri, const QString& email);
-        
+
         virtual bool isNull() const { return m_null; }
-        
+
         virtual QString name() const { return m_name; }
-        
+
         virtual QString uri() const { return m_uri; }
-        
+
         virtual QString email() const { return m_email; }
 
     private:
-        
+
         bool m_null;
         QString m_name;
         QString m_uri;
         QString m_email;
 };
-    
+
 } // namespace Syndication
 
 #endif // LIBSYNDICATION_PERSONIMPL_H

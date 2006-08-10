@@ -22,14 +22,14 @@
 #ifndef LIBSYNDICATION_RDF_MODEL_H
 #define LIBSYNDICATION_RDF_MODEL_H
 
-#include <libsyndication/rdf/literal.h>
-#include <libsyndication/rdf/node.h>
-#include <libsyndication/rdf/property.h>
-#include <libsyndication/rdf/sequence.h>
-#include <libsyndication/rdf/statement.h>
-#include <libsyndication/sharedptr.h>
+#include <syndication/rdf/literal.h>
+#include <syndication/rdf/node.h>
+#include <syndication/rdf/property.h>
+#include <syndication/rdf/sequence.h>
+#include <syndication/rdf/statement.h>
+#include <syndication/sharedptr.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 #include <QtCore/QString>
 
@@ -50,16 +50,16 @@ class SYNDICATION_EXPORT Model
 
         /**
          * default constructor, creates an empty model
-         * containing no statements 
+         * containing no statements
          */
         Model();
-        
+
         /**
          * constructs a model from another.
          * Both models will share the same set of statements,
          * so adding/removing statements from one model also
          * modifies the other!
-         * 
+         *
          * @param other another model
          */
         Model(const Model& other);
@@ -67,14 +67,14 @@ class SYNDICATION_EXPORT Model
         virtual ~Model();
 
         /**
-         * assigns another model. Both models will share the same 
-         * set of statements, so adding/removing statements from 
+         * assigns another model. Both models will share the same
+         * set of statements, so adding/removing statements from
          * one model also modifies the other!
-         * 
+         *
          * @param other another model
          */
         Model& operator=(const Model& other);
-        
+
         /**
          * Returns whether two models objects represent the same model
          * (i.e. share the same underlying statement set). Currently this
@@ -83,23 +83,23 @@ class SYNDICATION_EXPORT Model
          * are not equal!
          */
         bool operator==(const Model& other) const;
-        
+
         /**
          * creates a resource and associates it with this model. If the model
          * already contains a resource with the given URI, the existing instance
          * is returned.
-         * 
-         * @param uri the URI of the resource. If QString::null, a blank node 
+         *
+         * @param uri the URI of the resource. If QString::null, a blank node
          * is created.
          * @return a shared pointer to the requested resource
          */
         virtual ResourcePtr createResource(const QString& uri=QString());
-        
+
         /**
          * creates a property and associates it with this model. If the model
          * already contains a property with the given URI, the existing instance
          * is returned.
-         * 
+         *
          * @param uri the URI of the property. This must be non-empty, otherwise
          * null property is returned
          * @return a shared pointer to the requested property
@@ -110,7 +110,7 @@ class SYNDICATION_EXPORT Model
          * creates a sequence and associates it with this model. If the model
          * already contains a sequence with the given URI, the existing
          * instance is returned.
-         * 
+         *
          * @param uri the URI of the sequence, or a null string for an
          * anonymous instance
          * @return a shared pointer to the requested sequence
@@ -118,29 +118,29 @@ class SYNDICATION_EXPORT Model
         virtual SequencePtr createSequence(const QString& uri=QString());
 
         /**
-         * creates a literal and associates it with this model. 
-         * 
+         * creates a literal and associates it with this model.
+         *
          * @param uri the literal text
          * @return a shared pointer to the requested literal
          */
         virtual LiteralPtr createLiteral(const QString& text);
-        
+
         /**
          * adds a statement to the model.
-         * 
+         *
          * @param subject
          * @param predicate
          * @param object
          * @return a shared pointer to a statement associated with this
          * model, with the given @c subject, @c predicate and @c object
          */
-        virtual StatementPtr addStatement(ResourcePtr subject, 
+        virtual StatementPtr addStatement(ResourcePtr subject,
                                           PropertyPtr predicate,
                                           NodePtr object);
-        
+
         /**
          * removes a statement from the model.
-         * 
+         *
          * @param subject subject of the statement
          * @param predicate predicate of the statement
          * @param object object of the statement
@@ -148,14 +148,14 @@ class SYNDICATION_EXPORT Model
         virtual void removeStatement(ResourcePtr subject,
                                      PropertyPtr predicate,
                                      NodePtr object);
-        
+
         /**
          * removes a statement from the model.
-         * 
+         *
          * @param statement the statement to remove
          */
         virtual void removeStatement(StatementPtr statement);
-                
+
         /**
          * returns whether this model is empty, i.e. contains no statements.
          */
@@ -164,14 +164,14 @@ class SYNDICATION_EXPORT Model
         /**
          * returns all resources of a given type.
          * subClassOf semantics are ignored.
-         * 
+         *
          * @param type a resource representing an RDFS class
          */
         virtual QList<ResourcePtr> resourcesWithType(ResourcePtr type) const;
 
         /**
          * returns a list of the statements in this model.
-         * 
+         *
          */
         virtual QList<StatementPtr> statements() const;
 
@@ -183,16 +183,16 @@ class SYNDICATION_EXPORT Model
          * Literal) if the model doesn't contain the node with this ID
          */
         virtual NodePtr nodeByID(uint id) const;
-        
+
         /**
          * searches the model for a resource by ID.
          *
          * @param id the ID to search for
-         * @return the resource with the given ID, or a null resource if the 
+         * @return the resource with the given ID, or a null resource if the
          * model doesn't contain a resource with this ID
          */
         virtual ResourcePtr resourceByID(uint id) const;
-        
+
         /**
          * searches the model for a property by ID.
          *
@@ -201,7 +201,7 @@ class SYNDICATION_EXPORT Model
          * model doesn't contain a property with this ID
          */
         virtual PropertyPtr propertyByID(uint id) const;
-        
+
         /**
          * searches the model for a literal by ID.
          *
@@ -230,9 +230,9 @@ class SYNDICATION_EXPORT Model
                                               PropertyPtr property) const;
 
         /**
-         * a debug string listing the contained statements for 
+         * a debug string listing the contained statements for
          * debugging purposes
-         * 
+         *
          * @return debug string
          */
         virtual QString debugInfo() const;

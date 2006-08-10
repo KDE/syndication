@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_SPECIFICITEM_H
 #define LIBSYNDICATION_SPECIFICITEM_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 class QString;
 
@@ -39,7 +39,7 @@ typedef SharedPtr<SpecificItem> SpecificItemPtr;
  * Interface for all format-specific item-like classes, such as
  * RSS2/RDF items, and Atom entries. To process items based on their
  * format, use a SpecificItemVisitor.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT SpecificItem
@@ -54,14 +54,14 @@ class SYNDICATION_EXPORT SpecificItem
         /**
          * This must be implemented for the double dispatch
          * technique (Visitor pattern).
-         * 
+         *
          * The usual implementation is
          * @code
          * return visitor->visit(this);
          * @endcode
-         * 
+         *
          * See also SpecificItemVisitor.
-         * 
+         *
          * @param visitor the visitor "visiting" this object
          */
         virtual bool accept(SpecificItemVisitor* visitor) = 0;

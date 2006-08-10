@@ -22,7 +22,7 @@
 #ifndef LIBSYNDICATION_RDF_NODEVISITOR_H
 #define LIBSYNDICATION_RDF_NODEVISITOR_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 namespace Syndication {
 
@@ -40,7 +40,7 @@ class Resource;
 typedef SharedPtr<Resource> ResourcePtr;
 class Sequence;
 typedef SharedPtr<Sequence> SequencePtr;
-    
+
 class SYNDICATION_EXPORT NodeVisitor
 {
     public:
@@ -48,15 +48,15 @@ class SYNDICATION_EXPORT NodeVisitor
         virtual ~NodeVisitor();
 
         virtual void visit(NodePtr node);
-        
+
         virtual bool visitLiteral(LiteralPtr);
-        
+
         virtual bool visitNode(NodePtr);
 
         virtual bool visitProperty(PropertyPtr);
-        
+
         virtual bool visitResource(ResourcePtr);
-        
+
         virtual bool visitSequence(SequencePtr);
 };
 

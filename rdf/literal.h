@@ -19,21 +19,21 @@
  * Boston, MA 02110-1301, USA.
  *
  */
- 
+
 #ifndef LIBSYNDICATION_RDF_LITERAL_H
 #define LIBSYNDICATION_RDF_LITERAL_H
 
-#include <libsyndication/rdf/node.h>
+#include <syndication/rdf/node.h>
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 namespace Syndication {
 namespace RDF {
 
 class Literal;
-    
+
 typedef SharedPtr<Literal> LiteralPtr;
-    
+
 class SYNDICATION_EXPORT Literal : public Node
 {
     public:
@@ -42,13 +42,13 @@ class SYNDICATION_EXPORT Literal : public Node
         Literal(const Literal& other);
         Literal(const QString& text);
         virtual ~Literal();
-    
+
         virtual Literal& operator=(const Literal& other);
         virtual bool operator==(const Node& other) const;
-    
+
         virtual Literal* clone() const;
         virtual void accept( NodeVisitor* visitor, NodePtr ptr);
-    
+
         virtual bool isNull() const;
         virtual unsigned int id() const;
         virtual bool isResource() const;
@@ -62,13 +62,13 @@ class SYNDICATION_EXPORT Literal : public Node
 
         virtual void setModel(const Model& model);
         virtual void setId(unsigned int id);
-        
+
     private:
         class LiteralPrivate;
         SharedPtr<LiteralPrivate> d;
 };
 
-    
+
 } // namespace RDF
 } // namespace Syndication
 

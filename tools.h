@@ -23,9 +23,9 @@
 #ifndef LIBSYNDICATION_TOOLS_H
 #define LIBSYNDICATION_TOOLS_H
 
-#include <libsyndication/person.h>
+#include <syndication/person.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 #include <ctime>
 
@@ -55,7 +55,7 @@ QString calcMD5Sum(const QString& str);
 enum DateFormat
 {
     ISODate, /**< ISO 8601 extended format.
-              * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25", 
+              * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
               * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
               */
     RFCDate /** RFC 822. (e.g. "Sat, 07 Sep 2002 00:00:01 GMT") */
@@ -63,9 +63,9 @@ enum DateFormat
 
 /**
  * parses a date string in ISO 8601 extended format.
- * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25", 
+ * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
  * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
- * 
+ *
  * @param str a string in ISO 8601 format
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
@@ -76,7 +76,7 @@ time_t parseISODate(const QString& str);
 /**
  * parses a date string as defined in RFC 822.
  * (Sat, 07 Sep 2002 00:00:01 GMT)
- * 
+ *
  * @param str a string in RFC 822 format
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
@@ -85,13 +85,13 @@ SYNDICATION_EXPORT
 time_t parseRFCDate(const QString& str);
 
 /**
- * parses a date string in ISO (see parseISODate()) or RFC 822 (see 
+ * parses a date string in ISO (see parseISODate()) or RFC 822 (see
  * parseRFCDate()) format.
  * It tries both parsers and returns the first valid parsing result found (or 0
  * otherwise).
  * To speed up parsing, you can give a hint which format you expect.
  * The method will try the corresponding parser first then.
- * 
+ *
  * @param str a date string
  * @param hint the expected format
  * @return parsed date in seconds since epoch, 0 if no date could
@@ -105,9 +105,9 @@ time_t parseDate(const QString& str, DateFormat hint=RFCDate);
  * @internal
  * returns a string representation of a datetime.
  * this is used internally to create debugging output.
- * 
+ *
  * @param date the date to convert
- * @return string representation of the date, or a null string if 
+ * @return string representation of the date, or a null string if
  * @c date is 0
  */
 SYNDICATION_EXPORT
@@ -115,15 +115,15 @@ QString dateTimeToString(time_t date);
 
 /**
  * resolves entities to respective unicode chars.
- * 
- * @param str a string 
+ *
+ * @param str a string
  */
 SYNDICATION_EXPORT
 QString resolveEntities(const QString& str);
-   
+
 /**
  * replaces the characters &lt; >, &, ", '
- * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;. 
+ * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;.
  * @param str the string to escape
  */
 SYNDICATION_EXPORT
@@ -135,7 +135,7 @@ QString escapeSpecialCharacters(const QString& str);
  */
 SYNDICATION_EXPORT
 QString convertNewlines(const QString& str);
-        
+
 /**
  * converts a plain text string to HTML
  *
@@ -180,7 +180,7 @@ bool stringContainsMarkup(const QString& str);
  * guesses via isHtml() if @c str contains HTML or plain text, and returns
  * plainTextToHtml(str) if it thinks it is plain text, or the unmodified @c str
  * otherwise.
- * 
+ *
  * @param str a string with unknown content
  * @return string as HTML (as long as the heuristics work)
  */
@@ -189,7 +189,7 @@ QString normalize(const QString& str);
 
 /**
  * normalizes a string based on feed-wide properties of tag content.
- * It is based on the assumption that all items in a feed encode their 
+ * It is based on the assumption that all items in a feed encode their
  * title/description content in the same way (CDATA or not, plain text
  * vs. HTML). isCDATA and containsMarkup are determined once by the feed,
  * and then passed to this method.
@@ -198,8 +198,8 @@ QString normalize(const QString& str);
  * &, ", and ' escaped, and all other entities resolved.
  * Whitespace is collapsed, relevant whitespace is replaced by respective
  * HTML tags (&lt;br/>).
- * 
- * @param str a string 
+ *
+ * @param str a string
  * @param isCDATA whether the feed uses CDATA for the tag @c str was read from
  * @param containsMarkup whether the feed uses HTML markup in the
  *        tag @c str was read from.
@@ -212,13 +212,13 @@ QString normalize(const QString& str, bool isCDATA, bool containsMarkup);
  * Parses a person object from a string by identifying name and email address
  * in the string. Currently detected variants are:
  * "foo@bar.com", "Foo", "Foo &lt;foo@bar.com>", "foo@bar.com (Foo)".
-  * 
+  *
  * @param str the string to parse the person from.
  * @return a Person object containing the parsed information.
  */
 SYNDICATION_EXPORT
 PersonPtr personFromString(const QString& str);
-        
+
 } // namespace Syndication
 
 #endif // LIBSYNDICATION_TOOLS_H

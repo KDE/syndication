@@ -23,13 +23,13 @@
 #ifndef LIBSYNDICATION_PARSERCOLLECTIONIMPL_H
 #define LIBSYNDICATION_PARSERCOLLECTIONIMPL_H
 
-#include <libsyndication/specificdocument.h>
-#include <libsyndication/abstractparser.h>
-#include <libsyndication/documentsource.h>
-#include <libsyndication/parsercollection.h>
-#include <libsyndication/feed.h>
-#include <libsyndication/global.h>
-#include <libsyndication/mapper.h>
+#include <syndication/specificdocument.h>
+#include <syndication/abstractparser.h>
+#include <syndication/documentsource.h>
+#include <syndication/parsercollection.h>
+#include <syndication/feed.h>
+#include <syndication/global.h>
+#include <syndication/mapper.h>
 
 #include <QtXml/QDomDocument>
 #include <QtCore/QHash>
@@ -37,9 +37,9 @@
 
 namespace Syndication {
 
-/** @internal 
+/** @internal
  */
-// default implementation of ParserCollection. This is separated 
+// default implementation of ParserCollection. This is separated
 // from the interface to move the implementation out of the public API
 // (template classes require implementations to be in the header)
 
@@ -47,21 +47,21 @@ template <class T>
 class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
 {
     public:
-        
+
         ParserCollectionImpl();
-        
+
         virtual ~ParserCollectionImpl();
-        
+
         SharedPtr<T> parse(const DocumentSource& source,
                             const QString& formatHint=QString());
 
-        
+
         bool registerParser(AbstractParser* parser, Mapper<T>* mapper);
-        
+
         void changeMapper(const QString& format, Mapper<T>* mapper);
 
         ErrorCode lastError() const;
-        
+
     private:
 
         ParserCollectionImpl(const ParserCollectionImpl&);
@@ -69,7 +69,7 @@ class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
         QHash<QString, AbstractParser*> m_parsers;
         QHash<QString, Mapper<T>*> m_mappers;
         QList<AbstractParser*> m_parserList;
-        
+
         ErrorCode m_lastError;
 };
 
@@ -88,17 +88,17 @@ ParserCollectionImpl<T>::~ParserCollectionImpl()
     QList<AbstractParser*> list = m_parsers.values();
     QList<AbstractParser*>::ConstIterator it = list.begin();
     QList<AbstractParser*>::ConstIterator end = list.end();
-    
+
     for ( ; it != end; ++it)
         delete *it;
 
     QList<QString> m = m_mappers.keys();
     QList<QString>::ConstIterator itm = m.begin();
     QList<QString>::ConstIterator endm = m.end();
-    
+
     for ( ; itm != endm; ++itm)
         delete m_mappers[*itm];
-    
+
 }
 
 template <class T>
@@ -133,7 +133,7 @@ SharedPtr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const 
                 m_lastError = InvalidFormat;
                 return FeedPtr();
             }
-            
+
             return m_mappers[formatHint]->map(doc);
         }
     }
@@ -148,7 +148,7 @@ SharedPtr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const 
                 m_lastError = InvalidFormat;
                 return FeedPtr();
             }
-            
+
             return m_mappers[i->format()]->map(doc);
         }
     }
@@ -156,7 +156,7 @@ SharedPtr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const 
         m_lastError = InvalidXml;
     else
         m_lastError = XmlNotAccepted;
-    
+
     return FeedPtr();
 }
 

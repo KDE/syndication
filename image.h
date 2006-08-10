@@ -23,9 +23,9 @@
 #ifndef LIBSYNDICATION_IMAGE_H
 #define LIBSYNDICATION_IMAGE_H
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 namespace Syndication {
 
@@ -43,30 +43,30 @@ class SYNDICATION_EXPORT Image
 {
     public:
 
-        /** 
+        /**
          * destructor
          */
         virtual ~Image();
-        
+
         /**
          * returns whether this image is a null object.
          */
         virtual bool isNull() const = 0;
-        
+
         /**
-         * the URL of a GIF, JPEG or PNG image 
+         * the URL of a GIF, JPEG or PNG image
          */
         virtual QString url() const = 0;
-        
-        /** 
-         * Describes the image, can be used in the ALT attribute of the 
+
+        /**
+         * Describes the image, can be used in the ALT attribute of the
          * HTML &lt;img> tag when the channel is rendered in HTML.
          *
          * @return TODO: specify format
          */
         virtual QString title() const = 0;
-        
-            
+
+
         /**
          * The URL of the site, when the channel is rendered, the image should
          * be a link to the site. If not set, use Feed::link().
@@ -75,7 +75,7 @@ class SYNDICATION_EXPORT Image
          * if not specified in the feed.
          */
         virtual QString link() const = 0;
-        
+
         /**
          * optional text that can be included in the TITLE attribute of the link
          * formed around the image in HTML rendering.
@@ -83,7 +83,7 @@ class SYNDICATION_EXPORT Image
          * @return TODO: specify format (HTML etc.)
          */
         virtual QString description() const = 0;
-        
+
         /**
          * The width of the image in pixels.
          *
@@ -95,17 +95,17 @@ class SYNDICATION_EXPORT Image
          * The height of the image in pixels
          *
          * @return image height in pixels or 0 of not specified in the feed.
-         */ 
+         */
         virtual uint height() const = 0;
-        
+
         /**
          * returns a description of the image for debugging purposes
-         * 
+         *
          * @return debug string
          */
         virtual QString debugInfo() const;
 };
-    
+
 } // namespace Syndication
 
 #endif // LIBSYNDICATION_IMAGE_H

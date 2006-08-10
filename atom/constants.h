@@ -22,7 +22,7 @@
 #ifndef LIBSYNDICATION_ATOM_CONSTANTS_H
 #define LIBSYNDICATION_ATOM_CONSTANTS_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 class QString;
 

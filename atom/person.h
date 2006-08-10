@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_ATOM_PERSON_H
 #define LIBSYNDICATION_ATOM_PERSON_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -34,7 +34,7 @@ namespace Atom {
 /**
  * describes a person, with name and optional URI and e-mail address.
  * Used to describe authors and contributors of feeds/entries
- * 
+ *
  *  @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Person : public ElementWrapper
@@ -45,12 +45,12 @@ class SYNDICATION_EXPORT Person : public ElementWrapper
          * creates a null person object
          */
        Person();
-       
+
        /**
         * creates a Person object wrapping an Atom Person Construct (atom:author,
         * atom:contributor tags)
         * @param element a DOM element, should be a Atom Person Construct
-        * (although not enforced), otherwise this object will not parse 
+        * (although not enforced), otherwise this object will not parse
         * anything useful
         */
        Person(const QDomElement& element);
@@ -65,7 +65,7 @@ class SYNDICATION_EXPORT Person : public ElementWrapper
 
         /**
          * A URI associated with the person (optional). Usually the homepage.
-         * 
+         *
          * @return the URI of the person, or a null string if not specified
          */
         QString uri() const;
@@ -79,7 +79,7 @@ class SYNDICATION_EXPORT Person : public ElementWrapper
 
         /**
          * description for debugging purposes
-         * 
+         *
          * @return debug string
          */
         QString debugInfo() const;

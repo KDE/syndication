@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_RDF_RESOURCEWRAPPER_H
 #define LIBSYNDICATION_RDF_RESOURCEWRAPPER_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 namespace Syndication {
 namespace RDF {
@@ -46,19 +46,19 @@ class SYNDICATION_EXPORT ResourceWrapper
          * true.
          */
         ResourceWrapper();
-        
+
         /**
          * Copy constructor.
          * Due to the shared d pointer, this is a cheap operation.
-         * 
+         *
          * @param other resource wrapper to copy
          */
         ResourceWrapper(const ResourceWrapper& other);
-        
+
         /**
          * creates a resource wrapper for a given resource.
-         * If a null pointer is passed, a null resource is 
-         * created internally (resource() will _not_ return a null 
+         * If a null pointer is passed, a null resource is
+         * created internally (resource() will _not_ return a null
          * pointer!)
          * @param resource a resource wrapper instance
          */
@@ -68,11 +68,11 @@ class SYNDICATION_EXPORT ResourceWrapper
         /**
          * Assignment oeprator
          * Due to the shared d pointer, this is a cheap operation.
-         * 
+         *
          * @param other resource wrapper to assign.
          */
         ResourceWrapper& operator=(const ResourceWrapper& other);
-        
+
         /**
          * compares two resource wrapper instances.
          * Two resource wrappers are equal when the wrapped resources
@@ -81,7 +81,7 @@ class SYNDICATION_EXPORT ResourceWrapper
          * @param other resource wrapper instance to compare to
          */
         bool operator==(const ResourceWrapper& other) const;
-        
+
         /**
          * returns the wrapped resource. Whether a null resource or
          * not, the returned pointer itself is never a null

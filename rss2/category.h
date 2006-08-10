@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RSS2_CATEGORY_H
 #define LIBSYNDICATION_RSS2_CATEGORY_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -57,14 +57,14 @@ class SYNDICATION_EXPORT Category : public ElementWrapper
 
         /**
          * Name of the category. This is both to be used as identifier and as
-         * human-readable string. It can bea forward-slash-separated string 
+         * human-readable string. It can bea forward-slash-separated string
          * to identify a hierarchic location in the domain indicated by
          * domain(). Examples: "General", "Programming", "Funny",
          * "Books/History".
          *
          * @return The category identifier/name as string or a null string for
          * null objects.
-         * 
+         *
          */
         QString category() const;
 

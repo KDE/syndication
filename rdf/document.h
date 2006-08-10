@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RDF_DOCUMENT_H
 #define LIBSYNDICATION_RDF_DOCUMENT_H
 
-#include <libsyndication/rdf/resourcewrapper.h>
+#include <syndication/rdf/resourcewrapper.h>
 
 #include <specificdocument.h>
 
@@ -44,38 +44,38 @@ typedef SharedPtr<Document> DocumentPtr;
 
 /**
  * Document implementation for RDF, representing an RSS 1.0 feed.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public ResourceWrapper
 {
-    
+
     public:
-            
+
         Document();
         Document(ResourcePtr resource);
         virtual ~Document();
-        
+
         virtual bool accept(DocumentVisitor* visitor);
-    
+
         /**
          * returns whether this document is valid or not.
          * Invalid documents do not contain any useful
          * information.
          */
         bool isValid() const;
-        
+
         /**
          * title of the feed (required)
-         * 
+         *
          * @return feed title as TODO: define format
          */
         QString title() const;
-        
+
         QString description() const;
-        
+
         QString link() const;
-        
+
         /**
          * returns a dublin core description of the document.
          */
@@ -86,23 +86,23 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          * is updated.
          */
         SyndicationInfo syn() const;
-        
+
         /**
          * list of items contained in this feed
          */
         QList<Item> items() const;
-        
+
         Image image() const;
-        
+
         TextInput textInput() const;
-        
+
         /**
          * Returns a description of the document for debugging purposes.
          *
          * @return debug string
          */
         virtual QString debugInfo() const;
-     
+
 };
 
 } // namespace RDF

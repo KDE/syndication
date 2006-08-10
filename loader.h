@@ -11,10 +11,10 @@
 #ifndef LIBSYNDICATION_LOADER_H
 #define LIBSYNDICATION_LOADER_H
 
-#include <libsyndication/global.h>
-#include <libsyndication/sharedptr.h>
+#include <syndication/global.h>
+#include <syndication/sharedptr.h>
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 #include <QtCore/QObject>
 
@@ -79,10 +79,10 @@ typedef SharedPtr<Feed> FeedPtr;
 class SYNDICATION_EXPORT Loader : public QObject
 {
     Q_OBJECT
-    
-    
+
+
     public:
-        
+
         /**
          * Constructs a Loader instance. This is pretty much what the
          * default constructor would do, except that it ensures that all
@@ -92,7 +92,7 @@ class SYNDICATION_EXPORT Loader : public QObject
          * @return A pointer to a new Loader instance.
          */
         static Loader* create();
-    
+
         /**
          * Convenience method. Does the same as the above method except that
          * it also does the job of connecting the loadingComplete() signal
@@ -101,7 +101,7 @@ class SYNDICATION_EXPORT Loader : public QObject
          * @param slot Which slot to connect to.
          */
         static Loader* create(QObject* object, const char* slot);
-    
+
         /**
          * Loads the feed source referenced by the given URL using the
          * specified retrieval algorithm. Make sure that you connected
@@ -118,33 +118,33 @@ class SYNDICATION_EXPORT Loader : public QObject
          * @see DataRetriever, Loader::loadingComplete()
          */
         void loadFrom(const KUrl& url, DataRetriever* retriever);
-    
+
         /**
          * Convenience method. Does the same as the above method, where
          * FileRetriever is used as retriever implementation.
-         * 
+         *
          * @param url A URL referencing the input file.
          */
         void loadFrom(const KUrl& url);
-        
+
         /**
          * Retrieves the error code of the last loading process (if any).
          */
         ErrorCode errorCode() const;
-    
+
         /**
          * the error code returned from the retriever.
          * Use this if you use your custom retriever implementation and
          * need the specific error, not covered by errorCode().
          */
         int retrieverError() const;
-        
+
         const KUrl& discoveredFeedURL() const;
-    
+
         void abort();
-    
+
     signals:
-        
+
 
         /**
          * This signal gets emitted when the loading process triggered by
@@ -161,13 +161,13 @@ class SYNDICATION_EXPORT Loader : public QObject
         void loadingComplete(Syndication::Loader* loader,
                              Syndication::FeedPtr feed,
                              Syndication::ErrorCode error);
-        
+
     private slots:
-        
+
         void slotRetrieverDone(const QByteArray& data, bool success);
 
     private:
-        
+
         Loader();
         Loader(const Loader& other);
         Loader& operator=(const Loader& other);

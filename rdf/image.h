@@ -24,7 +24,7 @@
 #ifndef LIBSYNDICATION_RDF_IMAGE_H
 #define LIBSYNDICATION_RDF_IMAGE_H
 
-#include <libsyndication/rdf/resourcewrapper.h>
+#include <syndication/rdf/resourcewrapper.h>
 
 namespace Syndication {
 namespace RDF {
@@ -34,19 +34,19 @@ typedef SharedPtr<Resource> ResourcePtr;
 
 class SYNDICATION_EXPORT Image : public ResourceWrapper
 {
-    
+
     public:
-            
+
         Image();
         Image(ResourcePtr resource);
         virtual ~Image();
 
         QString title() const;
-        
+
         QString link() const;
-        
+
         QString url() const;
-        
+
         /**
         * Returns a description of the image for debugging purposes.
         *

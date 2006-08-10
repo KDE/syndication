@@ -22,13 +22,13 @@
 #ifndef LIBSYNDICATION_RDF_RSSVOCAB_H
 #define LIBSYNDICATION_RDF_RSSVOCAB_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 class QString;
 class QStringList;
 
 namespace Syndication {
-    
+
 template <class T> class SharedPtr;
 
 namespace RDF {
@@ -42,7 +42,7 @@ typedef SharedPtr<Resource> ResourcePtr;
 /**
  * Singleton holding RDF class and property constants of the RSS 1.0
  * vocabulary. See http://web.resource.org/rss/1.0/ for a specification.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT RSSVocab
@@ -53,12 +53,12 @@ class SYNDICATION_EXPORT RSSVocab
          * virtual destructor
          */
         virtual ~RSSVocab();
-        
+
         /**
          * returns the singleton instance
          */
         static RSSVocab* self();
-        
+
         /**
          * namespace URI of the RSS 1.0 vocabulary,
          * @c "http://web.resource.org/rss/1.0/"
@@ -66,67 +66,67 @@ class SYNDICATION_EXPORT RSSVocab
         const QString& namespaceURI() const;
 
         /**
-         * RSS 1.0 title property, see Document::title() for 
+         * RSS 1.0 title property, see Document::title() for
          * more details
          */
         PropertyPtr title() const;
-        
+
         /**
-         * RSS 1.0 description property, see Document::description() for 
+         * RSS 1.0 description property, see Document::description() for
          * more details
          */
         PropertyPtr description() const;
-        
+
         /**
-         * RSS 1.0 link property, see Document::link() for 
+         * RSS 1.0 link property, see Document::link() for
          * more details
          */
         PropertyPtr link() const;
-        
+
         /**
-         * RSS 1.0 name property, see Document::name() for 
+         * RSS 1.0 name property, see Document::name() for
          * more details
          */
         PropertyPtr name() const;
-        
+
         /**
-         * RSS 1.0 url property, see Document::url() for 
+         * RSS 1.0 url property, see Document::url() for
          * more details
          */
         PropertyPtr url() const;
-        
+
         /**
          * RSS 1.0 channel class, the instance is represented by
          * Syndication::RDF::Document
          */
         ResourcePtr channel() const;
-        
+
         /**
-         * RSS 1.0 items property, see Document::items() for 
+         * RSS 1.0 items property, see Document::items() for
          * more details
          */
         PropertyPtr items() const;
-        
+
         /**
-         * RSS 1.0 image property, see Document::image() for 
+         * RSS 1.0 image property, see Document::image() for
          * more details
          */
         PropertyPtr image() const;
-        
+
         /**
          * RSS 1.0 textinput property, see Document::textinput() for
          * more details
          */
         PropertyPtr textinput() const;
-        
+
     protected:
-        
+
         RSSVocab();
-        
+
     private:
-        
+
         static RSSVocab* m_self;
-        
+
         class RSSVocabPrivate;
         RSSVocabPrivate* d;
 };
@@ -134,7 +134,7 @@ class SYNDICATION_EXPORT RSSVocab
 /**
  * Singleton holding RDF class and property constants of the RSS 0.9
  * vocabulary. Only used to map RSS 0.9 to 1.0.
- * 
+ *
  * @author Frank Osterfeld
  */
 
@@ -146,12 +146,12 @@ class SYNDICATION_EXPORT RSS09Vocab
      * virtual destructor
          */
         virtual ~RSS09Vocab();
-        
+
         /**
          * returns the singleton instance
          */
         static RSS09Vocab* self();
-        
+
         /**
          * namespace URI of the RSS 0.9 vocabulary,
          * @c "http://web.resource.org/rss/0.9/"
@@ -159,77 +159,77 @@ class SYNDICATION_EXPORT RSS09Vocab
         const QString& namespaceURI() const;
 
         /**
-         * RSS 0.9 title property, see Document::title() for 
+         * RSS 0.9 title property, see Document::title() for
          * more details
          */
         PropertyPtr title() const;
-        
+
         /**
-         * RSS 0.9 description property, see Document::description() for 
+         * RSS 0.9 description property, see Document::description() for
          * more details
          */
         PropertyPtr description() const;
-        
+
         /**
-         * RSS 0.9 link property, see Document::link() for 
+         * RSS 0.9 link property, see Document::link() for
          * more details
          */
         PropertyPtr link() const;
-        
+
         /**
-         * RSS 0.9 name property, see Document::name() for 
+         * RSS 0.9 name property, see Document::name() for
          * more details
          */
         PropertyPtr name() const;
-        
+
         /**
-         * RSS 0.9 url property, see Document::url() for 
+         * RSS 0.9 url property, see Document::url() for
          * more details
          */
         PropertyPtr url() const;
-        
+
         /**
          * RSS 0.9 channel class, the instance is represented by
          * Syndication::RDF::Document
          */
         ResourcePtr channel() const;
-        
+
         /**
-         * RSS 0.9 item class, see Document::items() for 
+         * RSS 0.9 item class, see Document::items() for
          * more details
          */
         ResourcePtr item() const;
-        
+
         /**
-         * RSS 0.9 image property, see Document::image() for 
+         * RSS 0.9 image property, see Document::image() for
          * more details
          */
         PropertyPtr image() const;
-        
+
         /**
          * RSS 0.9 textinput property, see Document::textinput() for
          * more details
          */
         PropertyPtr textinput() const;
-        
+
         /**
          * returns a list containing all URIs representing properties in this vocabulary
          */
         QStringList properties() const;
-        
+
         /**
          * returns a list containing all URIs representing classes in this vocabulary
          */
         QStringList classes() const;
-        
+
     protected:
-        
+
         RSS09Vocab();
-        
+
     private:
-        
+
         static RSS09Vocab* m_self;
-        
+
         class RSS09VocabPrivate;
         RSS09VocabPrivate* d;
 };

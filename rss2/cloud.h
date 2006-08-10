@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RSS2_CLOUD_H
 #define LIBSYNDICATION_RSS2_CLOUD_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -51,7 +51,7 @@ namespace RSS2
    * For more information on the rssCloud interface see
    * http://blogs.law.harvard.edu/tech/soapMeetsRss#rsscloudInterface
    *
-   * (Note: This explanation was taken from 
+   * (Note: This explanation was taken from
    * http://blogs.law.harvard.edu/tech/rss )
    *
    * @author Frank Osterfeld
@@ -59,7 +59,7 @@ namespace RSS2
 class SYNDICATION_EXPORT Cloud : public ElementWrapper
 {
     public:
-        
+
         /**
          * Default constructor, creates a null object, for which isNull()
          * is @c true.

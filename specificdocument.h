@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_SPECIFICDOCUMENT_H
 #define LIBSYNDICATION_SPECIFICDOCUMENT_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 class QString;
 
@@ -40,9 +40,9 @@ typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
  * document source (see DocumentSource).
  * The Document classes from the several syndication formats must implement
  * this interface. It's main purpose is to provide access for document visitors
- * (see DocumentVisitor). 
+ * (see DocumentVisitor).
  * Usually it is not necessary to access the format-specific document at all,
- * use Feed for a format-agnostic interface to all feed documents supported by 
+ * use Feed for a format-agnostic interface to all feed documents supported by
  * the library.
  *
  * @author Frank Osterfeld
@@ -59,14 +59,14 @@ class SYNDICATION_EXPORT SpecificDocument
         /**
          * This must be implemented for the double dispatch
          * technique (Visitor pattern).
-         * 
+         *
          * The usual implementation is
          * @code
          * return visitor->visit(this);
          * @endcode
-         * 
+         *
          * See also DocumentVisitor.
-         * 
+         *
          * @param visitor the visitor "visiting" this object
          */
         virtual bool accept(DocumentVisitor* visitor) = 0;
@@ -77,7 +77,7 @@ class SYNDICATION_EXPORT SpecificDocument
          * information.
          */
         virtual bool isValid() const = 0;
-        
+
         /**
          * Returns a description of the document for debugging purposes.
          *

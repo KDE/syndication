@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RSS2_IMAGE_H
 #define LIBSYNDICATION_RSS2_IMAGE_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -47,20 +47,20 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          * @param element The @c &lt;image> element to wrap
          */
         Image(const QDomElement& element);
-        
+
         /**
-         * the URL of a GIF, JPEG or PNG image 
+         * the URL of a GIF, JPEG or PNG image
          */
         QString url() const;
-    
-        /** 
-         * Describes the image, can be used in the ALT attribute of the 
+
+        /**
+         * Describes the image, can be used in the ALT attribute of the
          * HTML @c &lt;img> tag when the channel is rendered in HTML.
          *
          * @return TODO: specify format
          */
         QString title() const;
-    
+
         /**
          * The URL of the site, when the channel is rendered, the image should
          * be a link to the site.
@@ -68,7 +68,7 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          * @return TODO
          */
         QString link() const;
-    
+
         /**
          * The width of the image. If the feed itself doesn't specify a width,
          * this method returns 88, the default value.
@@ -76,7 +76,7 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          * @return image width in pixels.
          */
         uint width() const;
-    
+
         /**
          * The height of the image. If the feed itself doesn't specify a height,
          * this method returns 31, the default value.
@@ -84,7 +84,7 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          * @return image height in pixels.
          */
         uint height() const;
-    
+
         /**
          * optional text that can be included in the TITLE attribute of the link
          * formed around the image in HTML rendering.
@@ -92,7 +92,7 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          * @return TODO: specify format (HTML etc.)
          */
         QString description() const;
-    
+
         /**
          * Returns a description of the object for debugging purposes.
          *

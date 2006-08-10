@@ -23,15 +23,15 @@
 #ifndef LIBSYNDICATION_RSS2_RSS2_H
 #define LIBSYNDICATION_RSS2_RSS2_H
 
-#include <libsyndication/rss2/category.h>
-#include <libsyndication/rss2/cloud.h>
-#include <libsyndication/rss2/document.h>
-#include <libsyndication/rss2/enclosure.h>
-#include <libsyndication/rss2/image.h>
-#include <libsyndication/rss2/item.h>
-#include <libsyndication/rss2/parser.h>
-#include <libsyndication/rss2/source.h>
-#include <libsyndication/rss2/textinput.h>
+#include <syndication/rss2/category.h>
+#include <syndication/rss2/cloud.h>
+#include <syndication/rss2/document.h>
+#include <syndication/rss2/enclosure.h>
+#include <syndication/rss2/image.h>
+#include <syndication/rss2/item.h>
+#include <syndication/rss2/parser.h>
+#include <syndication/rss2/source.h>
+#include <syndication/rss2/textinput.h>
 
 namespace Syndication {
 

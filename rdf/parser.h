@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_RDF_PARSER_H
 #define LIBSYNDICATION_RDF_PARSER_H
 
-#include <libsyndication/rdf/document.h>
-#include <libsyndication/abstractparser.h>
-#include <libsyndication/sharedptr.h>
+#include <syndication/rdf/document.h>
+#include <syndication/abstractparser.h>
+#include <syndication/sharedptr.h>
 
 namespace Syndication {
 
@@ -33,24 +33,24 @@ class DocumentSource;
 namespace RDF {
 
 class Model;
-    
+
 /**
  * Parser implementation for RDF-based RSS 0.9 and RSS 1.0 feeds.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
     public:
-        
+
         /** default constructor */
         Parser();
-        
+
         /** destructor */
         virtual ~Parser();
-        
+
         /**
-         * returns whether the passed document looks like 
+         * returns whether the passed document looks like
          * an RSS 0.9 or RSS 1.0 document.
          * @param source the document source to check
          */
@@ -59,7 +59,7 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
         /**
          * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
          * documents are converted to RSS 1.0.
-         * 
+         *
          * @param source The document source to parse
          * @return parsed document (a Syndication::RDF::Document), or an
          * invalid document if parsing failed.
@@ -69,20 +69,20 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 
         /**
          * format string of this parser, which is @c "rdf".
-         * 
+         *
          * @return @c "rdf"
          */
         virtual QString format() const;
-    
+
     protected:
-        
-        /** @internal */ 
+
+        /** @internal */
         Parser(const Parser& other);
-        /** @internal */ 
+        /** @internal */
         Parser& operator=(const Parser& other);
-        
+
     private:
-        
+
         class ParserPrivate;
         ParserPrivate* d;
 };

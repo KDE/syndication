@@ -22,7 +22,7 @@
 #ifndef LIBSYNDICATION_DOCUMENTVISITOR_H
 #define LIBSYNDICATION_DOCUMENTVISITOR_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 namespace Syndication {
 
@@ -39,7 +39,7 @@ namespace RDF
     class Document;
 }
 
-namespace RSS2 
+namespace RSS2
 {
     class Document;
 }
@@ -58,14 +58,14 @@ class SYNDICATION_EXPORT DocumentVisitor
     public:
 
         /**
-         * destructor 
+         * destructor
          */
         virtual ~DocumentVisitor();
 
         /**
          * call this method to handle a document. Depending on the concrete type
          * of the document, a specialized visit method is called.
-         * 
+         *
          * @param document the document to process
          * @return whether this visitor handles the type of the document.
          */
@@ -73,35 +73,35 @@ class SYNDICATION_EXPORT DocumentVisitor
 
         /**
          * reimplement this method to handle RSS2-like (RSS 0.9x, 2.0) documents.
-         * 
+         *
          * @param document the RSS2 document to visit
          * @return whether the visitor handled the document.
          * Reimplementations of this method must return @c true.
          */
         virtual bool visitRSS2Document(Syndication::RSS2::Document* document);
-        
+
         /**
          * reimplement this method to handle RDF (i.e. RSS 1.0) documents.
-         * 
+         *
          * @param document the RDF document to visit
          * @return whether the visitor handled the document.
          * Reimplementations of this method must return @c true.
          */
         virtual bool visitRDFDocument(Syndication::RDF::Document* document);
-        
+
         /**
-         * reimplement this method to handle Atom feed documents (most Atom 
+         * reimplement this method to handle Atom feed documents (most Atom
          * feeds are of this type).
-         * 
+         *
          * @param document the atom feed document to visit
          * @return whether the visitor handled the document.
          * Reimplementations of this method must return @c true.
          */
         virtual bool visitAtomFeedDocument(Syndication::Atom::FeedDocument* document);
-        
+
         /**
          * reimplement this method to handle Atom entry documents.
-         * 
+         *
          * @param document the atom entry document to visit
          * @return whether the visitor handled the document.
          * Reimplementations of this method must return @c true.

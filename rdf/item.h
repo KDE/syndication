@@ -22,16 +22,16 @@
 #ifndef LIBSYNDICATION_RDF_ITEM_H
 #define LIBSYNDICATION_RDF_ITEM_H
 
-#include <libsyndication/rdf/resourcewrapper.h>
+#include <syndication/rdf/resourcewrapper.h>
 
-#include <libsyndication/specificitem.h>
+#include <syndication/specificitem.h>
 
 class QString;
 
 namespace Syndication {
-    
+
 class SpecificItemVisitor;
-    
+
 namespace RDF {
 
 class DublinCore;
@@ -40,22 +40,22 @@ class Model;
 
 /**
  * An RSS 1.0 item.
- * (It is a convenience wrapper for the 
+ * (It is a convenience wrapper for the
  * underlying RDF resource, which can be accessed via resource()).
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
 {
-    
+
     public:
-        
+
         /**
-         * creates an item object wrapping a null resource, isNull() is 
+         * creates an item object wrapping a null resource, isNull() is
          * @c true.
          */
         Item();
-        
+
         /**
          * Creates an item wrapping the given resource
          * @param resource resource to wrap, should be of type
@@ -63,58 +63,58 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          * information.
          */
         Item(ResourcePtr resource);
-        
+
         /**
          * virtual destructor
          */
         virtual ~Item();
 
         /**
-         * interface for item visitors. See SpecificItemVisitor for 
+         * interface for item visitors. See SpecificItemVisitor for
          * more information.
-         * 
+         *
          * @param visitor a visitor visiting this object
          */
         bool accept(SpecificItemVisitor* visitor);
-        
+
         /**
          * The item's title (required).
-         * 
+         *
          * @return The item's title as HTML, or a null string if not specified
          */
         QString title() const;
-        
+
         /**
          * A brief description/abstract of the item.
          * if encodedContent() is not provided, this can also contain the full
          * content.
-         * 
+         *
          * @return description as HTML, or a null string if not specified
          */
         QString description() const;
-        
+
         /**
-         * The item's URL, usually pointing to a website containing the 
+         * The item's URL, usually pointing to a website containing the
          * full content (news article, blog entry etc.).
-         * 
+         *
          * @return the link
          */
         QString link() const;
-        
+
         /**
-         * returns a dublin core description of this 
+         * returns a dublin core description of this
          * item (including metadata such as item author
          * or subject)
          */
         DublinCore dc() const;
-        
+
         /**
          * returns content (@c content:encoded) as HTML.
-         * 
+         *
          * @return content as HTML, or a null string if not specified
          */
         QString encodedContent() const;
-        
+
         /**
          * Returns a description of the item for debugging purposes.
          *
@@ -122,7 +122,7 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          */
         QString debugInfo() const;
 };
-        
+
 } // namespace RDF
 } // namespace Syndication
 

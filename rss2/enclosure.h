@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RSS2_ENCLOSURE_H
 #define LIBSYNDICATION_RSS2_ENCLOSURE_H
 
-#include <libsyndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;
@@ -36,16 +36,16 @@ namespace RSS2 {
  * The most common use case for enclosures are podcasts:
  * An audio file is attached to the feed that can be
  * automatically downloaded by a podcast client.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Enclosure : public ElementWrapper
 {
     public:
 
-        
+
         /**
-         * Default constructor, creates a null object, for which isNull() is 
+         * Default constructor, creates a null object, for which isNull() is
          * @c true.
          */
         Enclosure();
@@ -56,23 +56,23 @@ class SYNDICATION_EXPORT Enclosure : public ElementWrapper
          * @param element The @c &lt;enclosure> element to wrap
          */
         Enclosure(const QDomElement& element);
-        
-        /** 
-         * returns the URL of the enclosure 
+
+        /**
+         * returns the URL of the enclosure
          */
         QString url() const;
-    
+
         /**
          * returns the size of the enclosure in bytes
          */
         int length() const;
-    
+
         /**
          * returns the mime type of the enclosure
-         * (e.g. "audio/mpeg") 
+         * (e.g. "audio/mpeg")
          */
         QString type() const;
-    
+
         /**
          * Returns a description of the object for debugging purposes.
          *

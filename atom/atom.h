@@ -22,23 +22,23 @@
 #ifndef LIBSYNDICATION_ATOM_ATOM_H
 #define LIBSYNDICATION_ATOM_ATOM_H
 
-#include <libsyndication/atom/category.h>
-#include <libsyndication/atom/constants.h>
-#include <libsyndication/atom/content.h>
-#include <libsyndication/atom/document.h>
-#include <libsyndication/atom/entry.h>
-#include <libsyndication/atom/generator.h>
-#include <libsyndication/atom/link.h>
-#include <libsyndication/atom/parser.h>
-#include <libsyndication/atom/person.h>
-#include <libsyndication/atom/source.h>
+#include <syndication/atom/category.h>
+#include <syndication/atom/constants.h>
+#include <syndication/atom/content.h>
+#include <syndication/atom/document.h>
+#include <syndication/atom/entry.h>
+#include <syndication/atom/generator.h>
+#include <syndication/atom/link.h>
+#include <syndication/atom/parser.h>
+#include <syndication/atom/person.h>
+#include <syndication/atom/source.h>
 
 namespace Syndication {
 
-/** 
+/**
  * Atom parser and model classes, representing
  * Atom 1.0 documents (Atom 0.3 documents are
- * converted by the parser) 
+ * converted by the parser)
  */
 namespace Atom {}
 

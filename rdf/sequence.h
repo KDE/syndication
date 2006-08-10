@@ -22,9 +22,9 @@
 #ifndef LIBSYNDICATION_RDF_SEQUENCE_H
 #define LIBSYNDICATION_RDF_SEQUENCE_H
 
-#include <libsyndication/rdf/resource.h>
+#include <syndication/rdf/resource.h>
 
-#include <libsyndication/sharedptr.h>
+#include <syndication/sharedptr.h>
 
 template <class T> class QList;
 
@@ -43,24 +43,24 @@ typedef SharedPtr<Sequence> SequencePtr;
 class SYNDICATION_EXPORT Sequence : public Resource
 {
     public:
-        
+
         Sequence();
         Sequence(const QString& uri);
         Sequence(const Sequence& other);
         virtual ~Sequence();
-        
+
         virtual Sequence& operator=(const Sequence& other);
-        
+
         virtual void accept(NodeVisitor* visitor, NodePtr ptr);
-        
+
         virtual Sequence* clone() const;
-        
+
         virtual void append(NodePtr node);
         virtual QList<NodePtr> items() const;
         virtual bool isSequence() const;
-        
+
     private:
-        
+
         class SequencePrivate;
         SharedPtr<SequencePrivate> d;
 

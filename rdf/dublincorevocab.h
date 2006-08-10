@@ -23,7 +23,7 @@
 #ifndef LIBSYNDICATION_RDF_DUBLINCOREVOCAB_H
 #define LIBSYNDICATION_RDF_DUBLINCOREVOCAB_H
 
-#include <libsyndication/rdf/property.h>
+#include <syndication/rdf/property.h>
 
 class QString;
 
@@ -35,49 +35,49 @@ class SYNDICATION_EXPORT DublinCoreVocab
     public:
 
         virtual ~DublinCoreVocab();
-        
+
         static DublinCoreVocab* self();
-        
+
         const QString& namespaceURI() const;
 
         PropertyPtr contributor() const;
-        
+
         PropertyPtr creator() const;
 
         PropertyPtr coverage() const;
-        
+
         PropertyPtr date() const;
-        
+
         PropertyPtr description() const;
 
         PropertyPtr format() const;
-        
+
         PropertyPtr identifier() const;
-        
+
         PropertyPtr language() const;
-        
+
         PropertyPtr publisher() const;
-        
+
         PropertyPtr relation() const;
-        
+
         PropertyPtr rights() const;
-        
+
         PropertyPtr source() const;
-        
+
         PropertyPtr subject() const;
-        
+
         PropertyPtr title() const;
-        
+
         PropertyPtr type() const;
-        
+
     protected:
-        
+
         DublinCoreVocab();
-        
+
     private:
-        
+
         static DublinCoreVocab* m_self;
-        
+
         class DublinCoreVocabPrivate;
         DublinCoreVocabPrivate* d;
 };

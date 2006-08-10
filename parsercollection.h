@@ -23,12 +23,12 @@
 #ifndef LIBSYNDICATION_PARSERCOLLECTION_H
 #define LIBSYNDICATION_PARSERCOLLECTION_H
 
-#include <libsyndication/specificdocument.h>
-#include <libsyndication/abstractparser.h>
-#include <libsyndication/documentsource.h>
-#include <libsyndication/feed.h>
-#include <libsyndication/global.h>
-#include <libsyndication/mapper.h>
+#include <syndication/specificdocument.h>
+#include <syndication/abstractparser.h>
+#include <syndication/documentsource.h>
+#include <syndication/feed.h>
+#include <syndication/global.h>
+#include <syndication/mapper.h>
 
 #include <QtCore/QString>
 
@@ -42,18 +42,18 @@ namespace Syndication {
  * Syndication::parserCollection().
  * When loading the source from the web, use Loader instead of using
  * this class directly.
- * 
+ *
  * Example code:
- * 
+ *
  * @code
  * ...
  * QFile someFile(somePath);
- * ... 
+ * ...
  * DocumentSource src(someFile.readAll());
  * someFile.close();
- * 
+ *
  * FeedPtr feed = parserCollection()->parse(src);
- * 
+ *
  * if (feed)
  * {
  *     QString title = feed->title();
@@ -66,7 +66,7 @@ namespace Syndication {
  * should be mapped to. If you want to use your own abstraction MyFeed,
  * implement ParserCollection&lt;MyFeed> (Note that you have to provide
  * mapper implementations for every feed format then).
- * 
+ *
  * @author Frank Osterfeld
  */
 template <class T>
@@ -80,10 +80,10 @@ class SYNDICATION_EXPORT ParserCollection
         /**
          * tries to parse a given source with the parsers registered.
          * The source is passed to the first parser that accepts it.
-         * 
+         *
          * @param source The source to be parsed
          * @param formatHint An optional hint which parser to test first. If
-         * there is a parser with the given hint as format string (e.g., 
+         * there is a parser with the given hint as format string (e.g.,
          * "rss2", "atom", "rdf"...), it is asked first to accept the source.
          * This can avoid unnecessary AbstractParser::accept() checks and speed
          * up parsing. See also AbstractParser::format().
@@ -93,21 +93,21 @@ class SYNDICATION_EXPORT ParserCollection
         virtual SharedPtr<T> parse(const DocumentSource& source,
                             const QString& formatHint=QString()) = 0;
 
-        
+
         /**
          * returns the error code of the last parse() call.
-         * 
+         *
          * @return the last error, or Success if parse() was successful
          * or not yet called at all.
          */
         virtual ErrorCode lastError() const = 0;
-        
+
         /**
          * Adds a parser and corresponding mapper to the collection.
          * AbstractParser::format() must be unique
          * in the collection. If there is already a parser with the same format
          * string, the parser isn't added.
-         * 
+         *
          * @note ownership for both @c parser and @c mapper is taken by the
          * implementation, so don't delete them in your code!
          *
@@ -117,11 +117,11 @@ class SYNDICATION_EXPORT ParserCollection
          * @return whether the parser was successfully registered or not.
          */
         virtual bool registerParser(AbstractParser* parser, Mapper<T>* mapper) = 0;
-        
+
         /**
          * Changes the specific format to abstraction mapping for a parser.
-         * 
-         * @param format the format string of the parser whose 
+         *
+         * @param format the format string of the parser whose
          * mapping should be changed. See AbstractParser::format.
          * @param mapper Mapper implementation doing the mapping from the
          * format specific representation to abstraction of type T.

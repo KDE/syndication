@@ -22,33 +22,33 @@
 #ifndef LIBSYNDICATION_RDF_RDF_H
 #define LIBSYNDICATION_RDF_RDF_H
 
-#include <libsyndication/rdf/contentvocab.h>
-#include <libsyndication/rdf/document.h>
-#include <libsyndication/rdf/dublincore.h>
-#include <libsyndication/rdf/dublincorevocab.h>
-#include <libsyndication/rdf/image.h>
-#include <libsyndication/rdf/item.h>
-#include <libsyndication/rdf/literal.h>
-#include <libsyndication/rdf/model.h>
-#include <libsyndication/rdf/modelmaker.h>
-#include <libsyndication/rdf/node.h>
-#include <libsyndication/rdf/nodevisitor.h>
-#include <libsyndication/rdf/parser.h>
-#include <libsyndication/rdf/property.h>
-#include <libsyndication/rdf/rdfvocab.h>
-#include <libsyndication/rdf/resource.h>
-#include <libsyndication/rdf/resourcewrapper.h>
-#include <libsyndication/rdf/rssvocab.h>
-#include <libsyndication/rdf/sequence.h>
-#include <libsyndication/rdf/statement.h>
-#include <libsyndication/rdf/syndication.h>
-#include <libsyndication/rdf/syndicationvocab.h>
-#include <libsyndication/rdf/textinput.h>
+#include <syndication/rdf/contentvocab.h>
+#include <syndication/rdf/document.h>
+#include <syndication/rdf/dublincore.h>
+#include <syndication/rdf/dublincorevocab.h>
+#include <syndication/rdf/image.h>
+#include <syndication/rdf/item.h>
+#include <syndication/rdf/literal.h>
+#include <syndication/rdf/model.h>
+#include <syndication/rdf/modelmaker.h>
+#include <syndication/rdf/node.h>
+#include <syndication/rdf/nodevisitor.h>
+#include <syndication/rdf/parser.h>
+#include <syndication/rdf/property.h>
+#include <syndication/rdf/rdfvocab.h>
+#include <syndication/rdf/resource.h>
+#include <syndication/rdf/resourcewrapper.h>
+#include <syndication/rdf/rssvocab.h>
+#include <syndication/rdf/sequence.h>
+#include <syndication/rdf/statement.h>
+#include <syndication/rdf/syndication.h>
+#include <syndication/rdf/syndicationvocab.h>
+#include <syndication/rdf/textinput.h>
 
 namespace Syndication {
 
-/** 
- * LibSyndication's parser for the RDF-based 
+/**
+ * LibSyndication's parser for the RDF-based
  * RSS 0.9 and RSS 1.0 formats
  */
 namespace RDF {}

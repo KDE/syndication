@@ -10,7 +10,7 @@
 #ifndef LIBSYNDICATION_DATARETRIEVER_H
 #define LIBSYNDICATION_DATARETRIEVER_H
 
-#include <kdepim_export.h>
+#include "syndication.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
@@ -41,12 +41,12 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          * Default constructor.
          */
         DataRetriever();
-    
+
         /**
          * Destructor.
          */
         virtual ~DataRetriever();
-    
+
         /**
          * Retrieve data from the given URL. This method is supposed to get
          * reimplemented by subclasses. It will be called by the Loader
@@ -54,7 +54,7 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          * @see Loader::loadFrom()
          */
         virtual void retrieveData(const KUrl& url) = 0;
-    
+
         /**
          * @return An error code which might give a more precise information
          * about what went wrong in case the 'success' flag returned with
@@ -62,12 +62,12 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          * the returned integer depends on the actual data retriever.
          */
         virtual int errorCode() const = 0;
-    
+
         /**
          * aborts the retrieval process.
          */
         virtual void abort() = 0;
-        
+
     signals:
         /**
          * Emit this signal to tell the Loader class that the retrieval
@@ -97,9 +97,9 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
 class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
 {
     Q_OBJECT
-            
+
     public:
-                
+
         /**
          * Default constructor.
          */
@@ -148,9 +148,9 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
 class SYNDICATION_EXPORT FileRetriever : public DataRetriever
 {
     Q_OBJECT
-            
+
     public:
-        
+
         /**
          * Default constructor.
          */
@@ -184,7 +184,7 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
         static void setUserAgent(const QString& userAgent);
 
     signals:
-        
+
         /**
          * Signals a permanent redirection. The redirection itself is
          * handled internally, so you don't need to call Loader::loadFrom()
@@ -195,18 +195,18 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
         void permanentRedirection(const KUrl& url);
 
     protected slots:
-        
+
         void slotTimeout();
 
     private slots:
-        
+
         void slotData(KIO::Job*job, const QByteArray& data);
         void slotResult(KJob* job);
         void slotPermanentRedirection(KIO::Job* job, const KUrl& fromUrl,
                                       const KUrl& toUrl);
 
     private:
-        
+
         static bool m_useCache;
         static QString m_userAgent;
 
