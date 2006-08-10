@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2005 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *
@@ -43,6 +43,6 @@ namespace RSS2 {
 QString extractContent(const ElementWrapper& parent);
 
 } // RSS2
-} // LibSyndication
+} // Syndication
 
 #endif // SYNDICATION_RSS2_TOOLS_H

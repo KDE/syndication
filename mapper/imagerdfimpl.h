@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2006 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *

@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2006 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *
@@ -48,7 +48,7 @@
 namespace Syndication {
 
 /**
- * LibSyndication's parser for the RDF-based
+ * Syndication's parser for the RDF-based
  * RSS 0.9 and RSS 1.0 formats
  */
 namespace RDF {}

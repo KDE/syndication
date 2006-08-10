@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2006 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *
@@ -39,7 +39,7 @@ typedef SharedPtr<Person> PersonPtr;
  * While according to the RSS2 spec, RSS2 author elements must contain only an
  * e-mail address, Atom requires the person's name and the e-mail address is
  * optional. Also, in reality, feeds often contain other information than what
- * is specified in the specs. LibSyndication tries to find out what author
+ * is specified in the specs. Syndication tries to find out what author
  * information is contained and maps it to this representation.
  *
  * @author Frank Osterfeld

@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2006 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *
@@ -61,7 +61,7 @@ typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
  * @endcode
  *
  * 2) Implement your own mapper for the Feed abstraction, for an
- * existing parser. E.g. if you think LibSyndication does map Atom
+ * existing parser. E.g. if you think Syndication does map Atom
  * all wrong, you can implement your own Atom mapper and use that instead
  * of the default one.
  *
@@ -129,6 +129,6 @@ class SYNDICATION_EXPORT Mapper
         virtual SharedPtr<T> map(SpecificDocumentPtr doc) const = 0;
 };
 
-} // namespace libsyndication
+} // namespace syndication
 
 #endif // SYNDICATION_MAPPER_H

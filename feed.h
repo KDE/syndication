@@ -1,5 +1,5 @@
 /*
- * This file is part of libsyndication
+ * This file is part of the syndication library
  *
  * Copyright (C) 2006 Frank Osterfeld <frank.osterfeld@kdemail.net>
  *
@@ -51,8 +51,8 @@ typedef SharedPtr<Person> PersonPtr;
  * feed (title, homepage, etc.). This interface abstracts from format-specific
  * details of e.g. Atom::FeedDocument or RSS::Document and provides a
  * format-agnostic, unified view on the document.
- * This way applications using libsyndication don't have to care about the
- * syndication format jungle at all. If necessary, format details and
+ * This way applications using the syndication library have no need to care
+ * about the syndication format jungle at all. If necessary, format details and
  * specialities can be accessed using the specificDocument() method.
  *
  * @author Frank Osterfeld

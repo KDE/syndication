@@ -59,7 +59,7 @@ FileRetriever::~FileRetriever()
 }
 
 bool FileRetriever::m_useCache = true;
-QString FileRetriever::m_userAgent = QString("LibSyndication %1").arg(SYNDICATION_VERSION);
+QString FileRetriever::m_userAgent = QString("Syndication %1").arg(SYNDICATION_VERSION);
 
 void FileRetriever::setUserAgent(const QString& userAgent)
 {
