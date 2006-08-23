@@ -44,7 +44,7 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
 
     if (type == QString::fromUtf8("text"))
     {
-        str = parent.extractElementTextNS(atom1Namespace(), tagname).simplified();
+        str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
         if (isCDATA)
             str = resolveEntities(str);
 
@@ -52,11 +52,11 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
     }
     else if (type == QString::fromUtf8("html"))
     {
-        str = parent.extractElementTextNS(atom1Namespace(), tagname).simplified();
+        str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
     }
     else if (type == QString::fromUtf8("xhtml"))
     {
-        str = ElementWrapper::childNodesAsXML(el).simplified();
+        str = ElementWrapper::childNodesAsXML(el).trimmed();
     }
 
     return str;

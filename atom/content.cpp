@@ -165,15 +165,15 @@ QString Content::asString() const
     
     if (f == PlainText)
     {
-        return plainTextToHtml(text().simplified());
+        return plainTextToHtml(text()).trimmed();
     }
     else if (f == EscapedHTML)
     {
-        return text().simplified();
+        return text().trimmed();
     }
     else if (f == XML)
     {
-        return childNodesAsXML().simplified();
+        return childNodesAsXML().trimmed();
     }
     
     return QString();

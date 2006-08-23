@@ -12,8 +12,9 @@ label: #This is a category from scheme schemes/localSchemeName. We do not comple
 url: #http://example.com/feed/someicon.png#
 # Image end #######################
 # Item begin ######################
-id: #hash:1561f3f16674e0542ca889baa30c96da#
-title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" xmlns:="http://www.w3.org/XML/1998/namespace" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. The link must point to http://example.com/test/test.html.</div>#
+id: #hash:abab3c2c5b92bf80b874c8da5e727777#
+title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" xmlns:="http://www.w3.org/XML/1998/namespace" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. 
+                The link must point to http://example.com/test/test.html.</div>#
 # Item end ########################
 # Item begin ######################
 id: #hash:96e74844f5681ebe28eb57b128617f83#

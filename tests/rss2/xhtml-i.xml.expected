@@ -8,7 +8,9 @@ title: #xhtml:div#
 link: #http://www.example.com/a/1#
 description: #Content in xhtml:div#
 content: #<p>This is a paragraph. Containing <a href="http://www.example.com/" >a link</a>
- </p><blockquote>
+ </p>
+
+         <blockquote>
   <p>This is a blockquote</p>
  </blockquote>#
 datePublished: #Sun Mar 14 19:59:12 2004#

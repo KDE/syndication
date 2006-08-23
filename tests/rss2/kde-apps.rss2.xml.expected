@@ -7,7 +7,8 @@ language: #en-us#
 id: #http://www.KDE-Apps.org/content/show.php?content=36596#
 title: #GamLetter 0.1.7 (Text Processing)#
 link: #http://www.KDE-Apps.org/content/show.php?content=36596#
-description: #GamLetter is a frontend for tetex3/scrlttr2 to create (german) letters. It works fine here on Gentoo and gambas2-1.9.25. <br /><br /><img src="http://www.KDE-Apps.org/content/m1/m36596-1.png" alt="Thumbnail" class="thumbnail" />#
+description: #GamLetter is a frontend for tetex3/scrlttr2 to create (german) letters.
+It works fine here on Gentoo and gambas2-1.9.25. <br /><br /><img src="http://www.KDE-Apps.org/content/m1/m36596-1.png" alt="Thumbnail" class="thumbnail" />#
 datePublished: #Sat Mar 18 14:29:58 2006#
 dateUpdated: #Sat Mar 18 14:29:58 2006#
 # Category begin ##################

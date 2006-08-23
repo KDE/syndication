@@ -21,6 +21,8 @@
 
 SUBDIRS = [ 'rss2', 'rdf', 'atom' ]
 
+TESTLIBSYNDICATION='../../build/syndication/tests/testlibsyndication'
+
 numTotal = 0
 numErrors = 0
 
@@ -39,7 +41,7 @@ files.each do |file|
         expected = expFile.read
         expFile.close
         
-        system("./testlibsyndication #{file} > testfeeds-output.tmp")
+        system("#{TESTLIBSYNDICATION} #{file} > testfeeds-output.tmp")
         actFile = File.open("testfeeds-output.tmp")
         actual = actFile.read
         actFile.close
@@ -58,7 +60,7 @@ files.each do |file|
         specific = specFile.read
         specFile.close
         
-        system("./testlibsyndication --specific-format #{file} > testfeeds-output.tmp")
+        system("#{TESTLIBSYNDICATION} --specific-format #{file} > testfeeds-output.tmp")
         actFile = File.open("testfeeds-output.tmp")
         actual = actFile.read
         actFile.close

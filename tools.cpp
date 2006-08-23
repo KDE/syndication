@@ -116,7 +116,7 @@ QString escapeSpecialCharacters(const QString& strp)
     str.replace("<", "&lt;");
     str.replace(">", "&gt;");
     str.replace("\'", "&apos;");
-    return str;
+    return str.trimmed();
 }
 
 QString convertNewlines(const QString& strp)
@@ -134,7 +134,7 @@ QString plainTextToHtml(const QString& plainText)
     str.replace("<", "&lt;");
     //str.replace(">", "&gt;");
     str.replace("\n", "<br/>");
-    return str.simplified();
+    return str.trimmed();
 }
 
 QString htmlToPlainText(const QString& html)
@@ -143,8 +143,7 @@ QString htmlToPlainText(const QString& html)
     //TODO: preserve some formatting, such as line breaks
     str.replace(QRegExp("<[^>]*>"), ""); // remove tags
     str = resolveEntities(str);
-    str = str.simplified();
-    return str;
+    return str.trimmed();
 }
 
 static QRegExp tagRegExp;
@@ -186,13 +185,13 @@ bool isHtml(const QString& str)
 
 QString normalize(const QString& str)
 {
-    return isHtml(str) ? str.simplified() : plainTextToHtml(str);
+    return isHtml(str) ? str.trimmed() : plainTextToHtml(str);
 }
 
 QString normalize(const QString& strp, bool isCDATA, bool containsMarkup)
 {
     if (containsMarkup)
-        return strp.simplified();
+        return strp.trimmed();
     else
     {
         if (isCDATA)
@@ -200,13 +199,13 @@ QString normalize(const QString& strp, bool isCDATA, bool containsMarkup)
             QString str = resolveEntities(strp);
             str = escapeSpecialCharacters(str);
             str = convertNewlines(str);
-            str = str.simplified();
+            str = str.trimmed();
             return str;
         }
         else
         {
             QString str = escapeSpecialCharacters(strp);
-            str = str.simplified();
+            str = str.trimmed();
             return str;
         }
     }
