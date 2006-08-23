@@ -1,6 +1,9 @@
 
 add_subdirectory( tests ) 
 
+add_subdirectory( atom )
+add_subdirectory( rdf ) 
+add_subdirectory( rss2 ) 
 
 
 ########### next target ###############
