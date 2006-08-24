@@ -46,12 +46,15 @@ QString ItemRSS2Impl::title() const
 
 QString ItemRSS2Impl::link() const
 {
-    
+    QString link = m_item.link();
+    if (!link.isEmpty())
+        return link;
+
     QString guid = m_item.guid();
-    if (!guid.isEmpty() && m_item.guidIsPermaLink())
+    if (m_item.guidIsPermaLink())
         return guid;
-    else
-        return m_item.link();
+
+   return QString();
 }
 
 QString ItemRSS2Impl::description() const
