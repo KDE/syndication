@@ -85,6 +85,13 @@ class SYNDICATION_EXPORT Node
         virtual unsigned int id() const = 0;
 
         /**
+         * returns a textual representation of the node.
+         * This is the literal string for literals, and a null string for other
+         * node types.
+         */
+        virtual QString text() const = 0;
+        
+        /**
          * used in Model
          * @internal
          */

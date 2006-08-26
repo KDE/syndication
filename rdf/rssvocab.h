@@ -100,6 +100,12 @@ class SYNDICATION_EXPORT RSSVocab
          * Syndication::RDF::Document
          */
         ResourcePtr channel() const;
+        
+        /**
+         * RSS 1.0 item class, the instance is represented by
+         * Syndication::RDF::Item
+         */
+        ResourcePtr item() const;
 
         /**
          * RSS 1.0 items property, see Document::items() for

@@ -76,6 +76,8 @@ class SYNDICATION_EXPORT Resource : public Node
         virtual bool isAnon() const;
         virtual bool isSequence() const;
 
+        virtual QString text() const;
+        
         virtual QString uri() const;
 
         virtual void setModel(const Model& model);

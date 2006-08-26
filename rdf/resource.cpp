@@ -182,9 +182,14 @@ void Resource::setId(unsigned int id)
         d->id = id;
 }
         
+QString Resource::text() const
+{
+    return QString();
+}
+
 QString Resource::uri() const
 {
-    return d ? d->uri : QString::null;
+    return d ? d->uri : QString();
 }
 
 } // namespace RDF

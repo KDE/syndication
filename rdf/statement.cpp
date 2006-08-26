@@ -118,15 +118,10 @@ ResourcePtr Statement::asResource() const
 
 QString Statement::asString() const
 {
-    if (isNull() || !d->model.nodeByID(d->objectID)->isLiteral())
-        return QString::null;
+    if (isNull())
+        return QString();
 
-    LiteralPtr l = d->model.literalByID(d->objectID);
-    
-    if (l->isNull())
-        return QString::null;
-
-    return l->text();
+    return d->model.nodeByID(d->objectID)->text();
 }
 
 } // namespace RDF

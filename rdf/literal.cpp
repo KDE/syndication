@@ -127,12 +127,12 @@ bool Literal::isSequence() const
 
 QString Literal::text() const
 {
-    return d ? d->text : QString::null;
+    return d ? d->text : QString();
 }
 
 Literal::operator QString() const
 {
-    return d ? d->text : QString::null;
+    return d ? d->text : QString();
 }
 
 void Literal::setModel(const Model& /*model*/)

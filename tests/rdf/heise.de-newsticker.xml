@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- real life RDF 0.9 feed -->
+<!-- real-life RDF 0.9 feed 
+     note that there is no sequence, but the order
+     of the items must be retained.
+-->
 <rdf:RDF
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns="http://my.netscape.com/rdf/simple/0.9/">

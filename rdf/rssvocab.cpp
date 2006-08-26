@@ -43,6 +43,7 @@ class RSSVocab::RSSVocabPrivate
     PropertyPtr url;
     PropertyPtr image;
     ResourcePtr channel;
+    ResourcePtr item;
     PropertyPtr items;
     PropertyPtr textinput;
 };
@@ -62,6 +63,7 @@ RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
     d->textinput = new Property(ns + QString::fromUtf8("textinput"));
     d->items = new Property(ns + QString::fromUtf8("items"));
     d->channel = new Resource(ns + QString::fromUtf8("channel"));
+    d->item = new Resource(ns + QString::fromUtf8("item"));
 }
 
 RSSVocab::~RSSVocab()
@@ -126,6 +128,11 @@ PropertyPtr RSSVocab::textinput() const
 PropertyPtr RSSVocab::items() const
 {
     return d->items;
+}
+
+ResourcePtr RSSVocab::item() const
+{
+    return d->item;
 }
 
 ResourcePtr RSSVocab::channel() const
