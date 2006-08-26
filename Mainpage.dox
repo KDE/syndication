@@ -1,10 +1,17 @@
 /** 
 @mainpage libsyndication - An RSS/Atom parser library
 
+@section purpose Purpose
+
 libsyndication is a parser library for RSS and Atom feeds.
+
+@section desc Description
+
 RSS (0.9/1.0, 0.91..2.0) and Atom (0.3 and 1.0) feeds are supported.
-It offers a unified, format-agnostic view on the parsed feed, 
+libsyndication offers a unified, format-agnostic view on the parsed feed, 
 so that the using application doesn't need to distinguish between feed formats.
+
+TODO: add some coding examples here.
 
 @author Frank Osterfeld  \<frank.osterfeld@kdemail.net\>
 
