@@ -1,24 +1,29 @@
-/** 
-@mainpage libsyndication - An RSS/Atom parser library
+/*!
+ * @mainpage syndication - an RSS/Atom parser library.
+ *
+ * @section purpose Purpose
+ *
+ * syndication is a parser library for RSS and Atom feeds.
+ *
+ * @section desc Description
+ *
+ * RSS (0.9/1.0, 0.91..2.0) and Atom (0.3 and 1.0) feeds are supported.
+ * syndication offers a unified, format-agnostic view on the parsed feed, 
+ * so that the using application does not need to distinguish between feed
+ * formats.
+ *
+ * @todo: add some coding examples here.
+ *
+ * @author Frank Osterfeld  \<frank.osterfeld@kdemail.net\>
+ *
+ * @maintainer Frank Osterfeld  \<frank.osterfeld@kdemail.net\>
+ *
+ * @licenses
+ * @lgpl
+ *
+ * For questions and discussions about syndication either contact the author 
+ * or the <a href="mailto:kde-pim@kde.org">kde-pim@kde.org</a> mailing list.
+ */
 
-@section purpose Purpose
-
-libsyndication is a parser library for RSS and Atom feeds.
-
-@section desc Description
-
-RSS (0.9/1.0, 0.91..2.0) and Atom (0.3 and 1.0) feeds are supported.
-libsyndication offers a unified, format-agnostic view on the parsed feed, 
-so that the using application doesn't need to distinguish between feed formats.
-
-TODO: add some coding examples here.
-
-@author Frank Osterfeld  \<frank.osterfeld@kdemail.net\>
-
-<b>License: LGPL</b>
-
-For questions and discussions about libsyndication either contact the author 
-or the <a href="mailto:kde-pim@kde.org">kde-pim@kde.org</a> mailing list.
-
-*/
+// DOXYGEN_PROJECTNAME=Syndication Library
 // DOXYGEN_EXCLUDE = mapper
