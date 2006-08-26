@@ -77,7 +77,7 @@ bool operator!=( const SharedPtr<T> &lhs, const SharedPtr<T> &rhs )
  * \endcode
  *
  * @author Frerich Raabe <raabe@kde.org>
- * @short A reference counting pointer.
+ * @brief A reference counting pointer.
  */
 template <class T>
 class SharedPtr
