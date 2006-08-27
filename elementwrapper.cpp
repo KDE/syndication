@@ -151,13 +151,13 @@ QString ElementWrapper::xmlLang() const
 QString ElementWrapper::extractElementText(const QString& tagName) const
 {
     QDomElement el = d->element.namedItem(tagName).toElement();
-    return el.isNull() ? QString::null : el.text().trimmed();
+    return el.isNull() ? QString() : el.text().trimmed();
 }
 
 QString ElementWrapper::extractElementTextNS(const QString& namespaceURI, const QString& localName) const
 {
     QDomElement el = firstElementByTagNameNS(namespaceURI, localName);
-    return el.isNull() ? QString::null : el.text().trimmed();
+    return el.isNull() ? QString() : el.text().trimmed();
 }
 
 QString ElementWrapper::childNodesAsXML(const QDomElement& parent)
@@ -165,7 +165,7 @@ QString ElementWrapper::childNodesAsXML(const QDomElement& parent)
     ElementWrapper wrapper(parent);
     
     if (parent.isNull())
-        return QString::null;
+        return QString();
 
     QDomNodeList list = parent.childNodes();
     

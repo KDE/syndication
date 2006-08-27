@@ -48,11 +48,11 @@ class ImageAtomImpl : public Syndication::Image
                 
         QString url() const { return m_logoURI; }
         
-        QString title() const { return QString::null; }
+        QString title() const { return QString(); }
         
-        QString link() const { return QString::null; }
+        QString link() const { return QString(); }
         
-        QString description() const { return QString::null; }
+        QString description() const { return QString(); }
         
         uint width() const { return 0; }
         

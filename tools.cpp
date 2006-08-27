@@ -89,7 +89,7 @@ time_t parseDate(const QString& str, DateFormat hint)
 QString dateTimeToString(time_t date)
 {
     if (date == 0)
-        return QString::null;
+        return QString();
 	
     QDateTime dt;
     dt.setTime_t(date);

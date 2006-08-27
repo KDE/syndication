@@ -68,7 +68,7 @@ QString ItemAtomImpl::link() const
         }
     }
     
-    return QString::null;
+    return QString();
 }
 
 QString ItemAtomImpl::description() const
@@ -80,7 +80,7 @@ QString ItemAtomImpl::content() const
 {
     Content content = m_entry.content();
     if (content.isNull())
-        return QString::null;
+        return QString();
     
     return content.asString();
 }

@@ -47,7 +47,7 @@ QString EnclosureRSS2Impl::url() const
 QString EnclosureRSS2Impl::title() const
 {
     // RSS2 enclosures have no title
-    return QString::null;
+    return QString();
 }
 
 QString EnclosureRSS2Impl::type() const

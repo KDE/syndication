@@ -34,7 +34,7 @@ namespace RSS2 {
 QString extractContent(const ElementWrapper& wrapper)
 {
     if (wrapper.isNull())
-        return QString::null;
+        return QString();
     
     QList<QDomElement> list = wrapper.elementsByTagNameNS(contentNameSpace(), QString::fromUtf8("encoded"));
 
@@ -51,7 +51,7 @@ QString extractContent(const ElementWrapper& wrapper)
     if (!list.isEmpty())
         return ElementWrapper::childNodesAsXML(list.first()).trimmed();
 
-    return QString::null;
+    return QString();
 }
 
 } // namespace RSS2

@@ -89,7 +89,7 @@ class SYNDICATION_EXPORT Model
          * already contains a resource with the given URI, the existing instance
          * is returned.
          *
-         * @param uri the URI of the resource. If QString::null, a blank node
+         * @param uri the URI of the resource. If a null string, a blank node
          * is created.
          * @return a shared pointer to the requested resource
          */

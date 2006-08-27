@@ -99,7 +99,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          *
          * @return a string in HTML format (whitespace is irrelevant,
          * @c &lt;br/> is used for newlines, "&", "&lt;", "&gt;" are escaped)
-         * summarizing the item. QString::null if no description was specified.
+         * summarizing the item. A null string if no description was specified.
          */
         QString description() const;
 
@@ -111,7 +111,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          *
          * @return the content in HTML format (whitespace is irrelevant,
          * &lt;br/> is used for newlines, "&", "&lt;", "&gt;" are escaped)
-         * If no content is specified, QString::null is returned.
+         * If no content is specified, a null string is returned.
          */
         QString content() const;
 

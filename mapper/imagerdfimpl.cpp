@@ -52,7 +52,7 @@ QString ImageRDFImpl::link() const
 
 QString ImageRDFImpl::description() const
 {
-    return QString::null;
+    return QString();
 }
 
 uint ImageRDFImpl::height() const

@@ -97,7 +97,7 @@ QString FeedAtomImpl::link() const
         }
     }
     
-    return QString::null;
+    return QString();
 }
 
 QString FeedAtomImpl::description() const

@@ -47,7 +47,7 @@ QString CategoryRSS2Impl::scheme() const
 
 QString CategoryRSS2Impl::label() const
 {
-    return QString::null;
+    return QString();
 }
 
 } // namespace Syndication
