@@ -258,7 +258,7 @@ QString Item::debugInfo() const
     return info;
 }
 
-QList<QDomElement> Item::getUnhandledElements() const
+QList<QDomElement> Item::unhandledElements() const
 {
     // TODO: do not hardcode this list here
     QList<ElementType> handled;

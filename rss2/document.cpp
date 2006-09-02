@@ -298,7 +298,7 @@ QList<Item> Document::items() const
     
     return items;
 }
-QList<QDomElement> Document::getUnhandledElements() const
+QList<QDomElement> Document::unhandledElements() const
 {
     // TODO: do not hardcode this list here
     QList<ElementType> handled;

@@ -171,7 +171,7 @@ Content Entry::content() const
                    QString::fromUtf8("content")));
 }
 
-QList<QDomElement> Entry::getUnhandledElements() const
+QList<QDomElement> Entry::unhandledElements() const
 {
     // TODO: do not hardcode this list here
     QList<ElementType> handled;

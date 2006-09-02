@@ -163,7 +163,7 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
          * returns all child elements of this entry not covered by this class.
          * This can be used to access additional metadata from Atom extensions.
          */
-        QList<QDomElement> getUnhandledElements() const;
+        QList<QDomElement> unhandledElements() const;
         
         /**
          * returns a description of this entry for debugging purposes

@@ -175,7 +175,7 @@ public ElementWrapper
          * returns all child elements of this feed not covered by this class.
          * This can be used to access additional metadata from Atom extensions.
          */
-        QList<QDomElement> getUnhandledElements() const;
+        QList<QDomElement> unhandledElements() const;
 
         /**
          * returns a description of this feed document for debugging

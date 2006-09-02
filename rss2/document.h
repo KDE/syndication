@@ -255,7 +255,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
          * returns all child elements of this document not covered by this class.
          * You can use this to access additional metadata from RSS extensions.
          */
-        QList<QDomElement> getUnhandledElements() const; 
+        QList<QDomElement> unhandledElements() const; 
 
         /**
          * Returns a description of the object and its children for

@@ -195,7 +195,7 @@ QList<Entry> FeedDocument::entries() const
     return list;
 }
 
-QList<QDomElement> FeedDocument::getUnhandledElements() const
+QList<QDomElement> FeedDocument::unhandledElements() const
 {
     // TODO: do not hardcode this list here
     QList<ElementType> handled;

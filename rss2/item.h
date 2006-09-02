@@ -221,7 +221,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * returns all child elements of this item not covered by this class.
          * You can use this to access additional metadata from RSS extensions.
          */
-        QList<QDomElement> getUnhandledElements() const; 
+        QList<QDomElement> unhandledElements() const; 
 
         
         /**
