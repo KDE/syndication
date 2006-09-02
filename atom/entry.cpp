@@ -151,7 +151,7 @@ time_t Entry::published() const
 time_t Entry::updated() const
 {
     QString upd = extractElementTextNS(atom1Namespace(),
-                                       QString::fromUtf8("published"));
+                                       QString::fromUtf8("updated"));
     return parseDate(upd, ISODate);
 }
 
