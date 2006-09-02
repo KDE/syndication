@@ -260,6 +260,16 @@ PersonPtr personFromString(const QString& strp)
     return PersonPtr(new PersonImpl(name, uri, email));
 }
 
+ElementType::ElementType(const QString& localnamep,
+            const QString& nsp) : ns(nsp), localname(localnamep)
+{
+}
+   
+bool ElementType::operator==(const ElementType& other) const
+{ 
+    return localname == other.localname && ns == other.ns;
+}
+
 } // namespace Syndication
 
 

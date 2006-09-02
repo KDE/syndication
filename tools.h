@@ -24,8 +24,10 @@
 #define SYNDICATION_TOOLS_H
 
 #include <syndication/person.h>
-
 #include "ksyndication.h"
+
+
+#include <QString>
 
 #include <ctime>
 
@@ -33,22 +35,6 @@ class QByteArray;
 class QString;
 
 namespace Syndication {
-
-
-/**
- * @internal
- */
-unsigned int calcHash(const QString& str);
-
-/**
- * @internal
- */
-unsigned int calcHash(const QByteArray& array);
-
-/**
- * @internal
- */
-QString calcMD5Sum(const QString& str);
 
 /** date formats supported by date parsers */
 
@@ -218,6 +204,35 @@ QString normalize(const QString& str, bool isCDATA, bool containsMarkup);
  */
 SYNDICATION_EXPORT
 PersonPtr personFromString(const QString& str);
+
+/**
+ * @internal
+ */
+unsigned int calcHash(const QString& str);
+
+/**
+ * @internal
+ */
+unsigned int calcHash(const QByteArray& array);
+
+/**
+ * @internal
+ */
+QString calcMD5Sum(const QString& str);
+
+/** 
+ * @internal
+ */
+struct ElementType
+{
+    ElementType(const QString& localnamep, 
+                const QString& nsp=QString()); // implicit
+   
+    bool operator==(const ElementType& other) const;
+        
+    QString ns;
+    QString localname;
+};
 
 } // namespace Syndication
 

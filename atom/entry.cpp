@@ -171,6 +171,39 @@ Content Entry::content() const
                    QString::fromUtf8("content")));
 }
 
+QList<QDomElement> Entry::getUnhandledElements() const
+{
+    // TODO: do not hardcode this list here
+    QList<ElementType> handled;
+    handled.append(ElementType(QString::fromUtf8("author"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("contributor"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("category"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("id"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("link"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("rights"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("source"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("published"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("updated"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("summary"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("title"), atom1Namespace()));
+    handled.append(ElementType(QString::fromUtf8("content"), atom1Namespace()));
+    
+    QList<QDomElement> notHandled;
+    
+    QDomNodeList children = element().childNodes();
+    for (int i = 0; i < children.size(); ++i)
+    {
+        QDomElement el = children.at(i).toElement();
+        if (!el.isNull() 
+             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
+        {
+            notHandled.append(el);
+        }
+    }
+    
+    return notHandled;
+}
+
 QString Entry::debugInfo() const
 {
     QString info;

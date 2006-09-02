@@ -298,6 +298,48 @@ QList<Item> Document::items() const
     
     return items;
 }
+QList<QDomElement> Document::getUnhandledElements() const
+{
+    // TODO: do not hardcode this list here
+    QList<ElementType> handled;
+    handled.append(QString::fromUtf8("title"));
+    handled.append(QString::fromUtf8("link"));
+    handled.append(QString::fromUtf8("description"));
+    handled.append(QString::fromUtf8("language"));
+    handled.append(QString::fromUtf8("copyright"));
+    handled.append(QString::fromUtf8("managingEditor"));
+    handled.append(QString::fromUtf8("webMaster"));
+    handled.append(QString::fromUtf8("pubDate"));
+    handled.append(QString::fromUtf8("lastBuildDate"));
+    handled.append(QString::fromUtf8("skipDays"));
+    handled.append(QString::fromUtf8("skipHours"));
+    handled.append(QString::fromUtf8("item"));
+    handled.append(QString::fromUtf8("textinput"));
+    handled.append(QString::fromUtf8("textInput"));
+    handled.append(QString::fromUtf8("image"));
+    handled.append(QString::fromUtf8("ttl"));
+    handled.append(QString::fromUtf8("generator"));
+    handled.append(QString::fromUtf8("docs"));
+    handled.append(QString::fromUtf8("cloud"));
+    handled.append(ElementType(QString::fromUtf8("language"), dublinCoreNamespace()));
+    handled.append(ElementType(QString::fromUtf8("rights"), dublinCoreNamespace()));
+    handled.append(ElementType(QString::fromUtf8("date"), dublinCoreNamespace()));
+    
+    QList<QDomElement> notHandled;
+    
+    QDomNodeList children = element().childNodes();
+    for (int i = 0; i < children.size(); ++i)
+    {
+        QDomElement el = children.at(i).toElement();
+        if (!el.isNull()
+             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
+        {
+            notHandled.append(el);
+        }
+    }
+    
+    return notHandled;
+}
 
 QString Document::debugInfo() const
 {

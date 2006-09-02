@@ -252,6 +252,12 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
         QSet<DayOfWeek> skipDays() const;
 
         /**
+         * returns all child elements of this document not covered by this class.
+         * You can use this to access additional metadata from RSS extensions.
+         */
+        QList<QDomElement> getUnhandledElements() const; 
+
+        /**
          * Returns a description of the object and its children for
          * debugging purposes.
          *

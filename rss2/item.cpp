@@ -258,6 +258,37 @@ QString Item::debugInfo() const
     return info;
 }
 
+QList<QDomElement> Item::getUnhandledElements() const
+{
+    // TODO: do not hardcode this list here
+    QList<ElementType> handled;
+    handled.append(QString::fromUtf8("title"));
+    handled.append(QString::fromUtf8("link"));
+    handled.append(QString::fromUtf8("description"));
+    handled.append(QString::fromUtf8("pubDate"));
+    handled.append(QString::fromUtf8("expirationDate"));
+    handled.append(QString::fromUtf8("rating"));
+    handled.append(QString::fromUtf8("source"));
+    handled.append(QString::fromUtf8("guid"));
+    handled.append(QString::fromUtf8("comments"));
+    handled.append(QString::fromUtf8("author"));
+    handled.append(ElementType(QString::fromUtf8("date"), dublinCoreNamespace()));
+    
+    QList<QDomElement> notHandled;
+    
+    QDomNodeList children = element().childNodes();
+    for (int i = 0; i < children.size(); ++i)
+    {
+        QDomElement el = children.at(i).toElement();
+        if (!el.isNull() 
+             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
+        {
+            notHandled.append(el);
+        }
+    }
+    
+    return notHandled;
+}
         
 bool Item::accept(SpecificItemVisitor* visitor)
 {
