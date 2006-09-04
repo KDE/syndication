@@ -30,8 +30,10 @@
 #include <atom/link.h>
 #include <atom/person.h>
 
-#include <QString>
+#include <QDomElement>
 #include <QList>
+#include <QMultiMap>
+#include <QString>
 
 namespace Syndication {
 
@@ -147,6 +149,18 @@ QString FeedAtomImpl::copyright() const
 ImagePtr FeedAtomImpl::image() const
 {
     return ImageAtomImplPtr(new ImageAtomImpl(m_doc->logo()));
+}
+
+QMultiMap<QString, QDomElement> FeedAtomImpl::additionalProperties() const
+{
+    QMultiMap<QString, QDomElement> ret;
+        
+    foreach (QDomElement i, m_doc->unhandledElements())
+    {
+        ret.insert(i.namespaceURI() + i.localName(), i); 
+    }
+    
+    return ret;
 }
 
 } // namespace Syndication

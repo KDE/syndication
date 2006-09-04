@@ -60,7 +60,7 @@ class SYNDICATION_EXPORT ElementWrapper
          * Creates an element wrapper wrapping the DOM element @c element
          * @param element the element to wrap
          */
-        ElementWrapper(const QDomElement& element);
+        ElementWrapper(const QDomElement& element); // implicit
 
         /**
          * destructor

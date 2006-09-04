@@ -72,6 +72,8 @@ class ItemAtomImpl : public Syndication::Item
         
         QString commentPostUri() const;
 
+        QMultiMap<QString, QDomElement> additionalProperties() const;
+        
     private:
         
         Syndication::Atom::Entry m_entry;

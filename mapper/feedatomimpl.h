@@ -62,6 +62,7 @@ class FeedAtomImpl : public Syndication::Feed
         
         ImagePtr image() const;
         
+        QMultiMap<QString, QDomElement> additionalProperties() const;
     private:
         
         Syndication::Atom::FeedDocumentPtr m_doc;

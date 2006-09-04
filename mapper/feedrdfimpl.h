@@ -62,6 +62,8 @@ class FeedRDFImpl : public Syndication::Feed
         
         ImagePtr image() const;
         
+        QMultiMap<QString, QDomElement> additionalProperties() const;
+                
     private:
         
         Syndication::RDF::DocumentPtr m_doc;

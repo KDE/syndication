@@ -33,7 +33,9 @@
 #include <personimpl.h>
 #include <tools.h>
 
+#include <QDomElement>
 #include <QList>
+#include <QMultiMap>
 #include <QString>
 #include <QStringList>
 
@@ -152,6 +154,12 @@ QString ItemRDFImpl::commentPostUri() const
 Syndication::SpecificItemPtr ItemRDFImpl::specificItem() const
 {
     return Syndication::SpecificItemPtr(new Syndication::RDF::Item(m_item));
+}
+
+
+QMultiMap<QString, QDomElement> ItemRDFImpl::additionalProperties() const
+{
+    return QMultiMap<QString, QDomElement>();
 }
 
 } // namespace Syndication

@@ -72,6 +72,8 @@ class ItemRSS2Impl : public Syndication::Item
         
         QString commentPostUri() const;
         
+        QMultiMap<QString, QDomElement> additionalProperties() const;
+        
     private:
         
         Syndication::RSS2::Item m_item;

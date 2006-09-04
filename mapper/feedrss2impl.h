@@ -62,6 +62,8 @@ class FeedRSS2Impl : public Syndication::Feed
         
         ImagePtr image() const;
         
+        QMultiMap<QString, QDomElement> additionalProperties() const;
+        
     private:
         
         Syndication::RSS2::DocumentPtr m_doc;

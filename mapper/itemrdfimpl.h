@@ -74,6 +74,8 @@ class ItemRDFImpl : public Syndication::Item
         
         QString commentPostUri() const;
 
+        QMultiMap<QString, QDomElement> additionalProperties() const;
+        
     private:
         
         Syndication::RDF::Item m_item;

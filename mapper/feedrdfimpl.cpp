@@ -30,9 +30,11 @@
 #include <personimpl.h>
 #include <tools.h>
 
+#include <QDomElement>
+#include <QList>
+#include <QMultiMap>
 #include <QString>
 #include <QStringList>
-#include <QList>
 
 namespace Syndication {
 
@@ -117,6 +119,11 @@ ImagePtr FeedRDFImpl::image() const
 {
     ImageRDFImplPtr ptr(new ImageRDFImpl(m_doc->image()));
     return ptr;
+}
+
+QMultiMap<QString, QDomElement> FeedRDFImpl::additionalProperties() const
+{
+    return QMultiMap<QString, QDomElement>();
 }
 
 } // namespace Syndication

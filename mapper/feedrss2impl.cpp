@@ -28,8 +28,10 @@
 #include <rss2/category.h>
 #include <rss2/item.h>
 
-#include <QList>
-#include <QString>
+#include <QtCore/QList>
+#include <QtCore/QMultiMap>
+#include <QtCore/QString>
+#include <QtXml/QDomElement>
 
 namespace Syndication {
 
@@ -108,6 +110,18 @@ ImagePtr FeedRSS2Impl::image() const
 {
     ImageRSS2ImplPtr ptr(new ImageRSS2Impl(m_doc->image()));
     return ptr;
+}
+
+QMultiMap<QString, QDomElement> FeedRSS2Impl::additionalProperties() const
+{
+    QMultiMap<QString, QDomElement> ret;
+    
+    foreach (QDomElement i, m_doc->unhandledElements())
+    {
+        ret.insert(i.namespaceURI() + i.localName(), i); 
+    }
+
+    return ret;
 }
 
 } // namespace Syndication

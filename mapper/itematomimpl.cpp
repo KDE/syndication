@@ -34,9 +34,10 @@
 #include <personimpl.h>
 #include <tools.h>
 
+#include <QDomElement>
 #include <QList>
+#include <QMultiMap>
 #include <QString>
-
 
 using Syndication::Atom::Content;
 using Syndication::Atom::Link;
@@ -206,5 +207,18 @@ Syndication::SpecificItemPtr ItemAtomImpl::specificItem() const
 {
     return Syndication::SpecificItemPtr(new Syndication::Atom::Entry(m_entry));
 }
+
+QMultiMap<QString, QDomElement> ItemAtomImpl::additionalProperties() const
+{
+    QMultiMap<QString, QDomElement> ret;
+    
+    foreach (QDomElement i, m_entry.unhandledElements())
+    {
+        ret.insert(i.namespaceURI() + i.localName(), i); 
+    }
+    
+    return ret;
+}
+
 
 } // namespace Syndication

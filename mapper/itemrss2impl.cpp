@@ -30,7 +30,9 @@
 #include <personimpl.h>
 #include <tools.h>
 
+#include <QDomElement>
 #include <QList>
+#include <QMultiMap>
 #include <QString>
 
 namespace Syndication {
@@ -168,6 +170,18 @@ QString ItemRSS2Impl::commentPostUri() const
 Syndication::SpecificItemPtr ItemRSS2Impl::specificItem() const
 {
     return Syndication::SpecificItemPtr(new Syndication::RSS2::Item(m_item));
+}
+
+QMultiMap<QString, QDomElement> ItemRSS2Impl::additionalProperties() const
+{
+    QMultiMap<QString, QDomElement> ret;
+    
+    foreach (QDomElement i, m_item.unhandledElements())
+    {
+        ret.insert(i.namespaceURI() + i.localName(), i); 
+    }
+    
+    return ret;
 }
 
 } // namespace Syndication
