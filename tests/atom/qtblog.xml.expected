@@ -11,7 +11,7 @@ content: #<p><a title="�KBarcode KDE-Apps.org" href="http://www.kde-apps.org/c
 
 <p>Version 2.0.0 of <a href="http://www.kbarcode.net/">KBarcode</a>, a KDE application for barcode and label printing, has been released.  New features include printing from data sources including SQL queries, CSV files and the KDE address book, JavaScript support, new barcode formats, batch printing configured through a wizard, and a rewritten PDF manual.  Downloads (source, SUSE 10 and FC3 RPM) <a href="http://www.kbarcode.net/Stable.6.0.html">here</a>, screenshots <a href="http://www.kbarcode.net/Screenshots.29.0.html">here</a>.  Requires KDE 3.3.</p>#
 datePublished: #Thu Mar 16 02:06:27 2006#
-dateUpdated: #Thu Mar 16 02:06:27 2006#
+dateUpdated: #Thu Mar 16 02:06:35 2006#
 # Person begin ####################
 name: #Indigo Jo#
 uri: #http://www.blogistan.co.uk/blog/#
@@ -29,7 +29,7 @@ content: #<p><a title="Akademy 2006 is in Dublin this September" href="http://do
 
 <p>The annual KDE world summit, Akademy, will be held at <a href="http://www.tcd.ie/">Trinity College</a> in Dublin, Republic of Ireland, from 23rd to 30th September.  The event will consist of a contributors' conference, the <a href="http://ev.kde.org/">KDE e.V.</a> AGM, and a five-day hacking session with workshops (26th-30th).  The conference will be organised by Marcus Furlong who has organised a GUADEC in Dublin in the past and "contributes to KDE by taking a sh*tload of work on him".</p>#
 datePublished: #Thu Mar 16 00:13:56 2006#
-dateUpdated: #Thu Mar 16 00:13:56 2006#
+dateUpdated: #Thu Mar 16 00:14:02 2006#
 # Person begin ####################
 name: #Indigo Jo#
 uri: #http://www.blogistan.co.uk/blog/#
