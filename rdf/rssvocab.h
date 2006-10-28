@@ -50,9 +50,9 @@ class SYNDICATION_EXPORT RSSVocab
     public:
 
         /**
-         * virtual destructor
+         * destructor
          */
-        virtual ~RSSVocab();
+        ~RSSVocab();
 
         /**
          * returns the singleton instance
@@ -125,14 +125,13 @@ class SYNDICATION_EXPORT RSSVocab
          */
         PropertyPtr textinput() const;
 
-    protected:
-
-        RSSVocab();
-
     private:
 
         static RSSVocab* m_self;
 
+        
+        RSSVocab();
+        
         class RSSVocabPrivate;
         RSSVocabPrivate* d;
 };
@@ -149,9 +148,9 @@ class SYNDICATION_EXPORT RSS09Vocab
     public:
 
         /**
-     * virtual destructor
+         * destructor
          */
-        virtual ~RSS09Vocab();
+        ~RSS09Vocab();
 
         /**
          * returns the singleton instance
@@ -228,13 +227,11 @@ class SYNDICATION_EXPORT RSS09Vocab
          */
         QStringList classes() const;
 
-    protected:
-
-        RSS09Vocab();
-
     private:
 
         static RSS09Vocab* m_self;
+
+        RSS09Vocab();
 
         class RSS09VocabPrivate;
         RSS09VocabPrivate* d;

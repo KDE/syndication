@@ -81,6 +81,8 @@ class SYNDICATION_EXPORT Model
          * method does _not_ compare the statement list.
          * Two indepently created models containing the same statements
          * are not equal!
+         * 
+         * @param other the model to compare to
          */
         bool operator==(const Model& other) const;
 
@@ -120,7 +122,7 @@ class SYNDICATION_EXPORT Model
         /**
          * creates a literal and associates it with this model.
          *
-         * @param uri the literal text
+         * @param text the literal text
          * @return a shared pointer to the requested literal
          */
         virtual LiteralPtr createLiteral(const QString& text);
@@ -213,18 +215,21 @@ class SYNDICATION_EXPORT Model
 
         /**
          * @internal
+         * used by Resource::hasProperty()
          */
         virtual bool resourceHasProperty(const Resource* resource,
                                          PropertyPtr property) const;
 
         /**
          * @internal
+         * used by Resource::property()
          */
         virtual StatementPtr resourceProperty(const Resource* resource,
                                               PropertyPtr property) const;
 
         /**
          * @internal
+         * used by Resource::properties()
          */
         virtual QList<StatementPtr> resourceProperties(const Resource* resource,
                                               PropertyPtr property) const;

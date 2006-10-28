@@ -73,12 +73,29 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
          */
         Document();
 
+        /**
+         * copy constructor
+         */
         Document(const Document& other);
 
+        /**
+         * destructor
+         */
         virtual ~Document();
 
+        /**
+         * assigns another document. As the d pointer is shared,
+         * this is a cheap operation.
+         * 
+         * @param other the document to assign
+         */
         Document& operator=(const Document& other);
 
+        /**
+         * Used by visitors for double dispatch. See DocumentVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         */
         virtual bool accept(DocumentVisitor* visitor);
 
         /**
@@ -268,16 +285,28 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
 
         /**
          * @internal
+         * checks the format of title elements and returns the results
+         * @param isCDATA whether the titles are encapsulated in CDATA
+         * @param containsMarkup whether the heuristic found HTML markup in
+         * titles
          */
         void getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const;
 
         /**
          * @internal
+         * checks the format of title elements and returns the results
+         * @param isCDATA whether the descriptions are encapsulated in CDATA
+         * @param containsMarkup whether the heuristic found HTML markup in
+         * descriptions
          */
         void getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup) const;
 
     private:
-
+        /**
+         * @internal
+         * private constructor, used by fromXML()
+         * TODO: remove fromXML(), make this one private
+         */
         Document(const QDomElement& element);
 
         class DocumentPrivate;

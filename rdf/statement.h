@@ -43,14 +43,40 @@ class SYNDICATION_EXPORT Statement
 {
     public:
 
+        /**
+         * creates a null statement
+         */
         Statement();
+        
+        /**
+         * creates a copy of another statement
+         * 
+         * @param other the statement to copy
+         */
         Statement(const Statement& other);
+        
+        /**
+         * creates a statement
+         * Do not call this in your code, use Model::createStatement() instead.
+         * 
+         * @param subject the subject resource of the statement
+         * @param predicate the predicate of the statement
+         * @param object the object node of the statement
+         */
         Statement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
+        
+        /**
+         * destructor
+         */
         virtual ~Statement();
 
         Statement& operator=(const Statement& other);
         virtual bool operator==(const Statement& other) const;
 
+        /**
+         * returns whether this statement is a null statement (i.e. was created
+         * using Statement())
+         */
         virtual bool isNull() const;
 
         /**

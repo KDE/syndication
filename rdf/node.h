@@ -35,14 +35,33 @@ class NodeVisitor;
 
 typedef SharedPtr<Node> NodePtr;
 
+/**
+ * an RDF node, abstract baseclass for all RDF node types, like resources and
+ * literals
+ */
 class SYNDICATION_EXPORT Node
 {
     public:
 
+        /**
+         * destructor
+         */
         virtual ~Node();
 
+        /**
+         * Used by visitors for double dispatch. See NodeVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         * @param ptr a shared pointer object for this node
+         */
         virtual void accept(NodeVisitor* visitor, NodePtr ptr);
 
+        /**
+         * checks whether two nodes are equal. The meaning of equality
+         * is defined per subclass (e.g. equality of URIs, IDs etc.)
+         * 
+         * @param other the node to compare to
+         */
         virtual bool operator==(const Node& other) const = 0;
 
         /**
@@ -82,6 +101,10 @@ class SYNDICATION_EXPORT Node
          */
         virtual bool isAnon() const = 0;
 
+        /**
+         * the identifier of this node. the ID is unique per model
+         * and set by the associated model at creation time.
+         */
         virtual unsigned int id() const = 0;
 
         /**

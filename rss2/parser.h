@@ -79,10 +79,14 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 
     protected:
 
-        /** @internal */
+        /** @internal 
+         * copy constructor
+         */
         Parser(const Parser& other);
 
-        /** @internal */
+        /** @internal
+         * assignment operator
+         */
         Parser& operator=(const Parser& other);
 
     private:

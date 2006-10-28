@@ -37,6 +37,7 @@ namespace RSS2 {
 /** 
  * @internal
  * extracts encoded content from XHTML, content:encoded and friends
+ *
  * @param parent the parent node, e.g. a channel or item element
  * @return the content as HTML (see Item::content() for details)
  */

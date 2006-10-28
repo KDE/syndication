@@ -63,7 +63,6 @@ class SYNDICATION_EXPORT Sequence : public Resource
 
         class SequencePrivate;
         SharedPtr<SequencePrivate> d;
-
 };
 
 } // namespace RDF

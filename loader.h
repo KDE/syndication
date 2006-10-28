@@ -139,8 +139,14 @@ class SYNDICATION_EXPORT Loader : public QObject
          */
         int retrieverError() const;
 
+        /**
+         * returns the URL of a feed discovered in the feed source
+         */
         const KUrl& discoveredFeedURL() const;
 
+        /**
+         * aborts the loading process
+         */
         void abort();
 
     signals:

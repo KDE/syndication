@@ -207,30 +207,47 @@ PersonPtr personFromString(const QString& str);
 
 /**
  * @internal
+ * calculates a hash value for a string
  */
 unsigned int calcHash(const QString& str);
 
 /**
  * @internal
+ * calculates a hash value for a byte array
  */
 unsigned int calcHash(const QByteArray& array);
 
 /**
  * @internal
+ * calculates a md5 checksum for a string
  */
 QString calcMD5Sum(const QString& str);
 
 /** 
  * @internal
+ * used internally to represent element types
  */
 struct ElementType
 {
+    /**
+     * @internal
+     */
     ElementType(const QString& localnamep, 
                 const QString& nsp=QString()); // implicit
    
+    /**
+     * @internal
+     */
     bool operator==(const ElementType& other) const;
-        
+     
+    /**
+     * @internal
+     */
     QString ns;
+    
+    /**
+     * @internal
+     */
     QString localname;
 };
 

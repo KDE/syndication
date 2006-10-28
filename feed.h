@@ -64,6 +64,9 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
 {
     public:
 
+        /**
+         * destructor
+         */
         virtual ~Feed();
 
         /**

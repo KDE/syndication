@@ -45,8 +45,6 @@ class SYNDICATION_EXPORT ModelMaker
 {
     public:
     
-        virtual ~ModelMaker();
-    
         /**
          * parses an RDF model from RDF/XML
          * @param doc an DOM document, must contain RDF/XML

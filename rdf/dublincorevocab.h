@@ -30,14 +30,21 @@ class QString;
 namespace Syndication {
 namespace RDF {
 
+/**
+ * Singleton holding RDF class and property constants of the Dublin Core
+ * vocabulary. See http://dublincore.org/documents/dces/ for a
+ * specification.
+ *
+ * @author Frank Osterfeld
+ */
 class SYNDICATION_EXPORT DublinCoreVocab
 {
     public:
 
-        virtual ~DublinCoreVocab();
-
         static DublinCoreVocab* self();
 
+        ~DublinCoreVocab();
+                
         const QString& namespaceURI() const;
 
         PropertyPtr contributor() const;
@@ -70,13 +77,11 @@ class SYNDICATION_EXPORT DublinCoreVocab
 
         PropertyPtr type() const;
 
-    protected:
-
-        DublinCoreVocab();
-
     private:
 
         static DublinCoreVocab* m_self;
+
+        DublinCoreVocab();
 
         class DublinCoreVocabPrivate;
         DublinCoreVocabPrivate* d;

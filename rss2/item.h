@@ -64,15 +64,37 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * Creates an Item object wrapping an @c &lt;item> XML element.
          *
          * @param element The @c &lt;item> element to wrap
+         * @param doc the document this item is part of
          */
         Item(const QDomElement& element, SharedPtr<Document> doc=SharedPtr<Document>());
 
+        /**
+         * creates a copy of an item. As the d pointer is shared,
+         * this is a cheap operation.
+         * 
+         * @param other the item to copy
+         */
         Item(const Item& other);
 
+        /**
+         * destructor
+         */
         ~Item();
 
+        /**
+         * assigns another item. As the d pointer is shared,
+         * this is a cheap operation.
+         * 
+         * @param other the item to assign
+         */
         Item& operator=(const Item& other);
 
+        
+        /**
+         * Used by visitors for double dispatch. See SpecificItemVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         */
         bool accept(SpecificItemVisitor* visitor);
 
         /**
@@ -234,11 +256,15 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
 
         /**
          * @internal
+         * returns the description content in unmodified form (no
+         * plaintext/HTML conversions etc.)
          */
         QString originalDescription() const;
 
         /**
          * @internal
+         * returns the title content in unmodified form (no
+         * plaintext/HTML conversions etc.)
          */
         QString originalTitle() const;
 

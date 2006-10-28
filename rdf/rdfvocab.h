@@ -41,7 +41,6 @@ class SYNDICATION_EXPORT RDFVocab
     
         static RDFVocab* self();
         
-        RDFVocab();
         ~RDFVocab();
         
         QString namespaceURI();
@@ -56,6 +55,8 @@ class SYNDICATION_EXPORT RDFVocab
         
         static RDFVocab* m_self;
         
+        RDFVocab();
+                
         class RDFVocabPrivate;
         RDFVocabPrivate* d;
 };

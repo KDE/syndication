@@ -35,25 +35,30 @@ namespace RDF {
 class Property;
 typedef SharedPtr<Property> PropertyPtr;
 
+/**
+ * Singleton holding RDF class and property constants of the RSS 1.0 content
+ * module. See http://web.resource.org/rss/1.0/modules/content/ for a
+ * specification.
+ *
+ * @author Frank Osterfeld
+ */
 class SYNDICATION_EXPORT ContentVocab
 {
     public:
 
-        virtual ~ContentVocab();
-
         static ContentVocab* self();
 
+        ~ContentVocab();
+                
         const QString& namespaceURI() const;
 
         PropertyPtr encoded() const;
-
-    protected:
-
-        ContentVocab();
-
+    
     private:
 
         static ContentVocab* m_self;
+
+        ContentVocab();
 
         class ContentVocabPrivate;
         ContentVocabPrivate* d;

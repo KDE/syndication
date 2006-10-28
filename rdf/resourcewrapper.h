@@ -63,6 +63,10 @@ class SYNDICATION_EXPORT ResourceWrapper
          * @param resource a resource wrapper instance
          */
         ResourceWrapper(ResourcePtr resource);
+        
+        /**
+         * destructor
+         */
         virtual ~ResourceWrapper();
 
         /**

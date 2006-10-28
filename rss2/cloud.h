@@ -62,14 +62,14 @@ class SYNDICATION_EXPORT Cloud : public ElementWrapper
 
         /**
          * Default constructor, creates a null object, for which isNull()
-         * is @c true.
+         * is @p true.
          */
         Cloud();
 
         /**
-         * Creates a Cloud object wrapping a @c <cloud> XML element.
+         * Creates a Cloud object wrapping a @c &lt;cloud> XML element.
          *
-         * @param element The @c <cloud> element to wrap
+         * @param element The @c &lt;cloud> element to wrap
          */
         Cloud(const QDomElement& element);
 

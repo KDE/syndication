@@ -47,9 +47,9 @@ class SYNDICATION_EXPORT SyndicationVocab
     public:
 
         /**
-         * virtual destructor
+         * destructor
          */
-        virtual ~SyndicationVocab();
+        ~SyndicationVocab();
         
         /**
          * returns the singleton instance
@@ -79,18 +79,13 @@ class SYNDICATION_EXPORT SyndicationVocab
          * information.
          */
         PropertyPtr updateBase() const;
-        
-    protected:
-        
-        /**
-         * constructor
-         */
-        SyndicationVocab();
-        
+                
     private:
         
         static SyndicationVocab* m_self;
         
+        SyndicationVocab();
+
         class SyndicationVocabPrivate;
         SyndicationVocabPrivate* d;
 };

@@ -36,11 +36,6 @@ namespace Syndication {
 namespace RDF {
 
      
-
-ModelMaker::~ModelMaker()
-{
-}
-
 Model ModelMaker::createFromXML(const QDomDocument& doc)
 {
     Model model;
