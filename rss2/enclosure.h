@@ -34,7 +34,7 @@ namespace RSS2 {
 /**
  * Describes a media object that is "attached" to the item.
  * The most common use case for enclosures are podcasts:
- * An audio file is attached to the feed that can be
+ * An audio file is attached to the feed and can be
  * automatically downloaded by a podcast client.
  *
  * @author Frank Osterfeld

@@ -52,10 +52,28 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
 
     public:
 
+        /**
+         * creates a wrapper wrapping a null resource
+         */
         Document();
+        
+        /**
+         * creates a document by wrapping a channel resource
+         * 
+         * @param resource the channel resource to wrap
+         */
         Document(ResourcePtr resource);
+        
+        /**
+         * destructor
+         */
         virtual ~Document();
 
+        /**
+         * Used by visitors for double dispatch. See DocumentVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         */
         virtual bool accept(DocumentVisitor* visitor);
 
         /**
@@ -71,9 +89,18 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          * @return feed title as TODO: define format
          */
         QString title() const;
-
+        
+        /**
+         * A brief description of the channel's content, function, source, etc.
+         * 
+         * @return TODO: define format etc.
+         */
         QString description() const;
 
+        /**
+         *  The URL to which an HTML rendering of the channel title will link,
+         * commonly the parent site's home or news page.
+         */
         QString link() const;
 
         /**
@@ -92,8 +119,14 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          */
         QList<Item> items() const;
 
+        /**
+         * An image to be associated with an HTML rendering of the channel.
+         */
         Image image() const;
 
+        /**
+         * An optional text input element associated with the channel
+         */
         TextInput textInput() const;
 
         /**

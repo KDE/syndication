@@ -32,19 +32,48 @@ namespace RDF {
 class Resource;
 typedef SharedPtr<Resource> ResourcePtr;
 
+/**
+ * An image to be associated with an HTML rendering of the channel. 
+ */
 class SYNDICATION_EXPORT Image : public ResourceWrapper
 {
 
     public:
 
+        /**
+         * creates a wrapper wrapping a null resource
+         */
         Image();
+        
+        /**
+         * creates an image object by wrapping an image resource
+         * 
+         * @param resource the image resource to wrap
+         */
         Image(ResourcePtr resource);
+        
+        /**
+         * destructor
+         */
         virtual ~Image();
 
+        /**
+         * Describes the image, can be used in the ALT attribute of the
+         * HTML @c &lt;img> tag when the channel is rendered in HTML.
+         *
+         * @return TODO: specify format
+         */
         QString title() const;
 
+        /**
+         * The URL of the site, when the channel is rendered, the image should
+         * be a link to the site.
+         */
         QString link() const;
 
+       /**
+         * the URL of the image file
+         */
         QString url() const;
 
         /**

@@ -56,8 +56,6 @@ class SYNDICATION_EXPORT Enclosure
 
         /**
          * The URL of the linked resource (required).
-         *
-         * @return
          */
         virtual QString url() const = 0;
 

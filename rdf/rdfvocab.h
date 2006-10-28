@@ -35,20 +35,43 @@ typedef SharedPtr<Property> PropertyPtr;
 class Resource;
 typedef SharedPtr<Resource> ResourcePtr;
 
+/**
+ * singleton holding RDF vocabulary, expressed as RDF.
+ */
 class SYNDICATION_EXPORT RDFVocab
 {
     public:
     
+        /**
+         * returns the singleton instance
+         */
         static RDFVocab* self();
         
+        /**
+         * destructor
+         */
         ~RDFVocab();
         
+        /**
+         * the RDF namespace, which is
+         * http://www.w3.org/1999/02/22-rdf-syntax-ns#
+         */
         QString namespaceURI();
 
+        /**
+         * the sequence type
+         */
         ResourcePtr seq();
         
+        /**
+         * the rdf:type property (A rdf:type B means A is instance of B)
+         */
         PropertyPtr type();
 
+        /**
+         * the rdf:li property, used for list items in RDF containers (like
+         * rdf:seq)
+         */
         PropertyPtr li();
         
     private:

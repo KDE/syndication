@@ -41,22 +41,76 @@ typedef SharedPtr<Resource> ResourcePtr;
 class Sequence;
 typedef SharedPtr<Sequence> SequencePtr;
 
+/**
+ * Visitor interface, following the Visitor design pattern. Use this if you
+ * want to process nodes and the way how to handle the nodes depends
+ * on it's concrete type (e.g. Resource or Literal).
+ *
+ * TODO: insert code example
+ *
+ * @author Frank Osterfeld
+ */
 class SYNDICATION_EXPORT NodeVisitor
 {
     public:
 
+        /**
+         * destructor
+         */
         virtual ~NodeVisitor();
 
+        /**
+         * call this method to handle a node. Depending on the concrete type
+         * of the node, a specialized visit method is called.
+         *
+         * @param node the node to process
+         */
         virtual void visit(NodePtr node);
 
+        /**
+         * reimplement this method to handle literals.
+         *
+         * @param item the literal to visit
+         * @return whether the visitor handled the literal.
+         * Reimplementations of this method must return @p true.
+         */
         virtual bool visitLiteral(LiteralPtr);
 
+        /**
+         * reimplement this method to handle nodes that weren't handled 
+         * by the more specific method.
+         *
+         * @param item the node to visit
+         * @return whether the visitor handled the node.
+         * Reimplementations of this method must return @p true.
+         */
         virtual bool visitNode(NodePtr);
 
+        /**
+         * reimplement this method to handle properties.
+         *
+         * @param item the property to visit
+         * @return whether the visitor handled the property.
+         * Reimplementations of this method must return @p true.
+         */
         virtual bool visitProperty(PropertyPtr);
 
+        /**
+         * reimplement this method to handle resources.
+         *
+         * @param item the resource to visit
+         * @return whether the visitor handled the resource.
+         * Reimplementations of this method must return @p true.
+         */
         virtual bool visitResource(ResourcePtr);
 
+        /**
+         * reimplement this method to handle sequences.
+         *
+         * @param item the sequence to visit
+         * @return whether the visitor handled the sequence.
+         * Reimplementations of this method must return @p true.
+         */
         virtual bool visitSequence(SequencePtr);
 };
 

@@ -58,7 +58,7 @@ class SYNDICATION_EXPORT SyndicationVocab
         
         /**
          * namespace URI of the syndication vocabulary, 
-         * @c "http://purl.org/rss/1.0/modules/syndication/"
+         * @p "http://purl.org/rss/1.0/modules/syndication/"
          */
         const QString& namespaceURI() const;
 

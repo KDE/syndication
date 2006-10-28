@@ -44,19 +44,65 @@ class SYNDICATION_EXPORT Sequence : public Resource
 {
     public:
 
+        /**
+         * creates a null sequence
+         */
         Sequence();
+        
+        /**
+         * creates a sequence with the given URI. Do not use this directly, 
+         * use Model::createSequence() instead.
+         */
         Sequence(const QString& uri);
+        
+        /**
+         * copies a sequence
+         * 
+         * @param other sequence
+         */
         Sequence(const Sequence& other);
+        
+        /**
+         * destructor
+         */
         virtual ~Sequence();
 
+        /**
+         * assigns another sequence
+         * 
+         * @param other the sequence to assign
+         */
         virtual Sequence& operator=(const Sequence& other);
 
+         /**
+         * Used by visitors for double dispatch. See NodeVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         * @param ptr a shared pointer object for this node
+         */
         virtual void accept(NodeVisitor* visitor, NodePtr ptr);
 
+        /**
+         * creates a copy of the sequence
+         */
         virtual Sequence* clone() const;
 
+        /**
+         * appends a node at the end of the sequence
+         * 
+         * @param node the RDF node to append to the sequence
+         */
         virtual void append(NodePtr node);
+        
+        /**
+         * the list of the list items in the sequence, in the 
+         * specified order
+         */
         virtual QList<NodePtr> items() const;
+        
+        /**
+         * returns @p true
+         */
         virtual bool isSequence() const;
 
     private:

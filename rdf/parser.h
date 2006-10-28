@@ -80,6 +80,7 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
          *  copy constructor
          */
         Parser(const Parser& other);
+        
         /** @internal
          * assignment operator
          */

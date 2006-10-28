@@ -70,7 +70,20 @@ class SYNDICATION_EXPORT Statement
          */
         virtual ~Statement();
 
+        /**
+         * assigns another statement
+         * 
+         * @param other the statement to assign
+         */
         Statement& operator=(const Statement& other);
+        
+        /**
+         * returns whether two statements are equal.
+         * Currently statements are equal, if they are from the same model (!)
+         * and subject, predicate and object are equal.
+         * 
+         * @param other the statement to compare to
+         */
         virtual bool operator==(const Statement& other) const;
 
         /**

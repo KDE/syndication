@@ -41,7 +41,7 @@ class SYNDICATION_EXPORT TextInput : public ResourceWrapper
 
         /**
          * creates an object wrapping a null resource.
-         * isNull() is @c true.
+         * isNull() is @p true.
          */
         TextInput();
 
@@ -56,7 +56,7 @@ class SYNDICATION_EXPORT TextInput : public ResourceWrapper
 
 
         /**
-         * virtual destructor
+         * destructor
          */
         virtual ~TextInput();
 

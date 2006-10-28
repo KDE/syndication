@@ -43,7 +43,7 @@ class SYNDICATION_EXPORT ResourceWrapper
     public:
         /**
          * creates a wrapper wrapping a null resource, isNull() will be
-         * true.
+         * @p true.
          */
         ResourceWrapper();
 

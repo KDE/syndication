@@ -31,6 +31,9 @@ class QString;
 namespace Syndication {
 namespace RSS2 {
 
+/**
+ * An RSS2 image, used to describe feed logos.
+ */
 class SYNDICATION_EXPORT Image : public ElementWrapper
 {
     public:
@@ -64,8 +67,6 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
         /**
          * The URL of the site, when the channel is rendered, the image should
          * be a link to the site.
-         *
-         * @return TODO
          */
         QString link() const;
 
