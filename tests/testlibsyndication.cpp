@@ -50,7 +50,7 @@ void printUsage(const QString& error)
         std::cerr << "Prints the parsed content of a feed file to standard output." << std::endl;
         std::cerr << std::endl;
     }
-    std::cerr << "Usage: testlibsyndication [--specific-format] <file>" << std::endl;
+    std::cerr << "Usage: testlibsyndication [--specific-format] <file> [--compare <expectedfile>]" << std::endl;
     std::cerr << std::endl;
     std::cerr << "--specific-format: If set, the debug output for the specific" << std::endl;
     std::cerr << "feed format is printed to stdout, otherwise the debug output" << std::endl;
@@ -60,6 +60,7 @@ void printUsage(const QString& error)
 int main(int argc, char **argv)
 {
 
+    int pcompare = 2;
     if (argc < 2)
     {
         printUsage("filename expected");
@@ -80,8 +81,16 @@ int main(int argc, char **argv)
         }
         filename = QString(argv[2]);
         specificformat = true;
+        pcompare += 1;
     }
-        
+    
+    QString expfname;
+    
+    if (argc >= pcompare + 1 && QString(argv[pcompare]) == "--compare")
+    {
+        expfname = QString(argv[pcompare+1]);
+    }
+    
     
     QFile f(filename);
 
@@ -90,7 +99,8 @@ int main(int argc, char **argv)
         printUsage("Couldn't open file");
         return 1;
     }
- 
+    
+   
     DocumentSource src(f.readAll(), "http://libsyndicationtest");
     f.close();
 
@@ -102,13 +112,20 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    if (specificformat)
+    QString res = specificformat ? ptr->specificDocument()->debugInfo() : ptr->debugInfo();
+    
+    if (expfname.isNull())
     {
-        std::cout << ptr->specificDocument()->debugInfo().toUtf8().data() << std::endl;
+        std::cout << res.toUtf8().data() << std::endl;
+        return 0;
     }
     else
     {
-        std::cout << ptr->debugInfo().toUtf8().data() << std::endl;
+          QFile expFile(expfname);
+          expFile.open(QIODevice::ReadOnly);
+          QByteArray expected = expFile.readAll();
+          expFile.close();
+          return expected == (res.toUtf8() + '\n') ? 0 : 1;
     }
     
     return 0;
