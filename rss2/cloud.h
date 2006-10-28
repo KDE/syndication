@@ -73,12 +73,24 @@ class SYNDICATION_EXPORT Cloud : public ElementWrapper
          */
         Cloud(const QDomElement& element);
 
+        /**
+         * the remote domain
+         */
         QString domain() const;
 
+        /**
+         * the remote port to connect to
+         */
         int port() const;
 
+        /** 
+         * the remote path to connect to
+         */
         QString path() const;
 
+        /**
+         * register procedure, e.g. "myCloud.rssPleaseNotify"
+         */
         QString registerProcedure() const;
 
         /**
