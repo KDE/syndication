@@ -71,7 +71,7 @@ class SYNDICATION_EXPORT Cloud : public ElementWrapper
          *
          * @param element The @c &lt;cloud> element to wrap
          */
-        Cloud(const QDomElement& element);
+        explicit Cloud(const QDomElement& element);
 
         /**
          * the remote domain

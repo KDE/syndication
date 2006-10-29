@@ -68,7 +68,7 @@ class SYNDICATION_EXPORT SyndicationInfo : public ResourceWrapper
          * @param resource the feed resource to read syndication
          * information from
          */
-        SyndicationInfo(ResourcePtr resource);
+        explicit SyndicationInfo(ResourcePtr resource);
 
         /**
          * virtual destructor

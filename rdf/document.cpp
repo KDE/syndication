@@ -41,19 +41,60 @@
 namespace Syndication {
 namespace RDF {
 
+class Document::Private
+{
+    public:
+    Private() : itemTitleContainsMarkup(false),
+                itemTitlesGuessed(false),
+                itemDescriptionContainsMarkup(false),
+                itemDescGuessed(false)
+    {}
+    mutable bool itemTitleContainsMarkup;
+    mutable bool itemTitlesGuessed;
+    mutable bool itemDescriptionContainsMarkup;
+    mutable bool itemDescGuessed;
+};
 
-Document::Document() : Syndication::SpecificDocument(), ResourceWrapper()
+Document::Document() : Syndication::SpecificDocument(), 
+                       ResourceWrapper(),
+                       d(new Private)
 {
 }
 
-Document::Document(ResourcePtr resource) : Syndication::SpecificDocument(), ResourceWrapper(resource)
+Document::Document(ResourcePtr resource) : Syndication::SpecificDocument(),
+                                           ResourceWrapper(resource),
+                                           d(new Private)
 {
+}
+
+Document::Document(const Document& other) : SpecificDocument(other),                                                      ResourceWrapper(other),
+                                            d(new Private)
+{
+    *d = *(other.d);
 }
 
 Document::~Document()
 {
+    delete d;
+    d = 0;
 }
 
+
+bool Document::operator==(const Document& other) const
+{
+    return ResourceWrapper::operator==(other);
+}
+
+
+Document& Document::operator=(const Document& other)
+{
+    ResourceWrapper::operator=(other);
+    *d = *(other.d);
+    
+    return *this;
+}
+
+        
 bool Document::accept(DocumentVisitor* visitor)
 {
     return visitor->visitRDFDocument(this);
@@ -107,6 +148,8 @@ QList<Item> Document::items() const
         QList<NodePtr>::Iterator it = items.begin();
         QList<NodePtr>::Iterator end = items.end();
         
+        DocumentPtr doccpy(new Document(*this));
+        
         for ( ; it != end; ++it)
         {
             if ((*it)->isResource())
@@ -116,8 +159,7 @@ QList<Item> Document::items() const
                 // interface ResourcePtr asResource()?
                 ResourcePtr ptr = resource()->model().createResource((static_cast<Resource*>((*it).get()))->uri());
                 
-                Item item(ptr);
-                list.append(item);
+                list.append(Item(ptr, doccpy));
             }
         }
     
@@ -137,6 +179,72 @@ TextInput Document::textInput() const
     ResourcePtr ti = resource()->property(RSSVocab::self()->textinput())->asResource();
     
     return ti ? TextInput(ti) : TextInput();
+}
+
+void Document::getItemTitleFormatInfo(bool* containsMarkup) const
+{
+    if (!d->itemTitlesGuessed)
+    {
+        QString titles;
+        QList<Item> litems = items();
+        
+        if (litems.isEmpty())
+        {
+            d->itemTitlesGuessed = true;
+            return;
+        }
+        
+        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        int i = 0;
+        
+        QList<Item>::ConstIterator it = litems.begin(); 
+        
+        while (i < nmax)
+        {
+            titles += (*it).originalTitle();
+            ++it;
+            ++i;
+        }
+        
+        d->itemTitleContainsMarkup = stringContainsMarkup(titles);
+        d->itemTitlesGuessed = true;
+    }
+    if (containsMarkup != 0L)
+        *containsMarkup = d->itemTitleContainsMarkup;
+}
+        
+void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
+{
+    if (!d->itemDescGuessed)
+    {
+        QString desc;
+        QList<Item> litems = items();
+        
+        
+        if (litems.isEmpty())
+        {
+            d->itemDescGuessed = true;
+            return;
+        }
+        
+        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        int i = 0;
+
+        QList<Item>::ConstIterator it = litems.begin(); 
+
+        while (i < nmax)
+        {
+            desc += (*it).originalDescription();
+            ++it;
+            ++i;
+        }
+
+        d->itemDescriptionContainsMarkup = stringContainsMarkup(desc);
+        d->itemDescGuessed = true;
+    }
+    
+    if (containsMarkup != 0L)
+        *containsMarkup = d->itemDescriptionContainsMarkup;
 }
 
 QString Document::debugInfo() const

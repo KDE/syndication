@@ -55,7 +55,7 @@ class SYNDICATION_EXPORT Enclosure : public ElementWrapper
          *
          * @param element The @c &lt;enclosure> element to wrap
          */
-        Enclosure(const QDomElement& element);
+        explicit Enclosure(const QDomElement& element);
 
         /**
          * returns the URL of the enclosure

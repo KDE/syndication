@@ -51,7 +51,7 @@ class SYNDICATION_EXPORT Link : public Syndication::ElementWrapper
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        Link(const QDomElement& element);
+        explicit Link(const QDomElement& element);
 
         /**
          * URL of the referenced resource (required)

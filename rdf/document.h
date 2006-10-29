@@ -62,13 +62,35 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          * 
          * @param resource the channel resource to wrap
          */
-        Document(ResourcePtr resource);
+        explicit Document(ResourcePtr resource);
+        
+        /**
+         * creates a copy of another document
+         * 
+         * @param other the document to copy
+         */
+        Document(const Document& other);
         
         /**
          * destructor
          */
         virtual ~Document();
 
+        /**
+         * compares two documents. Two documents are equal if they wrap
+         * the same resource. See ResourceWrapper::operator==()
+         * 
+         * @param other the document to compare to
+         */
+        bool operator==(const Document& other) const;
+        
+        /**
+         * assigns another document
+         * 
+         * @param other the document to assign
+         */
+        Document& operator=(const Document& other);
+        
         /**
          * Used by visitors for double dispatch. See DocumentVisitor
          * for more information.
@@ -130,12 +152,33 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
         TextInput textInput() const;
 
         /**
+         * @internal
+         * checks the format of titles and returns the results
+         * 
+         * @param containsMarkup whether the heuristic found HTML markup in
+         * titles
+         */
+        void getItemTitleFormatInfo(bool* containsMarkup) const;
+
+        /**
+         * @internal
+         * checks the format of descriptions and returns the results
+         *
+         * @param containsMarkup whether the heuristic found HTML markup in
+         * descriptions
+         */
+        void getItemDescriptionFormatInfo(bool* containsMarkup) const;
+        
+        /**
          * Returns a description of the document for debugging purposes.
          *
          * @return debug string
          */
         virtual QString debugInfo() const;
 
+    private:
+        class Private;
+        Private* d;
 };
 
 } // namespace RDF

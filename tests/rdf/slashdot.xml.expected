@@ -28,7 +28,7 @@ commentsCount: #178#
 id: #http://it.slashdot.org/article.pl?sid=05/04/25/1710223&from=rss#
 title: #NETI@home Data Analyzed#
 link: #http://it.slashdot.org/article.pl?sid=05/04/25/1710223&from=rss#
-description: #An anonymous reader writes &quot;The NETI@home Internet traffic statistics project (featured in Wired and Slashdot previously) has a quick analysis on the malicious traffic they observed. It's a rough world out there.&quot; Perhaps not suprising, but still disheartening, the researchers find among other things that a large portion of typical end-user traffic consists of malicious connection attempts.#
+description: #An anonymous reader writes &quot;The NETI@home Internet traffic statistics project (featured in Wired and Slashdot previously) has a quick analysis on the malicious traffic they observed. It&apos;s a rough world out there.&quot; Perhaps not suprising, but still disheartening, the researchers find among other things that a large portion of typical end-user traffic consists of malicious connection attempts.#
 datePublished: #Mon Apr 25 20:52:00 2005#
 dateUpdated: #Mon Apr 25 20:52:00 2005#
 # Person begin ####################
@@ -40,7 +40,7 @@ commentsCount: #119#
 id: #http://linux.slashdot.org/article.pl?sid=05/04/25/1321207&from=rss#
 title: #The Truth About Linux and Windows#
 link: #http://linux.slashdot.org/article.pl?sid=05/04/25/1321207&from=rss#
-description: #petrus4 writes &quot;Groklaw has an update on the Laura DiDio saga. Apparently, her complaints about &quot;Linux extremists&quot; notwithstanding, cooler heads than the usual suspects are asking questions about her research. A very interesting read, and one which will hopefully encourage corporate readers to regard the Yankee Group's findings with the requisite metric ton of salt in the future.&quot;#
+description: #petrus4 writes &quot;Groklaw has an update on the Laura DiDio saga. Apparently, her complaints about &quot;Linux extremists&quot; notwithstanding, cooler heads than the usual suspects are asking questions about her research. A very interesting read, and one which will hopefully encourage corporate readers to regard the Yankee Group&apos;s findings with the requisite metric ton of salt in the future.&quot;#
 datePublished: #Mon Apr 25 20:10:00 2005#
 dateUpdated: #Mon Apr 25 20:10:00 2005#
 # Person begin ####################

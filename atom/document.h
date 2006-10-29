@@ -71,7 +71,7 @@ public ElementWrapper
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        FeedDocument(const QDomElement& element);
+        explicit FeedDocument(const QDomElement& element);
 
         /**
          * Used by visitors for double dispatch. See DocumentVisitor
@@ -215,7 +215,7 @@ class SYNDICATION_EXPORT EntryDocument : public Syndication::SpecificDocument, p
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        EntryDocument(const QDomElement& element);
+        explicit EntryDocument(const QDomElement& element);
 
         /**
          * Used by visitors for double dispatch. See DocumentVisitor

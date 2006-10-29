@@ -52,7 +52,7 @@ class SYNDICATION_EXPORT TextInput : public ResourceWrapper
          * rss:textinput, otherwise this object will not return
          * useful information.
          */
-        TextInput(ResourcePtr resource);
+        explicit TextInput(ResourcePtr resource);
 
 
         /**

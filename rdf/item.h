@@ -22,6 +22,7 @@
 #ifndef SYNDICATION_RDF_ITEM_H
 #define SYNDICATION_RDF_ITEM_H
 
+#include <syndication/rdf/document.h>
 #include <syndication/rdf/resourcewrapper.h>
 
 #include <syndication/specificitem.h>
@@ -61,14 +62,36 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          * @param resource resource to wrap, should be of type
          * of rss1:item, otherwise the wrapper will not return useful
          * information.
+         * @param doc the document this item is part of. Used by Document
          */
-        Item(ResourcePtr resource);
+        explicit Item(ResourcePtr resource, DocumentPtr doc=DocumentPtr());
 
+        /**
+         * copies an item
+         * 
+         * @param other item to copy
+         */
+        Item(const Item& other);
+        
         /**
          * virtual destructor
          */
         virtual ~Item();
 
+        /**
+         * assigns another item
+         * 
+         * @param other the item to assign
+         */
+        Item& operator=(const Item& other);
+        
+        /**
+         * compares two item instances. Two instances are equal,
+         * if the wrapped resources are equal. See ResourceWrapper::operator==()
+         * for details.
+         */
+        bool operator==(const Item& other) const;
+        
         /**
          * interface for item visitors. See SpecificItemVisitor for
          * more information.
@@ -116,11 +139,30 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
         QString encodedContent() const;
 
         /**
+         * @internal
+         * returns the title unmodified
+         * used by Document
+         */
+        QString originalTitle() const;
+        
+        /**
+         * @internal
+         * returns the description unmodified
+         * used by Document
+         */
+        QString originalDescription() const;
+        
+        /**
          * Returns a description of the item for debugging purposes.
          *
          * @return debug string
          */
         QString debugInfo() const;
+        
+    private:
+        
+        class Private;
+        Private* d;
 };
 
 } // namespace RDF

@@ -62,7 +62,7 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        Source(const QDomElement& element);
+        explicit Source(const QDomElement& element);
 
         /**
          * authors of the original content (optional)

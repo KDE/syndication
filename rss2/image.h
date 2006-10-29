@@ -49,7 +49,7 @@ class SYNDICATION_EXPORT Image : public ElementWrapper
          *
          * @param element The @c &lt;image> element to wrap
          */
-        Image(const QDomElement& element);
+        explicit Image(const QDomElement& element);
 
         /**
          * the URL of a GIF, JPEG or PNG image

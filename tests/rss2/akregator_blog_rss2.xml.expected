@@ -7,7 +7,9 @@ language: #en#
 id: #http://akregator.pwsp.net/blog/?p=26#
 title: #Qt4/KDE4 build instructions#
 link: #http://akregator.pwsp.net/blog/?p=26#
-description: #I promised in my last entry to blog about how to build akregator from trunk.<br/>Well, Thorsten Staerk and Allen Winter already did the work, so I just point you to the KDE3to4 wiki page.<br/>	kdebase is optional, you can just skip it (as it doesn’t always build) and go for kdepim directly. See previous blog entry [...]#
+description: #I promised in my last entry to blog about how to build akregator from trunk.
+Well, Thorsten Staerk and Allen Winter already did the work, so I just point you to the KDE3to4 wiki page.
+	kdebase is optional, you can just skip it (as it doesn&#8217;t always build) and go for kdepim directly. See previous blog entry [...]#
 content: #<p>I promised in my last entry to blog about how to build akregator from trunk.<br />
 Well, Thorsten Staerk and Allen Winter already did the work, so I just point you to <a href="http://wiki.kde.org/tiki-index.php?page=KDE3To4">the KDE3to4 wiki page</a>.</p>
 	<p>kdebase is optional, you can just skip it (as it doesn&#8217;t always build) and go for kdepim directly. See previous blog entry how to build and install akregator.<br />

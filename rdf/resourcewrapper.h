@@ -62,7 +62,7 @@ class SYNDICATION_EXPORT ResourceWrapper
          * pointer!)
          * @param resource a resource wrapper instance
          */
-        ResourceWrapper(ResourcePtr resource);
+        explicit ResourceWrapper(ResourcePtr resource);
         
         /**
          * destructor

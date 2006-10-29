@@ -53,7 +53,7 @@ class SYNDICATION_EXPORT Person : public ElementWrapper
         * (although not enforced), otherwise this object will not parse
         * anything useful
         */
-       Person(const QDomElement& element);
+       explicit Person(const QDomElement& element);
 
        /**
         * a human-readable name for the person. (required)

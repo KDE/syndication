@@ -72,7 +72,7 @@ class SYNDICATION_EXPORT Resource : public Node
          * 
          * @param uri the URI of the new resource
          */
-        Resource(const QString& uri);
+        explicit Resource(const QString& uri);
 
         /**
          * destructor

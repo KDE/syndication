@@ -32,6 +32,8 @@
 #include <QRegExp>
 #include <QString>
 
+#include <kdebug.h>
+
 namespace Syndication {
 
 KMD5 md5Machine;
@@ -150,11 +152,15 @@ static QRegExp tagRegExp;
 static bool tagRegExpSet = false;
 
 bool stringContainsMarkup(const QString& str)
-{
+{   
+    //check for entities
+    if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
+        return true;
+    
     int ltc = str.count('<');
     if (ltc == 0 || ltc != str.count('>'))
         return false;
-
+       
     if (!tagRegExpSet)
     {
         tagRegExp = QRegExp("<\\w+.*/?>");
@@ -165,8 +171,9 @@ bool stringContainsMarkup(const QString& str)
 
 bool isHtml(const QString& str)
 {
-//    if (str != KCharsets::resolveEntities(str))
-//        return true;
+    //check for entities
+    if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
+        return true;
     
     int ltc = str.count('<');
     if (ltc == 0 || ltc != str.count('>'))
@@ -216,7 +223,8 @@ PersonPtr personFromString(const QString& strp)
     QString str = strp.trimmed();
     if (str.isEmpty())
         return PersonPtr(new PersonImpl());
-    
+
+    str = resolveEntities(str);
     QString name;
     QString uri;
     QString email;

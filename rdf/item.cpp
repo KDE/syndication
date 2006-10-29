@@ -18,9 +18,10 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  *
- */
+     */
 
 #include "contentvocab.h"
+#include "document.h"
 #include "dublincore.h"
 #include "item.h"
 #include "model.h"
@@ -35,28 +36,68 @@
 namespace Syndication {
 namespace RDF {
 
-Item::Item() : ResourceWrapper()
+class Item::Private
+{
+    public:
+    DocumentPtr doc;
+};
+
+Item::Item() : ResourceWrapper(), d(new Private)
 {
 }
 
-Item::Item(ResourcePtr resource) : ResourceWrapper(resource)
+Item::Item(ResourcePtr resource, DocumentPtr doc) : ResourceWrapper(resource),
+                                                    d(new Private)
 {
+    d->doc = doc;
+}
+
+Item::Item(const Item& other) : ResourceWrapper(other), 
+                                SpecificItem(other),
+                                d(new Private)
+{
+    *d = *(other.d);
 }
 
 Item::~Item()
 {
+    delete d;
+    d = 0;
 }
 
+Item& Item::operator=(const Item& other)
+{
+    ResourceWrapper::operator=(other);
+    *d = *(other.d);
+    return *this;
+}
+        
+bool Item::operator==(const Item& other) const
+{
+    return ResourceWrapper::operator==(other);
+}
+        
+        
 QString Item::title() const
 {
-    QString str = resource()->property(RSSVocab::self()->title())->asString();
-    return normalize(str);
+    if (!d->doc)
+        return originalTitle();
+    
+    bool containsMarkup = false;
+    d->doc->getItemTitleFormatInfo(&containsMarkup);
+    
+    return normalize(originalTitle(), false, containsMarkup);
 }
 
 QString Item::description() const
 {
-    QString str = resource()->property(RSSVocab::self()->description())->asString();
-    return normalize(str);
+    if (!d->doc)
+        return originalDescription();
+
+    bool containsMarkup = false;
+    d->doc->getItemDescriptionFormatInfo(&containsMarkup);
+    
+    return normalize(originalDescription(), false, containsMarkup);
 }
 
 QString Item::link() const
@@ -74,6 +115,16 @@ QString Item::encodedContent() const
     return resource()->property(ContentVocab::self()->encoded())->asString();
 }
 
+QString Item::originalTitle() const
+{
+    return resource()->property(RSSVocab::self()->title())->asString();
+}
+
+QString Item::originalDescription() const
+{
+    return resource()->property(RSSVocab::self()->description())->asString();
+}
+        
 QString Item::debugInfo() const
 {
     QString info;

@@ -222,13 +222,13 @@ Image Document::image() const
 
 TextInput Document::textInput() const
 {
-    TextInput ti = firstElementByTagNameNS(QString(), QString::fromUtf8("textInput"));
+    TextInput ti = TextInput(firstElementByTagNameNS(QString(), QString::fromUtf8("textInput")));
     
     if (!ti.isNull())
         return ti;
     
     // Netscape's version of RSS 0.91 has textinput, not textInput
-    return firstElementByTagNameNS(QString(), QString::fromUtf8("textinput"));
+    return TextInput(firstElementByTagNameNS(QString(), QString::fromUtf8("textinput")));
 }
 
 QSet<int> Document::skipHours() const
@@ -289,7 +289,7 @@ QList<Item> Document::items() const
     
     QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QString::fromUtf8("item"));
     
-    DocumentPtr doccpy(new Document(*this)); // pass 
+    DocumentPtr doccpy(new Document(*this));
         
     for (QList<QDomElement>::ConstIterator it = itemNodes.begin(); it != itemNodes.end(); ++it)
     {

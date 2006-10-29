@@ -56,7 +56,7 @@ class SYNDICATION_EXPORT Source : public ElementWrapper
          *
          * @param element The @c &lt;source&gt; element to wrap
          */
-        Source(const QDomElement& element);
+        explicit Source(const QDomElement& element);
 
         /**
          * The name of the RSS channel that the item came from, derived from

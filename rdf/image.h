@@ -50,7 +50,7 @@ class SYNDICATION_EXPORT Image : public ResourceWrapper
          * 
          * @param resource the image resource to wrap
          */
-        Image(ResourcePtr resource);
+        explicit Image(ResourcePtr resource);
         
         /**
          * destructor

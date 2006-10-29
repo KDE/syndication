@@ -66,7 +66,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * @param element The @c &lt;item> element to wrap
          * @param doc the document this item is part of
          */
-        Item(const QDomElement& element, SharedPtr<Document> doc=SharedPtr<Document>());
+        explicit Item(const QDomElement& element, SharedPtr<Document> doc=SharedPtr<Document>());
 
         /**
          * creates a copy of an item. As the d pointer is shared,

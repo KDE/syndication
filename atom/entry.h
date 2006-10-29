@@ -64,7 +64,7 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        Entry(const QDomElement& element);
+        explicit Entry(const QDomElement& element);
 
         bool accept(SpecificItemVisitor* visitor);
 

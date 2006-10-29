@@ -59,7 +59,7 @@ class SYNDICATION_EXPORT Literal : public Node
          * 
          * @param text the literal string
          */
-        Literal(const QString& text);
+        explicit Literal(const QString& text);
         
         /**
          * destructor

@@ -47,7 +47,7 @@ class SYNDICATION_EXPORT Category : public ElementWrapper
          *
          * @param element The @c &lt;category> element to wrap
          */
-        Category(const QDomElement& element);
+        explicit Category(const QDomElement& element);
 
         /**
          * Default constructor, creates a null object, for which isNull() is

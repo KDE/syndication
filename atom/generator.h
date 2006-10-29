@@ -52,7 +52,7 @@ class SYNDICATION_EXPORT Generator : public ElementWrapper
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        Generator(const QDomElement& element);
+        explicit Generator(const QDomElement& element);
 
         /**
          * A URI for the generator (e.g. its homepage) (optional)

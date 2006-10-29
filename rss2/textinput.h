@@ -52,7 +52,7 @@ class SYNDICATION_EXPORT TextInput : public ElementWrapper
          *
          * @param element The @c &lt;textInput> element to wrap
          */
-        TextInput(const QDomElement& element);
+        explicit TextInput(const QDomElement& element);
 
 
         /**

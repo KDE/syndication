@@ -82,7 +82,7 @@ class SYNDICATION_EXPORT Content : public ElementWrapper
          * (although not enforced), otherwise this object will not parse
          * anything useful
          */
-        Content(const QDomElement& element);
+        explicit Content(const QDomElement& element);
 
         /**
          * creates a copy of another Content object
