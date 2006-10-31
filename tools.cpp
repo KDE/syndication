@@ -242,7 +242,11 @@ PersonPtr personFromString(const QString& strp)
         email = remail.cap(1);
         str.replace(all, ""); // remove mail address
     }
-    
+
+    // replace "mailto", "(", ")" (to be extended)    
+    email.remove("mailto:");
+    email.remove(QRegExp("[\\(\\)]"));
+
     // simplify the rest and use it as name
     
     name = str.simplified();
