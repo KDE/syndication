@@ -35,6 +35,7 @@ class QString;
 
 namespace Syndication {
 
+//@cond PRIVATE
 class SpecificDocument;
 typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
 class Category;
@@ -47,7 +48,8 @@ class Item;
 typedef SharedPtr<Item> ItemPtr;
 class Person;
 typedef SharedPtr<Person> PersonPtr;
-
+//@endcond
+    
 /**
  * This class represents a feed document ("Channel" in RSS, "Feed" in Atom).
  * It contains a ordered list of items (e.g., articles) and a description of the

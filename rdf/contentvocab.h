@@ -33,8 +33,9 @@ template <class T> class SharedPtr;
 namespace RDF {
 
 class Property;
+//@cond PRIVATE
 typedef SharedPtr<Property> PropertyPtr;
-
+//@endcond
 /**
  * Singleton holding RDF class and property constants of the RSS 1.0 content
  * module. See http://web.resource.org/rss/1.0/modules/content/ for a
@@ -46,12 +47,26 @@ class SYNDICATION_EXPORT ContentVocab
 {
     public:
 
+        /**
+         * returns the singleton instance
+         */
         static ContentVocab* self();
 
+        /**
+         * destructor
+         */
         ~ContentVocab();
-                
+        
+        /** 
+         * Namespace of the Content module
+         * 
+         * http://purl.org/rss/1.0/modules/content/ 
+        **/
         const QString& namespaceURI() const;
 
+        /**
+         * content:encoded property
+         */
         PropertyPtr encoded() const;
     
     private:

@@ -35,6 +35,7 @@ template <class K, class T> class QMultiMap;
 
 namespace Syndication {
 
+//@cond PRIVATE
 class Category;
 typedef SharedPtr<Category> CategoryPtr;
 class Enclosure;
@@ -45,7 +46,8 @@ class Person;
 typedef SharedPtr<Person> PersonPtr;
 class SpecificItem;
 typedef SharedPtr<SpecificItem> SpecificItemPtr;
-
+//@endcond
+    
 /**
  * An item from a news feed.
  *

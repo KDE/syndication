@@ -254,6 +254,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          */
         QString debugInfo() const;
 
+        //@cond PRIVATE
         /**
          * @internal
          * returns the description content in unmodified form (no
@@ -267,7 +268,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * plaintext/HTML conversions etc.)
          */
         QString originalTitle() const;
-
+        //@endcond
                 
     private:
 

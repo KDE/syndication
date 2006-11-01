@@ -33,11 +33,12 @@ template <class T> class SharedPtr;
 
 namespace RDF {
 
+//@cond PRIVATE
 class Property;
 typedef SharedPtr<Property> PropertyPtr;
-
 class Resource;
 typedef SharedPtr<Resource> ResourcePtr;
+//@endcond
 
 /**
  * Singleton holding RDF class and property constants of the RSS 1.0

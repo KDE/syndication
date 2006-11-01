@@ -83,7 +83,9 @@ QByteArray Content::asByteArray() const
     return QByteArray::fromBase64(text().trimmed().toAscii());
 }
 
+//@cond PRIVATE
 static QStringList xmltypes;
+//@endcond
 
 Content::Format Content::mapTypeToFormat(const QString& typep,  const QString& src)
 {

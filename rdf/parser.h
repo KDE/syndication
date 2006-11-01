@@ -74,19 +74,10 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
          */
         virtual QString format() const;
 
-    protected:
-
-        /** @internal
-         *  copy constructor
-         */
-        Parser(const Parser& other);
-        
-        /** @internal
-         * assignment operator
-         */
-        Parser& operator=(const Parser& other);
-
     private:
+
+        Parser(const Parser& other);
+        Parser& operator=(const Parser& other);
 
         class ParserPrivate;
         ParserPrivate* d;

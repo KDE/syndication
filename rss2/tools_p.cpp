@@ -30,7 +30,7 @@
 
 namespace Syndication {
 namespace RSS2 {
-
+//@cond PRIVATE
 QString extractContent(const ElementWrapper& wrapper)
 {
     if (wrapper.isNull())
@@ -53,6 +53,7 @@ QString extractContent(const ElementWrapper& wrapper)
 
     return QString();
 }
+//@endcond
 
 } // namespace RSS2
 } // namespace Syndication

@@ -64,6 +64,9 @@ class SYNDICATION_EXPORT Model
          */
         Model(const Model& other);
 
+        /**
+         * destructor
+         */
         virtual ~Model();
 
         /**
@@ -212,7 +215,7 @@ class SYNDICATION_EXPORT Model
          * model doesn't contain a literal with this ID
          */
         virtual LiteralPtr literalByID(uint id) const;
-
+//@cond PRIVATE
         /**
          * @internal
          * used by Resource::hasProperty()
@@ -234,6 +237,7 @@ class SYNDICATION_EXPORT Model
         virtual QList<StatementPtr> resourceProperties(const Resource* resource,
                                               PropertyPtr property) const;
 
+//@endcond
         /**
          * a debug string listing the contained statements for
          * debugging purposes

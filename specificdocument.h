@@ -33,7 +33,9 @@ namespace Syndication {
 class DocumentVisitor;
 class SpecificDocument;
 
+//@cond PRIVATE
 typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
+//@endcond
 
 /**
  * Document interface for format-specific feed documents as parsed from a

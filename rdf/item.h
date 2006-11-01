@@ -89,6 +89,8 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          * compares two item instances. Two instances are equal,
          * if the wrapped resources are equal. See ResourceWrapper::operator==()
          * for details.
+         * 
+         * @param other the item to compare this item to
          */
         bool operator==(const Item& other) const;
         
@@ -138,6 +140,7 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          */
         QString encodedContent() const;
 
+        //@cond PRIVATE
         /**
          * @internal
          * returns the title unmodified
@@ -151,6 +154,8 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          * used by Document
          */
         QString originalDescription() const;
+        
+        //@endcond
         
         /**
          * Returns a description of the item for debugging purposes.

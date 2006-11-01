@@ -54,8 +54,9 @@ ContentVocab::~ContentVocab()
     d = 0;
 }
 
-/** @internal */
+//@cond PRIVATE
 static KStaticDeleter<ContentVocab> contentvocabsd;
+//@endcond
 
 ContentVocab* ContentVocab::m_self = 0;
 

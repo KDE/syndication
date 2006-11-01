@@ -40,7 +40,9 @@ class Item;
 class Model;
 class SyndicationInfo;
 class TextInput;
+//@cond PRIVATE
 typedef SharedPtr<Document> DocumentPtr;
+//@endcond
 
 /**
  * Document implementation for RDF, representing an RSS 1.0 feed.
@@ -150,7 +152,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          * An optional text input element associated with the channel
          */
         TextInput textInput() const;
-
+//@cond PRIVATE
         /**
          * @internal
          * checks the format of titles and returns the results
@@ -168,6 +170,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
          * descriptions
          */
         void getItemDescriptionFormatInfo(bool* containsMarkup) const;
+//@endcond PRIVATE
         
         /**
          * Returns a description of the document for debugging purposes.

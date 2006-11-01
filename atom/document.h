@@ -44,8 +44,10 @@ class FeedDocument;
 class Generator;
 class Link;
 class Person;
+//@cond PRIVATE
 typedef SharedPtr<EntryDocument> EntryDocumentPtr;
 typedef SharedPtr<FeedDocument> FeedDocumentPtr;
+//@endcond
 
 /**
  * An Atom 1.0 Feed Document, containing metadata describing the

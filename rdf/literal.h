@@ -32,7 +32,9 @@ namespace RDF {
 
 class Literal;
 
+//@cond PRIVATE
 typedef SharedPtr<Literal> LiteralPtr;
+//@endcond
 
 /**
  * a node type representing simple string values. Literals can

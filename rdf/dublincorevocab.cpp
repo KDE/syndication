@@ -82,8 +82,9 @@ DublinCoreVocab::~DublinCoreVocab()
     d = 0;
 }
 
-/** @internal */
+//@cond PRIVATE
 static KStaticDeleter<DublinCoreVocab> dublincoresd;
+//@endcond
 
 DublinCoreVocab* DublinCoreVocab::m_self = 0;
 

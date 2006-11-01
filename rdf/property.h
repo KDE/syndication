@@ -30,9 +30,10 @@ class QString;
 namespace Syndication {
 namespace RDF {
 
+//@cond PRIVATE
 class Property;
-
 typedef SharedPtr<Property> PropertyPtr;
+//@endcond
 
 /**
  * a property is node type that represents properties of things,

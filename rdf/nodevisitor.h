@@ -30,6 +30,7 @@ template <class T> class SharedPtr;
 
 namespace RDF {
 
+//@cond PRIVATE
 class Literal;
 typedef SharedPtr<Literal> LiteralPtr;
 class Node;
@@ -40,6 +41,7 @@ class Resource;
 typedef SharedPtr<Resource> ResourcePtr;
 class Sequence;
 typedef SharedPtr<Sequence> SequencePtr;
+//@endcond
 
 /**
  * Visitor interface, following the Visitor design pattern. Use this if you
@@ -80,38 +82,38 @@ class SYNDICATION_EXPORT NodeVisitor
          * reimplement this method to handle nodes that weren't handled 
          * by the more specific method.
          *
-         * @param item the node to visit
+         * @param node the node to visit
          * @return whether the visitor handled the node.
          * Reimplementations of this method must return @p true.
          */
-        virtual bool visitNode(NodePtr);
+        virtual bool visitNode(NodePtr node);
 
         /**
          * reimplement this method to handle properties.
          *
-         * @param item the property to visit
+         * @param property the property to visit
          * @return whether the visitor handled the property.
          * Reimplementations of this method must return @p true.
          */
-        virtual bool visitProperty(PropertyPtr);
+        virtual bool visitProperty(PropertyPtr property);
 
         /**
          * reimplement this method to handle resources.
          *
-         * @param item the resource to visit
+         * @param resource the resource to visit
          * @return whether the visitor handled the resource.
          * Reimplementations of this method must return @p true.
          */
-        virtual bool visitResource(ResourcePtr);
+        virtual bool visitResource(ResourcePtr resource);
 
         /**
          * reimplement this method to handle sequences.
          *
-         * @param item the sequence to visit
+         * @param seq the sequence to visit
          * @return whether the visitor handled the sequence.
          * Reimplementations of this method must return @p true.
          */
-        virtual bool visitSequence(SequencePtr);
+        virtual bool visitSequence(SequencePtr seq);
 };
 
 } // namespace RDF

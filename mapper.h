@@ -30,7 +30,9 @@ template <class T> class SharedPtr;
 namespace Syndication {
 
 class SpecificDocument;
+//@cond PRIVATE
 typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
+//@endcond
 
 /**
  * @brief A mapper maps an SpecificDocument to something else.

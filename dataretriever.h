@@ -51,6 +51,9 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          * Retrieve data from the given URL. This method is supposed to get
          * reimplemented by subclasses. It will be called by the Loader
          * class in case it needs to retrieve the data.
+         * 
+         * @param url the URL to retrieve data from
+         * 
          * @see Loader::loadFrom()
          */
         virtual void retrieveData(const KUrl& url) = 0;
@@ -178,9 +181,24 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          */
         virtual int errorCode() const;
 
+        /**
+         * aborts the retrieval process.
+         */
         virtual void abort();
 
+        /**
+         * sets whether the retriever should use the KHTML cache or
+         * always refetch the file. By default, the cache is used.
+         * 
+         * @param enabled whether to use the HTML cache or not
+         */
         static void setUseCache(bool enabled);
+        
+        /**
+         * sets the user agent string sent to the remote server
+         * 
+         * @param userAgent user agent string 
+         */
         static void setUserAgent(const QString& userAgent);
 
     signals:
@@ -190,6 +208,9 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          * handled internally, so you don't need to call Loader::loadFrom()
          * with the new URL. This signal is useful in case you want to
          * notify the user, or adjust a database entry.
+         * 
+         * @param url the new URL after the redirection
+         * 
          * @see Loader::loadFrom()
          */
         void permanentRedirection(const KUrl& url);

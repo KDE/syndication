@@ -30,7 +30,9 @@ namespace Syndication {
 namespace RDF {
 
 class Resource;
+//@cond PRIVATE
 typedef SharedPtr<Resource> ResourcePtr;
+//@endcond
 
 /**
  * An image to be associated with an HTML rendering of the channel. 

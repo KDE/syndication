@@ -72,8 +72,9 @@ RSSVocab::~RSSVocab()
     d = 0;
 }
 
-/** @internal */
+//@cond PRIVATE
 static KStaticDeleter<RSSVocab> rssvocabsd;
+//@endcond
 
 RSSVocab* RSSVocab::m_self = 0;
 
@@ -190,8 +191,9 @@ RSS09Vocab::~RSS09Vocab()
     d = 0;
 }
 
-/** @internal */
+//@cond PRIVATE
 static KStaticDeleter<RSS09Vocab> rss09vocabsd;
+//@endcond
 
 RSS09Vocab* RSS09Vocab::m_self = 0;
 

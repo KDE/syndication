@@ -33,7 +33,9 @@ namespace RDF {
 
 class Model;
 class Resource;
+//@cond PRIVATE
 typedef SharedPtr<Resource> ResourcePtr;
+//@endcond
 
 /**
  * An RDF parser, used to parse an RDF model from RDF/XML. It doesn't support

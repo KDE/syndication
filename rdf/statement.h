@@ -31,9 +31,10 @@ class QString;
 namespace Syndication {
 namespace RDF {
 
+//@cond PRIVATE
 class Statement;
-
 typedef SharedPtr<Statement> StatementPtr;
+//@endcond
 
 /**
  * An RDF statement, consisting of a triple

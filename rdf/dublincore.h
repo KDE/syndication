@@ -34,10 +34,9 @@ namespace Syndication {
 namespace RDF {
 
 class Resource;
+//@cond PRIVATE
 typedef SharedPtr<Resource> ResourcePtr;
-
-// TODO: add support for multiple statements where it makes sense.
-// e.g. (creator, subject)
+//@endcond
 
 /**
  * A resource wrapper providing convenient

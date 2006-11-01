@@ -30,7 +30,9 @@ namespace Syndication {
 
 class DataRetriever;
 class Feed;
+//@cond PRIVATE
 typedef SharedPtr<Feed> FeedPtr;
+//@endcond
 
 /**
  * This class is the preferred way of loading feed sources. Usage is very

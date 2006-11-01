@@ -31,8 +31,10 @@ template <class T> class SharedPtr;
 
 namespace RDF {
 
+//@cond PRIVATE
 class Property;
 typedef SharedPtr<Property> PropertyPtr;
+//@endcond
 
 /**
  * Singleton providing Property constants for 

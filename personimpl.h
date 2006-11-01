@@ -32,6 +32,8 @@
 namespace Syndication {
 
 class PersonImpl;
+
+//@cond PRIVATE
 typedef SharedPtr<PersonImpl> PersonImplPtr;
 
 /**
@@ -41,34 +43,12 @@ class SYNDICATION_EXPORT PersonImpl : public Person
 {
     public:
 
-        /**
-         * @internal
-         */
         PersonImpl();
-        
-        /**
-         * @internal
-         */
         PersonImpl(const QString& name, const QString& uri, const QString& email);
-
-        /**
-         * @internal
-         */
+        
         virtual bool isNull() const { return m_null; }
-
-        /**
-         * @internal
-         */
         virtual QString name() const { return m_name; }
-
-        /**
-         * @internal
-         */
         virtual QString uri() const { return m_uri; }
-
-        /**
-         * @internal
-         */
         virtual QString email() const { return m_email; }
 
     private:
@@ -78,6 +58,7 @@ class SYNDICATION_EXPORT PersonImpl : public Person
         QString m_uri;
         QString m_email;
 };
+//@endcond
 
 } // namespace Syndication
 

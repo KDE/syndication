@@ -45,7 +45,7 @@ bool Parser::accept(const Syndication::DocumentSource& source) const
     return !root.isNull();
 }
 
-Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource& source) const
+Syndication::SpecificDocumentPtr Parser::parse(const DocumentSource& source) const
 {
     return DocumentPtr(new Document(Document::fromXML(source.asDomDocument())));
 }

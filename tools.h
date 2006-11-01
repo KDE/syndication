@@ -223,34 +223,23 @@ unsigned int calcHash(const QByteArray& array);
  */
 QString calcMD5Sum(const QString& str);
 
+//@cond PRIVATE
 /** 
  * @internal
  * used internally to represent element types
  */
 struct ElementType
 {
-    /**
-     * @internal
-     */
     ElementType(const QString& localnamep, 
                 const QString& nsp=QString()); // implicit
    
-    /**
-     * @internal
-     */
     bool operator==(const ElementType& other) const;
-     
-    /**
-     * @internal
-     */
-    QString ns;
     
-    /**
-     * @internal
-     */
+    QString ns;
     QString localname;
 };
-
+//@endcond
+  
 } // namespace Syndication
 
 #endif // SYNDICATION_TOOLS_H

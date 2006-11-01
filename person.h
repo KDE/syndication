@@ -30,7 +30,10 @@
 namespace Syndication {
 
 class Person;
+
+//@cond PRIVATE
 typedef SharedPtr<Person> PersonPtr;
+//@endcond
 
 /**
  * Person objects hold information about a person, such as the author of

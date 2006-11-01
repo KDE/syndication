@@ -66,6 +66,12 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
          */
         explicit Entry(const QDomElement& element);
 
+        /**
+         * Used by visitors for double dispatch. See SpecificVisitor
+         * for more information.
+         * @param visitor the visitor calling the method
+         */
+
         bool accept(SpecificItemVisitor* visitor);
 
         /**

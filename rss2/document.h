@@ -282,7 +282,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
          */
         QString debugInfo() const;
 
-
+        //@cond PRIVATE
         /**
          * @internal
          * checks the format of title elements and returns the results
@@ -300,7 +300,8 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
          * descriptions
          */
         void getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup) const;
-
+        //@endcond
+        
     private:
         /**
          * @internal

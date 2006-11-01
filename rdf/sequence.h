@@ -31,9 +31,10 @@ template <class T> class QList;
 namespace Syndication {
 namespace RDF {
 
-
+//@cond PRIVATE
 class Sequence;
 typedef SharedPtr<Sequence> SequencePtr;
+//@endcond
 
 /**
  * Sequence container, a sequence contains an ordered list

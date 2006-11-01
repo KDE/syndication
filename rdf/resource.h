@@ -89,6 +89,8 @@ class SYNDICATION_EXPORT Resource : public Node
         /**
          * checks two resources for equality. Currently both URI (or anonID)
          * _and_ id() must be equal!
+         * 
+         * @param other the node to compare this node to
          */
         virtual bool operator==(const Node& other) const;
 

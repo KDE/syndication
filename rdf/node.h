@@ -32,8 +32,9 @@ namespace RDF {
 class Model;
 class Node;
 class NodeVisitor;
-
+//@cond PRIVATE
 typedef SharedPtr<Node> NodePtr;
+//@endcond
 
 /**
  * an RDF node, abstract baseclass for all RDF node types, like resources and

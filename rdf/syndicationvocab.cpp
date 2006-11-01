@@ -58,8 +58,10 @@ SyndicationVocab::~SyndicationVocab()
     d = 0;
 }
 
-/** @internal */
+
+//@cond PRIVATE
 static KStaticDeleter<SyndicationVocab> syndicationvocabsd;
+//@endcond
 
 SyndicationVocab* SyndicationVocab::m_self = 0;
 

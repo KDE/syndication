@@ -37,6 +37,7 @@
 
 namespace Syndication {
 
+//@cond PRIVATE
 /** @internal
  */
 // default implementation of ParserCollection. This is separated
@@ -73,6 +74,7 @@ class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
         ErrorCode m_lastError;
 };
 
+//@endcond
 
 //template <class T>
 //class ParserCollectionImpl<T>::ParserCollectionImplPrivate

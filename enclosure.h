@@ -30,7 +30,9 @@
 namespace Syndication {
 
 class Enclosure;
+//@cond PRIVATE
 typedef SharedPtr<Enclosure> EnclosurePtr;
+//@endcond
 
 /**
  * An enclosure describes a (media) file available on the net.

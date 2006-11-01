@@ -33,7 +33,9 @@ namespace Syndication {
 class SpecificItemVisitor;
 class SpecificItem;
 
+//@cond PRIVATE
 typedef SharedPtr<SpecificItem> SpecificItemPtr;
+//@endcond
 
 /**
  * Interface for all format-specific item-like classes, such as

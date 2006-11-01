@@ -30,7 +30,9 @@
 namespace Syndication {
 
 class Image;
+//@cond PRIVATE
 typedef SharedPtr<Image> ImagePtr;
+//@endcond
 
 /**
  * This class represents an image file on the web.
