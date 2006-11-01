@@ -56,7 +56,7 @@ class SYNDICATION_EXPORT Property : public Resource
          * 
          * @param uri the URI of the property
          */
-        Property(const QString& uri);
+        explicit Property(const QString& uri);
         
         /**
          * destructor

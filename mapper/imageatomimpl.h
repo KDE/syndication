@@ -42,7 +42,7 @@ class ImageAtomImpl : public Syndication::Image
 {
     public:
         
-        ImageAtomImpl(const QString& logoURI) : m_logoURI(logoURI)
+        explicit ImageAtomImpl(const QString& logoURI) : m_logoURI(logoURI)
         {}
         
         bool isNull() const { return m_logoURI.isEmpty(); }

@@ -40,7 +40,7 @@ class ItemRDFImpl : public Syndication::Item
 {
     public:
         
-        ItemRDFImpl(const Syndication::RDF::Item& item);
+        explicit ItemRDFImpl(const Syndication::RDF::Item& item);
         
         QString title() const;
         

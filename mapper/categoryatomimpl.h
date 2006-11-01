@@ -40,7 +40,7 @@ class CategoryAtomImpl : public Syndication::Category
 {
     public:
 
-        CategoryAtomImpl(const Syndication::Atom::Category& category);
+        explicit CategoryAtomImpl(const Syndication::Atom::Category& category);
         
         bool isNull() const;
         

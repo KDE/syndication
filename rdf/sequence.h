@@ -54,7 +54,7 @@ class SYNDICATION_EXPORT Sequence : public Resource
          * creates a sequence with the given URI. Do not use this directly, 
          * use Model::createSequence() instead.
          */
-        Sequence(const QString& uri);
+        explicit Sequence(const QString& uri);
         
         /**
          * copies a sequence

@@ -308,7 +308,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
          * private constructor, used by fromXML()
          * TODO: remove fromXML(), make this one private
          */
-        Document(const QDomElement& element);
+        explicit Document(const QDomElement& element);
 
         class DocumentPrivate;
         SharedPtr<DocumentPrivate> d;

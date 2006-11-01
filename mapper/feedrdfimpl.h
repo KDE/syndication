@@ -40,7 +40,7 @@ class FeedRDFImpl : public Syndication::Feed
 {
     public:
         
-        FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
+        explicit FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
         
         Syndication::SpecificDocumentPtr specificDocument() const;
         

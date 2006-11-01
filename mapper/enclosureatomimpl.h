@@ -40,7 +40,7 @@ class EnclosureAtomImpl : public Syndication::Enclosure
 {
     public:
 
-        EnclosureAtomImpl(const Syndication::Atom::Link& link);
+        explicit EnclosureAtomImpl(const Syndication::Atom::Link& link);
         
         bool isNull() const;
         

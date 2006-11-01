@@ -38,7 +38,7 @@ class ItemAtomImpl : public Syndication::Item
 {
     public:
         
-        ItemAtomImpl(const Syndication::Atom::Entry& entry);
+        explicit ItemAtomImpl(const Syndication::Atom::Entry& entry);
         
         QString title() const;
         

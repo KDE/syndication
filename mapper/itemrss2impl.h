@@ -38,7 +38,7 @@ class ItemRSS2Impl : public Syndication::Item
 {
     public:
         
-        ItemRSS2Impl(const Syndication::RSS2::Item& item);
+        explicit ItemRSS2Impl(const Syndication::RSS2::Item& item);
         
         QString title() const;
         

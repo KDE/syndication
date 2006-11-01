@@ -41,7 +41,7 @@ class EnclosureRSS2Impl : public Syndication::Enclosure
 {
     public:
 
-        EnclosureRSS2Impl(const Syndication::RSS2::Item& item,
+        explicit EnclosureRSS2Impl(const Syndication::RSS2::Item& item,
                           const Syndication::RSS2::Enclosure& enc);
         
         bool isNull() const;

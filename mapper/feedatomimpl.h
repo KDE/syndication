@@ -40,7 +40,7 @@ class FeedAtomImpl : public Syndication::Feed
 {
     public:
         
-        FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
+        explicit FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
         
         Syndication::SpecificDocumentPtr specificDocument() const;
         

@@ -40,7 +40,7 @@ class CategoryRSS2Impl : public Syndication::Category
 {
     public:
 
-        CategoryRSS2Impl(const Syndication::RSS2::Category& category);
+        explicit CategoryRSS2Impl(const Syndication::RSS2::Category& category);
         
         bool isNull() const;
         

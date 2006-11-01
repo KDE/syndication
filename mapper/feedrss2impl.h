@@ -40,7 +40,7 @@ class FeedRSS2Impl : public Syndication::Feed
 {
     public:
         
-        FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc);
+        explicit FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc);
         
         Syndication::SpecificDocumentPtr specificDocument() const;
         

@@ -40,7 +40,7 @@ class ImageRDFImpl : public Syndication::Image
 {
     public:
 
-        ImageRDFImpl(const Syndication::RDF::Image& image);
+        explicit ImageRDFImpl(const Syndication::RDF::Image& image);
         
         bool isNull() const;
         

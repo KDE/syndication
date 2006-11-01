@@ -40,7 +40,7 @@ class ImageRSS2Impl : public Syndication::Image
 {
     public:
 
-        ImageRSS2Impl(const Syndication::RSS2::Image& image);
+        explicit ImageRSS2Impl(const Syndication::RSS2::Image& image);
         
         bool isNull() const;
         

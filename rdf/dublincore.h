@@ -54,7 +54,7 @@ class SYNDICATION_EXPORT DublinCore : public ResourceWrapper
          *
          * @param resource the resource to wrap
          */
-        DublinCore(ResourcePtr resource);
+        explicit DublinCore(ResourcePtr resource);
 
         /**
          * virtual destructor
