@@ -49,7 +49,7 @@ typedef SharedPtr<Item> ItemPtr;
 class Person;
 typedef SharedPtr<Person> PersonPtr;
 //@endcond
-    
+
 /**
  * This class represents a feed document ("Channel" in RSS, "Feed" in Atom).
  * It contains a ordered list of items (e.g., articles) and a description of the
@@ -78,7 +78,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * @return a shared pointer to the wrapped document.
          */
-        virtual SpecificDocumentPtr specificDocument() const {}
+        virtual SpecificDocumentPtr specificDocument() const = 0;
 
         /**
          * A list of items, in the order they were parsed from the feed source.
@@ -87,14 +87,14 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * @return list of items
          */
-        virtual QList<ItemPtr> items() const {}
+        virtual QList<ItemPtr> items() const = 0;
 
         /**
          * returns a list of categories this feed is associated with.
          * See Category for more information.
          *
          */
-        virtual QList<CategoryPtr> categories() const {}
+        virtual QList<CategoryPtr> categories() const = 0;
 
         /**
          * The title of the feed.
@@ -104,7 +104,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * @return the title, or a null string if none is specified
          */
-        virtual QString title() const {}
+        virtual QString title() const = 0;
 
         /**
          * returns a link pointing to a website associated with this channel.
@@ -112,7 +112,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * @return a WWW link, or a null string if none is specified
          */
-        virtual QString link() const {}
+        virtual QString link() const = 0;
 
         /**
          * A description of the feed.
@@ -123,7 +123,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          * @return the description as HTML, or a null string if none is
          * specified
          */
-        virtual QString description() const {}
+        virtual QString description() const = 0;
 
         /**
          * returns an image associated with this item.
@@ -133,7 +133,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          * if no image is specified in the feed
          *
          */
-        virtual ImagePtr image() const {}
+        virtual ImagePtr image() const = 0;
 
         /**
          * returns a list of persons who created the feed content. If there is a
@@ -142,7 +142,7 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * @return list of authors (and possibly other contributing persons)
          */
-        virtual QList<PersonPtr> authors() const {}
+        virtual QList<PersonPtr> authors() const = 0;
 
         /**
          * The language used in the feed. This is a global setting, which can
@@ -150,31 +150,31 @@ class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
          *
          * TODO: describe concrete format (language codes)
          */
-        virtual QString language() const {}
+        virtual QString language() const = 0;
 
         /**
          * returns copyright information about the feed
          */
-        virtual QString copyright() const {}
+        virtual QString copyright() const = 0;
 
         /**
          * returns a list of feed metadata not covered by this class.
-         * Can be used e.g. to access format extensions. 
-         * 
+         * Can be used e.g. to access format extensions.
+         *
          * The returned map contains key value pairs, where the key
          * is the tag name of the element, namespace prefix are resolved
          * to the corresponding URIs. The value is the XML element as read
          * from the document.
-         * 
+         *
          * For example, to access the &lt;itunes:subtitle> element, use
          * additionalProperties()["http://www.itunes.com/dtds/podcast-1.0.dtdsubtitle"].
-         * 
+         *
          * Currently this is only
-         * supported for RSS 0.91..0.94/2.0 and Atom formats, but not for RDF 
+         * supported for RSS 0.91..0.94/2.0 and Atom formats, but not for RDF
          * (RSS 0.9 and 1.0).
          */
-        virtual QMultiMap<QString, QDomElement> additionalProperties() const {}
-        
+        virtual QMultiMap<QString, QDomElement> additionalProperties() const = 0;
+
         /**
          * returns a description of the feed for debugging purposes
          *
