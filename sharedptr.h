@@ -68,13 +68,7 @@ bool operator!=( const SharedPtr<T> &lhs, const SharedPtr<T> &rhs )
  * v->clear();                // Clears both v and w!
  * \endcode
  * The last line of code will clear both v and w, since they share the same
- * QString internally. To acquire a copy of the contained object which is
- * independent of all other copies, use the copy() function, as in:
- * \code
- * SharedPtr<QString> w = new QString( "Hello" );
- * SharedPtr<QString> v = w.copy(); // Make v a detached copy of w
- * v->clear();                       // v is cleared, w still says 'Hello'
- * \endcode
+ * QString internally. 
  *
  * @author Frerich Raabe <raabe@kde.org>
  * @brief A reference counting pointer.
@@ -182,11 +176,15 @@ class SharedPtr
 		T *operator->() { return d->obj; }
 		operator bool() const { return d->obj != 0; }
 
-		/**
+		/* libsyndication-specific:
+                   removed to make the sharedptr work with abstract classes (where the 
+                   copy ctor doesn't work).
+                   needed to compile with MVSC
+                 **
 		 * @return A pointer which points to a detached copy of the
 		 * referenced object. Modifications done via the returned
 		 * pointer will not affect any other objects.
-		 */
+		 * /
 		SharedPtr<T> copy()
 		{
 			if ( !d->obj ) {
@@ -195,15 +193,17 @@ class SharedPtr
 			return SharedPtr<T>( new T( *d->obj ) );
 		}
 
-		/**
+		/ **                 
+                 *
 		 * Detach this pointer from other shared pointers pointing
 		 * to the same object. Future modifications done through this
 		 * pointer will no longer affect other pointers.
-		 */
+		 * /
 		void detach()
 		{
 			*this = copy();
 		}
+                */
 
 		/**
 		 * @return A dumb pointer to the contained object. This is
