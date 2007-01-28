@@ -62,7 +62,7 @@ typedef SharedPtr<Person> PersonPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Feed : public SharedPtr<Feed>
+class SYNDICATION_EXPORT Feed
 {
     public:
 
