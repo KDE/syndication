@@ -58,7 +58,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * Default constructor, creates a null object, for which isNull() is
          * @c true.
          */
-        Item(SharedPtr<Document> doc=SharedPtr<Document>());
+        explicit Item(SharedPtr<Document> doc=SharedPtr<Document>());
 
         /**
          * Creates an Item object wrapping an @c &lt;item> XML element.
@@ -71,7 +71,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
         /**
          * creates a copy of an item. As the d pointer is shared,
          * this is a cheap operation.
-         * 
+         *
          * @param other the item to copy
          */
         Item(const Item& other);
@@ -84,12 +84,12 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
         /**
          * assigns another item. As the d pointer is shared,
          * this is a cheap operation.
-         * 
+         *
          * @param other the item to assign
          */
         Item& operator=(const Item& other);
 
-        
+
         /**
          * Used by visitors for double dispatch. See SpecificItemVisitor
          * for more information.
@@ -243,9 +243,9 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * returns all child elements of this item not covered by this class.
          * You can use this to access additional metadata from RSS extensions.
          */
-        QList<QDomElement> unhandledElements() const; 
+        QList<QDomElement> unhandledElements() const;
 
-        
+
         /**
          * Returns a description of the object and its children for debugging
          * purposes.
@@ -269,7 +269,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          */
         QString originalTitle() const;
         //@endcond
-                
+
     private:
 
         class ItemPrivate;
