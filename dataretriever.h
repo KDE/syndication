@@ -71,7 +71,7 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          */
         virtual void abort() = 0;
 
-    signals:
+    Q_SIGNALS:
         /**
          * Emit this signal to tell the Loader class that the retrieval
          * process was finished.
@@ -132,7 +132,7 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
 
         virtual void abort() {}
 
-    private slots:
+    private Q_SLOTS:
         void slotOutput(KProcess* process, char* data, int length);
         void slotExited(KProcess* process);
 
@@ -201,7 +201,7 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          */
         static void setUserAgent(const QString& userAgent);
 
-    signals:
+    Q_SIGNALS:
 
         /**
          * Signals a permanent redirection. The redirection itself is
@@ -215,11 +215,11 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          */
         void permanentRedirection(const KUrl& url);
 
-    protected slots:
+    protected Q_SLOTS:
 
         void slotTimeout();
 
-    private slots:
+    private Q_SLOTS:
 
         void slotData(KIO::Job*job, const QByteArray& data);
         void slotResult(KJob* job);

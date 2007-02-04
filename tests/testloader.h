@@ -34,7 +34,7 @@ class TestLibSyndication : public QObject
         
         TestLibSyndication(const QString& url);
     
-    public slots:
+    public Q_SLOTS:
         
         void slotLoadingComplete(Syndication::Loader* loader,
                             Syndication::FeedPtr feed,

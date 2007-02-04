@@ -151,7 +151,7 @@ class SYNDICATION_EXPORT Loader : public QObject
          */
         void abort();
 
-    signals:
+    Q_SIGNALS:
 
 
         /**
@@ -170,7 +170,7 @@ class SYNDICATION_EXPORT Loader : public QObject
                              Syndication::FeedPtr feed,
                              Syndication::ErrorCode error);
 
-    private slots:
+    private Q_SLOTS:
 
         void slotRetrieverDone(const QByteArray& data, bool success);
 
