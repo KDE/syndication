@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_NODEVISITOR_H
 #define SYNDICATION_RDF_NODEVISITOR_H
 
-#include "ksyndication.h"
+#include <syndication/ksyndication.h>
 
 namespace Syndication {
 

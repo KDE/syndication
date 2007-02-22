@@ -25,7 +25,7 @@
 
 #include <syndication/rdf/resourcewrapper.h>
 
-#include <specificdocument.h>
+#include <syndication/specificdocument.h>
 
 template <class T> class QList;
 
