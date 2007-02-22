@@ -41,7 +41,7 @@
 #include <syndication/rdf/rssvocab.h>
 #include <syndication/rdf/sequence.h>
 #include <syndication/rdf/statement.h>
-#include <syndication/rdf/syndication.h>
+#include <syndication/syndication.h>
 #include <syndication/rdf/syndicationvocab.h>
 #include <syndication/rdf/textinput.h>
 
