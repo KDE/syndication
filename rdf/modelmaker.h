@@ -22,6 +22,8 @@
 #ifndef SYNDICATION_RDF_MODELMAKER_H
 #define SYNDICATION_RDF_MODELMAKER_H
 
+#include <syndication/ksyndication.h>
+
 class QDomDocument;
 class QDomElement;
 class QString;

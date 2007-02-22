@@ -22,6 +22,8 @@
 #ifndef SYNDICATION_RDF_RDFVOCAB_H
 #define SYNDICATION_RDF_RDFVOCAB_H
 
+#include <syndication/ksyndication.h>
+
 class QString;
 
 namespace Syndication {
