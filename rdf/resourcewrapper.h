@@ -22,8 +22,7 @@
 #ifndef SYNDICATION_RDF_RESOURCEWRAPPER_H
 #define SYNDICATION_RDF_RESOURCEWRAPPER_H
 
-#include "ksyndication.h"
-
+#include <syndication/ksyndication.h>
 #include <syndication/sharedptr.h>
 
 namespace Syndication {

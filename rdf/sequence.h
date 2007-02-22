@@ -22,6 +22,7 @@
 #ifndef SYNDICATION_RDF_SEQUENCE_H
 #define SYNDICATION_RDF_SEQUENCE_H
 
+#include <syndication/ksyndication.h>
 #include <syndication/rdf/resource.h>
 
 #include <syndication/sharedptr.h>

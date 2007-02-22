@@ -27,6 +27,7 @@
 namespace Syndication {
 
 class SpecificDocument;
+class SpecificItem;
 
 namespace Atom
 {
