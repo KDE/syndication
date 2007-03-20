@@ -116,6 +116,7 @@ Content::Format Content::mapTypeToFormat(const QString& typep,  const QString& s
         xmltypes.append(QString::fromUtf8("text/xml-external-parsed-entity"));
         xmltypes.append(QString::fromUtf8("application/xml-external-parsed-entity"));
         xmltypes.append(QString::fromUtf8("application/xml-dtd"));
+        xmltypes.append(QString::fromUtf8("text/x-dtd")); // from shared-mime-info
     }
     
     if (xmltypes.contains(type)
