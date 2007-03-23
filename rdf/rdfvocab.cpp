@@ -26,7 +26,7 @@
 
 #include <kstaticdeleter.h>
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RDF {

@@ -17,8 +17,8 @@
 #include <kprocess.h>
 #include <kurl.h>
 
-#include <QBuffer>
-#include <QTimer>
+#include <QtCore/QBuffer>
+#include <QtCore/QTimer>
 
 namespace Syndication {
 

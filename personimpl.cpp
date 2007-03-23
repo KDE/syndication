@@ -22,7 +22,7 @@
 
 #include "personimpl.h"
 
-#include <QRegExp>
+#include <QtCore/QRegExp>
 
 namespace Syndication {
 

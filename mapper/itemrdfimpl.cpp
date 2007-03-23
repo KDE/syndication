@@ -33,11 +33,11 @@
 #include <personimpl.h>
 #include <tools.h>
 
-#include <QDomElement>
-#include <QList>
-#include <QMultiMap>
-#include <QString>
-#include <QStringList>
+#include <QtXml/QDomElement>
+#include <QtCore/QList>
+#include <QtCore/QMultiMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 using Syndication::RDF::Property;
 using Syndication::RDF::PropertyPtr;

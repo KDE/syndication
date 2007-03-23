@@ -22,7 +22,7 @@
 
 #include "person.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 

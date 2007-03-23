@@ -30,10 +30,10 @@
 #include <personimpl.h>
 #include <tools.h>
 
-#include <QDomElement>
-#include <QList>
-#include <QMultiMap>
-#include <QString>
+#include <QtXml/QDomElement>
+#include <QtCore/QList>
+#include <QtCore/QMultiMap>
+#include <QtCore/QString>
 
 namespace Syndication {
 

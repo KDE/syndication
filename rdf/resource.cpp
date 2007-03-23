@@ -28,8 +28,8 @@
 
 #include <krandom.h>
 
-#include <QList>
-#include <QString>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RDF {

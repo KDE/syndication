@@ -32,13 +32,13 @@
 
 #include <documentsource.h>
 
-#include <QDomDocument>
-#include <QDomNodeList>
-#include <QHash>
-#include <QList>
-#include <QMap>
-#include <QString>
-#include <QStringList>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNodeList>
+#include <QtCore/QHash>
+#include <QtCore/QList>
+#include <QtCore/QMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 namespace Syndication {
 namespace RDF {

@@ -29,8 +29,8 @@
 #include "sequence.h"
 #include "statement.h"
 
-#include <QDomElement>
-#include <QString>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RDF {

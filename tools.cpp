@@ -27,10 +27,10 @@
 #include <kcodecs.h> 
 #include <kdatetime.h>
 
-#include <QByteArray>
-#include <QDateTime>
-#include <QRegExp>
-#include <QString>
+#include <QtCore/QByteArray>
+#include <QtCore/QDateTime>
+#include <QtCore/QRegExp>
+#include <QtCore/QString>
 
 #include <kdebug.h>
 

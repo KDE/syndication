@@ -22,7 +22,7 @@
 
 #include "imagerss2impl.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 

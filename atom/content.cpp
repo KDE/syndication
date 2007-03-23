@@ -24,10 +24,10 @@
 
 #include <tools.h>
 
-#include <QByteArray>
-#include <QDomElement>
-#include <QString>
-#include <QStringList>
+#include <QtCore/QByteArray>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 namespace Syndication {
 namespace Atom {

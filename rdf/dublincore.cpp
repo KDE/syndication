@@ -27,9 +27,9 @@
 
 #include <tools.h>
 
-#include <QList>
-#include <QString>
-#include <QStringList>
+#include <QtCore/QList>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 namespace Syndication {
 namespace RDF {

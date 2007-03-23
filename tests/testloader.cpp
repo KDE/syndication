@@ -37,10 +37,10 @@
 #include <klocale.h>
 #include <kurl.h>
 
-#include <QByteArray>
-#include <QDir>
-#include <QFile>
-#include <QString>
+#include <QtCore/QByteArray>
+#include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtCore/QString>
 
 #include <cstdlib>
 #include <iostream>

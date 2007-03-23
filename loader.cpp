@@ -20,9 +20,9 @@
 #include "sharedptr.h"
 #include <kurl.h>
 
-#include <QBuffer>
-#include <QRegExp>
-#include <QStringList>
+#include <QtCore/QBuffer>
+#include <QtCore/QRegExp>
+#include <QtCore/QStringList>
 
 // test: TODO remove
 #include <iostream>

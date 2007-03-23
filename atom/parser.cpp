@@ -27,16 +27,16 @@
 #include "document.h"
 #include "parser.h"
 
-#include <QDomAttr>
-#include <QDomDocument>
-#include <QDomElement>
-#include <QDomNamedNodeMap>
-#include <QDomNode>
-#include <QDomNodeList>
+#include <QtXml/QDomAttr>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomElement>
+#include <QtXml/QDomNamedNodeMap>
+#include <QtXml/QDomNode>
+#include <QtXml/QDomNodeList>
 
-#include <QHash>
-#include <QRegExp>
-#include <QString>
+#include <QtCore/QHash>
+#include <QtCore/QRegExp>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace Atom {

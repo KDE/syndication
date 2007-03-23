@@ -27,7 +27,7 @@
 #include "ksyndication.h"
 
 
-#include <QString>
+#include <QtCore/QString>
 
 #include <ctime>
 

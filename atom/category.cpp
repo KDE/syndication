@@ -23,8 +23,8 @@
 #include "category.h"
 #include "constants.h"
 
-#include <QDomElement>
-#include <QString>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace Atom {

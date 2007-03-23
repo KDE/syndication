@@ -31,10 +31,10 @@
 #include <rss2/item.h>
 #include <rss2/textinput.h>
 
-#include <QDomDocument>
-#include <QList>
-#include <QSet>
-#include <QString>
+#include <QtXml/QDomDocument>
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RSS2 {

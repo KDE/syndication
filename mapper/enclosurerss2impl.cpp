@@ -23,9 +23,9 @@
 #include "enclosurerss2impl.h"
 #include <constants.h>
 
-#include <QRegExp>
-#include <QString>
-#include <QStringList>
+#include <QtCore/QRegExp>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 namespace Syndication {
 

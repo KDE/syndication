@@ -22,7 +22,7 @@
 
 #include "categoryrss2impl.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 

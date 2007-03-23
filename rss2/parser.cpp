@@ -25,9 +25,9 @@
 #include "document.h"
 #include "parser.h"
 
-#include <QDomDocument>
-#include <QDomElement>
-#include <QString>
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RSS2 {

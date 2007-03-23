@@ -30,9 +30,9 @@
 #include <specificitemvisitor.h>
 #include <tools.h>
 
-#include <QDomElement>
-#include <QString>
-#include <QList>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
+#include <QtCore/QList>
 
 namespace Syndication {
 namespace RSS2 {

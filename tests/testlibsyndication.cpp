@@ -27,9 +27,9 @@
 #include "feed.h"
 #include "parsercollection.h"
 
-#include <QByteArray>
-#include <QFile>
-#include <QString>
+#include <QtCore/QByteArray>
+#include <QtCore/QFile>
+#include <QtCore/QString>
 
 #include <iostream>
 

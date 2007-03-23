@@ -29,9 +29,9 @@
 #include "sequence.h"
 #include "statement.h"
 
-#include <QHash>
-#include <QList>
-#include <QString>
+#include <QtCore/QHash>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RDF {

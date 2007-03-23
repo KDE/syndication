@@ -24,9 +24,9 @@
 
 #include <kurl.h>
 
-#include <QDomElement>
-#include <QString>
-#include <QTextStream>
+#include <QtXml/QDomElement>
+#include <QtCore/QString>
+#include <QtCore/QTextStream>
 
 namespace Syndication {
 

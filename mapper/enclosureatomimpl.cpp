@@ -22,7 +22,7 @@
 
 #include "enclosureatomimpl.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 

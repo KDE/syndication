@@ -20,7 +20,7 @@
  *
  */
 
-#include <QString>
+#include <QtCore/QString>
 
 #include "image.h"
 

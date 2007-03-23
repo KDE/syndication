@@ -32,9 +32,9 @@
 #include <specificitemvisitor.h>
 #include <tools.h>
 
-#include <QDomElement>
-#include <QList>
-#include <QString>
+#include <QtXml/QDomElement>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace Atom {

@@ -24,8 +24,8 @@
 #include "nodevisitor.h"
 #include "sequence.h"
 
-#include <QList>
-#include <QString>
+#include <QtCore/QList>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RDF {

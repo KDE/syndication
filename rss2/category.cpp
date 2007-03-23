@@ -23,7 +23,7 @@
 #include "category.h"
 #include "tools.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace RSS2 {

@@ -27,12 +27,12 @@
 #include "feed.h"
 #include "parsercollection.h"
 
-#include <QByteArray>
-#include <QFile>
-#include <QString>
-#include <QStringList>
-#include <QTime>
-#include <QTextStream>
+#include <QtCore/QByteArray>
+#include <QtCore/QFile>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QTime>
+#include <QtCore/QTextStream>
 
 #include <iostream>
 

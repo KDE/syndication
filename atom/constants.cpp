@@ -22,7 +22,7 @@
 
 #include "constants.h"
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 namespace Atom {
