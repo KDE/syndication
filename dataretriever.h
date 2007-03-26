@@ -20,7 +20,7 @@ namespace KIO
     class Job;
 }
 class KJob;
-class KProcess;
+class K3Process;
 class KUrl;
 
 class QByteArray;
@@ -133,8 +133,8 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
         virtual void abort() {}
 
     private Q_SLOTS:
-        void slotOutput(KProcess* process, char* data, int length);
-        void slotExited(KProcess* process);
+        void slotOutput(K3Process* process, char* data, int length);
+        void slotExited(K3Process* process);
 
     private:
         OutputRetriever(const OutputRetriever& other);

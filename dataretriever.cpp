@@ -14,7 +14,7 @@
 
 #include <kio/job.h>
 
-#include <kprocess.h>
+#include <k3process.h>
 #include <kurl.h>
 
 #include <QtCore/QBuffer>
@@ -159,7 +159,7 @@ struct OutputRetriever::OutputRetrieverPrivate
         delete buffer;
     }
 
-    KShellProcess *process;
+    K3ShellProcess *process;
     QBuffer *buffer;
     int lastError;
 };
@@ -182,13 +182,13 @@ void OutputRetriever::retrieveData(const KUrl &url)
     d->buffer = new QBuffer;
     d->buffer->open(QIODevice::WriteOnly);
 
-    d->process = new KShellProcess();
-    connect(d->process, SIGNAL(processExited(KProcess*)),
-            SLOT(slotExited(KProcess*)));
-    connect(d->process, SIGNAL(receivedStdout(KProcess*, char*, int)),
-            SLOT(slotOutput(KProcess*, char*, int)));
+    d->process = new K3ShellProcess();
+    connect(d->process, SIGNAL(processExited(K3Process*)),
+            SLOT(slotExited(K3Process*)));
+    connect(d->process, SIGNAL(receivedStdout(K3Process*, char*, int)),
+            SLOT(slotOutput(K3Process*, char*, int)));
     *d->process << url.path();
-    d->process->start(KProcess::NotifyOnExit, KProcess::Stdout);
+    d->process->start(K3Process::NotifyOnExit, K3Process::Stdout);
 }
 
 int OutputRetriever::errorCode() const
@@ -196,12 +196,12 @@ int OutputRetriever::errorCode() const
     return d->lastError;
 }
 
-void OutputRetriever::slotOutput(KProcess *, char *data, int length)
+void OutputRetriever::slotOutput(K3Process *, char *data, int length)
 {
     d->buffer->write(data, length);
 }
 
-void OutputRetriever::slotExited(KProcess *p)
+void OutputRetriever::slotExited(K3Process *p)
 {
     if (!p->normalExit())
         d->lastError = p->exitStatus();

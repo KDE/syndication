@@ -18,7 +18,7 @@
 
 #include <QtCore/QObject>
 
-class KProcess;
+class K3Process;
 class KUrl;
 
 namespace KIO
