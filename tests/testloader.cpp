@@ -72,6 +72,9 @@ void TestLibSyndication::slotLoadingComplete(Syndication::Loader* loader,
                     Syndication::FeedPtr feed,
                     Syndication::ErrorCode error)
 {
+    Q_UNUSED(loader)
+    Q_UNUSED(error)
+
     if (feed)
     {
         std::cout << feed->debugInfo().toUtf8().data() << std::endl;
@@ -102,6 +105,7 @@ int main(int argc, char **argv)
     if ( args->count() != 1 ) args->usage();
 
     TestLibSyndication* tester = new TestLibSyndication(args->arg( 0 ));
+    Q_UNUSED(tester)
 
     return app.exec();
 }
