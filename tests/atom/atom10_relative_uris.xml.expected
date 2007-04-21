@@ -12,13 +12,13 @@ label: #This is a category from scheme schemes/localSchemeName. We do not comple
 url: #http://example.com/feed/someicon.png#
 # Image end #######################
 # Item begin ######################
-id: #hash:abab3c2c5b92bf80b874c8da5e727777#
-title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" xmlns:="http://www.w3.org/XML/1998/namespace" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. 
+id: #hash:10077fde5ef2ee17f0b3203a1acd62b5#
+title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. 
                 The link must point to http://example.com/test/test.html.</div>#
 # Item end ########################
 # Item begin ######################
-id: #hash:96e74844f5681ebe28eb57b128617f83#
-title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" xmlns:="http://www.w3.org/XML/1998/namespace" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. The link must point to http://example.com/test/test.html. (not .../parent/test.html)</div>#
+id: #hash:7765858a814b61c2899789bb67bb4543#
+title: #<div xmlns="http://www.w3.org/1999/xhtml" :base="http://example.com/test/" >Example <a xmlns="http://www.w3.org/1999/xhtml" href="test.html" >test</a>. The link must point to http://example.com/test/test.html. (not .../parent/test.html)</div>#
 # Item end ########################
 # Item begin ######################
 id: #hash:a7f3a0ecc5c32d76a07948a88ac0dae4#
