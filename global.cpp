@@ -30,18 +30,17 @@
 #include "rdf/parser.h"
 #include "rss2/parser.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 namespace Syndication {
 
-static ParserCollection<Feed>* parserColl = 0L;
-static KStaticDeleter<ParserCollection<Feed> > parsercollsd;
+typedef ParserCollectionImpl<Syndication::Feed> pcFeed;
+K_GLOBAL_STATIC(pcFeed, parserColl)
 
 ParserCollection<Feed>* parserCollection()
 {
     if (parserColl == 0)
     {
-        parsercollsd.setObject(parserColl, new ParserCollectionImpl<Syndication::Feed>);
         parserColl->registerParser(new RSS2::Parser, new RSS2Mapper);
         parserColl->registerParser(new Atom::Parser, new AtomMapper);
         parserColl->registerParser(new RDF::Parser, new RDFMapper);

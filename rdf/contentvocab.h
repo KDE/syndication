@@ -70,13 +70,10 @@ class SYNDICATION_EXPORT ContentVocab
         PropertyPtr encoded() const;
     
     private:
-
-        static ContentVocab* m_self;
-
         ContentVocab();
 
         class ContentVocabPrivate;
-        ContentVocabPrivate* d;
+        ContentVocabPrivate * const d;
 };
 
 } // namespace RDF

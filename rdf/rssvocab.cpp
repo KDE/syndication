@@ -23,7 +23,7 @@
 #include "property.h"
 #include "rssvocab.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 #include <QtCore/QString>
 #include <QtCore/QStringList>
@@ -69,20 +69,12 @@ RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
 RSSVocab::~RSSVocab()
 {
     delete d;
-    d = 0;
 }
-
-//@cond PRIVATE
-static KStaticDeleter<RSSVocab> rssvocabsd;
-//@endcond
-
-RSSVocab* RSSVocab::m_self = 0;
 
 RSSVocab* RSSVocab::self()
 {
-    if (m_self == 0)
-        rssvocabsd.setObject(m_self, new RSSVocab);
-    return m_self;
+    K_GLOBAL_STATIC(RSSVocab, sSelf)
+    return sSelf;
 }
         
 const QString& RSSVocab::namespaceURI() const
@@ -188,20 +180,12 @@ RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
 RSS09Vocab::~RSS09Vocab()
 {
     delete d;
-    d = 0;
 }
-
-//@cond PRIVATE
-static KStaticDeleter<RSS09Vocab> rss09vocabsd;
-//@endcond
-
-RSS09Vocab* RSS09Vocab::m_self = 0;
 
 RSS09Vocab* RSS09Vocab::self()
 {
-    if (m_self == 0)
-        rss09vocabsd.setObject(m_self, new RSS09Vocab);
-    return m_self;
+    K_GLOBAL_STATIC(RSS09Vocab, sSelf)
+    return sSelf;
 }
         
 const QString& RSS09Vocab::namespaceURI() const

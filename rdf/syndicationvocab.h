@@ -85,13 +85,10 @@ class SYNDICATION_EXPORT SyndicationVocab
         PropertyPtr updateBase() const;
                 
     private:
-        
-        static SyndicationVocab* m_self;
-        
         SyndicationVocab();
 
         class SyndicationVocabPrivate;
-        SyndicationVocabPrivate* d;
+        SyndicationVocabPrivate * const d;
 };
 
 } // namespace RDF

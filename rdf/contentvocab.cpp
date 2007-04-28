@@ -23,7 +23,7 @@
 #include "contentvocab.h"
 #include "property.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 #include <QtCore/QString>
 
@@ -51,20 +51,12 @@ ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 ContentVocab::~ContentVocab()
 {
     delete d;
-    d = 0;
 }
-
-//@cond PRIVATE
-static KStaticDeleter<ContentVocab> contentvocabsd;
-//@endcond
-
-ContentVocab* ContentVocab::m_self = 0;
 
 ContentVocab* ContentVocab::self()
 {
-    if (m_self == 0)
-        contentvocabsd.setObject(m_self, new ContentVocab);
-    return m_self;
+    K_GLOBAL_STATIC(ContentVocab, sSelf)
+    return sSelf;
 }
         
 const QString& ContentVocab::namespaceURI() const

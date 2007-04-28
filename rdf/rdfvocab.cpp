@@ -24,7 +24,7 @@
 #include "property.h"
 #include "rdfvocab.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 #include <QtCore/QString>
 
@@ -41,16 +41,10 @@ class RDFVocab::RDFVocabPrivate
         PropertyPtr li;
 };
 
-/** @internal */
-static KStaticDeleter<RDFVocab> rdfvocabsd;
-
-RDFVocab* RDFVocab::m_self = 0;
-
 RDFVocab* RDFVocab::self()
 {
-    if (m_self == 0)
-        rdfvocabsd.setObject(m_self, new RDFVocab);
-    return m_self;
+    K_GLOBAL_STATIC(RDFVocab, sSelf)
+    return sSelf;
 }
 
 RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
@@ -67,7 +61,6 @@ RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
 RDFVocab::~RDFVocab()
 {
     delete d;
-    d = 0;
 }
 
 ResourcePtr RDFVocab::seq()

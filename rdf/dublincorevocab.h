@@ -148,13 +148,10 @@ class SYNDICATION_EXPORT DublinCoreVocab
         PropertyPtr type() const;
 
     private:
-
-        static DublinCoreVocab* m_self;
-
         DublinCoreVocab();
 
         class DublinCoreVocabPrivate;
-        DublinCoreVocabPrivate* d;
+        DublinCoreVocabPrivate * const d;
 };
 
 } // namespace RDF

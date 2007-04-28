@@ -127,14 +127,10 @@ class SYNDICATION_EXPORT RSSVocab
         PropertyPtr textinput() const;
 
     private:
-
-        static RSSVocab* m_self;
-
-        
         RSSVocab();
         
         class RSSVocabPrivate;
-        RSSVocabPrivate* d;
+        RSSVocabPrivate * const d;
 };
 
 /**
@@ -229,13 +225,10 @@ class SYNDICATION_EXPORT RSS09Vocab
         QStringList classes() const;
 
     private:
-
-        static RSS09Vocab* m_self;
-
         RSS09Vocab();
 
         class RSS09VocabPrivate;
-        RSS09VocabPrivate* d;
+        RSS09VocabPrivate * const d;
 };
 
 } // namespace RDF

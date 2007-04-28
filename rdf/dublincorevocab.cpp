@@ -23,7 +23,7 @@
 #include "dublincorevocab.h"
 #include "property.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 #include <QtCore/QString>
 
@@ -79,20 +79,12 @@ DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 DublinCoreVocab::~DublinCoreVocab()
 {
     delete d;
-    d = 0;
 }
-
-//@cond PRIVATE
-static KStaticDeleter<DublinCoreVocab> dublincoresd;
-//@endcond
-
-DublinCoreVocab* DublinCoreVocab::m_self = 0;
 
 DublinCoreVocab* DublinCoreVocab::self()
 {
-    if (m_self == 0)
-        dublincoresd.setObject(m_self, new DublinCoreVocab);
-    return m_self;
+    K_GLOBAL_STATIC(DublinCoreVocab, sSelf)
+    return sSelf;
 }
         
 const QString& DublinCoreVocab::namespaceURI() const

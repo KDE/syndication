@@ -23,7 +23,7 @@
 #include "property.h"
 #include "syndicationvocab.h"
 
-#include <kstaticdeleter.h>
+#include <kglobal.h>
 
 #include <QtCore/QString>
 
@@ -55,21 +55,12 @@ SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 SyndicationVocab::~SyndicationVocab()
 {
     delete d;
-    d = 0;
 }
-
-
-//@cond PRIVATE
-static KStaticDeleter<SyndicationVocab> syndicationvocabsd;
-//@endcond
-
-SyndicationVocab* SyndicationVocab::m_self = 0;
 
 SyndicationVocab* SyndicationVocab::self()
 {
-    if (m_self == 0)
-        syndicationvocabsd.setObject(m_self, new SyndicationVocab);
-    return m_self;
+    K_GLOBAL_STATIC(SyndicationVocab, sSelf)
+    return sSelf;
 }
         
 const QString& SyndicationVocab::namespaceURI() const
