@@ -79,9 +79,6 @@ class SYNDICATION_EXPORT RDFVocab
         PropertyPtr li();
         
     private:
-        
-        static RDFVocab* m_self;
-        
         RDFVocab();
                 
         class RDFVocabPrivate;

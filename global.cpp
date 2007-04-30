@@ -30,7 +30,7 @@
 #include "rdf/parser.h"
 #include "rss2/parser.h"
 
-#include <kglobal.h>
+#include <QtCore/QCoreApplication>
 
 namespace {
     static bool collectionIsInitialized = false;
@@ -38,13 +38,20 @@ namespace {
 
 namespace Syndication {
 
-typedef ParserCollectionImpl<Syndication::Feed> pcFeed;
-K_GLOBAL_STATIC(pcFeed, parserColl)
+static ParserCollectionImpl<Syndication::Feed> *parserColl = 0;
+// only executed when then was a QCoreApplication
+static void cleanupParserColl()
+{
+    delete parserColl;
+    parserColl = 0;
+}
 
 ParserCollection<Feed>* parserCollection()
 {
     if (!collectionIsInitialized)
     {
+        parserColl = new ParserCollectionImpl<Syndication::Feed>;
+        qAddPostRoutine(cleanupParserColl);
         parserColl->registerParser(new RSS2::Parser, new RSS2Mapper);
         parserColl->registerParser(new Atom::Parser, new AtomMapper);
         parserColl->registerParser(new RDF::Parser, new RDFMapper);
