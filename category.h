@@ -23,14 +23,14 @@
 #ifndef SYNDICATION_CATEGORY_H
 #define SYNDICATION_CATEGORY_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
 namespace Syndication {
 
 class Category;
-typedef SharedPtr<Category> CategoryPtr;
+typedef boost::shared_ptr<Category> CategoryPtr;
 
 /**
  * A category for categorizing items or whole feeds.

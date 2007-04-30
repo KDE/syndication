@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_DOCUMENTSOURCE_H
 #define SYNDICATION_DOCUMENTSOURCE_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -129,7 +129,7 @@ class SYNDICATION_EXPORT DocumentSource
     private:
 
         class DocumentSourcePrivate;
-        SharedPtr<DocumentSourcePrivate> d;
+        boost::shared_ptr<DocumentSourcePrivate> d;
 };
 
 } // namespace Syndication

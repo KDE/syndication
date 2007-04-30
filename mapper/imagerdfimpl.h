@@ -29,7 +29,7 @@
 namespace Syndication {
     
 class ImageRDFImpl;
-typedef SharedPtr<ImageRDFImpl> ImageRDFImplPtr;
+typedef boost::shared_ptr<ImageRDFImpl> ImageRDFImplPtr;
 
 /**
  *

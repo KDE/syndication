@@ -27,7 +27,7 @@
 #include <syndication/rdf/property.h>
 #include <syndication/rdf/sequence.h>
 #include <syndication/rdf/statement.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 #include <syndication/ksyndication.h>
 
 #include <QtCore/QString>
@@ -247,7 +247,7 @@ class SYNDICATION_EXPORT Model
 
     private:
         class ModelPrivate;
-        SharedPtr<ModelPrivate> d;
+        boost::shared_ptr<ModelPrivate> d;
 };
 
 

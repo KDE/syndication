@@ -140,13 +140,13 @@ class Model::ModelPrivate
     {
         if (!initialized)
         {
-            nullLiteral = new Literal();
+            nullLiteral = LiteralPtr( new Literal() );
             nullLiteral->setModel(*model);
-            nullProperty = new Property();
+            nullProperty = PropertyPtr( new Property() );
             nullProperty->setModel(*model);
-            nullResource = new Resource();
+            nullResource = ResourcePtr( new Resource() );
             nullResource->setModel(*model);
-            nullStatement = new Statement();
+            nullStatement = StatementPtr( new Statement() );
             initialized = true;
         }
     }
@@ -188,7 +188,7 @@ PropertyPtr Model::createProperty(const QString& uri)
     }
     else
     {
-        prop = new Property(uri);
+        prop = PropertyPtr( new Property(uri) );
         prop->setModel(*this);
         // if there is a resource object with the same uri, replace
         // the resource object by the new property object and reuse the id
@@ -213,7 +213,7 @@ ResourcePtr Model::createResource(const QString& uri)
     }
     else
     {
-        res = new Resource(uri);
+        res = ResourcePtr( new Resource(uri) );
         res->setModel(*this);
         d->addToHashes(res);
     }
@@ -231,7 +231,7 @@ SequencePtr Model::createSequence(const QString& uri)
     }
     else
     {
-        seq = new Sequence(uri);
+        seq = SequencePtr( new Sequence(uri) );
         seq->setModel(*this);
         // if there is a resource object with the same uri, replace
         // the resource object by the new sequence object and reuse the id
@@ -276,7 +276,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
     
     if (!d->nodes.contains(subjInternal->id()))
     {
-        subjInternal = subject->clone();
+        subjInternal = ResourcePtr( subject->clone() );
         subjInternal->setModel(*this);
         d->addToHashes(subjInternal);
     }
@@ -285,7 +285,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
     
     if (!d->nodes.contains(predInternal->id()))
     {
-        predInternal = predicate->clone();
+        predInternal = PropertyPtr( predicate->clone() );
         predInternal->setModel(*this);
         d->addToHashes(predInternal);
     }
@@ -294,7 +294,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
             
     if (!d->nodes.contains(objInternal->id()))
     {
-        objInternal = object->clone();
+        objInternal = NodePtr( object->clone() );
         objInternal->setModel(*this);
         d->addToHashes(objInternal);
     }
@@ -310,7 +310,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
             
     if (!d->statements.contains(key))
     {
-        stmt = new Statement(subjInternal, predInternal, objInternal);
+        stmt = StatementPtr( new Statement(subjInternal, predInternal, objInternal) );
         d->addToHashes(stmt, key);
     }
     else
@@ -447,7 +447,7 @@ ResourcePtr Model::resourceByID(uint id) const
     {
         NodePtr node = d->nodes[id];
         if (node->isResource())
-            return node;
+            return boost::static_pointer_cast<Resource>(node);
         else
             return d->nullResource;
     }
@@ -463,7 +463,7 @@ PropertyPtr Model::propertyByID(uint id) const
     {
         NodePtr node = d->nodes[id];
         if (node->isProperty())
-            return node;
+            return  boost::static_pointer_cast<Property>(node);
         else
             return d->nullProperty;
     }
@@ -479,7 +479,7 @@ LiteralPtr Model::literalByID(uint id) const
     {
         NodePtr node = d->nodes[id];
         if (node->isLiteral())
-            return node;
+            return boost::static_pointer_cast<Literal>(node);
         else
             return d->nullLiteral;
     }

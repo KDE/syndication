@@ -37,7 +37,7 @@ class Sequence::SequencePrivate
     QList<NodePtr> items;
 };
 
-Sequence::Sequence() : Resource(), d(0)
+Sequence::Sequence() : Resource(), d()
 {
 }
 
@@ -56,7 +56,7 @@ Sequence::~Sequence()
 }
 void Sequence::accept(NodeVisitor* visitor, NodePtr ptr)
 {
-    SequencePtr sptr = ptr;
+    SequencePtr sptr = boost::static_pointer_cast<Sequence>(ptr);
     if (!visitor->visitSequence(sptr))
         Resource::accept(visitor, ptr);
 }

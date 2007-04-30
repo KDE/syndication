@@ -53,9 +53,9 @@ RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
 
     d->namespaceURI = ns;
 
-    d->seq = new Resource(ns + QString::fromUtf8("Seq"));
-    d->type = new Property(ns + QString::fromUtf8("type"));
-    d->li = new Property(ns + QString::fromUtf8("li"));
+    d->seq = ResourcePtr(new Resource(ns + QString::fromUtf8("Seq")));
+    d->type = PropertyPtr(new Property(ns + QString::fromUtf8("type")));
+    d->li = PropertyPtr(new Property(ns + QString::fromUtf8("li")));
 }
 
 RDFVocab::~RDFVocab()

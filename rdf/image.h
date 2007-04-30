@@ -31,7 +31,7 @@ namespace RDF {
 
 class Resource;
 //@cond PRIVATE
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 //@endcond
 
 /**

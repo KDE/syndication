@@ -90,7 +90,7 @@ class SYNDICATION_EXPORT ParserCollection
          * @return The feed document parsed from the source, or NULL if no
          * parser accepted the source.
          */
-        virtual SharedPtr<T> parse(const DocumentSource& source,
+        virtual boost::shared_ptr<T> parse(const DocumentSource& source,
                             const QString& formatHint=QString()) = 0;
 
 

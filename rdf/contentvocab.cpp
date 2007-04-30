@@ -44,7 +44,7 @@ ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
     
     d->namespaceURI = ns;
     
-    d->encoded = new Property(ns + QString::fromUtf8("encoded"));
+    d->encoded = PropertyPtr( new Property(ns + QString::fromUtf8("encoded")) );
     
 }
 

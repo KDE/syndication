@@ -1,3 +1,5 @@
+find_package( Boost REQUIRED )
+macro_log_feature(Boost_FOUND "boost" "Boost C++ Libraries" "http://www.boost.org/" TRUE "" "Required by libsyndication")
 
 add_subdirectory( tests ) 
 
@@ -127,6 +129,6 @@ install( FILES ksyndication.h syndication.h specificdocument.h abstractparser.h
                parsercollection.h documentvisitor.h documentsource.h
                elementwrapper.h item.h feed.h category.h image.h         
                enclosure.h person.h global.h dataretriever.h loader.h 
-               sharedptr.h constants.h mapper.h specificitem.h
+               constants.h mapper.h specificitem.h
                specificitemvisitor.h tools.h
          DESTINATION ${INCLUDE_INSTALL_DIR}/syndication )

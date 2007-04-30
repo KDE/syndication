@@ -29,7 +29,7 @@
 namespace Syndication {
 
 class ItemRSS2Impl;
-typedef SharedPtr<ItemRSS2Impl> ItemRSS2ImplPtr;
+typedef boost::shared_ptr<ItemRSS2Impl> ItemRSS2ImplPtr;
 
 /**
  * @internal

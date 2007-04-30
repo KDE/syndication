@@ -25,7 +25,7 @@
 
 #include <syndication/rss2/document.h>
 #include <syndication/elementwrapper.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 #include <syndication/specificitem.h>
 
 #include <ctime>
@@ -58,7 +58,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * Default constructor, creates a null object, for which isNull() is
          * @c true.
          */
-        explicit Item(SharedPtr<Document> doc=SharedPtr<Document>());
+        explicit Item(boost::shared_ptr<Document> doc=boost::shared_ptr<Document>());
 
         /**
          * Creates an Item object wrapping an @c &lt;item> XML element.
@@ -66,7 +66,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
          * @param element The @c &lt;item> element to wrap
          * @param doc the document this item is part of
          */
-        explicit Item(const QDomElement& element, SharedPtr<Document> doc=SharedPtr<Document>());
+        explicit Item(const QDomElement& element, boost::shared_ptr<Document> doc=boost::shared_ptr<Document>());
 
         /**
          * creates a copy of an item. As the d pointer is shared,
@@ -273,7 +273,7 @@ class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::Speci
     private:
 
         class ItemPrivate;
-        SharedPtr<ItemPrivate> d;
+        boost::shared_ptr<ItemPrivate> d;
 };
 
 } // namespace RSS2

@@ -26,15 +26,17 @@
 
 class QString;
 
-namespace Syndication {
+namespace boost {
+    template <class T> class shared_ptr;
+}
 
-template <class T> class SharedPtr;
+namespace Syndication {
 
 namespace RDF {
 
 class Property;
 //@cond PRIVATE
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 //@endcond
 /**
  * Singleton holding RDF class and property constants of the RSS 1.0 content

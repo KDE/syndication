@@ -38,9 +38,9 @@ namespace Syndication {
 /** @internal */
 class RDFMapper : public Mapper<Feed>
 {
-    SharedPtr<Feed> map(SpecificDocumentPtr doc) const
+    boost::shared_ptr<Feed> map(SpecificDocumentPtr doc) const
     {
-        return SharedPtr<Feed>(new FeedRDFImpl(doc));
+        return boost::shared_ptr<Feed>(new FeedRDFImpl(boost::static_pointer_cast<RDF::Document>(doc)));
     }
 };
 

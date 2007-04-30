@@ -24,9 +24,10 @@
 #define SYNDICATION_ATOM_CONTENT_H
 
 #include <syndication/elementwrapper.h>
-#include <syndication/sharedptr.h>
 
 #include <QtCore/QString>
+
+#include <boost/shared_ptr.hpp>
 
 class QByteArray;
 class QDomElement;
@@ -192,7 +193,7 @@ class SYNDICATION_EXPORT Content : public ElementWrapper
 
     private:
         class ContentPrivate;
-        SharedPtr<ContentPrivate> d;
+        boost::shared_ptr<ContentPrivate> d;
 };
 
 } // namespace Atom

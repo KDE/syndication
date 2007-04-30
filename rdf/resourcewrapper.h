@@ -23,13 +23,13 @@
 #define SYNDICATION_RDF_RESOURCEWRAPPER_H
 
 #include <syndication/ksyndication.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 namespace RDF {
 
 class Resource;
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 
 /**
  * A wrapper for RDF resources. Base class for convenience wrappers
@@ -102,7 +102,7 @@ class SYNDICATION_EXPORT ResourceWrapper
     private:
 
         class ResourceWrapperPrivate;
-        SharedPtr<ResourceWrapperPrivate> d;
+        boost::shared_ptr<ResourceWrapperPrivate> d;
 };
 
 } // namespace RDF

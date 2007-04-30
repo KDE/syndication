@@ -24,7 +24,7 @@
 
 #include "ksyndication.h"
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 class QString;
 
@@ -34,7 +34,7 @@ class DocumentVisitor;
 class SpecificDocument;
 
 //@cond PRIVATE
-typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
+typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
 /**

@@ -28,7 +28,9 @@ class QDomDocument;
 class QDomElement;
 class QString;
 
-template <class T> class SharedPtr;
+namespace boost {
+    template <class T> class shared_ptr;
+}
 
 namespace Syndication {
 namespace RDF {
@@ -36,7 +38,7 @@ namespace RDF {
 class Model;
 class Resource;
 //@cond PRIVATE
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 //@endcond
 
 /**

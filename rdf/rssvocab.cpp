@@ -54,16 +54,16 @@ RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
     
     d->namespaceURI = ns;
     
-    d->title = new Property(ns + QString::fromUtf8("title"));
-    d->link = new Property(ns + QString::fromUtf8("link"));
-    d->description = new Property(ns + QString::fromUtf8("description"));
-    d->name = new Property(ns + QString::fromUtf8("name"));
-    d->url = new Property(ns + QString::fromUtf8("url"));
-    d->image = new Property(ns + QString::fromUtf8("image"));
-    d->textinput = new Property(ns + QString::fromUtf8("textinput"));
-    d->items = new Property(ns + QString::fromUtf8("items"));
-    d->channel = new Resource(ns + QString::fromUtf8("channel"));
-    d->item = new Resource(ns + QString::fromUtf8("item"));
+    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
+    d->link = PropertyPtr( new Property(ns + QString::fromUtf8("link")) );
+    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
+    d->name = PropertyPtr( new Property(ns + QString::fromUtf8("name")) );
+    d->url = PropertyPtr( new Property(ns + QString::fromUtf8("url")) );
+    d->image = PropertyPtr( new Property(ns + QString::fromUtf8("image")) );
+    d->textinput = PropertyPtr( new Property(ns + QString::fromUtf8("textinput")) );
+    d->items = PropertyPtr( new Property(ns + QString::fromUtf8("items")) );
+    d->channel = ResourcePtr( new Resource(ns + QString::fromUtf8("channel")) );
+    d->item = ResourcePtr( new Resource(ns + QString::fromUtf8("item")) );
 }
 
 RSSVocab::~RSSVocab()
@@ -157,23 +157,23 @@ RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
     
     d->namespaceURI = ns;
     
-    d->title = new Property(ns + QString::fromUtf8("title"));
+    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
     d->properties.append(d->title->uri());
-    d->link = new Property(ns + QString::fromUtf8("link"));
+    d->link = PropertyPtr( new Property(ns + QString::fromUtf8("link")) );
     d->properties.append(d->link->uri());
-    d->description = new Property(ns + QString::fromUtf8("description"));
+    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
     d->properties.append(d->description->uri());
-    d->name = new Property(ns + QString::fromUtf8("name"));
+    d->name = PropertyPtr( new Property(ns + QString::fromUtf8("name")) );
     d->properties.append(d->name->uri());
-    d->url = new Property(ns + QString::fromUtf8("url"));
+    d->url = PropertyPtr( new Property(ns + QString::fromUtf8("url")) );
     d->properties.append(d->url->uri());
-    d->image = new Property(ns + QString::fromUtf8("image"));
+    d->image = PropertyPtr( new Property(ns + QString::fromUtf8("image")) );
     d->properties.append(d->image->uri());
-    d->textinput = new Property(ns + QString::fromUtf8("textinput"));
+    d->textinput = PropertyPtr( new Property(ns + QString::fromUtf8("textinput")) );
     d->properties.append(d->textinput->uri());
-    d->item = new Resource(ns + QString::fromUtf8("item"));
+    d->item = ResourcePtr( new Resource(ns + QString::fromUtf8("item")) );
     d->classes.append(d->item->uri());
-    d->channel = new Resource(ns + QString::fromUtf8("channel"));
+    d->channel = ResourcePtr( new Resource(ns + QString::fromUtf8("channel")) );
     d->classes.append(d->channel->uri());
 }
 

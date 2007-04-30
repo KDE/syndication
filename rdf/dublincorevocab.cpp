@@ -58,21 +58,21 @@ DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
     
     d->namespaceURI = ns;
     
-    d->contributor = new Property(ns + QString::fromUtf8("contributor"));
-    d->coverage = new Property(ns + QString::fromUtf8("coverage"));
-    d->creator = new Property(ns + QString::fromUtf8("creator"));
-    d->date = new Property(ns + QString::fromUtf8("date"));
-    d->description = new Property(ns + QString::fromUtf8("description"));
-    d->format = new Property(ns + QString::fromUtf8("format"));
-    d->identifier = new Property(ns + QString::fromUtf8("identifier"));
-    d->language = new Property(ns + QString::fromUtf8("language"));
-    d->publisher = new Property(ns + QString::fromUtf8("publisher"));
-    d->relation = new Property(ns + QString::fromUtf8("relation"));
-    d->rights = new Property(ns + QString::fromUtf8("rights"));
-    d->source = new Property(ns + QString::fromUtf8("source"));
-    d->subject = new Property(ns + QString::fromUtf8("subject"));
-    d->title = new Property(ns + QString::fromUtf8("title"));
-    d->type = new Property(ns + QString::fromUtf8("type"));
+    d->contributor = PropertyPtr( new Property(ns + QString::fromUtf8("contributor")) );
+    d->coverage = PropertyPtr( new Property(ns + QString::fromUtf8("coverage")) );
+    d->creator = PropertyPtr( new Property(ns + QString::fromUtf8("creator")) );
+    d->date = PropertyPtr( new Property(ns + QString::fromUtf8("date")) );
+    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
+    d->format = PropertyPtr( new Property(ns + QString::fromUtf8("format")) );
+    d->identifier = PropertyPtr( new Property(ns + QString::fromUtf8("identifier")) );
+    d->language = PropertyPtr( new Property(ns + QString::fromUtf8("language")) );
+    d->publisher = PropertyPtr( new Property(ns + QString::fromUtf8("publisher")) );
+    d->relation = PropertyPtr( new Property(ns + QString::fromUtf8("relation")) );
+    d->rights = PropertyPtr( new Property(ns + QString::fromUtf8("rights")) );
+    d->source = PropertyPtr( new Property(ns + QString::fromUtf8("source")) );
+    d->subject = PropertyPtr( new Property(ns + QString::fromUtf8("subject")) );
+    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
+    d->type = PropertyPtr( new Property(ns + QString::fromUtf8("type")) );
     
 }
 

@@ -31,7 +31,7 @@
 namespace Syndication {
 
 class ItemRDFImpl;
-typedef SharedPtr<ItemRDFImpl> ItemRDFImplPtr;
+typedef boost::shared_ptr<ItemRDFImpl> ItemRDFImplPtr;
 
 /**
  * @internal

@@ -41,15 +41,15 @@ class Item::ItemPrivate
 {
     public:
         
-        SharedPtr<Document> doc;
+        boost::shared_ptr<Document> doc;
 };
 
-Item::Item(SharedPtr<Document> doc) : ElementWrapper(), d(new ItemPrivate)
+Item::Item(boost::shared_ptr<Document> doc) : ElementWrapper(), d(new ItemPrivate)
 {
     d->doc = doc;
 }
 
-Item::Item(const QDomElement& element, SharedPtr<Document> doc) : ElementWrapper(element), d(new ItemPrivate)
+Item::Item(const QDomElement& element, boost::shared_ptr<Document> doc) : ElementWrapper(element), d(new ItemPrivate)
 {
     d->doc = doc;
 }

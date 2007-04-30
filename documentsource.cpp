@@ -56,7 +56,7 @@ DocumentSource::DocumentSource(const QByteArray& source, const QString& url) : d
     d->parsed = false;
 }
 
-DocumentSource::DocumentSource(const DocumentSource& other) : d(0)
+DocumentSource::DocumentSource(const DocumentSource& other) : d()
 {
      *this = other;
 }

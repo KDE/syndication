@@ -24,7 +24,7 @@
 
 #include <syndication/rdf/property.h>
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 class QString;
 
@@ -33,7 +33,7 @@ namespace RDF {
 
 //@cond PRIVATE
 class Statement;
-typedef SharedPtr<Statement> StatementPtr;
+typedef boost::shared_ptr<Statement> StatementPtr;
 //@endcond
 
 /**
@@ -127,7 +127,7 @@ class SYNDICATION_EXPORT Statement
 
     private:
         class StatementPrivate;
-        SharedPtr<StatementPrivate> d;
+        boost::shared_ptr<StatementPrivate> d;
 };
 
 

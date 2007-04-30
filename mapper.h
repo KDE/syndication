@@ -25,13 +25,15 @@
 
 #include "ksyndication.h"
 
-template <class T> class SharedPtr;
+namespace boost {
+    template <class T> class shared_ptr;
+}
 
 namespace Syndication {
 
 class SpecificDocument;
 //@cond PRIVATE
-typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
+typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
 /**
@@ -128,7 +130,7 @@ class SYNDICATION_EXPORT Mapper
          * @return a newly created object implementing the abstraction
          * @c T.
          */
-        virtual SharedPtr<T> map(SpecificDocumentPtr doc) const = 0;
+        virtual boost::shared_ptr<T> map(SpecificDocumentPtr doc) const = 0;
 };
 
 } // namespace syndication

@@ -53,7 +53,7 @@ class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
 
         virtual ~ParserCollectionImpl();
 
-        SharedPtr<T> parse(const DocumentSource& source,
+        boost::shared_ptr<T> parse(const DocumentSource& source,
                             const QString& formatHint=QString());
 
 
@@ -121,7 +121,7 @@ void ParserCollectionImpl<T>::changeMapper(const QString& format, Mapper<T>* map
 }
 
 template <class T>
-SharedPtr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const QString& formatHint)
+boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const QString& formatHint)
 {
     m_lastError = Syndication::Success;
 

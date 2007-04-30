@@ -32,7 +32,7 @@ namespace RDF {
 
 //@cond PRIVATE
 class Property;
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 //@endcond
 
 /**

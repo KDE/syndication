@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ITEM_H
 #define SYNDICATION_ITEM_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -37,15 +37,15 @@ namespace Syndication {
 
 //@cond PRIVATE
 class Category;
-typedef SharedPtr<Category> CategoryPtr;
+typedef boost::shared_ptr<Category> CategoryPtr;
 class Enclosure;
-typedef SharedPtr<Enclosure> EnclosurePtr;
+typedef boost::shared_ptr<Enclosure> EnclosurePtr;
 class Item;
-typedef SharedPtr<Item> ItemPtr;
+typedef boost::shared_ptr<Item> ItemPtr;
 class Person;
-typedef SharedPtr<Person> PersonPtr;
+typedef boost::shared_ptr<Person> PersonPtr;
 class SpecificItem;
-typedef SharedPtr<SpecificItem> SpecificItemPtr;
+typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
 //@endcond
     
 /**

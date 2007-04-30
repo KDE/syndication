@@ -29,7 +29,7 @@
 namespace Syndication {
     
 class EnclosureAtomImpl;
-typedef SharedPtr<EnclosureAtomImpl> EnclosureAtomImplPtr;
+typedef boost::shared_ptr<EnclosureAtomImpl> EnclosureAtomImplPtr;
 
 /**
  *

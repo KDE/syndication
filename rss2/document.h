@@ -44,7 +44,7 @@ class Document;
 class Image;
 class Item;
 class TextInput;
-typedef SharedPtr<Document> DocumentPtr;
+typedef boost::shared_ptr<Document> DocumentPtr;
 
 /**
  * document implementation, representing an RSS feed from the 0.91-0.94/2.0
@@ -311,7 +311,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
         explicit Document(const QDomElement& element);
 
         class DocumentPrivate;
-        SharedPtr<DocumentPrivate> d;
+        boost::shared_ptr<DocumentPrivate> d;
 
 };
 

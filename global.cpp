@@ -32,6 +32,10 @@
 
 #include <kglobal.h>
 
+namespace {
+    static bool collectionIsInitialized = false;
+}
+
 namespace Syndication {
 
 typedef ParserCollectionImpl<Syndication::Feed> pcFeed;
@@ -39,11 +43,12 @@ K_GLOBAL_STATIC(pcFeed, parserColl)
 
 ParserCollection<Feed>* parserCollection()
 {
-    if (parserColl == 0)
+    if (!collectionIsInitialized)
     {
         parserColl->registerParser(new RSS2::Parser, new RSS2Mapper);
         parserColl->registerParser(new Atom::Parser, new AtomMapper);
         parserColl->registerParser(new RDF::Parser, new RDFMapper);
+        collectionIsInitialized = true;
     }
     return parserColl;
 }

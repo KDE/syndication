@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_PERSON_H
 #define SYNDICATION_PERSON_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -32,7 +32,7 @@ namespace Syndication {
 class Person;
 
 //@cond PRIVATE
-typedef SharedPtr<Person> PersonPtr;
+typedef boost::shared_ptr<Person> PersonPtr;
 //@endcond
 
 /**

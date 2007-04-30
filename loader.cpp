@@ -17,7 +17,7 @@
 
 #include <kio/global.h>
 
-#include "sharedptr.h"
+#include <boost/shared_ptr.hpp>
 #include <kurl.h>
 
 #include <QtCore/QBuffer>

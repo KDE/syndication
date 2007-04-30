@@ -24,7 +24,7 @@
 
 #include "ksyndication.h"
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 class QString;
 
@@ -34,7 +34,7 @@ class SpecificItemVisitor;
 class SpecificItem;
 
 //@cond PRIVATE
-typedef SharedPtr<SpecificItem> SpecificItemPtr;
+typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
 //@endcond
 
 /**

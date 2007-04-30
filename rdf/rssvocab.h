@@ -27,17 +27,19 @@
 class QString;
 class QStringList;
 
-namespace Syndication {
+namespace boost {
+    template <class T> class shared_ptr;
+}
 
-template <class T> class SharedPtr;
+namespace Syndication {
 
 namespace RDF {
 
 //@cond PRIVATE
 class Property;
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 class Resource;
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 //@endcond
 
 /**

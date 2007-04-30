@@ -29,9 +29,9 @@
 namespace Syndication {
 
 class FeedAtomImpl;
-typedef SharedPtr<FeedAtomImpl> FeedAtomImplPtr;
+typedef boost::shared_ptr<FeedAtomImpl> FeedAtomImplPtr;
 class Image;
-typedef SharedPtr<Image> ImagePtr;
+typedef boost::shared_ptr<Image> ImagePtr;
 
 /**
  * @internal

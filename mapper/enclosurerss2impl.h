@@ -30,7 +30,7 @@
 namespace Syndication {
     
 class EnclosureRSS2Impl;
-typedef SharedPtr<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
+typedef boost::shared_ptr<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 
 /**
  *

@@ -57,7 +57,7 @@ Resource::Resource(const Resource& other) : Node(other)
     *this = other;
 }
 
-Resource::Resource() : d(0)
+Resource::Resource() : d()
 {
 }
 
@@ -125,7 +125,7 @@ Resource* Resource::clone() const
 
 void Resource::accept(NodeVisitor* visitor, NodePtr ptr)
 {
-    ResourcePtr rptr = ptr;
+    ResourcePtr rptr = boost::static_pointer_cast<Resource>(ptr);
     if (!visitor->visitResource(rptr))
         Node::accept(visitor, ptr);
 }

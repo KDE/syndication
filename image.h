@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_IMAGE_H
 #define SYNDICATION_IMAGE_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -31,7 +31,7 @@ namespace Syndication {
 
 class Image;
 //@cond PRIVATE
-typedef SharedPtr<Image> ImagePtr;
+typedef boost::shared_ptr<Image> ImagePtr;
 //@endcond
 
 /**

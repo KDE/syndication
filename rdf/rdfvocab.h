@@ -26,16 +26,18 @@
 
 class QString;
 
+namespace boost {
+    template <class T> class shared_ptr;
+}
+
 namespace Syndication {
     
-template <class T> class SharedPtr;
-
 namespace RDF {
 
 class Property;
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 class Resource;
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 
 /**
  * singleton holding RDF vocabulary, expressed as RDF.

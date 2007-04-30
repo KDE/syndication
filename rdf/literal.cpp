@@ -41,7 +41,7 @@ class Literal::LiteralPrivate
         }
 };
 
-Literal::Literal() : d(0)
+Literal::Literal() : d()
 {
 }
 
@@ -57,7 +57,7 @@ Literal* Literal::clone() const
     
 void Literal::accept(NodeVisitor* visitor, NodePtr ptr)
 {
-    LiteralPtr lptr = ptr;
+    LiteralPtr lptr = boost::static_pointer_cast<Syndication::RDF::Literal>(ptr);
     if (!visitor->visitLiteral(lptr))
         Node::accept(visitor, ptr);
 }

@@ -37,9 +37,9 @@ namespace Syndication {
 /** @internal */
 class AtomMapper : public Mapper<Feed>
 {
-    SharedPtr<Feed> map(SpecificDocumentPtr doc) const
+    boost::shared_ptr<Feed> map(SpecificDocumentPtr doc) const
     {
-        return SharedPtr<Feed>(new FeedAtomImpl(doc));
+        return boost::shared_ptr<Feed>(new FeedAtomImpl(boost::static_pointer_cast<Atom::FeedDocument>(doc)));
     }
 };
 

@@ -24,17 +24,18 @@
 #define SYNDICATION_PERSONIMPL_H
 
 #include <syndication/person.h>
-#include <syndication/sharedptr.h>
 #include "ksyndication.h"
 
 #include <QtCore/QString>
+
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 
 class PersonImpl;
 
 //@cond PRIVATE
-typedef SharedPtr<PersonImpl> PersonImplPtr;
+typedef boost::shared_ptr<PersonImpl> PersonImplPtr;
 
 /**
  * @internal

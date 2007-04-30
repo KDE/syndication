@@ -29,7 +29,7 @@
 namespace Syndication {
     
 class CategoryAtomImpl;
-typedef SharedPtr<CategoryAtomImpl> CategoryAtomImplPtr;
+typedef boost::shared_ptr<CategoryAtomImpl> CategoryAtomImplPtr;
 
 /**
  *

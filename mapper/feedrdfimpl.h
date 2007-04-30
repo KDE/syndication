@@ -29,9 +29,9 @@
 namespace Syndication {
 
 class FeedRDFImpl;
-typedef SharedPtr<FeedRDFImpl> FeedRDFImplPtr;
+typedef boost::shared_ptr<FeedRDFImpl> FeedRDFImplPtr;
 class Image;
-typedef SharedPtr<Image> ImagePtr;
+typedef boost::shared_ptr<Image> ImagePtr;
 
 /**
  * @internal

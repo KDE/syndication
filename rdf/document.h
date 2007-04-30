@@ -41,7 +41,7 @@ class Model;
 class SyndicationInfo;
 class TextInput;
 //@cond PRIVATE
-typedef SharedPtr<Document> DocumentPtr;
+typedef boost::shared_ptr<Document> DocumentPtr;
 //@endcond
 
 /**

@@ -40,7 +40,6 @@
 #include <syndication/mapper.h>
 #include <syndication/parsercollection.h>
 #include <syndication/person.h>
-#include <syndication/sharedptr.h>
 #include <syndication/specificitem.h>
 #include <syndication/specificitemvisitor.h>
 #include <syndication/tools.h>

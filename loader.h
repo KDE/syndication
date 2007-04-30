@@ -12,7 +12,7 @@
 #define SYNDICATION_LOADER_H
 
 #include <syndication/global.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -31,7 +31,7 @@ namespace Syndication {
 class DataRetriever;
 class Feed;
 //@cond PRIVATE
-typedef SharedPtr<Feed> FeedPtr;
+typedef boost::shared_ptr<Feed> FeedPtr;
 //@endcond
 
 /**

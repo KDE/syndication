@@ -35,7 +35,7 @@ class ResourceWrapper::ResourceWrapperPrivate
 
 ResourceWrapper::ResourceWrapper() : d(new ResourceWrapperPrivate)
 {
-    d->resource = new Resource();
+    d->resource = ResourcePtr( new Resource() );
 }
 
 ResourceWrapper::ResourceWrapper(const ResourceWrapper& other)

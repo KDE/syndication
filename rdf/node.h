@@ -23,7 +23,7 @@
 #define SYNDICATION_RDF_NODE_H
 
 #include <syndication/ksyndication.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 namespace RDF {
@@ -32,7 +32,7 @@ class Model;
 class Node;
 class NodeVisitor;
 //@cond PRIVATE
-typedef SharedPtr<Node> NodePtr;
+typedef boost::shared_ptr<Node> NodePtr;
 //@endcond
 
 /**

@@ -25,7 +25,7 @@
 #include <syndication/ksyndication.h>
 #include <syndication/rdf/resource.h>
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 template <class T> class QList;
 
@@ -34,7 +34,7 @@ namespace RDF {
 
 //@cond PRIVATE
 class Sequence;
-typedef SharedPtr<Sequence> SequencePtr;
+typedef boost::shared_ptr<Sequence> SequencePtr;
 //@endcond
 
 /**
@@ -110,7 +110,7 @@ class SYNDICATION_EXPORT Sequence : public Resource
     private:
 
         class SequencePrivate;
-        SharedPtr<SequencePrivate> d;
+        boost::shared_ptr<SequencePrivate> d;
 };
 
 } // namespace RDF

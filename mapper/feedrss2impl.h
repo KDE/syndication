@@ -29,9 +29,9 @@
 namespace Syndication {
 
 class FeedRSS2Impl;
-typedef SharedPtr<FeedRSS2Impl> FeedRSS2ImplPtr;
+typedef boost::shared_ptr<FeedRSS2Impl> FeedRSS2ImplPtr;
 class Image;
-typedef SharedPtr<Image> ImagePtr;
+typedef boost::shared_ptr<Image> ImagePtr;
 
 /**
  * @internal

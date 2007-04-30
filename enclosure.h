@@ -23,15 +23,15 @@
 #ifndef SYNDICATION_ENCLOSURE_H
 #define SYNDICATION_ENCLOSURE_H
 
-#include <syndication/sharedptr.h>
-
 #include "ksyndication.h"
+
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 
 class Enclosure;
 //@cond PRIVATE
-typedef SharedPtr<Enclosure> EnclosurePtr;
+typedef boost::shared_ptr<Enclosure> EnclosurePtr;
 //@endcond
 
 /**

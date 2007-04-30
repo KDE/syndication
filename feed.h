@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_FEED_H
 #define SYNDICATION_FEED_H
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -37,17 +37,17 @@ namespace Syndication {
 
 //@cond PRIVATE
 class SpecificDocument;
-typedef SharedPtr<SpecificDocument> SpecificDocumentPtr;
+typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
 class Category;
-typedef SharedPtr<Category> CategoryPtr;
+typedef boost::shared_ptr<Category> CategoryPtr;
 class Feed;
-typedef SharedPtr<Feed> FeedPtr;
+typedef boost::shared_ptr<Feed> FeedPtr;
 class Image;
-typedef SharedPtr<Image> ImagePtr;
+typedef boost::shared_ptr<Image> ImagePtr;
 class Item;
-typedef SharedPtr<Item> ItemPtr;
+typedef boost::shared_ptr<Item> ItemPtr;
 class Person;
-typedef SharedPtr<Person> PersonPtr;
+typedef boost::shared_ptr<Person> PersonPtr;
 //@endcond
 
 /**

@@ -25,7 +25,7 @@
 
 #include <syndication/rdf/node.h>
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 namespace RDF {
@@ -33,7 +33,7 @@ namespace RDF {
 class Literal;
 
 //@cond PRIVATE
-typedef SharedPtr<Literal> LiteralPtr;
+typedef boost::shared_ptr<Literal> LiteralPtr;
 //@endcond
 
 /**
@@ -153,7 +153,8 @@ class SYNDICATION_EXPORT Literal : public Node
 
     private:
         class LiteralPrivate;
-        SharedPtr<LiteralPrivate> d;
+        typedef boost::shared_ptr<LiteralPrivate> LiteralPrivatePtr;
+        LiteralPrivatePtr d;
 };
 
 

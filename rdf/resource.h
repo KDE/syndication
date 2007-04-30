@@ -25,7 +25,7 @@
 
 #include <syndication/rdf/node.h>
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 class QString;
 
@@ -36,12 +36,12 @@ namespace RDF {
 
 class Model;
 class Property;
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 class Resource;
 class Statement;
-typedef SharedPtr<Statement> StatementPtr;
+typedef boost::shared_ptr<Statement> StatementPtr;
 
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 
 /**
  * Resources are the entities in the RDF graph. 
@@ -205,7 +205,8 @@ class SYNDICATION_EXPORT Resource : public Node
     private:
 
         class ResourcePrivate;
-        SharedPtr<ResourcePrivate> d;
+        typedef boost::shared_ptr<ResourcePrivate> ResourcePrivatePtr;
+        ResourcePrivatePtr d;
 };
 
 } // namespace RDF

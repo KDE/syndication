@@ -46,9 +46,9 @@ SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
     
     d->namespaceURI = ns;
     
-    d->updatePeriod = new Property(ns + QString::fromUtf8("updatePeriod"));
-    d->updateFrequency = new Property(ns + QString::fromUtf8("updateFrequency"));
-    d->updateBase = new Property(ns + QString::fromUtf8("updateBase"));
+    d->updatePeriod = PropertyPtr( new Property(ns + QString::fromUtf8("updatePeriod")) );
+    d->updateFrequency = PropertyPtr( new Property(ns + QString::fromUtf8("updateFrequency")) );
+    d->updateBase = PropertyPtr( new Property(ns + QString::fromUtf8("updateBase")) );
     
 }
 

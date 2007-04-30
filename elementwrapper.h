@@ -24,7 +24,7 @@
 
 #include <QtCore/QString>
 
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 #include "ksyndication.h"
 
@@ -293,7 +293,7 @@ class SYNDICATION_EXPORT ElementWrapper
     private:
 
         class ElementWrapperPrivate;
-        SharedPtr<ElementWrapperPrivate> d;
+        boost::shared_ptr<ElementWrapperPrivate> d;
 };
 
 } // namespace Syndication

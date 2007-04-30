@@ -24,23 +24,25 @@
 
 #include <syndication/ksyndication.h>
 
-namespace Syndication {
+namespace boost {
+    template <class T> class shared_ptr;
+}
 
-template <class T> class SharedPtr;
+namespace Syndication {
 
 namespace RDF {
 
 //@cond PRIVATE
 class Literal;
-typedef SharedPtr<Literal> LiteralPtr;
+typedef boost::shared_ptr<Literal> LiteralPtr;
 class Node;
-typedef SharedPtr<Node> NodePtr;
+typedef boost::shared_ptr<Node> NodePtr;
 class Property;
-typedef SharedPtr<Property> PropertyPtr;
+typedef boost::shared_ptr<Property> PropertyPtr;
 class Resource;
-typedef SharedPtr<Resource> ResourcePtr;
+typedef boost::shared_ptr<Resource> ResourcePtr;
 class Sequence;
-typedef SharedPtr<Sequence> SequencePtr;
+typedef boost::shared_ptr<Sequence> SequencePtr;
 //@endcond
 
 /**

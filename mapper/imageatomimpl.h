@@ -31,7 +31,7 @@
 namespace Syndication {
     
 class ImageAtomImpl;
-typedef SharedPtr<ImageAtomImpl> ImageAtomImplPtr;
+typedef boost::shared_ptr<ImageAtomImpl> ImageAtomImplPtr;
 
 /**
  *

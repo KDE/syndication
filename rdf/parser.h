@@ -24,7 +24,7 @@
 
 #include <syndication/rdf/document.h>
 #include <syndication/abstractparser.h>
-#include <syndication/sharedptr.h>
+#include <boost/shared_ptr.hpp>
 
 namespace Syndication {
 
