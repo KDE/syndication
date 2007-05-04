@@ -91,7 +91,7 @@ class SYNDICATION_EXPORT DocumentSource
          *
          * @return the feed source as raw byte array.
          */
-        const QByteArray& asByteArray() const;
+        QByteArray asByteArray() const;
 
         /**
          * returns the size the source array in bytes.
@@ -119,12 +119,12 @@ class SYNDICATION_EXPORT DocumentSource
          *
          * @return XML representation parsed from the raw source
          */
-        const QDomDocument& asDomDocument() const;
+        QDomDocument asDomDocument() const;
 
         /**
          * returns the URL the document source was loaded from
          */
-        const QString& url() const;
+        QString url() const;
 
     private:
 

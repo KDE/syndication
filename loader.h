@@ -144,7 +144,7 @@ class SYNDICATION_EXPORT Loader : public QObject
         /**
          * returns the URL of a feed discovered in the feed source
          */
-        const KUrl& discoveredFeedURL() const;
+        KUrl discoveredFeedURL() const;
 
         /**
          * aborts the loading process

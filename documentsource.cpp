@@ -71,12 +71,12 @@ DocumentSource& DocumentSource::operator=(const DocumentSource& other)
     return *this;
 }
 
-const QByteArray& DocumentSource::asByteArray() const
+QByteArray DocumentSource::asByteArray() const
 {
     return d->array;
 }
 
-const QDomDocument& DocumentSource::asDomDocument() const
+QDomDocument DocumentSource::asDomDocument() const
 {
     if (!d->parsed)
     {
@@ -109,7 +109,7 @@ unsigned int DocumentSource::hash() const
     return d->hash;
 }
 
-const QString& DocumentSource::url() const
+QString DocumentSource::url() const
 {
     return d->url;
 }

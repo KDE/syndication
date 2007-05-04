@@ -113,7 +113,7 @@ void Loader::abort()
     delete this;
 }
 
-const KUrl &Loader::discoveredFeedURL() const
+KUrl Loader::discoveredFeedURL() const
 {
     return d->discoveredFeedURL;
 }
