@@ -20,8 +20,8 @@
  *
  */
 
-#include "property.h"
 #include "syndicationvocab.h"
+#include "property.h"
 
 #include <kglobal.h>
 

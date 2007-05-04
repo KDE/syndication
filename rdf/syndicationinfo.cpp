@@ -20,9 +20,9 @@
  *
  */
 
+#include "syndicationinfo.h"
 #include "property.h"
 #include "statement.h"
-#include "syndicationinfo.h"
 #include "syndicationvocab.h"
 
 #include <tools.h>

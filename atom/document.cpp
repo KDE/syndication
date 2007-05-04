@@ -20,9 +20,9 @@
  *
  */
 
+#include "document.h"
 #include "category.h"
 #include "constants.h"
-#include "document.h"
 #include "entry.h"
 #include "generator.h"
 #include "link.h"

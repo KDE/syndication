@@ -20,12 +20,12 @@
  *
  */
 
-#include <documentsource.h>
-
+#include "parser.h"
 #include "constants.h"
 #include "content.h"
 #include "document.h"
-#include "parser.h"
+
+#include <documentsource.h>
 
 #include <QtXml/QDomAttr>
 #include <QtXml/QDomDocument>

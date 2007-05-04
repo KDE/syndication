@@ -20,9 +20,9 @@
  *
  */
 
+#include <rss2/item.h>
 #include <rss2/category.h>
 #include <rss2/enclosure.h>
-#include <rss2/item.h>
 #include <rss2/source.h>
 #include <rss2/tools_p.h>
 #include <constants.h>

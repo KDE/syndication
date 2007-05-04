@@ -20,11 +20,11 @@
  *
  */
 
+#include "textinput.h"
 #include "rssvocab.h"
 #include "property.h"
 #include "resource.h"
 #include "statement.h"
-#include "textinput.h"
 
 #include <QtCore/QString>
 

@@ -20,9 +20,6 @@
  *
  */
 
-#include <documentvisitor.h>
-#include <tools.h>
-
 #include "document.h"
 #include "dublincore.h"
 #include "image.h"
@@ -34,6 +31,9 @@
 #include "statement.h"
 #include "syndicationinfo.h"
 #include "textinput.h"
+
+#include <documentvisitor.h>
+#include <tools.h>
 
 #include <QtCore/QList>
 #include <QtCore/QString>

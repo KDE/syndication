@@ -20,9 +20,9 @@
  *
  */
 
+#include "rdfvocab.h"
 #include "model.h"
 #include "property.h"
-#include "rdfvocab.h"
 
 #include <kglobal.h>
 

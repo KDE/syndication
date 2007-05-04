@@ -20,8 +20,8 @@
  *
  */
 
-#include "property.h"
 #include "rssvocab.h"
+#include "property.h"
 
 #include <kglobal.h>
 

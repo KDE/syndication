@@ -18,12 +18,12 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  *
-     */
+ */
 
+#include "item.h"
 #include "contentvocab.h"
 #include "document.h"
 #include "dublincore.h"
-#include "item.h"
 #include "model.h"
 #include "rssvocab.h"
 #include "statement.h"

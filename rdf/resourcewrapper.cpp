@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#include "resource.h"
 #include "resourcewrapper.h"
+#include "resource.h"
 
 
 namespace Syndication {

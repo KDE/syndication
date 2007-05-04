@@ -20,8 +20,8 @@
  *
  */
 
-#include "literal.h"
 #include "model.h"
+#include "literal.h"
 #include "nodevisitor.h"
 #include "property.h"
 #include "rdfvocab.h"

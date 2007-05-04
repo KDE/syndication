@@ -20,8 +20,8 @@
  *
  */
 
-#include "constants.h"
 #include "generator.h"
+#include "constants.h"
 
 #include <QtCore/QString>
 

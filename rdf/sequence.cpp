@@ -20,9 +20,9 @@
  *
  */
 
+#include "sequence.h"
 #include "node.h"
 #include "nodevisitor.h"
-#include "sequence.h"
 
 #include <QtCore/QList>
 #include <QtCore/QString>

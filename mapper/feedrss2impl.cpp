@@ -20,8 +20,8 @@
  *
  */
 
-#include "categoryrss2impl.h"
 #include "feedrss2impl.h"
+#include "categoryrss2impl.h"
 #include "imagerss2impl.h"
 #include "itemrss2impl.h"
 #include <personimpl.h>

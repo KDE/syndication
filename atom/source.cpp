@@ -20,12 +20,12 @@
  *
  */
 
+#include "source.h"
 #include "category.h"
 #include "constants.h"
 #include "generator.h"
 #include "link.h"
 #include "person.h"
-#include "source.h"
 #include "atomtools.h"
 
 #include <tools.h>

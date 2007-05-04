@@ -20,10 +20,10 @@
  *
  */
 
+#include "resource.h"
 #include "model.h"
 #include "nodevisitor.h"
 #include "property.h"
-#include "resource.h"
 #include "statement.h"
 
 #include <krandom.h>

@@ -20,8 +20,8 @@
  *
  */
 
-#include "categoryatomimpl.h"
 #include "feedatomimpl.h"
+#include "categoryatomimpl.h"
 #include "imageatomimpl.h"
 #include "itematomimpl.h"
 #include <personimpl.h>

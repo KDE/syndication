@@ -20,11 +20,11 @@
  *
  */
 
+#include "statement.h"
 #include "literal.h"
 #include "model.h"
 #include "property.h"
 #include "resource.h"
-#include "statement.h"
 
 #include <QtCore/QString>
 

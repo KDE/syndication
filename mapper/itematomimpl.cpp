@@ -20,9 +20,9 @@
  *
  */
 
+#include "itematomimpl.h"
 #include "categoryatomimpl.h"
 #include "enclosureatomimpl.h"
-#include "itematomimpl.h"
 
 #include <atom/category.h>
 #include <atom/content.h>

@@ -21,9 +21,9 @@
  *
  */
 
+#include "itemrss2impl.h"
 #include "categoryrss2impl.h"
 #include "enclosurerss2impl.h"
-#include "itemrss2impl.h"
 #include <rss2/category.h>
 #include <rss2/enclosure.h>
 #include <constants.h>

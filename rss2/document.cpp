@@ -20,16 +20,16 @@
  *
  */
 
-#include <constants.h>
-#include <documentvisitor.h>
-#include <tools.h>
-
+#include <rss2/document.h>
 #include <rss2/category.h>
 #include <rss2/cloud.h>
-#include <rss2/document.h>
 #include <rss2/image.h>
 #include <rss2/item.h>
 #include <rss2/textinput.h>
+
+#include <constants.h>
+#include <documentvisitor.h>
+#include <tools.h>
 
 #include <QtXml/QDomDocument>
 #include <QtCore/QList>

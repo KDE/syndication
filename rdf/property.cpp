@@ -20,8 +20,8 @@
  *
  */
 
-#include "nodevisitor.h"
 #include "property.h"
+#include "nodevisitor.h"
 
 namespace Syndication {
 namespace RDF {

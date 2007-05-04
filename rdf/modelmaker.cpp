@@ -20,9 +20,9 @@
  *
  */
 
+#include "modelmaker.h"
 #include "literal.h"
 #include "model.h"
-#include "modelmaker.h"
 #include "property.h"
 #include "rdfvocab.h"
 #include "resource.h"

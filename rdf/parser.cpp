@@ -20,10 +20,10 @@
  *
  */
 
+#include "parser.h"
 #include "document.h"
 #include "model.h"
 #include "modelmaker.h"
-#include "parser.h"
 #include "property.h"
 #include "rdfvocab.h"
 #include "resource.h"
