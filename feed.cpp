@@ -20,8 +20,8 @@
  *
  */
 
-#include "category.h"
 #include "feed.h"
+#include "category.h"
 #include "image.h"
 #include "item.h"
 #include "person.h"

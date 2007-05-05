@@ -20,9 +20,10 @@
  *
  */
 
-#include "documentsource.h"
 #include "global.h"
+#include "documentsource.h"
 #include "parsercollectionimpl.h"
+
 #include "mapper/mapperatomimpl.h"
 #include "mapper/mapperrdfimpl.h"
 #include "mapper/mapperrss2impl.h"

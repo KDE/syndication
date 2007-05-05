@@ -21,8 +21,8 @@
  */
 
 
-#include "specificdocument.h"
 #include "documentvisitor.h"
+#include "specificdocument.h"
 
 namespace Syndication {
 

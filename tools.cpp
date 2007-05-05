@@ -20,8 +20,8 @@
  *
  */
 
-#include "personimpl.h"
 #include "tools.h"
+#include "personimpl.h"
 
 #include <kcharsets.h>
 #include <kcodecs.h> 

@@ -20,9 +20,9 @@
  *
  */
 
-#include <QtCore/QString>
-
 #include "image.h"
+
+#include <QtCore/QString>
 
 namespace Syndication {
 

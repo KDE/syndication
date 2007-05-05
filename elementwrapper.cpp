@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-#include "constants.h"
 #include "elementwrapper.h"
+#include "constants.h"
 
 #include <kurl.h>
 

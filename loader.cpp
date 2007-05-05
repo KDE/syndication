@@ -8,21 +8,21 @@
  * FOR A PARTICULAR PURPOSE. For licensing and distribution details, check the
  * accompanying file 'COPYING'.
  */
+#include "loader.h"
 #include "dataretriever.h"
 #include "documentsource.h"
 #include "feed.h"
 #include "global.h"
-#include "loader.h"
 #include "parsercollection.h"
 
 #include <kio/global.h>
-
-#include <boost/shared_ptr.hpp>
 #include <kurl.h>
 
 #include <QtCore/QBuffer>
 #include <QtCore/QRegExp>
 #include <QtCore/QStringList>
+
+#include <boost/shared_ptr.hpp>
 
 // test: TODO remove
 #include <iostream>

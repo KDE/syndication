@@ -20,9 +20,9 @@
  *
  */
 
+#include "item.h"
 #include "category.h"
 #include "enclosure.h"
-#include "item.h"
 #include "person.h"
 #include "tools.h"
 

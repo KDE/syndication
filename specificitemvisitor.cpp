@@ -21,8 +21,8 @@
  */
 
 
-#include "specificitem.h"
 #include "specificitemvisitor.h"
+#include "specificitem.h"
 
 namespace Syndication {
 
