@@ -20,9 +20,9 @@
  *
  */
 
-#include <QString>
-
 #include "enclosure.h"
+
+#include <QString>
 
 namespace Syndication {
 
