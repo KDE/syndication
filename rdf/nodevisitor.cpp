@@ -19,9 +19,10 @@
  * Boston, MA 02110-1301, USA.
  *
  */
+#include "nodevisitor.h"
+
 #include "node.h"
 #include "literal.h"
-#include "nodevisitor.h"
 #include "property.h"
 #include "resource.h"
 #include "sequence.h"

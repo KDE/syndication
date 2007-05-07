@@ -55,8 +55,7 @@ typedef boost::shared_ptr<FeedDocument> FeedDocumentPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT FeedDocument : public Syndication::SpecificDocument,
-public ElementWrapper
+class SYNDICATION_EXPORT FeedDocument : public Syndication::SpecificDocument, public ElementWrapper
 {
     public:
 

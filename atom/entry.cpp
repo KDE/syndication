@@ -19,11 +19,10 @@
  * Boston, MA 02110-1301, USA.
  *
  */
-
+#include "entry.h"
 #include "category.h"
 #include "constants.h"
 #include "content.h"
-#include "entry.h"
 #include "link.h"
 #include "person.h"
 #include "source.h"

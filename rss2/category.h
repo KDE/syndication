@@ -83,8 +83,6 @@ class SYNDICATION_EXPORT Category : public ElementWrapper
          * @return debug string
          */
         QString debugInfo() const;
-
-
 };
 
 } // namespace RSS2
