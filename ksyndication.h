@@ -25,14 +25,14 @@
 
 #include <kdemacros.h>
 
-#if defined(_WIN32) || defined(_WIN64)
-#ifdef MAKE_SYNDICATION_LIB
-#define SYNDICATION_EXPORT KDE_EXPORT
-#else
-#define SYNDICATION_EXPORT KDE_IMPORT
-#endif
-#else
-#define SYNDICATION_EXPORT KDE_EXPORT
+#ifndef SYNDICATION_EXPORT
+# if defined(MAKE_SYNDICATION_LIB)
+   /* We are building this library */
+#  define SYNDICATION_EXPORT KDE_EXPORT
+# else
+   /* We are using this library */
+#  define SYNDICATION_EXPORT KDE_IMPORT
+# endif
 #endif
 
 #endif // SYNDICATION_KSYNDICATION_H
