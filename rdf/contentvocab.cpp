@@ -23,8 +23,7 @@
 #include "contentvocab.h"
 #include "property.h"
 
-#include <kglobal.h>
-
+#include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
 namespace Syndication {
@@ -36,7 +35,15 @@ class ContentVocab::ContentVocabPrivate
         
     QString namespaceURI;
     PropertyPtr encoded;
+
+    static ContentVocab *sSelf;
+    static void cleanupContentVocab()
+    {
+        delete sSelf;
+        sSelf = 0;
+    }
 };
+ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = 0;
 
 ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 {
@@ -55,8 +62,11 @@ ContentVocab::~ContentVocab()
 
 ContentVocab* ContentVocab::self()
 {
-    K_GLOBAL_STATIC(ContentVocab, sSelf)
-    return sSelf;
+    if(!ContentVocabPrivate::sSelf) {
+        ContentVocabPrivate::sSelf = new ContentVocab;
+        qAddPostRoutine(ContentVocabPrivate::cleanupContentVocab);
+    }
+    return ContentVocabPrivate::sSelf;
 }
         
 const QString& ContentVocab::namespaceURI() const

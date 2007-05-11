@@ -23,8 +23,7 @@
 #include "dublincorevocab.h"
 #include "property.h"
 
-#include <kglobal.h>
-
+#include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
 namespace Syndication {
@@ -50,7 +49,15 @@ class DublinCoreVocab::DublinCoreVocabPrivate
     PropertyPtr subject;
     PropertyPtr title;
     PropertyPtr type;
+
+    static DublinCoreVocab *sSelf;
+    static void cleanupDublinCoreVocab()
+    {
+        delete sSelf;
+        sSelf = 0;
+    }
 };
+DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = 0;
 
 DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 {
@@ -83,8 +90,11 @@ DublinCoreVocab::~DublinCoreVocab()
 
 DublinCoreVocab* DublinCoreVocab::self()
 {
-    K_GLOBAL_STATIC(DublinCoreVocab, sSelf)
-    return sSelf;
+    if(!DublinCoreVocabPrivate::sSelf) {
+        DublinCoreVocabPrivate::sSelf = new DublinCoreVocab;
+        qAddPostRoutine(DublinCoreVocabPrivate::cleanupDublinCoreVocab);
+    }
+    return DublinCoreVocabPrivate::sSelf;
 }
         
 const QString& DublinCoreVocab::namespaceURI() const

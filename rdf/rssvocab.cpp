@@ -23,8 +23,7 @@
 #include "rssvocab.h"
 #include "property.h"
 
-#include <kglobal.h>
-
+#include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
@@ -46,7 +45,15 @@ class RSSVocab::RSSVocabPrivate
     ResourcePtr item;
     PropertyPtr items;
     PropertyPtr textinput;
+
+    static RSSVocab *sSelf;
+    static void cleanupRSSVocab()
+    {
+        delete sSelf;
+        sSelf = 0;
+    }
 };
+RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = 0;
 
 RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
 {
@@ -73,8 +80,11 @@ RSSVocab::~RSSVocab()
 
 RSSVocab* RSSVocab::self()
 {
-    K_GLOBAL_STATIC(RSSVocab, sSelf)
-    return sSelf;
+    if(!RSSVocabPrivate::sSelf) {
+        RSSVocabPrivate::sSelf = new RSSVocab;
+        qAddPostRoutine(RSSVocabPrivate::cleanupRSSVocab);
+    }
+    return RSSVocabPrivate::sSelf;
 }
         
 const QString& RSSVocab::namespaceURI() const
@@ -149,7 +159,15 @@ class RSS09Vocab::RSS09VocabPrivate
         PropertyPtr textinput;
         QStringList properties;
         QStringList classes;
+
+        static RSS09Vocab *sSelf;
+        static void cleanupRSS09Vocab()
+        {
+            delete sSelf;
+            sSelf = 0;
+        }
 };
+RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = 0;
 
 RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
 {
@@ -184,8 +202,11 @@ RSS09Vocab::~RSS09Vocab()
 
 RSS09Vocab* RSS09Vocab::self()
 {
-    K_GLOBAL_STATIC(RSS09Vocab, sSelf)
-    return sSelf;
+    if(!RSS09VocabPrivate::sSelf) {
+        RSS09VocabPrivate::sSelf = new RSS09Vocab;
+        qAddPostRoutine(RSS09VocabPrivate::cleanupRSS09Vocab);
+    }
+    return RSS09VocabPrivate::sSelf;
 }
         
 const QString& RSS09Vocab::namespaceURI() const

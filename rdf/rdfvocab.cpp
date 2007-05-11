@@ -24,8 +24,7 @@
 #include "model.h"
 #include "property.h"
 
-#include <kglobal.h>
-
+#include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
 namespace Syndication {
@@ -39,12 +38,23 @@ class RDFVocab::RDFVocabPrivate
         ResourcePtr seq;
         PropertyPtr type;
         PropertyPtr li;
+
+        static RDFVocab *sSelf;
+        static void cleanupRDFVocab()
+        {
+            delete sSelf;
+            sSelf = 0;
+        }
 };
+RDFVocab *RDFVocab::RDFVocabPrivate::sSelf = 0;
 
 RDFVocab* RDFVocab::self()
 {
-    K_GLOBAL_STATIC(RDFVocab, sSelf)
-    return sSelf;
+    if(!RDFVocabPrivate::sSelf) {
+        RDFVocabPrivate::sSelf = new RDFVocab;
+        qAddPostRoutine(RDFVocabPrivate::cleanupRDFVocab);
+    }
+    return RDFVocabPrivate::sSelf;
 }
 
 RDFVocab::RDFVocab() : d(new RDFVocabPrivate)

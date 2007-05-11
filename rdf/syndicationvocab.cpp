@@ -23,8 +23,7 @@
 #include "syndicationvocab.h"
 #include "property.h"
 
-#include <kglobal.h>
-
+#include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
 namespace Syndication {
@@ -38,7 +37,15 @@ class SyndicationVocab::SyndicationVocabPrivate
     PropertyPtr updatePeriod;
     PropertyPtr updateFrequency;
     PropertyPtr updateBase;
+
+    static SyndicationVocab *sSelf;
+    static void cleanupSyndicationVocab()
+    {
+        delete sSelf;
+        sSelf = 0;
+    }
 };
+SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = 0;
 
 SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 {
@@ -59,8 +66,11 @@ SyndicationVocab::~SyndicationVocab()
 
 SyndicationVocab* SyndicationVocab::self()
 {
-    K_GLOBAL_STATIC(SyndicationVocab, sSelf)
-    return sSelf;
+    if(!SyndicationVocabPrivate::sSelf) {
+        SyndicationVocabPrivate::sSelf = new SyndicationVocab;
+        qAddPostRoutine(SyndicationVocabPrivate::cleanupSyndicationVocab);
+    }
+    return SyndicationVocabPrivate::sSelf;
 }
         
 const QString& SyndicationVocab::namespaceURI() const
