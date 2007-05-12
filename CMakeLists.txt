@@ -7,6 +7,7 @@ add_subdirectory( atom )
 add_subdirectory( rdf ) 
 add_subdirectory( rss2 ) 
 
+include_directories( ${Boost_INCLUDE_DIR} )
 
 ########### next target ###############
 

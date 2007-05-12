@@ -3,7 +3,7 @@ if(KDE4_BUILD_TESTS)
 # Test apps should be in the bin dir so that add_test can locate them
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
-include_directories( ${CMAKE_SOURCE_DIR}/syndication/   )
+include_directories( ${CMAKE_SOURCE_DIR}/syndication/ ${Boost_INCLUDE_DIR} )
 
 
 ########### next target ###############
