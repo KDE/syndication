@@ -32,6 +32,14 @@ namespace RDF {
 class SyndicationVocab::SyndicationVocabPrivate
 {
     public:
+    SyndicationVocabPrivate() {
+        sSelf = new SyndicationVocab;
+        qAddPostRoutine(cleanupSyndicationVocab);
+    }
+    ~SyndicationVocabPrivate() {
+        qRemovePostRoutine(cleanupSyndicationVocab);
+        cleanupSyndicationVocab();
+    }
         
     QString namespaceURI;
     PropertyPtr updatePeriod;
@@ -66,11 +74,8 @@ SyndicationVocab::~SyndicationVocab()
 
 SyndicationVocab* SyndicationVocab::self()
 {
-    if(!SyndicationVocabPrivate::sSelf) {
-        SyndicationVocabPrivate::sSelf = new SyndicationVocab;
-        qAddPostRoutine(SyndicationVocabPrivate::cleanupSyndicationVocab);
-    }
-    return SyndicationVocabPrivate::sSelf;
+    static SyndicationVocabPrivate p;
+    return p.sSelf;
 }
         
 const QString& SyndicationVocab::namespaceURI() const

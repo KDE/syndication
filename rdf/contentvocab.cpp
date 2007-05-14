@@ -32,6 +32,14 @@ namespace RDF {
 class ContentVocab::ContentVocabPrivate
 {
     public:
+    ContentVocabPrivate() {
+        sSelf = new ContentVocab;
+        qAddPostRoutine(cleanupContentVocab);
+    }
+    ~ContentVocabPrivate() {
+        qRemovePostRoutine(cleanupContentVocab);
+        cleanupContentVocab();
+    }
         
     QString namespaceURI;
     PropertyPtr encoded;
@@ -62,11 +70,8 @@ ContentVocab::~ContentVocab()
 
 ContentVocab* ContentVocab::self()
 {
-    if(!ContentVocabPrivate::sSelf) {
-        ContentVocabPrivate::sSelf = new ContentVocab;
-        qAddPostRoutine(ContentVocabPrivate::cleanupContentVocab);
-    }
-    return ContentVocabPrivate::sSelf;
+    static ContentVocabPrivate p;
+    return p.sSelf;
 }
         
 const QString& ContentVocab::namespaceURI() const

@@ -32,6 +32,14 @@ namespace RDF {
 class DublinCoreVocab::DublinCoreVocabPrivate
 {
     public:
+    DublinCoreVocabPrivate() {
+        sSelf = new DublinCoreVocab;
+        qAddPostRoutine(cleanupDublinCoreVocab);
+    }
+    ~DublinCoreVocabPrivate() {
+        qRemovePostRoutine(cleanupDublinCoreVocab);
+        cleanupDublinCoreVocab();
+    }
         
     QString namespaceURI;
     PropertyPtr contributor;
@@ -90,11 +98,8 @@ DublinCoreVocab::~DublinCoreVocab()
 
 DublinCoreVocab* DublinCoreVocab::self()
 {
-    if(!DublinCoreVocabPrivate::sSelf) {
-        DublinCoreVocabPrivate::sSelf = new DublinCoreVocab;
-        qAddPostRoutine(DublinCoreVocabPrivate::cleanupDublinCoreVocab);
-    }
-    return DublinCoreVocabPrivate::sSelf;
+    static DublinCoreVocabPrivate p;
+    return p.sSelf;
 }
         
 const QString& DublinCoreVocab::namespaceURI() const
