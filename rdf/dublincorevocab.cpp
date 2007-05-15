@@ -32,10 +32,6 @@ namespace RDF {
 class DublinCoreVocab::DublinCoreVocabPrivate
 {
     public:
-    DublinCoreVocabPrivate() {
-        sSelf = new DublinCoreVocab;
-        qAddPostRoutine(cleanupDublinCoreVocab);
-    }
     ~DublinCoreVocabPrivate() {
         qRemovePostRoutine(cleanupDublinCoreVocab);
         cleanupDublinCoreVocab();
@@ -99,6 +95,10 @@ DublinCoreVocab::~DublinCoreVocab()
 DublinCoreVocab* DublinCoreVocab::self()
 {
     static DublinCoreVocabPrivate p;
+    if(!p.sSelf) {
+        p.sSelf = new DublinCoreVocab;
+        qAddPostRoutine(DublinCoreVocabPrivate::cleanupDublinCoreVocab);
+    }
     return p.sSelf;
 }
         

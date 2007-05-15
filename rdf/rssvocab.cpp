@@ -33,10 +33,6 @@ namespace RDF {
 class RSSVocab::RSSVocabPrivate
 {
     public:
-    RSSVocabPrivate() {
-        sSelf = new RSSVocab;
-        qAddPostRoutine(cleanupRSSVocab);
-    }
     ~RSSVocabPrivate() {
         qRemovePostRoutine(cleanupRSSVocab);
         cleanupRSSVocab();
@@ -89,6 +85,10 @@ RSSVocab::~RSSVocab()
 RSSVocab* RSSVocab::self()
 {
     static RSSVocabPrivate p;
+    if(!p.sSelf) {
+        p.sSelf = new RSSVocab;
+        qAddPostRoutine(RSSVocabPrivate::cleanupRSSVocab);
+    }
     return p.sSelf;
 }
         

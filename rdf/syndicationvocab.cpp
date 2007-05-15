@@ -32,10 +32,6 @@ namespace RDF {
 class SyndicationVocab::SyndicationVocabPrivate
 {
     public:
-    SyndicationVocabPrivate() {
-        sSelf = new SyndicationVocab;
-        qAddPostRoutine(cleanupSyndicationVocab);
-    }
     ~SyndicationVocabPrivate() {
         qRemovePostRoutine(cleanupSyndicationVocab);
         cleanupSyndicationVocab();
@@ -75,6 +71,10 @@ SyndicationVocab::~SyndicationVocab()
 SyndicationVocab* SyndicationVocab::self()
 {
     static SyndicationVocabPrivate p;
+    if(!p.sSelf) {
+        p.sSelf = new SyndicationVocab;
+        qAddPostRoutine(SyndicationVocabPrivate::cleanupSyndicationVocab);
+    }
     return p.sSelf;
 }
         

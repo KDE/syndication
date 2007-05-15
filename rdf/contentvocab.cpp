@@ -32,10 +32,6 @@ namespace RDF {
 class ContentVocab::ContentVocabPrivate
 {
     public:
-    ContentVocabPrivate() {
-        sSelf = new ContentVocab;
-        qAddPostRoutine(cleanupContentVocab);
-    }
     ~ContentVocabPrivate() {
         qRemovePostRoutine(cleanupContentVocab);
         cleanupContentVocab();
@@ -71,6 +67,10 @@ ContentVocab::~ContentVocab()
 ContentVocab* ContentVocab::self()
 {
     static ContentVocabPrivate p;
+    if(!p.sSelf) {
+        p.sSelf = new ContentVocab;
+        qAddPostRoutine(ContentVocabPrivate::cleanupContentVocab);
+    }
     return p.sSelf;
 }
         

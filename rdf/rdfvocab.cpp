@@ -33,10 +33,6 @@ namespace RDF {
 class RDFVocab::RDFVocabPrivate
 {
     public:
-        RDFVocabPrivate() {
-            sSelf = new RDFVocab;
-            qAddPostRoutine(cleanupRDFVocab);
-        }
         ~RDFVocabPrivate() {
             qRemovePostRoutine(cleanupRDFVocab);
             cleanupRDFVocab();
@@ -59,6 +55,10 @@ RDFVocab *RDFVocab::RDFVocabPrivate::sSelf = 0;
 RDFVocab* RDFVocab::self()
 {
     static RDFVocabPrivate p;
+    if(!p.sSelf) {
+        p.sSelf = new RDFVocab;
+        qAddPostRoutine(RDFVocabPrivate::cleanupRDFVocab);
+    }
     return p.sSelf;
 }
 
