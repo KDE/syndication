@@ -22,7 +22,7 @@
 
 #include "enclosure.h"
 
-#include <QString>
+
 
 namespace Syndication {
 namespace RSS2 {
