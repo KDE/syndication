@@ -33,10 +33,6 @@ namespace RDF {
 class RSSVocab::RSSVocabPrivate
 {
     public:
-    ~RSSVocabPrivate() {
-        qRemovePostRoutine(cleanupRSSVocab);
-        cleanupRSSVocab();
-    }
 
     QString namespaceURI;
     PropertyPtr title;

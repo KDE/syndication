@@ -32,10 +32,6 @@ namespace RDF {
 class SyndicationVocab::SyndicationVocabPrivate
 {
     public:
-    ~SyndicationVocabPrivate() {
-        qRemovePostRoutine(cleanupSyndicationVocab);
-        cleanupSyndicationVocab();
-    }
         
     QString namespaceURI;
     PropertyPtr updatePeriod;

@@ -32,10 +32,6 @@ namespace RDF {
 class DublinCoreVocab::DublinCoreVocabPrivate
 {
     public:
-    ~DublinCoreVocabPrivate() {
-        qRemovePostRoutine(cleanupDublinCoreVocab);
-        cleanupDublinCoreVocab();
-    }
         
     QString namespaceURI;
     PropertyPtr contributor;

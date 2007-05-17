@@ -33,10 +33,6 @@ namespace RDF {
 class RDFVocab::RDFVocabPrivate
 {
     public:
-        ~RDFVocabPrivate() {
-            qRemovePostRoutine(cleanupRDFVocab);
-            cleanupRDFVocab();
-        }
 
         QString namespaceURI;
         ResourcePtr seq;

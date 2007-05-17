@@ -32,10 +32,6 @@ namespace RDF {
 class ContentVocab::ContentVocabPrivate
 {
     public:
-    ~ContentVocabPrivate() {
-        qRemovePostRoutine(cleanupContentVocab);
-        cleanupContentVocab();
-    }
         
     QString namespaceURI;
     PropertyPtr encoded;

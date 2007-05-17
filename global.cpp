@@ -40,19 +40,24 @@ namespace {
 namespace Syndication {
 
 static ParserCollectionImpl<Syndication::Feed> *parserColl = 0;
+
+namespace {
+
 // only executed when then was a QCoreApplication
-static void cleanupParserColl()
+static void cleanupParserCollection()
 {
     delete parserColl;
     parserColl = 0;
 }
+
+} // namespace
 
 ParserCollection<Feed>* parserCollection()
 {
     if (!collectionIsInitialized)
     {
         parserColl = new ParserCollectionImpl<Syndication::Feed>;
-        qAddPostRoutine(cleanupParserColl);
+        qAddPostRoutine(cleanupParserCollection);
         parserColl->registerParser(new RSS2::Parser, new RSS2Mapper);
         parserColl->registerParser(new Atom::Parser, new AtomMapper);
         parserColl->registerParser(new RDF::Parser, new RDFMapper);
