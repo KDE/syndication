@@ -32,7 +32,6 @@ class DocumentSource;
 
 namespace RDF {
 
-class Model;
 
 /**
  * Parser implementation for RDF-based RSS 0.9 and RSS 1.0 feeds.

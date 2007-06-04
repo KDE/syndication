@@ -26,7 +26,6 @@
 
 #include <boost/shared_ptr.hpp>
 
-class QString;
 
 namespace Syndication {
 

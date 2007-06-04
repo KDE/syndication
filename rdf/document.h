@@ -32,12 +32,10 @@ template <class T> class QList;
 namespace Syndication {
 namespace RDF {
 
-class Content;
 class Document;
 class DublinCore;
 class Image;
 class Item;
-class Model;
 class SyndicationInfo;
 class TextInput;
 //@cond PRIVATE

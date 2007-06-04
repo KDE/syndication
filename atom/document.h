@@ -28,7 +28,6 @@
 
 #include <ctime>
 
-class QDomDocument;
 template <class T> class QList;
 
 namespace Syndication {

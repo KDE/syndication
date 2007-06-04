@@ -26,7 +26,6 @@
 
 class QDomDocument;
 class QDomElement;
-class QString;
 
 namespace boost {
     template <class T> class shared_ptr;

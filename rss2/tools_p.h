@@ -23,8 +23,6 @@
 #ifndef SYNDICATION_RSS2_TOOLS_H
 #define SYNDICATION_RSS2_TOOLS_H
 
-class QDomNode;
-class QDomElement;
 class QString;
 template <class T> class QList;
 

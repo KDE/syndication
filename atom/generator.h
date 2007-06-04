@@ -25,7 +25,6 @@
 
 #include <syndication/elementwrapper.h>
 
-class QDomDocument;
 class QDomElement;
 class QString;
 

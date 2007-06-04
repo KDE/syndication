@@ -30,7 +30,6 @@
 
 #include <ctime>
 
-class QDomDocument;
 class QDomElement;
 class QString;
 template <class T> class QList;

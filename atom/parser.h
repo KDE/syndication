@@ -25,8 +25,6 @@
 
 #include <syndication/abstractparser.h>
 
-class QDomDocument;
-class QDomNode;
 class QString;
 template <class T, class U> class QHash;
 

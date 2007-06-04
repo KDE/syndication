@@ -18,13 +18,7 @@
 
 #include <QtCore/QObject>
 
-class K3Process;
 class KUrl;
-
-namespace KIO
-{
-    class Job;
-}
 
 namespace Syndication {
 

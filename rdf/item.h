@@ -37,7 +37,6 @@ namespace RDF {
 
 class DublinCore;
 class Item;
-class Model;
 
 /**
  * An RSS 1.0 item.
