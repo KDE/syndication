@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_SPECIFICITEM_H
 #define SYNDICATION_SPECIFICITEM_H
 
-#include "ksyndication.h"
+#include "ksyndication_export.h"
 
 #include <boost/shared_ptr.hpp>
 

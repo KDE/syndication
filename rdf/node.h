@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_NODE_H
 #define SYNDICATION_RDF_NODE_H
 
-#include <syndication/ksyndication.h>
+#include <syndication/ksyndication_export.h>
 #include <boost/shared_ptr.hpp>
 
 namespace Syndication {

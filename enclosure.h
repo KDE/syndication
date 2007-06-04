@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ENCLOSURE_H
 #define SYNDICATION_ENCLOSURE_H
 
-#include "ksyndication.h"
+#include "ksyndication_export.h"
 
 #include <boost/shared_ptr.hpp>
 

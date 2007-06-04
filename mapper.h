@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_MAPPER_H
 #define SYNDICATION_MAPPER_H
 
-#include "ksyndication.h"
+#include "ksyndication_export.h"
 
 namespace boost {
     template <class T> class shared_ptr;

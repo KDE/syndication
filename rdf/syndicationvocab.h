@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_SYNDICATIONVOCAB_H
 #define SYNDICATION_RDF_SYNDICATIONVOCAB_H
 
-#include <syndication/ksyndication.h>
+#include <syndication/ksyndication_export.h>
 
 class QString;
 

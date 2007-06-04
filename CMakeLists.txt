@@ -126,7 +126,7 @@ install(TARGETS syndication  DESTINATION ${LIB_INSTALL_DIR})
 
 ########### install files ###############
 
-install( FILES ksyndication.h syndication.h specificdocument.h abstractparser.h
+install( FILES ksyndication_export.h syndication.h specificdocument.h abstractparser.h
                parsercollection.h documentvisitor.h documentsource.h
                elementwrapper.h item.h feed.h category.h image.h         
                enclosure.h person.h global.h dataretriever.h loader.h 

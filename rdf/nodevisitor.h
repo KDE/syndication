@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_NODEVISITOR_H
 #define SYNDICATION_RDF_NODEVISITOR_H
 
-#include <syndication/ksyndication.h>
+#include <syndication/ksyndication_export.h>
 
 namespace boost {
     template <class T> class shared_ptr;

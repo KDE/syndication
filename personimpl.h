@@ -24,7 +24,7 @@
 #define SYNDICATION_PERSONIMPL_H
 
 #include <syndication/person.h>
-#include "ksyndication.h"
+#include "ksyndication_export.h"
 
 #include <QtCore/QString>
 

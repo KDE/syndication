@@ -28,7 +28,7 @@
 #include <syndication/rdf/sequence.h>
 #include <syndication/rdf/statement.h>
 #include <boost/shared_ptr.hpp>
-#include <syndication/ksyndication.h>
+#include <syndication/ksyndication_export.h>
 
 #include <QtCore/QString>
 
