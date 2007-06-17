@@ -14,7 +14,7 @@
 
 #include <kio/job.h>
 
-#include <k3process.h>
+#include <kprocess.h>
 #include <kurl.h>
 
 #include <QtCore/QBuffer>
@@ -159,7 +159,7 @@ struct OutputRetriever::OutputRetrieverPrivate
         delete buffer;
     }
 
-    K3ShellProcess *process;
+    KProcess *process;
     QBuffer *buffer;
     int lastError;
 };
@@ -182,13 +182,11 @@ void OutputRetriever::retrieveData(const KUrl &url)
     d->buffer = new QBuffer;
     d->buffer->open(QIODevice::WriteOnly);
 
-    d->process = new K3ShellProcess();
-    connect(d->process, SIGNAL(processExited(K3Process*)),
-            SLOT(slotExited(K3Process*)));
-    connect(d->process, SIGNAL(receivedStdout(K3Process*, char*, int)),
-            SLOT(slotOutput(K3Process*, char*, int)));
-    *d->process << url.path();
-    d->process->start(K3Process::NotifyOnExit, K3Process::Stdout);
+    d->process = new KProcess();
+    connect(d->process, SIGNAL(finished(int, QProcess::ExitStatus)),
+            SLOT(slotFinished(int, QProcess::ExitStatus)));
+    d->process->setShellCommand(url.path());
+    d->process->start();
 }
 
 int OutputRetriever::errorCode() const
@@ -196,18 +194,12 @@ int OutputRetriever::errorCode() const
     return d->lastError;
 }
 
-void OutputRetriever::slotOutput(K3Process *, char *data, int length)
+void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 {
-    d->buffer->write(data, length);
-}
+    if (!d->process->exitCode())
+        d->lastError = d->process->exitCode();
 
-void OutputRetriever::slotExited(K3Process *p)
-{
-    if (!p->normalExit())
-        d->lastError = p->exitStatus();
-
-    QByteArray data = d->buffer->buffer();
-    data.detach();
+    QByteArray data = d->process->readAllStandardOutput();
     
     delete d->buffer;
     d->buffer = NULL;
@@ -215,7 +207,7 @@ void OutputRetriever::slotExited(K3Process *p)
     delete d->process;
     d->process = NULL;
     
-    emit dataRetrieved(data, p->normalExit() && p->exitStatus() == 0);
+    emit dataRetrieved(data, exitStatus == QProcess::NormalExit && d->process->exitCode() == 0);
 }
 
 } // namespace Syndication

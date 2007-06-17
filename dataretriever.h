@@ -14,13 +14,13 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
+#include <QtCore/QProcess>
 
 namespace KIO
 {
     class Job;
 }
 class KJob;
-class K3Process;
 class KUrl;
 
 class QByteArray;
@@ -133,8 +133,7 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
         virtual void abort() {}
 
     private Q_SLOTS:
-        void slotOutput(K3Process* process, char* data, int length);
-        void slotExited(K3Process* process);
+        void slotFinished ( int exitCode, QProcess::ExitStatus exitStatus ) ;
 
     private:
         OutputRetriever(const OutputRetriever& other);
