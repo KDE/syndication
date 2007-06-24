@@ -213,7 +213,7 @@ void Loader::discoverFeeds(const QByteArray &data)
             s2=s2.prepend(d->url.protocol()+':');
             d->discoveredFeedURL=s2;
         }
-        else if (s2.startsWith("/"))
+        else if (s2.startsWith('/'))
         {
             d->discoveredFeedURL=d->url;
             d->discoveredFeedURL.setPath(s2);
