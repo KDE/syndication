@@ -47,12 +47,6 @@
 
 using namespace Syndication;
 
-static const KCmdLineOptions options[] =
-{
-    { "+url", I18N_NOOP("URL of feed"), 0 },
-    KCmdLineLastOption
-};
-
 TestLibSyndication::TestLibSyndication(const QString& url)
 {
     KUrl kurl;
@@ -96,8 +90,11 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    KAboutData aboutData("testlibsyndication", "testlibsyndication", "0.1");
+    KAboutData aboutData("testlibsyndication", 0, ki18n("testlibsyndication"), "0.1");
     KCmdLineArgs::init(argc, argv, &aboutData);
+
+    KCmdLineOptions options;
+    options.add("+url", ki18n("URL of feed"));
     KCmdLineArgs::addCmdLineOptions(options);
     KApplication app;
 
