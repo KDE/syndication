@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef SYNDICATION_RSS2_TOOLS_H
-#define SYNDICATION_RSS2_TOOLS_H
+#ifndef SYNDICATION_RSS2_TOOLS_P_H
+#define SYNDICATION_RSS2_TOOLS_P_H
 
 class QString;
 template <class T> class QList;
@@ -32,7 +32,7 @@ class ElementWrapper;
 
 namespace RSS2 {
 
-/** 
+/**
  * @internal
  * extracts encoded content from XHTML, content:encoded and friends
  *
@@ -44,4 +44,4 @@ QString extractContent(const ElementWrapper& parent);
 } // RSS2
 } // Syndication
 
-#endif // SYNDICATION_RSS2_TOOLS_H
+#endif // SYNDICATION_RSS2_TOOLS_P_H
