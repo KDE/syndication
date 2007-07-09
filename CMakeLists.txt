@@ -114,7 +114,6 @@ set(syndication_LIB_SRCS
    specificdocument.cpp 
    abstractparser.cpp)
 
-kde4_automoc(${syndication_LIB_SRCS})
 
 kde4_add_library(syndication SHARED ${syndication_LIB_SRCS})
 
