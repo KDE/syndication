@@ -1,3 +1,4 @@
+set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 include_directories( ${CMAKE_SOURCE_DIR}/syndication/ ${Boost_INCLUDE_DIR} )
 
 
@@ -6,7 +7,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/syndication/ ${Boost_INCLUDE_DIR} )
 set(testlibsyndication_SRCS testlibsyndication.cpp )
 
 
-kde4_add_test_executable(testlibsyndication ${testlibsyndication_SRCS})
+kde4_add_executable(testlibsyndication TEST ${testlibsyndication_SRCS})
 
 target_link_libraries(testlibsyndication  syndication ${KDE4_KDECORE_LIBS} )
 
@@ -15,7 +16,7 @@ target_link_libraries(testlibsyndication  syndication ${KDE4_KDECORE_LIBS} )
 set(testloader_SRCS testloader.cpp )
 
 
-kde4_add_test_executable(testloader ${testloader_SRCS})
+kde4_add_executable(testloader TEST ${testloader_SRCS})
 
 target_link_libraries(testloader  syndication ${KDE4_KDECORE_LIBS} )
 
