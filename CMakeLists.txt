@@ -12,78 +12,78 @@ include_directories( ${Boost_INCLUDE_DIR} )
 ########### next target ###############
 
 set(librss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/category.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/cloud.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/document.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/enclosure.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/image.cpp
-	${CMAKE_SOURCE_DIR}/syndication/rss2/item.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/parser.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/source.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rss2/textinput.cpp
-	${CMAKE_SOURCE_DIR}/syndication/rss2/tools_p.cpp
+	./rss2/category.cpp 
+	./rss2/cloud.cpp 
+	./rss2/document.cpp 
+	./rss2/enclosure.cpp 
+	./rss2/image.cpp
+	./rss2/item.cpp 
+	./rss2/parser.cpp 
+	./rss2/source.cpp 
+	./rss2/textinput.cpp
+	./rss2/tools_p.cpp
 	)
 
 
 set(librdflocal_la_SRCS
-	${CMAKE_SOURCE_DIR}/syndication/rdf/parser.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/dublincorevocab.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/dublincore.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/syndicationvocab.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/syndicationinfo.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/contentvocab.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/item.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/image.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/textinput.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/document.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/rssvocab.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/node.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/property.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/literal.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/resource.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/model.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/modelmaker.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/rdfvocab.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/sequence.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/statement.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/resourcewrapper.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/rdf/nodevisitor.cpp
+	./rdf/parser.cpp 
+	./rdf/dublincorevocab.cpp 
+	./rdf/dublincore.cpp 
+	./rdf/syndicationvocab.cpp 
+	./rdf/syndicationinfo.cpp 
+	./rdf/contentvocab.cpp 
+	./rdf/item.cpp 
+	./rdf/image.cpp 
+	./rdf/textinput.cpp 
+	./rdf/document.cpp 
+	./rdf/rssvocab.cpp 
+	./rdf/node.cpp 
+	./rdf/property.cpp 
+	./rdf/literal.cpp 
+	./rdf/resource.cpp 
+	./rdf/model.cpp 
+	./rdf/modelmaker.cpp 
+	./rdf/rdfvocab.cpp 
+	./rdf/sequence.cpp 
+	./rdf/statement.cpp 
+	./rdf/resourcewrapper.cpp 
+	./rdf/nodevisitor.cpp
 )
 
 set(libatomlocal_SRCS 
-	${CMAKE_SOURCE_DIR}/syndication/atom/category.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/constants.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/content.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/document.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/entry.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/generator.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/link.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/parser.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/person.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/source.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/atom/atomtools.cpp 
+	./atom/category.cpp 
+	./atom/constants.cpp 
+	./atom/content.cpp 
+	./atom/document.cpp 
+	./atom/entry.cpp 
+	./atom/generator.cpp 
+	./atom/link.cpp 
+	./atom/parser.cpp 
+	./atom/person.cpp 
+	./atom/source.cpp 
+	./atom/atomtools.cpp 
 )
 
 
 set(libmapperrss2local_SRCS 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/feedrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/itemrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/enclosurerss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/categoryrss2impl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/imagerss2impl.cpp
+	./mapper/feedrss2impl.cpp 
+	./mapper/itemrss2impl.cpp 
+	./mapper/enclosurerss2impl.cpp 
+	./mapper/categoryrss2impl.cpp 
+	./mapper/imagerss2impl.cpp
 )
 
 set(libmapperrdflocal_SRCS 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/feedrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/itemrdfimpl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/imagerdfimpl.cpp
+	./mapper/feedrdfimpl.cpp 
+	./mapper/itemrdfimpl.cpp 
+	./mapper/imagerdfimpl.cpp
 )
 
 set(libmapperatomlocal_SRCS
-	${CMAKE_SOURCE_DIR}/syndication/mapper/feedatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/itematomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/enclosureatomimpl.cpp 
-	${CMAKE_SOURCE_DIR}/syndication/mapper/categoryatomimpl.cpp
+	./mapper/feedatomimpl.cpp 
+	./mapper/itematomimpl.cpp 
+	./mapper/enclosureatomimpl.cpp 
+	./mapper/categoryatomimpl.cpp
 )
 
 set(syndication_LIB_SRCS 
