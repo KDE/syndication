@@ -84,7 +84,7 @@ void FileRetriever::retrieveData(const KUrl &url)
     if (u.protocol() == "feed")
         u.setProtocol("http");
 
-    d->job = KIO::get(u, false, false);
+    d->job = KIO::get(u, KIO::NoReload, KIO::HideProgressInfo);
 
     d->job->addMetaData("UserAgent", m_userAgent);
     d->job->addMetaData("cache", m_useCache ? "refresh" : "reload");
