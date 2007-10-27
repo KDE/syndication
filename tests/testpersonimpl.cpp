@@ -63,6 +63,12 @@ void TestPersonImpl::fromString()
     s.append("Foo Bar <foo@bar.com>");
     p.append(PersonPtr(new PersonImpl("Foo Bar", QString(), "foo@bar.com")));
 
+    s.append("John Doe (President) <john@doe.com>");
+    p.append(PersonPtr(new PersonImpl("John Doe (President)", QString(), "john@doe.com")));
+
+    s.append("John Doe (President)");
+    p.append(PersonPtr(new PersonImpl("John Doe (President)", QString(), QString() )));
+
     s.append("<foo@bar.com> (Foo Bar)");
     p.append(PersonPtr(new PersonImpl("Foo Bar", QString(), "foo@bar.com")));
     

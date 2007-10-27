@@ -251,10 +251,14 @@ PersonPtr personFromString(const QString& strp)
     
     name = str.simplified();
     
-    // str might have the format "foo@bar.com (Foo M. Bar)".
-    // We cut off parentheses if there are any
-    QRegExp rename("\\(([^\\)]*)\\)");
-    
+    // after removing the email, str might have 
+    // the format "(Foo M. Bar)". We cut off 
+    // parentheses if there are any. However, if
+    // str is of the format "Foo M. Bar (President)",
+    // we should not cut anything.
+
+    QRegExp rename("^\\(([^\\)]*)\\)");
+
     pos = rename.indexIn(name);
     
     if (pos != -1)
