@@ -259,9 +259,7 @@ PersonPtr personFromString(const QString& strp)
 
     QRegExp rename("^\\(([^\\)]*)\\)");
 
-    pos = rename.indexIn(name);
-    
-    if (pos != -1)
+    if (rename.exactMatch(name))
     {
         name = rename.cap(1);
     }
