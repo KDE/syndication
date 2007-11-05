@@ -86,7 +86,9 @@ QDomDocument DocumentSource::asDomDocument() const
         QXmlSimpleReader reader;
         reader.setFeature("http://xml.org/sax/features/namespaces", true);
         
-        d->domDoc.setContent(&source, &reader);
+        if (!d->domDoc.setContent(&source, &reader))
+            d->domDoc.clear();
+
         d->parsed = true;
     }
 

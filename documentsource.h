@@ -117,6 +117,10 @@ class SYNDICATION_EXPORT DocumentSource
          * The document is parsed only on the first call of this method
          * and then cached.
          *
+         * If the feed source cannot be parsed successfully then the 
+         * returned DOM node will be null (eg. asDomDocument().isNull()
+         * will return true)
+         *
          * @return XML representation parsed from the raw source
          */
         QDomDocument asDomDocument() const;
