@@ -74,7 +74,7 @@ class SYNDICATION_EXPORT ElementWrapper
          * @param other the element wrapper to assign
          * @return reference to this instance
          */
-        virtual ElementWrapper& operator=(const ElementWrapper& other);
+        ElementWrapper& operator=(const ElementWrapper& other);
 
         /**
          * compares two wrappers. Two wrappers are equal if and only if
