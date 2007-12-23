@@ -194,19 +194,20 @@ int OutputRetriever::errorCode() const
     return d->lastError;
 }
 
-void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus) 
+void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    Q_UNUSED( exitCode );
     if (!d->process->exitCode())
         d->lastError = d->process->exitCode();
 
     QByteArray data = d->process->readAllStandardOutput();
-    
+
     delete d->buffer;
     d->buffer = NULL;
-    
+
     delete d->process;
     d->process = NULL;
-    
+
     emit dataRetrieved(data, exitStatus == QProcess::NormalExit && d->process->exitCode() == 0);
 }
 
