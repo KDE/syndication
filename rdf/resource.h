@@ -84,7 +84,7 @@ class SYNDICATION_EXPORT Resource : public Node
          * 
          * @param other the resource to assign
          */
-        virtual Resource& operator=(const Resource& other);
+        Resource& operator=(const Resource& other);
         
         /**
          * checks two resources for equality. Currently both URI (or anonID)
@@ -92,7 +92,7 @@ class SYNDICATION_EXPORT Resource : public Node
          * 
          * @param other the node to compare this node to
          */
-        virtual bool operator==(const Node& other) const;
+        bool operator==(const Node& other) const;
 
         /**
          * Used by visitors for double dispatch. See NodeVisitor
