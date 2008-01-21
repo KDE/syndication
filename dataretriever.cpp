@@ -205,10 +205,12 @@ void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus
     delete d->buffer;
     d->buffer = NULL;
 
+    int code = d->process->exitCode();
+
     delete d->process;
     d->process = NULL;
 
-    emit dataRetrieved(data, exitStatus == QProcess::NormalExit && d->process->exitCode() == 0);
+    emit dataRetrieved(data, exitStatus == QProcess::NormalExit && code == 0);
 }
 
 } // namespace Syndication
