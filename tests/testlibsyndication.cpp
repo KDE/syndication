@@ -27,6 +27,8 @@
 #include "feed.h"
 #include "parsercollection.h"
 
+#include <KComponentData>
+
 #include <QtCore/QByteArray>
 #include <QtCore/QFile>
 #include <QtCore/QString>
@@ -59,7 +61,7 @@ void printUsage(const QString& error)
 
 int main(int argc, char **argv)
 {
-
+    KComponentData componentData( "testlibsyndication" );
     int pcompare = 2;
     if (argc < 2)
     {
