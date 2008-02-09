@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
     if (ptr == 0L)
     {
-        printUsage("Couldn't parse file");
+        printUsage( QString( "Couldn't parse file: (%1)" ).arg( Syndication::parserCollection()->lastError() ) );
         return 1;
     }
 
