@@ -120,11 +120,7 @@ kde4_add_library(syndication SHARED ${syndication_LIB_SRCS})
 target_link_libraries(syndication  ${KDE4_KIO_LIBS}  )
 
 set_target_properties(syndication PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS syndication       
-    RUNTIME DESTINATION ${BIN_INSTALL_DIR}
-    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
-    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
-)
+install(TARGETS syndication DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
