@@ -87,13 +87,13 @@ set(libmapperatomlocal_SRCS
 )
 
 set(syndication_LIB_SRCS 
-	${librss2local_SRCS} 
-	${librdflocal_la_SRCS} 
-	${libatomlocal_SRCS} 
-	${libmappercommonlocal_SRCS} 
-	${libmapperrss2local_SRCS} 
-	${libmapperrdflocal_SRCS} 
-	${libmapperatomlocal_SRCS}
+   ${librss2local_SRCS} 
+   ${librdflocal_la_SRCS} 
+   ${libatomlocal_SRCS} 
+   ${libmappercommonlocal_SRCS} 
+   ${libmapperrss2local_SRCS} 
+   ${libmapperrdflocal_SRCS} 
+   ${libmapperatomlocal_SRCS}
    documentsource.cpp 
    documentvisitor.cpp 
    elementwrapper.cpp 
@@ -130,4 +130,4 @@ install( FILES ksyndication_export.h syndication.h specificdocument.h abstractpa
                enclosure.h person.h global.h dataretriever.h loader.h 
                constants.h mapper.h specificitem.h
                specificitemvisitor.h tools.h
-         DESTINATION ${INCLUDE_INSTALL_DIR}/syndication )
+         DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
