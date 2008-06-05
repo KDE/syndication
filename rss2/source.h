@@ -33,7 +33,7 @@ namespace RSS2 {
 
 /**
  * Class representing the @c &lt;source&gt; element in RSS2.
- * "The purpose of this element is to propogate credit for links, to publicize
+ * "The purpose of this element is to propagate credit for links, to publicize
  * the sources of news items. It's used in the post command in the Radio
  * UserLand aggregator. It should be generated automatically when forwarding an
  * item from an aggregator to a weblog authoring tool."
