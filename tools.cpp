@@ -24,7 +24,7 @@
 #include "personimpl.h"
 
 #include <kcharsets.h>
-#include <kcodecs.h> 
+#include <kcodecs.h>
 #include <kdatetime.h>
 
 #include <QtCore/QByteArray>
@@ -75,7 +75,7 @@ time_t parseDate(const QString& str, DateFormat hint)
 {
     if (str.isEmpty())
         return 0;
-    
+
     if (hint == RFCDate)
     {
         time_t t = parseRFCDate(str);
@@ -92,7 +92,7 @@ QString dateTimeToString(time_t date)
 {
     if (date == 0)
         return QString();
-	
+
     QDateTime dt;
     dt.setTime_t(date);
     return dt.toString();
@@ -127,7 +127,7 @@ QString convertNewlines(const QString& strp)
     str.replace("\n", "<br/>");
     return str;
 }
-        
+
 QString plainTextToHtml(const QString& plainText)
 {
     QString str(plainText);
@@ -143,7 +143,7 @@ QString htmlToPlainText(const QString& html)
 {
     QString str(html);
     //TODO: preserve some formatting, such as line breaks
-    str.replace(QRegExp("<[^>]*>"), ""); // remove tags
+    str.remove(QRegExp("<[^>]*>")); // remove tags
     str = resolveEntities(str);
     return str.trimmed();
 }
@@ -152,15 +152,15 @@ static QRegExp tagRegExp;
 static bool tagRegExpSet = false;
 
 bool stringContainsMarkup(const QString& str)
-{   
+{
     //check for entities
     if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
         return true;
-    
+
     int ltc = str.count('<');
     if (ltc == 0 || ltc != str.count('>'))
         return false;
-       
+
     if (!tagRegExpSet)
     {
         tagRegExp = QRegExp("<\\w+.*/?>");
@@ -174,7 +174,7 @@ bool isHtml(const QString& str)
     //check for entities
     if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
         return true;
-    
+
     int ltc = str.count('<');
     if (ltc == 0 || ltc != str.count('>'))
         return false;
@@ -186,7 +186,7 @@ bool isHtml(const QString& str)
     }
     if (str.contains(tagRegExp))
         return true;
-        
+
     return false;
 }
 
@@ -229,30 +229,30 @@ PersonPtr personFromString(const QString& strp)
     QString uri;
     QString email;
 
-    // look for something looking like a mail address ( "foo@bar.com", 
+    // look for something looking like a mail address ( "foo@bar.com",
     // "<foo@bar.com>") and extract it
-    
+
     QRegExp remail("<?([^@\\s<]+@[^>\\s]+)>?"); // FIXME: user "proper" regexp,
        // search kmail source for it
-    
+
     int pos = remail.indexIn(str);
     if (pos != -1)
     {
         QString all = remail.cap(0);
         email = remail.cap(1);
-        str.replace(all, ""); // remove mail address
+        str.remove(all); // remove mail address
     }
 
-    // replace "mailto", "(", ")" (to be extended)    
+    // replace "mailto", "(", ")" (to be extended)
     email.remove("mailto:");
     email.remove(QRegExp("[\\(\\)]"));
 
     // simplify the rest and use it as name
-    
+
     name = str.simplified();
-    
-    // after removing the email, str might have 
-    // the format "(Foo M. Bar)". We cut off 
+
+    // after removing the email, str might have
+    // the format "(Foo M. Bar)". We cut off
     // parentheses if there are any. However, if
     // str is of the format "Foo M. Bar (President)",
     // we should not cut anything.
@@ -263,14 +263,14 @@ PersonPtr personFromString(const QString& strp)
     {
         name = rename.cap(1);
     }
-    
+
     name = name.isEmpty() ? QString() : name;
     email = email.isEmpty() ? QString() : email;
     uri = uri.isEmpty() ? QString() : uri;
 
     if (name.isEmpty() && email.isEmpty() && uri.isEmpty())
         return PersonPtr(new PersonImpl());
-   
+
     return PersonPtr(new PersonImpl(name, uri, email));
 }
 
@@ -278,9 +278,9 @@ ElementType::ElementType(const QString& localnamep,
             const QString& nsp) : ns(nsp), localname(localnamep)
 {
 }
-   
+
 bool ElementType::operator==(const ElementType& other) const
-{ 
+{
     return localname == other.localname && ns == other.ns;
 }
 
