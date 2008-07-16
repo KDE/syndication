@@ -56,6 +56,7 @@ enum DateFormat
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
+//KDE5: uint, not time_t
 SYNDICATION_EXPORT
 time_t parseISODate(const QString& str);
 
@@ -67,6 +68,7 @@ time_t parseISODate(const QString& str);
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
+//KDE5: uint, not time_t
 SYNDICATION_EXPORT
 time_t parseRFCDate(const QString& str);
 
@@ -83,6 +85,7 @@ time_t parseRFCDate(const QString& str);
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
+//KDE5: uint, not time_t
 SYNDICATION_EXPORT
 time_t parseDate(const QString& str, DateFormat hint=RFCDate);
 
@@ -96,6 +99,7 @@ time_t parseDate(const QString& str, DateFormat hint=RFCDate);
  * @return string representation of the date, or a null string if
  * @c date is 0
  */
+//KDE5: uint, not time_t
 SYNDICATION_EXPORT
 QString dateTimeToString(time_t date);
 
@@ -224,22 +228,22 @@ unsigned int calcHash(const QByteArray& array);
 QString calcMD5Sum(const QString& str);
 
 //@cond PRIVATE
-/** 
+/**
  * @internal
  * used internally to represent element types
  */
 struct ElementType
 {
-    ElementType(const QString& localnamep, 
+    ElementType(const QString& localnamep,
                 const QString& nsp=QString()); // implicit
-   
+
     bool operator==(const ElementType& other) const;
-    
+
     QString ns;
     QString localname;
 };
 //@endcond
-  
+
 } // namespace Syndication
 
 #endif // SYNDICATION_TOOLS_H
