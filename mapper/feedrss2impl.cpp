@@ -116,7 +116,7 @@ QMultiMap<QString, QDomElement> FeedRSS2Impl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
     
-    foreach (QDomElement i, m_doc->unhandledElements())
+    foreach (const QDomElement &i, m_doc->unhandledElements())
     {
         ret.insert(i.namespaceURI() + i.localName(), i); 
     }

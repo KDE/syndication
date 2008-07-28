@@ -212,7 +212,7 @@ QMultiMap<QString, QDomElement> ItemAtomImpl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
     
-    foreach (QDomElement i, m_entry.unhandledElements())
+    foreach (const QDomElement &i, m_entry.unhandledElements())
     {
         ret.insert(i.namespaceURI() + i.localName(), i); 
     }
