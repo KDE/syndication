@@ -18,7 +18,7 @@ set(testloader_SRCS testloader.cpp )
 
 kde4_add_executable(testloader TEST ${testloader_SRCS})
 
-target_link_libraries(testloader  syndication ${KDE4_KDECORE_LIBS} )
+target_link_libraries(testloader  syndication ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} )
 
 ########### next target ###############
 
