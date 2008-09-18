@@ -190,8 +190,8 @@ void Loader::discoverFeeds(const QByteArray &data)
 
         KUrl testURL;
         // loop through, prefer feeds on same host
-        QStringList::Iterator end( feeds.end() );
-        for ( QStringList::Iterator it = feeds.begin(); it != end; ++it ) {
+        QStringList::const_iterator end( feeds.end() );
+        for ( QStringList::const_iterator it = feeds.begin(); it != end; ++it ) {
             testURL=*it;
             if (testURL.host()==host)
             {
