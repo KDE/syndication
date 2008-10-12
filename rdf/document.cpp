@@ -144,9 +144,9 @@ QList<Item> Document::items() const
     {
         Sequence* seq = static_cast<Sequence*>(n.get());
         
-        QList<NodePtr> items = seq->items();
-        QList<NodePtr>::Iterator it = items.begin();
-        QList<NodePtr>::Iterator end = items.end();
+        const QList<NodePtr> items = seq->items();
+        QList<NodePtr>::ConstIterator it = items.begin();
+        QList<NodePtr>::ConstIterator end = items.end();
         
         DocumentPtr doccpy(new Document(*this));
         
