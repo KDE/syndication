@@ -193,7 +193,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     SequencePtr seq = model.createSequence();
     model.addStatement(channels.first(), RSSVocab::self()->items(), seq);
         
-    foreach (ResourcePtr i, sorted.values())
+    foreach (ResourcePtr i, sorted)
     {
         seq->append(i);
         model.addStatement(seq, RDFVocab::self()->li(), i);
