@@ -7,7 +7,7 @@ include_directories( ../ ${Boost_INCLUDE_DIR} )
 set(testlibsyndication_SRCS testlibsyndication.cpp )
 
 
-kde4_add_executable(testlibsyndication TEST ${testlibsyndication_SRCS})
+kde4_add_executable(testlibsyndication NOGUI TEST ${testlibsyndication_SRCS})
 
 target_link_libraries(testlibsyndication  syndication ${KDE4_KDECORE_LIBS} )
 
