@@ -150,8 +150,10 @@ QString htmlToPlainText(const QString& html)
     return str.trimmed();
 }
 
-static QRegExp tagRegExp;
-static bool tagRegExpSet = false;
+namespace {
+    static QRegExp tagRegExp;
+    static bool tagRegExpSet = false;
+}
 
 bool stringContainsMarkup(const QString& str)
 {
@@ -159,8 +161,8 @@ bool stringContainsMarkup(const QString& str)
     if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
         return true;
 
-    int ltc = str.count('<');
-    if (ltc == 0 || ltc != str.count('>'))
+    const int ltc = str.count('<');
+    if (ltc == 0)
         return false;
 
     if (!tagRegExpSet)
@@ -177,8 +179,8 @@ bool isHtml(const QString& str)
     if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
         return true;
 
-    int ltc = str.count('<');
-    if (ltc == 0 || ltc != str.count('>'))
+    const int ltc = str.count('<');
+    if (ltc == 0)
         return false;
 
     if (!tagRegExpSet)
