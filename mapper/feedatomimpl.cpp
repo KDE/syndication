@@ -50,8 +50,8 @@ QList<Syndication::ItemPtr> FeedAtomImpl::items() const
 {
     QList<ItemPtr> items;
     QList<Syndication::Atom::Entry> entries = m_doc->entries();
-    QList<Syndication::Atom::Entry>::ConstIterator it = entries.begin();
-    QList<Syndication::Atom::Entry>::ConstIterator end = entries.end();
+    QList<Syndication::Atom::Entry>::ConstIterator it = entries.constBegin();
+    QList<Syndication::Atom::Entry>::ConstIterator end = entries.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -66,8 +66,8 @@ QList<Syndication::CategoryPtr> FeedAtomImpl::categories() const
 {
     QList<CategoryPtr> categories;
     QList<Syndication::Atom::Category> entries = m_doc->categories();
-    QList<Syndication::Atom::Category>::ConstIterator it = entries.begin();
-    QList<Syndication::Atom::Category>::ConstIterator end = entries.end();
+    QList<Syndication::Atom::Category>::ConstIterator it = entries.constBegin();
+    QList<Syndication::Atom::Category>::ConstIterator end = entries.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -86,8 +86,8 @@ QString FeedAtomImpl::title() const
 QString FeedAtomImpl::link() const
 {
     QList<Syndication::Atom::Link> links = m_doc->links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.begin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.end();
+    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
+    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
 
     // return first link where rel="alternate"
     // TODO: if there are multiple "alternate" links, find other criteria to choose one of them
@@ -110,8 +110,8 @@ QString FeedAtomImpl::description() const
 QList<PersonPtr> FeedAtomImpl::authors() const
 {
     QList<Syndication::Atom::Person> atomps = m_doc->authors();
-    QList<Syndication::Atom::Person>::ConstIterator it = atomps.begin();
-    QList<Syndication::Atom::Person>::ConstIterator end = atomps.end();
+    QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
+    QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
     
     QList<PersonPtr> list;
     
@@ -123,8 +123,8 @@ QList<PersonPtr> FeedAtomImpl::authors() const
     
     atomps = m_doc->contributors();
     
-    it = atomps.begin();
-    end = atomps.end();
+    it = atomps.constBegin();
+    end = atomps.constEnd();
     
     for ( ; it != end; ++it)
     {

@@ -333,8 +333,8 @@ bool Model::resourceHasProperty(const Resource* resource, PropertyPtr property) 
         return false;
     
     QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.begin();
-    QList<StatementPtr>::ConstIterator end = stmts.end();
+    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
+    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
 
     for ( ; it != end; ++it)
     {
@@ -348,8 +348,8 @@ bool Model::resourceHasProperty(const Resource* resource, PropertyPtr property) 
 StatementPtr Model::resourceProperty(const Resource* resource, PropertyPtr property) const
 {
     QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.begin();
-    QList<StatementPtr>::ConstIterator end = stmts.end();
+    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
+    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
 
     for ( ; it != end; ++it)
     {
@@ -364,8 +364,8 @@ QList<StatementPtr> Model::resourceProperties(const Resource* resource, Property
 {
     QList<StatementPtr> res;
     QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.begin();
-    QList<StatementPtr>::ConstIterator end = stmts.end();
+    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
+    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
 
     for ( ; it != end; ++it)
     {
@@ -387,8 +387,8 @@ QString Model::debugInfo() const
     QString info;
     
     QList<StatementPtr> stmts = d->statements.values();
-    QList<StatementPtr>::ConstIterator it = stmts.begin();
-    QList<StatementPtr>::ConstIterator end = stmts.end();
+    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
+    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -413,8 +413,8 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
     QList<ResourcePtr> list;
     
     QList<StatementPtr> stmts = d->statements.values();
-    QList<StatementPtr>::ConstIterator it = stmts.begin();
-    QList<StatementPtr>::ConstIterator end = stmts.end();
+    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
+    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
 
     for ( ; it != end; ++it)
     {

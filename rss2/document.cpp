@@ -181,8 +181,8 @@ QList<Category> Document::categories() const
 
     QList<QDomElement> catNodes = elementsByTagNameNS(QString(),
             QString::fromUtf8("category"));
-    QList<QDomElement>::ConstIterator it = catNodes.begin();
-    for ( ; it != catNodes.end(); ++it)
+    QList<QDomElement>::ConstIterator it = catNodes.constBegin();
+    for ( ; it != catNodes.constEnd(); ++it)
     {
         categories.append(Category(*it));
     }
@@ -243,8 +243,8 @@ QSet<int> Document::skipHours() const
         QList<QDomElement> hours = 
                 skipHoursWrapper.elementsByTagNameNS(QString(),
                 QString::fromUtf8("hour"));
-        QList<QDomElement>::ConstIterator it = hours.begin();
-        for ( ; it != hours.end(); ++it)
+        QList<QDomElement>::ConstIterator it = hours.constBegin();
+        for ( ; it != hours.constEnd(); ++it)
         {
             int h = (*it).text().toInt(&ok);
             if (ok)
@@ -273,7 +273,7 @@ QSet<Document::DayOfWeek> Document::skipDays() const
         weekDays[QString::fromUtf8("Sunday")] = Sunday;
 
         QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QString::fromUtf8("day"));
-        for (QList<QDomElement>::ConstIterator it = days.begin(); it != days.end(); ++it)
+        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != days.constEnd(); ++it)
         {
             if (weekDays.contains((*it).text()))
                 skipDays.insert(weekDays[(*it).text()]);
@@ -291,7 +291,7 @@ QList<Item> Document::items() const
     
     DocumentPtr doccpy(new Document(*this));
         
-    for (QList<QDomElement>::ConstIterator it = itemNodes.begin(); it != itemNodes.end(); ++it)
+    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it)
     {
         items.append(Item(*it, doccpy));
     }
@@ -377,10 +377,10 @@ QString Document::debugInfo() const
     
     QList<Category> cats = categories();
     
-    for (QList<Category>::ConstIterator it = cats.begin(); it != cats.end(); ++it)
+    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it)
         info += (*it).debugInfo();
     QList<Item> litems = items();
-    for (QList<Item>::ConstIterator it = litems.begin(); it != litems.end(); ++it)
+    for (QList<Item>::ConstIterator it = litems.constBegin(); it != litems.constEnd(); ++it)
         info += (*it).debugInfo();
     info += "### Document end ################\n";
     return info;
@@ -405,7 +405,7 @@ void Document::getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
         
-        QList<Item>::ConstIterator it = litems.begin(); 
+        QList<Item>::ConstIterator it = litems.constBegin(); 
         
         while (i < nmax)
         {
@@ -444,7 +444,7 @@ void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup)
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.begin(); 
+        QList<Item>::ConstIterator it = litems.constBegin(); 
 
         while (i < nmax)
         {

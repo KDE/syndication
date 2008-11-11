@@ -74,22 +74,22 @@ QString Item::debugInfo() const
         info += "language: #" + dlanguage + "#\n";
     
     QList<PersonPtr> dauthors = authors();
-    QList<PersonPtr>::ConstIterator itp = dauthors.begin();
-    QList<PersonPtr>::ConstIterator endp = dauthors.end();
+    QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
+    QList<PersonPtr>::ConstIterator endp = dauthors.constEnd();
     
     for ( ; itp != endp; ++itp)
         info += (*itp)->debugInfo();
 
     QList<CategoryPtr> dcategories = categories();
-    QList<CategoryPtr>::ConstIterator itc = dcategories.begin();
-    QList<CategoryPtr>::ConstIterator endc = dcategories.end();
+    QList<CategoryPtr>::ConstIterator itc = dcategories.constBegin();
+    QList<CategoryPtr>::ConstIterator endc = dcategories.constEnd();
     
     for ( ; itc != endc; ++itc)
         info += (*itc)->debugInfo();
 
     QList<EnclosurePtr> denclosures = enclosures();
-    QList<EnclosurePtr>::ConstIterator ite = denclosures.begin();
-    QList<EnclosurePtr>::ConstIterator ende = denclosures.end();
+    QList<EnclosurePtr>::ConstIterator ite = denclosures.constBegin();
+    QList<EnclosurePtr>::ConstIterator ende = denclosures.constEnd();
     
     for ( ; ite != ende; ++ite)
         info += (*ite)->debugInfo();

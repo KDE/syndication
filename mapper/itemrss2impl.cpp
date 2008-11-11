@@ -114,8 +114,8 @@ QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
     
     QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
     
-    for (QList<Syndication::RSS2::Enclosure>::ConstIterator it = encs.begin();
-         it != encs.end(); ++it)
+    for (QList<Syndication::RSS2::Enclosure>::ConstIterator it = encs.constBegin();
+         it != encs.constEnd(); ++it)
     {
         EnclosureRSS2ImplPtr impl(new EnclosureRSS2Impl(m_item, *it));
         list.append(impl);
@@ -129,8 +129,8 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
     QList<Syndication::CategoryPtr> list;
     
     QList<Syndication::RSS2::Category> cats = m_item.categories();
-    QList<Syndication::RSS2::Category>::ConstIterator it = cats.begin();
-    QList<Syndication::RSS2::Category>::ConstIterator end = cats.end();
+    QList<Syndication::RSS2::Category>::ConstIterator it = cats.constBegin();
+    QList<Syndication::RSS2::Category>::ConstIterator end = cats.constEnd();
     
     for ( ; it != end; ++it)
     {

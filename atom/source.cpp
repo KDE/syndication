@@ -52,8 +52,8 @@ QList<Person> Source::authors() const
                                 QString::fromUtf8("author"));
     QList<Person> list;
                                        
-    QList<QDomElement>::ConstIterator it = a.begin();
-    QList<QDomElement>::ConstIterator end = a.end();
+    QList<QDomElement>::ConstIterator it = a.constBegin();
+    QList<QDomElement>::ConstIterator end = a.constEnd();
     
     
     for ( ; it != end; ++it)
@@ -71,8 +71,8 @@ QList<Person> Source::contributors() const
                                     QString::fromUtf8("contributor"));
     QList<Person> list;
                                        
-    QList<QDomElement>::ConstIterator it = a.begin();
-    QList<QDomElement>::ConstIterator end = a.end();
+    QList<QDomElement>::ConstIterator it = a.constBegin();
+    QList<QDomElement>::ConstIterator end = a.constEnd();
     
     
     for ( ; it != end; ++it)
@@ -90,8 +90,8 @@ QList<Category> Source::categories() const
                                 QString::fromUtf8("category"));
     QList<Category> list;
     
-    QList<QDomElement>::ConstIterator it = a.begin();
-    QList<QDomElement>::ConstIterator end = a.end();
+    QList<QDomElement>::ConstIterator it = a.constBegin();
+    QList<QDomElement>::ConstIterator end = a.constEnd();
 
 
     for ( ; it != end; ++it)
@@ -127,8 +127,8 @@ QList<Link> Source::links() const
                                 QString::fromUtf8("link"));
     QList<Link> list;
 
-    QList<QDomElement>::ConstIterator it = a.begin();
-    QList<QDomElement>::ConstIterator end = a.end();
+    QList<QDomElement>::ConstIterator it = a.constBegin();
+    QList<QDomElement>::ConstIterator end = a.constEnd();
 
 
     for ( ; it != end; ++it)
@@ -193,27 +193,27 @@ QString Source::debugInfo() const
         info += "updated: #" + dupdated + "#\n";
     
     QList<Link> dlinks = links();
-    QList<Link>::ConstIterator endlinks = dlinks.end();
-    for (QList<Link>::ConstIterator it = dlinks.begin(); it != endlinks; ++it)
+    QList<Link>::ConstIterator endlinks = dlinks.constEnd();
+    for (QList<Link>::ConstIterator it = dlinks.constBegin(); it != endlinks; ++it)
         info += (*it).debugInfo();
     
     QList<Category> dcats = categories();
-    QList<Category>::ConstIterator endcats = dcats.end();
-    for (QList<Category>::ConstIterator it = dcats.begin(); it != endcats; ++it)
+    QList<Category>::ConstIterator endcats = dcats.constEnd();
+    for (QList<Category>::ConstIterator it = dcats.constBegin(); it != endcats; ++it)
         info += (*it).debugInfo();
 
     info += "### Authors: ###################\n";
     
     QList<Person> dauthors = authors();
-    QList<Person>::ConstIterator endauthors = dauthors.end();
-    for (QList<Person>::ConstIterator it = dauthors.begin(); it != endauthors; ++it)
+    QList<Person>::ConstIterator endauthors = dauthors.constEnd();
+    for (QList<Person>::ConstIterator it = dauthors.constBegin(); it != endauthors; ++it)
         info += (*it).debugInfo();
 
     info += "### Contributors: ###################\n";
     
     QList<Person> dcontri = contributors();
-    QList<Person>::ConstIterator endcontri = dcontri.end();
-    for (QList<Person>::ConstIterator it = dcontri.begin(); it != endcontri; ++it)
+    QList<Person>::ConstIterator endcontri = dcontri.constEnd();
+    for (QList<Person>::ConstIterator it = dcontri.constBegin(); it != endcontri; ++it)
         info += (*it).debugInfo();
     
     info += "### Source end ################\n";

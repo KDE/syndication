@@ -48,8 +48,8 @@ QList<Syndication::ItemPtr> FeedRSS2Impl::items() const
 {
     QList<ItemPtr> items;
     QList<Syndication::RSS2::Item> entries = m_doc->items();
-    QList<Syndication::RSS2::Item>::ConstIterator it = entries.begin();
-    QList<Syndication::RSS2::Item>::ConstIterator end = entries.end();
+    QList<Syndication::RSS2::Item>::ConstIterator it = entries.constBegin();
+    QList<Syndication::RSS2::Item>::ConstIterator end = entries.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -64,8 +64,8 @@ QList<Syndication::CategoryPtr> FeedRSS2Impl::categories() const
 {
     QList<CategoryPtr> categories;
     QList<Syndication::RSS2::Category> entries = m_doc->categories();
-    QList<Syndication::RSS2::Category>::ConstIterator it = entries.begin();
-    QList<Syndication::RSS2::Category>::ConstIterator end = entries.end();
+    QList<Syndication::RSS2::Category>::ConstIterator it = entries.constBegin();
+    QList<Syndication::RSS2::Category>::ConstIterator end = entries.constEnd();
     
     for ( ; it != end; ++it)
     {

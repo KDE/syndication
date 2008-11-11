@@ -74,8 +74,8 @@ QList<PersonPtr> ItemRDFImpl::authors() const
     
     QStringList people = m_item.dc().creators();
     people += m_item.dc().contributors();
-    QStringList::ConstIterator it = people.begin();
-    QStringList::ConstIterator end = people.end();
+    QStringList::ConstIterator it = people.constBegin();
+    QStringList::ConstIterator end = people.constEnd();
     
     for ( ; it != end; ++it)
     {

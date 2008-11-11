@@ -197,7 +197,7 @@ void Document::getItemTitleFormatInfo(bool* containsMarkup) const
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
         
-        QList<Item>::ConstIterator it = litems.begin(); 
+        QList<Item>::ConstIterator it = litems.constBegin(); 
         
         while (i < nmax)
         {
@@ -230,7 +230,7 @@ void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.begin(); 
+        QList<Item>::ConstIterator it = litems.constBegin(); 
 
         while (i < nmax)
         {
@@ -264,8 +264,8 @@ QString Document::debugInfo() const
         info += input.debugInfo();
 
     QList<Item> itlist = items();
-    QList<Item>::ConstIterator it = itlist.begin();
-    QList<Item>::ConstIterator end = itlist.end();
+    QList<Item>::ConstIterator it = itlist.constBegin();
+    QList<Item>::ConstIterator end = itlist.constEnd();
     for ( ; it != end; ++it)
         info += (*it).debugInfo();
     

@@ -57,8 +57,8 @@ QString ItemAtomImpl::title() const
 QString ItemAtomImpl::link() const
 {
     QList<Syndication::Atom::Link> links = m_entry.links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.begin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.end();
+    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
+    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
 
     // return first link where rel="alternate"
     for ( ; it != end; ++it)
@@ -89,8 +89,8 @@ QString ItemAtomImpl::content() const
 QList<PersonPtr> ItemAtomImpl::authors() const
 {
     QList<Syndication::Atom::Person> atomps = m_entry.authors();
-    QList<Syndication::Atom::Person>::ConstIterator it = atomps.begin();
-    QList<Syndication::Atom::Person>::ConstIterator end = atomps.end();
+    QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
+    QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
     
     QList<PersonPtr> list;
     
@@ -102,8 +102,8 @@ QList<PersonPtr> ItemAtomImpl::authors() const
     
     atomps = m_entry.contributors();
     
-    it = atomps.begin();
-    end = atomps.end();
+    it = atomps.constBegin();
+    end = atomps.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -148,8 +148,8 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
     QList<Syndication::EnclosurePtr> list;
 
     QList<Syndication::Atom::Link> links = m_entry.links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.begin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.end();
+    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
+    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
 
     for ( ; it != end; ++it)
     {
@@ -168,8 +168,8 @@ QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
     QList<Syndication::CategoryPtr> list;
     
     QList<Syndication::Atom::Category> cats = m_entry.categories();
-    QList<Syndication::Atom::Category>::ConstIterator it = cats.begin();
-    QList<Syndication::Atom::Category>::ConstIterator end = cats.end();
+    QList<Syndication::Atom::Category>::ConstIterator it = cats.constBegin();
+    QList<Syndication::Atom::Category>::ConstIterator end = cats.constEnd();
     
     for ( ; it != end; ++it)
     {

@@ -51,8 +51,8 @@ QList<Syndication::ItemPtr> FeedRDFImpl::items() const
 {
     QList<ItemPtr> items;
     QList<Syndication::RDF::Item> entries = m_doc->items();
-    QList<Syndication::RDF::Item>::ConstIterator it = entries.begin();
-    QList<Syndication::RDF::Item>::ConstIterator end = entries.end();
+    QList<Syndication::RDF::Item>::ConstIterator it = entries.constBegin();
+    QList<Syndication::RDF::Item>::ConstIterator end = entries.constEnd();
     
     for ( ; it != end; ++it)
     {
@@ -90,8 +90,8 @@ QList<PersonPtr> FeedRDFImpl::authors() const
     
     QStringList people = m_doc->dc().creators();
     people += m_doc->dc().contributors();
-    QStringList::ConstIterator it = people.begin();
-    QStringList::ConstIterator end = people.end();
+    QStringList::ConstIterator it = people.constBegin();
+    QStringList::ConstIterator end = people.constEnd();
     
     for ( ; it != end; ++it)
     {

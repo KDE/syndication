@@ -135,8 +135,8 @@ void Parser::ParserPrivate::map09to10(Model model)
     // map statement predicates to RSS 1.0
     
     QList<StatementPtr> statements = model.statements();
-    QList<StatementPtr>::ConstIterator it = statements.begin();
-    QList<StatementPtr>::ConstIterator end = statements.end();
+    QList<StatementPtr>::ConstIterator it = statements.constBegin();
+    QList<StatementPtr>::ConstIterator end = statements.constEnd();
     
     for ( ; it != end; ++it)
     {
