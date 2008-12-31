@@ -115,29 +115,29 @@ QString resolveEntities(const QString& str)
 QString escapeSpecialCharacters(const QString& strp)
 {
     QString str(strp);
-    str.replace("&", "&amp;");
-    str.replace("\"", "&quot;");
-    str.replace("<", "&lt;");
-    str.replace(">", "&gt;");
-    str.replace("\'", "&apos;");
+    str.replace('&', "&amp;");
+    str.replace('\"', "&quot;");
+    str.replace('<', "&lt;");
+    str.replace('>', "&gt;");
+    str.replace('\'', "&apos;");
     return str.trimmed();
 }
 
 QString convertNewlines(const QString& strp)
 {
     QString str(strp);
-    str.replace("\n", "<br/>");
+    str.replace('\n', "<br/>");
     return str;
 }
 
 QString plainTextToHtml(const QString& plainText)
 {
     QString str(plainText);
-    str.replace("&", "&amp;");
-    str.replace("\"", "&quot;");
-    str.replace("<", "&lt;");
-    //str.replace(">", "&gt;");
-    str.replace("\n", "<br/>");
+    str.replace('&', "&amp;");
+    str.replace('\"', "&quot;");
+    str.replace('<', "&lt;");
+    //str.replace('>', "&gt;");
+    str.replace('\n', "<br/>");
     return str.trimmed();
 }
 
