@@ -116,7 +116,11 @@ QList<PersonPtr> ItemAtomImpl::authors() const
 
 time_t ItemAtomImpl::datePublished() const 
 {
-    return m_entry.published();
+    time_t pub = m_entry.published();
+    if (pub == 0)
+        return m_entry.updated();
+    else
+        return pub;
 }
 
 time_t ItemAtomImpl::dateUpdated() const 
