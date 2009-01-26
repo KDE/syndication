@@ -72,14 +72,14 @@ QString ItemRSS2Impl::content() const
 QList<PersonPtr> ItemRSS2Impl::authors() const
 {
     QList<PersonPtr> list;
-    
+
     PersonPtr ptr = personFromString(m_item.author());
-    
+
     if (!ptr->isNull())
     {
         list.append(ptr);
     }
-    
+
     return list;
 }
 
@@ -93,9 +93,9 @@ QString ItemRSS2Impl::id() const
     QString guid = m_item.guid();
     if (!guid.isEmpty())
         return guid;
-    
-    return QString("hash:%1").arg(calcMD5Sum(title() 
-            + description() + content()));
+
+    return QString("hash:%1").arg(calcMD5Sum(title()
+            + description() + link() + content()));
 }
 
 time_t ItemRSS2Impl::datePublished() const
@@ -111,33 +111,33 @@ time_t ItemRSS2Impl::dateUpdated() const
 QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
 {
     QList<Syndication::EnclosurePtr> list;
-    
+
     QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
-    
+
     for (QList<Syndication::RSS2::Enclosure>::ConstIterator it = encs.constBegin();
          it != encs.constEnd(); ++it)
     {
         EnclosureRSS2ImplPtr impl(new EnclosureRSS2Impl(m_item, *it));
         list.append(impl);
     }
-    
+
     return list;
 }
 
 QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 {
     QList<Syndication::CategoryPtr> list;
-    
+
     QList<Syndication::RSS2::Category> cats = m_item.categories();
     QList<Syndication::RSS2::Category>::ConstIterator it = cats.constBegin();
     QList<Syndication::RSS2::Category>::ConstIterator end = cats.constEnd();
-    
+
     for ( ; it != end; ++it)
     {
         CategoryRSS2ImplPtr impl(new CategoryRSS2Impl(*it));
         list.append(impl);
     }
-    
+
     return list;
 }
 
@@ -175,12 +175,12 @@ Syndication::SpecificItemPtr ItemRSS2Impl::specificItem() const
 QMultiMap<QString, QDomElement> ItemRSS2Impl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
-    
+
     foreach (const QDomElement &i, m_item.unhandledElements())
     {
-        ret.insert(i.namespaceURI() + i.localName(), i); 
+        ret.insert(i.namespaceURI() + i.localName(), i);
     }
-    
+
     return ret;
 }
 
