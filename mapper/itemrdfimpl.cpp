@@ -71,12 +71,12 @@ QString ItemRDFImpl::content() const
 QList<PersonPtr> ItemRDFImpl::authors() const
 {
     QList<PersonPtr> list;
-    
+
     QStringList people = m_item.dc().creators();
     people += m_item.dc().contributors();
     QStringList::ConstIterator it = people.begin();
     QStringList::ConstIterator end = people.end();
-    
+
     for ( ; it != end; ++it)
     {
         PersonPtr ptr = personFromString(*it);
@@ -99,15 +99,15 @@ QString ItemRDFImpl::id() const
     if (!m_item.resource()->isAnon())
         return m_item.resource()->uri();
     else
-        return "hash:" + calcMD5Sum(title() + description() + content());
+        return "hash:" + calcMD5Sum(title() + description() + link() + content());
 }
 
-time_t ItemRDFImpl::datePublished() const 
+time_t ItemRDFImpl::datePublished() const
 {
     return m_item.dc().date();
 }
 
-time_t ItemRDFImpl::dateUpdated() const 
+time_t ItemRDFImpl::dateUpdated() const
 {
     return m_item.dc().date();
 }
