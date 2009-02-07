@@ -41,7 +41,7 @@ typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
  * The type of this "something else" is specified by the template
  * parameter T.
  * In the default implementation it is used with the Feed interface,
- * but its not limited to that. T can be an arbitrary class.
+ * but it is not limited to that. T can be an arbitrary class.
  *
  * There are three (advanced and hopefully rare) use cases
  * that require you to implement your own mapper.
