@@ -37,6 +37,10 @@ template <class T> class QList;
 namespace Syndication {
 namespace RDF {
 
+class Document;
+class Resource;
+class Statement;
+
 /**
  * An RDF model, a set of RDF statements.
  * Model objects are implicitely shared.
@@ -45,6 +49,10 @@ namespace RDF {
  */
 class SYNDICATION_EXPORT Model
 {
+    friend class ::Syndication::RDF::Document;
+    friend class ::Syndication::RDF::Resource;
+    friend class ::Syndication::RDF::Statement;
+
     public:
 
         /**
@@ -83,7 +91,7 @@ class SYNDICATION_EXPORT Model
          * method does _not_ compare the statement list.
          * Two indepently created models containing the same statements
          * are not equal!
-         * 
+         *
          * @param other the model to compare to
          */
         bool operator==(const Model& other) const;

@@ -23,10 +23,15 @@
 #include "statement.h"
 #include "literal.h"
 #include "model.h"
+#include "model_p.h"
 #include "property.h"
 #include "resource.h"
 
 #include <QtCore/QString>
+
+#include <boost/weak_ptr.hpp>
+
+using namespace boost;
 
 namespace Syndication {
 namespace RDF {
@@ -34,11 +39,11 @@ namespace RDF {
 class Statement::StatementPrivate
 {
     public:
-    
+
         uint subjectID;
         uint predicateID;
         uint objectID;
-        Model model;
+        weak_ptr<Model::ModelPrivate> model;
 
         bool operator==(const StatementPrivate& other) const
         {
@@ -61,10 +66,10 @@ Statement::Statement(const Statement& other)
     d = other.d;
 }
 
-Statement::Statement(ResourcePtr subject, PropertyPtr predicate, 
+Statement::Statement(ResourcePtr subject, PropertyPtr predicate,
                         NodePtr object) : d(new StatementPrivate)
 {
-    d->model = subject->model();
+    d->model = subject->model().d;
     d->subjectID = subject->id();
     d->predicateID = predicate->id();
     d->objectID = object->id();
@@ -95,25 +100,30 @@ bool Statement::isNull() const
 
 ResourcePtr Statement::subject() const
 {
-    return d->model.resourceByID(d->subjectID);
+    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    return m ? m->resourceByID(d->subjectID) : ResourcePtr(new Resource);
 }
 
 PropertyPtr Statement::predicate() const
 {
-    return d->model.propertyByID(d->predicateID);
+    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    return m ? m->propertyByID(d->predicateID) : PropertyPtr( new Property() );
 }
 
 NodePtr Statement::object() const
 {
-    return d->model.nodeByID(d->objectID);
+    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    return m ? m->nodeByID(d->objectID) : LiteralPtr( new Literal() );
 }
 
 ResourcePtr Statement::asResource() const
 {
-    if (isNull() || !d->model.nodeByID(d->objectID)->isResource())
+    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+
+    if (isNull() || !m || !m->nodeByID(d->objectID)->isResource())
         return ResourcePtr(new Resource);
 
-    return d->model.resourceByID(d->objectID);
+    return m->resourceByID(d->objectID);
 }
 
 QString Statement::asString() const
@@ -121,7 +131,8 @@ QString Statement::asString() const
     if (isNull())
         return QString();
 
-    return d->model.nodeByID(d->objectID)->text();
+    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    return m ? m->nodeByID(d->objectID)->text() : QString();
 }
 
 } // namespace RDF

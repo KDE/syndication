@@ -22,6 +22,7 @@
 
 #include "resource.h"
 #include "model.h"
+#include "model_p.h"
 #include "nodevisitor.h"
 #include "property.h"
 #include "statement.h"
@@ -31,18 +32,22 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
+#include <boost/weak_ptr.hpp>
+
+using namespace boost;
+
 namespace Syndication {
 namespace RDF {
 
 class Resource::ResourcePrivate
 {
     public:
-    
+
         QString uri;
-        Model model;
+        weak_ptr<Model::ModelPrivate> model;
         bool isAnon;
         unsigned int id;
-        
+
         bool operator==(const ResourcePrivate& other) const
         {
             if (!isAnon && !other.isAnon)
@@ -73,7 +78,7 @@ Resource::Resource(const QString& uri) : d(new ResourcePrivate)
         d->uri = uri;
         d->isAnon = false;
     }
-    
+
     d->id = idCounter++;
 }
 
@@ -100,22 +105,34 @@ bool Resource::operator==(const Node& other) const
 
 bool Resource::hasProperty(PropertyPtr property) const
 {
-    return d ? d->model.resourceHasProperty(this, property) : false;
+    if (!d)
+        return false;
+    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    if (!m)
+        return false;
+    return m->resourceHasProperty(this, property);
 }
 
 StatementPtr Resource::property(PropertyPtr property) const
 {
     StatementPtr ptr(new Statement());
-    if (d)
-        ptr = d->model.resourceProperty(this, property);
-    return ptr;
+    if (!d)
+        return ptr;
+    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    if (!m)
+        return ptr;
+    return m->resourceProperty(this, property);
 }
 
 QList<StatementPtr> Resource::properties(PropertyPtr property) const
 {
-    if (d)
-        return d->model.resourceProperties(this, property);
-    return QList<StatementPtr>();
+    if (!d)
+        return QList<StatementPtr>();
+    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    if (!m)
+        return QList<StatementPtr>();
+
+    return m->resourceProperties(this, property);
 }
 
 Resource* Resource::clone() const
@@ -142,7 +159,17 @@ bool Resource::isNull() const
 
 Model Resource::model() const
 {
-    return d ? d->model : Model();
+    if (!d)
+        return Model();
+
+    const shared_ptr<Model::ModelPrivate> mp = d->model.lock();
+
+    Model m;
+
+    if (mp)
+        m.d = mp;
+
+    return m;
 }
 
 bool Resource::isResource() const
@@ -173,7 +200,7 @@ bool Resource::isSequence() const
 void Resource::setModel(const Model& model)
 {
     if (d)
-        d->model = model;
+        d->model = model.d;
 }
 
 void Resource::setId(unsigned int id)
@@ -181,7 +208,7 @@ void Resource::setId(unsigned int id)
     if (d)
         d->id = id;
 }
-        
+
 QString Resource::text() const
 {
     return QString();
