@@ -113,7 +113,7 @@ PropertyPtr Statement::predicate() const
 NodePtr Statement::object() const
 {
     const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
-    return m ? m->nodeByID(d->objectID) : LiteralPtr( new Literal() );
+    return m ? m->nodeByID(d->objectID) : NodePtr( LiteralPtr( new Literal() ) );
 }
 
 ResourcePtr Statement::asResource() const
