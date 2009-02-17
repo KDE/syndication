@@ -22,6 +22,10 @@
 #ifndef SYNDICATION_RDF_MODEL_H
 #define SYNDICATION_RDF_MODEL_H
 
+#include <document.h>
+#include <resource.h>
+#include <statement.h>
+
 #include <syndication/rdf/literal.h>
 #include <syndication/rdf/node.h>
 #include <syndication/rdf/property.h>
@@ -37,10 +41,6 @@ template <class T> class QList;
 namespace Syndication {
 namespace RDF {
 
-class Document;
-class Resource;
-class Statement;
-
 /**
  * An RDF model, a set of RDF statements.
  * Model objects are implicitely shared.
@@ -50,8 +50,11 @@ class Statement;
 class SYNDICATION_EXPORT Model
 {
     friend class ::Syndication::RDF::Document;
+    friend class ::Syndication::RDF::Document::Private;
     friend class ::Syndication::RDF::Resource;
+    friend class ::Syndication::RDF::Resource::ResourcePrivate;
     friend class ::Syndication::RDF::Statement;
+    friend class ::Syndication::RDF::Statement::StatementPrivate;
 
     public:
 

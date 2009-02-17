@@ -42,6 +42,7 @@ typedef boost::shared_ptr<Statement> StatementPtr;
  */
 class SYNDICATION_EXPORT Statement
 {
+    friend class Model;
     public:
 
         /**

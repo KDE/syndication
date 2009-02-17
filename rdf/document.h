@@ -33,6 +33,7 @@ namespace Syndication {
 namespace RDF {
 
 class Document;
+class Model;
 class DublinCore;
 class Image;
 class Item;
@@ -49,7 +50,7 @@ typedef boost::shared_ptr<Document> DocumentPtr;
  */
 class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public ResourceWrapper
 {
-
+    friend class ::Syndication::RDF::Model;
     public:
 
         /**
