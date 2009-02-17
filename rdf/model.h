@@ -22,9 +22,9 @@
 #ifndef SYNDICATION_RDF_MODEL_H
 #define SYNDICATION_RDF_MODEL_H
 
-#include <document.h>
-#include <resource.h>
-#include <statement.h>
+#include <syndication/rdf/document.h>
+#include <syndication/rdf/resource.h>
+#include <syndication/rdf/statement.h>
 
 #include <syndication/rdf/literal.h>
 #include <syndication/rdf/node.h>
