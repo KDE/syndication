@@ -57,8 +57,8 @@ class Document::DocumentPrivate
     mutable bool itemTitlesGuessed;
 };
 
-Document::Document(const QDomElement& element) : SpecificDocument(), 
-                                                 ElementWrapper(element), 
+Document::Document(const QDomElement& element) : SpecificDocument(),
+                                                 ElementWrapper(element),
                                                  d(new DocumentPrivate)
 {
 }
@@ -93,7 +93,7 @@ bool Document::isValid() const
 {
     return !isNull();
 }
-        
+
 QString Document::title() const
 {
     return extractElementTextNS(QString(), QString::fromUtf8("title"));
@@ -114,7 +114,7 @@ QString Document::language() const
 {
     QString lang = extractElementTextNS(QString(),
                                         QString::fromUtf8("language"));
-    
+
     if (!lang.isNull())
     {
         return lang;
@@ -122,9 +122,9 @@ QString Document::language() const
     else
     {
         return extractElementTextNS(
-            dublinCoreNamespace(), QString::fromUtf8("language"));   
+            dublinCoreNamespace(), QString::fromUtf8("language"));
     }
-    
+
 }
 
 QString Document::copyright() const
@@ -156,7 +156,7 @@ QString Document::webMaster() const
 time_t Document::pubDate() const
 {
     QString str = extractElementTextNS(QString(), QString::fromUtf8("pubDate"));
-    
+
     if (!str.isNull())
     {
         return parseDate(str, RFCDate);
@@ -171,7 +171,7 @@ time_t Document::pubDate() const
 time_t Document::lastBuildDate() const
 {
     QString str = extractElementTextNS(QString(), QString::fromUtf8("lastBuildDate"));
-    
+
     return parseDate(str, RFCDate);
 }
 
@@ -186,7 +186,7 @@ QList<Category> Document::categories() const
     {
         categories.append(Category(*it));
     }
-    
+
     return categories;
 }
 
@@ -223,10 +223,10 @@ Image Document::image() const
 TextInput Document::textInput() const
 {
     TextInput ti = TextInput(firstElementByTagNameNS(QString(), QString::fromUtf8("textInput")));
-    
+
     if (!ti.isNull())
         return ti;
-    
+
     // Netscape's version of RSS 0.91 has textinput, not textInput
     return TextInput(firstElementByTagNameNS(QString(), QString::fromUtf8("textinput")));
 }
@@ -240,7 +240,7 @@ QSet<int> Document::skipHours() const
     {
         ElementWrapper skipHoursWrapper(skipHoursNode);
         bool ok = false;
-        QList<QDomElement> hours = 
+        QList<QDomElement> hours =
                 skipHoursWrapper.elementsByTagNameNS(QString(),
                 QString::fromUtf8("hour"));
         QList<QDomElement>::ConstIterator it = hours.constBegin();
@@ -286,16 +286,16 @@ QSet<Document::DayOfWeek> Document::skipDays() const
 QList<Item> Document::items() const
 {
     QList<Item> items;
-    
+
     QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QString::fromUtf8("item"));
-    
+
     DocumentPtr doccpy(new Document(*this));
-        
+
     for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it)
     {
         items.append(Item(*it, doccpy));
     }
-    
+
     return items;
 }
 QList<QDomElement> Document::unhandledElements() const
@@ -324,9 +324,9 @@ QList<QDomElement> Document::unhandledElements() const
     handled.append(ElementType(QString::fromUtf8("language"), dublinCoreNamespace()));
     handled.append(ElementType(QString::fromUtf8("rights"), dublinCoreNamespace()));
     handled.append(ElementType(QString::fromUtf8("date"), dublinCoreNamespace()));
-    
+
     QList<QDomElement> notHandled;
-    
+
     QDomNodeList children = element().childNodes();
     for (int i = 0; i < children.size(); ++i)
     {
@@ -337,7 +337,7 @@ QList<QDomElement> Document::unhandledElements() const
             notHandled.append(el);
         }
     }
-    
+
     return notHandled;
 }
 
@@ -359,24 +359,24 @@ QString Document::debugInfo() const
         info += "managingEditor: #" + managingEditor() + "#\n";
     if (!webMaster().isNull())
     info += "webMaster: #" + webMaster() + "#\n";
-    
+
     QString dpubdate = dateTimeToString(pubDate());
     if (!dpubdate.isNull())
         info += "pubDate: #" + dpubdate + "#\n";
-    
+
     QString dlastbuilddate = dateTimeToString(lastBuildDate());
     if (!dlastbuilddate.isNull())
         info += "lastBuildDate: #" + dlastbuilddate + "#\n";
-    
+
     if (!textInput().isNull())
         info += textInput().debugInfo();
     if (!cloud().isNull())
         info += cloud().debugInfo();
     if (!image().isNull())
         info += image().debugInfo();
-    
+
     QList<Category> cats = categories();
-    
+
     for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it)
         info += (*it).debugInfo();
     QList<Item> litems = items();
@@ -392,59 +392,59 @@ void Document::getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const
     {
         QString titles;
         QList<Item> litems = items();
-        
+
         if (litems.isEmpty())
         {
             d->itemTitlesGuessed = true;
             return;
         }
-        
+
         QDomElement titleEl = (*litems.begin()).firstElementByTagNameNS(QString(), QString::fromUtf8("title"));
         d->itemTitleIsCDATA = titleEl.firstChild().isCDATASection();
-        
+
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
-        
-        QList<Item>::ConstIterator it = litems.constBegin(); 
-        
+
+        QList<Item>::ConstIterator it = litems.constBegin();
+
         while (i < nmax)
         {
             titles += (*it).originalTitle();
             ++it;
             ++i;
         }
-        
+
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
         d->itemTitlesGuessed = true;
     }
-    
+
     if (isCDATA != 0L)
         *isCDATA = d->itemTitleIsCDATA;
     if (containsMarkup != 0L)
         *containsMarkup = d->itemTitleContainsMarkup;
 }
-        
+
 void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup) const
 {
     if (!d->itemDescGuessed)
     {
         QString desc;
         QList<Item> litems = items();
-        
-        
+
+
         if (litems.isEmpty())
         {
             d->itemDescGuessed = true;
             return;
         }
-        
+
         QDomElement descEl = (*litems.begin()).firstElementByTagNameNS(QString(), QString::fromUtf8("description"));
         d->itemDescriptionIsCDATA = descEl.firstChild().isCDATASection();
 
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin(); 
+        QList<Item>::ConstIterator it = litems.constBegin();
 
         while (i < nmax)
         {
@@ -456,13 +456,13 @@ void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup)
         d->itemDescriptionContainsMarkup = stringContainsMarkup(desc);
         d->itemDescGuessed = true;
     }
-    
+
     if (isCDATA != 0L)
         *isCDATA = d->itemDescriptionIsCDATA;
     if (containsMarkup != 0L)
         *containsMarkup = d->itemDescriptionContainsMarkup;
 }
-        
+
 bool Document::accept(DocumentVisitor* visitor)
 {
     return visitor->visitRSS2Document(this);

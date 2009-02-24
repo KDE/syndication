@@ -22,6 +22,10 @@
 #ifndef SYNDICATION_RDF_MODEL_H
 #define SYNDICATION_RDF_MODEL_H
 
+#include <syndication/rdf/document.h>
+#include <syndication/rdf/resource.h>
+#include <syndication/rdf/statement.h>
+
 #include <syndication/rdf/literal.h>
 #include <syndication/rdf/node.h>
 #include <syndication/rdf/property.h>
@@ -45,6 +49,13 @@ namespace RDF {
  */
 class SYNDICATION_EXPORT Model
 {
+    friend class ::Syndication::RDF::Document;
+    friend class ::Syndication::RDF::Document::Private;
+    friend class ::Syndication::RDF::Resource;
+    friend class ::Syndication::RDF::Resource::ResourcePrivate;
+    friend class ::Syndication::RDF::Statement;
+    friend class ::Syndication::RDF::Statement::StatementPrivate;
+
     public:
 
         /**
@@ -83,7 +94,7 @@ class SYNDICATION_EXPORT Model
          * method does _not_ compare the statement list.
          * Two indepently created models containing the same statements
          * are not equal!
-         * 
+         *
          * @param other the model to compare to
          */
         bool operator==(const Model& other) const;

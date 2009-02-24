@@ -20,6 +20,7 @@
  *
  */
 #include "resourcewrapper.h"
+#include "model.h"
 #include "resource.h"
 
 
@@ -29,8 +30,9 @@ namespace RDF {
 class ResourceWrapper::ResourceWrapperPrivate
 {
     public:
-        
+
     ResourcePtr resource;
+    Model model;
 };
 
 ResourceWrapper::ResourceWrapper() : d(new ResourceWrapperPrivate)
@@ -47,6 +49,7 @@ ResourceWrapper::ResourceWrapper(ResourcePtr resource) : d(new ResourceWrapperPr
 {
     // if a null pointer is passed, we create a null resource
     d->resource = !resource ? ResourcePtr( new Resource() ) : resource;
+    d->model = d->resource->model();
 }
 
 ResourceWrapper::~ResourceWrapper()

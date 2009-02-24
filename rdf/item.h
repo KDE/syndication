@@ -67,11 +67,11 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
 
         /**
          * copies an item
-         * 
+         *
          * @param other item to copy
          */
         Item(const Item& other);
-        
+
         /**
          * virtual destructor
          */
@@ -79,20 +79,20 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
 
         /**
          * assigns another item
-         * 
+         *
          * @param other the item to assign
          */
         Item& operator=(const Item& other);
-        
+
         /**
          * compares two item instances. Two instances are equal,
          * if the wrapped resources are equal. See ResourceWrapper::operator==()
          * for details.
-         * 
+         *
          * @param other the item to compare this item to
          */
         bool operator==(const Item& other) const;
-        
+
         /**
          * interface for item visitors. See SpecificItemVisitor for
          * more information.
@@ -146,25 +146,25 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
          * used by Document
          */
         QString originalTitle() const;
-        
+
         /**
          * @internal
          * returns the description unmodified
          * used by Document
          */
         QString originalDescription() const;
-        
+
         //@endcond
-        
+
         /**
          * Returns a description of the item for debugging purposes.
          *
          * @return debug string
          */
         QString debugInfo() const;
-        
+
     private:
-        
+
         class Private;
         Private* d;
 };

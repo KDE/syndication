@@ -25,6 +25,7 @@
 #include "image.h"
 #include "item.h"
 #include "model.h"
+#include "model_p.h"
 #include "resource.h"
 #include "rssvocab.h"
 #include "sequence.h"
@@ -37,6 +38,8 @@
 
 #include <QtCore/QList>
 #include <QtCore/QString>
+
+using namespace boost;
 
 namespace Syndication {
 namespace RDF {
@@ -53,18 +56,21 @@ class Document::Private
     mutable bool itemTitlesGuessed;
     mutable bool itemDescriptionContainsMarkup;
     mutable bool itemDescGuessed;
+    shared_ptr<Model::ModelPrivate> modelPrivate;
 };
 
-Document::Document() : Syndication::SpecificDocument(), 
+Document::Document() : Syndication::SpecificDocument(),
                        ResourceWrapper(),
                        d(new Private)
 {
+    d->modelPrivate = resource()->model().d;
 }
 
 Document::Document(ResourcePtr resource) : Syndication::SpecificDocument(),
                                            ResourceWrapper(resource),
                                            d(new Private)
 {
+    d->modelPrivate = resource->model().d;
 }
 
 Document::Document(const Document& other) : SpecificDocument(other),                                                      ResourceWrapper(other),
@@ -90,11 +96,11 @@ Document& Document::operator=(const Document& other)
 {
     ResourceWrapper::operator=(other);
     *d = *(other.d);
-    
+
     return *this;
 }
 
-        
+
 bool Document::accept(DocumentVisitor* visitor)
 {
     return visitor->visitRDFDocument(this);
@@ -104,7 +110,7 @@ bool Document::isValid() const
 {
     return !isNull();
 }
-        
+
 QString Document::title() const
 {
     QString str = resource()->property(RSSVocab::self()->title())->asString();
@@ -138,18 +144,18 @@ QList<Item> Document::items() const
     QList<Item> list;
     if (!resource()->hasProperty(RSSVocab::self()->items()))
         return list;
-    
+
     NodePtr n = resource()->property(RSSVocab::self()->items())->object();
     if (n->isSequence())
     {
         Sequence* seq = static_cast<Sequence*>(n.get());
-        
+
         const QList<NodePtr> items = seq->items();
         QList<NodePtr>::ConstIterator it = items.begin();
         QList<NodePtr>::ConstIterator end = items.end();
-        
+
         DocumentPtr doccpy(new Document(*this));
-        
+
         for ( ; it != end; ++it)
         {
             if ((*it)->isResource())
@@ -158,11 +164,11 @@ QList<Item> Document::items() const
                 // maybe this should go to the node
                 // interface ResourcePtr asResource()?
                 ResourcePtr ptr = resource()->model().createResource((static_cast<Resource*>((*it).get()))->uri());
-                
+
                 list.append(Item(ptr, doccpy));
             }
         }
-    
+
     }
     return list;
 }
@@ -170,14 +176,14 @@ QList<Item> Document::items() const
 Image Document::image() const
 {
     ResourcePtr img = resource()->property(RSSVocab::self()->image())->asResource();
-    
+
     return img ? Image(img) : Image();
 }
 
 TextInput Document::textInput() const
 {
     ResourcePtr ti = resource()->property(RSSVocab::self()->textinput())->asResource();
-    
+
     return ti ? TextInput(ti) : TextInput();
 }
 
@@ -187,50 +193,50 @@ void Document::getItemTitleFormatInfo(bool* containsMarkup) const
     {
         QString titles;
         QList<Item> litems = items();
-        
+
         if (litems.isEmpty())
         {
             d->itemTitlesGuessed = true;
             return;
         }
-        
+
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
-        
-        QList<Item>::ConstIterator it = litems.constBegin(); 
-        
+
+        QList<Item>::ConstIterator it = litems.constBegin();
+
         while (i < nmax)
         {
             titles += (*it).originalTitle();
             ++it;
             ++i;
         }
-        
+
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
         d->itemTitlesGuessed = true;
     }
     if (containsMarkup != 0L)
         *containsMarkup = d->itemTitleContainsMarkup;
 }
-        
+
 void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
 {
     if (!d->itemDescGuessed)
     {
         QString desc;
         QList<Item> litems = items();
-        
-        
+
+
         if (litems.isEmpty())
         {
             d->itemDescGuessed = true;
             return;
         }
-        
+
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin(); 
+        QList<Item>::ConstIterator it = litems.constBegin();
 
         while (i < nmax)
         {
@@ -242,7 +248,7 @@ void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
         d->itemDescriptionContainsMarkup = stringContainsMarkup(desc);
         d->itemDescGuessed = true;
     }
-    
+
     if (containsMarkup != 0L)
         *containsMarkup = d->itemDescriptionContainsMarkup;
 }
@@ -268,8 +274,8 @@ QString Document::debugInfo() const
     QList<Item>::ConstIterator end = itlist.constEnd();
     for ( ; it != end; ++it)
         info += (*it).debugInfo();
-    
-    
+
+
     info += "### Document end ################\n";
     return info;
 }
