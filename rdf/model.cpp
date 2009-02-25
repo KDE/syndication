@@ -21,140 +21,14 @@
  */
 
 #include "model.h"
-#include "literal.h"
-#include "nodevisitor.h"
-#include "property.h"
-#include "rdfvocab.h"
-#include "resource.h"
-#include "sequence.h"
-#include "statement.h"
-
-#include <QtCore/QHash>
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include "model_p.h"
 
 namespace Syndication {
 namespace RDF {
 
-class Model::ModelPrivate
-{
-    public:
-    
-    long id;
-    static long idCounter;
-    LiteralPtr nullLiteral;
-    PropertyPtr nullProperty;
-    ResourcePtr nullResource;
-    StatementPtr nullStatement;
-    QHash<QString, StatementPtr> statements;
-    QHash<QString, QList<StatementPtr> > stmtsBySubject;
-            
-    QHash<int, NodePtr> nodes;
-    QHash<QString, ResourcePtr> resources;
-    QHash<QString, PropertyPtr> properties;
-    QHash<QString, SequencePtr> sequences;
-    Model* model;
-    
-    class AddToHashesVisitor;
-    
-    ModelPrivate(Model* m)
-    {
-        model = m;
-        id = idCounter++;
-        addToHashesVisitor = new AddToHashesVisitor(this);
-        initialized = false;
-    }
-    
-    ~ModelPrivate()
-    {
-        delete addToHashesVisitor;
-    }
-    
-    bool operator==(const ModelPrivate& other) const
-    {
-        return id == other.id;
-    }
-    
-    class AddToHashesVisitor : public NodeVisitor
-    {
-        public:
-            
-        AddToHashesVisitor(ModelPrivate* parent) : p(parent)
-        {}
-        
-        bool visitResource(ResourcePtr res)
-        {
-            visitNode(res);
-            p->resources[res->uri()] = res;
-            return true;
-        }
-    
-        bool visitSequence(SequencePtr seq)
-        {
-            visitResource(seq);
-            p->sequences[seq->uri()] = seq;
-            return true;
-        }
-
-        bool visitProperty(PropertyPtr prop)
-        {
-            visitResource(prop);
-            p->properties[prop->uri()] = prop;
-            return true;
-        }
-
-        bool visitNode(NodePtr node)
-        {
-            p->nodes[node->id()] = node;
-            return true;
-        }
-        
-        ModelPrivate* p;
-    };
-    
-    AddToHashesVisitor* addToHashesVisitor;
-    
-    void addToHashes(NodePtr node)
-    {
-        addToHashesVisitor->visit(node);
-    }
-    
-    void addToHashes(StatementPtr stmt, const QString& key)
-    {
-        statements[key] = stmt;
-        stmtsBySubject[stmt->subject()->uri()].append(stmt);
-    }
-    
-    void removeFromHashes(const QString& key)
-    {
-        StatementPtr stmt = statements[key];
-        if (stmt)
-            stmtsBySubject[stmt->subject()->uri()].removeAll(stmt);
-        statements.remove(key);
-        
-    }
-    
-    bool initialized;
-    
-    void init()
-    {
-        if (!initialized)
-        {
-            nullLiteral = LiteralPtr( new Literal() );
-            nullLiteral->setModel(*model);
-            nullProperty = PropertyPtr( new Property() );
-            nullProperty->setModel(*model);
-            nullResource = ResourcePtr( new Resource() );
-            nullResource->setModel(*model);
-            nullStatement = StatementPtr( new Statement() );
-            initialized = true;
-        }
-    }
-};
-
 long Model::ModelPrivate::idCounter = 0;
 
-Model::Model() : d(new ModelPrivate(this))
+Model::Model() : d(new ModelPrivate)
 {
 }
 
@@ -181,7 +55,7 @@ bool Model::operator==(const Model& other) const
 PropertyPtr Model::createProperty(const QString& uri)
 {
     PropertyPtr prop;
-    
+
     if (d->properties.contains(uri))
     {
         prop = d->properties[uri];
@@ -206,7 +80,7 @@ PropertyPtr Model::createProperty(const QString& uri)
 ResourcePtr Model::createResource(const QString& uri)
 {
     ResourcePtr res;
-    
+
     if (d->resources.contains(uri))
     {
         res = d->resources[uri];
@@ -224,7 +98,7 @@ ResourcePtr Model::createResource(const QString& uri)
 SequencePtr Model::createSequence(const QString& uri)
 {
     SequencePtr seq;
-    
+
     if (d->sequences.contains(uri))
     {
         seq = d->sequences[uri];
@@ -249,7 +123,7 @@ SequencePtr Model::createSequence(const QString& uri)
 LiteralPtr Model::createLiteral(const QString& text)
 {
     LiteralPtr lit(new Literal(text));
-    
+
     d->addToHashes(lit);
     return lit;
 }
@@ -259,7 +133,7 @@ void Model::removeStatement(StatementPtr statement)
 {
     removeStatement(statement->subject(), statement->predicate(), statement->object());
 }
-        
+
 void Model::removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
 {
     QString key = QString("%1-%2-%3")
@@ -273,41 +147,41 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
 {
     d->init();
     ResourcePtr subjInternal = subject;
-    
+
     if (!d->nodes.contains(subjInternal->id()))
     {
         subjInternal = ResourcePtr( subject->clone() );
         subjInternal->setModel(*this);
         d->addToHashes(subjInternal);
     }
-    
+
     PropertyPtr predInternal = predicate;
-    
+
     if (!d->nodes.contains(predInternal->id()))
     {
         predInternal = PropertyPtr( predicate->clone() );
         predInternal->setModel(*this);
         d->addToHashes(predInternal);
     }
-    
+
     NodePtr objInternal = object;
-            
+
     if (!d->nodes.contains(objInternal->id()))
     {
         objInternal = NodePtr( object->clone() );
         objInternal->setModel(*this);
         d->addToHashes(objInternal);
     }
-    
+
     // TODO: avoid duplicated stmts with literal objects!
-    
+
     QString key = QString("%1-%2-%3")
             .arg(QString::number(subjInternal->id()))
             .arg(QString::number(predInternal->id()))
             .arg(QString::number(objInternal->id()));
-    
+
     StatementPtr stmt;
-            
+
     if (!d->statements.contains(key))
     {
         stmt = StatementPtr( new Statement(subjInternal, predInternal, objInternal) );
@@ -317,7 +191,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
     {
         stmt = d->statements[key];
     }
-    
+
     return stmt;
 }
 
@@ -328,11 +202,16 @@ bool Model::isEmpty() const
 
 bool Model::resourceHasProperty(const Resource* resource, PropertyPtr property) const
 {
+    return d->resourceHasProperty( resource, property );
+}
+
+bool Model::ModelPrivate::resourceHasProperty(const Resource* resource, PropertyPtr property) const
+{
     // resource unknown
-    if (!d->resources.contains(resource->uri()))
+    if (!resources.contains(resource->uri()))
         return false;
-    
-    QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
+
+    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
     QList<StatementPtr>::ConstIterator it = stmts.begin();
     QList<StatementPtr>::ConstIterator end = stmts.end();
 
@@ -347,7 +226,12 @@ bool Model::resourceHasProperty(const Resource* resource, PropertyPtr property) 
 
 StatementPtr Model::resourceProperty(const Resource* resource, PropertyPtr property) const
 {
-    QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
+    return d->resourceProperty(resource, property);
+}
+
+StatementPtr Model::ModelPrivate::resourceProperty(const Resource* resource, PropertyPtr property) const
+{
+    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
     QList<StatementPtr>::ConstIterator it = stmts.begin();
     QList<StatementPtr>::ConstIterator end = stmts.end();
 
@@ -357,13 +241,18 @@ StatementPtr Model::resourceProperty(const Resource* resource, PropertyPtr prope
             return *it;
     }
 
-    return d->nullStatement;
+    return nullStatement;
 }
 
 QList<StatementPtr> Model::resourceProperties(const Resource* resource, PropertyPtr property) const
 {
+    return d->resourceProperties( resource, property );
+}
+
+QList<StatementPtr> Model::ModelPrivate::resourceProperties(const Resource* resource, PropertyPtr property) const
+{
     QList<StatementPtr> res;
-    QList<StatementPtr> stmts = d->stmtsBySubject[resource->uri()];
+    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
     QList<StatementPtr>::ConstIterator it = stmts.begin();
     QList<StatementPtr>::ConstIterator end = stmts.end();
 
@@ -372,7 +261,7 @@ QList<StatementPtr> Model::resourceProperties(const Resource* resource, Property
         if (*((*it)->predicate()) == *property)
             res.append(*it);
     }
-    
+
     return res;
 }
 
@@ -385,15 +274,15 @@ QList<StatementPtr> Model::statements() const
 QString Model::debugInfo() const
 {
     QString info;
-    
+
     QList<StatementPtr> stmts = d->statements.values();
     QList<StatementPtr>::ConstIterator it = stmts.begin();
     QList<StatementPtr>::ConstIterator end = stmts.end();
-    
+
     for ( ; it != end; ++it)
     {
         info += QString("<%1> <%2> ").arg((*it)->subject()->uri()).arg((*it)->predicate()->uri());
-        
+
         if ((*it)->object()->isLiteral())
         {
             info += QString("\"%1\"\n").arg((*it)->asString());
@@ -402,16 +291,16 @@ QString Model::debugInfo() const
         {
             info += QString("<%1>\n").arg((*it)->asResource()->uri());
         }
-         
+
     }
-    
+
     return info;
 }
 
 QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
 {
     QList<ResourcePtr> list;
-    
+
     QList<StatementPtr> stmts = d->statements.values();
     QList<StatementPtr>::ConstIterator it = stmts.begin();
     QList<StatementPtr>::ConstIterator end = stmts.end();
@@ -427,61 +316,82 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
 
 NodePtr Model::nodeByID(uint id) const
 {
-    if (!d->nodes.contains(id))
+    return d->nodeByID(id);
+}
+
+NodePtr Model::ModelPrivate::nodeByID(uint id) const
+{
+    if (!nodes.contains(id))
     {
-        return d->nullLiteral;
+        return nullLiteral;
     }
     else
     {
-        return d->nodes[id];
+        return nodes.value(id);
     }
 }
-        
+
 ResourcePtr Model::resourceByID(uint id) const
 {
-    if (!d->nodes.contains(id))
+    return d->resourceByID(id);
+}
+
+ResourcePtr Model::ModelPrivate::resourceByID(uint id) const
+{
+    if (!nodes.contains(id))
     {
-        return d->nullResource;
+        return nullResource;
     }
     else
     {
-        NodePtr node = d->nodes[id];
+        NodePtr node = nodes.value(id);
         if (node->isResource())
             return boost::static_pointer_cast<Resource>(node);
         else
-            return d->nullResource;
+            return nullResource;
     }
 }
 
 PropertyPtr Model::propertyByID(uint id) const
 {
-    if (!d->nodes.contains(id))
+    return d->propertyByID(id);
+}
+
+PropertyPtr Model::ModelPrivate::propertyByID(uint id) const
+{
+    if (!nodes.contains(id))
     {
-        return d->nullProperty;
+        return nullProperty;
     }
     else
     {
-        NodePtr node = d->nodes[id];
+        NodePtr node = nodes.value(id);
         if (node->isProperty())
             return  boost::static_pointer_cast<Property>(node);
         else
-            return d->nullProperty;
+            return nullProperty;
     }
 }
 
 LiteralPtr Model::literalByID(uint id) const
 {
-    if (!d->nodes.contains(id))
+    return d->literalByID(id);
+}
+
+
+LiteralPtr Model::ModelPrivate::literalByID(uint id) const
+{
+    if (!nodes.contains(id))
     {
-        return d->nullLiteral;
+        return nullLiteral;
     }
     else
     {
-        NodePtr node = d->nodes[id];
+        NodePtr node = nodes.value(id);
         if (node->isLiteral())
             return boost::static_pointer_cast<Literal>(node);
         else
-            return d->nullLiteral;
+            return nullLiteral;
     }
 }
 

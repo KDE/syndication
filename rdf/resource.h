@@ -44,7 +44,7 @@ typedef boost::shared_ptr<Statement> StatementPtr;
 typedef boost::shared_ptr<Resource> ResourcePtr;
 
 /**
- * Resources are the entities in the RDF graph. 
+ * Resources are the entities in the RDF graph.
  * In RSS, e.g. the feed channel itself and the items are
  * resources.
  */
@@ -58,18 +58,18 @@ class SYNDICATION_EXPORT Resource : public Node
          * creates a null resource
          */
         Resource();
-        
+
         /**
          * copies a resource
-         * 
+         *
          * @param other the resource to copy
          */
         Resource(const Resource& other);
-        
+
         /**
          * creates a resource with a given URI.
          * Do not use this directly, use Model::createResource() instead.
-         * 
+         *
          * @param uri the URI of the new resource
          */
         explicit Resource(const QString& uri);
@@ -81,15 +81,15 @@ class SYNDICATION_EXPORT Resource : public Node
 
         /**
          * assigns a resource
-         * 
+         *
          * @param other the resource to assign
          */
         Resource& operator=(const Resource& other);
-        
+
         /**
          * checks two resources for equality. Currently both URI (or anonID)
          * _and_ id() must be equal!
-         * 
+         *
          * @param other the node to compare this node to
          */
         bool operator==(const Node& other) const;
@@ -101,7 +101,7 @@ class SYNDICATION_EXPORT Resource : public Node
          * @param ptr a shared pointer object for this node
          */
         virtual void accept(NodeVisitor* visitor,  NodePtr ptr);
-        
+
         /**
          * creates a copy of the resource object
          */
@@ -115,28 +115,28 @@ class SYNDICATION_EXPORT Resource : public Node
         /**
          * returns whether the resource has a property @p property in the
          * associated model.
-         * 
+         *
          * @param property the property to check for
          */
         virtual bool hasProperty(PropertyPtr property) const;
-        
+
         /**
          * returns a statement from the associated model where this resource is
          * the subject and the given property the predicate.
-         * 
+         *
          * @param property the property to check for
-         * 
+         *
          * @return the first statement found that satisfies the conditions.
          * If there are multiple statements, an arbitrary one is returned.
          */
         virtual StatementPtr property(PropertyPtr property) const;
-        
+
         /**
          * returns the list of all statements from the associated model where
          * this resource is the subject and the given property the predicate.
-         * 
+         *
          * @param property the property to check for
-         * 
+         *
          * @return a list of the statements that satisfy the conditions.
          */
         virtual QList<StatementPtr> properties(PropertyPtr property) const;
@@ -151,30 +151,30 @@ class SYNDICATION_EXPORT Resource : public Node
          * and set by the associated model at creation time.
          */
         virtual unsigned int id() const;
-        
+
         /**
          * returns @p true
          */
         virtual bool isResource() const;
-        
+
         /**
          * returns @p false
          */
         virtual bool isLiteral() const;
-        
+
         /**
          * returns @p true if this resource is also a property, @p false
          * otherwise
          */
         virtual bool isProperty() const;
-        
+
         /**
          * returns whether this resource is an anonymous resource
          */
         virtual bool isAnon() const;
-        
+
         /**
-         * returns @p true if this resource is also a sequence, @p false 
+         * returns @p true if this resource is also a sequence, @p false
          * otherwise.
          */
         virtual bool isSequence() const;
@@ -183,19 +183,19 @@ class SYNDICATION_EXPORT Resource : public Node
          * returns a null string
          */
         virtual QString text() const;
-        
+
         /**
          * returns the URI of the resource
          */
         virtual QString uri() const;
 
-        
+
         /**
          * used in Model
          * @internal
          */
         virtual void setModel(const Model& model);
-        
+
         /**
          * used in Model
          * @internal
