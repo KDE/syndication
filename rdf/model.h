@@ -30,7 +30,6 @@
 #include <syndication/rdf/node.h>
 #include <syndication/rdf/property.h>
 #include <syndication/rdf/sequence.h>
-#include <syndication/rdf/statement.h>
 #include <boost/shared_ptr.hpp>
 #include <syndication/ksyndication_export.h>
 
