@@ -181,7 +181,9 @@ void Loader::discoverFeeds(const QByteArray &data)
         while ( pos >= 0 ) {
             pos = rx.indexIn( str, pos );
             s2=rx.cap(1);
-            if (s2.endsWith(".rdf") || s2.endsWith(".rss") || s2.endsWith(".xml"))
+            if (s2.endsWith(QLatin1String(".rdf")) ||
+                s2.endsWith(QLatin1String(".rss")) || 
+                s2.endsWith(QLatin1String(".xml")))
                     feeds.append(s2);
             if ( pos >= 0 ) {
                 pos += rx.matchedLength();
@@ -208,7 +210,7 @@ void Loader::discoverFeeds(const QByteArray &data)
 
     if (KUrl::isRelativeUrl(s2))
     {
-        if (s2.startsWith("//"))
+        if (s2.startsWith(QLatin1String("//")))
         {
             s2=s2.prepend(d->url.protocol()+':');
             d->discoveredFeedURL=s2;
