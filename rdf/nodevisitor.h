@@ -54,7 +54,7 @@ typedef boost::shared_ptr<Sequence> SequencePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT NodeVisitor
+class SYNDICATION_EXPORT NodeVisitor //krazy:exclude=dpointer
 {
     public:
 

@@ -53,7 +53,7 @@ namespace RSS2
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT DocumentVisitor
+class SYNDICATION_EXPORT DocumentVisitor //krazy:exclude=dpointer
 {
     public:
 
