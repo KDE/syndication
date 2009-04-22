@@ -37,29 +37,29 @@ void TestPersonImpl::fromString()
     QStringList s;
     QList<PersonPtr> p;
 
-    
-    
+
+
     s.append(QString());
     p.append(PersonPtr(new PersonImpl(QString(), QString(), QString())));
-    
+
     s.append("");
     p.append(PersonPtr(new PersonImpl(QString(), QString(), QString())));
-    
+
     s.append("foo@bar.com");
     p.append(PersonPtr(new PersonImpl(QString(), QString(), "foo@bar.com")));
-    
+
     s.append("<foo@bar.com>");
     p.append(PersonPtr(new PersonImpl(QString(), QString(), "foo@bar.com")));
-    
+
     s.append("Foo");
     p.append(PersonPtr(new PersonImpl("Foo", QString(), QString())));
-    
+
     s.append("Foo M. Bar");
     p.append(PersonPtr(new PersonImpl("Foo M. Bar", QString(), QString())));
-    
+
     s.append("Foo <foo@bar.com>");
     p.append(PersonPtr(new PersonImpl("Foo", QString(), "foo@bar.com")));
-    
+
     s.append("Foo Bar <foo@bar.com>");
     p.append(PersonPtr(new PersonImpl("Foo Bar", QString(), "foo@bar.com")));
 
@@ -77,16 +77,16 @@ void TestPersonImpl::fromString()
 
     s.append("<foo@bar.com> (Foo Bar)");
     p.append(PersonPtr(new PersonImpl("Foo Bar", QString(), "foo@bar.com")));
-    
+
     // s.append("OnAhlmann(mailto:&amp;#111;&amp;#110;&amp;#97;&amp;#104;&amp;#108;&amp;#109;&amp;#97;&amp;#110;&amp;#110;&amp;#64;&amp;#103;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#46;&amp;#99;&amp;#111;&amp;#109;)");
     // p.append(PersonPtr(new PersonImpl("OnAhlmann", QString(), "onahlmann@gmail.com")));
-    
+
     QList<PersonPtr> q;
-    
-    QStringList::ConstIterator it = s.begin();
-    QStringList::ConstIterator end = s.end();
-    QList<PersonPtr>::ConstIterator pit = p.begin();
-    
+
+    QStringList::ConstIterator it = s.constBegin();
+    QStringList::ConstIterator end = s.constEnd();
+    QList<PersonPtr>::ConstIterator pit = p.constBegin();
+
     while (it != end)
     {
         PersonPtr q(Syndication::personFromString(*it));
