@@ -164,12 +164,12 @@ void Parser::ParserPrivate::map09to10(Model model)
 
 void Parser::ParserPrivate::addSequenceFor09(Model model)
 {
-    QList<ResourcePtr> items = model.resourcesWithType(RSS09Vocab::self()->item());
+    const QList<ResourcePtr> items = model.resourcesWithType(RSS09Vocab::self()->item());
     
     if (items.isEmpty())
         return;
     
-    QList<ResourcePtr> channels = model.resourcesWithType(RSSVocab::self()->channel());
+    const QList<ResourcePtr> channels = model.resourcesWithType(RSSVocab::self()->channel());
     
     if (channels.isEmpty())
         return;
@@ -179,7 +179,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     // use QMap here, not QHash. as we need the sorting functionality 
     QMap<uint, ResourcePtr> sorted;
     
-    foreach (ResourcePtr i, items)
+    foreach (const ResourcePtr &i, items)
     {
         QString numstr = i->property(itemIndex)->asString();
         bool ok = false;
@@ -193,7 +193,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     SequencePtr seq = model.createSequence();
     model.addStatement(channels.first(), RSSVocab::self()->items(), seq);
         
-    foreach (ResourcePtr i, sorted)
+    foreach (const ResourcePtr &i, sorted)
     {
         seq->append(i);
         model.addStatement(seq, RDFVocab::self()->li(), i);
