@@ -31,11 +31,11 @@ id: #hash:e553c8b99d1085f8245dfecd3f901770#
 title: #This entry links to remote content via src attribute#
 # Item end ########################
 # Item begin ######################
-id: #hash:93de9448c8b8bf2dfe5e0d6903a38b3d#
+id: #hash:be250627735b4771449f5d6ab328d9ea#
 title: #This entry contains embedded XHTML with type=xhtml#
-content: #<div xmlns="http://www.w3.org/1999/xhtml">A &amp; B. History of the &lt;blink> tag.</div>
+content: #<div xmlns="http://www.w3.org/1999/xhtml">A &amp; B. History of the &lt;blink> tag.</div>&#xd;
     <div xmlns="http://www.w3.org/1999/xhtml">Example <b xmlns="http://www.w3.org/1999/xhtml">Atom</b>
- </div>#
+ </div>&#xd;#
 # Item end ########################
 # Item begin ######################
 id: #hash:bbca64b18cdb71a9aaf9aead88ff0ba8#

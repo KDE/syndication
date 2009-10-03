@@ -7,7 +7,7 @@ id: #http://www.example.com/a/1#
 title: #xhtml:body#
 link: #http://www.example.com/a/1#
 description: #Content in xhtml:body#
-content: #<p>This is a paragraph. Containing <a href="http://www.example.com/" >a link</a>
+content: #<p>This is a paragraph. Containing <a href="http://www.example.com/">a link</a>
  </p>
 
          <blockquote>
