@@ -44,7 +44,7 @@ enum DateFormat
               * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
               * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
               */
-    RFCDate /** RFC 822. (e.g. "Sat, 07 Sep 2002 00:00:01 GMT") */
+    RFCDate /**< RFC 822. (e.g. "Sat, 07 Sep 2002 00:00:01 GMT") */
 };
 
 /**
@@ -121,7 +121,7 @@ QString escapeSpecialCharacters(const QString& str);
 
 /**
  * replaces newlines ("\n") by &lt;br/>
- * @param str to convert
+ * @param str string to convert
  */
 SYNDICATION_EXPORT
 QString convertNewlines(const QString& str);
