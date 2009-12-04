@@ -209,10 +209,9 @@ Parser::Parser() : d(new ParserPrivate)
 Parser::~Parser() 
 {
     delete d;
-    d = 0;
 }
 
-Parser::Parser(const Parser& other) : AbstractParser(other) {}
+Parser::Parser(const Parser& other) : AbstractParser(other), d(0) {}
 Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
        
 QString Parser::format() const

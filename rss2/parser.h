@@ -83,7 +83,7 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
         Parser& operator=(const Parser& other);
         
         class ParserPrivate;
-        ParserPrivate* d;
+        ParserPrivate* const d;
 };
 
 } // namespace RSS2

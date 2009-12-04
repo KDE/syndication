@@ -55,8 +55,8 @@ QString Parser::format() const
     return QString::fromUtf8("rss2");
 }
 
-Parser::Parser() {}
-Parser::Parser(const Parser& other) : AbstractParser(other) {}
+Parser::Parser() : d(0) {}
+Parser::Parser(const Parser& other) : AbstractParser(other), d(0) {}
 Parser::~Parser() {}
 Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
 

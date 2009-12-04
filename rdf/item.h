@@ -166,7 +166,7 @@ class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
     private:
 
         class Private;
-        Private* d;
+        Private* const d;
 };
 
 } // namespace RDF

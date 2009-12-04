@@ -180,7 +180,7 @@ class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public
 
     private:
         class Private;
-        Private* d;
+        Private* const d;
 };
 
 } // namespace RDF

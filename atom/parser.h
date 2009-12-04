@@ -79,7 +79,7 @@ class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
         Parser(const Parser& other);
         Parser& operator=(const Parser& other);
         class ParserPrivate;
-        ParserPrivate* d;
+        ParserPrivate* const d;
 };
 
 } // namespace Atom

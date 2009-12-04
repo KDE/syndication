@@ -203,9 +203,9 @@ QDomDocument Parser::ParserPrivate::convertAtom0_3(const QDomDocument& doc03)
     return doc;
 }
 
-Parser::Parser() {}
+Parser::Parser() : d(0) {}
 Parser::~Parser() {}
-Parser::Parser(const Parser& other) : AbstractParser(other) {}
+Parser::Parser(const Parser& other) : AbstractParser(other), d(0) {}
 Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
 
 } // namespace Atom

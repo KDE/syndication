@@ -82,7 +82,6 @@ Document::Document(const Document& other) : SpecificDocument(other),            
 Document::~Document()
 {
     delete d;
-    d = 0;
 }
 
 

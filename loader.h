@@ -177,7 +177,7 @@ class SYNDICATION_EXPORT Loader : public QObject
         void discoverFeeds(const QByteArray& data);
 
         struct LoaderPrivate;
-        LoaderPrivate* d;
+        LoaderPrivate* const d;
 };
 
 

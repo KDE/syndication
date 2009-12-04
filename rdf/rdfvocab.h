@@ -82,7 +82,7 @@ class SYNDICATION_EXPORT RDFVocab
         RDFVocab();
                 
         class RDFVocabPrivate;
-        RDFVocabPrivate* d;
+        RDFVocabPrivate* const d;
 };
 
 } // namespace RDF

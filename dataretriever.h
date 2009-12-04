@@ -140,7 +140,7 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
         OutputRetriever& operator=(const OutputRetriever& other);
 
         struct OutputRetrieverPrivate;
-        OutputRetrieverPrivate* d;
+        OutputRetrieverPrivate* const d;
 };
 
 /**
@@ -234,7 +234,7 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
         FileRetriever& operator=(const FileRetriever& other);
 
         struct FileRetrieverPrivate;
-        FileRetrieverPrivate* d;
+        FileRetrieverPrivate* const d;
 };
 
 } // namespace Syndication

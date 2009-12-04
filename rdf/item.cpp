@@ -62,7 +62,6 @@ Item::Item(const Item& other) : ResourceWrapper(other),
 Item::~Item()
 {
     delete d;
-    d = 0;
 }
 
 Item& Item::operator=(const Item& other)
