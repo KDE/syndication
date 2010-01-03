@@ -43,13 +43,13 @@ QString Enclosure::url() const
 
 int Enclosure::length() const
 {
-    int length = -1;
+    int length = 0;
 
     if (hasAttribute(QString::fromUtf8("length")))
     {
         bool ok;
         int c = attribute(QString::fromUtf8("length")).toInt(&ok);
-        length = ok ? c : -1;
+        length = ok ? c : 0;
     }
     return length;
 }
