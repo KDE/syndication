@@ -319,15 +319,15 @@ NodePtr Model::nodeByID(uint id) const
     return d->nodeByID(id);
 }
 
-NodePtr Model::ModelPrivate::nodeByID(uint id) const
+NodePtr Model::ModelPrivate::nodeByID(uint _id) const
 {
-    if (!nodes.contains(id))
+    if (!nodes.contains(_id))
     {
         return nullLiteral;
     }
     else
     {
-        return nodes.value(id);
+        return nodes.value(_id);
     }
 }
 
@@ -336,15 +336,15 @@ ResourcePtr Model::resourceByID(uint id) const
     return d->resourceByID(id);
 }
 
-ResourcePtr Model::ModelPrivate::resourceByID(uint id) const
+ResourcePtr Model::ModelPrivate::resourceByID(uint _id) const
 {
-    if (!nodes.contains(id))
+    if (!nodes.contains(_id))
     {
         return nullResource;
     }
     else
     {
-        NodePtr node = nodes.value(id);
+        NodePtr node = nodes.value(_id);
         if (node->isResource())
             return boost::static_pointer_cast<Resource>(node);
         else
@@ -357,15 +357,15 @@ PropertyPtr Model::propertyByID(uint id) const
     return d->propertyByID(id);
 }
 
-PropertyPtr Model::ModelPrivate::propertyByID(uint id) const
+PropertyPtr Model::ModelPrivate::propertyByID(uint _id) const
 {
-    if (!nodes.contains(id))
+    if (!nodes.contains(_id))
     {
         return nullProperty;
     }
     else
     {
-        NodePtr node = nodes.value(id);
+        NodePtr node = nodes.value(_id);
         if (node->isProperty())
             return  boost::static_pointer_cast<Property>(node);
         else
@@ -379,15 +379,15 @@ LiteralPtr Model::literalByID(uint id) const
 }
 
 
-LiteralPtr Model::ModelPrivate::literalByID(uint id) const
+LiteralPtr Model::ModelPrivate::literalByID(uint _id) const
 {
-    if (!nodes.contains(id))
+    if (!nodes.contains(_id))
     {
         return nullLiteral;
     }
     else
     {
-        NodePtr node = nodes.value(id);
+        NodePtr node = nodes.value(_id);
         if (node->isLiteral())
             return boost::static_pointer_cast<Literal>(node);
         else

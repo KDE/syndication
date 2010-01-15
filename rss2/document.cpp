@@ -106,8 +106,8 @@ QString Document::link() const
 
 QString Document::description() const
 {
-    QString d = extractElementTextNS(QString(), QString::fromUtf8("description"));
-    return normalize(d);
+    QString desc = extractElementTextNS(QString(), QString::fromUtf8("description"));
+    return normalize(desc);
 }
 
 QString Document::language() const
