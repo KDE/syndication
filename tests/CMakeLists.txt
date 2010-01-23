@@ -36,13 +36,13 @@ FILE( GLOB_RECURSE rdfFiles rdf/*xml )
 FILE( GLOB_RECURSE rss2Files rss2/*xml )
 
 FOREACH( file ${atomFiles} )
-  ADD_TEST( Atom-${file} ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ADD_TEST( \"Atom-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
 ENDFOREACH(file)
 FOREACH( file ${rdfFiles} )
-  ADD_TEST( Rdf-${file} ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ADD_TEST( \"Rdf-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
 ENDFOREACH(file)
 FOREACH( file ${rss2Files} )
-  ADD_TEST( Rss2-${file} ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ADD_TEST( \"Rss2-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
 ENDFOREACH(file)
 
 ########### install files ###############
