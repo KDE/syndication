@@ -45,7 +45,7 @@ struct FileRetriever::FileRetrieverPrivate
 
     QBuffer *buffer;
     int lastError;
-    KIO::Job *job;
+    KIO::TransferJob *job;
 };
 
 FileRetriever::FileRetriever()
