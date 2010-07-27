@@ -115,7 +115,7 @@ set(syndication_LIB_SRCS
    abstractparser.cpp)
 
 
-kde4_add_library(syndication SHARED ${syndication_LIB_SRCS})
+kde4_add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
 
 target_link_libraries(syndication  ${KDE4_KIO_LIBS}  )
 

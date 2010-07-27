@@ -26,7 +26,10 @@
 #include <kdemacros.h>
 
 #ifndef SYNDICATION_EXPORT
-# if defined(MAKE_SYNDICATION_LIB)
+# if defined(KDEPIM_STATIC_LIBS)
+   /* No export/import for static libraries */
+#  define SYNDICATION_EXPORT
+# elif defined(MAKE_SYNDICATION_LIB)
    /* We are building this library */
 #  define SYNDICATION_EXPORT KDE_EXPORT
 # else
