@@ -24,6 +24,7 @@
 
 #include <kurl.h>
 
+#include <QtXml/QDomDocument>
 #include <QtXml/QDomElement>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
@@ -35,6 +36,7 @@ class ElementWrapper::ElementWrapperPrivate
     public:
         
     QDomElement element;
+    QDomDocument ownerDoc;
     mutable QString xmlBase;
     mutable bool xmlBaseParsed;
     mutable QString xmlLang;
@@ -55,6 +57,7 @@ ElementWrapper::ElementWrapper(const ElementWrapper& other)
 ElementWrapper::ElementWrapper(const QDomElement& element) : d(new ElementWrapperPrivate)
 {
     d->element = element;
+    d->ownerDoc = element.ownerDocument(); //keep a copy of the (shared, thus cheap) document around to ensure the element isn't deleted too early (Bug 190068)
     d->xmlBaseParsed = false;
     d->xmlLangParsed = false;
 }
