@@ -90,7 +90,10 @@ void TestPersonImpl::fromString()
     while (it != end)
     {
         PersonPtr q(Syndication::personFromString(*it));
-        QCOMPARE(q->debugInfo(), (*pit)->debugInfo());
+        QCOMPARE(q->name(), (*pit)->name());
+        QCOMPARE(q->email(), (*pit)->email());
+        QCOMPARE(q->uri(), (*pit)->uri());
+
         ++it;
         ++pit;
     }
