@@ -23,6 +23,7 @@
 #ifndef SYNDICATION_ITEM_H
 #define SYNDICATION_ITEM_H
 
+#include <QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"

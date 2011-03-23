@@ -255,10 +255,10 @@ void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
 QString Document::debugInfo() const
 {
     QString info;
-    info += "### Document: ###################\n";
-    info += "title: #" + title() + "#\n";
-    info += "link: #" + link() + "#\n";
-    info += "description: #" + description() + "#\n";
+    info += QLatin1String("### Document: ###################\n");
+    info += QLatin1String("title: #") + title() + QLatin1String("#\n");
+    info += QLatin1String("link: #") + link() + QLatin1String("#\n");
+    info += QLatin1String("description: #") + description() + QLatin1String("#\n");
     info += dc().debugInfo();
     info += syn().debugInfo();
     Image img = image();
@@ -275,7 +275,7 @@ QString Document::debugInfo() const
         info += (*it).debugInfo();
 
 
-    info += "### Document end ################\n";
+    info += QLatin1String("### Document end ################\n");
     return info;
 }
 

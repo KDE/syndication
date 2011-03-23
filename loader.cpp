@@ -161,7 +161,7 @@ void Loader::slotRetrieverDone(const QByteArray& data, bool success)
 
 void Loader::discoverFeeds(const QByteArray &data)
 {
-    QString str = QString(data).simplified();
+    QString str = QString::fromLatin1(data.constData()).simplified();
     QString s2;
     //QTextStream ts( &str, QIODevice::WriteOnly );
     //ts << data.data();
@@ -169,7 +169,7 @@ void Loader::discoverFeeds(const QByteArray &data)
     // "<[\\s]link[^>]*rel[\\s]=[\\s]\\\"[\\s]alternate[\\s]\\\"[^>]*>"
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
-    QRegExp rx( "(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)", Qt::CaseInsensitive );
+    QRegExp rx( QLatin1String("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive );
     if (rx.indexIn(str)!=-1)
         s2=rx.cap(1);
     else{
@@ -177,7 +177,7 @@ void Loader::discoverFeeds(const QByteArray &data)
         int pos=0;
         QStringList feeds;
         QString host=d->url.host();
-        rx.setPattern("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)");
+        rx.setPattern(QLatin1String("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
         while ( pos >= 0 ) {
             pos = rx.indexIn( str, pos );
             s2=rx.cap(1);
@@ -212,10 +212,10 @@ void Loader::discoverFeeds(const QByteArray &data)
     {
         if (s2.startsWith(QLatin1String("//")))
         {
-            s2=s2.prepend(d->url.protocol()+':');
+            s2=s2.prepend(d->url.protocol()+QLatin1Char(':'));
             d->discoveredFeedURL=s2;
         }
-        else if (s2.startsWith('/'))
+        else if (s2.startsWith(QLatin1Char('/')))
         {
             d->discoveredFeedURL=d->url;
             d->discoveredFeedURL.setPath(s2);

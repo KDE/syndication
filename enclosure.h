@@ -27,6 +27,8 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <QString>
+
 namespace Syndication {
 
 class Enclosure;

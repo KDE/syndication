@@ -33,30 +33,30 @@ Category::~Category()
 QString Category::debugInfo() const
 {
     QString info;
-    info += "# Category begin ##################\n";
+    info += QLatin1String("# Category begin ##################\n");
 
     QString dterm = term();
     
     if (!dterm.isNull())
     {
-        info += "term: #" + dterm + "#\n";
+        info += QLatin1String("term: #") + dterm + QLatin1String("#\n");
     }
     
     QString dscheme = scheme();
     
     if (!dscheme.isNull())
     {
-        info += "scheme: #" + dscheme + "#\n";
+        info += QLatin1String("scheme: #") + dscheme + QLatin1String("#\n");
     }
     
     QString dlabel = label();
     
     if (!dlabel.isNull())
     {
-        info += "label: #" + dlabel + "#\n";
+        info += QLatin1String("label: #") + dlabel + QLatin1String("#\n");
     }
     
-    info += "# Category end ####################\n";
+    info += QLatin1String("# Category end ####################\n");
 
     return info;
 }

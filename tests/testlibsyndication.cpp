@@ -61,7 +61,7 @@ void printUsage(const QString& error)
 
 int main(int argc, char **argv)
 {
-    KComponentData componentData( "testlibsyndication" );
+    KComponentData componentData("testlibsyndication");
     int pcompare = 2;
     if (argc < 2)
     {
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
     if (ptr == 0L)
     {
-        printUsage( QString( "Couldn't parse file: (%1)" ).arg( Syndication::parserCollection()->lastError() ) );
+        printUsage( QString("Couldn't parse file: (%1)").arg( Syndication::parserCollection()->lastError() ) );
         return 1;
     }
 

@@ -61,16 +61,16 @@ QString TextInput::link() const
 QString TextInput::debugInfo() const
 {
     QString info;
-    info += "### TextInput: ###################\n";
+    info += QLatin1String("### TextInput: ###################\n");
     if (!title().isNull())
-       info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!link().isNull())
-        info += "link: #" + link() + "#\n";
+        info += QLatin1String("link: #") + link() + QLatin1String("#\n");
     if (!description().isNull())
-       info += "description: #" + description() + "#\n";
+        info += QLatin1String("description: #") + description() + QLatin1String("#\n");
     if (!name().isNull())
-        info += "name: #" + name() + "#\n";
-    info += "### TextInput end ################\n";
+        info += QLatin1String("name: #") + name() + QLatin1String("#\n");
+    info += QLatin1String("### TextInput end ################\n");
     return info;
 }
 

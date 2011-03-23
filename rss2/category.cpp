@@ -48,12 +48,12 @@ QString Category::domain() const
 QString Category::debugInfo() const
 {
     QString info;
-    info += "### Category: ###################\n";
+    info += QLatin1String("### Category: ###################\n");
     if (!category().isNull())
-        info += "category: #" + category() + "#\n";
+        info += QLatin1String("category: #") + category() + QLatin1String("#\n");
     if (!domain().isNull())
-        info += "domain: #" + domain() + "#\n";
-    info += "### Category end ################\n";
+        info += QLatin1String("domain: #") + domain() + QLatin1String("#\n");
+    info += QLatin1String("### Category end ################\n");
     return info;
 }
 

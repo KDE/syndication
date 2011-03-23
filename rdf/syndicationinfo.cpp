@@ -72,12 +72,12 @@ QString SyndicationInfo::debugInfo() const
 {
     QString info;
     if (updatePeriod() != Daily)
-        info += QString("syn:updatePeriod: #%1#\n").arg(periodToString(updatePeriod()));
-    info += QString("syn:updateFrequency: #%1#\n").arg(QString::number(updateFrequency()));
+        info += QString::fromLatin1("syn:updatePeriod: #%1#\n").arg(periodToString(updatePeriod()));
+    info += QString::fromLatin1("syn:updateFrequency: #%1#\n").arg(QString::number(updateFrequency()));
     
     QString dbase = dateTimeToString(updateBase());
     if (!dbase.isNull())
-        info += QString("syn:updateBase: #%1#\n").arg(dbase);
+        info += QString::fromLatin1("syn:updateBase: #%1#\n").arg(dbase);
 
     return info;
 }

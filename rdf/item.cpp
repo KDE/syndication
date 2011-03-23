@@ -127,13 +127,13 @@ QString Item::originalDescription() const
 QString Item::debugInfo() const
 {
     QString info;
-    info += "### Item: ###################\n";
-    info += "title: #" + title() + "#\n";
-    info += "link: #" + link() + "#\n";
-    info += "description: #" + description() + "#\n";
-    info += "content:encoded: #" + encodedContent() + "#\n";
+    info += QLatin1String("### Item: ###################\n");
+    info += QLatin1String("title: #") + title() + QLatin1String("#\n");
+    info += QLatin1String("link: #") + link() + QLatin1String("#\n");
+    info += QLatin1String("description: #") + description() + QLatin1String("#\n");
+    info += QLatin1String("content:encoded: #") + encodedContent() + QLatin1String("#\n");
     info += dc().debugInfo();
-    info += "### Item end ################\n";
+    info += QLatin1String("### Item end ################\n");
     return info;
 }
 

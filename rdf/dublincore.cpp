@@ -170,39 +170,39 @@ QString DublinCore::debugInfo() const
 {
     QString info;
     if (!contributor().isNull())
-        info += QString("dc:contributor: #%1#\n").arg(contributor());
+        info += QString::fromLatin1("dc:contributor: #%1#\n").arg(contributor());
     if (!coverage().isNull())
-        info += QString("dc:coverage: #%1#\n").arg(coverage());
+        info += QString::fromLatin1("dc:coverage: #%1#\n").arg(coverage());
     if (!creator().isNull())
-        info += QString("dc:creator: #%1#\n").arg(creator());
+        info += QString::fromLatin1("dc:creator: #%1#\n").arg(creator());
     
     
     QString ddate = dateTimeToString(date());
     if (!ddate.isNull())
-        info += QString("dc:date: #%1#\n").arg(ddate);
+        info += QString::fromLatin1("dc:date: #%1#\n").arg(ddate);
     
     if (!description().isNull())
-        info += QString("dc:description: #%1#\n").arg(description());
+        info += QString::fromLatin1("dc:description: #%1#\n").arg(description());
     if (!format().isNull())
-        info += QString("dc:format: #%1#\n").arg(format());
+        info += QString::fromLatin1("dc:format: #%1#\n").arg(format());
     if (!identifier().isNull())
-        info += QString("dc:identifier: #%1#\n").arg(identifier());
+        info += QString::fromLatin1("dc:identifier: #%1#\n").arg(identifier());
     if (!language().isNull())
-        info += QString("dc:language: #%1#\n").arg(language());
+        info += QString::fromLatin1("dc:language: #%1#\n").arg(language());
     if (!publisher().isNull())
-        info += QString("dc:publisher: #%1#\n").arg(publisher());
+        info += QString::fromLatin1("dc:publisher: #%1#\n").arg(publisher());
     if (!relation().isNull())
-        info += QString("dc:relation: #%1#\n").arg(relation());
+        info += QString::fromLatin1("dc:relation: #%1#\n").arg(relation());
     if (!rights().isNull())
-        info += QString("dc:rights: #%1#\n").arg(rights());
+        info += QString::fromLatin1("dc:rights: #%1#\n").arg(rights());
     if (!source().isNull())
-        info += QString("dc:source: #%1#\n").arg(source());
+        info += QString::fromLatin1("dc:source: #%1#\n").arg(source());
     if (!subject().isNull())
-        info += QString("dc:subject: #%1#\n").arg(subject());
+        info += QString::fromLatin1("dc:subject: #%1#\n").arg(subject());
     if (!title().isNull())
-        info += QString("dc:title: #%1#\n").arg(title());
+        info += QString::fromLatin1("dc:title: #%1#\n").arg(title());
     if (!type().isNull())
-        info += QString("dc:type: #%1#\n").arg(type());
+        info += QString::fromLatin1("dc:type: #%1#\n").arg(type());
     return info;
 }
 

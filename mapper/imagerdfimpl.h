@@ -23,6 +23,7 @@
 #ifndef SYNDICATION_MAPPER_IMAGERDFIMPL_H
 #define SYNDICATION_MAPPER_IMAGERDFIMPL_H
 
+#include <QString>
 #include <image.h>
 #include <rdf/image.h>
 

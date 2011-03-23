@@ -23,6 +23,7 @@
 #ifndef SYNDICATION_RDF_LITERAL_H
 #define SYNDICATION_RDF_LITERAL_H
 
+#include <QString>
 #include <syndication/rdf/node.h>
 
 #include <boost/shared_ptr.hpp>

@@ -185,17 +185,17 @@ QString Content::asString() const
 QString Content::debugInfo() const
 {
     QString info;
-    info += "### Content: ###################\n";
-    info += "type: #" + type() + "#\n";
+    info += QLatin1String("### Content: ###################\n");
+    info += QLatin1String("type: #") + type() + QLatin1String("#\n");
     if (!src().isNull())
-        info += "src: #" + src() + "#\n";
+        info += QLatin1String("src: #") + src() + QLatin1String("#\n");
     if (!isBinary())
-        info += "content: #" + asString() + "#\n";
+        info += QLatin1String("content: #") + asString() + QLatin1String("#\n");
     else
     {
-        info += "binary length: #" + QString::number(asByteArray().size()) + "#\n";
+        info += QLatin1String("binary length: #") + QString::number(asByteArray().size()) + QLatin1String("#\n");
     }
-    info += "### Content end ################\n";
+    info += QLatin1String("### Content end ################\n");
 
     return info;
 }

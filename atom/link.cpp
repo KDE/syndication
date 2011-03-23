@@ -74,20 +74,20 @@ uint Link::length() const
 QString Link::debugInfo() const
 {
     QString info;
-    info += "### Link: ###################\n";
+    info += QLatin1String("### Link: ###################\n");
     if (!title().isEmpty())
-        info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!href().isEmpty())
-        info += "href: #" + href() + "#\n";
+        info += QLatin1String("href: #") + href() + QLatin1String("#\n");
     if (!rel().isEmpty())
-        info += "rel: #" + rel() + "#\n";
+        info += QLatin1String("rel: #") + rel() + QLatin1String("#\n");
     if (!type().isEmpty())
-        info += "type: #" + type() + "#\n";
+        info += QLatin1String("type: #") + type() + QLatin1String("#\n");
     if (length() != 0)
-        info += "length: #" + QString::number(length()) + "#\n";
+        info += QLatin1String("length: #") + QString::number(length()) + QLatin1String("#\n");
     if (!hrefLanguage().isEmpty())
-        info += "hrefLanguage: #" + hrefLanguage() + "#\n";
-    info += "### Link end ################\n";
+        info += QLatin1String("hrefLanguage: #") + hrefLanguage() + QLatin1String("#\n");
+    info += QLatin1String("### Link end ################\n");
     return info;
 }
 

@@ -33,34 +33,34 @@ Enclosure::~Enclosure()
 QString Enclosure::debugInfo() const
 {
     QString info;
-    info += "# Enclosure begin #################\n";
+    info += QLatin1String("# Enclosure begin #################\n");
 
     QString durl = url();
     
     if (!durl.isNull())
     {
-        info += "url: #" + durl + "#\n";
+        info += QLatin1String("url: #") + durl + QLatin1String("#\n");
     }
     
     QString dtitle = title();
     
     if (!dtitle.isNull())
     {
-        info += "title: #" + dtitle + "#\n";
+        info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     }
     
     QString dtype = type();
     
     if (!dtype.isNull())
     {
-        info += "type: #" + dtype + "#\n";
+        info += QLatin1String("type: #") + dtype + QLatin1String("#\n");
     }
     
     int dlength = length();
     
     if (dlength != 0)
     {
-        info += "length: #" + QString::number(dlength) + "#\n";
+        info += QLatin1String("length: #") + QString::number(dlength) + QLatin1String("#\n");
     }
 
     uint dduration = duration();
@@ -70,10 +70,10 @@ QString Enclosure::debugInfo() const
         int hours = dduration / 3600;
         int minutes = (dduration - hours*3600) / 60;
         int seconds = dduration - hours*3600 - minutes*60;
-        info += QString("duration: #%1 (%2:%3:%4)#\n").arg(dduration).arg(hours).arg(minutes).arg(seconds);
+        info += QString::fromLatin1("duration: #%1 (%2:%3:%4)#\n").arg(dduration).arg(hours).arg(minutes).arg(seconds);
     }
     
-    info += "# Enclosure end ###################\n";
+    info += QLatin1String("# Enclosure end ###################\n");
     
     return info;
 }

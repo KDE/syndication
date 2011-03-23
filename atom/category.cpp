@@ -58,13 +58,13 @@ QString Category::label() const
 QString Category::debugInfo() const
 {
     QString info;
-    info += "### Category: ###################\n";
-    info += "term: #" + term() + "#\n";
+    info += QLatin1String("### Category: ###################\n");
+    info += QLatin1String("term: #") + term() + QLatin1String("#\n");
     if (!scheme().isEmpty())
-        info += "scheme: #" + scheme() + "#\n";
+        info += QLatin1String("scheme: #") + scheme() + QLatin1String("#\n");
     if (!label().isEmpty())
-        info += "label: #" + label() + "#\n";
-    info += "### Category end ################\n";
+        info += QLatin1String("label: #") + label() + QLatin1String("#\n");
+    info += QLatin1String("### Category end ################\n");
 
     return info;
 }

@@ -99,7 +99,7 @@ QString ItemRDFImpl::id() const
     if (!m_item.resource()->isAnon())
         return m_item.resource()->uri();
     else
-        return "hash:" + calcMD5Sum(title() + description() + link() + content());
+        return QLatin1String("hash:") + calcMD5Sum(title() + description() + link() + content());
 }
 
 time_t ItemRDFImpl::datePublished() const

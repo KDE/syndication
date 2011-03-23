@@ -59,7 +59,7 @@ FileRetriever::~FileRetriever()
 }
 
 bool FileRetriever::m_useCache = true;
-QString FileRetriever::m_userAgent = QString("Syndication %1").arg(SYNDICATION_VERSION);
+QString FileRetriever::m_userAgent = QString::fromLatin1("Syndication %1").arg(QString::fromLatin1(SYNDICATION_VERSION));
 
 void FileRetriever::setUserAgent(const QString& userAgent)
 {
@@ -81,13 +81,13 @@ void FileRetriever::retrieveData(const KUrl &url)
 
     KUrl u = url;
 
-    if (u.protocol() == "feed")
-        u.setProtocol("http");
+    if (u.protocol() == QLatin1String("feed"))
+        u.setProtocol(QLatin1String("http"));
 
     d->job = KIO::get(u, KIO::NoReload, KIO::HideProgressInfo);
 
-    d->job->addMetaData("UserAgent", m_userAgent);
-    d->job->addMetaData("cache", m_useCache ? "refresh" : "reload");
+    d->job->addMetaData(QLatin1String("UserAgent"), m_userAgent);
+    d->job->addMetaData(QLatin1String("cache"), m_useCache ? QLatin1String("refresh") : QLatin1String("reload"));
 
     QTimer::singleShot(1000*90, this, SLOT(slotTimeout()));
 

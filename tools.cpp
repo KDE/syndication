@@ -104,7 +104,7 @@ QString calcMD5Sum(const QString& str)
 {
     md5Machine.reset();
     md5Machine.update(str.toUtf8());
-    return QString(md5Machine.hexDigest().data());
+    return QLatin1String(md5Machine.hexDigest().constData());
 }
 
 QString resolveEntities(const QString& str)
@@ -115,29 +115,29 @@ QString resolveEntities(const QString& str)
 QString escapeSpecialCharacters(const QString& strp)
 {
     QString str(strp);
-    str.replace('&', "&amp;");
-    str.replace('\"', "&quot;");
-    str.replace('<', "&lt;");
-    str.replace('>', "&gt;");
-    str.replace('\'', "&apos;");
+    str.replace(QLatin1Char('&'), QLatin1String("&amp;"));
+    str.replace(QLatin1Char('\"'), QLatin1String("&quot;"));
+    str.replace(QLatin1Char('<'), QLatin1String("&lt;"));
+    str.replace(QLatin1Char('>'), QLatin1String("&gt;"));
+    str.replace(QLatin1Char('\''), QLatin1String("&apos;"));
     return str.trimmed();
 }
 
 QString convertNewlines(const QString& strp)
 {
     QString str(strp);
-    str.replace('\n', "<br/>");
+    str.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
     return str;
 }
 
 QString plainTextToHtml(const QString& plainText)
 {
     QString str(plainText);
-    str.replace('&', "&amp;");
-    str.replace('\"', "&quot;");
-    str.replace('<', "&lt;");
-    //str.replace('>', "&gt;");
-    str.replace('\n', "<br/>");
+    str.replace(QLatin1Char('&'), QLatin1String("&amp;"));
+    str.replace(QLatin1Char('\"'), QLatin1String("&quot;"));
+    str.replace(QLatin1Char('<'), QLatin1String("&lt;"));
+    //str.replace(QLatin1Char('>'), QLatin1String("&gt;"));
+    str.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
     return str.trimmed();
 }
 
@@ -145,7 +145,7 @@ QString htmlToPlainText(const QString& html)
 {
     QString str(html);
     //TODO: preserve some formatting, such as line breaks
-    str.remove(QRegExp("<[^>]*>")); // remove tags
+    str.remove(QRegExp(QLatin1String("<[^>]*>"))); // remove tags
     str = resolveEntities(str);
     return str.trimmed();
 }
@@ -158,16 +158,16 @@ namespace {
 bool stringContainsMarkup(const QString& str)
 {
     //check for entities
-    if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
+    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;"))))
         return true;
 
-    const int ltc = str.count('<');
+    const int ltc = str.count(QLatin1Char('<'));
     if (ltc == 0)
         return false;
 
     if (!tagRegExpSet)
     {
-        tagRegExp = QRegExp("<\\w+.*/?>");
+        tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
     return str.contains(tagRegExp);
@@ -176,16 +176,16 @@ bool stringContainsMarkup(const QString& str)
 bool isHtml(const QString& str)
 {
     //check for entities
-    if (str.contains(QRegExp("&[a-zA-Z0-9#]+;")))
+    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;"))))
         return true;
 
-    const int ltc = str.count('<');
+    const int ltc = str.count(QLatin1Char('<'));
     if (ltc == 0)
         return false;
 
     if (!tagRegExpSet)
     {
-        tagRegExp = QRegExp("<\\w+.*/?>");
+        tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
     if (str.contains(tagRegExp))
@@ -233,10 +233,10 @@ PersonPtr personFromString(const QString& strp)
     QString uri;
     QString email;
 
-    // look for something looking like a mail address ( "foo@bar.com",
+    // look for something looking like a mail address ("foo@bar.com",
     // "<foo@bar.com>") and extract it
 
-    QRegExp remail("<?([^@\\s<]+@[^>\\s]+)>?"); // FIXME: user "proper" regexp,
+    QRegExp remail(QLatin1String("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
        // search kmail source for it
 
     int pos = remail.indexIn(str);
@@ -248,8 +248,8 @@ PersonPtr personFromString(const QString& strp)
     }
 
     // replace "mailto", "(", ")" (to be extended)
-    email.remove("mailto:");
-    email.remove(QRegExp("[\\(\\)]"));
+    email.remove(QLatin1String("mailto:"));
+    email.remove(QRegExp(QLatin1String("[\\(\\)]")));
 
     // simplify the rest and use it as name
 
@@ -261,7 +261,7 @@ PersonPtr personFromString(const QString& strp)
     // str is of the format "Foo M. Bar (President)",
     // we should not cut anything.
 
-    QRegExp rename("^\\(([^\\)]*)\\)");
+    QRegExp rename(QLatin1String("^\\(([^\\)]*)\\)"));
 
     if (rename.exactMatch(name))
     {

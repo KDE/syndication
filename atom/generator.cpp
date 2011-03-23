@@ -54,14 +54,14 @@ QString Generator::version() const
 QString Generator::debugInfo() const
 {
     QString info;
-    info += "### Generator: ###################\n";
+    info += QLatin1String("### Generator: ###################\n");
     if (!name().isEmpty())
-        info += "name: #" + name() + "#\n";
+        info += QLatin1String("name: #") + name() + QLatin1String("#\n");
     if (!uri().isEmpty())
-        info += "uri: #" + uri() + "#\n";
+        info += QLatin1String("uri: #") + uri() + QLatin1String("#\n");
     if (!version().isEmpty())
-        info += "version: #" + version() + "#\n";
-    info += "### Generator end ################\n";
+        info += QLatin1String("version: #") + version() + QLatin1String("#\n");
+    info += QLatin1String("### Generator end ################\n");
     return info;
 }
 

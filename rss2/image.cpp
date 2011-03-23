@@ -82,18 +82,18 @@ QString Image::description() const
 QString Image::debugInfo() const
 {
     QString info;
-    info += "### Image: ###################\n";
+    info += QLatin1String("### Image: ###################\n");
     if (!title().isNull())
-        info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!link().isNull())
-        info += "link: #" + link() + "#\n";
+        info += QLatin1String("link: #") + link() + QLatin1String("#\n");
     if (!description().isNull())
-        info += "description: #" + description() + "#\n";
+        info += QLatin1String("description: #") + description() + QLatin1String("#\n");
     if (!url().isNull())
-        info += "url: #" + url() + "#\n";
-    info += "width: #" + QString::number(width()) + "#\n";
-    info += "height: #" + QString::number(height()) + "#\n";
-    info += "### Image end ################\n";
+        info += QLatin1String("url: #") + url() + QLatin1String("#\n");
+    info += QLatin1String("width: #") + QString::number(width()) + QLatin1String("#\n");
+    info += QLatin1String("height: #") + QString::number(height()) + QLatin1String("#\n");
+    info += QLatin1String("### Image end ################\n");
     return info;
 }
 

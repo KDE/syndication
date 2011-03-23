@@ -237,27 +237,27 @@ bool FeedDocument::isValid() const
 QString FeedDocument::debugInfo() const
 {
     QString info;
-    info += "### FeedDocument: ###################\n";
+    info += QLatin1String("### FeedDocument: ###################\n");
     if (!title().isEmpty())
-        info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!subtitle().isEmpty())
-        info += "subtitle: #" + subtitle() + "#\n";
+        info += QLatin1String("subtitle: #") + subtitle() + QLatin1String("#\n");
     if (!id().isEmpty())
-        info += "id: #" + id() + "#\n";
+        info += QLatin1String("id: #") + id() + QLatin1String("#\n");
 
     if (!rights().isEmpty())
-        info += "rights: #" + rights() + "#\n";
+        info += QLatin1String("rights: #") + rights() + QLatin1String("#\n");
     if (!icon().isEmpty())
-        info += "icon: #" + icon() + "#\n";
+        info += QLatin1String("icon: #") + icon() + QLatin1String("#\n");
     if (!logo().isEmpty())
-        info += "logo: #" + logo() + "#\n";
+        info += QLatin1String("logo: #") + logo() + QLatin1String("#\n");
     if (!generator().isNull())
         info += generator().debugInfo();
     
     
     QString dupdated = dateTimeToString(updated());
     if (!dupdated.isNull())
-        info += "updated: #" + dupdated + "#\n";
+        info += QLatin1String("updated: #") + dupdated + QLatin1String("#\n");
     
     QList<Link> dlinks = links();
     QList<Link>::ConstIterator endlinks = dlinks.constEnd();
@@ -269,14 +269,14 @@ QString FeedDocument::debugInfo() const
     for (QList<Category>::ConstIterator it = dcats.constBegin(); it != endcats; ++it)
         info += (*it).debugInfo();
 
-    info += "### Authors: ###################\n";
+    info += QLatin1String("### Authors: ###################\n");
     
     QList<Person> dauthors = authors();
     QList<Person>::ConstIterator endauthors = dauthors.constEnd();
     for (QList<Person>::ConstIterator it = dauthors.constBegin(); it != endauthors; ++it)
         info += (*it).debugInfo();
 
-    info += "### Contributors: ###################\n";
+    info += QLatin1String("### Contributors: ###################\n");
     
     QList<Person> dcontri = contributors();
     QList<Person>::ConstIterator endcontri = dcontri.constEnd();
@@ -288,7 +288,7 @@ QString FeedDocument::debugInfo() const
     for (QList<Entry>::ConstIterator it = dentries.constBegin(); it != endentries; ++it)
         info += (*it).debugInfo();
     
-    info += "### FeedDocument end ################\n";
+    info += QLatin1String("### FeedDocument end ################\n");
 
     return info;
 }
@@ -320,13 +320,13 @@ bool EntryDocument::isValid() const
 QString EntryDocument::debugInfo() const
 {
     QString info;
-    info += "### EntryDocument: ##################\n";
+    info += QLatin1String("### EntryDocument: ##################\n");
     
     Entry dentry = entry();
     if (!dentry.isNull())
         info += dentry.debugInfo();
     
-    info += "### EntryDocument end ###############\n";
+    info += QLatin1String("### EntryDocument end ###############\n");
     return info;
 }
 

@@ -143,7 +143,7 @@ QString ItemAtomImpl::id() const
     if (!id.isEmpty())
         return id;
     
-    return QString("hash:%1").arg(Syndication::calcMD5Sum(title() + description() + link() + content()));
+    return QString::fromLatin1("hash:%1").arg(Syndication::calcMD5Sum(title() + description() + link() + content()));
 }
 
 

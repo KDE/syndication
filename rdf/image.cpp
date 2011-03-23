@@ -59,11 +59,11 @@ QString Image::url() const
 QString Image::debugInfo() const
 {
     QString info;
-    info += "### Image: ###################\n";
-    info += "url: #" + url() + "#\n";
-    info += "title: #" + title() + "#\n";
-    info += "link: #" + link() + "#\n";
-    info += "### Image end ################\n";
+    info += QLatin1String("### Image: ###################\n");
+    info += QLatin1String("url: #") + url() + QLatin1String("#\n");
+    info += QLatin1String("title: #") + title() + QLatin1String("#\n");
+    info += QLatin1String("link: #") + link() + QLatin1String("#\n");
+    info += QLatin1String("### Image end ################\n");
     return info;
 }
 

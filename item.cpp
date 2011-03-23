@@ -39,39 +39,39 @@ QString Item::debugInfo() const
 {
     QString info;
 
-    info += "# Item begin ######################\n";
+    info += QLatin1String("# Item begin ######################\n");
     
     QString did = id();
     if (!did.isNull())
-        info += "id: #" + did + "#\n";
+        info += QLatin1String("id: #") + did + QLatin1String("#\n");
 
     QString dtitle = title();
     if (!dtitle.isNull())
-        info += "title: #" + dtitle + "#\n";
+        info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     
     QString dlink = link();
     if (!dlink.isNull())
-        info += "link: #" + dlink + "#\n";
+        info += QLatin1String("link: #") + dlink + QLatin1String("#\n");
     
     QString ddescription = description();
     if (!ddescription.isNull())
-        info += "description: #" + ddescription + "#\n";
+        info += QLatin1String("description: #") + ddescription + QLatin1String("#\n");
     
     QString dcontent = content();
     if (!dcontent.isNull())
-        info += "content: #" + dcontent + "#\n";
+        info += QLatin1String("content: #") + dcontent + QLatin1String("#\n");
     
     QString pubdate = dateTimeToString(datePublished());
     if (!pubdate.isNull())
-        info += "datePublished: #" + pubdate + "#\n";
+        info += QLatin1String("datePublished: #") + pubdate + QLatin1String("#\n");
     
     QString update = dateTimeToString(dateUpdated());
     if (!update.isNull())
-        info += "dateUpdated: #" + update + "#\n";
+        info += QLatin1String("dateUpdated: #") + update + QLatin1String("#\n");
 
     QString dlanguage = language();
     if (!dlanguage.isNull())
-        info += "language: #" + dlanguage + "#\n";
+        info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
     
     QList<PersonPtr> dauthors = authors();
     QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
@@ -97,22 +97,22 @@ QString Item::debugInfo() const
     int dcommentsCount = commentsCount();
     if (dcommentsCount != -1)
     {
-        info+= "commentsCount: #" + QString::number(dcommentsCount) + "#\n";
+        info+= QLatin1String("commentsCount: #") + QString::number(dcommentsCount) + QLatin1String("#\n");
     }
     
     QString dcommentsLink = commentsLink();
     if (!dcommentsLink.isNull())
-        info+= "commentsLink: #" + dcommentsLink + "#\n";
+        info+= QLatin1String("commentsLink: #") + dcommentsLink + QLatin1String("#\n");
     
     QString dcommentsFeed = commentsFeed();
     if (!dcommentsFeed.isNull())
-        info+= "commentsFeed: #" + dcommentsFeed + "#\n";
+        info+= QLatin1String("commentsFeed: #") + dcommentsFeed + QLatin1String("#\n");
     
     QString dcommentPostUri = commentPostUri();
     if (!dcommentPostUri.isNull())
-        info+= "commentPostUri: #" + dcommentPostUri + "#\n";
+        info+= QLatin1String("commentPostUri: #") + dcommentPostUri + QLatin1String("#\n");
     
-    info += "# Item end ########################\n";
+    info += QLatin1String("# Item end ########################\n");
 
     return info;
 }

@@ -62,14 +62,14 @@ QString Enclosure::type() const
 QString Enclosure::debugInfo() const
 {
     QString info;
-    info += "### Enclosure: ###################\n";
+    info += QLatin1String("### Enclosure: ###################\n");
     if (!url().isNull())
-        info += "url: #" + url() + "#\n";
+        info += QLatin1String("url: #") + url() + QLatin1String("#\n");
     if (!type().isNull())
-        info += "type: #" + type() + "#\n";
+        info += QLatin1String("type: #") + type() + QLatin1String("#\n");
     if (length() != -1)
-        info += "length: #" + QString::number(length()) + "#\n";
-    info += "### Enclosure end ################\n";
+        info += QLatin1String("length: #") + QString::number(length()) + QLatin1String("#\n");
+    info += QLatin1String("### Enclosure end ################\n");
     return info;
 }
 

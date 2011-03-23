@@ -39,27 +39,27 @@ QString Feed::debugInfo() const
 {
     QString info;
     
-    info += "# Feed begin ######################\n";
+    info += QLatin1String("# Feed begin ######################\n");
 
     QString dtitle = title();
     if (!dtitle.isNull())
-        info += "title: #" + dtitle + "#\n";
+        info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     
     QString dlink = link();
     if (!dlink.isNull())
-        info += "link: #" + dlink + "#\n";
+        info += QLatin1String("link: #") + dlink + QLatin1String("#\n");
     
     QString ddescription = description();
     if (!ddescription.isNull())
-        info += "description: #" + ddescription + "#\n";
+        info += QLatin1String("description: #") + ddescription + QLatin1String("#\n");
     
     QString dcopyright = copyright();
     if (!dcopyright.isNull())
-        info += "copyright: #" + dcopyright + "#\n";
+        info += QLatin1String("copyright: #") + dcopyright + QLatin1String("#\n");
 
     QString dlanguage = language();
     if (!dlanguage.isNull())
-        info += "language: #" + dlanguage + "#\n";
+        info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
     
     QList<PersonPtr> dauthors = authors();
     QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
@@ -87,7 +87,7 @@ QString Feed::debugInfo() const
     for ( ; it != end; ++it)
         info += (*it)->debugInfo();
 
-    info += "# Feed end ########################\n";
+    info += QLatin1String("# Feed end ########################\n");
 
     return info;
 }

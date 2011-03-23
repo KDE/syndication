@@ -72,18 +72,18 @@ QString Cloud::protocol() const
 QString Cloud::debugInfo() const
 {
     QString info;
-    info += "### Cloud: ###################\n";
+    info += QLatin1String("### Cloud: ###################\n");
     if (!domain().isNull())
-        info += "domain: #" + domain() + "#\n";
+        info += QLatin1String("domain: #") + domain() + QLatin1String("#\n");
     if (port() != -1)
-        info += "port: #" + QString::number(port()) + "#\n";
+        info += QLatin1String("port: #") + QString::number(port()) + QLatin1String("#\n");
     if (!path().isNull())
-        info += "path: #" + path() + "#\n";
+        info += QLatin1String("path: #") + path() + QLatin1String("#\n");
     if (!registerProcedure().isNull())
-        info += "registerProcedure: #" + registerProcedure() + "#\n";
+        info += QLatin1String("registerProcedure: #") + registerProcedure() + QLatin1String("#\n");
     if (!protocol().isNull())
-        info += "protocol: #" + protocol() + "#\n";
-    info += "### Cloud end ################\n";
+        info += QLatin1String("protocol: #") + protocol() + QLatin1String("#\n");
+    info += QLatin1String("### Cloud end ################\n");
     return info;
 }
 

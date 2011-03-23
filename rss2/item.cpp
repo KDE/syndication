@@ -224,26 +224,26 @@ QString Item::rating() const
 QString Item::debugInfo() const
 {
     QString info;
-    info += "### Item: ###################\n";
+    info += QLatin1String("### Item: ###################\n");
     if (!title().isNull())
-        info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!link().isNull())
-        info += "link: #" + link() + "#\n";
+        info += QLatin1String("link: #") + link() + QLatin1String("#\n");
     if (!description().isNull())
-        info += "description: #" + description() + "#\n";
+        info += QLatin1String("description: #") + description() + QLatin1String("#\n");
     if (!content().isNull())
-        info += "content: #" + content() + "#\n";
+        info += QLatin1String("content: #") + content() + QLatin1String("#\n");
     if (!author().isNull())
-        info += "author: #" + author() + "#\n";
+        info += QLatin1String("author: #") + author() + QLatin1String("#\n");
     if (!comments().isNull())
-        info += "comments: #" + comments() + "#\n";
+        info += QLatin1String("comments: #") + comments() + QLatin1String("#\n");
     QString dpubdate = dateTimeToString(pubDate());
     if (!dpubdate.isNull())
-        info += "pubDate: #" + dpubdate + "#\n";
+        info += QLatin1String("pubDate: #") + dpubdate + QLatin1String("#\n");
     if (!guid().isNull())
-        info += "guid: #" + guid() + "#\n";
+        info += QLatin1String("guid: #") + guid() + QLatin1String("#\n");
     if (guidIsPermaLink())
-        info += "guid is PL: #true#\n";
+        info += QLatin1String("guid is PL: #true#\n");
     if (!source().isNull())
          info += source().debugInfo();
     
@@ -254,7 +254,7 @@ QString Item::debugInfo() const
     for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != encs.constEnd(); ++it)
         info += (*it).debugInfo();
 
-    info += "### Item end ################\n";
+    info += QLatin1String("### Item end ################\n");
     return info;
 }
 

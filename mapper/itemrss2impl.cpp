@@ -94,7 +94,7 @@ QString ItemRSS2Impl::id() const
     if (!guid.isEmpty())
         return guid;
 
-    return QString("hash:%1").arg(calcMD5Sum(title()
+    return QString::fromLatin1("hash:%1").arg(calcMD5Sum(title()
             + description() + link() + content()));
 }
 

@@ -23,6 +23,7 @@
 #ifndef SYNDICATION_PERSON_H
 #define SYNDICATION_PERSON_H
 
+#include <QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"

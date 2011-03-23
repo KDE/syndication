@@ -33,30 +33,30 @@ Person::~Person()
 QString Person::debugInfo() const
 {
     QString info;
-    info += "# Person begin ####################\n";
+    info += QLatin1String("# Person begin ####################\n");
     
     QString dname = name();
     
     if (!dname.isNull())
     {
-        info += "name: #" + dname + "#\n";
+        info += QLatin1String("name: #") + dname + QLatin1String("#\n");
     }
     
     QString duri = uri();
     
     if (!duri.isNull())
     {
-        info += "uri: #" + duri + "#\n";
+        info += QLatin1String("uri: #") + duri + QLatin1String("#\n");
     }
     
     QString demail = email();
     
     if (!demail.isNull())
     {
-        info += "email: #" + demail + "#\n";
+        info += QLatin1String("email: #") + demail + QLatin1String("#\n");
     }
 
-    info += "# Person end ######################\n";
+    info += QLatin1String("# Person end ######################\n");
     
     return info;
 }

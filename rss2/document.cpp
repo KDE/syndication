@@ -344,29 +344,29 @@ QList<QDomElement> Document::unhandledElements() const
 QString Document::debugInfo() const
 {
     QString info;
-    info += "### Document: ###################\n";
+    info += QLatin1String("### Document: ###################\n");
     if (!title().isNull())
-        info += "title: #" + title() + "#\n";
+        info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     if (!description().isNull())
-        info += "description: #" + description() + "#\n";
+        info += QLatin1String("description: #") + description() + QLatin1String("#\n");
     if (!link().isNull())
-        info += "link: #" + link() + "#\n";
+        info += QLatin1String("link: #") + link() + QLatin1String("#\n");
     if (!language().isNull())
-        info += "language: #" + language() + "#\n";
+        info += QLatin1String("language: #") + language() + QLatin1String("#\n");
     if (!copyright().isNull())
-        info += "copyright: #" + copyright() + "#\n";
+        info += QLatin1String("copyright: #") + copyright() + QLatin1String("#\n");
     if (!managingEditor().isNull())
-        info += "managingEditor: #" + managingEditor() + "#\n";
+        info += QLatin1String("managingEditor: #") + managingEditor() + QLatin1String("#\n");
     if (!webMaster().isNull())
-    info += "webMaster: #" + webMaster() + "#\n";
+        info += QLatin1String("webMaster: #") + webMaster() + QLatin1String("#\n");
 
     QString dpubdate = dateTimeToString(pubDate());
     if (!dpubdate.isNull())
-        info += "pubDate: #" + dpubdate + "#\n";
+        info += QLatin1String("pubDate: #") + dpubdate + QLatin1String("#\n");
 
     QString dlastbuilddate = dateTimeToString(lastBuildDate());
     if (!dlastbuilddate.isNull())
-        info += "lastBuildDate: #" + dlastbuilddate + "#\n";
+        info += QLatin1String("lastBuildDate: #") + dlastbuilddate + QLatin1String("#\n");
 
     if (!textInput().isNull())
         info += textInput().debugInfo();
@@ -382,7 +382,7 @@ QString Document::debugInfo() const
     QList<Item> litems = items();
     for (QList<Item>::ConstIterator it = litems.constBegin(); it != litems.constEnd(); ++it)
         info += (*it).debugInfo();
-    info += "### Document end ################\n";
+    info += QLatin1String("### Document end ################\n");
     return info;
 }
 
