@@ -93,7 +93,7 @@ QString FeedAtomImpl::link() const
     // TODO: if there are multiple "alternate" links, find other criteria to choose one of them
     for ( ; it != end; ++it)
     {
-        if ((*it).rel() == QString::fromUtf8("alternate"))
+        if ((*it).rel() == QLatin1String("alternate"))
         {
             return (*it).href();
         }

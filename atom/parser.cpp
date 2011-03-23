@@ -64,15 +64,15 @@ Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource
         return FeedDocumentPtr(new FeedDocument());
     }
     
-    QDomElement feed = doc.namedItem(QString::fromUtf8("feed")).toElement();
+    QDomElement feed = doc.namedItem(QLatin1String("feed")).toElement();
     
     bool feedValid = !feed.isNull();
 
-    if (feedValid && feed.attribute(QString::fromUtf8("version"))
-        == QString::fromUtf8("0.3"))
+    if (feedValid && feed.attribute(QLatin1String("version"))
+        == QLatin1String("0.3"))
     {
         doc = ParserPrivate::convertAtom0_3(doc);
-        feed = doc.namedItem(QString::fromUtf8("feed")).toElement();
+        feed = doc.namedItem(QLatin1String("feed")).toElement();
         
     }
 
@@ -83,7 +83,7 @@ Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource
         return FeedDocumentPtr(new FeedDocument(feed));
     }
 
-    QDomElement entry = doc.namedItem(QString::fromUtf8("entry")).toElement();
+    QDomElement entry = doc.namedItem(QLatin1String("entry")).toElement();
     bool entryValid = !entry.isNull() && entry.namespaceURI() == atom1Namespace();
 
     if (entryValid)
@@ -97,7 +97,7 @@ Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource
 
 QString Parser::format() const
 {
-    return QString::fromUtf8("atom");
+    return QLatin1String("atom");
 }
 
 QDomNode Parser::ParserPrivate::convertNode(QDomDocument& doc, const QDomNode& node, const QHash<QString, QString>& nameMapper)
@@ -132,43 +132,43 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument& doc, const QDomNode& n
     }
     
     bool isTextConstruct = newNS == atom1Namespace() 
-            && (newName == QString::fromUtf8("title")
-            || newName == QString::fromUtf8("rights")
-            || newName == QString::fromUtf8("subtitle")
-            || newName == QString::fromUtf8("summary"));
+            && (newName == QLatin1String("title")
+            || newName == QLatin1String("rights")
+            || newName == QLatin1String("subtitle")
+            || newName == QLatin1String("summary"));
     
     // for atom text constructs, map to new type schema (which only allows text, type, xhtml)
     
     if (isTextConstruct)
     {
-        QString oldType = newEl.attribute(QString::fromUtf8("type"), QString::fromUtf8("text/plain") );
+        QString oldType = newEl.attribute(QLatin1String("type"), QLatin1String("text/plain") );
         QString newType;
         
         Content::Format format = Content::mapTypeToFormat(oldType);
         switch (format)
         {
             case Content::XML:
-                newType = QString::fromUtf8("xhtml");
+                newType = QLatin1String("xhtml");
                 break;
             case Content::EscapedHTML:
-                newType = QString::fromUtf8("html");
+                newType = QLatin1String("html");
                 break;
             case Content::PlainText:
             case Content::Binary:
             default:
-                newType = QString::fromUtf8("text");
+                newType = QLatin1String("text");
                 
         }
         
-        newEl.setAttribute(QString::fromUtf8("type"), newType);
+        newEl.setAttribute(QLatin1String("type"), newType);
     }
     else
     {
         // for generator, rename the "url" attribute to "uri"
         
-        bool isGenerator = newNS == atom1Namespace() && newName == QString::fromUtf8("generator");        
-        if (isGenerator && newEl.hasAttribute(QString::fromUtf8("url")))
-            newEl.setAttribute(QString::fromUtf8("uri"), newEl.attribute(QString::fromUtf8("url")));
+        bool isGenerator = newNS == atom1Namespace() && newName == QLatin1String("generator");        
+        if (isGenerator && newEl.hasAttribute(QLatin1String("url")))
+            newEl.setAttribute(QLatin1String("uri"), newEl.attribute(QLatin1String("url")));
     }
     
     // process child nodes recursively and append them
@@ -187,11 +187,11 @@ QDomDocument Parser::ParserPrivate::convertAtom0_3(const QDomDocument& doc03)
     
     // these are the tags that were renamed in 1.0
     QHash<QString, QString> nameMapper;
-    nameMapper.insert(QString::fromUtf8("issued"), QString::fromUtf8("published"));
-    nameMapper.insert(QString::fromUtf8("modified"), QString::fromUtf8("updated"));
-    nameMapper.insert(QString::fromUtf8("url"), QString::fromUtf8("uri"));
-    nameMapper.insert(QString::fromUtf8("copyright"), QString::fromUtf8("rights"));
-    nameMapper.insert(QString::fromUtf8("tagline"), QString::fromUtf8("subtitle"));
+    nameMapper.insert(QLatin1String("issued"), QLatin1String("published"));
+    nameMapper.insert(QLatin1String("modified"), QLatin1String("updated"));
+    nameMapper.insert(QLatin1String("url"), QLatin1String("uri"));
+    nameMapper.insert(QLatin1String("copyright"), QLatin1String("rights"));
+    nameMapper.insert(QLatin1String("tagline"), QLatin1String("subtitle"));
     
     QDomNodeList children = doc03.childNodes();
     

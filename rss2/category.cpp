@@ -42,7 +42,7 @@ QString Category::category() const
 
 QString Category::domain() const
 {
-    return attribute(QString::fromUtf8("domain"));
+    return attribute(QLatin1String("domain"));
 }
 
 QString Category::debugInfo() const

@@ -61,25 +61,25 @@ DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = 0;
 
 DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://purl.org/dc/elements/1.1/");
+    QString ns = QLatin1String("http://purl.org/dc/elements/1.1/");
     
     d->namespaceURI = ns;
     
-    d->contributor = PropertyPtr( new Property(ns + QString::fromUtf8("contributor")) );
-    d->coverage = PropertyPtr( new Property(ns + QString::fromUtf8("coverage")) );
-    d->creator = PropertyPtr( new Property(ns + QString::fromUtf8("creator")) );
-    d->date = PropertyPtr( new Property(ns + QString::fromUtf8("date")) );
-    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
-    d->format = PropertyPtr( new Property(ns + QString::fromUtf8("format")) );
-    d->identifier = PropertyPtr( new Property(ns + QString::fromUtf8("identifier")) );
-    d->language = PropertyPtr( new Property(ns + QString::fromUtf8("language")) );
-    d->publisher = PropertyPtr( new Property(ns + QString::fromUtf8("publisher")) );
-    d->relation = PropertyPtr( new Property(ns + QString::fromUtf8("relation")) );
-    d->rights = PropertyPtr( new Property(ns + QString::fromUtf8("rights")) );
-    d->source = PropertyPtr( new Property(ns + QString::fromUtf8("source")) );
-    d->subject = PropertyPtr( new Property(ns + QString::fromUtf8("subject")) );
-    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
-    d->type = PropertyPtr( new Property(ns + QString::fromUtf8("type")) );
+    d->contributor = PropertyPtr( new Property(ns + QLatin1String("contributor")) );
+    d->coverage = PropertyPtr( new Property(ns + QLatin1String("coverage")) );
+    d->creator = PropertyPtr( new Property(ns + QLatin1String("creator")) );
+    d->date = PropertyPtr( new Property(ns + QLatin1String("date")) );
+    d->description = PropertyPtr( new Property(ns + QLatin1String("description")) );
+    d->format = PropertyPtr( new Property(ns + QLatin1String("format")) );
+    d->identifier = PropertyPtr( new Property(ns + QLatin1String("identifier")) );
+    d->language = PropertyPtr( new Property(ns + QLatin1String("language")) );
+    d->publisher = PropertyPtr( new Property(ns + QLatin1String("publisher")) );
+    d->relation = PropertyPtr( new Property(ns + QLatin1String("relation")) );
+    d->rights = PropertyPtr( new Property(ns + QLatin1String("rights")) );
+    d->source = PropertyPtr( new Property(ns + QLatin1String("source")) );
+    d->subject = PropertyPtr( new Property(ns + QLatin1String("subject")) );
+    d->title = PropertyPtr( new Property(ns + QLatin1String("title")) );
+    d->type = PropertyPtr( new Property(ns + QLatin1String("type")) );
     
 }
 

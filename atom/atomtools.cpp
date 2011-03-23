@@ -40,9 +40,9 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
 
     bool isCDATA = el.firstChild().isCDATASection();
 
-    QString type = el.attribute(QString::fromUtf8("type"), QString::fromUtf8("text"));
+    QString type = el.attribute(QLatin1String("type"), QLatin1String("text"));
 
-    if (type == QString::fromUtf8("text"))
+    if (type == QLatin1String("text"))
     {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
         if (isCDATA)
@@ -50,11 +50,11 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
 
         str = escapeSpecialCharacters(str);
     }
-    else if (type == QString::fromUtf8("html"))
+    else if (type == QLatin1String("html"))
     {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
     }
-    else if (type == QString::fromUtf8("xhtml"))
+    else if (type == QLatin1String("xhtml"))
     {
         str = ElementWrapper::childNodesAsXML(el).trimmed();
     }

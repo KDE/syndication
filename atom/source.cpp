@@ -49,7 +49,7 @@ QList<Person> Source::authors() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("author"));
+                                QLatin1String("author"));
     QList<Person> list;
                                        
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -68,7 +68,7 @@ QList<Person> Source::contributors() const
 {
         QList<QDomElement> a = 
                 elementsByTagNameNS(atom1Namespace(),
-                                    QString::fromUtf8("contributor"));
+                                    QLatin1String("contributor"));
     QList<Person> list;
                                        
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -87,7 +87,7 @@ QList<Category> Source::categories() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("category"));
+                                QLatin1String("category"));
     QList<Category> list;
     
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -105,26 +105,26 @@ QList<Category> Source::categories() const
 Generator Source::generator() const
 {
     return Generator(firstElementByTagNameNS(atom1Namespace(),
-                     QString::fromUtf8("generator")));
+                     QLatin1String("generator")));
 }
 
 QString Source::icon() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QString::fromUtf8("icon"));
+                                QLatin1String("icon"));
 }
 
 QString Source::id() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QString::fromUtf8("id"));
+                                QLatin1String("id"));
 }
 
 QList<Link> Source::links() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("link"));
+                                QLatin1String("link"));
     QList<Link> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -142,28 +142,28 @@ QList<Link> Source::links() const
 QString Source::logo() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QString::fromUtf8("logo"));
+                                QLatin1String("logo"));
 }
 
 QString Source::rights() const
 {
-    return extractAtomText(*this, QString::fromUtf8("rights"));
+    return extractAtomText(*this, QLatin1String("rights"));
 }
 
 QString Source::subtitle() const
 {
-    return extractAtomText(*this, QString::fromUtf8("subtitle"));
+    return extractAtomText(*this, QLatin1String("subtitle"));
 }
 
 QString Source::title() const
 {
-    return extractAtomText(*this, QString::fromUtf8("title"));
+    return extractAtomText(*this, QLatin1String("title"));
 }
 
 time_t Source::updated() const
 {
     QString upd = extractElementTextNS(atom1Namespace(),
-                                       QString::fromUtf8("updated"));
+                                       QLatin1String("updated"));
     return parseDate(upd, ISODate);
 }
 

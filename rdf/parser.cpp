@@ -101,7 +101,7 @@ QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument& docp)
     QDomDocument doc(docp);
     
     QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(),
-            QString::fromUtf8("item"));
+            QLatin1String("item"));
     
     for (int i = 0; i < list.size(); ++i)
     {
@@ -202,8 +202,8 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
 
 Parser::Parser() : d(new ParserPrivate)
 {
-    d->strInternalNs = QString::fromUtf8("http://akregator.sf.net/libsyndication/internal#");
-    d->strItemIndex = QString::fromUtf8("itemIndex");
+    d->strInternalNs = QLatin1String("http://akregator.sf.net/libsyndication/internal#");
+    d->strItemIndex = QLatin1String("itemIndex");
 }
 
 Parser::~Parser() 
@@ -216,7 +216,7 @@ Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
        
 QString Parser::format() const
 {
-    return QString::fromUtf8("rdf");
+    return QLatin1String("rdf");
 }
 
         

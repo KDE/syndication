@@ -62,12 +62,12 @@ uint EnclosureRSS2Impl::length() const
 
 uint EnclosureRSS2Impl::duration() const
 {
-    QString durStr = m_item.extractElementTextNS(itunesNamespace(), QString::fromUtf8("duration"));
+    QString durStr = m_item.extractElementTextNS(itunesNamespace(), QLatin1String("duration"));
     
     if (durStr.isEmpty())
         return 0;
     
-    QStringList strTokens = durStr.split(QString::fromUtf8(":"));
+    QStringList strTokens = durStr.split(QLatin1String(":"));
     QList<int> intTokens;
     
     int count = strTokens.count();

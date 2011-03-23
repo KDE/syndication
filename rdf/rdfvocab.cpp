@@ -60,13 +60,13 @@ RDFVocab* RDFVocab::self()
 
 RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+    QString ns = QLatin1String("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 
     d->namespaceURI = ns;
 
-    d->seq = ResourcePtr(new Resource(ns + QString::fromUtf8("Seq")));
-    d->type = PropertyPtr(new Property(ns + QString::fromUtf8("type")));
-    d->li = PropertyPtr(new Property(ns + QString::fromUtf8("li")));
+    d->seq = ResourcePtr(new Resource(ns + QLatin1String("Seq")));
+    d->type = PropertyPtr(new Property(ns + QLatin1String("type")));
+    d->li = PropertyPtr(new Property(ns + QLatin1String("li")));
 }
 
 RDFVocab::~RDFVocab()

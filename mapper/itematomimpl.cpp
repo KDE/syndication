@@ -63,7 +63,7 @@ QString ItemAtomImpl::link() const
     // return first link where rel="alternate"
     for ( ; it != end; ++it)
     {
-        if ((*it).rel() == QString::fromUtf8("alternate"))
+        if ((*it).rel() == QLatin1String("alternate"))
         {
             return (*it).href();
         }
@@ -157,7 +157,7 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
 
     for ( ; it != end; ++it)
     {
-        if ((*it).rel() == QString::fromUtf8("enclosure"))
+        if ((*it).rel() == QLatin1String("enclosure"))
         {
             list.append(EnclosureAtomImplPtr(new EnclosureAtomImpl(*it)));
 
@@ -186,7 +186,7 @@ QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
 
 int ItemAtomImpl::commentsCount() const
 {
-    QString cstr = m_entry.extractElementTextNS(slashNamespace(), QString::fromUtf8("comments"));
+    QString cstr = m_entry.extractElementTextNS(slashNamespace(), QLatin1String("comments"));
     bool ok = false;
     int comments = cstr.toInt(&ok);
     return ok ? comments : -1;
@@ -199,12 +199,12 @@ QString ItemAtomImpl::commentsLink() const
 
 QString ItemAtomImpl::commentsFeed() const
 {
-    return m_entry.extractElementTextNS(commentApiNamespace(), QString::fromUtf8("commentRss"));
+    return m_entry.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRss"));
 }
 
 QString ItemAtomImpl::commentPostUri() const
 {
-    return m_entry.extractElementTextNS(commentApiNamespace(), QString::fromUtf8("comment"));
+    return m_entry.extractElementTextNS(commentApiNamespace(), QLatin1String("comment"));
 }
 
 Syndication::SpecificItemPtr ItemAtomImpl::specificItem() const

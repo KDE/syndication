@@ -56,7 +56,7 @@ QList<Person> FeedDocument::authors() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("author"));
+                                QLatin1String("author"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -75,7 +75,7 @@ QList<Person> FeedDocument::contributors() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("contributor"));
+                                QLatin1String("contributor"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -94,7 +94,7 @@ QList<Category> FeedDocument::categories() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("category"));
+                                QLatin1String("category"));
     QList<Category> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -112,48 +112,48 @@ QList<Category> FeedDocument::categories() const
 Generator FeedDocument::generator() const
 {
     return Generator(firstElementByTagNameNS(atom1Namespace(),
-                     QString::fromUtf8("generator")));
+                     QLatin1String("generator")));
 }
 
 QString FeedDocument::icon() const
 {
     return completeURI(extractElementTextNS(atom1Namespace(),
-                       QString::fromUtf8("icon")));
+                       QLatin1String("icon")));
 
 }
 
 QString FeedDocument::logo() const
 {
     return completeURI(extractElementTextNS(atom1Namespace(),
-                       QString::fromUtf8("logo")));
+                       QLatin1String("logo")));
 }
 
 QString FeedDocument::id() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QString::fromUtf8("id"));
+                                QLatin1String("id"));
 }
 
 QString FeedDocument::rights() const
 {
 
-    return extractAtomText(*this, QString::fromUtf8("rights"));
+    return extractAtomText(*this, QLatin1String("rights"));
 }
 
 QString FeedDocument::title() const
 {
-    return extractAtomText(*this, QString::fromUtf8("title"));
+    return extractAtomText(*this, QLatin1String("title"));
 }
 
 QString FeedDocument::subtitle() const
 {
-    return extractAtomText(*this, QString::fromUtf8("subtitle"));
+    return extractAtomText(*this, QLatin1String("subtitle"));
 }
 
 time_t FeedDocument::updated() const
 {
     QString upd = extractElementTextNS(atom1Namespace(),
-                                       QString::fromUtf8("updated"));
+                                       QLatin1String("updated"));
     return parseDate(upd, ISODate);
 }
 
@@ -161,7 +161,7 @@ QList<Link> FeedDocument::links() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("link"));
+                                QLatin1String("link"));
     QList<Link> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -180,7 +180,7 @@ QList<Entry> FeedDocument::entries() const
 {
     QList<QDomElement> a = 
             elementsByTagNameNS(atom1Namespace(),
-                                QString::fromUtf8("entry"));
+                                QLatin1String("entry"));
     QList<Entry> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -199,19 +199,19 @@ QList<QDomElement> FeedDocument::unhandledElements() const
 {
     // TODO: do not hardcode this list here
     QList<ElementType> handled;
-    handled.append(ElementType(QString::fromUtf8("author"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("contributor"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("category"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("generator"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("icon"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("logo"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("id"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("rights"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("title"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("subtitle"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("updated"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("link"), atom1Namespace()));
-    handled.append(ElementType(QString::fromUtf8("entry"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("author"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("contributor"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("category"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("generator"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("icon"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("logo"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("id"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("rights"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("title"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("subtitle"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("updated"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("link"), atom1Namespace()));
+    handled.append(ElementType(QLatin1String("entry"), atom1Namespace()));
     
     QList<QDomElement> notHandled;
     

@@ -37,18 +37,18 @@ Image::Image(const QDomElement& element) : ElementWrapper(element)
 
 QString Image::url() const
 {
-    return extractElementTextNS(QString(), QString::fromUtf8("url"));
+    return extractElementTextNS(QString(), QLatin1String("url"));
 }
 
 QString Image::title() const
 {
-    return extractElementTextNS(QString(), QString::fromUtf8("title"));
+    return extractElementTextNS(QString(), QLatin1String("title"));
     
 }
 
 QString Image::link() const
 {
-    return extractElementTextNS(QString(), QString::fromUtf8("link"));
+    return extractElementTextNS(QString(), QLatin1String("link"));
     
 }
 
@@ -58,7 +58,7 @@ uint Image::width() const
     bool ok;
     uint c;
 
-    text = extractElementTextNS(QString(), QString::fromUtf8("width"));
+    text = extractElementTextNS(QString(), QLatin1String("width"));
     c = text.toUInt(&ok);
     return ok ? c : 88; // set to default if not parsable
 }
@@ -69,14 +69,14 @@ uint Image::height() const
     bool ok;
     uint c;
 
-    text = extractElementTextNS(QString(), QString::fromUtf8("height"));
+    text = extractElementTextNS(QString(), QLatin1String("height"));
     c = text.toUInt(&ok);
     return ok ? c : 31; // set to default if not parsable
 }
 
 QString Image::description() const
 {
-    return extractElementTextNS(QString(), QString::fromUtf8("description"));
+    return extractElementTextNS(QString(), QLatin1String("description"));
 }
 
 QString Image::debugInfo() const

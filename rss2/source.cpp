@@ -43,7 +43,7 @@ QString Source::source() const
 
 QString Source::url() const
 {
-    return attribute(QString::fromUtf8("url"));
+    return attribute(QLatin1String("url"));
 }
 
 QString Source::debugInfo() const

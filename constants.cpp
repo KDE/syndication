@@ -28,37 +28,37 @@ namespace Syndication {
 
 QString xmlNamespace()
 {
-    return QString::fromUtf8("http://www.w3.org/XML/1998/namespace");
+    return QLatin1String("http://www.w3.org/XML/1998/namespace");
 }
 
 QString xhtmlNamespace()
 {
-    return QString::fromUtf8("http://www.w3.org/1999/xhtml");
+    return QLatin1String("http://www.w3.org/1999/xhtml");
 }
 
 QString contentNameSpace()
 {
-    return QString::fromUtf8("http://purl.org/rss/1.0/modules/content/");
+    return QLatin1String("http://purl.org/rss/1.0/modules/content/");
 }
 
 QString dublinCoreNamespace()
 {
-    return QString::fromUtf8("http://purl.org/dc/elements/1.1/");
+    return QLatin1String("http://purl.org/dc/elements/1.1/");
 }
 
 QString itunesNamespace()
 {
-    return QString::fromUtf8("http://www.itunes.com/dtds/podcast-1.0.dtd");
+    return QLatin1String("http://www.itunes.com/dtds/podcast-1.0.dtd");
 }
 
 QString commentApiNamespace()
 {
-    return QString::fromUtf8("http://wellformedweb.org/CommentAPI/");
+    return QLatin1String("http://wellformedweb.org/CommentAPI/");
 }
 
 QString slashNamespace()
 {
-    return QString::fromUtf8("http://purl.org/rss/1.0/modules/slash/");
+    return QLatin1String("http://purl.org/rss/1.0/modules/slash/");
 }
 
 } // namespace Syndication

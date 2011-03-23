@@ -47,11 +47,11 @@ ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = 0;
 
 ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://purl.org/rss/1.0/modules/content/");
+    QString ns = QLatin1String("http://purl.org/rss/1.0/modules/content/");
     
     d->namespaceURI = ns;
     
-    d->encoded = PropertyPtr( new Property(ns + QString::fromUtf8("encoded")) );
+    d->encoded = PropertyPtr( new Property(ns + QLatin1String("encoded")) );
     
 }
 

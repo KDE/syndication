@@ -40,7 +40,7 @@ bool Parser::accept(const Syndication::DocumentSource& source) const
     if (doc.isNull())
         return false;
     
-    QDomNode root = doc.namedItem(QString::fromUtf8("rss")).toElement();
+    QDomNode root = doc.namedItem(QLatin1String("rss")).toElement();
 
     return !root.isNull();
 }
@@ -52,7 +52,7 @@ Syndication::SpecificDocumentPtr Parser::parse(const DocumentSource& source) con
 
 QString Parser::format() const
 {
-    return QString::fromUtf8("rss2");
+    return QLatin1String("rss2");
 }
 
 Parser::Parser() : d(0) {}

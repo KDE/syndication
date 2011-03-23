@@ -143,7 +143,7 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 
 int ItemRSS2Impl::commentsCount() const
 {
-    QString cstr = m_item.extractElementTextNS(slashNamespace(), QString::fromUtf8("comments"));
+    QString cstr = m_item.extractElementTextNS(slashNamespace(), QLatin1String("comments"));
     bool ok = false;
     int comments = cstr.toInt(&ok);
     return ok ? comments : -1;
@@ -156,15 +156,15 @@ QString ItemRSS2Impl::commentsLink() const
 
 QString ItemRSS2Impl::commentsFeed() const
 {
-    QString t = m_item.extractElementTextNS(commentApiNamespace(), QString::fromUtf8("commentRss"));
+    QString t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRss"));
     if (t.isNull())
-        t = m_item.extractElementTextNS(commentApiNamespace(), QString::fromUtf8("commentRSS"));
+        t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRSS"));
     return t;
 }
 
 QString ItemRSS2Impl::commentPostUri() const
 {
-    return m_item.extractElementTextNS(commentApiNamespace(), QString::fromUtf8("comment"));
+    return m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("comment"));
 }
 
 Syndication::SpecificItemPtr ItemRSS2Impl::specificItem() const

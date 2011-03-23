@@ -49,13 +49,13 @@ SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = 0;
 
 SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://purl.org/rss/1.0/modules/syndication/");
+    QString ns = QLatin1String("http://purl.org/rss/1.0/modules/syndication/");
     
     d->namespaceURI = ns;
     
-    d->updatePeriod = PropertyPtr( new Property(ns + QString::fromUtf8("updatePeriod")) );
-    d->updateFrequency = PropertyPtr( new Property(ns + QString::fromUtf8("updateFrequency")) );
-    d->updateBase = PropertyPtr( new Property(ns + QString::fromUtf8("updateBase")) );
+    d->updatePeriod = PropertyPtr( new Property(ns + QLatin1String("updatePeriod")) );
+    d->updateFrequency = PropertyPtr( new Property(ns + QLatin1String("updateFrequency")) );
+    d->updateBase = PropertyPtr( new Property(ns + QLatin1String("updateBase")) );
     
 }
 

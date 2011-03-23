@@ -126,7 +126,7 @@ QList<Syndication::CategoryPtr> ItemRDFImpl::categories() const
 
 int ItemRDFImpl::commentsCount() const
 {
-    PropertyPtr prop(new Property(slashNamespace() + QString::fromUtf8("comments")));
+    PropertyPtr prop(new Property(slashNamespace() + QLatin1String("comments")));
     QString cstr = m_item.resource()->property(prop)->asString();
     bool ok = false;
     int comments = cstr.toInt(&ok);
@@ -141,13 +141,13 @@ QString ItemRDFImpl::commentsLink() const
 
 QString ItemRDFImpl::commentsFeed() const
 {
-    PropertyPtr prop(new Property(commentApiNamespace() + QString::fromUtf8("commentRss")));
+    PropertyPtr prop(new Property(commentApiNamespace() + QLatin1String("commentRss")));
     return m_item.resource()->property(prop)->asString();
 }
 
 QString ItemRDFImpl::commentPostUri() const
 {
-    PropertyPtr prop(new Property(commentApiNamespace() + QString::fromUtf8("comment")));
+    PropertyPtr prop(new Property(commentApiNamespace() + QLatin1String("comment")));
     return m_item.resource()->property(prop)->asString();
 }
 

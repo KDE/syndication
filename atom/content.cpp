@@ -68,12 +68,12 @@ Content& Content::operator=(const Content& other)
 
 QString Content::type() const
 {
-    return attribute(QString::fromUtf8("type"));
+    return attribute(QLatin1String("type"));
 }
 
 QString Content::src() const
 {
-    return completeURI(attribute(QString::fromUtf8("src")));
+    return completeURI(attribute(QLatin1String("src")));
 }
 
 QByteArray Content::asByteArray() const
@@ -94,34 +94,34 @@ Content::Format Content::mapTypeToFormat(const QString& typep,  const QString& s
     //Atom Processors MUST behave as though the type attribute were
     //present with a value of "text""
     if (type.isNull() && src.isEmpty())
-        type = QString::fromUtf8("text");
+        type = QLatin1String("text");
 
-    if (type == QString::fromUtf8("html")
-        || type == QString::fromUtf8("text/html"))
+    if (type == QLatin1String("html")
+        || type == QLatin1String("text/html"))
         return EscapedHTML;
     
-    if (type == QString::fromUtf8("text")
-        || (type.startsWith(QString::fromUtf8("text/"), Qt::CaseInsensitive)
-        && !type.startsWith(QString::fromUtf8("text/xml"), Qt::CaseInsensitive))
+    if (type == QLatin1String("text")
+        || (type.startsWith(QLatin1String("text/"), Qt::CaseInsensitive)
+        && !type.startsWith(QLatin1String("text/xml"), Qt::CaseInsensitive))
        )
         return PlainText;
     
     if (xmltypes.isEmpty())
     {
-        xmltypes.append(QString::fromUtf8("xhtml"));
-        xmltypes.append(QString::fromUtf8("application/xhtml+xml"));
+        xmltypes.append(QLatin1String("xhtml"));
+        xmltypes.append(QLatin1String("application/xhtml+xml"));
         // XML media types as defined in RFC3023:
-        xmltypes.append(QString::fromUtf8("text/xml"));
-        xmltypes.append(QString::fromUtf8("application/xml"));
-        xmltypes.append(QString::fromUtf8("text/xml-external-parsed-entity"));
-        xmltypes.append(QString::fromUtf8("application/xml-external-parsed-entity"));
-        xmltypes.append(QString::fromUtf8("application/xml-dtd"));
-        xmltypes.append(QString::fromUtf8("text/x-dtd")); // from shared-mime-info
+        xmltypes.append(QLatin1String("text/xml"));
+        xmltypes.append(QLatin1String("application/xml"));
+        xmltypes.append(QLatin1String("text/xml-external-parsed-entity"));
+        xmltypes.append(QLatin1String("application/xml-external-parsed-entity"));
+        xmltypes.append(QLatin1String("application/xml-dtd"));
+        xmltypes.append(QLatin1String("text/x-dtd")); // from shared-mime-info
     }
     
     if (xmltypes.contains(type)
-        || type.endsWith(QString::fromUtf8("+xml"), Qt::CaseInsensitive)
-        || type.endsWith(QString::fromUtf8("/xml"), Qt::CaseInsensitive))
+        || type.endsWith(QLatin1String("+xml"), Qt::CaseInsensitive)
+        || type.endsWith(QLatin1String("/xml"), Qt::CaseInsensitive))
         return XML;
     
     return Binary;

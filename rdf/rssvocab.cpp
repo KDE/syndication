@@ -57,20 +57,20 @@ RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = 0;
 
 RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://purl.org/rss/1.0/");
+    QString ns = QLatin1String("http://purl.org/rss/1.0/");
     
     d->namespaceURI = ns;
     
-    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
-    d->link = PropertyPtr( new Property(ns + QString::fromUtf8("link")) );
-    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
-    d->name = PropertyPtr( new Property(ns + QString::fromUtf8("name")) );
-    d->url = PropertyPtr( new Property(ns + QString::fromUtf8("url")) );
-    d->image = PropertyPtr( new Property(ns + QString::fromUtf8("image")) );
-    d->textinput = PropertyPtr( new Property(ns + QString::fromUtf8("textinput")) );
-    d->items = PropertyPtr( new Property(ns + QString::fromUtf8("items")) );
-    d->channel = ResourcePtr( new Resource(ns + QString::fromUtf8("channel")) );
-    d->item = ResourcePtr( new Resource(ns + QString::fromUtf8("item")) );
+    d->title = PropertyPtr( new Property(ns + QLatin1String("title")) );
+    d->link = PropertyPtr( new Property(ns + QLatin1String("link")) );
+    d->description = PropertyPtr( new Property(ns + QLatin1String("description")) );
+    d->name = PropertyPtr( new Property(ns + QLatin1String("name")) );
+    d->url = PropertyPtr( new Property(ns + QLatin1String("url")) );
+    d->image = PropertyPtr( new Property(ns + QLatin1String("image")) );
+    d->textinput = PropertyPtr( new Property(ns + QLatin1String("textinput")) );
+    d->items = PropertyPtr( new Property(ns + QLatin1String("items")) );
+    d->channel = ResourcePtr( new Resource(ns + QLatin1String("channel")) );
+    d->item = ResourcePtr( new Resource(ns + QLatin1String("item")) );
 }
 
 RSSVocab::~RSSVocab()
@@ -172,27 +172,27 @@ RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = 0;
 
 RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
 {
-    QString ns = QString::fromUtf8("http://my.netscape.com/rdf/simple/0.9/");
+    QString ns = QLatin1String("http://my.netscape.com/rdf/simple/0.9/");
     
     d->namespaceURI = ns;
     
-    d->title = PropertyPtr( new Property(ns + QString::fromUtf8("title")) );
+    d->title = PropertyPtr( new Property(ns + QLatin1String("title")) );
     d->properties.append(d->title->uri());
-    d->link = PropertyPtr( new Property(ns + QString::fromUtf8("link")) );
+    d->link = PropertyPtr( new Property(ns + QLatin1String("link")) );
     d->properties.append(d->link->uri());
-    d->description = PropertyPtr( new Property(ns + QString::fromUtf8("description")) );
+    d->description = PropertyPtr( new Property(ns + QLatin1String("description")) );
     d->properties.append(d->description->uri());
-    d->name = PropertyPtr( new Property(ns + QString::fromUtf8("name")) );
+    d->name = PropertyPtr( new Property(ns + QLatin1String("name")) );
     d->properties.append(d->name->uri());
-    d->url = PropertyPtr( new Property(ns + QString::fromUtf8("url")) );
+    d->url = PropertyPtr( new Property(ns + QLatin1String("url")) );
     d->properties.append(d->url->uri());
-    d->image = PropertyPtr( new Property(ns + QString::fromUtf8("image")) );
+    d->image = PropertyPtr( new Property(ns + QLatin1String("image")) );
     d->properties.append(d->image->uri());
-    d->textinput = PropertyPtr( new Property(ns + QString::fromUtf8("textinput")) );
+    d->textinput = PropertyPtr( new Property(ns + QLatin1String("textinput")) );
     d->properties.append(d->textinput->uri());
-    d->item = ResourcePtr( new Resource(ns + QString::fromUtf8("item")) );
+    d->item = ResourcePtr( new Resource(ns + QLatin1String("item")) );
     d->classes.append(d->item->uri());
-    d->channel = ResourcePtr( new Resource(ns + QString::fromUtf8("channel")) );
+    d->channel = ResourcePtr( new Resource(ns + QLatin1String("channel")) );
     d->classes.append(d->channel->uri());
 }
 
