@@ -53,7 +53,7 @@ TestLibSyndication::TestLibSyndication(const QString& url)
     if (!KUrl::isRelativeUrl(url))
         kurl = KUrl(url);
     else
-        kurl = KUrl("file://" + QDir::currentPath() + '/', url);
+        kurl = KUrl(QString("file://" + QDir::currentPath() + '/'), url);
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
     Loader* loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader*,
