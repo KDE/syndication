@@ -91,11 +91,11 @@ void FileRetriever::retrieveData(const KUrl &url)
 
     QTimer::singleShot(1000*90, this, SLOT(slotTimeout()));
 
-    connect(d->job, SIGNAL(data(KIO::Job*, const QByteArray&)),
-            SLOT(slotData(KIO::Job*, const QByteArray&)));
+    connect(d->job, SIGNAL(data(KIO::Job*,QByteArray)),
+            SLOT(slotData(KIO::Job*,QByteArray)));
     connect(d->job, SIGNAL(result(KJob*)), SLOT(slotResult(KJob*)));
-    connect(d->job, SIGNAL(permanentRedirection(KIO::Job*, const KUrl&, const KUrl&)),
-            SLOT(slotPermanentRedirection(KIO::Job*, const KUrl&, const KUrl&)));
+    connect(d->job, SIGNAL(permanentRedirection(KIO::Job*,KUrl,KUrl)),
+            SLOT(slotPermanentRedirection(KIO::Job*,KUrl,KUrl)));
 }
 
 void FileRetriever::slotTimeout()
@@ -183,8 +183,8 @@ void OutputRetriever::retrieveData(const KUrl &url)
     d->buffer->open(QIODevice::WriteOnly);
 
     d->process = new KProcess();
-    connect(d->process, SIGNAL(finished(int, QProcess::ExitStatus)),
-            SLOT(slotFinished(int, QProcess::ExitStatus)));
+    connect(d->process, SIGNAL(finished(int,QProcess::ExitStatus)),
+            SLOT(slotFinished(int,QProcess::ExitStatus)));
     d->process->setShellCommand(url.path());
     d->process->start();
 }
