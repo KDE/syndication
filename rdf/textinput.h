@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_TEXTINPUT_H
 #define SYNDICATION_RDF_TEXTINPUT_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <syndication/rdf/resourcewrapper.h>
 
 namespace Syndication {

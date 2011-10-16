@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_LITERAL_H
 #define SYNDICATION_RDF_LITERAL_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <syndication/rdf/node.h>
 
 #include <boost/shared_ptr.hpp>
@@ -49,21 +49,21 @@ class SYNDICATION_EXPORT Literal : public Node
          * creates a null literal. text() will return a null string.
          */
         Literal();
-        
+
         /**
          * copies a literal node
-         * 
+         *
          * @param other the literal node to copy
          */
         Literal(const Literal& other);
-        
+
         /**
          * creates a new literal node with a given text
-         * 
+         *
          * @param text the literal string
          */
         explicit Literal(const QString& text);
-        
+
         /**
          * destructor
          */
@@ -71,13 +71,13 @@ class SYNDICATION_EXPORT Literal : public Node
 
         /**
          * assigns another literal
-         * 
+         *
          * @param other the literal to assign
          */
         virtual Literal& operator=(const Literal& other);
-        
+
         /**
-         * two literal nodes are equal iff their text _and_ ID's 
+         * two literal nodes are equal iff their text _and_ ID's
          * are equal.
          */
         virtual bool operator==(const Node& other) const;
@@ -86,7 +86,7 @@ class SYNDICATION_EXPORT Literal : public Node
          * clones the literal node.
          */
         virtual Literal* clone() const;
-        
+
         /**
          * Used by visitors for double dispatch. See NodeVisitor
          * for more information.
@@ -99,13 +99,13 @@ class SYNDICATION_EXPORT Literal : public Node
          * returns whether this node is a null node
          */
         virtual bool isNull() const;
-        
+
         /**
          * the identifier of this node. the ID is unique per model
          * and set by the associated model at creation time.
          */
         virtual unsigned int id() const;
-        
+
         /**
          * returns false, as a literal is not a resource
          */
@@ -114,17 +114,17 @@ class SYNDICATION_EXPORT Literal : public Node
          * returns false, as a literal is not a property
          */
         virtual bool isProperty() const;
-        
+
         /**
          * returns true for literals
          */
         virtual bool isLiteral() const;
-        
+
         /**
          * returns false, literals are not anonymous resources
          */
         virtual bool isAnon() const;
-        
+
         /**
          * returns false, literals are not sequences
          */
@@ -134,18 +134,18 @@ class SYNDICATION_EXPORT Literal : public Node
          * implicit conversion to string. returns text()
          */
         virtual operator QString() const;
-        
+
         /**
          * the string value of the literal
          */
         virtual QString text() const;
-        
+
         /**
          * used in Model
          * @internal
          */
         virtual void setModel(const Model& model);
-        
+
         /**
          * used in Model
          * @internal

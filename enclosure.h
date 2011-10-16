@@ -27,7 +27,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <QString>
+#include <QtCore/QString>
 
 namespace Syndication {
 

@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_DOCUMENTSOURCE_H
 #define SYNDICATION_DOCUMENTSOURCE_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"
@@ -118,7 +118,7 @@ class SYNDICATION_EXPORT DocumentSource
          * The document is parsed only on the first call of this method
          * and then cached.
          *
-         * If the feed source cannot be parsed successfully then the 
+         * If the feed source cannot be parsed successfully then the
          * returned DOM node will be null (eg. asDomDocument().isNull()
          * will return true)
          *

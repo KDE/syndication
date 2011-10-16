@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_NODE_H
 #define SYNDICATION_RDF_NODE_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <syndication/ksyndication_export.h>
 #include <boost/shared_ptr.hpp>
 
@@ -60,7 +60,7 @@ class SYNDICATION_EXPORT Node
         /**
          * checks whether two nodes are equal. The meaning of equality
          * is defined per subclass (e.g. equality of URIs, IDs etc.)
-         * 
+         *
          * @param other the node to compare to
          */
         virtual bool operator==(const Node& other) const = 0;
@@ -114,7 +114,7 @@ class SYNDICATION_EXPORT Node
          * node types.
          */
         virtual QString text() const = 0;
-        
+
         /**
          * used in Model
          * @internal

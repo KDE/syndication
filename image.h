@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_IMAGE_H
 #define SYNDICATION_IMAGE_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"

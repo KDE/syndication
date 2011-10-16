@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_CATEGORY_H
 #define SYNDICATION_CATEGORY_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"

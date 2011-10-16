@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ITEM_H
 #define SYNDICATION_ITEM_H
 
-#include <QString>
+#include <QtCore/QString>
 #include <boost/shared_ptr.hpp>
 
 #include "ksyndication_export.h"
@@ -48,7 +48,7 @@ typedef boost::shared_ptr<Person> PersonPtr;
 class SpecificItem;
 typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
 //@endcond
-    
+
 /**
  * An item from a news feed.
  *
@@ -210,22 +210,22 @@ class SYNDICATION_EXPORT Item
 
         /**
          * returns a list of item metadata not covered by this class.
-         * Can be used e.g. to access format extensions. 
-         * 
+         * Can be used e.g. to access format extensions.
+         *
          * The returned map contains key value pairs, where the key
          * is the tag name of the element, namespace prefix are resolved
          * to the corresponding URIs. The value is the XML element as read
          * from the document.
-         * 
+         *
          * For example, to access the &lt;itunes:keywords> element, use
          * additionalProperties()["http://www.itunes.com/dtds/podcast-1.0.dtdkeywords"].
-         * 
+         *
          * Currently this is only
-         * supported for RSS 0.91..0.94/2.0 and Atom formats, but not for RDF 
+         * supported for RSS 0.91..0.94/2.0 and Atom formats, but not for RDF
          * (RSS 0.9 and 1.0).
          */
         virtual QMultiMap<QString, QDomElement> additionalProperties() const = 0;
-        
+
         /**
          * returns a description of the item for debugging purposes
          *
