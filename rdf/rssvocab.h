@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_RSSVOCAB_H
 #define SYNDICATION_RDF_RSSVOCAB_H
 
-#include <syndication/ksyndication_export.h>
+#include <syndication/syndication_export.h>
 
 class QString;
 class QStringList;

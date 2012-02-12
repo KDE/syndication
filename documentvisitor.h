@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_DOCUMENTVISITOR_H
 #define SYNDICATION_DOCUMENTVISITOR_H
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 namespace Syndication {
 

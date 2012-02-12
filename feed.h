@@ -25,7 +25,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 class QDomElement;
 

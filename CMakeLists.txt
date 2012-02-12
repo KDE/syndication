@@ -1,18 +1,26 @@
+project(syndication)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+include(GenerateExportHeader)
 
-add_subdirectory( tests )
+set(CMAKE_AUTOMOC ON)
 
-add_subdirectory( atom )
-add_subdirectory( rdf )
-add_subdirectory( rss2 )
-
-include_directories( ${Boost_INCLUDE_DIR} )
+########### Build parameters ###############
 
 add_definitions( -DQT_STRICT_ITERATORS )
 add_definitions( -DQT_NO_CAST_FROM_ASCII )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
 add_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+
+include_directories( ${Boost_INCLUDE_DIR} )
+
+#######################################
+
+add_subdirectory( tests )
+add_subdirectory( atom )
+add_subdirectory( rdf )
+add_subdirectory( rss2 )
 
 ########### next target ###############
 
@@ -27,7 +35,7 @@ set(librss2local_SRCS
     rss2/source.cpp
     rss2/textinput.cpp
     rss2/tools_p.cpp
-	)
+)
 
 
 set(librdflocal_la_SRCS
@@ -121,35 +129,41 @@ set(syndication_LIB_SRCS
 )
 
 
-kde4_add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
+add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
+generate_export_header(syndication)
 
 target_link_libraries(syndication  ${KDE4_KIO_LIBS})
 
-set_target_properties(syndication PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
+set_target_properties(syndication PROPERTIES
+    VERSION ${ECM_VERSION_STRING}
+    SOVERSION ${ECM_SOVERSION}
+)
+
 install(TARGETS syndication EXPORT kdepimlibsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install( FILES abstractparser.h
-               category.h
-               constants.h
-               dataretriever.h
-               documentsource.h
-               documentvisitor.h
-               elementwrapper.h
-               enclosure.h
-               feed.h
-               global.h
-               image.h
-               item.h
-               ksyndication_export.h
-               loader.h
-               mapper.h
-               parsercollection.h
-               person.h
-               specificdocument.h
-               specificitem.h
-               specificitemvisitor.h
-               syndication.h
-               tools.h
-         DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
+    abstractparser.h
+    category.h
+    constants.h
+    dataretriever.h
+    documentsource.h
+    documentvisitor.h
+    elementwrapper.h
+    enclosure.h
+    feed.h
+    global.h
+    image.h
+    item.h
+    loader.h
+    mapper.h
+    parsercollection.h
+    person.h
+    specificdocument.h
+    specificitem.h
+    specificitemvisitor.h
+    syndication.h
+    tools.h
+    DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)

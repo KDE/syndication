@@ -26,7 +26,7 @@
 #include <QtCore/QString>
 #include <boost/shared_ptr.hpp>
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 namespace Syndication {
 

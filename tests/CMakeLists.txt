@@ -1,39 +1,46 @@
-set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
-include_directories( ../ ${Boost_INCLUDE_DIR} )
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
+
+remove_definitions( -DQT_NO_CAST_FROM_ASCII )
+remove_definitions( -DQT_NO_CAST_TO_ASCII )
+remove_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
 
 
-########### next target ###############
-
-set(testlibsyndication_SRCS testlibsyndication.cpp )
-
-
-kde4_add_executable(testlibsyndication NOGUI TEST ${testlibsyndication_SRCS})
-
-target_link_libraries(testlibsyndication  syndication ${KDE4_KDECORE_LIBS} )
-
-########### next target ###############
-
-set(testloader_SRCS testloader.cpp )
-
-
-kde4_add_executable(testloader TEST ${testloader_SRCS})
-
-target_link_libraries(testloader  syndication ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} )
+include_directories(
+    ${syndication_SOURCE_DIR}
+    ${syndication_BINARY_DIR}
+    ${CMAKE_SOURCE_DIR}
+    ${Boost_INCLUDE_DIR}
+)
 
 ########### next target ###############
 
-set(testpersonimpl_SRCS testpersonimpl.cpp )
+set(testlibsyndication_SRCS testlibsyndication.cpp)
 
+add_executable(testlibsyndication ${testlibsyndication_SRCS})
+add_test(testlibsyndication testlibsyndication)
 
-kde4_add_unit_test(testpersonimpl TESTNAME libsyndication-testpersonimpl  ${testpersonimpl_SRCS})
-
-target_link_libraries(testpersonimpl  syndication ${KDE4_KDECORE_LIBS} ${QT_QTTEST_LIBRARY} )
+target_link_libraries(testlibsyndication syndication ${kdecore_LIBRARY} ${QT_QTCORE_LIBRARY})
 
 ########### next target ###############
 
-FILE( GLOB_RECURSE atomFiles atom/*xml )
-FILE( GLOB_RECURSE rdfFiles rdf/*xml )
-FILE( GLOB_RECURSE rss2Files rss2/*xml )
+set(testloader_SRCS testloader.cpp)
+
+add_executable(testloader ${testloader_SRCS})
+add_test(testloader testloader)
+
+target_link_libraries(testloader syndication)
+
+########### next target ###############
+
+#set(testpersonimpl_SRCS testpersonimpl.cpp)
+#add_test(testpersonimpl TESTNAME libsyndication-testpersonimpl  ${testpersonimpl_SRCS})
+#target_link_libraries(testpersonimpl syndication ${QT_QTTEST_LIBRARY})
+
+########### next target ###############
+
+FILE(GLOB_RECURSE atomFiles atom/*xml)
+FILE(GLOB_RECURSE rdfFiles rdf/*xml)
+FILE(GLOB_RECURSE rss2Files rss2/*xml)
 
 FOREACH( file ${atomFiles} )
   ADD_TEST( \"Atom-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
@@ -44,6 +51,4 @@ ENDFOREACH(file)
 FOREACH( file ${rss2Files} )
   ADD_TEST( \"Rss2-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
 ENDFOREACH(file)
-
-########### install files ###############
 

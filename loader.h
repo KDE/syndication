@@ -14,7 +14,7 @@
 #include <syndication/global.h>
 #include <boost/shared_ptr.hpp>
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 #include <QtCore/QObject>
 

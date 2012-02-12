@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_CONSTANTS_H
 #define SYNDICATION_CONSTANTS_H
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 class QString;
 

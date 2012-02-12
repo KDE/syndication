@@ -10,7 +10,7 @@
 #ifndef SYNDICATION_DATARETRIEVER_H
 #define SYNDICATION_DATARETRIEVER_H
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QString>

@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_SPECIFICITEMVISITOR_H
 #define SYNDICATION_SPECIFICITEMVISITOR_H
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 namespace Syndication {
 

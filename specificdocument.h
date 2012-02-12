@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_SPECIFICDOCUMENT_H
 #define SYNDICATION_SPECIFICDOCUMENT_H
 
-#include "ksyndication_export.h"
+#include "syndication_export.h"
 
 #include <boost/shared_ptr.hpp>
 
