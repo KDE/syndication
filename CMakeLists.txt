@@ -4,6 +4,37 @@ include(GenerateExportHeader)
 
 set(CMAKE_AUTOMOC ON)
 
+include(ECMVersion)
+ecm_version(5 0 0)
+include(ECMQtFramework)
+
+########### Find packages ###########
+
+find_package(kcoreaddons REQUIRED)
+include_directories(${kcoreaddons_INCLUDE_DIR} ${kcoreaddons_INCLUDE_DIR}/KDE)
+
+# FIXME Remove when possible
+unset(kcoreaddons_LIBRARY)
+find_library(kcoreaddons_LIBRARY NAMES kcoreaddons ${kcoreaddons_LIBRARY_DIR})
+find_library(kdecore_LIBRARY NAMES kdecore ${kcoreaddons_LIBRARY_DIR})
+find_library(kio_LIBRARY NAMES kio ${kcoreaddons_LIBRARY_DIR})
+
+########### Includes ###############
+
+include_directories(
+    ${syndication_BINARY_DIR}
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_BINARY_DIR}
+    ${Boost_INCLUDE_DIR}
+)
+
+#######################################
+
+add_subdirectory(atom)
+add_subdirectory(rdf)
+add_subdirectory(rss2)
+add_subdirectory(tests)
+
 ########### Build parameters ###############
 
 add_definitions( -DQT_STRICT_ITERATORS )
@@ -13,16 +44,7 @@ add_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
 
-include_directories( ${Boost_INCLUDE_DIR} )
-
-#######################################
-
-add_subdirectory( tests )
-add_subdirectory( atom )
-add_subdirectory( rdf )
-add_subdirectory( rss2 )
-
-########### next target ###############
+########### next target ###########
 
 set(librss2local_SRCS
     rss2/category.cpp
@@ -36,7 +58,6 @@ set(librss2local_SRCS
     rss2/textinput.cpp
     rss2/tools_p.cpp
 )
-
 
 set(librdflocal_la_SRCS
     rdf/parser.cpp
@@ -76,7 +97,6 @@ set(libatomlocal_SRCS
     atom/source.cpp
     atom/atomtools.cpp
 )
-
 
 set(libmapperrss2local_SRCS
     mapper/feedrss2impl.cpp
@@ -128,11 +148,16 @@ set(syndication_LIB_SRCS
     abstractparser.cpp
 )
 
-
 add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
 generate_export_header(syndication)
 
-target_link_libraries(syndication  ${KDE4_KIO_LIBS})
+target_link_libraries(syndication
+    ${QT_QTCORE_LIBRARY}
+    ${QT_QTXML_LIBRARY}
+    ${kcoreaddons_LIBRARY}
+    ${kdecore_LIBRARY}
+    ${kio_LIBRARY}
+)
 
 set_target_properties(syndication PROPERTIES
     VERSION ${ECM_VERSION_STRING}
