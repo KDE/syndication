@@ -28,6 +28,7 @@
 #include <kdatetime.h>
 
 #include <QtCore/QByteArray>
+#include <QtCore/QCryptographicHash>
 #include <QtCore/QDateTime>
 #include <QtCore/QRegExp>
 #include <QtCore/QString>
@@ -36,7 +37,7 @@
 
 namespace Syndication {
 
-KMD5 md5Machine;
+QCryptographicHash md5Machine( QCryptographicHash::Md5 );
 
 unsigned int calcHash(const QString& str)
 {
@@ -115,8 +116,8 @@ QString dateTimeToString(time_t date)
 QString calcMD5Sum(const QString& str)
 {
     md5Machine.reset();
-    md5Machine.update(str.toUtf8());
-    return QLatin1String(md5Machine.hexDigest().constData());
+    md5Machine.addData( str.toUtf8() );
+    return QLatin1String( md5Machine.result().toHex().constData() );
 }
 
 QString resolveEntities(const QString& str)
