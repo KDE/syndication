@@ -38,6 +38,8 @@
 
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVector>
 
 using namespace boost;
 
@@ -138,37 +140,65 @@ SyndicationInfo Document::syn() const
     return SyndicationInfo(resource());
 }
 
+
+struct SortItem {
+    Item item;
+    int index;
+};
+
+struct LessThanByIndex {
+    bool operator()(const SortItem& lhs, const SortItem& rhs) const {
+        return lhs.index < rhs.index;
+    }
+};
+
+static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList& uriSequence) {
+    QVector<SortItem> toSort;
+    toSort.reserve(items.size());
+    Q_FOREACH(const Item& i, items) {
+        SortItem item;
+        item.item = i;
+        item.index = uriSequence.indexOf(i.resource()->uri());
+        toSort.append(item);
+    }
+    qSort(toSort.begin(), toSort.end(), LessThanByIndex());
+
+    int i = 0;
+    Q_FOREACH(const SortItem& sortItem, toSort) {
+        items[i] = sortItem.item;
+        i++;
+    }
+
+    return items;
+}
+
 QList<Item> Document::items() const
 {
     QList<Item> list;
-    if (!resource()->hasProperty(RSSVocab::self()->items()))
-        return list;
 
-    NodePtr n = resource()->property(RSSVocab::self()->items())->object();
-    if (n->isSequence())
-    {
-        Sequence* seq = static_cast<Sequence*>(n.get());
+    const QList<ResourcePtr> items = resource()->model().resourcesWithType(RSSVocab::self()->item());
+    DocumentPtr doccpy(new Document(*this));
+    Q_FOREACH (const ResourcePtr& i, items)
+        list.append(Item(i, doccpy));
 
-        const QList<NodePtr> items = seq->items();
-        QList<NodePtr>::ConstIterator it = items.begin();
-        QList<NodePtr>::ConstIterator end = items.end();
-
-        DocumentPtr doccpy(new Document(*this));
-
-        for ( ; it != end; ++it)
+    if (resource()->hasProperty(RSSVocab::self()->items())) {
+        NodePtr n = resource()->property(RSSVocab::self()->items())->object();
+        if (n->isSequence())
         {
-            if ((*it)->isResource())
-            {
-                // well, we need it as ResourcePtr
-                // maybe this should go to the node
-                // interface ResourcePtr asResource()?
-                ResourcePtr ptr = resource()->model().createResource((static_cast<Resource*>((*it).get()))->uri());
+            Sequence* seq = static_cast<Sequence*>(n.get());
 
-                list.append(Item(ptr, doccpy));
-            }
+            const QList<NodePtr> seqItems = seq->items();
+
+            QStringList uriSequence;
+            uriSequence.reserve(seqItems.size());
+
+            Q_FOREACH(const NodePtr& i, seqItems)
+                if (i->isResource())
+                    uriSequence.append(static_cast<Resource*>(i.get())->uri());
+           list = sortListToMatchSequence(list, uriSequence);
         }
-
     }
+
     return list;
 }
 
