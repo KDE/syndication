@@ -164,6 +164,8 @@ void Parser::ParserPrivate::map09to10(Model model)
 
 void Parser::ParserPrivate::addSequenceFor09(Model model)
 {
+    //RDF 0.9 doesn't contain an item sequence, and the items don't have rdf:about, so add both
+
     const QList<ResourcePtr> items = model.resourcesWithType(RSS09Vocab::self()->item());
     
     if (items.isEmpty())
@@ -196,6 +198,10 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     foreach (const ResourcePtr &i, sorted)
     {
         seq->append(i);
+        // add rdf:about (type)
+        model.addStatement(i, RDFVocab::self()->type(), RSSVocab::self()->item());
+
+        //add to items sequence
         model.addStatement(seq, RDFVocab::self()->li(), i);
     }
 }
