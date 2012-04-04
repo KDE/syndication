@@ -130,7 +130,7 @@ int main(int argc, char **argv)
           expFile.open(QIODevice::ReadOnly);
           QByteArray expected = expFile.readAll();
           expFile.close();
-          return expected == (res.toUtf8() + '\n') ? 0 : 1;
+          return expected.trimmed() == res.toUtf8().trimmed() ? 0 : 1;
     }
     
     return 0;
