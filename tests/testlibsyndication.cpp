@@ -62,7 +62,6 @@ void printUsage(const QString& error)
 int main(int argc, char **argv)
 {
     setenv("LC_ALL", "C", 1);
-    setenv("TZ", "CET", 1);
 
     KComponentData componentData("testlibsyndication");
     int pcompare = 2;

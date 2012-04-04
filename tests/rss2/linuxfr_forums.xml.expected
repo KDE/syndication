@@ -27,8 +27,8 @@ J'ai essayer de voir s'il y avait la possibilité de faire tourner ce calcul sur
 J'avoue être avoir besoin d'idée pour essayer d 'améliorer les performances. Si il faut en passer par du nouveau matériel ou autre c'est envisageable mais je pense pas que ça puisse régler grand chose. <br />
 <br />
 Merci d'avance.#
-datePublished: #Thu Sep 4 12:04:31 2008#
-dateUpdated: #Thu Sep 4 12:04:31 2008#
+datePublished: #Thu Sep 4 10:04:31 2008#
+dateUpdated: #Thu Sep 4 10:04:31 2008#
 # Person begin ####################
 name: #marseillais#
 email: #null@linuxfr.org#
@@ -44,8 +44,8 @@ link: #http://linuxfr.org/forums/9/25783.html#
 description: #hello
 
 sur ma becanne le contenu d'un repertoire a été effacé. je ne sais pas comment. le proprio de ce repertoire est root. en dehors de moi je ne vois pas qui a pu l'effacer.seulement je ne vois pas comment ça a pu se produire.je suis allé voir dans .bash_history de root mais je ne vois rien de particulier.y a t il un moyen de pister ce qui a pu se produire ?#
-datePublished: #Thu Sep 4 10:01:24 2008#
-dateUpdated: #Thu Sep 4 10:01:24 2008#
+datePublished: #Thu Sep 4 08:01:24 2008#
+dateUpdated: #Thu Sep 4 08:01:24 2008#
 # Person begin ####################
 name: #zigfrid75#
 email: #null@linuxfr.org#
@@ -65,8 +65,8 @@ je suis responsable des systèmes d'informations d'une paroisse (quelques serveu
 En tant que paroisse, est-il possible de prendre un stagiaire (conventionné, comme en entreprise) ?<br />
 <br />
 Je suis preneur d'informations à ce sujet, merci d'avance !#
-datePublished: #Wed Sep 3 17:36:53 2008#
-dateUpdated: #Wed Sep 3 17:36:53 2008#
+datePublished: #Wed Sep 3 15:36:53 2008#
+dateUpdated: #Wed Sep 3 15:36:53 2008#
 # Person begin ####################
 name: #santos#
 email: #null@linuxfr.org#
@@ -86,8 +86,8 @@ Je projette d'acheter un PC portable très prochainement en profitant des offres
 Alors moi, c'est sûr la première chose que je vais faire une fois mon nouveau jouet acheté, se sera de tout effacer, et cela me fait mal au coeur car biensur je suis radin. D'après ce que j'ai compris sur différent journal du site : vendre un logiciel avec un matériel c'est considéré comme de la vente liée et c'est interdit par la loi. Mes amis, je vous demande donc, comme j'aime bien me lancer dans des casses têtes judiciar-o-administratif. J'ai vraiment envie une fois mon achat fait de me lancer dans le remboursement de ma offre logicielle dont je ne veux pas. <br />
 <br />
 Quelqu'un connaît - il une site avec plein de bon conseil pour que je puisse aboutir a un résultat ?#
-datePublished: #Wed Sep 3 17:18:07 2008#
-dateUpdated: #Wed Sep 3 17:18:07 2008#
+datePublished: #Wed Sep 3 15:18:07 2008#
+dateUpdated: #Wed Sep 3 15:18:07 2008#
 # Person begin ####################
 name: #MrBidon#
 email: #null@linuxfr.org#
@@ -107,8 +107,8 @@ Je sais qu'il existe une extension pour modifier l'identité de Firefox mais pas
 Quelqu'un peut me donner le nom de cette extension??<br />
 <br />
 Merci#
-datePublished: #Wed Sep 3 16:37:08 2008#
-dateUpdated: #Wed Sep 3 16:37:08 2008#
+datePublished: #Wed Sep 3 14:37:08 2008#
+dateUpdated: #Wed Sep 3 14:37:08 2008#
 # Person begin ####################
 name: #vladislav#
 email: #null@linuxfr.org#
@@ -134,8 +134,8 @@ Je ne souhaite pas utiliser Gmail car je consulte assez souvent mes messages off
 Merci<br />
 <br />
 Mildred#
-datePublished: #Wed Sep 3 16:26:12 2008#
-dateUpdated: #Wed Sep 3 16:26:12 2008#
+datePublished: #Wed Sep 3 14:26:12 2008#
+dateUpdated: #Wed Sep 3 14:26:12 2008#
 # Person begin ####################
 name: #mildred#
 email: #null@linuxfr.org#
@@ -166,8 +166,8 @@ mon home :<br />
 Si vous avez une idée elle sera la bienvenue.<br />
 Je ne veux pas avoir à changer un à un les droits des milliers de fichiers de mon home !<br />
 Merci.#
-datePublished: #Wed Sep 3 09:52:39 2008#
-dateUpdated: #Wed Sep 3 09:52:39 2008#
+datePublished: #Wed Sep 3 07:52:39 2008#
+dateUpdated: #Wed Sep 3 07:52:39 2008#
 # Person begin ####################
 name: #alfafa#
 email: #null@linuxfr.org#
@@ -219,8 +219,8 @@ cette fois c'est le fichier "/root/nok.out" qui est créé et a pour contenu " a
 Je voudrais donc savoir comment modifier ce script afin d'avoir le même résultat que lorsqu'on l'exécute dans un terminal.<br />
 <br />
 Merci à tous!#
-datePublished: #Tue Sep 2 18:16:40 2008#
-dateUpdated: #Tue Sep 2 18:16:40 2008#
+datePublished: #Tue Sep 2 16:16:40 2008#
+dateUpdated: #Tue Sep 2 16:16:40 2008#
 # Person begin ####################
 name: #demorex6#
 email: #null@linuxfr.org#
@@ -236,8 +236,8 @@ link: #http://linuxfr.org/forums/30/25775.html#
 description: #hello tous,
 
 j'essais de mettre a jour un php qui a le support oracle par un php qui n'a pas le support oracle (plus necessaire). le soucis c'est qu'il me dit que pour mettre a jour  le package php-xxx il lui faut le package php-oci8.xxx (pakage support oracle). comment puis je faire sans recompiler mon nouveau php avec le support oracle ?#
-datePublished: #Tue Sep 2 12:04:25 2008#
-dateUpdated: #Tue Sep 2 12:04:25 2008#
+datePublished: #Tue Sep 2 10:04:25 2008#
+dateUpdated: #Tue Sep 2 10:04:25 2008#
 # Person begin ####################
 name: #zigfrid75#
 email: #null@linuxfr.org#
@@ -266,8 +266,8 @@ J'ai pu voir sur un autre forum qu'il pourrait s'agir de l'option syn-flood prot
 quelqu'un a-t-il une idée ? Je ne trouve rien sur notre cher ami Google...<br />
 <br />
 Merci#
-datePublished: #Tue Sep 2 11:32:00 2008#
-dateUpdated: #Tue Sep 2 11:32:00 2008#
+datePublished: #Tue Sep 2 09:32:00 2008#
+dateUpdated: #Tue Sep 2 09:32:00 2008#
 # Person begin ####################
 name: #rom_gui#
 email: #null@linuxfr.org#
@@ -292,8 +292,8 @@ BonusBonus <br />
 Et si ce fichier texte est lu à travers une URLConnection <br />
 <br />
 Merci#
-datePublished: #Tue Sep 2 11:13:12 2008#
-dateUpdated: #Tue Sep 2 11:13:12 2008#
+datePublished: #Tue Sep 2 09:13:12 2008#
+dateUpdated: #Tue Sep 2 09:13:12 2008#
 # Person begin ####################
 name: #ovni#
 email: #null@linuxfr.org#
@@ -321,8 +321,8 @@ Typiquement, l'une des machines est ma machine personnelle et l'autre est un ser
 <br />
 Merci d'avance à tous.<br />
 Bonne soirée.#
-datePublished: #Mon Sep 1 22:11:08 2008#
-dateUpdated: #Mon Sep 1 22:11:08 2008#
+datePublished: #Mon Sep 1 20:11:08 2008#
+dateUpdated: #Mon Sep 1 20:11:08 2008#
 # Person begin ####################
 name: #san_guickoo#
 email: #null@linuxfr.org#
@@ -343,8 +343,8 @@ J'ai bien assayé abiword qui fonctionne très bien mais qui ne peut pas imprime
 Quelqu'un a-t-il une idée de ce qui se passe ? Et de ce que je peux faire ?<br />
 <br />
 Merci d'avance#
-datePublished: #Mon Sep 1 20:34:20 2008#
-dateUpdated: #Mon Sep 1 20:34:20 2008#
+datePublished: #Mon Sep 1 18:34:20 2008#
+dateUpdated: #Mon Sep 1 18:34:20 2008#
 # Person begin ####################
 name: #molopeglau#
 email: #null@linuxfr.org#
@@ -362,8 +362,8 @@ description: #Bonsoir,<br />
 Je suis sous Mandriva2008 et KDE. Je cherche un soft pour transférer des fichiers de disque à disque réseau monté avec Samba tout en pouvant limiter la vitesse de transfert (pour ne pas saturer la bande passante).<br />
 J'accède au disque via un montage classique sous Samba ou par ftp.<br />
 Merci pour vos réponses.#
-datePublished: #Mon Sep 1 19:58:24 2008#
-dateUpdated: #Mon Sep 1 19:58:24 2008#
+datePublished: #Mon Sep 1 17:58:24 2008#
+dateUpdated: #Mon Sep 1 17:58:24 2008#
 # Person begin ####################
 name: #vladislav#
 email: #null@linuxfr.org#
@@ -379,8 +379,8 @@ link: #http://linuxfr.org/forums/14/25769.html#
 description: #Je me rends compte que certains logiciels que j'ai installés à partir de la distribution (centre de contrôle Mandriva) n'apparaissent nulle part sur ma machine. Certains autres aussi, téléchargés en RPMs et installés par Urpmi, n'apparaissent pas.<br />
 <br />
 Je ne sais pas où ils sont et je ne puis donc les ouvrir pour m'en servir. Quelqu'un pourrait-il m'expliquer ce mystère?#
-datePublished: #Mon Sep 1 16:10:14 2008#
-dateUpdated: #Mon Sep 1 16:10:14 2008#
+datePublished: #Mon Sep 1 14:10:14 2008#
+dateUpdated: #Mon Sep 1 14:10:14 2008#
 # Person begin ####################
 name: #nanabozho#
 email: #null@linuxfr.org#
@@ -404,8 +404,8 @@ Que vous soyez débutant ou expérimenté, nous avons des postes à vous propose
 Rejoignez l'Open Source Center d'Atos Origin !<br />
 <br />
 Envoyez CV + lettre de motivation à :#
-datePublished: #Mon Sep 1 15:09:25 2008#
-dateUpdated: #Mon Sep 1 15:09:25 2008#
+datePublished: #Mon Sep 1 13:09:25 2008#
+dateUpdated: #Mon Sep 1 13:09:25 2008#
 # Person begin ####################
 name: #rpelisse#
 email: #null@linuxfr.org#
@@ -434,8 +434,8 @@ J'ai pourtant copier ce scirpt dans les répertoire suivant :<br />
 Les fichiers S99rc.script étant des liens vers /etc/rc.d/init.d/rc.script. Le démon ne démarre pas.<br />
 <br />
 Merci de votre aide.#
-datePublished: #Mon Sep 1 14:01:21 2008#
-dateUpdated: #Mon Sep 1 14:01:21 2008#
+datePublished: #Mon Sep 1 12:01:21 2008#
+dateUpdated: #Mon Sep 1 12:01:21 2008#
 # Person begin ####################
 name: #dubis#
 email: #null@linuxfr.org#
@@ -453,8 +453,8 @@ description: #Bonjour.<br />
 Y a-t-il moyen en Ruby de manipuler des images? Je cherche en particulier un moyen de générer des apperçus de photos pour une galerie. Connaissez-vous ce genre d'outil ? Je ne cherche pas une simple indicatio d'outil (dans ce cas une simple recherche google suffirait), mais aussi un retour d'expérience de votre part par rapport à ce que vous en connaissez.<br />
 <br />
 Merci d'avance.#
-datePublished: #Mon Sep 1 13:20:42 2008#
-dateUpdated: #Mon Sep 1 13:20:42 2008#
+datePublished: #Mon Sep 1 11:20:42 2008#
+dateUpdated: #Mon Sep 1 11:20:42 2008#
 # Person begin ####################
 name: #totof2000#
 email: #null@linuxfr.org#
@@ -470,8 +470,8 @@ link: #http://linuxfr.org/forums/47/25765.html#
 description: #Bonjour,<br />
 Comment formater un lecteur mp3 ?<br />
 Merci.#
-datePublished: #Sun Aug 31 20:03:41 2008#
-dateUpdated: #Sun Aug 31 20:03:41 2008#
+datePublished: #Sun Aug 31 18:03:41 2008#
+dateUpdated: #Sun Aug 31 18:03:41 2008#
 # Person begin ####################
 name: #QI81EPA#
 email: #null@linuxfr.org#
@@ -492,8 +492,8 @@ Mon problème est que j'ai une bande de plus de 20 pixels sur tout les côtés q
 J'ai bien essayé de jouer sur le paramètre TVOverScan dans xorg.conf, mais celui-ci reste sans effet, j'ai également essayé de changer avec nvidia-settings, mais ce paramètre n'apparait pas.<br />
 <br />
 Si quelqu'un à la soluce, je suis preneur.#
-datePublished: #Sun Aug 31 16:13:41 2008#
-dateUpdated: #Sun Aug 31 16:13:41 2008#
+datePublished: #Sun Aug 31 14:13:41 2008#
+dateUpdated: #Sun Aug 31 14:13:41 2008#
 # Person begin ####################
 name: #mekare#
 email: #null@linuxfr.org#

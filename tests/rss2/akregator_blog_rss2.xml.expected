@@ -15,8 +15,8 @@ Well, Thorsten Staerk and Allen Winter already did the work, so I just point you
 	<p>kdebase is optional, you can just skip it (as it doesn&#8217;t always build) and go for kdepim directly. See previous blog entry how to build and install akregator.<br />
 You might also read README.qt-copy in qt-copy/ to learn how to speed up Qt4 compilation (i.e., don&#8217;t build examples and such).
 </p>#
-datePublished: #Thu Dec 15 14:05:30 2005#
-dateUpdated: #Thu Dec 15 14:05:30 2005#
+datePublished: #Thu Dec 15 13:05:30 2005#
+dateUpdated: #Thu Dec 15 13:05:30 2005#
 # Person begin ####################
 name: #frank#
 # Person end ######################
