@@ -59,18 +59,30 @@ unsigned int calcHash(const QByteArray& array)
     }
 }
 
+#include <KDebug>
+
+static time_t toTimeT(KDateTime& kdt)
+{
+    if (kdt.isValid()) {
+        if (kdt.isDateOnly()) {
+            kdt.setTimeSpec(KDateTime::UTC);
+            kdt.setTime(QTime(12, 0));
+        }
+        return kdt.toTime_t();
+    } else
+        return 0;
+}
+
 time_t parseISODate(const QString& str)
 {
     KDateTime kdt = KDateTime::fromString(str, KDateTime::ISODate);
-    uint ret = kdt.isValid() ? kdt.toTime_t() : 0;
-    return (time_t)ret;
+    return toTimeT(kdt);
 }
 
 time_t parseRFCDate(const QString& str)
 {
     KDateTime kdt = KDateTime::fromString(str, KDateTime::RFCDate);
-    uint ret = kdt.isValid() ? kdt.toTime_t() : 0;
-    return (time_t)ret;
+    return toTimeT(kdt);
 }
 
 time_t parseDate(const QString& str, DateFormat hint)
