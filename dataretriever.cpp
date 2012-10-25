@@ -215,4 +215,3 @@ void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus
 
 } // namespace Syndication
 
-#include "dataretriever.moc"

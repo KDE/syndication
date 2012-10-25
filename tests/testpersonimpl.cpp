@@ -101,4 +101,3 @@ void TestPersonImpl::fromString()
 
 QTEST_MAIN(TestPersonImpl)
 
-#include "testpersonimpl.moc"
