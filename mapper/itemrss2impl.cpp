@@ -24,6 +24,7 @@
 #include "itemrss2impl.h"
 #include "categoryrss2impl.h"
 #include "enclosurerss2impl.h"
+#include <atom/constants.h>
 #include <rss2/category.h>
 #include <rss2/enclosure.h>
 #include <constants.h>
@@ -105,7 +106,12 @@ time_t ItemRSS2Impl::datePublished() const
 
 time_t ItemRSS2Impl::dateUpdated() const
 {
-    return datePublished();
+    //Some RSS feeds contain atom elements - return atom:dateUpdated if present
+    const QString updstr = m_item.extractElementTextNS(Atom::atom1Namespace(), QLatin1String("updated"));
+    if (!updstr.isEmpty())
+        return parseDate(updstr, ISODate);
+    else
+        return datePublished();
 }
 
 QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
