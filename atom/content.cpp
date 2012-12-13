@@ -80,7 +80,7 @@ QByteArray Content::asByteArray() const
 {
     if (!isBinary())
         return QByteArray();
-    return QByteArray::fromBase64(text().trimmed().toAscii());
+    return QByteArray::fromBase64(text().trimmed().toLatin1());
 }
 
 //@cond PRIVATE
