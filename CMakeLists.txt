@@ -8,16 +8,14 @@ include(ECMVersion)
 ecm_version(5 0 0)
 include(ECMQtFramework)
 
+# TODO: Remove
+remove_definitions( -DQT_NO_KEYWORDS )
+remove_definitions( -DQT_NO_CAST_FROM_ASCII )
+
 ########### Find packages ###########
 
-find_package(kcoreaddons REQUIRED)
-include_directories(${kcoreaddons_INCLUDE_DIR} ${kcoreaddons_INCLUDE_DIR}/KDE)
-
-# FIXME Remove when possible
-unset(kcoreaddons_LIBRARY)
-find_library(kcoreaddons_LIBRARY NAMES kcoreaddons ${kcoreaddons_LIBRARY_DIR})
-find_library(kdecore_LIBRARY NAMES kdecore ${kcoreaddons_LIBRARY_DIR})
-find_library(kio_LIBRARY NAMES kio ${kcoreaddons_LIBRARY_DIR})
+# find_package(kcoreaddons REQUIRED)
+# include_directories(${kcoreaddons_INCLUDE_DIR} ${kcoreaddons_INCLUDE_DIR}/KDE)
 
 ########### Includes ###############
 
@@ -38,7 +36,6 @@ add_subdirectory(tests)
 ########### Build parameters ###############
 
 add_definitions( -DQT_STRICT_ITERATORS )
-add_definitions( -DQT_NO_CAST_FROM_ASCII )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
 add_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
 
@@ -154,9 +151,8 @@ generate_export_header(syndication)
 target_link_libraries(syndication
     ${QT_QTCORE_LIBRARY}
     ${QT_QTXML_LIBRARY}
-    ${kcoreaddons_LIBRARY}
-    ${kdecore_LIBRARY}
-    ${kio_LIBRARY}
+    ${KDE4_KDECORE_LIBS}
+    ${KDE4_KIO_LIBS}
 )
 
 set_target_properties(syndication PROPERTIES

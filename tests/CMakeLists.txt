@@ -19,16 +19,17 @@ set(testlibsyndication_SRCS testlibsyndication.cpp)
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
 add_test(testlibsyndication testlibsyndication)
 
-target_link_libraries(testlibsyndication syndication ${kdecore_LIBRARY} ${QT_QTCORE_LIBRARY})
+target_link_libraries(testlibsyndication syndication ${KDE4_KDECORE_LIBS} ${QT_QTCORE_LIBRARY})
 
 ########### next target ###############
 
 set(testloader_SRCS testloader.cpp)
 
-add_executable(testloader ${testloader_SRCS})
-add_test(testloader testloader)
-
-target_link_libraries(testloader syndication)
+# Qt5: Port
+# kde4_add_executable(testloader ${testloader_SRCS})
+# add_test(testloader testloader)
+#
+# target_link_libraries(testloader syndication ${KDE4_KDEUI_LIBS})
 
 ########### next target ###############
 
