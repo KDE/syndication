@@ -1,11 +1,11 @@
 # Feed begin ######################
 # Item begin ######################
-id: #hash:2f74e30cc6f88289000622edd20262bc#
-content: #<div xmlns="derp" :base="derp"/>#
+id: #hash:0633eb2a51fcc7452873819d702153b6#
+content: #<div xmlns="derp" :base="file:///derp"/>#
 # Item end ########################
 # Item begin ######################
-id: #hash:2f74e30cc6f88289000622edd20262bc#
-content: #<div xmlns="derp" :base="derp"/>#
+id: #hash:0633eb2a51fcc7452873819d702153b6#
+content: #<div xmlns="derp" :base="file:///derp"/>#
 # Item end ########################
 # Feed end ########################
 

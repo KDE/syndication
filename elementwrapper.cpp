@@ -27,6 +27,7 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomElement>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <QtCore/QTextStream>
 
 namespace Syndication {
@@ -92,13 +93,26 @@ QString ElementWrapper::xmlBase() const
     if (!d->xmlBaseParsed) // xmlBase not computed yet
     {
         QDomElement current = d->element;
-        
+
+        /*
+        An atom feed can contain nested xml:base elements, like this:
+
+        <feed xml:base="http://example.com/foo.atom">
+          <entry xml:base="subdir/">
+            <link href="foo.html"/>
+          </entry>
+        </feed>
+
+        To compute xml:base we explore the tree all the way up to the top.
+        `bases` stores all the xml:base values from the deepest element up to
+        the root element.
+        */
+        QStringList bases;
         while (!current.isNull())
         {
             if (current.hasAttributeNS(xmlNamespace(), QLatin1String("base")))
             {
-                d->xmlBase = current.attributeNS(xmlNamespace(), QLatin1String("base"));
-                return d->xmlBase;
+                bases << current.attributeNS(xmlNamespace(), QLatin1String("base"));
             }
             
             QDomNode parent = current.parentNode();
@@ -107,6 +121,11 @@ QString ElementWrapper::xmlBase() const
                 current = parent.toElement();
             else
                 current = QDomElement();
+        }
+        while (!bases.isEmpty())
+        {
+            KUrl u(d->xmlBase, bases.takeLast());
+            d->xmlBase = u.url();
         }
         
         d->xmlBaseParsed = true;
