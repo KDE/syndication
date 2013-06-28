@@ -96,7 +96,24 @@ QString Item::originalTitle() const
 
 QString Item::link() const
 {
-    return extractElementTextNS(QString(), QLatin1String("link") );
+    QString url = extractElementTextNS(QString(), QLatin1String("link") );
+    if (url.startsWith(QLatin1String("http://")) || url.startsWith(QLatin1String("https://"))) {
+        return url;
+    }
+    if (url.isEmpty()) {
+        return QString();
+    }
+    if (d->doc->link().isEmpty()) {
+        return url;
+    }
+    // link does not look like a complete url, assume the feed author expects
+    // the doc link to provide the base of the url.
+    QString baseUrl = d->doc->link();
+    if (url.startsWith(QLatin1Char('/')) || baseUrl.endsWith(QLatin1Char('/'))) {
+        return baseUrl + url;
+    } else {
+        return baseUrl + QLatin1Char('/') + url;
+    }
 }
 
 QString Item::description() const
