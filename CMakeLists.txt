@@ -121,7 +121,7 @@ set(syndication_LIB_SRCS
 )
 
 
-kde4_add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
+add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
 generate_export_header(syndication EXPORT_FILE_NAME ksyndication_export.h)
 
 target_link_libraries(syndication  ${KDE4_KIO_LIBS})
