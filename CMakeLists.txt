@@ -4,9 +4,10 @@ include(GenerateExportHeader)
 
 set(CMAKE_AUTOMOC ON)
 
-include(ECMVersion)
-ecm_version(5 0 0)
-include(ECMQtFramework)
+include(ECMSetupVersion)
+ecm_setup_version(5.0.0 VARIABLE_PREFIX SYNDICATION
+                        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationsConfigVersion.cmake")
 
 # TODO: Remove
 remove_definitions( -DQT_NO_KEYWORDS )
