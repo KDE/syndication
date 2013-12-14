@@ -19,7 +19,7 @@ set(testlibsyndication_SRCS testlibsyndication.cpp)
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
 add_test(testlibsyndication testlibsyndication)
 
-target_link_libraries(testlibsyndication syndication ${KDE4_KDECORE_LIBS} ${QT_QTCORE_LIBRARY})
+target_link_libraries(testlibsyndication syndication KF5::CoreAddons)
 
 ########### next target ###############
 

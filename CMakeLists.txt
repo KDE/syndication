@@ -9,6 +9,7 @@ ecm_setup_version(5.0.0 VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationsConfigVersion.cmake")
 
+find_package(KF5 NO_MODULE REQUIRED COMPONENTS ItemViews KIO KDE4Support)
 # TODO: Remove
 remove_definitions( -DQT_NO_KEYWORDS )
 remove_definitions( -DQT_NO_CAST_FROM_ASCII )
@@ -24,6 +25,7 @@ include_directories(
     ${syndication_BINARY_DIR}
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${Boost_INCLUDE_DIR}
 )
 
@@ -150,10 +152,9 @@ add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
 generate_export_header(syndication)
 
 target_link_libraries(syndication
-    ${QT_QTCORE_LIBRARY}
-    ${QT_QTXML_LIBRARY}
-    ${KDE4_KDECORE_LIBS}
-    ${KDE4_KIO_LIBS}
+    KF5::ItemViews
+    KF5::KIOCore
+    KF5::KDE4Support
 )
 
 set_target_properties(syndication PROPERTIES
