@@ -1,20 +1,11 @@
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
-remove_definitions( -DQT_NO_CAST_FROM_ASCII )
-remove_definitions( -DQT_NO_CAST_TO_ASCII )
-remove_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
+include(ECMMarkAsTest)
 
 include_directories(
-  ${CMAKE_SOURCE_DIR}/syndication
-  ${CMAKE_BINARY_DIR}/syndication
+  ${Syndication_SOURCE_DIR}/src
+  ${Syndication_BINARY_DIR}/src
   ${Boost_INCLUDE_DIR}
-)
-
-include_directories(
-    ${syndication_SOURCE_DIR}
-    ${syndication_BINARY_DIR}
-    ${CMAKE_SOURCE_DIR}
-    ${Boost_INCLUDE_DIR}
 )
 
 ########### next target ###############
@@ -23,18 +14,15 @@ set(testlibsyndication_SRCS testlibsyndication.cpp)
 
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
 add_test(testlibsyndication testlibsyndication)
-
+ecm_mark_as_test(testlibsyndication)
 target_link_libraries(testlibsyndication syndication KF5::CoreAddons)
 
 ########### next target ###############
 
-set(testloader_SRCS testloader.cpp)
-
-# Qt5: Port
-# kde4_add_executable(testloader ${testloader_SRCS})
-# add_test(testloader testloader)
-#
-# target_link_libraries(testloader syndication ${KDE4_KDEUI_LIBS})
+#set(testloader_SRCS testloader.cpp)
+#add_executable(testloader ${testloader_SRCS})
+#add_test(testloader testloader)
+#target_link_libraries(testloader syndication)
 
 ########### next target ###############
 
@@ -48,13 +36,16 @@ FILE(GLOB_RECURSE atomFiles atom/*xml)
 FILE(GLOB_RECURSE rdfFiles rdf/*xml)
 FILE(GLOB_RECURSE rss2Files rss2/*xml)
 
-FOREACH( file ${atomFiles} )
-  ADD_TEST( \"Atom-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
-ENDFOREACH(file)
-FOREACH( file ${rdfFiles} )
-  ADD_TEST( \"Rdf-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
-ENDFOREACH(file)
-FOREACH( file ${rss2Files} )
-  ADD_TEST( \"Rss2-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
-ENDFOREACH(file)
+foreach( file ${atomFiles} )
+  add_test( \"Atom-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ecm_mark_as_test(Atom-${file})
+endforeach()
+foreach( file ${rdfFiles} )
+  add_test( \"Rdf-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ecm_mark_as_test(Rdf-${file})
+endforeach()
+foreach( file ${rss2Files} )
+  add_test( \"Rss2-${file}\" ${EXECUTABLE_OUTPUT_PATH}/testlibsyndication ${file} --compare ${file}.expected )
+  ecm_mark_as_test(Rss2-${file})
+endforeach()
 
