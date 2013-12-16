@@ -1,4 +1,4 @@
-########### install files ###############
+########### install files ###########
 
 install(FILES
         category.h

@@ -1,0 +1,156 @@
+include_directories(${Syndication_SOURCE_DIR}/src
+                                   ${Syndication_BINARY_DIR}/src
+                                   ${CMAKE_CURRENT_SOURCE_DIR}
+                                   ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+set(librss2local_SRCS
+    rss2/category.cpp
+    rss2/cloud.cpp
+    rss2/document.cpp
+    rss2/enclosure.cpp
+    rss2/image.cpp
+    rss2/item.cpp
+    rss2/parser.cpp
+    rss2/source.cpp
+    rss2/textinput.cpp
+    rss2/tools_p.cpp
+)
+
+set(librdflocal_la_SRCS
+    rdf/contentvocab.cpp
+    rdf/document.cpp
+    rdf/dublincore.cpp
+    rdf/dublincorevocab.cpp
+    rdf/image.cpp
+    rdf/item.cpp
+    rdf/literal.cpp
+    rdf/model.cpp
+    rdf/modelmaker.cpp
+    rdf/node.cpp
+    rdf/nodevisitor.cpp
+    rdf/parser.cpp
+    rdf/property.cpp
+    rdf/rdfvocab.cpp
+    rdf/resource.cpp
+    rdf/resourcewrapper.cpp
+    rdf/rssvocab.cpp
+    rdf/sequence.cpp
+    rdf/statement.cpp
+    rdf/syndicationinfo.cpp
+    rdf/syndicationvocab.cpp
+    rdf/textinput.cpp
+)
+
+set(libatomlocal_SRCS
+    atom/atomtools.cpp
+    atom/category.cpp
+    atom/constants.cpp
+    atom/content.cpp
+    atom/document.cpp
+    atom/entry.cpp
+    atom/generator.cpp
+    atom/link.cpp
+    atom/parser.cpp
+    atom/person.cpp
+    atom/source.cpp
+)
+
+set(libmapperrss2local_SRCS
+    mapper/categoryrss2impl.cpp
+    mapper/enclosurerss2impl.cpp
+    mapper/feedrss2impl.cpp
+    mapper/imagerss2impl.cpp
+    mapper/itemrss2impl.cpp
+)
+
+set(libmapperrdflocal_SRCS
+    mapper/feedrdfimpl.cpp
+    mapper/imagerdfimpl.cpp
+    mapper/itemrdfimpl.cpp
+)
+
+set(libmapperatomlocal_SRCS
+    mapper/categoryatomimpl.cpp
+    mapper/enclosureatomimpl.cpp
+    mapper/feedatomimpl.cpp
+    mapper/itematomimpl.cpp
+)
+set(libsyndicationlocal_SRCS
+    abstractparser.cpp
+    category.cpp
+    constants.cpp
+    dataretriever.cpp
+    documentsource.cpp
+    documentvisitor.cpp
+    elementwrapper.cpp
+    enclosure.cpp
+    feed.cpp
+    global.cpp
+    image.cpp
+    item.cpp
+    loader.cpp
+    person.cpp
+    personimpl.cpp
+    specificdocument.cpp
+    specificitem.cpp
+    specificitemvisitor.cpp
+    tools.cpp
+)
+
+set(syndication_SRCS
+    ${librss2local_SRCS}
+    ${librdflocal_la_SRCS}
+    ${libatomlocal_SRCS}
+    ${libmappercommonlocal_SRCS}
+    ${libmapperrss2local_SRCS}
+    ${libmapperrdflocal_SRCS}
+    ${libmapperatomlocal_SRCS}
+    ${libsyndicationlocal_SRCS}
+)
+
+add_library(syndication ${syndication_SRCS})
+generate_export_header(syndication)
+
+target_link_libraries(syndication
+    KF5::ItemViews
+    KF5::KIOCore
+    KF5::KDE4Support
+)
+
+set_target_properties(syndication PROPERTIES
+    VERSION ${SYNDICATION_VERSION_STRING}
+    SOVERSION ${SYNDICATION_SOVERSION}
+    EXPORT_NAME Syndication
+)
+
+#install(TARGETS syndication EXPORT SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+install(FILES
+    ${Syndication_BINARY_DIR}/syndication_export.h
+    abstractparser.h
+    category.h
+    constants.h
+    dataretriever.h
+    documentsource.h
+    documentvisitor.h
+    elementwrapper.h
+    enclosure.h
+    feed.h
+    global.h
+    image.h
+    item.h
+    loader.h
+    mapper.h
+    parsercollection.h
+    person.h
+    specificdocument.h
+    specificitem.h
+    specificitemvisitor.h
+    syndication.h
+    tools.h
+    DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
+
+add_subdirectory(atom)
+add_subdirectory(rdf)
+add_subdirectory(rss2)
