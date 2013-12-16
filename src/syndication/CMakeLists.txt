@@ -124,10 +124,10 @@ set_target_properties(syndication PROPERTIES
     EXPORT_NAME Syndication
 )
 
-#install(TARGETS syndication EXPORT SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS syndication EXPORT SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
-    ${Syndication_BINARY_DIR}/syndication_export.h
+    ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
     abstractparser.h
     category.h
     constants.h
