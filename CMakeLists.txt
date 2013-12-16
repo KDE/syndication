@@ -1,42 +1,39 @@
-project(syndication)
+cmake_minimum_required(VERSION 2.8.12)
 
-include(GenerateExportHeader)
+project(Syndication)
 
-set(CMAKE_AUTOMOC ON)
+# ECM setup
+find_package(ECM 0.0.9 CONFIG REQUIRED)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
+include(FeatureSummary)
 include(ECMSetupVersion)
-ecm_setup_version(5.0.0 VARIABLE_PREFIX SYNDICATION
+#include(CMakePackageConfigHelpers)
+#include(KDEInstallDirs)
+#include(KDEFrameworkCompilerSettings)
+#include(KDECMakeSettings)
+
+# FIXME: Do we want the same versions in kdepimlibs and kf5?
+set(KF5_VERSION "5.0.0")
+
+ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationsConfigVersion.cmake")
 
-find_package(KF5 NO_MODULE REQUIRED COMPONENTS ItemViews KIO KDE4Support)
-# TODO: Remove
-remove_definitions( -DQT_NO_KEYWORDS )
-remove_definitions( -DQT_NO_CAST_FROM_ASCII )
-
 ########### Find packages ###########
+find_package(KF5 CONFIG REQUIRED COMPONENTS ItemViews KIO KDE4Support)
 
-# find_package(kcoreaddons REQUIRED)
-# include_directories(${kcoreaddons_INCLUDE_DIR} ${kcoreaddons_INCLUDE_DIR}/KDE)
+########### Includes ###########
+include_directories(${Syndication_SOURCE_DIR} ${Syndication_BINARY_DIR} ${Boost_INCLUDE_DIR})
 
-########### Includes ###############
-
-include_directories(
-    ${syndication_BINARY_DIR}
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${Boost_INCLUDE_DIR}
-)
-
-#######################################
+########### Targets ###########
 
 add_subdirectory(atom)
 add_subdirectory(rdf)
 add_subdirectory(rss2)
 add_subdirectory(tests)
 
-########### Build parameters ###############
+########### Build parameters ###########
 
 add_definitions( -DQT_STRICT_ITERATORS )
 add_definitions( -DQT_NO_CAST_TO_ASCII )
@@ -119,7 +116,7 @@ set(libmapperatomlocal_SRCS
     mapper/categoryatomimpl.cpp
 )
 
-set(syndication_LIB_SRCS
+set(syndication_SRCS
     ${librss2local_SRCS}
     ${librdflocal_la_SRCS}
     ${libatomlocal_SRCS}
@@ -148,7 +145,7 @@ set(syndication_LIB_SRCS
     abstractparser.cpp
 )
 
-add_library(syndication ${LIBRARY_TYPE} ${syndication_LIB_SRCS})
+add_library(syndication ${syndication_SRCS})
 generate_export_header(syndication)
 
 target_link_libraries(syndication
@@ -158,16 +155,17 @@ target_link_libraries(syndication
 )
 
 set_target_properties(syndication PROPERTIES
-    VERSION ${ECM_VERSION_STRING}
-    SOVERSION ${ECM_SOVERSION}
+    VERSION ${SYNDICATION_VERSION_STRING}
+    SOVERSION ${SYNDICATION_SOVERSION}
+    EXPORT_NAME Syndication
 )
 
-install(TARGETS syndication EXPORT kdepimlibsLibraryTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+#install(TARGETS syndication EXPORT SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
+    ${Syndication_BINARY_DIR}/syndication_export.h
     abstractparser.h
     category.h
     constants.h
@@ -190,3 +188,7 @@ install(FILES
     syndication.h
     tools.h
     DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
+
+if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
+  feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)
+endif()
