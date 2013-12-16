@@ -4,6 +4,11 @@ remove_definitions( -DQT_NO_CAST_FROM_ASCII )
 remove_definitions( -DQT_NO_CAST_TO_ASCII )
 remove_definitions( -DQT_NO_CAST_FROM_BYTEARRAY )
 
+include_directories(
+  ${CMAKE_SOURCE_DIR}/syndication
+  ${CMAKE_BINARY_DIR}/syndication
+  ${Boost_INCLUDE_DIR}
+)
 
 include_directories(
     ${syndication_SOURCE_DIR}
