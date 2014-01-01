@@ -33,8 +33,6 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QString>
 
-#include <kdebug.h>
-
 namespace Syndication {
 
 QCryptographicHash md5Machine( QCryptographicHash::Md5 );
@@ -59,8 +57,6 @@ unsigned int calcHash(const QByteArray& array)
         return hash;
     }
 }
-
-#include <KDebug>
 
 static time_t toTimeT(KDateTime& kdt)
 {
