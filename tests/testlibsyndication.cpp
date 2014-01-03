@@ -29,6 +29,7 @@
 
 #include <KComponentData>
 
+#include <QDebug>
 #include <QtCore/QByteArray>
 #include <QtCore/QFile>
 #include <QtCore/QString>
@@ -129,7 +130,13 @@ int main(int argc, char **argv)
           expFile.open(QIODevice::ReadOnly);
           QByteArray expected = expFile.readAll();
           expFile.close();
-          return expected.trimmed() == res.toUtf8().trimmed() ? 0 : 1;
+          if (expected.trimmed() != res.toUtf8().trimmed())
+          {
+              qDebug() << "Obtained:\n" << res.toUtf8().trimmed();
+              qDebug() << "Expected:\n" << expected.trimmed();
+              return 1;
+          }
+          return 0;
     }
     
     return 0;
