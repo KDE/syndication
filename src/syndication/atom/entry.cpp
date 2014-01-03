@@ -32,7 +32,6 @@
 #include <tools.h>
 
 #include <QtXml/QDomElement>
-#include <QtCore/QList>
 #include <QtCore/QString>
 
 namespace Syndication {
@@ -46,6 +45,11 @@ Entry::Entry(const QDomElement& element) : ElementWrapper(element)
 {
 }
 
+void Entry::setFeedAuthors(const QList<Person>& feedAuthors)
+{
+    m_feedAuthors = feedAuthors;
+}
+
 QList<Person> Entry::authors() const
 {
     QList<QDomElement> a = 
@@ -53,16 +57,26 @@ QList<Person> Entry::authors() const
                                 QLatin1String("author"));
     QList<Person> list;
                                        
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-    
-    
-    for ( ; it != end; ++it)
+    if (!a.isEmpty())
     {
-        list.append(Person(*it));
+        QList<QDomElement>::ConstIterator it = a.constBegin();
+        QList<QDomElement>::ConstIterator end = a.constEnd();
+    
+    
+        for ( ; it != end; ++it)
+        {
+            list.append(Person(*it));
+        }
+    }
+    else
+    {
+        list = source().authors();
     }
         
-    return list;
+    if (!list.isEmpty())
+        return list;
+
+    return m_feedAuthors;
 }
 
 QList<Person> Entry::contributors() const
