@@ -26,11 +26,12 @@
 #include <syndication/elementwrapper.h>
 #include <syndication/specificitem.h>
 
+#include <QtCore/QList>
+
 #include <ctime>
 
 class QDomElement;
 class QString;
-template <class T> class QList;
 
 namespace Syndication {
 
@@ -75,10 +76,12 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
         bool accept(SpecificItemVisitor* visitor);
 
         /**
-         * list of persons who are authors of this entry.
+         * list of persons who are authors of this entry. (required)
          *
-         * This is optional if the containing feed has an author description,
-         * and required if not.
+         * If the entry itself does not have explicit author description,
+         * its source author description is used. If none of these exist,
+         * the list of authors of the containing feed is used. That list
+         * is set by setFeedAuthors().
          */
         QList<Person> authors() const;
 
@@ -170,6 +173,14 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
          * This can be used to access additional metadata from Atom extensions.
          */
         QList<QDomElement> unhandledElements() const;
+
+        /**
+         * Sets the list of the containing feed's authors, which will be used
+         * as a fallback in authors() in case both the entry itself and its
+         * source have no explicit author description.
+         * @param feedAuthors the list of feed's authors
+         */
+        void setFeedAuthors(const QList<Person>& feedAuthors);
         
         /**
          * returns a description of this entry for debugging purposes
@@ -177,6 +188,10 @@ class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
          * @return debug string
          */
         QString debugInfo() const;
+
+    private:
+
+        QList<Person> m_feedAuthors;
 };
 
 
