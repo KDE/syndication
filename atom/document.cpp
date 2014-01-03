@@ -183,13 +183,16 @@ QList<Entry> FeedDocument::entries() const
                                 QLatin1String("entry"));
     QList<Entry> list;
 
+    QList<Person> feedAuthors = authors();
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
 
     for ( ; it != end; ++it)
     {
-        list.append(Entry(*it));
+        Entry entry(*it);
+        entry.setFeedAuthors(feedAuthors);
+        list.append(entry);
     }
 
     return list;

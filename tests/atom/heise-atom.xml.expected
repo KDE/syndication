@@ -12,6 +12,9 @@ link: #http://www.heise.de/newsticker/Was-war-Was-wird--/meldung/121495/from/ato
 description: #Was war. Was wird.#
 datePublished: #Sat Jan 10 23:12:07 2009#
 dateUpdated: #Sat Jan 10 23:12:07 2009#
+# Person begin ####################
+name: #heise online#
+# Person end ######################
 # Item end ########################
 # Item begin ######################
 id: #http://www.heise.de/newsticker/meldung/121490#
@@ -20,6 +23,9 @@ link: #http://www.heise.de/newsticker/Satyam-Chef-festgenommen--/meldung/121490/
 description: #Satyam-Chef festgenommen#
 datePublished: #Sat Jan 10 17:01:54 2009#
 dateUpdated: #Sat Jan 10 17:01:54 2009#
+# Person begin ####################
+name: #heise online#
+# Person end ######################
 # Item end ########################
 # Item begin ######################
 id: #http://www.heise.de/newsticker/meldung/121488#
@@ -28,6 +34,9 @@ link: #http://www.heise.de/newsticker/25-Prozent-mehr-Geraete-mit-WLAN--/meldung
 description: #25 Prozent mehr Geräte mit WLAN#
 datePublished: #Sat Jan 10 15:38:07 2009#
 dateUpdated: #Sat Jan 10 15:38:07 2009#
+# Person begin ####################
+name: #heise online#
+# Person end ######################
 # Item end ########################
 # Item begin ######################
 id: #http://www.heise.de/newsticker/meldung/121487#
@@ -36,6 +45,9 @@ link: #http://www.heise.de/newsticker/Google-kuendigt-Mac-und-Linux-Versionen-vo
 description: #Google kündigt Mac- und Linux-Versionen von Chrome an#
 datePublished: #Sat Jan 10 14:29:44 2009#
 dateUpdated: #Sat Jan 10 14:29:44 2009#
+# Person begin ####################
+name: #heise online#
+# Person end ######################
 # Item end ########################
 # Item begin ######################
 id: #http://www.heise.de/newsticker/meldung/121485#
@@ -44,6 +56,9 @@ link: #http://www.heise.de/newsticker/Operas-Wii-Browser-soll-Acid3-Test-bestehe
 description: #Operas Wii-Browser soll Acid3-Test bestehen#
 datePublished: #Sat Jan 10 19:32:27 2009#
 dateUpdated: #Sat Jan 10 19:32:27 2009#
+# Person begin ####################
+name: #heise online#
+# Person end ######################
 # Item end ########################
 # Feed end ########################
 
