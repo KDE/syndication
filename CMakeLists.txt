@@ -6,12 +6,12 @@ project(Syndication)
 find_package(ECM 0.0.11 CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-include(FeatureSummary)
-include(ECMSetupVersion)
 include(CMakePackageConfigHelpers)
-include(KDEInstallDirs)
-include(KDEFrameworkCompilerSettings)
+include(ECMSetupVersion)
+include(FeatureSummary)
 include(KDECMakeSettings)
+include(KDEFrameworkCompilerSettings)
+include(KDEInstallDirs)
 
 # FIXME: Do we want the same versions in kdepimlibs and kf5?
 set(KF5_VERSION "4.97.0")
