@@ -14,11 +14,13 @@ include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
 
 # FIXME: Do we want the same versions in kdepimlibs and kf5?
-set(KF5_VERSION "5.0.0")
+set(KF5_VERSION "4.97.0")
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationsConfigVersion.cmake")
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationsConfigVersion.cmake"
+                        SOVERSION 5
+)
 
 ########### Find packages ###########
 find_package(KF5 CONFIG REQUIRED COMPONENTS ItemViews KIO KDE4Support)
