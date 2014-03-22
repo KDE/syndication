@@ -39,10 +39,6 @@ set_package_properties(Boost PROPERTIES
 ########### Includes ###########
 include_directories(${Syndication_SOURCE_DIR} ${Syndication_BINARY_DIR} ${Boost_INCLUDE_DIR})
 
-########### Build parameters ###########
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
-
 ########### Targets ###########
 
 add_subdirectory(src)

@@ -4,6 +4,9 @@ include_directories(${Syndication_SOURCE_DIR}/src
                     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
+# Turn exceptions on
+kde_enable_exceptions()
+
 set(librss2local_SRCS
     rss2/category.cpp
     rss2/cloud.cpp
