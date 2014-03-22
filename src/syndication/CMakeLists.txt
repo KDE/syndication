@@ -183,6 +183,9 @@ install(FILES
     ${KSyndication_HEADERS}
     DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
 
+ecm_generate_pri_file(BASE_NAME syndication LIB_NAME KF5Syndication DEPS "ItemViews KIOCore KDE4Support" FILENAME_VAR PRI_FILENAME)
+install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
+
 add_subdirectory(atom)
 add_subdirectory(rdf)
 add_subdirectory(rss2)
