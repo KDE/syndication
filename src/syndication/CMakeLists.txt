@@ -1,7 +1,7 @@
 include_directories(${Syndication_SOURCE_DIR}/src
-                                   ${Syndication_BINARY_DIR}/src
-                                   ${CMAKE_CURRENT_SOURCE_DIR}
-                                   ${CMAKE_CURRENT_BINARY_DIR}
+                    ${Syndication_BINARY_DIR}/src
+                    ${CMAKE_CURRENT_SOURCE_DIR}
+                    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 set(librss2local_SRCS
@@ -109,22 +109,25 @@ set(syndication_SRCS
     ${libsyndicationlocal_SRCS}
 )
 
-add_library(syndication ${syndication_SRCS})
-generate_export_header(syndication)
+add_library(KF5Syndication ${syndication_SRCS})
+generate_export_header(KF5Syndication BASE_NAME syndication)
+add_library(KF5::Syndication ALIAS KF5Syndication)
 
-target_link_libraries(syndication
+target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/syndication>")
+
+target_link_libraries(KF5Syndication
     KF5::ItemViews
     KF5::KIOCore
     KF5::KDE4Support
 )
 
-set_target_properties(syndication PROPERTIES
+set_target_properties(KF5Syndication PROPERTIES
     VERSION ${SYNDICATION_VERSION_STRING}
     SOVERSION ${SYNDICATION_SOVERSION}
     EXPORT_NAME Syndication
 )
 
-install(TARGETS syndication EXPORT SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
