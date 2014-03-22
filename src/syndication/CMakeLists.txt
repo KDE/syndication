@@ -127,6 +127,34 @@ set_target_properties(KF5Syndication PROPERTIES
     EXPORT_NAME Syndication
 )
 
+ecm_generate_headers(KSyndication_HEADERS
+  HEADER_NAMES
+  AbstractParser
+  Category
+  Constants
+  DataRetriever
+  DocumentSource
+  DocumentVisitor
+  ElementWrapper
+  Enclosure
+  Feed
+  Global
+  Image
+  Item
+  Loader
+  Mapper
+  ParserCollection
+  Person
+  SpecificDocument
+  SpecificItem
+  SpecificItemVisitor
+  Syndication
+  Tools
+
+  REQUIRED_HEADERS KSyndication_HEADERS
+)
+
+
 install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
@@ -152,6 +180,7 @@ install(FILES
     specificitemvisitor.h
     syndication.h
     tools.h
+    ${KSyndication_HEADERS}
     DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
 
 add_subdirectory(atom)
