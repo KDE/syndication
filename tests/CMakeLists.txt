@@ -4,7 +4,9 @@ include(ECMMarkAsTest)
 
 include_directories(
   ${Syndication_SOURCE_DIR}/src
+  ${Syndication_SOURCE_DIR}/src/syndication
   ${Syndication_BINARY_DIR}/src
+  ${Syndication_BINARY_DIR}/src/syndication
   ${Boost_INCLUDE_DIR}
 )
 
@@ -15,7 +17,7 @@ set(testlibsyndication_SRCS testlibsyndication.cpp)
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
 add_test(testlibsyndication testlibsyndication)
 ecm_mark_as_test(testlibsyndication)
-target_link_libraries(testlibsyndication syndication KF5::CoreAddons)
+target_link_libraries(testlibsyndication KF5Syndication KF5::CoreAddons KF5::KDE4Support)
 
 ########### next target ###############
 
