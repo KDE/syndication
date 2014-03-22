@@ -110,7 +110,9 @@ set(syndication_SRCS
 )
 
 add_library(KF5Syndication ${syndication_SRCS})
+
 generate_export_header(KF5Syndication BASE_NAME syndication)
+
 add_library(KF5::Syndication ALIAS KF5Syndication)
 
 target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/syndication>")
@@ -126,6 +128,10 @@ set_target_properties(KF5Syndication PROPERTIES
     SOVERSION ${SYNDICATION_SOVERSION}
     EXPORT_NAME Syndication
 )
+
+add_subdirectory(atom)
+add_subdirectory(rdf)
+add_subdirectory(rss2)
 
 ecm_generate_headers(KSyndication_HEADERS
   HEADER_NAMES
@@ -185,7 +191,3 @@ install(FILES
 
 ecm_generate_pri_file(BASE_NAME syndication LIB_NAME KF5Syndication DEPS "ItemViews KIOCore KDE4Support" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
-
-add_subdirectory(atom)
-add_subdirectory(rdf)
-add_subdirectory(rss2)
