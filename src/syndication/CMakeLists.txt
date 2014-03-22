@@ -136,7 +136,7 @@ add_subdirectory(atom)
 add_subdirectory(rdf)
 add_subdirectory(rss2)
 
-ecm_generate_headers(KSyndication_HEADERS
+ecm_generate_headers(KSyndication_CamelCase_HEADERS
   HEADER_NAMES
   AbstractParser
   Category
@@ -159,36 +159,21 @@ ecm_generate_headers(KSyndication_HEADERS
   SpecificItemVisitor
   Syndication
   Tools
-
   REQUIRED_HEADERS KSyndication_HEADERS
+  PREFIX Syndication
 )
 
 
 install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
+    ${KSyndication_CamelCase_HEADERS}
+    DESTINATION ${INCLUDE_INSTALL_DIR}/Syndication
+    COMPONENT Devel
+)
+
+install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
-    abstractparser.h
-    category.h
-    constants.h
-    dataretriever.h
-    documentsource.h
-    documentvisitor.h
-    elementwrapper.h
-    enclosure.h
-    feed.h
-    global.h
-    image.h
-    item.h
-    loader.h
-    mapper.h
-    parsercollection.h
-    person.h
-    specificdocument.h
-    specificitem.h
-    specificitemvisitor.h
-    syndication.h
-    tools.h
     ${KSyndication_HEADERS}
     DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
 
