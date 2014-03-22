@@ -42,7 +42,7 @@ include_directories(${Syndication_SOURCE_DIR} ${Syndication_BINARY_DIR} ${Boost_
 ########### Targets ###########
 
 add_subdirectory(src)
-add_subdirectory(tests)
+add_subdirectory(autotests)
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5Syndication")
