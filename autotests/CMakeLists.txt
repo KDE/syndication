@@ -2,14 +2,6 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 include(ECMMarkAsTest)
 
-include_directories(
-  ${Syndication_SOURCE_DIR}/src
-  ${Syndication_SOURCE_DIR}/src/syndication
-  ${Syndication_BINARY_DIR}/src
-  ${Syndication_BINARY_DIR}/src/syndication
-  ${Boost_INCLUDE_DIR}
-)
-
 ########### next target ###############
 
 set(testlibsyndication_SRCS testlibsyndication.cpp)

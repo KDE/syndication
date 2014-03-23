@@ -36,9 +36,6 @@ set_package_properties(Boost PROPERTIES
                              TYPE REQUIRED
 )
 
-########### Includes ###########
-include_directories(${Syndication_SOURCE_DIR} ${Syndication_BINARY_DIR} ${Boost_INCLUDE_DIR})
-
 ########### Targets ###########
 
 add_subdirectory(src)
