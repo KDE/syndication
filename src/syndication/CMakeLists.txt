@@ -117,6 +117,7 @@ target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndicatio
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
 
 target_link_libraries(KF5Syndication
+    PRIVATE
     KF5::ItemViews
     KF5::KIOCore
     KF5::KDE4Support
