@@ -47,7 +47,7 @@ Model ModelMaker::createFromXML(const QDomDocument& doc)
 
     QDomNodeList list = rdfNode.childNodes();
 
-    for (uint i = 0; i < list.length(); ++i)
+    for (int i = 0; i < list.length(); ++i)
     {
         if (list.item(i).isElement())
         {
@@ -87,7 +87,7 @@ ResourcePtr ModelMaker::readResource(Model& model, const QDomElement& el)
 
     bool isSeq = res->isSequence();
     
-    for (uint i = 0; i < children.length(); ++i)
+    for (int i = 0; i < children.length(); ++i)
     {
         if (children.item(i).isElement())
         {
