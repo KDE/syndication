@@ -30,14 +30,17 @@
 #include "atom/parser.h"
 #include "rdf/parser.h"
 #include "rss2/parser.h"
+#include "syndication_version.h"
 
 #include <kapplication.h>
 #include <kaboutdata.h>
-#include <kcmdlineargs.h>
+
 #include <klocalizedstring.h>
 #include <kurl.h>
 
 #include <QtCore/QByteArray>
+#include <QtCore/QCommandLineParser>
+#include <QtCore/QCommandLineOption>
 #include <QtCore/QDir>
 #include <QtCore/QFile>
 #include <QtCore/QString>
@@ -91,15 +94,15 @@ int main(int argc, char **argv)
     }
 
     KAboutData aboutData("testlibsyndication", 0, ki18n("testlibsyndication"), "0.1");
-    KCmdLineArgs::init(argc, argv, &aboutData);
 
-    KCmdLineOptions options;
-    options.add("+url", ki18n("URL of feed"));
-    KCmdLineArgs::addCmdLineOptions(options);
+    QCommandLineParser *parser = new QCommandLineParser;
+    app.setApplicationVersion(SYNDICATION_VERSION_STRING);
+    parser->addVersionOption();
+    parser->addHelpOption();
+    parser->addOption(QCommandLineOption(QStringList() << "+url", i18n("URL of feed")));
     KApplication app;
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    if ( args->count() != 1 ) args->usage();
+    if ( parser->remainingArguments().count() != 1 ) parser->showHelp();
 
     TestLibSyndication* tester = new TestLibSyndication(args->arg( 0 ));
     Q_UNUSED(tester)
