@@ -25,7 +25,6 @@
 
 #include <kcharsets.h>
 #include <kcodecs.h>
-#include <kdatetime.h>
 
 #include <QtCore/QByteArray>
 #include <QtCore/QCryptographicHash>
@@ -58,11 +57,11 @@ unsigned int calcHash(const QByteArray& array)
     }
 }
 
-static time_t toTimeT(KDateTime& kdt)
+static time_t toTimeT(QDateTime& kdt)
 {
     if (kdt.isValid()) {
-        if (kdt.isDateOnly()) {
-            kdt.setTimeSpec(KDateTime::UTC);
+        if (kdt.time().isNull()) {
+            kdt.setTimeSpec(Qt::UTC);
             kdt.setTime(QTime(12, 0));
         }
         return kdt.toTime_t();
@@ -72,13 +71,13 @@ static time_t toTimeT(KDateTime& kdt)
 
 time_t parseISODate(const QString& str)
 {
-    KDateTime kdt = KDateTime::fromString(str, KDateTime::ISODate);
+    QDateTime kdt = QDateTime::fromString(str, Qt::ISODate);
     return toTimeT(kdt);
 }
 
 time_t parseRFCDate(const QString& str)
 {
-    KDateTime kdt = KDateTime::fromString(str, KDateTime::RFCDate);
+    QDateTime kdt = QDateTime::fromString(str, Qt::RFC2822Date);
     return toTimeT(kdt);
 }
 
