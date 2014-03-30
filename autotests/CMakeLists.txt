@@ -7,8 +7,6 @@ include(ECMMarkAsTest)
 set(testlibsyndication_SRCS testlibsyndication.cpp)
 
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
-add_test(testlibsyndication testlibsyndication)
-ecm_mark_as_test(testlibsyndication)
 target_link_libraries(testlibsyndication KF5Syndication KF5::CoreAddons KF5::KDE4Support)
 
 ########### next target ###############
