@@ -29,8 +29,6 @@
 
 #include <QtCore/QString>
 
-#include <ctime>
-
 class QByteArray;
 class QString;
 
@@ -56,9 +54,8 @@ enum DateFormat
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
-//KDE5: uint, not time_t
 SYNDICATION_EXPORT
-time_t parseISODate(const QString& str);
+uint parseISODate(const QString& str);
 
 /**
  * parses a date string as defined in RFC 822.
@@ -68,9 +65,8 @@ time_t parseISODate(const QString& str);
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
-//KDE5: uint, not time_t
 SYNDICATION_EXPORT
-time_t parseRFCDate(const QString& str);
+uint parseRFCDate(const QString& str);
 
 /**
  * parses a date string in ISO (see parseISODate()) or RFC 822 (see
@@ -85,9 +81,8 @@ time_t parseRFCDate(const QString& str);
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
-//KDE5: uint, not time_t
 SYNDICATION_EXPORT
-time_t parseDate(const QString& str, DateFormat hint=RFCDate);
+uint parseDate(const QString& str, DateFormat hint=RFCDate);
 
 
 /**
@@ -99,9 +94,8 @@ time_t parseDate(const QString& str, DateFormat hint=RFCDate);
  * @return string representation of the date, or a null string if
  * @c date is 0
  */
-//KDE5: uint, not time_t
 SYNDICATION_EXPORT
-QString dateTimeToString(time_t date);
+QString dateTimeToString(uint date);
 
 /**
  * resolves entities to respective unicode chars.

@@ -57,7 +57,7 @@ unsigned int calcHash(const QByteArray& array)
     }
 }
 
-static time_t toTimeT(QDateTime& kdt)
+static uint toTimeT(QDateTime& kdt)
 {
     if (kdt.isValid()) {
         if (kdt.time().isNull()) {
@@ -69,19 +69,19 @@ static time_t toTimeT(QDateTime& kdt)
         return 0;
 }
 
-time_t parseISODate(const QString& str)
+uint parseISODate(const QString& str)
 {
     QDateTime kdt = QDateTime::fromString(str, Qt::ISODate);
     return toTimeT(kdt);
 }
 
-time_t parseRFCDate(const QString& str)
+uint parseRFCDate(const QString& str)
 {
     QDateTime kdt = QDateTime::fromString(str, Qt::RFC2822Date);
     return toTimeT(kdt);
 }
 
-time_t parseDate(const QString& str, DateFormat hint)
+uint parseDate(const QString& str, DateFormat hint)
 {
     if (str.isEmpty())
         return 0;
@@ -98,7 +98,7 @@ time_t parseDate(const QString& str, DateFormat hint)
     }
 }
 
-QString dateTimeToString(time_t date)
+QString dateTimeToString(uint date)
 {
     if (date == 0)
         return QString();
