@@ -115,6 +115,7 @@ add_library(KF5::Syndication ALIAS KF5Syndication)
 target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/syndication;${Boost_INCLUDE_DIR}>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
+target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
 
 target_link_libraries(KF5Syndication
     PRIVATE

@@ -11,6 +11,7 @@
 
 #include "dataretriever.h"
 #include "global.h"
+#include "syndication_version.h"
 
 #include <kio/job.h>
 
@@ -59,7 +60,7 @@ FileRetriever::~FileRetriever()
 }
 
 bool FileRetriever::m_useCache = true;
-QString FileRetriever::m_userAgent = QString::fromLatin1("Syndication %1").arg(QString::fromLatin1(SYNDICATION_VERSION));
+QString FileRetriever::m_userAgent = QString::fromLatin1("Syndication %1").arg(QString::fromLatin1(SYNDICATION_VERSION_STRING));
 
 void FileRetriever::setUserAgent(const QString& userAgent)
 {

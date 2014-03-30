@@ -28,8 +28,6 @@
 
 #include <QtCore/QString>
 
-#define SYNDICATION_VERSION "0.1"
-
 namespace Syndication {
 
 class DocumentSource;
