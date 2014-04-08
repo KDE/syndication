@@ -104,9 +104,10 @@ QString dateTimeToString(time_t date)
     if (date == 0)
         return QString();
 
+    const QString format="ddd MMM d HH:mm:ss yyyy";
     QDateTime dt;
     dt.setTime_t(date);
-    return dt.toUTC().toString();
+    return dt.toUTC().toString(format);
 }
 
 QString calcMD5Sum(const QString& str)
