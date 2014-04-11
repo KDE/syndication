@@ -121,7 +121,7 @@ target_link_libraries(KF5Syndication
     PRIVATE
     KF5::ItemViews
     KF5::KIOCore
-    KF5::KDE4Support
+    KF5::KDELibs4Support
 )
 
 set_target_properties(KF5Syndication PROPERTIES
