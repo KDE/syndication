@@ -21,7 +21,7 @@ namespace KIO
     class Job;
 }
 class KJob;
-class KUrl;
+class QUrl;
 
 class QByteArray;
 
@@ -56,7 +56,7 @@ class SYNDICATION_EXPORT DataRetriever : public QObject
          * 
          * @see Loader::loadFrom()
          */
-        virtual void retrieveData(const KUrl& url) = 0;
+        virtual void retrieveData(const QUrl& url) = 0;
 
         /**
          * @return An error code which might give a more precise information
@@ -120,7 +120,7 @@ class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
          * file.
          * @see Loader::loadFrom()
          */
-        virtual void retrieveData(const KUrl& url);
+        virtual void retrieveData(const QUrl& url);
 
         /**
          * @return The error code for the last process of retrieving data.
@@ -170,7 +170,7 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          * reference valid XML.
          * @see Loader::loadFrom()
          */
-        virtual void retrieveData(const KUrl& url);
+        virtual void retrieveData(const QUrl& url);
 
         /**
          * @return The error code for the last process of retrieving data.
@@ -212,7 +212,7 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
          * 
          * @see Loader::loadFrom()
          */
-        void permanentRedirection(const KUrl& url);
+        void permanentRedirection(const QUrl& url);
 
     protected Q_SLOTS:
 
@@ -222,8 +222,8 @@ class SYNDICATION_EXPORT FileRetriever : public DataRetriever
 
         void slotData(KIO::Job*job, const QByteArray& data);
         void slotResult(KJob* job);
-        void slotPermanentRedirection(KIO::Job* job, const KUrl& fromUrl,
-                                      const KUrl& toUrl);
+        void slotPermanentRedirection(KIO::Job* job, const QUrl& fromUrl,
+                                      const QUrl& toUrl);
 
     private:
 

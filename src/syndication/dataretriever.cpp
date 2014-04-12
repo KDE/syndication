@@ -72,7 +72,7 @@ void FileRetriever::setUseCache(bool enabled)
     m_useCache = enabled;
 }
 
-void FileRetriever::retrieveData(const KUrl &url)
+void FileRetriever::retrieveData(const QUrl &url)
 {
     if (d->buffer)
         return;
@@ -80,10 +80,10 @@ void FileRetriever::retrieveData(const KUrl &url)
     d->buffer = new QBuffer;
     d->buffer->open(QIODevice::WriteOnly);
 
-    KUrl u = url;
+    QUrl u = url;
 
-    if (u.protocol() == QLatin1String("feed"))
-        u.setProtocol(QLatin1String("http"));
+    if (u.scheme() == QLatin1String("feed"))
+        u.setScheme(QLatin1String("http"));
 
     d->job = KIO::get(u, KIO::NoReload, KIO::HideProgressInfo);
 
@@ -95,8 +95,8 @@ void FileRetriever::retrieveData(const KUrl &url)
     connect(d->job, SIGNAL(data(KIO::Job*,QByteArray)),
             SLOT(slotData(KIO::Job*,QByteArray)));
     connect(d->job, SIGNAL(result(KJob*)), SLOT(slotResult(KJob*)));
-    connect(d->job, SIGNAL(permanentRedirection(KIO::Job*,KUrl,KUrl)),
-            SLOT(slotPermanentRedirection(KIO::Job*,KUrl,KUrl)));
+    connect(d->job, SIGNAL(permanentRedirection(KIO::Job*,QUrl,QUrl)),
+            SLOT(slotPermanentRedirection(KIO::Job*,QUrl,QUrl)));
 }
 
 void FileRetriever::slotTimeout()
@@ -133,8 +133,8 @@ void FileRetriever::slotResult(KJob *job)
     emit dataRetrieved(data, d->lastError == 0);
 }
 
-void FileRetriever::slotPermanentRedirection(KIO::Job*, const KUrl&,
-                                             const KUrl& newUrl)
+void FileRetriever::slotPermanentRedirection(KIO::Job*, const QUrl&,
+                                             const QUrl& newUrl)
 {
     emit permanentRedirection(newUrl);
 }
@@ -174,7 +174,7 @@ OutputRetriever::~OutputRetriever()
     delete d;
 }
 
-void OutputRetriever::retrieveData(const KUrl &url)
+void OutputRetriever::retrieveData(const QUrl &url)
 {
    // Ignore subsequent calls if we didn't finish the previous job yet.
     if (d->buffer || d->process)
