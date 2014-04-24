@@ -119,7 +119,6 @@ target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndicati
 
 target_link_libraries(KF5Syndication
     PRIVATE
-    KF5::ItemViews
     KF5::KIOCore
     KF5::KDELibs4Support
 )
@@ -175,5 +174,5 @@ install(FILES
     ${KSyndication_HEADERS}
     DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
 
-ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "ItemViews KIOCore KDELibs4Support" FILENAME_VAR PRI_FILENAME)
+ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "KIOCore KDELibs4Support" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
