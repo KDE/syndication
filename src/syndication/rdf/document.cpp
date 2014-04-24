@@ -41,6 +41,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVector>
 
+#include <algorithm>
+
 using namespace boost;
 
 namespace Syndication {
@@ -172,12 +174,23 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList&
     return items;
 }
 
+struct UriLessThan {
+    bool operator()(const RDF::ResourcePtr& lhs, const RDF::ResourcePtr& rhs) const {
+        return lhs->uri() < rhs->uri();
+    }
+};
+
 QList<Item> Document::items() const
-{
+{   
+    QList<ResourcePtr> items = resource()->model().resourcesWithType(RSSVocab::self()->item());
+    // if there is no sequence, ensure sorting by URI to have a defined and deterministic order
+    // important for unit tests
+    std::sort(items.begin(), items.end(), UriLessThan());
+
+    DocumentPtr doccpy(new Document(*this));
+
     QList<Item> list;
 
-    const QList<ResourcePtr> items = resource()->model().resourcesWithType(RSSVocab::self()->item());
-    DocumentPtr doccpy(new Document(*this));
     Q_FOREACH (const ResourcePtr& i, items)
         list.append(Item(i, doccpy));
 
@@ -198,6 +211,7 @@ QList<Item> Document::items() const
            list = sortListToMatchSequence(list, uriSequence);
         }
     }
+
 
     return list;
 }
