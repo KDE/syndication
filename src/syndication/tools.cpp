@@ -60,7 +60,8 @@ unsigned int calcHash(const QByteArray& array)
 static uint toTimeT(QDateTime& kdt)
 {
     if (kdt.isValid()) {
-        if (kdt.time().isNull()) {
+        //work around unspecified timezones/date-only timestamps by setting the time to 12:00 UTC
+        if (kdt.time().isNull() || (kdt.time() == QTime(0, 0) && kdt.timeSpec() == Qt::LocalTime)) {
             kdt.setTimeSpec(Qt::UTC);
             kdt.setTime(QTime(12, 0));
         }
