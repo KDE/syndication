@@ -124,7 +124,7 @@ QString ElementWrapper::xmlBase() const
         }
         while (!bases.isEmpty())
         {
-            KUrl u(d->xmlBase, bases.takeLast());
+            QUrl u = QUrl(d->xmlBase).resolved(QUrl(bases.takeLast()));
             d->xmlBase = u.url();
         }
         
@@ -136,7 +136,7 @@ QString ElementWrapper::xmlBase() const
 
 QString ElementWrapper::completeURI(const QString& uri) const
 {
-    KUrl u(xmlBase(), uri);
+    QUrl u = QUrl(xmlBase()).resolved(QUrl(uri));
     
     if (u.isValid())
         return u.url();
