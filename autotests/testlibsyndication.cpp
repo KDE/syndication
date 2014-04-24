@@ -27,8 +27,6 @@
 #include "feed.h"
 #include "parsercollection.h"
 
-#include <KComponentData>
-
 #include <QDebug>
 #include <QtCore/QByteArray>
 #include <QtCore/QFile>
@@ -64,36 +62,34 @@ int main(int argc, char **argv)
 {
     setenv("LC_ALL", "C", 1);
 
-    KComponentData componentData("testlibsyndication");
     int pcompare = 2;
     if (argc < 2)
     {
-        printUsage("filename expected");
+        printUsage(QLatin1String("filename expected"));
         return 1;
     }
 
-    QString filename(argv[1]);
-    QString arg1(argv[1]);
+    QString filename(QFile::decodeName(argv[1]));
     
     bool specificformat = false;
     
-    if (filename == "--specific-format")
+    if (filename == QLatin1String("--specific-format"))
     {
         if (argc < 3)
         {
-            printUsage("filename expected");
+            printUsage(QLatin1String("filename expected"));
             return 1;
         }
-        filename = QString(argv[2]);
+        filename = QFile::decodeName(argv[2]);
         specificformat = true;
         pcompare += 1;
     }
     
     QString expfname;
     
-    if (argc >= pcompare + 1 && QString(argv[pcompare]) == "--compare")
+    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QLatin1String("--compare"))
     {
-        expfname = QString(argv[pcompare+1]);
+        expfname = QString::fromLatin1(argv[pcompare+1]);
     }
     
     
@@ -101,19 +97,19 @@ int main(int argc, char **argv)
 
     if (!f.open(QIODevice::ReadOnly))
     {
-        printUsage("Couldn't open file");
+        printUsage(QLatin1String("Couldn't open file"));
         return 1;
     }
     
    
-    DocumentSource src(f.readAll(), "http://libsyndicationtest");
+    DocumentSource src(f.readAll(), QLatin1String("http://libsyndicationtest"));
     f.close();
 
     FeedPtr ptr(Syndication::parse(src));
 
     if (ptr == 0L)
     {
-        printUsage( QString("Couldn't parse file: (%1)").arg( Syndication::parserCollection()->lastError() ) );
+        printUsage( QStringLiteral("Couldn't parse file: (%1)").arg( Syndication::parserCollection()->lastError() ) );
         return 1;
     }
 
