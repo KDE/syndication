@@ -12,6 +12,6 @@ install(FILES
         parser.h
         person.h
         source.h
-        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/syndication/atom
+        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/atom
         COMPONENT Devel
 )
