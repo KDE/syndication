@@ -2,25 +2,14 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 include(ECMMarkAsTest)
 
+find_package(Qt5Test CONFIG REQUIRED)
+
 ########### next target ###############
 
 set(testlibsyndication_SRCS testlibsyndication.cpp)
 
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
 target_link_libraries(testlibsyndication KF5Syndication)
-
-########### next target ###############
-
-#set(testloader_SRCS testloader.cpp)
-#add_executable(testloader ${testloader_SRCS})
-#add_test(testloader testloader)
-#target_link_libraries(testloader syndication)
-
-########### next target ###############
-
-#set(testpersonimpl_SRCS testpersonimpl.cpp)
-#add_test(testpersonimpl TESTNAME libsyndication-testpersonimpl  ${testpersonimpl_SRCS})
-#target_link_libraries(testpersonimpl syndication ${QT_QTTEST_LIBRARY})
 
 ########### next target ###############
 
@@ -41,3 +30,17 @@ foreach( file ${rss2Files} )
   ecm_mark_as_test(Rss2-${file})
 endforeach()
 
+########### next target ###############
+
+#set(testloader_SRCS testloader.cpp)
+#add_executable(testloader ${testloader_SRCS})
+#add_test(testloader testloader)
+#target_link_libraries(testloader KF5Syndication)
+
+########### next target ###############
+kde_enable_exceptions()
+
+add_executable(testpersonimpl testpersonimpl.cpp)
+add_test(testpersonimpl testpersonimpl)
+ecm_mark_as_test(testpersonimpl)
+target_link_libraries(testpersonimpl KF5Syndication Qt5::Test)
