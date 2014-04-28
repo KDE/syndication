@@ -31,7 +31,7 @@
 #include <syndication/rdf/property.h>
 #include <syndication/rdf/sequence.h>
 #include <boost/shared_ptr.hpp>
-#include <syndication/syndication_export.h>
+#include <syndication_export.h>
 
 #include <QtCore/QString>
 

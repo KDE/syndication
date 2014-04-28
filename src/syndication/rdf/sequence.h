@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_SEQUENCE_H
 #define SYNDICATION_RDF_SEQUENCE_H
 
-#include <syndication/syndication_export.h>
+#include <syndication_export.h>
 #include <syndication/rdf/resource.h>
 
 #include <boost/shared_ptr.hpp>

@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_MODELMAKER_H
 #define SYNDICATION_RDF_MODELMAKER_H
 
-#include <syndication/syndication_export.h>
+#include <syndication_export.h>
 
 class QDomDocument;
 class QDomElement;

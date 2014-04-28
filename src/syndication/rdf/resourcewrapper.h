@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_RESOURCEWRAPPER_H
 #define SYNDICATION_RDF_RESOURCEWRAPPER_H
 
-#include <syndication/syndication_export.h>
+#include <syndication_export.h>
 #include <boost/shared_ptr.hpp>
 
 namespace Syndication {

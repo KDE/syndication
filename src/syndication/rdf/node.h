@@ -23,7 +23,7 @@
 #define SYNDICATION_RDF_NODE_H
 
 #include <QtCore/QString>
-#include <syndication/syndication_export.h>
+#include <syndication_export.h>
 #include <boost/shared_ptr.hpp>
 
 namespace Syndication {
