@@ -5,6 +5,8 @@ find_dependency(KF5KDELibs4Support "@KF5_VERSION@")
 find_dependency(KF5KIO "@KF5_VERSION@")
 find_dependency(Boost "@Boost_MINIMUM_VERSION@")
 
+include(FeatureSummary)
+
 set_package_properties(Boost PROPERTIES
                              DESCRIPTION "Boost C++ Libraries"
                              URL "http://www.boost.org"
