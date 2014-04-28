@@ -118,6 +118,8 @@ target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndicatio
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
 
 target_link_libraries(KF5Syndication
+    PUBLIC
+    Qt5::Core
     PRIVATE
     KF5::KIOCore
     KF5::KDELibs4Support

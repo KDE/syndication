@@ -7,7 +7,7 @@ include(ECMMarkAsTest)
 set(testlibsyndication_SRCS testlibsyndication.cpp)
 
 add_executable(testlibsyndication ${testlibsyndication_SRCS})
-target_link_libraries(testlibsyndication KF5Syndication KF5::CoreAddons KF5::KDELibs4Support)
+target_link_libraries(testlibsyndication KF5Syndication)
 
 ########### next target ###############
 
