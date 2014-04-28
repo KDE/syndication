@@ -159,7 +159,6 @@ ecm_generate_headers(KSyndication_CamelCase_HEADERS
   Syndication
   Tools
   REQUIRED_HEADERS KSyndication_HEADERS
-  PREFIX Syndication
 )
 
 
