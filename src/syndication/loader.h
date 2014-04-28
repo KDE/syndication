@@ -11,7 +11,7 @@
 #ifndef SYNDICATION_LOADER_H
 #define SYNDICATION_LOADER_H
 
-#include <syndication/global.h>
+#include <Syndication/global.h>
 #include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"

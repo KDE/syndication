@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ATOM_CONTENT_H
 #define SYNDICATION_ATOM_CONTENT_H
 
-#include <syndication/elementwrapper.h>
+#include <Syndication/elementwrapper.h>
 
 #include <QtCore/QString>
 

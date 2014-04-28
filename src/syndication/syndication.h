@@ -23,26 +23,26 @@
 #ifndef SYNDICATION_SYNDICATION_H
 #define SYNDICATION_SYNDICATION_H
 
-#include <syndication/specificdocument.h>
-#include <syndication/abstractparser.h>
-#include <syndication/category.h>
-#include <syndication/constants.h>
-#include <syndication/dataretriever.h>
-#include <syndication/documentsource.h>
-#include <syndication/documentvisitor.h>
-#include <syndication/elementwrapper.h>
-#include <syndication/enclosure.h>
-#include <syndication/feed.h>
-#include <syndication/global.h>
-#include <syndication/image.h>
-#include <syndication/item.h>
-#include <syndication/loader.h>
-#include <syndication/mapper.h>
-#include <syndication/parsercollection.h>
-#include <syndication/person.h>
-#include <syndication/specificitem.h>
-#include <syndication/specificitemvisitor.h>
-#include <syndication/tools.h>
+#include <Syndication/specificdocument.h>
+#include <Syndication/abstractparser.h>
+#include <Syndication/category.h>
+#include <Syndication/constants.h>
+#include <Syndication/dataretriever.h>
+#include <Syndication/documentsource.h>
+#include <Syndication/documentvisitor.h>
+#include <Syndication/elementwrapper.h>
+#include <Syndication/enclosure.h>
+#include <Syndication/feed.h>
+#include <Syndication/global.h>
+#include <Syndication/image.h>
+#include <Syndication/item.h>
+#include <Syndication/loader.h>
+#include <Syndication/mapper.h>
+#include <Syndication/parsercollection.h>
+#include <Syndication/person.h>
+#include <Syndication/specificitem.h>
+#include <Syndication/specificitemvisitor.h>
+#include <Syndication/tools.h>
 
 /**
  * TODO

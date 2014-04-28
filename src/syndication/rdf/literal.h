@@ -24,7 +24,7 @@
 #define SYNDICATION_RDF_LITERAL_H
 
 #include <QtCore/QString>
-#include <syndication/rdf/node.h>
+#include <Syndication/rdf/node.h>
 
 #include <boost/shared_ptr.hpp>
 

@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ATOM_PARSER_H
 #define SYNDICATION_ATOM_PARSER_H
 
-#include <syndication/abstractparser.h>
+#include <Syndication/abstractparser.h>
 
 class QString;
 template <class T, class U> class QHash;

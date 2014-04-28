@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_TOOLS_H
 #define SYNDICATION_TOOLS_H
 
-#include <syndication/person.h>
+#include <Syndication/person.h>
 #include "syndication_export.h"
 
 

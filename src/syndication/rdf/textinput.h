@@ -23,7 +23,7 @@
 #define SYNDICATION_RDF_TEXTINPUT_H
 
 #include <QtCore/QString>
-#include <syndication/rdf/resourcewrapper.h>
+#include <Syndication/rdf/resourcewrapper.h>
 
 namespace Syndication {
 namespace RDF {

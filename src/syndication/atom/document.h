@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_ATOM_DOCUMENT_H
 #define SYNDICATION_ATOM_DOCUMENT_H
 
-#include <syndication/specificdocument.h>
-#include <syndication/elementwrapper.h>
+#include <Syndication/specificdocument.h>
+#include <Syndication/elementwrapper.h>
 
 #include <ctime>
 

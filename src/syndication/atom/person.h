@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ATOM_PERSON_H
 #define SYNDICATION_ATOM_PERSON_H
 
-#include <syndication/elementwrapper.h>
+#include <Syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;

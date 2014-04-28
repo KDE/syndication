@@ -22,14 +22,14 @@
 #ifndef SYNDICATION_RDF_MODEL_H
 #define SYNDICATION_RDF_MODEL_H
 
-#include <syndication/rdf/document.h>
-#include <syndication/rdf/resource.h>
-#include <syndication/rdf/statement.h>
+#include <Syndication/rdf/document.h>
+#include <Syndication/rdf/resource.h>
+#include <Syndication/rdf/statement.h>
 
-#include <syndication/rdf/literal.h>
-#include <syndication/rdf/node.h>
-#include <syndication/rdf/property.h>
-#include <syndication/rdf/sequence.h>
+#include <Syndication/rdf/literal.h>
+#include <Syndication/rdf/node.h>
+#include <Syndication/rdf/property.h>
+#include <Syndication/rdf/sequence.h>
 #include <boost/shared_ptr.hpp>
 #include <syndication_export.h>
 

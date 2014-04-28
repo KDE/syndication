@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_SYNDICATIONINFO_H
 #define SYNDICATION_RDF_SYNDICATIONINFO_H
 
-#include <syndication/rdf/resourcewrapper.h>
+#include <Syndication/rdf/resourcewrapper.h>
 
 #include <ctime>
 

@@ -22,8 +22,8 @@
 #ifndef SYNDICATION_RDF_PARSER_H
 #define SYNDICATION_RDF_PARSER_H
 
-#include <syndication/rdf/document.h>
-#include <syndication/abstractparser.h>
+#include <Syndication/rdf/document.h>
+#include <Syndication/abstractparser.h>
 #include <boost/shared_ptr.hpp>
 
 namespace Syndication {

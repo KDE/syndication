@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_DUBLINCORE_H
 #define SYNDICATION_RDF_DUBLINCORE_H
 
-#include <syndication/rdf/resourcewrapper.h>
+#include <Syndication/rdf/resourcewrapper.h>
 
 #include <ctime>
 

@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_PROPERTY_H
 #define SYNDICATION_RDF_PROPERTY_H
 
-#include <syndication/rdf/resource.h>
+#include <Syndication/rdf/resource.h>
 
 class QString;
 

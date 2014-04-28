@@ -22,10 +22,10 @@
 #ifndef SYNDICATION_RDF_ITEM_H
 #define SYNDICATION_RDF_ITEM_H
 
-#include <syndication/rdf/document.h>
-#include <syndication/rdf/resourcewrapper.h>
+#include <Syndication/rdf/document.h>
+#include <Syndication/rdf/resourcewrapper.h>
 
-#include <syndication/specificitem.h>
+#include <Syndication/specificitem.h>
 
 class QString;
 

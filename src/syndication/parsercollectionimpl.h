@@ -23,13 +23,13 @@
 #ifndef SYNDICATION_PARSERCOLLECTIONIMPL_H
 #define SYNDICATION_PARSERCOLLECTIONIMPL_H
 
-#include <syndication/specificdocument.h>
-#include <syndication/abstractparser.h>
-#include <syndication/documentsource.h>
-#include <syndication/parsercollection.h>
-#include <syndication/feed.h>
-#include <syndication/global.h>
-#include <syndication/mapper.h>
+#include <Syndication/specificdocument.h>
+#include <Syndication/abstractparser.h>
+#include <Syndication/documentsource.h>
+#include <Syndication/parsercollection.h>
+#include <Syndication/feed.h>
+#include <Syndication/global.h>
+#include <Syndication/mapper.h>
 
 #include <QtXml/QDomDocument>
 #include <QtCore/QHash>

@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_ATOM_ENTRY_H
 #define SYNDICATION_ATOM_ENTRY_H
 
-#include <syndication/elementwrapper.h>
-#include <syndication/specificitem.h>
+#include <Syndication/elementwrapper.h>
+#include <Syndication/specificitem.h>
 
 #include <QtCore/QList>
 
