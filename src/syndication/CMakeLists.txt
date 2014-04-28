@@ -112,7 +112,7 @@ generate_export_header(KF5Syndication BASE_NAME syndication)
 
 add_library(KF5::Syndication ALIAS KF5Syndication)
 
-target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/syndication;${Boost_INCLUDE_DIR}>")
+target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/Syndication;${Boost_INCLUDE_DIR}>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
@@ -164,15 +164,13 @@ ecm_generate_headers(KSyndication_CamelCase_HEADERS
 install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
+    ${KSyndication_HEADERS}
     ${KSyndication_CamelCase_HEADERS}
-    DESTINATION ${INCLUDE_INSTALL_DIR}/Syndication
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication
     COMPONENT Devel
 )
 
-install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
-    ${KSyndication_HEADERS}
-    DESTINATION ${INCLUDE_INSTALL_DIR}/syndication COMPONENT Devel)
 
 ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "KIOCore KDELibs4Support" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

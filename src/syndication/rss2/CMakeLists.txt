@@ -11,6 +11,6 @@ install(FILES
         rss2.h
         source.h
         textinput.h
-        DESTINATION ${INCLUDE_INSTALL_DIR}/syndication/rss2
+        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/syndication/rss2
         COMPONENT Devel
 )
