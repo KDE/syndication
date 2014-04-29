@@ -1,29 +1,44 @@
 ########### install files ###########
 
+ecm_generate_headers(Syndication_Rdf_CamelCase_HEADERS
+  HEADER_NAMES
+  ContentVocab
+  Document
+  DublinCore
+  DublinCoreVocab
+  Image
+  Item
+  Literal
+  Model
+  ModelMaker
+  Node
+  NodeVisitor
+  Parser
+  Property
+  Rdf
+  RdfVocab
+  Resource
+  ResourceWrapper
+  RssVocab
+  Sequence
+  Statement
+  SyndicationInfo
+  SyndicationVocab
+  TextInput
+
+  PREFIX Syndication/Rdf
+  REQUIRED_HEADERS Syndication_Rdf_HEADERS
+)
+
 install(FILES
-        contentvocab.h
-        document.h
-        dublincore.h
-        dublincorevocab.h
-        image.h
-        item.h
-        literal.h
-        model.h
-        modelmaker.h
-        node.h
-        nodevisitor.h
-        parser.h
-        property.h
-        rdf.h
-        rdfvocab.h
-        resource.h
-        resourcewrapper.h
-        rssvocab.h
-        sequence.h
-        statement.h
-        syndicationinfo.h
-        syndicationvocab.h
-        textinput.h
+    ${Syndication_Rdf_CamelCase_HEADERS}
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/Syndication/Rdf
+    COMPONENT Devel
+
+)
+
+install(FILES
+    ${Syndication_Rdf_HEADERS}
         DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication/rdf
         COMPONENT Devel
 )
