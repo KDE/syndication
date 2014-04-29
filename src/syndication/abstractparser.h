@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ABSTRACTPARSER_H
 #define SYNDICATION_ABSTRACTPARSER_H
 
-#include <Syndication/specificdocument.h>
+#include <syndication/specificdocument.h>
 
 #include "syndication_export.h"
 

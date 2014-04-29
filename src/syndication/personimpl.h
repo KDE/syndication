@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_PERSONIMPL_H
 #define SYNDICATION_PERSONIMPL_H
 
-#include <Syndication/person.h>
+#include <syndication/person.h>
 #include "syndication_export.h"
 
 #include <QtCore/QString>
