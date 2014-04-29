@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_STATEMENT_H
 #define SYNDICATION_RDF_STATEMENT_H
 
-#include <Syndication/rdf/property.h>
+#include <syndication/rdf/property.h>
 
 #include <boost/shared_ptr.hpp>
 

@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ATOM_SOURCE_H
 #define SYNDICATION_ATOM_SOURCE_H
 
-#include <Syndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 #include <ctime>
 

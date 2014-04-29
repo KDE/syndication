@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_DUBLINCOREVOCAB_H
 #define SYNDICATION_RDF_DUBLINCOREVOCAB_H
 
-#include <Syndication/rdf/property.h>
+#include <syndication/rdf/property.h>
 
 class QString;
 

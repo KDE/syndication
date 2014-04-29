@@ -114,7 +114,7 @@ add_library(KF5::Syndication ALIAS KF5Syndication)
 
 target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/Syndication;${Boost_INCLUDE_DIR}>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
-target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
+#target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
 
 target_link_libraries(KF5Syndication
@@ -135,7 +135,7 @@ add_subdirectory(atom)
 add_subdirectory(rdf)
 add_subdirectory(rss2)
 
-ecm_generate_headers(KSyndication_CamelCase_HEADERS
+ecm_generate_headers(Syndication_CamelCase_HEADERS
   HEADER_NAMES
   AbstractParser
   Category
@@ -158,7 +158,9 @@ ecm_generate_headers(KSyndication_CamelCase_HEADERS
   SpecificItemVisitor
   Syndication
   Tools
-  REQUIRED_HEADERS KSyndication_HEADERS
+
+  PREFIX Syndication
+  REQUIRED_HEADERS Syndication_HEADERS
 )
 
 
@@ -166,12 +168,17 @@ install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DE
 
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
-    ${KSyndication_HEADERS}
-    ${KSyndication_CamelCase_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication
+    ${Syndication_HEADERS}
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication
     COMPONENT Devel
 )
 
+install(FILES
+    ${Syndication_CamelCase_HEADERS}
+    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/Syndication
+    COMPONENT Devel
+
+)
 
 ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "KIOCore KDELibs4Support" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

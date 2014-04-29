@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_RESOURCE_H
 #define SYNDICATION_RDF_RESOURCE_H
 
-#include <Syndication/rdf/node.h>
+#include <syndication/rdf/node.h>
 
 #include <boost/shared_ptr.hpp>
 

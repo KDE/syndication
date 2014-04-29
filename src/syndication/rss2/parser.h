@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_RSS2_PARSER_H
 #define SYNDICATION_RSS2_PARSER_H
 
-#include <Syndication/rss2/document.h>
-#include <Syndication/abstractparser.h>
+#include <syndication/rss2/document.h>
+#include <syndication/abstractparser.h>
 
 namespace Syndication {
 

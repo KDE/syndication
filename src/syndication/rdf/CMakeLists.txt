@@ -24,6 +24,6 @@ install(FILES
         syndicationinfo.h
         syndicationvocab.h
         textinput.h
-        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/rdf
+        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication/rdf
         COMPONENT Devel
 )

@@ -22,16 +22,16 @@
 #ifndef SYNDICATION_ATOM_ATOM_H
 #define SYNDICATION_ATOM_ATOM_H
 
-#include <Syndication/atom/category.h>
-#include <Syndication/atom/constants.h>
-#include <Syndication/atom/content.h>
-#include <Syndication/atom/document.h>
-#include <Syndication/atom/entry.h>
-#include <Syndication/atom/generator.h>
-#include <Syndication/atom/link.h>
-#include <Syndication/atom/parser.h>
-#include <Syndication/atom/person.h>
-#include <Syndication/atom/source.h>
+#include <syndication/atom/category.h>
+#include <syndication/atom/constants.h>
+#include <syndication/atom/content.h>
+#include <syndication/atom/document.h>
+#include <syndication/atom/entry.h>
+#include <syndication/atom/generator.h>
+#include <syndication/atom/link.h>
+#include <syndication/atom/parser.h>
+#include <syndication/atom/person.h>
+#include <syndication/atom/source.h>
 
 namespace Syndication {
 

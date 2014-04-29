@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_ATOM_LINK_H
 #define SYNDICATION_ATOM_LINK_H
 
-#include <Syndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;

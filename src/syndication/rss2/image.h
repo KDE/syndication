@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RSS2_IMAGE_H
 #define SYNDICATION_RSS2_IMAGE_H
 
-#include <Syndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QDomElement;
 class QString;

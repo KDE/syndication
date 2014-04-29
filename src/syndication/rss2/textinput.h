@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RSS2_TEXTINPUT_H
 #define SYNDICATION_RSS2_TEXTINPUT_H
 
-#include <Syndication/elementwrapper.h>
+#include <syndication/elementwrapper.h>
 
 class QString;
 class QDomElement;

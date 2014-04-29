@@ -23,9 +23,9 @@
 #ifndef SYNDICATION_RDF_DOCUMENT_H
 #define SYNDICATION_RDF_DOCUMENT_H
 
-#include <Syndication/rdf/resourcewrapper.h>
+#include <syndication/rdf/resourcewrapper.h>
 
-#include <Syndication/specificdocument.h>
+#include <syndication/specificdocument.h>
 
 template <class T> class QList;
 

@@ -23,15 +23,15 @@
 #ifndef SYNDICATION_RSS2_RSS2_H
 #define SYNDICATION_RSS2_RSS2_H
 
-#include <Syndication/rss2/category.h>
-#include <Syndication/rss2/cloud.h>
-#include <Syndication/rss2/document.h>
-#include <Syndication/rss2/enclosure.h>
-#include <Syndication/rss2/image.h>
-#include <Syndication/rss2/item.h>
-#include <Syndication/rss2/parser.h>
-#include <Syndication/rss2/source.h>
-#include <Syndication/rss2/textinput.h>
+#include <syndication/rss2/category.h>
+#include <syndication/rss2/cloud.h>
+#include <syndication/rss2/document.h>
+#include <syndication/rss2/enclosure.h>
+#include <syndication/rss2/image.h>
+#include <syndication/rss2/item.h>
+#include <syndication/rss2/parser.h>
+#include <syndication/rss2/source.h>
+#include <syndication/rss2/textinput.h>
 
 namespace Syndication {
 

@@ -23,10 +23,10 @@
 #ifndef SYNDICATION_RSS2_ITEM_H
 #define SYNDICATION_RSS2_ITEM_H
 
-#include <Syndication/rss2/document.h>
-#include <Syndication/elementwrapper.h>
+#include <syndication/rss2/document.h>
+#include <syndication/elementwrapper.h>
 #include <boost/shared_ptr.hpp>
-#include <Syndication/specificitem.h>
+#include <syndication/specificitem.h>
 
 #include <ctime>
 
