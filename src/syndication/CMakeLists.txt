@@ -164,7 +164,7 @@ ecm_generate_headers(Syndication_CamelCase_HEADERS
 )
 
 
-install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
