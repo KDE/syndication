@@ -40,7 +40,7 @@ set_package_properties(Boost PROPERTIES
 
 ########### Targets ###########
 
-add_subdirectory(src)
+add_subdirectory(src/syndication)
 add_subdirectory(autotests)
 
 ########### CMake Config Files ###########
