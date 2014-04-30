@@ -1,5 +1,3 @@
-# Turn exceptions on
-kde_enable_exceptions()
 
 set(librss2local_SRCS
     rss2/category.cpp
@@ -114,8 +112,9 @@ add_library(KF5::Syndication ALIAS KF5Syndication)
 
 target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/Syndication;${Boost_INCLUDE_DIR}>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
-#target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src/syndication;${Syndication_BINARY_DIR}/src/syndication>")
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
+
+kde_target_enable_exceptions(KF5Syndication PUBLIC)
 
 target_link_libraries(KF5Syndication
     PUBLIC
