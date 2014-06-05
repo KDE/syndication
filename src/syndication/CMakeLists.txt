@@ -117,9 +117,9 @@ target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndicati
 kde_target_enable_exceptions(KF5Syndication PUBLIC)
 
 target_link_libraries(KF5Syndication
-    PUBLIC
+PUBLIC
     Qt5::Core
-    PRIVATE
+PRIVATE
     KF5::KIOCore
     KF5::KDELibs4Support
 )
@@ -179,5 +179,5 @@ install(FILES
 
 )
 
-ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "KIOCore KDELibs4Support" FILENAME_VAR PRI_FILENAME)
+ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

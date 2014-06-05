@@ -1,8 +1,6 @@
 @PACKAGE_INIT@
 
-find_dependency(KF5ItemViews "@KF5_VERSION@")
 find_dependency(KF5KDELibs4Support "@KF5_VERSION@")
-find_dependency(KF5KIO "@KF5_VERSION@")
 find_dependency(Boost "@Boost_MINIMUM_VERSION@")
 
 include(FeatureSummary)
