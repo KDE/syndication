@@ -22,7 +22,7 @@
 #include "elementwrapper.h"
 #include "constants.h"
 
-#include <kurl.h>
+#include <QUrl>
 
 #include <QtXml/QDomDocument>
 #include <QtXml/QDomElement>

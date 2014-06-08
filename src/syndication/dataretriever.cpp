@@ -16,7 +16,7 @@
 #include <kio/job.h>
 
 #include <kprocess.h>
-#include <kurl.h>
+#include <QUrl>
 
 #include <QtCore/QBuffer>
 #include <QtCore/QTimer>
