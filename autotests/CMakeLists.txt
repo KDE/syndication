@@ -38,7 +38,6 @@ endforeach()
 #target_link_libraries(testloader KF5Syndication)
 
 ########### next target ###############
-kde_enable_exceptions()
 
 add_executable(testpersonimpl testpersonimpl.cpp)
 add_test(testpersonimpl testpersonimpl)
