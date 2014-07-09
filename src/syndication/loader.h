@@ -18,7 +18,7 @@
 
 #include <QtCore/QObject>
 
-class KUrl;
+class QUrl;
 
 namespace Syndication {
 
@@ -113,7 +113,7 @@ class SYNDICATION_EXPORT Loader : public QObject
          * delete it when it doesn't need it anymore.
          * @see DataRetriever, Loader::loadingComplete()
          */
-        void loadFrom(const KUrl& url, DataRetriever* retriever);
+        void loadFrom(const QUrl &url, DataRetriever* retriever);
 
         /**
          * Convenience method. Does the same as the above method, where
@@ -121,7 +121,7 @@ class SYNDICATION_EXPORT Loader : public QObject
          *
          * @param url A URL referencing the input file.
          */
-        void loadFrom(const KUrl& url);
+        void loadFrom(const QUrl &url);
 
         /**
          * Retrieves the error code of the last loading process (if any).
@@ -138,7 +138,7 @@ class SYNDICATION_EXPORT Loader : public QObject
         /**
          * returns the URL of a feed discovered in the feed source
          */
-        KUrl discoveredFeedURL() const;
+        QUrl discoveredFeedURL() const;
 
         /**
          * aborts the loading process

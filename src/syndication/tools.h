@@ -104,7 +104,6 @@ QString dateTimeToString(uint date);
  */
 SYNDICATION_EXPORT
 QString resolveEntities(const QString& str);
-
 /**
  * replaces the characters &lt; >, &, ", '
  * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;.

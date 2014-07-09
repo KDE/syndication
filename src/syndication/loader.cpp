@@ -16,7 +16,7 @@
 #include "parsercollection.h"
 
 #include <kio/global.h>
-#include <kurl.h>
+#include <QUrl>
 
 #include <QtCore/QBuffer>
 #include <QtCore/QRegExp>
@@ -44,8 +44,8 @@ struct Loader::LoaderPrivate
     DataRetriever* retriever;
     Syndication::ErrorCode lastError;
     int retrieverError;
-    KUrl discoveredFeedURL;
-    KUrl url;
+    QUrl discoveredFeedURL;
+    QUrl url;
 };
 
 Loader* Loader::create()
@@ -71,12 +71,12 @@ Loader::~Loader()
     delete d;
 }
 
-void Loader::loadFrom(const KUrl& url)
+void Loader::loadFrom(const QUrl &url)
 {
     loadFrom(url, new FileRetriever);
 }
 
-void Loader::loadFrom(const KUrl &url, DataRetriever *retriever)
+void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
 {
     if (d->retriever != 0L)
         return;
@@ -113,7 +113,7 @@ void Loader::abort()
     delete this;
 }
 
-KUrl Loader::discoveredFeedURL() const
+QUrl Loader::discoveredFeedURL() const
 {
     return d->discoveredFeedURL;
 }
@@ -190,11 +190,11 @@ void Loader::discoverFeeds(const QByteArray &data)
             }
         }
 
-        KUrl testURL;
+        QUrl testURL;
         // loop through, prefer feeds on same host
         QStringList::const_iterator end( feeds.constEnd() );
         for ( QStringList::const_iterator it = feeds.constBegin(); it != end; ++it ) {
-            testURL=*it;
+            testURL=QUrl(*it);
             if (testURL.host()==host)
             {
                 s2=*it;
@@ -208,12 +208,12 @@ void Loader::discoverFeeds(const QByteArray &data)
         return;
     }
 
-    if (KUrl::isRelativeUrl(s2))
+    if (QUrl(s2).isRelative())
     {
         if (s2.startsWith(QLatin1String("//")))
         {
-            s2=s2.prepend(d->url.protocol()+QLatin1Char(':'));
-            d->discoveredFeedURL=s2;
+            s2=s2.prepend(d->url.scheme()+QLatin1Char(':'));
+            d->discoveredFeedURL=QUrl(s2);
         }
         else if (s2.startsWith(QLatin1Char('/')))
         {
@@ -223,14 +223,14 @@ void Loader::discoverFeeds(const QByteArray &data)
         else
         {
             d->discoveredFeedURL=d->url;
-            d->discoveredFeedURL.addPath(s2);
+            d->discoveredFeedURL.setPath(d->discoveredFeedURL.path() + QLatin1Char('/') + s2);
         }
-        d->discoveredFeedURL.cleanPath();
+        //QT5 d->discoveredFeedURL.cleanPath();
     }
     else
-        d->discoveredFeedURL=s2;
+        d->discoveredFeedURL=QUrl(s2);
 
-    d->discoveredFeedURL.cleanPath();
+    //QT5 d->discoveredFeedURL.cleanPath();
 }
 
 } // namespace Syndication
