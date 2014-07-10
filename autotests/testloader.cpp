@@ -36,7 +36,7 @@
 #include <kaboutdata.h>
 
 #include <klocalizedstring.h>
-#include <kurl.h>
+#include <qurl.h>
 
 #include <QtCore/QByteArray>
 #include <QtCore/QCommandLineParser>
@@ -52,11 +52,11 @@ using namespace Syndication;
 
 TestLibSyndication::TestLibSyndication(const QString& url)
 {
-    KUrl kurl;
-    if (!KUrl::isRelativeUrl(url))
-        kurl = KUrl(url);
+    QUrl kurl;
+    if (!QUrl(url).isRelative())
+        kurl = QUrl(url);
     else
-        kurl = KUrl(QString("file://" + QDir::currentPath() + '/'), url);
+        kurl = QUrl(QString("file://" + QDir::currentPath() + '/'), url);
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
     Loader* loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader*,
