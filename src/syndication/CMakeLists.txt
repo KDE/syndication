@@ -120,8 +120,9 @@ target_link_libraries(KF5Syndication
 PUBLIC
     Qt5::Core
 PRIVATE
+    Qt5::Xml
+    KF5::Codecs
     KF5::KIOCore
-    KF5::KDELibs4Support
 )
 
 set_target_properties(KF5Syndication PROPERTIES
