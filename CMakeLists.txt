@@ -38,6 +38,7 @@ set_package_properties(Boost PROPERTIES
                              URL "http://www.boost.org"
                              TYPE REQUIRED
 )
+add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 
 ########### Targets ###########
 
