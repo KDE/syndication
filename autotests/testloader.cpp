@@ -32,7 +32,7 @@
 #include "rss2/parser.h"
 #include "syndication_version.h"
 
-#include <kapplication.h>
+#include <qapplication.h>
 #include <kaboutdata.h>
 
 #include <klocalizedstring.h>
@@ -56,7 +56,7 @@ TestLibSyndication::TestLibSyndication(const QString& url)
     if (!QUrl(url).isRelative())
         kurl = QUrl(url);
     else
-        kurl = QUrl(QString("file://" + QDir::currentPath() + '/'), url);
+        kurl = QUrl(QString(QLatin1String("file://") + QDir::currentPath() + QLatin1Char('/'))+ url);
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
     Loader* loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader*,
@@ -93,18 +93,28 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    KAboutData aboutData("testlibsyndication", 0, ki18n("testlibsyndication"), "0.1");
+    KAboutData aboutData(QLatin1String("testlibsyndication"), i18n("testlibsyndication"), QLatin1String("0.1"));
+    QApplication app(argc, argv);
 
-    QCommandLineParser *parser = new QCommandLineParser;
-    app.setApplicationVersion(SYNDICATION_VERSION_STRING);
-    parser->addVersionOption();
-    parser->addHelpOption();
-    parser->addOption(QCommandLineOption(QStringList() << "+url", i18n("URL of feed")));
-    KApplication app;
+    KAboutData::setApplicationData(aboutData);
 
-    if ( parser->remainingArguments().count() != 1 ) parser->showHelp();
+    app.setApplicationName(aboutData.componentName());
+    app.setApplicationDisplayName(aboutData.displayName());
+    app.setOrganizationDomain(aboutData.organizationDomain());
+    app.setApplicationVersion(aboutData.version());
 
-    TestLibSyndication* tester = new TestLibSyndication(args->arg( 0 ));
+    QCommandLineParser parser;
+    app.setApplicationVersion(QLatin1String(SYNDICATION_VERSION_STRING));
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+url"), i18n("URL of feed")));
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
+
+    if ( parser.positionalArguments().count() != 1 ) parser.showHelp();
+
+    TestLibSyndication* tester = new TestLibSyndication(parser.positionalArguments().at(0));
     Q_UNUSED(tester)
 
     return app.exec();

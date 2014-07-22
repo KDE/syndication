@@ -32,10 +32,10 @@ endforeach()
 
 ########### next target ###############
 
-#set(testloader_SRCS testloader.cpp)
-#add_executable(testloader ${testloader_SRCS})
-#add_test(testloader testloader)
-#target_link_libraries(testloader KF5Syndication)
+set(testloader_SRCS testloader.cpp)
+add_executable(testloader ${testloader_SRCS})
+add_test(testloader testloader)
+target_link_libraries(testloader KF5Syndication KF5::CoreAddons Qt5::Widgets KF5::I18n)
 
 ########### next target ###############
 
