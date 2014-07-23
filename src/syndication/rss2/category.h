@@ -28,8 +28,10 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 /**
  * A category which can be assigned to items or whole feeds.
@@ -40,49 +42,49 @@ namespace RSS2 {
  */
 class SYNDICATION_EXPORT Category : public ElementWrapper
 {
-    public:
+public:
 
-        /**
-         * Creates a Category object wrapping a @c &lt;category> XML element.
-         *
-         * @param element The @c &lt;category> element to wrap
-         */
-        explicit Category(const QDomElement& element);
+    /**
+     * Creates a Category object wrapping a @c &lt;category> XML element.
+     *
+     * @param element The @c &lt;category> element to wrap
+     */
+    explicit Category(const QDomElement &element);
 
-        /**
-         * Default constructor, creates a null object, for which isNull() is
-         * @c true.
-         */
-        Category();
+    /**
+     * Default constructor, creates a null object, for which isNull() is
+     * @c true.
+     */
+    Category();
 
-        /**
-         * Name of the category. This is both to be used as identifier and as
-         * human-readable string. It can bea forward-slash-separated string
-         * to identify a hierarchic location in the domain indicated by
-         * domain(). Examples: "General", "Programming", "Funny",
-         * "Books/History".
-         *
-         * @return The category identifier/name as string or a null string for
-         * null objects.
-         *
-         */
-        QString category() const;
+    /**
+     * Name of the category. This is both to be used as identifier and as
+     * human-readable string. It can bea forward-slash-separated string
+     * to identify a hierarchic location in the domain indicated by
+     * domain(). Examples: "General", "Programming", "Funny",
+     * "Books/History".
+     *
+     * @return The category identifier/name as string or a null string for
+     * null objects.
+     *
+     */
+    QString category() const;
 
-        /**
-         * optional, identifies the domain of the category, i.e. a
-         * categorization taxonomy.
-         *
-         * @return The domain of the category, or a null string if none is set
-         * (and for null objects)
-         */
-        QString domain() const;
+    /**
+     * optional, identifies the domain of the category, i.e. a
+     * categorization taxonomy.
+     *
+     * @return The domain of the category, or a null string if none is set
+     * (and for null objects)
+     */
+    QString domain() const;
 
-        /**
-         * Returns a description of the object for debugging purposes.
-         *
-         * @return debug string
-         */
-        QString debugInfo() const;
+    /**
+     * Returns a description of the object for debugging purposes.
+     *
+     * @return debug string
+     */
+    QString debugInfo() const;
 };
 
 } // namespace RSS2

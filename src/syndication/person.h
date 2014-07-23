@@ -28,7 +28,8 @@
 
 #include "syndication_export.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 class Person;
 
@@ -50,55 +51,55 @@ typedef boost::shared_ptr<Person> PersonPtr;
  */
 class SYNDICATION_EXPORT Person
 {
-    public:
+public:
 
-        /**
-         * destructor
-         */
-        virtual ~Person();
+    /**
+     * destructor
+     */
+    virtual ~Person();
 
-        /**
-         * returns whether this object is a null person
-         */
-        virtual bool isNull() const = 0;
+    /**
+     * returns whether this object is a null person
+     */
+    virtual bool isNull() const = 0;
 
-        /**
-         * the name of the person (optional)
-         *
-         * @return the name of the person as plain text,
-         * or a null string if not specified
-         */
-        virtual QString name() const = 0;
+    /**
+     * the name of the person (optional)
+     *
+     * @return the name of the person as plain text,
+     * or a null string if not specified
+     */
+    virtual QString name() const = 0;
 
-        /**
-         * a URI associated with the person. (optional)
-         * This is usually the URL of the
-         * person's homepage.
-         *
-         * @return URI of the person, or a null string if not specified
-         */
-        virtual QString uri() const = 0;
+    /**
+     * a URI associated with the person. (optional)
+     * This is usually the URL of the
+     * person's homepage.
+     *
+     * @return URI of the person, or a null string if not specified
+     */
+    virtual QString uri() const = 0;
 
-        /**
-         * e-mail address of the person (optional)
-         *
-         * @return email address, or a null string if not specified
-         */
-        virtual QString email() const = 0;
+    /**
+     * e-mail address of the person (optional)
+     *
+     * @return email address, or a null string if not specified
+     */
+    virtual QString email() const = 0;
 
-        /**
-         * description of the person for debugging purposes.
-         *
-         * @return debug string
-         */
-        virtual QString debugInfo() const;
+    /**
+     * description of the person for debugging purposes.
+     *
+     * @return debug string
+     */
+    virtual QString debugInfo() const;
 
-        /**
-         * compares two person instances. Persons are equal if and only if
-         * their respective name(), uri() and email() values are equal.
-         * @param other another person instance
-         */
-        virtual bool operator==(const Person& other) const;
+    /**
+     * compares two person instances. Persons are equal if and only if
+     * their respective name(), uri() and email() values are equal.
+     * @param other another person instance
+     */
+    virtual bool operator==(const Person &other) const;
 };
 
 } // namespace Syndication

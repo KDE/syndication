@@ -29,7 +29,8 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 Feed::~Feed()
 {
@@ -38,54 +39,63 @@ Feed::~Feed()
 QString Feed::debugInfo() const
 {
     QString info;
-    
+
     info += QLatin1String("# Feed begin ######################\n");
 
     QString dtitle = title();
-    if (!dtitle.isNull())
+    if (!dtitle.isNull()) {
         info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
-    
+    }
+
     QString dlink = link();
-    if (!dlink.isNull())
+    if (!dlink.isNull()) {
         info += QLatin1String("link: #") + dlink + QLatin1String("#\n");
-    
+    }
+
     QString ddescription = description();
-    if (!ddescription.isNull())
+    if (!ddescription.isNull()) {
         info += QLatin1String("description: #") + ddescription + QLatin1String("#\n");
-    
+    }
+
     QString dcopyright = copyright();
-    if (!dcopyright.isNull())
+    if (!dcopyright.isNull()) {
         info += QLatin1String("copyright: #") + dcopyright + QLatin1String("#\n");
+    }
 
     QString dlanguage = language();
-    if (!dlanguage.isNull())
+    if (!dlanguage.isNull()) {
         info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
-    
+    }
+
     QList<PersonPtr> dauthors = authors();
     QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
     QList<PersonPtr>::ConstIterator endp = dauthors.constEnd();
-    
-    for ( ; itp != endp; ++itp)
+
+    for (; itp != endp; ++itp) {
         info += (*itp)->debugInfo();
-                
+    }
+
     QList<CategoryPtr> dcategories = categories();
     QList<CategoryPtr>::ConstIterator itc = dcategories.constBegin();
     QList<CategoryPtr>::ConstIterator endc = dcategories.constEnd();
-    
-    for ( ; itc != endc; ++itc)
+
+    for (; itc != endc; ++itc) {
         info += (*itc)->debugInfo();
+    }
 
     ImagePtr dimage = image();
-     
-    if (!dimage->isNull())
+
+    if (!dimage->isNull()) {
         info += dimage->debugInfo();
-    
+    }
+
     QList<ItemPtr> ditems = items();
     QList<ItemPtr>::ConstIterator it = ditems.constBegin();
     QList<ItemPtr>::ConstIterator end = ditems.constEnd();
-    
-    for ( ; it != end; ++it)
+
+    for (; it != end; ++it) {
         info += (*it)->debugInfo();
+    }
 
     info += QLatin1String("# Feed end ########################\n");
 

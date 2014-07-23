@@ -36,28 +36,31 @@
 
 using namespace boost;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Resource::ResourcePrivate
 {
-    public:
+public:
 
-        QString uri;
-        weak_ptr<Model::ModelPrivate> model;
-        bool isAnon;
-        unsigned int id;
+    QString uri;
+    weak_ptr<Model::ModelPrivate> model;
+    bool isAnon;
+    unsigned int id;
 
-        bool operator==(const ResourcePrivate& other) const
-        {
-            if (!isAnon && !other.isAnon)
-                return uri == other.uri;
-            else
-                return id == other.id;
+    bool operator==(const ResourcePrivate &other) const
+    {
+        if (!isAnon && !other.isAnon) {
+            return uri == other.uri;
+        } else {
+            return id == other.id;
         }
+    }
 };
 
-Resource::Resource(const Resource& other) : Node(other)
+Resource::Resource(const Resource &other) : Node(other)
 {
     *this = other;
 }
@@ -66,15 +69,12 @@ Resource::Resource() : d()
 {
 }
 
-Resource::Resource(const QString& uri) : d(new ResourcePrivate)
+Resource::Resource(const QString &uri) : d(new ResourcePrivate)
 {
-    if (uri.isNull())
-    {
+    if (uri.isNull()) {
         d->uri = KRandom::randomString(10); // TODO: ensure uniqueness
         d->isAnon = true;
-    }
-    else
-    {
+    } else {
         d->uri = uri;
         d->isAnon = false;
     }
@@ -86,65 +86,74 @@ Resource::~Resource()
 {
 }
 
-Resource& Resource::operator=(const Resource& other)
+Resource &Resource::operator=(const Resource &other)
 {
     d = other.d;
     return *this;
 }
 
-bool Resource::operator==(const Node& other) const
+bool Resource::operator==(const Node &other) const
 {
-    const Resource* o2 = dynamic_cast<const Resource*>(&other);
-    if (!o2)
+    const Resource *o2 = dynamic_cast<const Resource *>(&other);
+    if (!o2) {
         return false;
+    }
 
-    if (!d || !o2->d)
+    if (!d || !o2->d) {
         return d == o2->d;
+    }
     return *d == *(o2->d);
 }
 
 bool Resource::hasProperty(PropertyPtr property) const
 {
-    if (!d)
+    if (!d) {
         return false;
+    }
     const shared_ptr<Model::ModelPrivate> m = d->model.lock();
-    if (!m)
+    if (!m) {
         return false;
+    }
     return m->resourceHasProperty(this, property);
 }
 
 StatementPtr Resource::property(PropertyPtr property) const
 {
     StatementPtr ptr(new Statement());
-    if (!d)
+    if (!d) {
         return ptr;
+    }
     const shared_ptr<Model::ModelPrivate> m = d->model.lock();
-    if (!m)
+    if (!m) {
         return ptr;
+    }
     return m->resourceProperty(this, property);
 }
 
 QList<StatementPtr> Resource::properties(PropertyPtr property) const
 {
-    if (!d)
+    if (!d) {
         return QList<StatementPtr>();
+    }
     const shared_ptr<Model::ModelPrivate> m = d->model.lock();
-    if (!m)
+    if (!m) {
         return QList<StatementPtr>();
+    }
 
     return m->resourceProperties(this, property);
 }
 
-Resource* Resource::clone() const
+Resource *Resource::clone() const
 {
     return new Resource(*this);
 }
 
-void Resource::accept(NodeVisitor* visitor, NodePtr ptr)
+void Resource::accept(NodeVisitor *visitor, NodePtr ptr)
 {
     ResourcePtr rptr = boost::static_pointer_cast<Resource>(ptr);
-    if (!visitor->visitResource(rptr))
+    if (!visitor->visitResource(rptr)) {
         Node::accept(visitor, ptr);
+    }
 }
 
 unsigned int Resource::id() const
@@ -159,15 +168,17 @@ bool Resource::isNull() const
 
 Model Resource::model() const
 {
-    if (!d)
+    if (!d) {
         return Model();
+    }
 
     const shared_ptr<Model::ModelPrivate> mp = d->model.lock();
 
     Model m;
 
-    if (mp)
+    if (mp) {
         m.d = mp;
+    }
 
     return m;
 }
@@ -197,16 +208,18 @@ bool Resource::isSequence() const
     return false;
 }
 
-void Resource::setModel(const Model& model)
+void Resource::setModel(const Model &model)
 {
-    if (d)
+    if (d) {
         d->model = model.d;
+    }
 }
 
 void Resource::setId(unsigned int id)
 {
-    if (d)
+    if (d) {
         d->id = id;
+    }
 }
 
 QString Resource::text() const

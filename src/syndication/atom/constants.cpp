@@ -24,8 +24,10 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 QString atom1Namespace()
 {

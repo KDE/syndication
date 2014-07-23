@@ -27,12 +27,12 @@
 // test: TODO remove
 #include <iostream>
 
-namespace Syndication {
-
-struct Loader::LoaderPrivate
+namespace Syndication
 {
+
+struct Loader::LoaderPrivate {
     LoaderPrivate() : retriever(0), lastError(Success),
-    retrieverError(0)
+        retrieverError(0)
     {
     }
 
@@ -41,23 +41,23 @@ struct Loader::LoaderPrivate
         delete retriever;
     }
 
-    DataRetriever* retriever;
+    DataRetriever *retriever;
     Syndication::ErrorCode lastError;
     int retrieverError;
     QUrl discoveredFeedURL;
     QUrl url;
 };
 
-Loader* Loader::create()
+Loader *Loader::create()
 {
     return new Loader;
 }
 
-Loader *Loader::create(QObject* object, const char* slot)
+Loader *Loader::create(QObject *object, const char *slot)
 {
     Loader *loader = create();
-    connect(loader, SIGNAL(loadingComplete(Syndication::Loader*,
-            Syndication::FeedPtr, Syndication::ErrorCode)),
+    connect(loader, SIGNAL(loadingComplete(Syndication::Loader *,
+                                           Syndication::FeedPtr, Syndication::ErrorCode)),
             object, slot);
     return loader;
 }
@@ -78,14 +78,15 @@ void Loader::loadFrom(const QUrl &url)
 
 void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
 {
-    if (d->retriever != 0L)
+    if (d->retriever != 0L) {
         return;
+    }
 
     d->url = url;
     d->retriever = retriever;
 
-    connect(d->retriever, SIGNAL(dataRetrieved(QByteArray,bool)),
-            this, SLOT(slotRetrieverDone(QByteArray,bool)));
+    connect(d->retriever, SIGNAL(dataRetrieved(QByteArray, bool)),
+            this, SLOT(slotRetrieverDone(QByteArray, bool)));
 
     d->retriever->retrieveData(url);
 }
@@ -102,8 +103,7 @@ Syndication::ErrorCode Loader::errorCode() const
 
 void Loader::abort()
 {
-    if (d && d->retriever)
-    {
+    if (d && d->retriever) {
         d->retriever->abort();
         delete d->retriever;
         d->retriever = 0L;
@@ -118,45 +118,38 @@ QUrl Loader::discoveredFeedURL() const
     return d->discoveredFeedURL;
 }
 
-void Loader::slotRetrieverDone(const QByteArray& data, bool success)
+void Loader::slotRetrieverDone(const QByteArray &data, bool success)
 {
     d->retrieverError = d->retriever->errorCode();
     ErrorCode status = Success;
     FeedPtr feed;
-    bool isFileRetriever = dynamic_cast<FileRetriever*>(d->retriever) != 0;
+    bool isFileRetriever = dynamic_cast<FileRetriever *>(d->retriever) != 0;
     delete d->retriever;
     d->retriever = 0;
 
-    if (success)
-    {
+    if (success) {
         DocumentSource src(data, d->url.url());
         feed = parserCollection()->parse(src);
 
-        if (parserCollection()->lastError() != Syndication::Success)
-        {
+        if (parserCollection()->lastError() != Syndication::Success) {
             status = parserCollection()->lastError();
             discoverFeeds(data);
         }
-    }
-    else
-    {
-        if (isFileRetriever)
-        {
+    } else {
+        if (isFileRetriever) {
             // retriever is a FileRetriever, so we interpret the
             // error code and set lastError accordingly
             status = FileNotFound; // TODO
             std::cout << "file retriever error: " <<  d->retrieverError << std::endl;
-        }
-        else
-        {
+        } else {
             // retriever is a custom impl, so we set OtherRetrieverError
             status = OtherRetrieverError;
         }
     }
 
-   emit loadingComplete(this, feed, status);
+    emit loadingComplete(this, feed, status);
 
-   delete this;
+    delete this;
 }
 
 void Loader::discoverFeeds(const QByteArray &data)
@@ -169,66 +162,59 @@ void Loader::discoverFeeds(const QByteArray &data)
     // "<[\\s]link[^>]*rel[\\s]=[\\s]\\\"[\\s]alternate[\\s]\\\"[^>]*>"
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
-    QRegExp rx( QLatin1String("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive );
-    if (rx.indexIn(str)!=-1)
-        s2=rx.cap(1);
-    else{
-    // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
-        int pos=0;
+    QRegExp rx(QLatin1String("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
+    if (rx.indexIn(str) != -1) {
+        s2 = rx.cap(1);
+    } else {
+        // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
+        int pos = 0;
         QStringList feeds;
-        QString host=d->url.host();
+        QString host = d->url.host();
         rx.setPattern(QLatin1String("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
-        while ( pos >= 0 ) {
-            pos = rx.indexIn( str, pos );
-            s2=rx.cap(1);
+        while (pos >= 0) {
+            pos = rx.indexIn(str, pos);
+            s2 = rx.cap(1);
             if (s2.endsWith(QLatin1String(".rdf")) ||
-                s2.endsWith(QLatin1String(".rss")) || 
-                s2.endsWith(QLatin1String(".xml")))
-                    feeds.append(s2);
-            if ( pos >= 0 ) {
+                    s2.endsWith(QLatin1String(".rss")) ||
+                    s2.endsWith(QLatin1String(".xml"))) {
+                feeds.append(s2);
+            }
+            if (pos >= 0) {
                 pos += rx.matchedLength();
             }
         }
 
         QUrl testURL;
         // loop through, prefer feeds on same host
-        QStringList::const_iterator end( feeds.constEnd() );
-        for ( QStringList::const_iterator it = feeds.constBegin(); it != end; ++it ) {
-            testURL=QUrl(*it);
-            if (testURL.host()==host)
-            {
-                s2=*it;
+        QStringList::const_iterator end(feeds.constEnd());
+        for (QStringList::const_iterator it = feeds.constBegin(); it != end; ++it) {
+            testURL = QUrl(*it);
+            if (testURL.host() == host) {
+                s2 = *it;
                 break;
             }
         }
     }
 
-    if (s2.isNull())
-    {
+    if (s2.isNull()) {
         return;
     }
 
-    if (QUrl(s2).isRelative())
-    {
-        if (s2.startsWith(QLatin1String("//")))
-        {
-            s2=s2.prepend(d->url.scheme()+QLatin1Char(':'));
-            d->discoveredFeedURL=QUrl(s2);
-        }
-        else if (s2.startsWith(QLatin1Char('/')))
-        {
-            d->discoveredFeedURL=d->url;
+    if (QUrl(s2).isRelative()) {
+        if (s2.startsWith(QLatin1String("//"))) {
+            s2 = s2.prepend(d->url.scheme() + QLatin1Char(':'));
+            d->discoveredFeedURL = QUrl(s2);
+        } else if (s2.startsWith(QLatin1Char('/'))) {
+            d->discoveredFeedURL = d->url;
             d->discoveredFeedURL.setPath(s2);
-        }
-        else
-        {
-            d->discoveredFeedURL=d->url;
+        } else {
+            d->discoveredFeedURL = d->url;
             d->discoveredFeedURL.setPath(d->discoveredFeedURL.path() + QLatin1Char('/') + s2);
         }
         //QT5 d->discoveredFeedURL.cleanPath();
+    } else {
+        d->discoveredFeedURL = QUrl(s2);
     }
-    else
-        d->discoveredFeedURL=QUrl(s2);
 
     //QT5 d->discoveredFeedURL.cleanPath();
 }

@@ -26,8 +26,9 @@
 #include <enclosure.h>
 #include <atom/link.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class EnclosureAtomImpl;
 typedef boost::shared_ptr<EnclosureAtomImpl> EnclosureAtomImplPtr;
 
@@ -38,26 +39,26 @@ typedef boost::shared_ptr<EnclosureAtomImpl> EnclosureAtomImplPtr;
  */
 class EnclosureAtomImpl : public Syndication::Enclosure
 {
-    public:
+public:
 
-        explicit EnclosureAtomImpl(const Syndication::Atom::Link& link);
-        
-        bool isNull() const;
-        
-        QString url() const;
-        
-        QString title() const;
-        
-        QString type() const;
-        
-        uint length() const;
+    explicit EnclosureAtomImpl(const Syndication::Atom::Link &link);
 
-        uint duration() const;
-        
-    private:
-        Syndication::Atom::Link m_link;
+    bool isNull() const;
+
+    QString url() const;
+
+    QString title() const;
+
+    QString type() const;
+
+    uint length() const;
+
+    uint duration() const;
+
+private:
+    Syndication::Atom::Link m_link;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H

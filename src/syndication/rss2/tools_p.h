@@ -26,11 +26,13 @@
 class QString;
 template <class T> class QList;
 
-namespace Syndication {
+namespace Syndication
+{
 
 class ElementWrapper;
 
-namespace RSS2 {
+namespace RSS2
+{
 
 /**
  * @internal
@@ -39,7 +41,7 @@ namespace RSS2 {
  * @param parent the parent node, e.g. a channel or item element
  * @return the content as HTML (see Item::content() for details)
  */
-QString extractContent(const ElementWrapper& parent);
+QString extractContent(const ElementWrapper &parent);
 
 } // RSS2
 } // Syndication

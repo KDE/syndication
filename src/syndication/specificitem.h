@@ -26,8 +26,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-
-namespace Syndication {
+namespace Syndication
+{
 
 class SpecificItemVisitor;
 class SpecificItem;
@@ -45,27 +45,27 @@ typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
  */
 class SYNDICATION_EXPORT SpecificItem
 {
-    public:
+public:
 
-        /**
-         * virtual dtor
-         */
-        virtual ~SpecificItem();
+    /**
+     * virtual dtor
+     */
+    virtual ~SpecificItem();
 
-        /**
-         * This must be implemented for the double dispatch
-         * technique (Visitor pattern).
-         *
-         * The usual implementation is
-         * @code
-         * return visitor->visit(this);
-         * @endcode
-         *
-         * See also SpecificItemVisitor.
-         *
-         * @param visitor the visitor "visiting" this object
-         */
-        virtual bool accept(SpecificItemVisitor* visitor) = 0;
+    /**
+     * This must be implemented for the double dispatch
+     * technique (Visitor pattern).
+     *
+     * The usual implementation is
+     * @code
+     * return visitor->visit(this);
+     * @endcode
+     *
+     * See also SpecificItemVisitor.
+     *
+     * @param visitor the visitor "visiting" this object
+     */
+    virtual bool accept(SpecificItemVisitor *visitor) = 0;
 
 };
 

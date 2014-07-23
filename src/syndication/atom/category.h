@@ -28,8 +28,10 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 /**
  * A category for categorizing items or whole feeds.
@@ -44,57 +46,56 @@ namespace Atom {
  */
 class SYNDICATION_EXPORT Category : public ElementWrapper
 {
-    public:
+public:
 
-        /**
-         * creates a null category object.
-         */
-        Category();
+    /**
+     * creates a null category object.
+     */
+    Category();
 
-        /**
-         * creates a Category object wrapping an atom:category element.
-         * @param element a DOM element, should be a atom:category element
-         * (although not enforced), otherwise this object will not parse
-         * anything useful
-         */
-        explicit Category(const QDomElement& element);
+    /**
+     * creates a Category object wrapping an atom:category element.
+     * @param element a DOM element, should be a atom:category element
+     * (although not enforced), otherwise this object will not parse
+     * anything useful
+     */
+    explicit Category(const QDomElement &element);
 
+    /**
+     * a term describing the category. (required)
+     *
+     * @return the category term as plain text (no HTML, "&", "<" etc. are
+     * unescaped!)
+     */
+    QString term() const;
 
-        /**
-         * a term describing the category. (required)
-         *
-         * @return the category term as plain text (no HTML, "&", "<" etc. are
-         * unescaped!)
-         */
-        QString term() const;
+    /**
+     * naming scheme the category term is part of. (optional)
+     * A term is unique in its scheme (like in C++ identifiers are
+     * unique in their namespaces)
+     *
+     * @return a URI representing the scheme, or a null string
+     * if not specified
+     */
+    QString scheme() const;
 
-        /**
-         * naming scheme the category term is part of. (optional)
-         * A term is unique in its scheme (like in C++ identifiers are
-         * unique in their namespaces)
-         *
-         * @return a URI representing the scheme, or a null string
-         * if not specified
-         */
-        QString scheme() const;
+    /**
+     * Label of the category (optional).
+     * If specified, this string should be used to represent this category
+     * in a user interface.
+     * If not specified, use term() instead.
+     *
+     * @return the label as plain text (no HTML, "&", "<" etc. are
+     * unescaped!), or a null string if not specified
+     */
+    QString label() const;
 
-        /**
-         * Label of the category (optional).
-         * If specified, this string should be used to represent this category
-         * in a user interface.
-         * If not specified, use term() instead.
-         *
-         * @return the label as plain text (no HTML, "&", "<" etc. are
-         * unescaped!), or a null string if not specified
-         */
-        QString label() const;
-
-        /**
-         * description of this category object for debugging purposes
-         *
-         * @return debug string
-         */
-        QString debugInfo() const;
+    /**
+     * description of this category object for debugging purposes
+     *
+     * @return debug string
+     */
+    QString debugInfo() const;
 };
 
 } // namespace Atom

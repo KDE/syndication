@@ -24,14 +24,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 Image::Image() : ElementWrapper()
 {
 }
 
-Image::Image(const QDomElement& element) : ElementWrapper(element)
+Image::Image(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -43,13 +45,13 @@ QString Image::url() const
 QString Image::title() const
 {
     return extractElementTextNS(QString(), QLatin1String("title"));
-    
+
 }
 
 QString Image::link() const
 {
     return extractElementTextNS(QString(), QLatin1String("link"));
-    
+
 }
 
 uint Image::width() const
@@ -83,14 +85,18 @@ QString Image::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Image: ###################\n");
-    if (!title().isNull())
+    if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!link().isNull())
+    }
+    if (!link().isNull()) {
         info += QLatin1String("link: #") + link() + QLatin1String("#\n");
-    if (!description().isNull())
+    }
+    if (!description().isNull()) {
         info += QLatin1String("description: #") + description() + QLatin1String("#\n");
-    if (!url().isNull())
+    }
+    if (!url().isNull()) {
         info += QLatin1String("url: #") + url() + QLatin1String("#\n");
+    }
     info += QLatin1String("width: #") + QString::number(width()) + QLatin1String("#\n");
     info += QLatin1String("height: #") + QString::number(height()) + QLatin1String("#\n");
     info += QLatin1String("### Image end ################\n");

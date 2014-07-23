@@ -26,9 +26,11 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
-    
+namespace Syndication
+{
+namespace RDF
+{
+
 Image::Image() : ResourceWrapper()
 {
 }
@@ -45,17 +47,17 @@ QString Image::title() const
 {
     return resource()->property(RSSVocab::self()->title())->asString();
 }
-    
+
 QString Image::link() const
 {
     return resource()->property(RSSVocab::self()->link())->asString();
 }
-    
+
 QString Image::url() const
 {
     return resource()->property(RSSVocab::self()->url())->asString();
 }
-    
+
 QString Image::debugInfo() const
 {
     QString info;
@@ -67,6 +69,5 @@ QString Image::debugInfo() const
     return info;
 }
 
-    
 } // namespace RDF
 } // namespace Syndication

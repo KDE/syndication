@@ -26,8 +26,9 @@
 #include <image.h>
 #include <rss2/image.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class ImageRSS2Impl;
 typedef boost::shared_ptr<ImageRSS2Impl> ImageRSS2ImplPtr;
 
@@ -38,28 +39,28 @@ typedef boost::shared_ptr<ImageRSS2Impl> ImageRSS2ImplPtr;
  */
 class ImageRSS2Impl : public Syndication::Image
 {
-    public:
+public:
 
-        explicit ImageRSS2Impl(const Syndication::RSS2::Image& image);
-        
-        bool isNull() const;
-        
-        QString url() const;
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        uint width() const;
-        
-        uint height() const;
-        
-    private:
-        Syndication::RSS2::Image m_image;
+    explicit ImageRSS2Impl(const Syndication::RSS2::Image &image);
+
+    bool isNull() const;
+
+    QString url() const;
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    uint width() const;
+
+    uint height() const;
+
+private:
+    Syndication::RSS2::Image m_image;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_IMAGERSS2IMPL_H

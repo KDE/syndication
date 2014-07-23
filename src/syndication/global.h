@@ -28,7 +28,8 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class DocumentSource;
 template <class T> class ParserCollection;
@@ -63,7 +64,7 @@ template <class T> class ParserCollection;
  * @endcode
  */
 SYNDICATION_EXPORT
-ParserCollection<Feed>* parserCollection();
+ParserCollection<Feed> *parserCollection();
 
 /**
  * parses a document from a source and returns a new Feed object
@@ -75,13 +76,12 @@ ParserCollection<Feed>* parserCollection();
  * @param formatHint an optional hint which format to test first
  */
 SYNDICATION_EXPORT
-FeedPtr parse(const DocumentSource& src, const QString& formatHint=QString());
+FeedPtr parse(const DocumentSource &src, const QString &formatHint = QString());
 
 /**
  * error code indicating fetching or parsing errors
  */
-enum ErrorCode
-{
+enum ErrorCode {
     Success = 0, /**< No error occurred, feed was fetched and parsed
                   * successfully
                   */
@@ -112,7 +112,6 @@ enum ErrorCode
                         * can get"), this code will be rarely seen.
                         */
 };
-
 
 } // namespace Syndication
 

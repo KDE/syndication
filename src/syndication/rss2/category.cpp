@@ -25,14 +25,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 Category::Category() : ElementWrapper()
 {
 }
 
-Category::Category(const QDomElement& element) : ElementWrapper(element)
+Category::Category(const QDomElement &element) : ElementWrapper(element)
 {
 }
 QString Category::category() const
@@ -49,10 +51,12 @@ QString Category::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Category: ###################\n");
-    if (!category().isNull())
+    if (!category().isNull()) {
         info += QLatin1String("category: #") + category() + QLatin1String("#\n");
-    if (!domain().isNull())
+    }
+    if (!domain().isNull()) {
         info += QLatin1String("domain: #") + domain() + QLatin1String("#\n");
+    }
     info += QLatin1String("### Category end ################\n");
     return info;
 }

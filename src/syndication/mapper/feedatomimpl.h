@@ -26,7 +26,8 @@
 #include <atom/document.h>
 #include <feed.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class FeedAtomImpl;
 typedef boost::shared_ptr<FeedAtomImpl> FeedAtomImplPtr;
@@ -38,34 +39,34 @@ typedef boost::shared_ptr<Image> ImagePtr;
  */
 class FeedAtomImpl : public Syndication::Feed
 {
-    public:
-        
-        explicit FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
-        
-        Syndication::SpecificDocumentPtr specificDocument() const;
-        
-        QList<Syndication::ItemPtr> items() const;
-                
-        QList<CategoryPtr> categories() const;
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QList<PersonPtr> authors() const;
-        
-        QString language() const;
-        
-        QString copyright() const;
-        
-        ImagePtr image() const;
-        
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-    private:
-        
-        Syndication::Atom::FeedDocumentPtr m_doc;
+public:
+
+    explicit FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
+
+    Syndication::SpecificDocumentPtr specificDocument() const;
+
+    QList<Syndication::ItemPtr> items() const;
+
+    QList<CategoryPtr> categories() const;
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString copyright() const;
+
+    ImagePtr image() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+private:
+
+    Syndication::Atom::FeedDocumentPtr m_doc;
 };
 
 } // namespace Syndication

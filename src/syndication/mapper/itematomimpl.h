@@ -26,7 +26,8 @@
 #include <atom/entry.h>
 #include <item.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class ItemAtomImpl;
 typedef boost::shared_ptr<ItemAtomImpl> ItemAtomImplPtr;
@@ -36,47 +37,47 @@ typedef boost::shared_ptr<ItemAtomImpl> ItemAtomImplPtr;
  */
 class ItemAtomImpl : public Syndication::Item
 {
-    public:
-        
-        explicit ItemAtomImpl(const Syndication::Atom::Entry& entry);
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QString content() const;
-        
-        QList<PersonPtr> authors() const;
-        
-        QString language() const;
-        
-        QString id() const;
-        
-        time_t datePublished() const;
-        
-        time_t dateUpdated() const;
+public:
 
-        QList<EnclosurePtr> enclosures() const;
-        
-        QList<CategoryPtr> categories() const;
-        
-        SpecificItemPtr specificItem() const;
-        
-        int commentsCount() const;
-        
-        QString commentsLink() const;
-        
-        QString commentsFeed() const;
-        
-        QString commentPostUri() const;
+    explicit ItemAtomImpl(const Syndication::Atom::Entry &entry);
 
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-        
-    private:
-        
-        Syndication::Atom::Entry m_entry;
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QString content() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString id() const;
+
+    time_t datePublished() const;
+
+    time_t dateUpdated() const;
+
+    QList<EnclosurePtr> enclosures() const;
+
+    QList<CategoryPtr> categories() const;
+
+    SpecificItemPtr specificItem() const;
+
+    int commentsCount() const;
+
+    QString commentsLink() const;
+
+    QString commentsFeed() const;
+
+    QString commentPostUri() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+
+private:
+
+    Syndication::Atom::Entry m_entry;
 };
 
 } // namespace Syndication

@@ -37,8 +37,6 @@ void TestPersonImpl::fromString()
     QStringList s;
     QList<PersonPtr> p;
 
-
-
     s.append(QString());
     p.append(PersonPtr(new PersonImpl(QString(), QString(), QString())));
 
@@ -67,7 +65,7 @@ void TestPersonImpl::fromString()
     p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President)"), QString(), QLatin1String("john@doe.com"))));
 
     s.append(QLatin1String("John Doe (President)"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President)"), QString(), QString() )));
+    p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President)"), QString(), QString())));
 
     s.append(QLatin1String("John Doe (President)) <john@doe.com>"));
     p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President))"), QString(), QLatin1String("john@doe.com"))));
@@ -87,8 +85,7 @@ void TestPersonImpl::fromString()
     QStringList::ConstIterator end = s.constEnd();
     QList<PersonPtr>::ConstIterator pit = p.constBegin();
 
-    while (it != end)
-    {
+    while (it != end) {
         PersonPtr q(Syndication::personFromString(*it));
         QCOMPARE(q->name(), (*pit)->name());
         QCOMPARE(q->email(), (*pit)->email());

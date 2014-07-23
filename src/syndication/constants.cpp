@@ -24,7 +24,8 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 QString xmlNamespace()
 {

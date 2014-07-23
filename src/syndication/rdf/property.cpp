@@ -23,14 +23,16 @@
 #include "property.h"
 #include "nodevisitor.h"
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 Property::Property() : Resource()
 {
 }
 
-Property::Property(const QString& uri) : Resource(uri)
+Property::Property(const QString &uri) : Resource(uri)
 {
 }
 
@@ -43,15 +45,16 @@ bool Property::isProperty() const
     return true;
 }
 
-void Property::accept(NodeVisitor* visitor, NodePtr ptr)
+void Property::accept(NodeVisitor *visitor, NodePtr ptr)
 {
     PropertyPtr pptr = boost::static_pointer_cast<Syndication::RDF::Property>(ptr);
-    
-    if (!visitor->visitProperty(pptr))
+
+    if (!visitor->visitProperty(pptr)) {
         Resource::accept(visitor, ptr);
+    }
 }
 
-Property* Property::clone() const
+Property *Property::clone() const
 {
     return new Property(*this);
 }

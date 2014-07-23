@@ -26,12 +26,13 @@
 #include <syndication/abstractparser.h>
 #include <boost/shared_ptr.hpp>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class DocumentSource;
 
-namespace RDF {
-
+namespace RDF
+{
 
 /**
  * Parser implementation for RDF-based RSS 0.9 and RSS 1.0 feeds.
@@ -40,46 +41,46 @@ namespace RDF {
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
-    public:
+public:
 
-        /** default constructor */
-        Parser();
+    /** default constructor */
+    Parser();
 
-        /** destructor */
-        virtual ~Parser();
+    /** destructor */
+    virtual ~Parser();
 
-        /**
-         * returns whether the passed document looks like
-         * an RSS 0.9 or RSS 1.0 document.
-         * @param source the document source to check
-         */
-        virtual bool accept(const DocumentSource& source) const;
+    /**
+     * returns whether the passed document looks like
+     * an RSS 0.9 or RSS 1.0 document.
+     * @param source the document source to check
+     */
+    virtual bool accept(const DocumentSource &source) const;
 
-        /**
-         * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
-         * documents are converted to RSS 1.0.
-         *
-         * @param source The document source to parse
-         * @return parsed document (a Syndication::RDF::Document), or an
-         * invalid document if parsing failed.
-         * @see Document::isValid()
-         */
-        virtual SpecificDocumentPtr parse(const DocumentSource& source) const;
+    /**
+     * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
+     * documents are converted to RSS 1.0.
+     *
+     * @param source The document source to parse
+     * @return parsed document (a Syndication::RDF::Document), or an
+     * invalid document if parsing failed.
+     * @see Document::isValid()
+     */
+    virtual SpecificDocumentPtr parse(const DocumentSource &source) const;
 
-        /**
-         * format string of this parser, which is @c "rdf".
-         *
-         * @return @c "rdf"
-         */
-        virtual QString format() const;
+    /**
+     * format string of this parser, which is @c "rdf".
+     *
+     * @return @c "rdf"
+     */
+    virtual QString format() const;
 
-    private:
+private:
 
-        Parser(const Parser& other);
-        Parser& operator=(const Parser& other);
+    Parser(const Parser &other);
+    Parser &operator=(const Parser &other);
 
-        class ParserPrivate;
-        ParserPrivate* const d;
+    class ParserPrivate;
+    ParserPrivate *const d;
 };
 
 } // namespace RDF

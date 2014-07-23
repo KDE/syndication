@@ -19,10 +19,11 @@
  * Boston, MA 02110-1301, USA.
  *
  */
- 
+
 #include "specificitem.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 SpecificItem::~SpecificItem()
 {

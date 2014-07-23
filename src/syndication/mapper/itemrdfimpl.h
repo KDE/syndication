@@ -28,7 +28,8 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class ItemRDFImpl;
 typedef boost::shared_ptr<ItemRDFImpl> ItemRDFImplPtr;
@@ -38,47 +39,47 @@ typedef boost::shared_ptr<ItemRDFImpl> ItemRDFImplPtr;
  */
 class ItemRDFImpl : public Syndication::Item
 {
-    public:
-        
-        explicit ItemRDFImpl(const Syndication::RDF::Item& item);
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QString content() const;
-        
-        QList<PersonPtr> authors() const;
-        
-        QString language() const;
-        
-        QString id() const;
-        
-        time_t datePublished() const;
-        
-        time_t dateUpdated() const;
-        
-        QList<EnclosurePtr> enclosures() const;
-        
-        QList<CategoryPtr> categories() const;
-        
-        SpecificItemPtr specificItem() const;
-        
-        int commentsCount() const;
-        
-        QString commentsLink() const;
-        
-        QString commentsFeed() const;
-        
-        QString commentPostUri() const;
+public:
 
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-        
-    private:
-        
-        Syndication::RDF::Item m_item;
+    explicit ItemRDFImpl(const Syndication::RDF::Item &item);
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QString content() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString id() const;
+
+    time_t datePublished() const;
+
+    time_t dateUpdated() const;
+
+    QList<EnclosurePtr> enclosures() const;
+
+    QList<CategoryPtr> categories() const;
+
+    SpecificItemPtr specificItem() const;
+
+    int commentsCount() const;
+
+    QString commentsLink() const;
+
+    QString commentsFeed() const;
+
+    QString commentPostUri() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+
+private:
+
+    Syndication::RDF::Item m_item;
 };
 
 } // namespace Syndication

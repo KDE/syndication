@@ -27,12 +27,15 @@
 class QDomDocument;
 class QDomElement;
 
-namespace boost {
-    template <class T> class shared_ptr;
+namespace boost
+{
+template <class T> class shared_ptr;
 }
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Model;
 class Resource;
@@ -43,23 +46,23 @@ typedef boost::shared_ptr<Resource> ResourcePtr;
 /**
  * An RDF parser, used to parse an RDF model from RDF/XML. It doesn't support
  * the complete RDF specification, but suffices for our purposes.
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT ModelMaker
 {
-    public:
-    
-        /**
-         * parses an RDF model from RDF/XML
-         * @param doc an DOM document, must contain RDF/XML
-         * @return the parsed model, or an empty model if parsing failed
-         */
-        Model createFromXML(const QDomDocument& doc);
-    
-    private:
-    
-        ResourcePtr readResource(Model& model, const QDomElement& el);
+public:
+
+    /**
+     * parses an RDF model from RDF/XML
+     * @param doc an DOM document, must contain RDF/XML
+     * @return the parsed model, or an empty model if parsing failed
+     */
+    Model createFromXML(const QDomDocument &doc);
+
+private:
+
+    ResourcePtr readResource(Model &model, const QDomElement &el);
 };
 
 } // namespace RDF

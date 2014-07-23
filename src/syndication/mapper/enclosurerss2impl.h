@@ -27,8 +27,9 @@
 #include <rss2/enclosure.h>
 #include <rss2/item.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class EnclosureRSS2Impl;
 typedef boost::shared_ptr<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 
@@ -39,28 +40,28 @@ typedef boost::shared_ptr<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
  */
 class EnclosureRSS2Impl : public Syndication::Enclosure
 {
-    public:
+public:
 
-        explicit EnclosureRSS2Impl(const Syndication::RSS2::Item& item,
-                          const Syndication::RSS2::Enclosure& enc);
-        
-        bool isNull() const;
-        
-        QString url() const;
-        
-        QString title() const;
-        
-        QString type() const;
-        
-        uint length() const;
+    explicit EnclosureRSS2Impl(const Syndication::RSS2::Item &item,
+                               const Syndication::RSS2::Enclosure &enc);
 
-        uint duration() const;
-        
-    private:
-        Syndication::RSS2::Item m_item;
-        Syndication::RSS2::Enclosure m_enclosure;
+    bool isNull() const;
+
+    QString url() const;
+
+    QString title() const;
+
+    QString type() const;
+
+    uint length() const;
+
+    uint duration() const;
+
+private:
+    Syndication::RSS2::Item m_item;
+    Syndication::RSS2::Enclosure m_enclosure;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_ENCLOSURERSS2IMPL_H

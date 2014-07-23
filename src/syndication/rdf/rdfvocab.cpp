@@ -27,31 +27,33 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class RDFVocab::RDFVocabPrivate
 {
-    public:
+public:
 
-        QString namespaceURI;
-        ResourcePtr seq;
-        PropertyPtr type;
-        PropertyPtr li;
+    QString namespaceURI;
+    ResourcePtr seq;
+    PropertyPtr type;
+    PropertyPtr li;
 
-        static RDFVocab *sSelf;
-        static void cleanupRDFVocab()
-        {
-            delete sSelf;
-            sSelf = 0;
-        }
+    static RDFVocab *sSelf;
+    static void cleanupRDFVocab()
+    {
+        delete sSelf;
+        sSelf = 0;
+    }
 };
 RDFVocab *RDFVocab::RDFVocabPrivate::sSelf = 0;
 
-RDFVocab* RDFVocab::self()
+RDFVocab *RDFVocab::self()
 {
     static RDFVocabPrivate p;
-    if(!p.sSelf) {
+    if (!p.sSelf) {
         p.sSelf = new RDFVocab;
         qAddPostRoutine(RDFVocabPrivate::cleanupRDFVocab);
     }

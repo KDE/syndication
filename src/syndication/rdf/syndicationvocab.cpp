@@ -26,13 +26,15 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class SyndicationVocab::SyndicationVocabPrivate
 {
-    public:
-        
+public:
+
     QString namespaceURI;
     PropertyPtr updatePeriod;
     PropertyPtr updateFrequency;
@@ -50,13 +52,13 @@ SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = 0;
 SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 {
     QString ns = QLatin1String("http://purl.org/rss/1.0/modules/syndication/");
-    
+
     d->namespaceURI = ns;
-    
-    d->updatePeriod = PropertyPtr( new Property(ns + QLatin1String("updatePeriod")) );
-    d->updateFrequency = PropertyPtr( new Property(ns + QLatin1String("updateFrequency")) );
-    d->updateBase = PropertyPtr( new Property(ns + QLatin1String("updateBase")) );
-    
+
+    d->updatePeriod = PropertyPtr(new Property(ns + QLatin1String("updatePeriod")));
+    d->updateFrequency = PropertyPtr(new Property(ns + QLatin1String("updateFrequency")));
+    d->updateBase = PropertyPtr(new Property(ns + QLatin1String("updateBase")));
+
 }
 
 SyndicationVocab::~SyndicationVocab()
@@ -64,17 +66,17 @@ SyndicationVocab::~SyndicationVocab()
     delete d;
 }
 
-SyndicationVocab* SyndicationVocab::self()
+SyndicationVocab *SyndicationVocab::self()
 {
     static SyndicationVocabPrivate p;
-    if(!p.sSelf) {
+    if (!p.sSelf) {
         p.sSelf = new SyndicationVocab;
         qAddPostRoutine(SyndicationVocabPrivate::cleanupSyndicationVocab);
     }
     return p.sSelf;
 }
-        
-const QString& SyndicationVocab::namespaceURI() const
+
+const QString &SyndicationVocab::namespaceURI() const
 {
     return d->namespaceURI;
 }

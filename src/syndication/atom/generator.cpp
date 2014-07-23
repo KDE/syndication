@@ -25,14 +25,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 Generator::Generator() : ElementWrapper()
 {
 }
 
-Generator::Generator(const QDomElement& element) : ElementWrapper(element)
+Generator::Generator(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -55,12 +57,15 @@ QString Generator::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Generator: ###################\n");
-    if (!name().isEmpty())
+    if (!name().isEmpty()) {
         info += QLatin1String("name: #") + name() + QLatin1String("#\n");
-    if (!uri().isEmpty())
+    }
+    if (!uri().isEmpty()) {
         info += QLatin1String("uri: #") + uri() + QLatin1String("#\n");
-    if (!version().isEmpty())
+    }
+    if (!version().isEmpty()) {
         info += QLatin1String("version: #") + version() + QLatin1String("#\n");
+    }
     info += QLatin1String("### Generator end ################\n");
     return info;
 }

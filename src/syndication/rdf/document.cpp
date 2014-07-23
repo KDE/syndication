@@ -45,16 +45,18 @@
 
 using namespace boost;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Document::Private
 {
-    public:
+public:
     Private() : itemTitleContainsMarkup(false),
-                itemTitlesGuessed(false),
-                itemDescriptionContainsMarkup(false),
-                itemDescGuessed(false)
+        itemTitlesGuessed(false),
+        itemDescriptionContainsMarkup(false),
+        itemDescGuessed(false)
     {}
     mutable bool itemTitleContainsMarkup;
     mutable bool itemTitlesGuessed;
@@ -64,21 +66,21 @@ class Document::Private
 };
 
 Document::Document() : Syndication::SpecificDocument(),
-                       ResourceWrapper(),
-                       d(new Private)
+    ResourceWrapper(),
+    d(new Private)
 {
     d->modelPrivate = resource()->model().d;
 }
 
 Document::Document(ResourcePtr resource) : Syndication::SpecificDocument(),
-                                           ResourceWrapper(resource),
-                                           d(new Private)
+    ResourceWrapper(resource),
+    d(new Private)
 {
     d->modelPrivate = resource->model().d;
 }
 
-Document::Document(const Document& other) : SpecificDocument(other),                                                      ResourceWrapper(other),
-                                            d(new Private)
+Document::Document(const Document &other) : SpecificDocument(other),                                                      ResourceWrapper(other),
+    d(new Private)
 {
     *d = *(other.d);
 }
@@ -88,14 +90,12 @@ Document::~Document()
     delete d;
 }
 
-
-bool Document::operator==(const Document& other) const
+bool Document::operator==(const Document &other) const
 {
     return ResourceWrapper::operator==(other);
 }
 
-
-Document& Document::operator=(const Document& other)
+Document &Document::operator=(const Document &other)
 {
     ResourceWrapper::operator=(other);
     *d = *(other.d);
@@ -103,8 +103,7 @@ Document& Document::operator=(const Document& other)
     return *this;
 }
 
-
-bool Document::accept(DocumentVisitor* visitor)
+bool Document::accept(DocumentVisitor *visitor)
 {
     return visitor->visitRDFDocument(this);
 }
@@ -142,22 +141,23 @@ SyndicationInfo Document::syn() const
     return SyndicationInfo(resource());
 }
 
-
 struct SortItem {
     Item item;
     int index;
 };
 
 struct LessThanByIndex {
-    bool operator()(const SortItem& lhs, const SortItem& rhs) const {
+    bool operator()(const SortItem &lhs, const SortItem &rhs) const
+    {
         return lhs.index < rhs.index;
     }
 };
 
-static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList& uriSequence) {
+static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList &uriSequence)
+{
     QVector<SortItem> toSort;
     toSort.reserve(items.size());
-    Q_FOREACH(const Item& i, items) {
+    Q_FOREACH (const Item &i, items) {
         SortItem item;
         item.item = i;
         item.index = uriSequence.indexOf(i.resource()->uri());
@@ -166,7 +166,7 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList&
     qSort(toSort.begin(), toSort.end(), LessThanByIndex());
 
     int i = 0;
-    Q_FOREACH(const SortItem& sortItem, toSort) {
+    Q_FOREACH (const SortItem &sortItem, toSort) {
         items[i] = sortItem.item;
         i++;
     }
@@ -175,13 +175,14 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList&
 }
 
 struct UriLessThan {
-    bool operator()(const RDF::ResourcePtr& lhs, const RDF::ResourcePtr& rhs) const {
+    bool operator()(const RDF::ResourcePtr &lhs, const RDF::ResourcePtr &rhs) const
+    {
         return lhs->uri() < rhs->uri();
     }
 };
 
 QList<Item> Document::items() const
-{   
+{
     QList<ResourcePtr> items = resource()->model().resourcesWithType(RSSVocab::self()->item());
     // if there is no sequence, ensure sorting by URI to have a defined and deterministic order
     // important for unit tests
@@ -191,27 +192,27 @@ QList<Item> Document::items() const
 
     QList<Item> list;
 
-    Q_FOREACH (const ResourcePtr& i, items)
+    Q_FOREACH (const ResourcePtr &i, items) {
         list.append(Item(i, doccpy));
+    }
 
     if (resource()->hasProperty(RSSVocab::self()->items())) {
         NodePtr n = resource()->property(RSSVocab::self()->items())->object();
-        if (n->isSequence())
-        {
-            Sequence* seq = static_cast<Sequence*>(n.get());
+        if (n->isSequence()) {
+            Sequence *seq = static_cast<Sequence *>(n.get());
 
             const QList<NodePtr> seqItems = seq->items();
 
             QStringList uriSequence;
             uriSequence.reserve(seqItems.size());
 
-            Q_FOREACH(const NodePtr& i, seqItems)
-                if (i->isResource())
-                    uriSequence.append(static_cast<Resource*>(i.get())->uri());
-           list = sortListToMatchSequence(list, uriSequence);
+            Q_FOREACH (const NodePtr &i, seqItems)
+                if (i->isResource()) {
+                    uriSequence.append(static_cast<Resource *>(i.get())->uri());
+                }
+            list = sortListToMatchSequence(list, uriSequence);
         }
     }
-
 
     return list;
 }
@@ -230,15 +231,13 @@ TextInput Document::textInput() const
     return ti ? TextInput(ti) : TextInput();
 }
 
-void Document::getItemTitleFormatInfo(bool* containsMarkup) const
+void Document::getItemTitleFormatInfo(bool *containsMarkup) const
 {
-    if (!d->itemTitlesGuessed)
-    {
+    if (!d->itemTitlesGuessed) {
         QString titles;
         QList<Item> litems = items();
 
-        if (litems.isEmpty())
-        {
+        if (litems.isEmpty()) {
             d->itemTitlesGuessed = true;
             return;
         }
@@ -248,8 +247,7 @@ void Document::getItemTitleFormatInfo(bool* containsMarkup) const
 
         QList<Item>::ConstIterator it = litems.constBegin();
 
-        while (i < nmax)
-        {
+        while (i < nmax) {
             titles += (*it).originalTitle();
             ++it;
             ++i;
@@ -258,20 +256,18 @@ void Document::getItemTitleFormatInfo(bool* containsMarkup) const
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
         d->itemTitlesGuessed = true;
     }
-    if (containsMarkup != 0L)
+    if (containsMarkup != 0L) {
         *containsMarkup = d->itemTitleContainsMarkup;
+    }
 }
 
-void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
+void Document::getItemDescriptionFormatInfo(bool *containsMarkup) const
 {
-    if (!d->itemDescGuessed)
-    {
+    if (!d->itemDescGuessed) {
         QString desc;
         QList<Item> litems = items();
 
-
-        if (litems.isEmpty())
-        {
+        if (litems.isEmpty()) {
             d->itemDescGuessed = true;
             return;
         }
@@ -281,8 +277,7 @@ void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
 
         QList<Item>::ConstIterator it = litems.constBegin();
 
-        while (i < nmax)
-        {
+        while (i < nmax) {
             desc += (*it).originalDescription();
             ++it;
             ++i;
@@ -292,8 +287,9 @@ void Document::getItemDescriptionFormatInfo(bool* containsMarkup) const
         d->itemDescGuessed = true;
     }
 
-    if (containsMarkup != 0L)
+    if (containsMarkup != 0L) {
         *containsMarkup = d->itemDescriptionContainsMarkup;
+    }
 }
 
 QString Document::debugInfo() const
@@ -306,18 +302,20 @@ QString Document::debugInfo() const
     info += dc().debugInfo();
     info += syn().debugInfo();
     Image img = image();
-    if (!img.resource() == 0L)
+    if (!img.resource() == 0L) {
         info += img.debugInfo();
+    }
     TextInput input = textInput();
-    if (!input.isNull())
+    if (!input.isNull()) {
         info += input.debugInfo();
+    }
 
     QList<Item> itlist = items();
     QList<Item>::ConstIterator it = itlist.constBegin();
     QList<Item>::ConstIterator end = itlist.constEnd();
-    for ( ; it != end; ++it)
+    for (; it != end; ++it) {
         info += (*it).debugInfo();
-
+    }
 
     info += QLatin1String("### Document end ################\n");
     return info;

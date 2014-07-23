@@ -28,7 +28,8 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
+namespace Syndication
+{
 namespace RSS2
 {
 /**
@@ -58,52 +59,52 @@ namespace RSS2
    */
 class SYNDICATION_EXPORT Cloud : public ElementWrapper
 {
-    public:
+public:
 
-        /**
-         * Default constructor, creates a null object, for which isNull()
-         * is @p true.
-         */
-        Cloud();
+    /**
+     * Default constructor, creates a null object, for which isNull()
+     * is @p true.
+     */
+    Cloud();
 
-        /**
-         * Creates a Cloud object wrapping a @c &lt;cloud> XML element.
-         *
-         * @param element The @c &lt;cloud> element to wrap
-         */
-        explicit Cloud(const QDomElement& element);
+    /**
+     * Creates a Cloud object wrapping a @c &lt;cloud> XML element.
+     *
+     * @param element The @c &lt;cloud> element to wrap
+     */
+    explicit Cloud(const QDomElement &element);
 
-        /**
-         * the remote domain
-         */
-        QString domain() const;
+    /**
+     * the remote domain
+     */
+    QString domain() const;
 
-        /**
-         * the remote port to connect to
-         */
-        int port() const;
+    /**
+     * the remote port to connect to
+     */
+    int port() const;
 
-        /** 
-         * the remote path to connect to
-         */
-        QString path() const;
+    /**
+     * the remote path to connect to
+     */
+    QString path() const;
 
-        /**
-         * register procedure, e.g. "myCloud.rssPleaseNotify"
-         */
-        QString registerProcedure() const;
+    /**
+     * register procedure, e.g. "myCloud.rssPleaseNotify"
+     */
+    QString registerProcedure() const;
 
-        /**
-         * protocol used for publish-subscribe, e.g. "xml-rpc"
-         */
-        QString protocol() const;
+    /**
+     * protocol used for publish-subscribe, e.g. "xml-rpc"
+     */
+    QString protocol() const;
 
-        /**
-         * Returns a description of the object for debugging purposes.
-         *
-         * @return debug string
-         */
-        QString debugInfo() const;
+    /**
+     * Returns a description of the object for debugging purposes.
+     *
+     * @return debug string
+     */
+    QString debugInfo() const;
 };
 
 } // namespace RSS2

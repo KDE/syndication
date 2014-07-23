@@ -20,7 +20,6 @@
  *
  */
 
-
 #ifndef SYNDICATION_MAPPERRSS2IMPL_H
 #define SYNDICATION_MAPPERRSS2IMPL_H
 
@@ -31,9 +30,8 @@
 #include <feed.h>
 #include <mapper.h>
 
-
-
-namespace Syndication {
+namespace Syndication
+{
 
 /** @internal */
 class RSS2Mapper : public Mapper<Feed>

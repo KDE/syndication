@@ -29,8 +29,10 @@
 
 template <class T> class QList;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 //@cond PRIVATE
 class Sequence;
@@ -44,73 +46,73 @@ typedef boost::shared_ptr<Sequence> SequencePtr;
  */
 class SYNDICATION_EXPORT Sequence : public Resource
 {
-    public:
+public:
 
-        /**
-         * creates a null sequence
-         */
-        Sequence();
-        
-        /**
-         * creates a sequence with the given URI. Do not use this directly, 
-         * use Model::createSequence() instead.
-         */
-        explicit Sequence(const QString& uri);
-        
-        /**
-         * copies a sequence
-         * 
-         * @param other sequence
-         */
-        Sequence(const Sequence& other);
-        
-        /**
-         * destructor
-         */
-        virtual ~Sequence();
+    /**
+     * creates a null sequence
+     */
+    Sequence();
 
-        /**
-         * assigns another sequence
-         * 
-         * @param other the sequence to assign
-         */
-        virtual Sequence& operator=(const Sequence& other);
+    /**
+     * creates a sequence with the given URI. Do not use this directly,
+     * use Model::createSequence() instead.
+     */
+    explicit Sequence(const QString &uri);
 
-         /**
-         * Used by visitors for double dispatch. See NodeVisitor
-         * for more information.
-         * @param visitor the visitor calling the method
-         * @param ptr a shared pointer object for this node
-         */
-        virtual void accept(NodeVisitor* visitor, NodePtr ptr);
+    /**
+     * copies a sequence
+     *
+     * @param other sequence
+     */
+    Sequence(const Sequence &other);
 
-        /**
-         * creates a copy of the sequence
-         */
-        virtual Sequence* clone() const;
+    /**
+     * destructor
+     */
+    virtual ~Sequence();
 
-        /**
-         * appends a node at the end of the sequence
-         * 
-         * @param node the RDF node to append to the sequence
-         */
-        virtual void append(NodePtr node);
-        
-        /**
-         * the list of the list items in the sequence, in the 
-         * specified order
-         */
-        virtual QList<NodePtr> items() const;
-        
-        /**
-         * returns @p true
-         */
-        virtual bool isSequence() const;
+    /**
+     * assigns another sequence
+     *
+     * @param other the sequence to assign
+     */
+    virtual Sequence &operator=(const Sequence &other);
 
-    private:
+    /**
+    * Used by visitors for double dispatch. See NodeVisitor
+    * for more information.
+    * @param visitor the visitor calling the method
+    * @param ptr a shared pointer object for this node
+    */
+    virtual void accept(NodeVisitor *visitor, NodePtr ptr);
 
-        class SequencePrivate;
-        boost::shared_ptr<SequencePrivate> d;
+    /**
+     * creates a copy of the sequence
+     */
+    virtual Sequence *clone() const;
+
+    /**
+     * appends a node at the end of the sequence
+     *
+     * @param node the RDF node to append to the sequence
+     */
+    virtual void append(NodePtr node);
+
+    /**
+     * the list of the list items in the sequence, in the
+     * specified order
+     */
+    virtual QList<NodePtr> items() const;
+
+    /**
+     * returns @p true
+     */
+    virtual bool isSequence() const;
+
+private:
+
+    class SequencePrivate;
+    boost::shared_ptr<SequencePrivate> d;
 };
 
 } // namespace RDF

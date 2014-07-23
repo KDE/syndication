@@ -32,25 +32,25 @@
 #include <QtXml/QDomElement>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
-     
-Model ModelMaker::createFromXML(const QDomDocument& doc)
+Model ModelMaker::createFromXML(const QDomDocument &doc)
 {
     Model model;
 
-    if (doc.isNull())
+    if (doc.isNull()) {
         return model;
+    }
 
     QDomElement rdfNode = doc.documentElement();
 
     QDomNodeList list = rdfNode.childNodes();
 
-    for (int i = 0; i < list.length(); ++i)
-    {
-        if (list.item(i).isElement())
-        {
+    for (int i = 0; i < list.length(); ++i) {
+        if (list.item(i).isElement()) {
             QDomElement el = list.item(i).toElement();
             readResource(model, el);
         }
@@ -59,7 +59,7 @@ Model ModelMaker::createFromXML(const QDomDocument& doc)
     return model;
 }
 
-ResourcePtr ModelMaker::readResource(Model& model, const QDomElement& el)
+ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
 {
     QString rdfns = RDFVocab::self()->namespaceURI();
     QString about = QLatin1String("about");
@@ -70,14 +70,11 @@ ResourcePtr ModelMaker::readResource(Model& model, const QDomElement& el)
 
     ResourcePtr type = model.createResource(el.namespaceURI() + el.localName());
 
-    if (*type == *(RDFVocab::self()->seq()))
-    {
+    if (*type == *(RDFVocab::self()->seq())) {
         SequencePtr seq = model.createSequence(el.attribute(about));
-        
+
         res = seq;
-    }
-    else
-    {
+    } else {
         res = model.createResource(el.attribute(about));
     }
 
@@ -86,62 +83,52 @@ ResourcePtr ModelMaker::readResource(Model& model, const QDomElement& el)
     QDomNodeList children = el.childNodes();
 
     bool isSeq = res->isSequence();
-    
-    for (int i = 0; i < children.length(); ++i)
-    {
-        if (children.item(i).isElement())
-        {
+
+    for (int i = 0; i < children.length(); ++i) {
+        if (children.item(i).isElement()) {
             QDomElement ce = children.item(i).toElement();
-        
+
             PropertyPtr pred = model.createProperty(ce.namespaceURI() + ce.localName());
-        
-            if (ce.hasAttribute(resource)) // referenced Resource via (rdf:)resource
-            {
+
+            if (ce.hasAttribute(resource)) { // referenced Resource via (rdf:)resource
                 NodePtr obj = model.createResource(ce.attribute(resource));
-                
-                if (isSeq && *pred == *(RDFVocab::self()->li()))
-                {
+
+                if (isSeq && *pred == *(RDFVocab::self()->li())) {
                     SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
                     tseq->append(obj);
-                }
-                else
+                } else {
                     model.addStatement(res, pred, obj);
-            }
-            else if (!ce.text().isEmpty() && ce.lastChildElement().isNull()) // Literal
-            {
+                }
+            } else if (!ce.text().isEmpty() && ce.lastChildElement().isNull()) { // Literal
                 NodePtr obj = model.createLiteral(ce.text());
-                
-                if (isSeq && *pred == *(RDFVocab::self()->li()))
-                {
+
+                if (isSeq && *pred == *(RDFVocab::self()->li())) {
                     SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
                     tseq->append(obj);
-                }
-                else
+                } else {
                     model.addStatement(res, pred, obj);
-            }
-            else // embedded description
-            {
+                }
+            } else { // embedded description
                 QDomElement re = ce.lastChildElement();
-                
+
                 QString uri = re.attribute(about);
-                
+
                 // read recursively
                 NodePtr obj = readResource(model, re);
-                
-                if (isSeq && *pred == *(RDFVocab::self()->li()))
-                {
+
+                if (isSeq && *pred == *(RDFVocab::self()->li())) {
                     SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
                     tseq->append(obj);
-                }
-                else
+                } else {
                     model.addStatement(res, pred, obj);
+                }
 
             }
-        
-        //TODO: bag, reification (nice to have, but not important for basic RSS 1.0)
+
+            //TODO: bag, reification (nice to have, but not important for basic RSS 1.0)
         }
     }
-    
+
     return res;
 }
 

@@ -22,17 +22,16 @@
 
 #include "enclosure.h"
 
-
-
-namespace Syndication {
-namespace RSS2 {
-
+namespace Syndication
+{
+namespace RSS2
+{
 
 Enclosure::Enclosure() : ElementWrapper()
 {
 }
 
-Enclosure::Enclosure(const QDomElement& element) : ElementWrapper(element)
+Enclosure::Enclosure(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -45,8 +44,7 @@ int Enclosure::length() const
 {
     int length = 0;
 
-    if (hasAttribute(QLatin1String("length")))
-    {
+    if (hasAttribute(QLatin1String("length"))) {
         bool ok;
         int c = attribute(QLatin1String("length")).toInt(&ok);
         length = ok ? c : 0;
@@ -63,12 +61,15 @@ QString Enclosure::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Enclosure: ###################\n");
-    if (!url().isNull())
+    if (!url().isNull()) {
         info += QLatin1String("url: #") + url() + QLatin1String("#\n");
-    if (!type().isNull())
+    }
+    if (!type().isNull()) {
         info += QLatin1String("type: #") + type() + QLatin1String("#\n");
-    if (length() != -1)
+    }
+    if (length() != -1) {
         info += QLatin1String("length: #") + QString::number(length()) + QLatin1String("#\n");
+    }
     info += QLatin1String("### Enclosure end ################\n");
     return info;
 }

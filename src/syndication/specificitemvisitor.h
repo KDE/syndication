@@ -24,23 +24,24 @@
 
 #include "syndication_export.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 class SpecificItem;
 
 namespace Atom
 {
-    class Entry;
+class Entry;
 }
 
 namespace RDF
 {
-    class Item;
+class Item;
 }
 
 namespace RSS2
 {
-    class Item;
+class Item;
 }
 
 /**
@@ -52,50 +53,50 @@ namespace RSS2
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT SpecificItemVisitor //krazy:exclude=dpointer 
+class SYNDICATION_EXPORT SpecificItemVisitor //krazy:exclude=dpointer
 {
-    public:
+public:
 
-        /**
-         * destructor
-         */
-        virtual ~SpecificItemVisitor();
+    /**
+     * destructor
+     */
+    virtual ~SpecificItemVisitor();
 
-        /**
-         * call this method to handle an item. Depending on the concrete type
-         * of the item, a specialized visit method is called.
-         *
-         * @param item the item to process
-         * @return whether this visitor handles the type of the item
-         */
-        virtual bool visit(SpecificItem* item);
+    /**
+     * call this method to handle an item. Depending on the concrete type
+     * of the item, a specialized visit method is called.
+     *
+     * @param item the item to process
+     * @return whether this visitor handles the type of the item
+     */
+    virtual bool visit(SpecificItem *item);
 
-        /**
-         * reimplement this method to handle RSS2 items.
-         *
-         * @param item the RSS2 item to visit
-         * @return whether the visitor handled the item.
-         * Reimplementations of this method must return @c true.
-         */
-        virtual bool visitRSS2Item(Syndication::RSS2::Item* item);
+    /**
+     * reimplement this method to handle RSS2 items.
+     *
+     * @param item the RSS2 item to visit
+     * @return whether the visitor handled the item.
+     * Reimplementations of this method must return @c true.
+     */
+    virtual bool visitRSS2Item(Syndication::RSS2::Item *item);
 
-        /**
-         * reimplement this method to handle RDF items.
-         *
-         * @param item the RDF item to visit
-         * @return whether the visitor handled the item.
-         * Reimplementations of this method must return @c true.
-         */
-        virtual bool visitRDFItem(Syndication::RDF::Item* item);
+    /**
+     * reimplement this method to handle RDF items.
+     *
+     * @param item the RDF item to visit
+     * @return whether the visitor handled the item.
+     * Reimplementations of this method must return @c true.
+     */
+    virtual bool visitRDFItem(Syndication::RDF::Item *item);
 
-        /**
-         * reimplement this method to handle Atom entries.
-         *
-         * @param item the Atom entry to visit
-         * @return whether the visitor handled the entry.
-         * Reimplementations of this method must return @c true.
-         */
-        virtual bool visitAtomEntry(Syndication::Atom::Entry* item);
+    /**
+     * reimplement this method to handle Atom entries.
+     *
+     * @param item the Atom entry to visit
+     * @return whether the visitor handled the entry.
+     * Reimplementations of this method must return @c true.
+     */
+    virtual bool visitAtomEntry(Syndication::Atom::Entry *item);
 };
 
 } // namespace Syndication

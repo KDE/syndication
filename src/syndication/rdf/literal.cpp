@@ -25,44 +25,47 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Literal::LiteralPrivate
 {
-    public:
-    
-        QString text;
-        unsigned int id;
+public:
 
-        bool operator==(const LiteralPrivate& other) const
-        {
-            return text == other.text;
-        }
+    QString text;
+    unsigned int id;
+
+    bool operator==(const LiteralPrivate &other) const
+    {
+        return text == other.text;
+    }
 };
 
 Literal::Literal() : d()
 {
 }
 
-Literal::Literal(const Literal& other) : Node(other)
+Literal::Literal(const Literal &other) : Node(other)
 {
     d = other.d;
 }
 
-Literal* Literal::clone() const
+Literal *Literal::clone() const
 {
     return new Literal(*this);
 }
-    
-void Literal::accept(NodeVisitor* visitor, NodePtr ptr)
+
+void Literal::accept(NodeVisitor *visitor, NodePtr ptr)
 {
     LiteralPtr lptr = boost::static_pointer_cast<Syndication::RDF::Literal>(ptr);
-    if (!visitor->visitLiteral(lptr))
+    if (!visitor->visitLiteral(lptr)) {
         Node::accept(visitor, ptr);
+    }
 }
 
-Literal::Literal(const QString& text) : d(new LiteralPrivate)
+Literal::Literal(const QString &text) : d(new LiteralPrivate)
 {
     d->text = text;
     d->id = idCounter++;
@@ -72,20 +75,22 @@ Literal::~Literal()
 {
 }
 
-Literal& Literal::operator=(const Literal& other)
+Literal &Literal::operator=(const Literal &other)
 {
     d = other.d;
     return *this;
 }
 
-bool Literal::operator==(const Node& other) const
+bool Literal::operator==(const Node &other) const
 {
-    const Literal* o2 = dynamic_cast<const Literal*>(&other);
-    if (!o2)
+    const Literal *o2 = dynamic_cast<const Literal *>(&other);
+    if (!o2) {
         return false;
+    }
 
-    if (!d || !o2->d)
+    if (!d || !o2->d) {
         return d == o2->d;
+    }
 
     return *d == *(o2->d);
 }
@@ -135,7 +140,7 @@ Literal::operator QString() const
     return d ? d->text : QString();
 }
 
-void Literal::setModel(const Model& /*model*/)
+void Literal::setModel(const Model & /*model*/)
 {
 }
 

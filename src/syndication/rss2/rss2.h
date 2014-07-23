@@ -33,7 +33,8 @@
 #include <syndication/rss2/source.h>
 #include <syndication/rss2/textinput.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 /**
  * A parser and model classes for RSS 0.91 (Userland and Netscape flavor), 0.92, 0.93, 0.94

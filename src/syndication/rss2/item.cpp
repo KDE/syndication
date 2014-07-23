@@ -34,14 +34,16 @@
 #include <QtCore/QString>
 #include <QtCore/QList>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 class Item::ItemPrivate
 {
-    public:
-        
-        boost::shared_ptr<Document> doc;
+public:
+
+    boost::shared_ptr<Document> doc;
 };
 
 Item::Item(boost::shared_ptr<Document> doc) : ElementWrapper(), d(new ItemPrivate)
@@ -49,7 +51,7 @@ Item::Item(boost::shared_ptr<Document> doc) : ElementWrapper(), d(new ItemPrivat
     d->doc = doc;
 }
 
-Item::Item(const QDomElement& element, boost::shared_ptr<Document> doc) : ElementWrapper(element), d(new ItemPrivate)
+Item::Item(const QDomElement &element, boost::shared_ptr<Document> doc) : ElementWrapper(element), d(new ItemPrivate)
 {
     d->doc = doc;
 }
@@ -58,12 +60,12 @@ Item::~Item()
 {
 }
 
-Item::Item(const Item& other) : ElementWrapper(other), SpecificItem(other)
+Item::Item(const Item &other) : ElementWrapper(other), SpecificItem(other)
 {
     d = other.d;
 }
 
-Item& Item::operator=(const Item& other)
+Item &Item::operator=(const Item &other)
 {
     ElementWrapper::operator=(other);
     SpecificItem::operator=(other);
@@ -73,22 +75,22 @@ Item& Item::operator=(const Item& other)
 
 QString Item::title() const
 {
-    if (!d->doc)
+    if (!d->doc) {
         return originalTitle();
-    
+    }
+
     bool isCDATA = false;
     bool containsMarkup = false;
     d->doc->getItemTitleFormatInfo(&isCDATA, &containsMarkup);
-    
+
     return normalize(originalTitle(), isCDATA, containsMarkup);
 }
-
 
 QString Item::originalDescription() const
 {
     return extractElementTextNS(QString(), QLatin1String("description"));
 }
-        
+
 QString Item::originalTitle() const
 {
     return extractElementTextNS(QString(), QLatin1String("title"));
@@ -96,7 +98,7 @@ QString Item::originalTitle() const
 
 QString Item::link() const
 {
-    QString url = extractElementTextNS(QString(), QLatin1String("link") );
+    QString url = extractElementTextNS(QString(), QLatin1String("link"));
     if (url.startsWith(QLatin1String("http://")) || url.startsWith(QLatin1String("https://"))) {
         return url;
     }
@@ -118,13 +120,14 @@ QString Item::link() const
 
 QString Item::description() const
 {
-    if (!d->doc)
+    if (!d->doc) {
         return originalDescription();
+    }
 
     bool isCDATA = false;
     bool containsMarkup = false;
     d->doc->getItemDescriptionFormatInfo(&isCDATA, &containsMarkup);
-    
+
     return normalize(originalDescription(), isCDATA, containsMarkup);
 }
 
@@ -137,13 +140,12 @@ QString Item::content() const
 QList<Category> Item::categories() const
 {
     QList<QDomElement> cats = elementsByTagNameNS(QString(),
-            QLatin1String("category"));
+                              QLatin1String("category"));
 
     QList<Category> categories;
 
     QList<QDomElement>::ConstIterator it = cats.constBegin();
-    for ( ; it != cats.constEnd(); ++it)
-    {
+    for (; it != cats.constEnd(); ++it) {
         categories.append(Category(*it));
     }
     return categories;
@@ -151,35 +153,31 @@ QList<Category> Item::categories() const
 
 QString Item::comments() const
 {
-    return extractElementTextNS(QString(), QLatin1String("comments") );
+    return extractElementTextNS(QString(), QLatin1String("comments"));
 }
 
 QString Item::author() const
 {
-    QString a = extractElementTextNS(QString(), QLatin1String("author") );
-    if (!a.isNull()) 
-    {
+    QString a = extractElementTextNS(QString(), QLatin1String("author"));
+    if (!a.isNull()) {
         return a;
-    }
-    else
-    {
+    } else {
         // if author is not available, fall back to dc:creator
         return extractElementTextNS(dublinCoreNamespace(),
-                                    QLatin1String("creator") );
+                                    QLatin1String("creator"));
     }
-    
+
 }
 
 QList<Enclosure> Item::enclosures() const
 {
     QList<QDomElement> encs = elementsByTagNameNS(QString(),
-            QLatin1String("enclosure"));
+                              QLatin1String("enclosure"));
 
     QList<Enclosure> enclosures;
 
     QList<QDomElement>::ConstIterator it = encs.constBegin();
-    for ( ; it != encs.constEnd(); ++it)
-    {
+    for (; it != encs.constEnd(); ++it) {
         enclosures.append(Enclosure(*it));
     }
     return enclosures;
@@ -187,20 +185,18 @@ QList<Enclosure> Item::enclosures() const
 
 QString Item::guid() const
 {
-    return extractElementTextNS(QString(), QLatin1String("guid") );
+    return extractElementTextNS(QString(), QLatin1String("guid"));
 }
 
 bool Item::guidIsPermaLink() const
 {
     bool guidIsPermaLink = true;  // true is default
 
-    QDomElement guidNode = firstElementByTagNameNS(QString(), 
-            QLatin1String("guid"));
-    if (!guidNode.isNull())
-    {
-        if (guidNode.attribute(QLatin1String("isPermaLink")) 
-            == QLatin1String("false"))
-        {
+    QDomElement guidNode = firstElementByTagNameNS(QString(),
+                           QLatin1String("guid"));
+    if (!guidNode.isNull()) {
+        if (guidNode.attribute(QLatin1String("isPermaLink"))
+                == QLatin1String("false")) {
             guidIsPermaLink = false;
         }
     }
@@ -211,17 +207,16 @@ bool Item::guidIsPermaLink() const
 time_t Item::pubDate() const
 {
     QString str = extractElementTextNS(QString(), QLatin1String("pubDate"));
-    
-    if (!str.isNull())
-    {
+
+    if (!str.isNull()) {
         return parseDate(str, RFCDate);
     }
-    
+
     // if there is no pubDate, check for dc:date
     str = extractElementTextNS(dublinCoreNamespace(), QLatin1String("date"));
     return parseDate(str, ISODate);
 }
-        
+
 time_t Item::expirationDate() const
 {
     QString str = extractElementTextNS(QString(), QLatin1String("expirationDate"));
@@ -235,41 +230,53 @@ Source Item::source() const
 
 QString Item::rating() const
 {
-    return extractElementTextNS(QString(), QLatin1String("rating") );
+    return extractElementTextNS(QString(), QLatin1String("rating"));
 }
 
 QString Item::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Item: ###################\n");
-    if (!title().isNull())
+    if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!link().isNull())
+    }
+    if (!link().isNull()) {
         info += QLatin1String("link: #") + link() + QLatin1String("#\n");
-    if (!description().isNull())
+    }
+    if (!description().isNull()) {
         info += QLatin1String("description: #") + description() + QLatin1String("#\n");
-    if (!content().isNull())
+    }
+    if (!content().isNull()) {
         info += QLatin1String("content: #") + content() + QLatin1String("#\n");
-    if (!author().isNull())
+    }
+    if (!author().isNull()) {
         info += QLatin1String("author: #") + author() + QLatin1String("#\n");
-    if (!comments().isNull())
+    }
+    if (!comments().isNull()) {
         info += QLatin1String("comments: #") + comments() + QLatin1String("#\n");
+    }
     QString dpubdate = dateTimeToString(pubDate());
-    if (!dpubdate.isNull())
+    if (!dpubdate.isNull()) {
         info += QLatin1String("pubDate: #") + dpubdate + QLatin1String("#\n");
-    if (!guid().isNull())
+    }
+    if (!guid().isNull()) {
         info += QLatin1String("guid: #") + guid() + QLatin1String("#\n");
-    if (guidIsPermaLink())
+    }
+    if (guidIsPermaLink()) {
         info += QLatin1String("guid is PL: #true#\n");
-    if (!source().isNull())
-         info += source().debugInfo();
-    
+    }
+    if (!source().isNull()) {
+        info += source().debugInfo();
+    }
+
     QList<Category> cats = categories();
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it)
+    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it) {
         info += (*it).debugInfo();
+    }
     QList<Enclosure> encs = enclosures();
-    for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != encs.constEnd(); ++it)
+    for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != encs.constEnd(); ++it) {
         info += (*it).debugInfo();
+    }
 
     info += QLatin1String("### Item end ################\n");
     return info;
@@ -290,24 +297,22 @@ QList<QDomElement> Item::unhandledElements() const
     handled.append(ElementType(QLatin1String("comments")));
     handled.append(ElementType(QLatin1String("author")));
     handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
-    
+
     QList<QDomElement> notHandled;
-    
+
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i)
-    {
+    for (int i = 0; i < children.size(); ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull() 
-             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
-        {
+        if (!el.isNull()
+                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
             notHandled.append(el);
         }
     }
-    
+
     return notHandled;
 }
-        
-bool Item::accept(SpecificItemVisitor* visitor)
+
+bool Item::accept(SpecificItemVisitor *visitor)
 {
     return visitor->visitRSS2Item(this);
 }

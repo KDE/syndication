@@ -28,28 +28,34 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
-//@cond PRIVATE
-QString extractContent(const ElementWrapper& wrapper)
+namespace Syndication
 {
-    if (wrapper.isNull())
+namespace RSS2
+{
+//@cond PRIVATE
+QString extractContent(const ElementWrapper &wrapper)
+{
+    if (wrapper.isNull()) {
         return QString();
-    
+    }
+
     QList<QDomElement> list = wrapper.elementsByTagNameNS(contentNameSpace(), QLatin1String("encoded"));
 
-    if (!list.isEmpty())
+    if (!list.isEmpty()) {
         return list.first().text().trimmed();
+    }
 
     list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QLatin1String("body"));
 
-    if (!list.isEmpty())
+    if (!list.isEmpty()) {
         return ElementWrapper::childNodesAsXML(list.first()).trimmed();
+    }
 
     list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QLatin1String("div"));
 
-    if (!list.isEmpty())
+    if (!list.isEmpty()) {
         return ElementWrapper::childNodesAsXML(list.first()).trimmed();
+    }
 
     return QString();
 }

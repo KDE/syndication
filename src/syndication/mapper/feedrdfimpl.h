@@ -26,7 +26,8 @@
 #include <rdf/document.h>
 #include <feed.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class FeedRDFImpl;
 typedef boost::shared_ptr<FeedRDFImpl> FeedRDFImplPtr;
@@ -38,35 +39,35 @@ typedef boost::shared_ptr<Image> ImagePtr;
  */
 class FeedRDFImpl : public Syndication::Feed
 {
-    public:
-        
-        explicit FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
-        
-        Syndication::SpecificDocumentPtr specificDocument() const;
-        
-        QList<ItemPtr> items() const;
-        
-        QList<CategoryPtr> categories() const;
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QList<PersonPtr> authors() const;
-        
-        QString language() const;
-        
-        QString copyright() const;
-        
-        ImagePtr image() const;
-        
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-                
-    private:
-        
-        Syndication::RDF::DocumentPtr m_doc;
+public:
+
+    explicit FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
+
+    Syndication::SpecificDocumentPtr specificDocument() const;
+
+    QList<ItemPtr> items() const;
+
+    QList<CategoryPtr> categories() const;
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString copyright() const;
+
+    ImagePtr image() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+
+private:
+
+    Syndication::RDF::DocumentPtr m_doc;
 };
 
 } // namespace Syndication

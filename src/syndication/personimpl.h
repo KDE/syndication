@@ -30,7 +30,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class PersonImpl;
 
@@ -42,22 +43,34 @@ typedef boost::shared_ptr<PersonImpl> PersonImplPtr;
  */
 class SYNDICATION_EXPORT PersonImpl : public Person
 {
-    public:
+public:
 
-        PersonImpl();
-        PersonImpl(const QString& name, const QString& uri, const QString& email);
-        
-        virtual bool isNull() const { return m_null; }
-        virtual QString name() const { return m_name; }
-        virtual QString uri() const { return m_uri; }
-        virtual QString email() const { return m_email; }
+    PersonImpl();
+    PersonImpl(const QString &name, const QString &uri, const QString &email);
 
-    private:
+    virtual bool isNull() const
+    {
+        return m_null;
+    }
+    virtual QString name() const
+    {
+        return m_name;
+    }
+    virtual QString uri() const
+    {
+        return m_uri;
+    }
+    virtual QString email() const
+    {
+        return m_email;
+    }
 
-        bool m_null;
-        QString m_name;
-        QString m_uri;
-        QString m_email;
+private:
+
+    bool m_null;
+    QString m_name;
+    QString m_uri;
+    QString m_email;
 };
 //@endcond
 

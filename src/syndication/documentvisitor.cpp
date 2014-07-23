@@ -20,38 +20,38 @@
  *
  */
 
-
 #include "documentvisitor.h"
 #include "specificdocument.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 DocumentVisitor::~DocumentVisitor()
 {
 }
-        
-bool DocumentVisitor::visit(SpecificDocument* document)
+
+bool DocumentVisitor::visit(SpecificDocument *document)
 {
     return document->accept(this);
 }
 
-bool DocumentVisitor::visitRSS2Document(Syndication::RSS2::Document*)
+bool DocumentVisitor::visitRSS2Document(Syndication::RSS2::Document *)
 {
     return false;
 }
 
-bool DocumentVisitor::visitRDFDocument(Syndication::RDF::Document*)
+bool DocumentVisitor::visitRDFDocument(Syndication::RDF::Document *)
 {
     return false;
 }
-        
-bool DocumentVisitor::visitAtomFeedDocument(Syndication::Atom::FeedDocument*)
+
+bool DocumentVisitor::visitAtomFeedDocument(Syndication::Atom::FeedDocument *)
 {
     return false;
 }
-        
-bool DocumentVisitor::visitAtomEntryDocument(Syndication::Atom::EntryDocument*)
-{ 
+
+bool DocumentVisitor::visitAtomEntryDocument(Syndication::Atom::EntryDocument *)
+{
     return false;
 }
 

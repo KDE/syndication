@@ -37,8 +37,10 @@
 
 #include <boost/enable_shared_from_this.hpp>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Model::ModelPrivate : public boost::enable_shared_from_this<Model::ModelPrivate>
 {
@@ -60,7 +62,6 @@ public:
 
     class AddToHashesVisitor;
 
-
     ModelPrivate() : id(idCounter++)
     {
         addToHashesVisitor = new AddToHashesVisitor(this);
@@ -72,16 +73,16 @@ public:
         delete addToHashesVisitor;
     }
 
-    bool operator==(const ModelPrivate& other) const
+    bool operator==(const ModelPrivate &other) const
     {
         return id == other.id;
     }
 
     class AddToHashesVisitor : public NodeVisitor
     {
-        public:
+    public:
 
-        AddToHashesVisitor(ModelPrivate* parent) : p(parent)
+        AddToHashesVisitor(ModelPrivate *parent) : p(parent)
         {}
 
         bool visitResource(ResourcePtr res)
@@ -111,18 +112,18 @@ public:
             return true;
         }
 
-        ModelPrivate* p;
+        ModelPrivate *p;
     };
 
-    AddToHashesVisitor* addToHashesVisitor;
+    AddToHashesVisitor *addToHashesVisitor;
 
-    bool resourceHasProperty(const Resource* resource,
+    bool resourceHasProperty(const Resource *resource,
                              PropertyPtr property) const;
 
-    StatementPtr resourceProperty(const Resource* resource,
+    StatementPtr resourceProperty(const Resource *resource,
                                   PropertyPtr property) const;
 
-    QList<StatementPtr> resourceProperties(const Resource* resource,
+    QList<StatementPtr> resourceProperties(const Resource *resource,
                                            PropertyPtr property) const;
 
     NodePtr nodeByID(uint id) const;
@@ -138,34 +139,34 @@ public:
         addToHashesVisitor->visit(node);
     }
 
-    void addToHashes(StatementPtr stmt, const QString& key)
+    void addToHashes(StatementPtr stmt, const QString &key)
     {
         statements[key] = stmt;
         stmtsBySubject[stmt->subject()->uri()].append(stmt);
     }
 
-    void removeFromHashes(const QString& key)
+    void removeFromHashes(const QString &key)
     {
         StatementPtr stmt = statements[key];
-        if (stmt)
+        if (stmt) {
             stmtsBySubject[stmt->subject()->uri()].removeAll(stmt);
+        }
         statements.remove(key);
 
     }
 
     void init()
     {
-        if (!initialized)
-        {
+        if (!initialized) {
             Model m;
             m.d = shared_from_this();
-            nullLiteral = LiteralPtr( new Literal() );
+            nullLiteral = LiteralPtr(new Literal());
             nullLiteral->setModel(m);
-            nullProperty = PropertyPtr( new Property() );
+            nullProperty = PropertyPtr(new Property());
             nullProperty->setModel(m);
-            nullResource = ResourcePtr( new Resource() );
+            nullResource = ResourcePtr(new Resource());
             nullResource->setModel(m);
-            nullStatement = StatementPtr( new Statement() );
+            nullStatement = StatementPtr(new Statement());
             initialized = true;
         }
     }

@@ -25,36 +25,37 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
-
+namespace Syndication
+{
+namespace RSS2
+{
 
 TextInput::TextInput() : ElementWrapper()
 {
 }
 
-TextInput::TextInput(const QDomElement& element) : ElementWrapper(element)
+TextInput::TextInput(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
 QString TextInput::title() const
 {
-    return extractElementTextNS(QString(), QLatin1String("title") );
+    return extractElementTextNS(QString(), QLatin1String("title"));
 }
 
 QString TextInput::name() const
 {
-    return extractElementTextNS(QString(), QLatin1String("name") );
+    return extractElementTextNS(QString(), QLatin1String("name"));
 }
 
 QString TextInput::description() const
 {
-    return extractElementTextNS(QString(), QLatin1String("description") );
+    return extractElementTextNS(QString(), QLatin1String("description"));
 }
 
 QString TextInput::link() const
 {
-    return extractElementTextNS(QString(), QLatin1String("link") );
+    return extractElementTextNS(QString(), QLatin1String("link"));
 
 }
 
@@ -62,14 +63,18 @@ QString TextInput::debugInfo() const
 {
     QString info;
     info += QLatin1String("### TextInput: ###################\n");
-    if (!title().isNull())
+    if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!link().isNull())
+    }
+    if (!link().isNull()) {
         info += QLatin1String("link: #") + link() + QLatin1String("#\n");
-    if (!description().isNull())
+    }
+    if (!description().isNull()) {
         info += QLatin1String("description: #") + description() + QLatin1String("#\n");
-    if (!name().isNull())
+    }
+    if (!name().isNull()) {
         info += QLatin1String("name: #") + name() + QLatin1String("#\n");
+    }
     info += QLatin1String("### TextInput end ################\n");
     return info;
 }

@@ -45,7 +45,8 @@
 #include <syndication/rdf/syndicationvocab.h>
 #include <syndication/rdf/textinput.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 /**
  * Syndication's parser for the RDF-based

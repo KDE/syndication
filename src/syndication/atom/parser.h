@@ -28,12 +28,14 @@
 class QString;
 template <class T, class U> class QHash;
 
-namespace Syndication {
+namespace Syndication
+{
 
 class SpecificDocument;
 class DocumentSource;
 
-namespace Atom {
+namespace Atom
+{
 
 /**
  * parser implementation for Atom 1.0 and 0.3.
@@ -42,44 +44,44 @@ namespace Atom {
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
-    public:
+public:
 
-        /** default constructor */
-        Parser();
+    /** default constructor */
+    Parser();
 
-        /** destructor */
-        virtual ~Parser();
+    /** destructor */
+    virtual ~Parser();
 
-        /**
-         * returns whether the source looks like an Atom 1.0 or 0.3
-         * document, by checking the root element.
-         * @param source document source to check
-         */
-        bool accept(const Syndication::DocumentSource& source) const;
+    /**
+     * returns whether the source looks like an Atom 1.0 or 0.3
+     * document, by checking the root element.
+     * @param source document source to check
+     */
+    bool accept(const Syndication::DocumentSource &source) const;
 
-        /**
-         * parses either an EntryDocument or a FeedDocument from a
-         * document source. If the source is not an atom document,
-         * an invalid FeedDocument is returned.
-         * @see SpecificDocument::isValid()
-         * @param source the document source to parse
-         */
-        Syndication::SpecificDocumentPtr parse(
-                const Syndication::DocumentSource& source) const;
+    /**
+     * parses either an EntryDocument or a FeedDocument from a
+     * document source. If the source is not an atom document,
+     * an invalid FeedDocument is returned.
+     * @see SpecificDocument::isValid()
+     * @param source the document source to parse
+     */
+    Syndication::SpecificDocumentPtr parse(
+        const Syndication::DocumentSource &source) const;
 
-        /**
-         * returns the format string for this parser implementation, which is
-         * @c "atom"
-         * @return @c "atom"
-         */
-        QString format() const;
+    /**
+     * returns the format string for this parser implementation, which is
+     * @c "atom"
+     * @return @c "atom"
+     */
+    QString format() const;
 
-    private:
+private:
 
-        Parser(const Parser& other);
-        Parser& operator=(const Parser& other);
-        class ParserPrivate;
-        ParserPrivate* const d;
+    Parser(const Parser &other);
+    Parser &operator=(const Parser &other);
+    class ParserPrivate;
+    ParserPrivate *const d;
 };
 
 } // namespace Atom

@@ -24,7 +24,8 @@
 
 #include <QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 Enclosure::~Enclosure()
 {
@@ -36,45 +37,40 @@ QString Enclosure::debugInfo() const
     info += QLatin1String("# Enclosure begin #################\n");
 
     QString durl = url();
-    
-    if (!durl.isNull())
-    {
+
+    if (!durl.isNull()) {
         info += QLatin1String("url: #") + durl + QLatin1String("#\n");
     }
-    
+
     QString dtitle = title();
-    
-    if (!dtitle.isNull())
-    {
+
+    if (!dtitle.isNull()) {
         info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     }
-    
+
     QString dtype = type();
-    
-    if (!dtype.isNull())
-    {
+
+    if (!dtype.isNull()) {
         info += QLatin1String("type: #") + dtype + QLatin1String("#\n");
     }
-    
+
     int dlength = length();
-    
-    if (dlength != 0)
-    {
+
+    if (dlength != 0) {
         info += QLatin1String("length: #") + QString::number(dlength) + QLatin1String("#\n");
     }
 
     uint dduration = duration();
-    
-    if (dduration != 0)
-    {
+
+    if (dduration != 0) {
         int hours = dduration / 3600;
-        int minutes = (dduration - hours*3600) / 60;
-        int seconds = dduration - hours*3600 - minutes*60;
+        int minutes = (dduration - hours * 3600) / 60;
+        int seconds = dduration - hours * 3600 - minutes * 60;
         info += QString::fromLatin1("duration: #%1 (%2:%3:%4)#\n").arg(dduration).arg(hours).arg(minutes).arg(seconds);
     }
-    
+
     info += QLatin1String("# Enclosure end ###################\n");
-    
+
     return info;
 }
 

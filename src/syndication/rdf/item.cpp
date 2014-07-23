@@ -33,12 +33,14 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Item::Private
 {
-    public:
+public:
     DocumentPtr doc;
 };
 
@@ -47,14 +49,14 @@ Item::Item() : ResourceWrapper(), d(new Private)
 }
 
 Item::Item(ResourcePtr resource, DocumentPtr doc) : ResourceWrapper(resource),
-                                                    d(new Private)
+    d(new Private)
 {
     d->doc = doc;
 }
 
-Item::Item(const Item& other) : ResourceWrapper(other), 
-                                SpecificItem(other),
-                                d(new Private)
+Item::Item(const Item &other) : ResourceWrapper(other),
+    SpecificItem(other),
+    d(new Private)
 {
     *d = *(other.d);
 }
@@ -64,38 +66,39 @@ Item::~Item()
     delete d;
 }
 
-Item& Item::operator=(const Item& other)
+Item &Item::operator=(const Item &other)
 {
     ResourceWrapper::operator=(other);
     *d = *(other.d);
     return *this;
 }
-        
-bool Item::operator==(const Item& other) const
+
+bool Item::operator==(const Item &other) const
 {
     return ResourceWrapper::operator==(other);
 }
-        
-        
+
 QString Item::title() const
 {
-    if (!d->doc)
+    if (!d->doc) {
         return originalTitle();
-    
+    }
+
     bool containsMarkup = false;
     d->doc->getItemTitleFormatInfo(&containsMarkup);
-    
+
     return normalize(originalTitle(), false, containsMarkup);
 }
 
 QString Item::description() const
 {
-    if (!d->doc)
+    if (!d->doc) {
         return originalDescription();
+    }
 
     bool containsMarkup = false;
     d->doc->getItemDescriptionFormatInfo(&containsMarkup);
-    
+
     return normalize(originalDescription(), false, containsMarkup);
 }
 
@@ -123,7 +126,7 @@ QString Item::originalDescription() const
 {
     return resource()->property(RSSVocab::self()->description())->asString();
 }
-        
+
 QString Item::debugInfo() const
 {
     QString info;
@@ -137,7 +140,7 @@ QString Item::debugInfo() const
     return info;
 }
 
-bool Item::accept(SpecificItemVisitor* visitor)
+bool Item::accept(SpecificItemVisitor *visitor)
 {
     return visitor->visitRDFItem(this);
 }

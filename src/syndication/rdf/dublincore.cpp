@@ -31,10 +31,10 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-namespace Syndication {
-namespace RDF {
-    
-
+namespace Syndication
+{
+namespace RDF
+{
 
 DublinCore::DublinCore(ResourcePtr resource) : ResourceWrapper(resource)
 {
@@ -55,11 +55,11 @@ QStringList DublinCore::contributors() const
     QList<StatementPtr> list = resource()->properties(DublinCoreVocab::self()->contributor());
     QList<StatementPtr>::ConstIterator it = list.constBegin();
     QList<StatementPtr>::ConstIterator end = list.constEnd();
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         QString str = (*it)->asString();
-        if (!str.isNull())
+        if (!str.isNull()) {
             res.append(str);
+        }
     }
     return res;
 }
@@ -80,11 +80,11 @@ QStringList DublinCore::creators() const
     QList<StatementPtr> list = resource()->properties(DublinCoreVocab::self()->creator());
     QList<StatementPtr>::ConstIterator it = list.constBegin();
     QList<StatementPtr>::ConstIterator end = list.constEnd();
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         QString str = (*it)->asString();
-        if (!str.isNull())
+        if (!str.isNull()) {
             res.append(str);
+        }
     }
     return res;
 }
@@ -93,7 +93,7 @@ time_t DublinCore::date() const
 {
     QString str =  resource()->property(DublinCoreVocab::self()->date())->asString();
     return parseDate(str, ISODate);
-    
+
 }
 
 QString DublinCore::description() const
@@ -147,11 +147,11 @@ QStringList DublinCore::subjects() const
     QList<StatementPtr> list = resource()->properties(DublinCoreVocab::self()->subject());
     QList<StatementPtr>::ConstIterator it = list.constBegin();
     QList<StatementPtr>::ConstIterator end = list.constEnd();
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         QString str = (*it)->asString();
-        if (!str.isNull())
+        if (!str.isNull()) {
             res.append(str);
+        }
     }
     return res;
 }
@@ -169,40 +169,54 @@ QString DublinCore::type() const
 QString DublinCore::debugInfo() const
 {
     QString info;
-    if (!contributor().isNull())
+    if (!contributor().isNull()) {
         info += QString::fromLatin1("dc:contributor: #%1#\n").arg(contributor());
-    if (!coverage().isNull())
+    }
+    if (!coverage().isNull()) {
         info += QString::fromLatin1("dc:coverage: #%1#\n").arg(coverage());
-    if (!creator().isNull())
+    }
+    if (!creator().isNull()) {
         info += QString::fromLatin1("dc:creator: #%1#\n").arg(creator());
-    
-    
+    }
+
     QString ddate = dateTimeToString(date());
-    if (!ddate.isNull())
+    if (!ddate.isNull()) {
         info += QString::fromLatin1("dc:date: #%1#\n").arg(ddate);
-    
-    if (!description().isNull())
+    }
+
+    if (!description().isNull()) {
         info += QString::fromLatin1("dc:description: #%1#\n").arg(description());
-    if (!format().isNull())
+    }
+    if (!format().isNull()) {
         info += QString::fromLatin1("dc:format: #%1#\n").arg(format());
-    if (!identifier().isNull())
+    }
+    if (!identifier().isNull()) {
         info += QString::fromLatin1("dc:identifier: #%1#\n").arg(identifier());
-    if (!language().isNull())
+    }
+    if (!language().isNull()) {
         info += QString::fromLatin1("dc:language: #%1#\n").arg(language());
-    if (!publisher().isNull())
+    }
+    if (!publisher().isNull()) {
         info += QString::fromLatin1("dc:publisher: #%1#\n").arg(publisher());
-    if (!relation().isNull())
+    }
+    if (!relation().isNull()) {
         info += QString::fromLatin1("dc:relation: #%1#\n").arg(relation());
-    if (!rights().isNull())
+    }
+    if (!rights().isNull()) {
         info += QString::fromLatin1("dc:rights: #%1#\n").arg(rights());
-    if (!source().isNull())
+    }
+    if (!source().isNull()) {
         info += QString::fromLatin1("dc:source: #%1#\n").arg(source());
-    if (!subject().isNull())
+    }
+    if (!subject().isNull()) {
         info += QString::fromLatin1("dc:subject: #%1#\n").arg(subject());
-    if (!title().isNull())
+    }
+    if (!title().isNull()) {
         info += QString::fromLatin1("dc:title: #%1#\n").arg(title());
-    if (!type().isNull())
+    }
+    if (!type().isNull()) {
         info += QString::fromLatin1("dc:type: #%1#\n").arg(type());
+    }
     return info;
 }
 

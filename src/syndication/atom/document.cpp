@@ -36,35 +36,35 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 FeedDocument::FeedDocument() : ElementWrapper()
 {
 }
 
-FeedDocument::FeedDocument(const QDomElement& element)  : ElementWrapper(element)
+FeedDocument::FeedDocument(const QDomElement &element)  : ElementWrapper(element)
 {
 }
 
-bool FeedDocument::accept(DocumentVisitor* visitor)
+bool FeedDocument::accept(DocumentVisitor *visitor)
 {
     return visitor->visitAtomFeedDocument(this);
 }
 
 QList<Person> FeedDocument::authors() const
 {
-    QList<QDomElement> a = 
-            elementsByTagNameNS(atom1Namespace(),
-                                QLatin1String("author"));
+    QList<QDomElement> a =
+        elementsByTagNameNS(atom1Namespace(),
+                            QLatin1String("author"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
-
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         list.append(Person(*it));
     }
 
@@ -73,17 +73,15 @@ QList<Person> FeedDocument::authors() const
 
 QList<Person> FeedDocument::contributors() const
 {
-    QList<QDomElement> a = 
-            elementsByTagNameNS(atom1Namespace(),
-                                QLatin1String("contributor"));
+    QList<QDomElement> a =
+        elementsByTagNameNS(atom1Namespace(),
+                            QLatin1String("contributor"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
-
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         list.append(Person(*it));
     }
 
@@ -92,17 +90,15 @@ QList<Person> FeedDocument::contributors() const
 
 QList<Category> FeedDocument::categories() const
 {
-    QList<QDomElement> a = 
-            elementsByTagNameNS(atom1Namespace(),
-                                QLatin1String("category"));
+    QList<QDomElement> a =
+        elementsByTagNameNS(atom1Namespace(),
+                            QLatin1String("category"));
     QList<Category> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
-
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         list.append(Category(*it));
     }
 
@@ -118,14 +114,14 @@ Generator FeedDocument::generator() const
 QString FeedDocument::icon() const
 {
     return completeURI(extractElementTextNS(atom1Namespace(),
-                       QLatin1String("icon")));
+                                            QLatin1String("icon")));
 
 }
 
 QString FeedDocument::logo() const
 {
     return completeURI(extractElementTextNS(atom1Namespace(),
-                       QLatin1String("logo")));
+                                            QLatin1String("logo")));
 }
 
 QString FeedDocument::id() const
@@ -159,17 +155,15 @@ time_t FeedDocument::updated() const
 
 QList<Link> FeedDocument::links() const
 {
-    QList<QDomElement> a = 
-            elementsByTagNameNS(atom1Namespace(),
-                                QLatin1String("link"));
+    QList<QDomElement> a =
+        elementsByTagNameNS(atom1Namespace(),
+                            QLatin1String("link"));
     QList<Link> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
-
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         list.append(Link(*it));
     }
 
@@ -178,18 +172,16 @@ QList<Link> FeedDocument::links() const
 
 QList<Entry> FeedDocument::entries() const
 {
-    QList<QDomElement> a = 
-            elementsByTagNameNS(atom1Namespace(),
-                                QLatin1String("entry"));
+    QList<QDomElement> a =
+        elementsByTagNameNS(atom1Namespace(),
+                            QLatin1String("entry"));
     QList<Entry> list;
 
     QList<Person> feedAuthors = authors();
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
 
-
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         Entry entry(*it);
         entry.setFeedAuthors(feedAuthors);
         list.append(entry);
@@ -215,20 +207,18 @@ QList<QDomElement> FeedDocument::unhandledElements() const
     handled.append(ElementType(QLatin1String("updated"), atom1Namespace()));
     handled.append(ElementType(QLatin1String("link"), atom1Namespace()));
     handled.append(ElementType(QLatin1String("entry"), atom1Namespace()));
-    
+
     QList<QDomElement> notHandled;
-    
+
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i)
-    {
+    for (int i = 0; i < children.size(); ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull() 
-             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
-        {
+        if (!el.isNull()
+                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
             notHandled.append(el);
         }
     }
-    
+
     return notHandled;
 }
 
@@ -241,56 +231,68 @@ QString FeedDocument::debugInfo() const
 {
     QString info;
     info += QLatin1String("### FeedDocument: ###################\n");
-    if (!title().isEmpty())
+    if (!title().isEmpty()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!subtitle().isEmpty())
+    }
+    if (!subtitle().isEmpty()) {
         info += QLatin1String("subtitle: #") + subtitle() + QLatin1String("#\n");
-    if (!id().isEmpty())
+    }
+    if (!id().isEmpty()) {
         info += QLatin1String("id: #") + id() + QLatin1String("#\n");
+    }
 
-    if (!rights().isEmpty())
+    if (!rights().isEmpty()) {
         info += QLatin1String("rights: #") + rights() + QLatin1String("#\n");
-    if (!icon().isEmpty())
+    }
+    if (!icon().isEmpty()) {
         info += QLatin1String("icon: #") + icon() + QLatin1String("#\n");
-    if (!logo().isEmpty())
+    }
+    if (!logo().isEmpty()) {
         info += QLatin1String("logo: #") + logo() + QLatin1String("#\n");
-    if (!generator().isNull())
+    }
+    if (!generator().isNull()) {
         info += generator().debugInfo();
-    
-    
+    }
+
     QString dupdated = dateTimeToString(updated());
-    if (!dupdated.isNull())
+    if (!dupdated.isNull()) {
         info += QLatin1String("updated: #") + dupdated + QLatin1String("#\n");
-    
+    }
+
     QList<Link> dlinks = links();
     QList<Link>::ConstIterator endlinks = dlinks.constEnd();
-    for (QList<Link>::ConstIterator it = dlinks.constBegin(); it != endlinks; ++it)
+    for (QList<Link>::ConstIterator it = dlinks.constBegin(); it != endlinks; ++it) {
         info += (*it).debugInfo();
-    
+    }
+
     QList<Category> dcats = categories();
     QList<Category>::ConstIterator endcats = dcats.constEnd();
-    for (QList<Category>::ConstIterator it = dcats.constBegin(); it != endcats; ++it)
+    for (QList<Category>::ConstIterator it = dcats.constBegin(); it != endcats; ++it) {
         info += (*it).debugInfo();
+    }
 
     info += QLatin1String("### Authors: ###################\n");
-    
+
     QList<Person> dauthors = authors();
     QList<Person>::ConstIterator endauthors = dauthors.constEnd();
-    for (QList<Person>::ConstIterator it = dauthors.constBegin(); it != endauthors; ++it)
+    for (QList<Person>::ConstIterator it = dauthors.constBegin(); it != endauthors; ++it) {
         info += (*it).debugInfo();
+    }
 
     info += QLatin1String("### Contributors: ###################\n");
-    
+
     QList<Person> dcontri = contributors();
     QList<Person>::ConstIterator endcontri = dcontri.constEnd();
-    for (QList<Person>::ConstIterator it = dcontri.constBegin(); it != endcontri; ++it)
+    for (QList<Person>::ConstIterator it = dcontri.constBegin(); it != endcontri; ++it) {
         info += (*it).debugInfo();
-    
+    }
+
     QList<Entry> dentries = entries();
     QList<Entry>::ConstIterator endentries = dentries.constEnd();
-    for (QList<Entry>::ConstIterator it = dentries.constBegin(); it != endentries; ++it)
+    for (QList<Entry>::ConstIterator it = dentries.constBegin(); it != endentries; ++it) {
         info += (*it).debugInfo();
-    
+    }
+
     info += QLatin1String("### FeedDocument end ################\n");
 
     return info;
@@ -300,11 +302,11 @@ EntryDocument::EntryDocument() : ElementWrapper()
 {
 }
 
-EntryDocument::EntryDocument(const QDomElement& element)  : ElementWrapper(element)
+EntryDocument::EntryDocument(const QDomElement &element)  : ElementWrapper(element)
 {
 }
 
-bool EntryDocument::accept(DocumentVisitor* visitor)
+bool EntryDocument::accept(DocumentVisitor *visitor)
 {
     return visitor->visitAtomEntryDocument(this);
 }
@@ -313,7 +315,6 @@ Entry EntryDocument::entry() const
 {
     return Entry(element());
 }
-
 
 bool EntryDocument::isValid() const
 {
@@ -324,11 +325,12 @@ QString EntryDocument::debugInfo() const
 {
     QString info;
     info += QLatin1String("### EntryDocument: ##################\n");
-    
+
     Entry dentry = entry();
-    if (!dentry.isNull())
+    if (!dentry.isNull()) {
         info += dentry.debugInfo();
-    
+    }
+
     info += QLatin1String("### EntryDocument end ###############\n");
     return info;
 }

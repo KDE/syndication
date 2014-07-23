@@ -28,11 +28,13 @@
 #include <QtXml/QDomElement>
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-namespace Atom {
+namespace Atom
+{
 
-QString extractAtomText(const Syndication::ElementWrapper& parent, const QString& tagname)
+QString extractAtomText(const Syndication::ElementWrapper &parent, const QString &tagname)
 {
     QString str;
 
@@ -42,20 +44,16 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
 
     QString type = el.attribute(QLatin1String("type"), QLatin1String("text"));
 
-    if (type == QLatin1String("text"))
-    {
+    if (type == QLatin1String("text")) {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
-        if (isCDATA)
+        if (isCDATA) {
             str = resolveEntities(str);
+        }
 
         str = escapeSpecialCharacters(str);
-    }
-    else if (type == QLatin1String("html"))
-    {
+    } else if (type == QLatin1String("html")) {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();
-    }
-    else if (type == QLatin1String("xhtml"))
-    {
+    } else if (type == QLatin1String("xhtml")) {
         str = ElementWrapper::childNodesAsXML(el).trimmed();
     }
 
@@ -64,5 +62,4 @@ QString extractAtomText(const Syndication::ElementWrapper& parent, const QString
 
 } // namespace Atom
 } // namespace Syndication
-
 

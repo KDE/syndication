@@ -40,88 +40,91 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Parser::ParserPrivate
 {
-    public:
-    QDomDocument addEnumeration(const QDomDocument& doc); 
+public:
+    QDomDocument addEnumeration(const QDomDocument &doc);
     void map09to10(Model model);
     void addSequenceFor09(Model model);
-    
+
     QString strInternalNs;
     QString strItemIndex;
 };
 
-bool Parser::accept(const DocumentSource& source) const
+bool Parser::accept(const DocumentSource &source) const
 {
     QDomDocument doc = source.asDomDocument();
-    
-    if (doc.isNull())
+
+    if (doc.isNull()) {
         return false;
+    }
     QDomElement root = doc.documentElement();
-    
-    if (!root.isElement())
+
+    if (!root.isElement()) {
         return false;
-    
+    }
+
     return root.namespaceURI() == RDFVocab::self()->namespaceURI();
 }
 
-SpecificDocumentPtr Parser::parse(const DocumentSource& source) const
+SpecificDocumentPtr Parser::parse(const DocumentSource &source) const
 {
     QDomDocument doc = source.asDomDocument();
-    
-    if (doc.isNull())
+
+    if (doc.isNull()) {
         return Syndication::SpecificDocumentPtr(new Document());
-    
+    }
+
     doc = d->addEnumeration(doc);
-    
+
     ModelMaker maker;
     Model model = maker.createFromXML(doc);
-    
+
     bool is09 = !model.resourcesWithType(RSS09Vocab::self()->channel()).isEmpty();
-    
-    if (is09)
-    {
+
+    if (is09) {
         d->map09to10(model);
         d->addSequenceFor09(model);
     }
-    
+
     QList<ResourcePtr> channels = model.resourcesWithType(RSSVocab::self()->channel());
-    
-    if (channels.isEmpty())
+
+    if (channels.isEmpty()) {
         return Syndication::SpecificDocumentPtr(new Document());
-  
+    }
+
     return DocumentPtr(new Document(*(channels.begin())));
 }
 
-QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument& docp)
+QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument &docp)
 {
     QDomDocument doc(docp);
-    
+
     QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(),
-            QLatin1String("item"));
-    
-    for (int i = 0; i < list.size(); ++i)
-    {
+                        QLatin1String("item"));
+
+    for (int i = 0; i < list.size(); ++i) {
         QDomElement item = list.item(i).toElement();
-        if (!item.isNull())
-        {
+        if (!item.isNull()) {
             QDomElement ie = doc.createElementNS(strInternalNs, strItemIndex);
             item.appendChild(ie);
             ie.appendChild(doc.createTextNode(QString::number(i)));
-            
+
         }
     }
-    
+
     return doc;
 }
 
 void Parser::ParserPrivate::map09to10(Model model)
 {
     QHash<QString, PropertyPtr> hash;
-    
+
     hash.insert(RSS09Vocab::self()->title()->uri(), RSSVocab::self()->title());
     hash.insert(RSS09Vocab::self()->description()->uri(), RSSVocab::self()->description());
     hash.insert(RSS09Vocab::self()->link()->uri(), RSSVocab::self()->link());
@@ -129,34 +132,31 @@ void Parser::ParserPrivate::map09to10(Model model)
     hash.insert(RSS09Vocab::self()->url()->uri(), RSSVocab::self()->url());
     hash.insert(RSS09Vocab::self()->image()->uri(), RSSVocab::self()->image());
     hash.insert(RSS09Vocab::self()->textinput()->uri(), RSSVocab::self()->textinput());
-    
+
     QStringList uris09 = RSS09Vocab::self()->properties();
-    
+
     // map statement predicates to RSS 1.0
-    
+
     QList<StatementPtr> statements = model.statements();
     QList<StatementPtr>::ConstIterator it = statements.constBegin();
     QList<StatementPtr>::ConstIterator end = statements.constEnd();
-    
-    for ( ; it != end; ++it)
-    {
+
+    for (; it != end; ++it) {
         StatementPtr stmt = *it;
-        
+
         QString predUri = stmt->predicate()->uri();
-        if (uris09.contains(predUri))
-        {
+        if (uris09.contains(predUri)) {
             model.addStatement(stmt->subject(), hash[predUri], stmt->object());
         }
     }
     // map channel type
     QList<ResourcePtr> channels = model.resourcesWithType(RSS09Vocab::self()->channel());
-    
+
     ResourcePtr channel;
-    
-    if (!channels.isEmpty())
-    {
+
+    if (!channels.isEmpty()) {
         channel = *(channels.begin());
-        
+
         model.removeStatement(channel, RDFVocab::self()->type(), RSS09Vocab::self()->channel());
         model.addStatement(channel, RDFVocab::self()->type(), RSSVocab::self()->channel());
     }
@@ -167,36 +167,35 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     //RDF 0.9 doesn't contain an item sequence, and the items don't have rdf:about, so add both
 
     const QList<ResourcePtr> items = model.resourcesWithType(RSS09Vocab::self()->item());
-    
-    if (items.isEmpty())
+
+    if (items.isEmpty()) {
         return;
-    
+    }
+
     const QList<ResourcePtr> channels = model.resourcesWithType(RSSVocab::self()->channel());
-    
-    if (channels.isEmpty())
+
+    if (channels.isEmpty()) {
         return;
-    
+    }
+
     PropertyPtr itemIndex = model.createProperty(strInternalNs + strItemIndex);
-    
-    // use QMap here, not QHash. as we need the sorting functionality 
+
+    // use QMap here, not QHash. as we need the sorting functionality
     QMap<uint, ResourcePtr> sorted;
-    
-    foreach (const ResourcePtr &i, items)
-    {
+
+    foreach (const ResourcePtr &i, items) {
         QString numstr = i->property(itemIndex)->asString();
         bool ok = false;
         uint num = numstr.toUInt(&ok);
-        if (ok)
-        {
+        if (ok) {
             sorted[num] = i;
         }
     }
-    
+
     SequencePtr seq = model.createSequence();
     model.addStatement(channels.first(), RSSVocab::self()->items(), seq);
-        
-    foreach (const ResourcePtr &i, sorted)
-    {
+
+    foreach (const ResourcePtr &i, sorted) {
         seq->append(i);
         // add rdf:about (type)
         model.addStatement(i, RDFVocab::self()->type(), RSSVocab::self()->item());
@@ -212,19 +211,21 @@ Parser::Parser() : d(new ParserPrivate)
     d->strItemIndex = QLatin1String("itemIndex");
 }
 
-Parser::~Parser() 
+Parser::~Parser()
 {
     delete d;
 }
 
-Parser::Parser(const Parser& other) : AbstractParser(other), d(0) {}
-Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
-       
+Parser::Parser(const Parser &other) : AbstractParser(other), d(0) {}
+Parser &Parser::operator=(const Parser & /*other*/)
+{
+    return *this;
+}
+
 QString Parser::format() const
 {
     return QLatin1String("rdf");
 }
 
-        
 } // namespace RDF
 } // namespace Syndication

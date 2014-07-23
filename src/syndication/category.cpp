@@ -24,7 +24,8 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 Category::~Category()
 {
@@ -36,26 +37,23 @@ QString Category::debugInfo() const
     info += QLatin1String("# Category begin ##################\n");
 
     QString dterm = term();
-    
-    if (!dterm.isNull())
-    {
+
+    if (!dterm.isNull()) {
         info += QLatin1String("term: #") + dterm + QLatin1String("#\n");
     }
-    
+
     QString dscheme = scheme();
-    
-    if (!dscheme.isNull())
-    {
+
+    if (!dscheme.isNull()) {
         info += QLatin1String("scheme: #") + dscheme + QLatin1String("#\n");
     }
-    
+
     QString dlabel = label();
-    
-    if (!dlabel.isNull())
-    {
+
+    if (!dlabel.isNull()) {
         info += QLatin1String("label: #") + dlabel + QLatin1String("#\n");
     }
-    
+
     info += QLatin1String("# Category end ####################\n");
 
     return info;

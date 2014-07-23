@@ -27,13 +27,14 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-namespace Syndication {
+namespace Syndication
+{
 
-EnclosureRSS2Impl::EnclosureRSS2Impl(const Syndication::RSS2::Item& item,
-                                     const Syndication::RSS2::Enclosure& enc)
+EnclosureRSS2Impl::EnclosureRSS2Impl(const Syndication::RSS2::Item &item,
+                                     const Syndication::RSS2::Enclosure &enc)
     : m_item(item), m_enclosure(enc)
 {}
-        
+
 bool EnclosureRSS2Impl::isNull() const
 {
     return m_enclosure.isNull();
@@ -63,40 +64,34 @@ uint EnclosureRSS2Impl::length() const
 uint EnclosureRSS2Impl::duration() const
 {
     QString durStr = m_item.extractElementTextNS(itunesNamespace(), QLatin1String("duration"));
-    
-    if (durStr.isEmpty())
+
+    if (durStr.isEmpty()) {
         return 0;
-    
+    }
+
     QStringList strTokens = durStr.split(QLatin1String(":"));
     QList<int> intTokens;
-    
+
     int count = strTokens.count();
     bool ok;
-    
-    for (int i = 0; i < count; ++i)
-    {
+
+    for (int i = 0; i < count; ++i) {
         int intVal = strTokens.at(i).toInt(&ok);
-        if (ok)
-        {
+        if (ok) {
             intTokens.append(intVal >= 0 ? intVal : 0); // do not accept negative values
-        }
-        else
+        } else {
             return 0;
+        }
     }
-    
-    if (count == 3)
-    {
+
+    if (count == 3) {
         return intTokens.at(0) * 3600 + intTokens.at(1) * 60 + intTokens.at(2);
-    }
-    else if (count == 2)
-    {
+    } else if (count == 2) {
         return intTokens.at(0) * 60 + intTokens.at(1);
-    }
-    else if (count == 1)
-    {
+    } else if (count == 1) {
         return intTokens.at(0);
     }
-    
+
     return 0;
 }
 

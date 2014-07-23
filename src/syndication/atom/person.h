@@ -28,8 +28,10 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 /**
  * describes a person, with name and optional URI and e-mail address.
@@ -39,50 +41,50 @@ namespace Atom {
  */
 class SYNDICATION_EXPORT Person : public ElementWrapper
 {
-    public:
+public:
 
-        /**
-         * creates a null person object
-         */
-       Person();
+    /**
+     * creates a null person object
+     */
+    Person();
 
-       /**
-        * creates a Person object wrapping an Atom Person Construct (atom:author,
-        * atom:contributor tags)
-        * @param element a DOM element, should be a Atom Person Construct
-        * (although not enforced), otherwise this object will not parse
-        * anything useful
-        */
-       explicit Person(const QDomElement& element);
+    /**
+     * creates a Person object wrapping an Atom Person Construct (atom:author,
+     * atom:contributor tags)
+     * @param element a DOM element, should be a Atom Person Construct
+     * (although not enforced), otherwise this object will not parse
+     * anything useful
+     */
+    explicit Person(const QDomElement &element);
 
-       /**
-        * a human-readable name for the person. (required)
-        * The name is a required  attribute of person constructs.
-        *
-        * @return a human-readable name of the person
-        */
-        QString name() const;
+    /**
+     * a human-readable name for the person. (required)
+     * The name is a required  attribute of person constructs.
+     *
+     * @return a human-readable name of the person
+     */
+    QString name() const;
 
-        /**
-         * A URI associated with the person (optional). Usually the homepage.
-         *
-         * @return the URI of the person, or a null string if not specified
-         */
-        QString uri() const;
+    /**
+     * A URI associated with the person (optional). Usually the homepage.
+     *
+     * @return the URI of the person, or a null string if not specified
+     */
+    QString uri() const;
 
-        /**
-         * returns an e-mail address associated with the person. (optional)
-         *
-         * @return an e-mail address, or a null string if not specified
-         */
-        QString email() const;
+    /**
+     * returns an e-mail address associated with the person. (optional)
+     *
+     * @return an e-mail address, or a null string if not specified
+     */
+    QString email() const;
 
-        /**
-         * description for debugging purposes
-         *
-         * @return debug string
-         */
-        QString debugInfo() const;
+    /**
+     * description for debugging purposes
+     *
+     * @return debug string
+     */
+    QString debugInfo() const;
 };
 
 } // namespace Atom

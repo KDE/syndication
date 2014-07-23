@@ -27,8 +27,9 @@
 #include <image.h>
 #include <rdf/image.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class ImageRDFImpl;
 typedef boost::shared_ptr<ImageRDFImpl> ImageRDFImplPtr;
 
@@ -39,28 +40,28 @@ typedef boost::shared_ptr<ImageRDFImpl> ImageRDFImplPtr;
  */
 class ImageRDFImpl : public Syndication::Image
 {
-    public:
+public:
 
-        explicit ImageRDFImpl(const Syndication::RDF::Image& image);
-        
-        bool isNull() const;
-        
-        QString url() const;
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        uint width() const;
-        
-        uint height() const;
-        
-    private:
-        Syndication::RDF::Image m_image;
+    explicit ImageRDFImpl(const Syndication::RDF::Image &image);
+
+    bool isNull() const;
+
+    QString url() const;
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    uint width() const;
+
+    uint height() const;
+
+private:
+    Syndication::RDF::Image m_image;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_IMAGERDFIMPL_H

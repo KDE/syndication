@@ -36,18 +36,20 @@
 #include <QtCore/QSet>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 class Document::DocumentPrivate
 {
-    public:
+public:
     DocumentPrivate() : itemDescriptionIsCDATA(false),
-                        itemDescriptionContainsMarkup(false),
-                        itemDescGuessed(false),
-                        itemTitleIsCDATA(false),
-                        itemTitleContainsMarkup(false),
-                        itemTitlesGuessed(false)
+        itemDescriptionContainsMarkup(false),
+        itemDescGuessed(false),
+        itemTitleIsCDATA(false),
+        itemTitleContainsMarkup(false),
+        itemTitlesGuessed(false)
     {}
     mutable bool itemDescriptionIsCDATA;
     mutable bool itemDescriptionContainsMarkup;
@@ -57,13 +59,13 @@ class Document::DocumentPrivate
     mutable bool itemTitlesGuessed;
 };
 
-Document::Document(const QDomElement& element) : SpecificDocument(),
-                                                 ElementWrapper(element),
-                                                 d(new DocumentPrivate)
+Document::Document(const QDomElement &element) : SpecificDocument(),
+    ElementWrapper(element),
+    d(new DocumentPrivate)
 {
 }
 
-Document Document::fromXML(const QDomDocument& doc)
+Document Document::fromXML(const QDomDocument &doc)
 {
     QDomNode channelNode = doc.namedItem(QLatin1String("rss")).namedItem(QLatin1String("channel"));
 
@@ -74,7 +76,7 @@ Document::Document() : SpecificDocument(), ElementWrapper(), d(new DocumentPriva
 {
 }
 
-Document::Document(const Document& other) : SpecificDocument(other), ElementWrapper(other)
+Document::Document(const Document &other) : SpecificDocument(other), ElementWrapper(other)
 {
     d = other.d;
 }
@@ -83,7 +85,7 @@ Document::~Document()
 {
 }
 
-Document& Document::operator=(const Document& other)
+Document &Document::operator=(const Document &other)
 {
     ElementWrapper::operator=(other);
     d = other.d;
@@ -101,7 +103,7 @@ QString Document::title() const
 
 QString Document::link() const
 {
-    return extractElementTextNS(QString(), QLatin1String("link") );
+    return extractElementTextNS(QString(), QLatin1String("link"));
 }
 
 QString Document::description() const
@@ -115,14 +117,11 @@ QString Document::language() const
     QString lang = extractElementTextNS(QString(),
                                         QLatin1String("language"));
 
-    if (!lang.isNull())
-    {
+    if (!lang.isNull()) {
         return lang;
-    }
-    else
-    {
+    } else {
         return extractElementTextNS(
-            dublinCoreNamespace(), QLatin1String("language"));
+                   dublinCoreNamespace(), QLatin1String("language"));
     }
 
 }
@@ -131,12 +130,9 @@ QString Document::copyright() const
 {
     QString rights = extractElementTextNS(QString(),
                                           QLatin1String("copyright"));
-    if (!rights.isNull())
-    {
+    if (!rights.isNull()) {
         return rights;
-    }
-    else
-    {
+    } else {
         // if <copyright> is not provided, use <dc:rights>
         return extractElementTextNS(dublinCoreNamespace(),
                                     QLatin1String("rights"));
@@ -157,12 +153,10 @@ time_t Document::pubDate() const
 {
     QString str = extractElementTextNS(QString(), QLatin1String("pubDate"));
 
-    if (!str.isNull())
-    {
+    if (!str.isNull()) {
         return parseDate(str, RFCDate);
-    }
-    else
-    {   // if there is no pubDate, check for dc:date
+    } else {
+        // if there is no pubDate, check for dc:date
         str = extractElementTextNS(dublinCoreNamespace(), QLatin1String("date"));
         return parseDate(str, ISODate);
     }
@@ -180,10 +174,9 @@ QList<Category> Document::categories() const
     QList<Category> categories;
 
     QList<QDomElement> catNodes = elementsByTagNameNS(QString(),
-            QLatin1String("category"));
+                                  QLatin1String("category"));
     QList<QDomElement>::ConstIterator it = catNodes.constBegin();
-    for ( ; it != catNodes.constEnd(); ++it)
-    {
+    for (; it != catNodes.constEnd(); ++it) {
         categories.append(Category(*it));
     }
 
@@ -224,8 +217,9 @@ TextInput Document::textInput() const
 {
     TextInput ti = TextInput(firstElementByTagNameNS(QString(), QLatin1String("textInput")));
 
-    if (!ti.isNull())
+    if (!ti.isNull()) {
         return ti;
+    }
 
     // Netscape's version of RSS 0.91 has textinput, not textInput
     return TextInput(firstElementByTagNameNS(QString(), QLatin1String("textinput")));
@@ -235,20 +229,19 @@ QSet<int> Document::skipHours() const
 {
     QSet<int> skipHours;
     QDomElement skipHoursNode = firstElementByTagNameNS(QString(),
-            QLatin1String("skipHours"));
-    if (!skipHoursNode.isNull())
-    {
+                                QLatin1String("skipHours"));
+    if (!skipHoursNode.isNull()) {
         ElementWrapper skipHoursWrapper(skipHoursNode);
         bool ok = false;
         QList<QDomElement> hours =
-                skipHoursWrapper.elementsByTagNameNS(QString(),
-                QLatin1String("hour"));
+            skipHoursWrapper.elementsByTagNameNS(QString(),
+                    QLatin1String("hour"));
         QList<QDomElement>::ConstIterator it = hours.constBegin();
-        for ( ; it != hours.constEnd(); ++it)
-        {
+        for (; it != hours.constEnd(); ++it) {
             int h = (*it).text().toInt(&ok);
-            if (ok)
+            if (ok) {
                 skipHours.insert(h);
+            }
         }
     }
 
@@ -259,8 +252,7 @@ QSet<Document::DayOfWeek> Document::skipDays() const
 {
     QSet<DayOfWeek> skipDays;
     QDomElement skipDaysNode = firstElementByTagNameNS(QString(), QLatin1String("skipDays"));
-    if (!skipDaysNode.isNull())
-    {
+    if (!skipDaysNode.isNull()) {
         ElementWrapper skipDaysWrapper(skipDaysNode);
         QHash<QString, DayOfWeek> weekDays;
 
@@ -273,10 +265,10 @@ QSet<Document::DayOfWeek> Document::skipDays() const
         weekDays[QLatin1String("Sunday")] = Sunday;
 
         QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QLatin1String("day"));
-        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != days.constEnd(); ++it)
-        {
-            if (weekDays.contains((*it).text()))
+        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != days.constEnd(); ++it) {
+            if (weekDays.contains((*it).text())) {
                 skipDays.insert(weekDays[(*it).text()]);
+            }
         }
     }
 
@@ -291,8 +283,7 @@ QList<Item> Document::items() const
 
     DocumentPtr doccpy(new Document(*this));
 
-    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it)
-    {
+    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it) {
         items.append(Item(*it, doccpy));
     }
 
@@ -328,12 +319,10 @@ QList<QDomElement> Document::unhandledElements() const
     QList<QDomElement> notHandled;
 
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i)
-    {
+    for (int i = 0; i < children.size(); ++i) {
         QDomElement el = children.at(i).toElement();
         if (!el.isNull()
-             && !handled.contains(ElementType(el.localName(), el.namespaceURI())))
-        {
+                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
             notHandled.append(el);
         }
     }
@@ -345,56 +334,68 @@ QString Document::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Document: ###################\n");
-    if (!title().isNull())
+    if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!description().isNull())
+    }
+    if (!description().isNull()) {
         info += QLatin1String("description: #") + description() + QLatin1String("#\n");
-    if (!link().isNull())
+    }
+    if (!link().isNull()) {
         info += QLatin1String("link: #") + link() + QLatin1String("#\n");
-    if (!language().isNull())
+    }
+    if (!language().isNull()) {
         info += QLatin1String("language: #") + language() + QLatin1String("#\n");
-    if (!copyright().isNull())
+    }
+    if (!copyright().isNull()) {
         info += QLatin1String("copyright: #") + copyright() + QLatin1String("#\n");
-    if (!managingEditor().isNull())
+    }
+    if (!managingEditor().isNull()) {
         info += QLatin1String("managingEditor: #") + managingEditor() + QLatin1String("#\n");
-    if (!webMaster().isNull())
+    }
+    if (!webMaster().isNull()) {
         info += QLatin1String("webMaster: #") + webMaster() + QLatin1String("#\n");
+    }
 
     QString dpubdate = dateTimeToString(pubDate());
-    if (!dpubdate.isNull())
+    if (!dpubdate.isNull()) {
         info += QLatin1String("pubDate: #") + dpubdate + QLatin1String("#\n");
+    }
 
     QString dlastbuilddate = dateTimeToString(lastBuildDate());
-    if (!dlastbuilddate.isNull())
+    if (!dlastbuilddate.isNull()) {
         info += QLatin1String("lastBuildDate: #") + dlastbuilddate + QLatin1String("#\n");
+    }
 
-    if (!textInput().isNull())
+    if (!textInput().isNull()) {
         info += textInput().debugInfo();
-    if (!cloud().isNull())
+    }
+    if (!cloud().isNull()) {
         info += cloud().debugInfo();
-    if (!image().isNull())
+    }
+    if (!image().isNull()) {
         info += image().debugInfo();
+    }
 
     QList<Category> cats = categories();
 
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it)
+    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it) {
         info += (*it).debugInfo();
+    }
     QList<Item> litems = items();
-    for (QList<Item>::ConstIterator it = litems.constBegin(); it != litems.constEnd(); ++it)
+    for (QList<Item>::ConstIterator it = litems.constBegin(); it != litems.constEnd(); ++it) {
         info += (*it).debugInfo();
+    }
     info += QLatin1String("### Document end ################\n");
     return info;
 }
 
-void Document::getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const
+void Document::getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const
 {
-    if (!d->itemTitlesGuessed)
-    {
+    if (!d->itemTitlesGuessed) {
         QString titles;
         QList<Item> litems = items();
 
-        if (litems.isEmpty())
-        {
+        if (litems.isEmpty()) {
             d->itemTitlesGuessed = true;
             return;
         }
@@ -407,8 +408,7 @@ void Document::getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const
 
         QList<Item>::ConstIterator it = litems.constBegin();
 
-        while (i < nmax)
-        {
+        while (i < nmax) {
             titles += (*it).originalTitle();
             ++it;
             ++i;
@@ -418,22 +418,21 @@ void Document::getItemTitleFormatInfo(bool* isCDATA, bool* containsMarkup) const
         d->itemTitlesGuessed = true;
     }
 
-    if (isCDATA != 0L)
+    if (isCDATA != 0L) {
         *isCDATA = d->itemTitleIsCDATA;
-    if (containsMarkup != 0L)
+    }
+    if (containsMarkup != 0L) {
         *containsMarkup = d->itemTitleContainsMarkup;
+    }
 }
 
-void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup) const
+void Document::getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup) const
 {
-    if (!d->itemDescGuessed)
-    {
+    if (!d->itemDescGuessed) {
         QString desc;
         QList<Item> litems = items();
 
-
-        if (litems.isEmpty())
-        {
+        if (litems.isEmpty()) {
             d->itemDescGuessed = true;
             return;
         }
@@ -446,8 +445,7 @@ void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup)
 
         QList<Item>::ConstIterator it = litems.constBegin();
 
-        while (i < nmax)
-        {
+        while (i < nmax) {
             desc += (*it).originalDescription();
             ++it;
             ++i;
@@ -457,13 +455,15 @@ void Document::getItemDescriptionFormatInfo(bool* isCDATA, bool* containsMarkup)
         d->itemDescGuessed = true;
     }
 
-    if (isCDATA != 0L)
+    if (isCDATA != 0L) {
         *isCDATA = d->itemDescriptionIsCDATA;
-    if (containsMarkup != 0L)
+    }
+    if (containsMarkup != 0L) {
         *containsMarkup = d->itemDescriptionContainsMarkup;
+    }
 }
 
-bool Document::accept(DocumentVisitor* visitor)
+bool Document::accept(DocumentVisitor *visitor)
 {
     return visitor->visitRSS2Document(this);
 }

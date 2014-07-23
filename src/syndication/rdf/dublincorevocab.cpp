@@ -26,13 +26,15 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class DublinCoreVocab::DublinCoreVocabPrivate
 {
-    public:
-        
+public:
+
     QString namespaceURI;
     PropertyPtr contributor;
     PropertyPtr coverage;
@@ -62,25 +64,25 @@ DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = 0;
 DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 {
     QString ns = QLatin1String("http://purl.org/dc/elements/1.1/");
-    
+
     d->namespaceURI = ns;
-    
-    d->contributor = PropertyPtr( new Property(ns + QLatin1String("contributor")) );
-    d->coverage = PropertyPtr( new Property(ns + QLatin1String("coverage")) );
-    d->creator = PropertyPtr( new Property(ns + QLatin1String("creator")) );
-    d->date = PropertyPtr( new Property(ns + QLatin1String("date")) );
-    d->description = PropertyPtr( new Property(ns + QLatin1String("description")) );
-    d->format = PropertyPtr( new Property(ns + QLatin1String("format")) );
-    d->identifier = PropertyPtr( new Property(ns + QLatin1String("identifier")) );
-    d->language = PropertyPtr( new Property(ns + QLatin1String("language")) );
-    d->publisher = PropertyPtr( new Property(ns + QLatin1String("publisher")) );
-    d->relation = PropertyPtr( new Property(ns + QLatin1String("relation")) );
-    d->rights = PropertyPtr( new Property(ns + QLatin1String("rights")) );
-    d->source = PropertyPtr( new Property(ns + QLatin1String("source")) );
-    d->subject = PropertyPtr( new Property(ns + QLatin1String("subject")) );
-    d->title = PropertyPtr( new Property(ns + QLatin1String("title")) );
-    d->type = PropertyPtr( new Property(ns + QLatin1String("type")) );
-    
+
+    d->contributor = PropertyPtr(new Property(ns + QLatin1String("contributor")));
+    d->coverage = PropertyPtr(new Property(ns + QLatin1String("coverage")));
+    d->creator = PropertyPtr(new Property(ns + QLatin1String("creator")));
+    d->date = PropertyPtr(new Property(ns + QLatin1String("date")));
+    d->description = PropertyPtr(new Property(ns + QLatin1String("description")));
+    d->format = PropertyPtr(new Property(ns + QLatin1String("format")));
+    d->identifier = PropertyPtr(new Property(ns + QLatin1String("identifier")));
+    d->language = PropertyPtr(new Property(ns + QLatin1String("language")));
+    d->publisher = PropertyPtr(new Property(ns + QLatin1String("publisher")));
+    d->relation = PropertyPtr(new Property(ns + QLatin1String("relation")));
+    d->rights = PropertyPtr(new Property(ns + QLatin1String("rights")));
+    d->source = PropertyPtr(new Property(ns + QLatin1String("source")));
+    d->subject = PropertyPtr(new Property(ns + QLatin1String("subject")));
+    d->title = PropertyPtr(new Property(ns + QLatin1String("title")));
+    d->type = PropertyPtr(new Property(ns + QLatin1String("type")));
+
 }
 
 DublinCoreVocab::~DublinCoreVocab()
@@ -88,17 +90,17 @@ DublinCoreVocab::~DublinCoreVocab()
     delete d;
 }
 
-DublinCoreVocab* DublinCoreVocab::self()
+DublinCoreVocab *DublinCoreVocab::self()
 {
     static DublinCoreVocabPrivate p;
-    if(!p.sSelf) {
+    if (!p.sSelf) {
         p.sSelf = new DublinCoreVocab;
         qAddPostRoutine(DublinCoreVocabPrivate::cleanupDublinCoreVocab);
     }
     return p.sSelf;
 }
-        
-const QString& DublinCoreVocab::namespaceURI() const
+
+const QString &DublinCoreVocab::namespaceURI() const
 {
     return d->namespaceURI;
 }

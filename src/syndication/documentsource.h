@@ -31,7 +31,8 @@
 class QByteArray;
 class QDomDocument;
 
-namespace Syndication {
+namespace Syndication
+{
 
 /**
  * Represents the source of a syndication document, as read from the
@@ -49,92 +50,92 @@ namespace Syndication {
  */
 class SYNDICATION_EXPORT DocumentSource
 {
-    public:
+public:
 
-        /**
-         * Creates an empty document source. The raw representation is empty and
-         * the DOM representation will be invalid.
-         */
-        DocumentSource();
+    /**
+     * Creates an empty document source. The raw representation is empty and
+     * the DOM representation will be invalid.
+     */
+    DocumentSource();
 
-        /**
-         * Creates a DocumentSource object from a raw byte array
-         *
-         * @param source the raw source (of the downloaded feed file usually)
-         * @param url the URL/path the source was read from
-         */
-        DocumentSource(const QByteArray& source, const QString& url);
+    /**
+     * Creates a DocumentSource object from a raw byte array
+     *
+     * @param source the raw source (of the downloaded feed file usually)
+     * @param url the URL/path the source was read from
+     */
+    DocumentSource(const QByteArray &source, const QString &url);
 
-        /**
-         * Copy constructor. The d pointer is shared, so this is a cheap
-         * operation.
-         *
-         * @param other DocumentSource to copy
-         */
-        DocumentSource(const DocumentSource& other);
+    /**
+     * Copy constructor. The d pointer is shared, so this is a cheap
+     * operation.
+     *
+     * @param other DocumentSource to copy
+     */
+    DocumentSource(const DocumentSource &other);
 
-        /**
-         * destructor
-         */
-        ~DocumentSource();
+    /**
+     * destructor
+     */
+    ~DocumentSource();
 
-        /**
-         * Assignment operator. The d pointer is shared, so this is a cheap
-         * operation.
-         *
-         * @param other DocumentSource to assign to this instance
-         * @return reference to this instance
-         */
-        DocumentSource& operator=(const DocumentSource& other);
+    /**
+     * Assignment operator. The d pointer is shared, so this is a cheap
+     * operation.
+     *
+     * @param other DocumentSource to assign to this instance
+     * @return reference to this instance
+     */
+    DocumentSource &operator=(const DocumentSource &other);
 
-        /**
-         * Returns the feed source as byte array.
-         *
-         * @return the feed source as raw byte array.
-         */
-        QByteArray asByteArray() const;
+    /**
+     * Returns the feed source as byte array.
+     *
+     * @return the feed source as raw byte array.
+     */
+    QByteArray asByteArray() const;
 
-        /**
-         * returns the size the source array in bytes.
-         *
-         * @return the size of the byte array in bytes.
-         * See also QByteArray::size()
-         */
-        unsigned int size() const;
+    /**
+     * returns the size the source array in bytes.
+     *
+     * @return the size of the byte array in bytes.
+     * See also QByteArray::size()
+     */
+    unsigned int size() const;
 
-        /**
-         * calculates a hash value for the source array.
-         * This can be used to decide whether the feed has changed since
-         * the last fetch. If the hash hasn't changed since the last fetch,
-         * the feed wasn't modified with high probability.
-         *
-         * @return the hash calculated from the source, 0 if the
-         * source is empty
-         */
-        unsigned int hash() const;
+    /**
+     * calculates a hash value for the source array.
+     * This can be used to decide whether the feed has changed since
+     * the last fetch. If the hash hasn't changed since the last fetch,
+     * the feed wasn't modified with high probability.
+     *
+     * @return the hash calculated from the source, 0 if the
+     * source is empty
+     */
+    unsigned int hash() const;
 
-        /**
-         * Returns the feed source as DOM document.
-         * The document is parsed only on the first call of this method
-         * and then cached.
-         *
-         * If the feed source cannot be parsed successfully then the
-         * returned DOM node will be null (eg. asDomDocument().isNull()
-         * will return true)
-         *
-         * @return XML representation parsed from the raw source
-         */
-        QDomDocument asDomDocument() const;
+    /**
+     * Returns the feed source as DOM document.
+     * The document is parsed only on the first call of this method
+     * and then cached.
+     *
+     * If the feed source cannot be parsed successfully then the
+     * returned DOM node will be null (eg. asDomDocument().isNull()
+     * will return true)
+     *
+     * @return XML representation parsed from the raw source
+     */
+    QDomDocument asDomDocument() const;
 
-        /**
-         * returns the URL the document source was loaded from
-         */
-        QString url() const;
+    /**
+     * returns the URL the document source was loaded from
+     */
+    QString url() const;
 
-    private:
+private:
 
-        class DocumentSourcePrivate;
-        boost::shared_ptr<DocumentSourcePrivate> d;
+    class DocumentSourcePrivate;
+    boost::shared_ptr<DocumentSourcePrivate> d;
 };
 
 } // namespace Syndication

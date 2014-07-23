@@ -22,7 +22,8 @@
 
 #include "abstractparser.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 AbstractParser::~AbstractParser()
 {

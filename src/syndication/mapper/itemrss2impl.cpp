@@ -36,9 +36,10 @@
 #include <QtCore/QMultiMap>
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-ItemRSS2Impl::ItemRSS2Impl(const Syndication::RSS2::Item& item) : m_item(item)
+ItemRSS2Impl::ItemRSS2Impl(const Syndication::RSS2::Item &item) : m_item(item)
 {
 }
 
@@ -50,14 +51,16 @@ QString ItemRSS2Impl::title() const
 QString ItemRSS2Impl::link() const
 {
     QString link = m_item.link();
-    if (!link.isEmpty())
+    if (!link.isEmpty()) {
         return link;
+    }
 
     QString guid = m_item.guid();
-    if (m_item.guidIsPermaLink())
+    if (m_item.guidIsPermaLink()) {
         return guid;
+    }
 
-   return QString();
+    return QString();
 }
 
 QString ItemRSS2Impl::description() const
@@ -76,8 +79,7 @@ QList<PersonPtr> ItemRSS2Impl::authors() const
 
     PersonPtr ptr = personFromString(m_item.author());
 
-    if (!ptr->isNull())
-    {
+    if (!ptr->isNull()) {
         list.append(ptr);
     }
 
@@ -92,8 +94,9 @@ QString ItemRSS2Impl::language() const
 QString ItemRSS2Impl::id() const
 {
     QString guid = m_item.guid();
-    if (!guid.isEmpty())
+    if (!guid.isEmpty()) {
         return guid;
+    }
 
     return QString::fromLatin1("hash:%1").arg(calcMD5Sum(title()
             + description() + link() + content()));
@@ -108,10 +111,11 @@ time_t ItemRSS2Impl::dateUpdated() const
 {
     //Some RSS feeds contain atom elements - return atom:dateUpdated if present
     const QString updstr = m_item.extractElementTextNS(Atom::atom1Namespace(), QLatin1String("updated"));
-    if (!updstr.isEmpty())
+    if (!updstr.isEmpty()) {
         return parseDate(updstr, ISODate);
-    else
+    } else {
         return datePublished();
+    }
 }
 
 QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
@@ -121,8 +125,7 @@ QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
     QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
 
     for (QList<Syndication::RSS2::Enclosure>::ConstIterator it = encs.constBegin();
-         it != encs.constEnd(); ++it)
-    {
+            it != encs.constEnd(); ++it) {
         EnclosureRSS2ImplPtr impl(new EnclosureRSS2Impl(m_item, *it));
         list.append(impl);
     }
@@ -138,8 +141,7 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
     QList<Syndication::RSS2::Category>::ConstIterator it = cats.constBegin();
     QList<Syndication::RSS2::Category>::ConstIterator end = cats.constEnd();
 
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         CategoryRSS2ImplPtr impl(new CategoryRSS2Impl(*it));
         list.append(impl);
     }
@@ -163,8 +165,9 @@ QString ItemRSS2Impl::commentsLink() const
 QString ItemRSS2Impl::commentsFeed() const
 {
     QString t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRss"));
-    if (t.isNull())
+    if (t.isNull()) {
         t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRSS"));
+    }
     return t;
 }
 
@@ -182,8 +185,7 @@ QMultiMap<QString, QDomElement> ItemRSS2Impl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
 
-    foreach (const QDomElement &i, m_item.unhandledElements())
-    {
+    foreach (const QDomElement &i, m_item.unhandledElements()) {
         ret.insert(i.namespaceURI() + i.localName(), i);
     }
 

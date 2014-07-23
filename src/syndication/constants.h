@@ -27,7 +27,8 @@
 
 class QString;
 
-namespace Syndication {
+namespace Syndication
+{
 
 SYNDICATION_EXPORT
 QString xmlNamespace();

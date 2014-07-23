@@ -25,14 +25,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 Person::Person() : ElementWrapper()
 {
 }
 
-Person::Person(const QDomElement& element) : ElementWrapper(element)
+Person::Person(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -44,9 +46,9 @@ QString Person::name() const
 
 QString Person::uri() const
 {
- 
+
     return completeURI(extractElementTextNS(atom1Namespace(),
-                       QLatin1String("uri")));
+                                            QLatin1String("uri")));
 }
 
 QString Person::email() const

@@ -42,9 +42,10 @@
 using Syndication::RDF::Property;
 using Syndication::RDF::PropertyPtr;
 
-namespace Syndication {
+namespace Syndication
+{
 
-ItemRDFImpl::ItemRDFImpl(const Syndication::RDF::Item& item) : m_item(item)
+ItemRDFImpl::ItemRDFImpl(const Syndication::RDF::Item &item) : m_item(item)
 {
 }
 
@@ -77,11 +78,9 @@ QList<PersonPtr> ItemRDFImpl::authors() const
     QStringList::ConstIterator it = people.constBegin();
     QStringList::ConstIterator end = people.constEnd();
 
-    for ( ; it != end; ++it)
-    {
+    for (; it != end; ++it) {
         PersonPtr ptr = personFromString(*it);
-        if (!ptr->isNull())
-        {
+        if (!ptr->isNull()) {
             list.append(ptr);
         }
     }
@@ -96,10 +95,11 @@ QString ItemRDFImpl::language() const
 
 QString ItemRDFImpl::id() const
 {
-    if (!m_item.resource()->isAnon())
+    if (!m_item.resource()->isAnon()) {
         return m_item.resource()->uri();
-    else
+    } else {
         return QLatin1String("hash:") + calcMD5Sum(title() + description() + link() + content());
+    }
 }
 
 time_t ItemRDFImpl::datePublished() const
@@ -155,7 +155,6 @@ Syndication::SpecificItemPtr ItemRDFImpl::specificItem() const
 {
     return Syndication::SpecificItemPtr(new Syndication::RDF::Item(m_item));
 }
-
 
 QMultiMap<QString, QDomElement> ItemRDFImpl::additionalProperties() const
 {

@@ -28,10 +28,10 @@
 class TestPersonImpl : public QObject
 {
     Q_OBJECT
-        
-    private Q_SLOTS:
-    
-        void fromString();
+
+private Q_SLOTS:
+
+    void fromString();
 };
 
 #endif // SYNDICATION_TESTS_TESTPERSONIMPL_H

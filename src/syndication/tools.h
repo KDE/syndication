@@ -26,18 +26,17 @@
 #include <syndication/person.h>
 #include "syndication_export.h"
 
-
 #include <QtCore/QString>
 
 class QByteArray;
 class QString;
 
-namespace Syndication {
+namespace Syndication
+{
 
 /** date formats supported by date parsers */
 
-enum DateFormat
-{
+enum DateFormat {
     ISODate, /**< ISO 8601 extended format.
               * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
               * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
@@ -55,7 +54,7 @@ enum DateFormat
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
-uint parseISODate(const QString& str);
+uint parseISODate(const QString &str);
 
 /**
  * parses a date string as defined in RFC 822.
@@ -66,7 +65,7 @@ uint parseISODate(const QString& str);
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
-uint parseRFCDate(const QString& str);
+uint parseRFCDate(const QString &str);
 
 /**
  * parses a date string in ISO (see parseISODate()) or RFC 822 (see
@@ -82,8 +81,7 @@ uint parseRFCDate(const QString& str);
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
-uint parseDate(const QString& str, DateFormat hint=RFCDate);
-
+uint parseDate(const QString &str, DateFormat hint = RFCDate);
 
 /**
  * @internal
@@ -103,21 +101,21 @@ QString dateTimeToString(uint date);
  * @param str a string
  */
 SYNDICATION_EXPORT
-QString resolveEntities(const QString& str);
+QString resolveEntities(const QString &str);
 /**
  * replaces the characters &lt; >, &, ", '
  * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;.
  * @param str the string to escape
  */
 SYNDICATION_EXPORT
-QString escapeSpecialCharacters(const QString& str);
+QString escapeSpecialCharacters(const QString &str);
 
 /**
  * replaces newlines ("\n") by &lt;br/>
  * @param str string to convert
  */
 SYNDICATION_EXPORT
-QString convertNewlines(const QString& str);
+QString convertNewlines(const QString &str);
 
 /**
  * converts a plain text string to HTML
@@ -125,7 +123,7 @@ QString convertNewlines(const QString& str);
  * @param plainText a string in plain text.
  */
 SYNDICATION_EXPORT
-QString plainTextToHtml(const QString& plainText);
+QString plainTextToHtml(const QString &plainText);
 
 /**
  * converts a HTML string to plain text
@@ -134,7 +132,7 @@ QString plainTextToHtml(const QString& plainText);
  * @return stripped text
  */
 SYNDICATION_EXPORT
-QString htmlToPlainText(const QString& html);
+QString htmlToPlainText(const QString &html);
 
 /**
  * guesses whether a string contains plain text or HTML
@@ -144,7 +142,7 @@ QString htmlToPlainText(const QString& html);
  * if thinks it is plain text
  */
 SYNDICATION_EXPORT
-bool isHtml(const QString& str);
+bool isHtml(const QString &str);
 
 /**
  * guesses whether a string contains (HTML) markup or not. This
@@ -156,7 +154,7 @@ bool isHtml(const QString& str);
  * if thinks it is markup-free plain text
  */
 SYNDICATION_EXPORT
-bool stringContainsMarkup(const QString& str);
+bool stringContainsMarkup(const QString &str);
 
 /**
  * Ensures HTML formatting for a string.
@@ -168,7 +166,7 @@ bool stringContainsMarkup(const QString& str);
  * @return string as HTML (as long as the heuristics work)
  */
 SYNDICATION_EXPORT
-QString normalize(const QString& str);
+QString normalize(const QString &str);
 
 /**
  * normalizes a string based on feed-wide properties of tag content.
@@ -189,7 +187,7 @@ QString normalize(const QString& str);
  * @return string as HTML (as long as the heuristics work)
  */
 SYNDICATION_EXPORT
-QString normalize(const QString& str, bool isCDATA, bool containsMarkup);
+QString normalize(const QString &str, bool isCDATA, bool containsMarkup);
 
 /**
  * Parses a person object from a string by identifying name and email address
@@ -200,37 +198,36 @@ QString normalize(const QString& str, bool isCDATA, bool containsMarkup);
  * @return a Person object containing the parsed information.
  */
 SYNDICATION_EXPORT
-PersonPtr personFromString(const QString& str);
+PersonPtr personFromString(const QString &str);
 
 /**
  * @internal
  * calculates a hash value for a string
  */
-unsigned int calcHash(const QString& str);
+unsigned int calcHash(const QString &str);
 
 /**
  * @internal
  * calculates a hash value for a byte array
  */
-unsigned int calcHash(const QByteArray& array);
+unsigned int calcHash(const QByteArray &array);
 
 /**
  * @internal
  * calculates a md5 checksum for a string
  */
-QString calcMD5Sum(const QString& str);
+QString calcMD5Sum(const QString &str);
 
 //@cond PRIVATE
 /**
  * @internal
  * used internally to represent element types
  */
-struct ElementType
-{
-    ElementType(const QString& localnamep,
-                const QString& nsp=QString()); // implicit
+struct ElementType {
+    ElementType(const QString &localnamep,
+                const QString &nsp = QString()); // implicit
 
-    bool operator==(const ElementType& other) const;
+    bool operator==(const ElementType &other) const;
 
     QString ns;
     QString localname;

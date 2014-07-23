@@ -32,32 +32,32 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-QCryptographicHash md5Machine( QCryptographicHash::Md5 );
+QCryptographicHash md5Machine(QCryptographicHash::Md5);
 
-unsigned int calcHash(const QString& str)
+unsigned int calcHash(const QString &str)
 {
     return calcHash(str.toUtf8());
 }
 
-unsigned int calcHash(const QByteArray& array)
+unsigned int calcHash(const QByteArray &array)
 {
-    if (array.isEmpty())
-    {
+    if (array.isEmpty()) {
         return 0;
-    }
-    else
-    {
-        const char* s = array.data();
+    } else {
+        const char *s = array.data();
         unsigned int hash = 5381;
         int c;
-        while ( ( c = *s++ ) ) hash = ((hash << 5) + hash) + c; // hash*33 + c
+        while ((c = *s++)) {
+            hash = ((hash << 5) + hash) + c;    // hash*33 + c
+        }
         return hash;
     }
 }
 
-static uint toTimeT(QDateTime& kdt)
+static uint toTimeT(QDateTime &kdt)
 {
     if (kdt.isValid()) {
         //work around unspecified timezones/date-only timestamps by setting the time to 12:00 UTC
@@ -66,34 +66,33 @@ static uint toTimeT(QDateTime& kdt)
             kdt.setTime(QTime(12, 0));
         }
         return kdt.toTime_t();
-    } else
+    } else {
         return 0;
+    }
 }
 
-uint parseISODate(const QString& str)
+uint parseISODate(const QString &str)
 {
     QDateTime kdt = QDateTime::fromString(str, Qt::ISODate);
     return toTimeT(kdt);
 }
 
-uint parseRFCDate(const QString& str)
+uint parseRFCDate(const QString &str)
 {
     QDateTime kdt = QDateTime::fromString(str, Qt::RFC2822Date);
     return toTimeT(kdt);
 }
 
-uint parseDate(const QString& str, DateFormat hint)
+uint parseDate(const QString &str, DateFormat hint)
 {
-    if (str.isEmpty())
+    if (str.isEmpty()) {
         return 0;
+    }
 
-    if (hint == RFCDate)
-    {
+    if (hint == RFCDate) {
         time_t t = parseRFCDate(str);
         return t != 0 ? t : parseISODate(str);
-    }
-    else
-    {
+    } else {
         time_t t = parseISODate(str);
         return t != 0 ? t : parseRFCDate(str);
     }
@@ -101,8 +100,9 @@ uint parseDate(const QString& str, DateFormat hint)
 
 QString dateTimeToString(uint date)
 {
-    if (date == 0)
+    if (date == 0) {
         return QString();
+    }
 
     const QString format = QLatin1String("ddd MMM d HH:mm:ss yyyy");
     QDateTime dt;
@@ -110,19 +110,19 @@ QString dateTimeToString(uint date)
     return dt.toUTC().toString(format);
 }
 
-QString calcMD5Sum(const QString& str)
+QString calcMD5Sum(const QString &str)
 {
     md5Machine.reset();
-    md5Machine.addData( str.toUtf8() );
-    return QLatin1String( md5Machine.result().toHex().constData() );
+    md5Machine.addData(str.toUtf8());
+    return QLatin1String(md5Machine.result().toHex().constData());
 }
 
-QString resolveEntities(const QString& str)
+QString resolveEntities(const QString &str)
 {
     return KCharsets::resolveEntities(str);
 }
 
-QString escapeSpecialCharacters(const QString& strp)
+QString escapeSpecialCharacters(const QString &strp)
 {
     QString str(strp);
     str.replace(QLatin1Char('&'), QLatin1String("&amp;"));
@@ -133,14 +133,14 @@ QString escapeSpecialCharacters(const QString& strp)
     return str.trimmed();
 }
 
-QString convertNewlines(const QString& strp)
+QString convertNewlines(const QString &strp)
 {
     QString str(strp);
     str.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
     return str;
 }
 
-QString plainTextToHtml(const QString& plainText)
+QString plainTextToHtml(const QString &plainText)
 {
     QString str(plainText);
     str.replace(QLatin1Char('&'), QLatin1String("&amp;"));
@@ -151,7 +151,7 @@ QString plainTextToHtml(const QString& plainText)
     return str.trimmed();
 }
 
-QString htmlToPlainText(const QString& html)
+QString htmlToPlainText(const QString &html)
 {
     QString str(html);
     //TODO: preserve some formatting, such as line breaks
@@ -160,71 +160,71 @@ QString htmlToPlainText(const QString& html)
     return str.trimmed();
 }
 
-namespace {
-    static QRegExp tagRegExp;
-    static bool tagRegExpSet = false;
+namespace
+{
+static QRegExp tagRegExp;
+static bool tagRegExpSet = false;
 }
 
-bool stringContainsMarkup(const QString& str)
+bool stringContainsMarkup(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;"))))
+    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;")))) {
         return true;
+    }
 
     const int ltc = str.count(QLatin1Char('<'));
-    if (ltc == 0)
+    if (ltc == 0) {
         return false;
+    }
 
-    if (!tagRegExpSet)
-    {
+    if (!tagRegExpSet) {
         tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
     return str.contains(tagRegExp);
 }
 
-bool isHtml(const QString& str)
+bool isHtml(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;"))))
+    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;")))) {
         return true;
+    }
 
     const int ltc = str.count(QLatin1Char('<'));
-    if (ltc == 0)
+    if (ltc == 0) {
         return false;
+    }
 
-    if (!tagRegExpSet)
-    {
+    if (!tagRegExpSet) {
         tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
-    if (str.contains(tagRegExp))
+    if (str.contains(tagRegExp)) {
         return true;
+    }
 
     return false;
 }
 
-QString normalize(const QString& str)
+QString normalize(const QString &str)
 {
     return isHtml(str) ? str.trimmed() : plainTextToHtml(str);
 }
 
-QString normalize(const QString& strp, bool isCDATA, bool containsMarkup)
+QString normalize(const QString &strp, bool isCDATA, bool containsMarkup)
 {
-    if (containsMarkup)
+    if (containsMarkup) {
         return strp.trimmed();
-    else
-    {
-        if (isCDATA)
-        {
+    } else {
+        if (isCDATA) {
             QString str = resolveEntities(strp);
             str = escapeSpecialCharacters(str);
             str = convertNewlines(str);
             str = str.trimmed();
             return str;
-        }
-        else
-        {
+        } else {
             QString str = escapeSpecialCharacters(strp);
             str = str.trimmed();
             return str;
@@ -232,11 +232,12 @@ QString normalize(const QString& strp, bool isCDATA, bool containsMarkup)
     }
 }
 
-PersonPtr personFromString(const QString& strp)
+PersonPtr personFromString(const QString &strp)
 {
     QString str = strp.trimmed();
-    if (str.isEmpty())
+    if (str.isEmpty()) {
         return PersonPtr(new PersonImpl());
+    }
 
     str = resolveEntities(str);
     QString name;
@@ -247,11 +248,10 @@ PersonPtr personFromString(const QString& strp)
     // "<foo@bar.com>") and extract it
 
     QRegExp remail(QLatin1String("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
-       // search kmail source for it
+    // search kmail source for it
 
     int pos = remail.indexIn(str);
-    if (pos != -1)
-    {
+    if (pos != -1) {
         QString all = remail.cap(0);
         email = remail.cap(1);
         str.remove(all); // remove mail address
@@ -273,8 +273,7 @@ PersonPtr personFromString(const QString& strp)
 
     QRegExp rename(QLatin1String("^\\(([^\\)]*)\\)"));
 
-    if (rename.exactMatch(name))
-    {
+    if (rename.exactMatch(name)) {
         name = rename.cap(1);
     }
 
@@ -282,22 +281,22 @@ PersonPtr personFromString(const QString& strp)
     email = email.isEmpty() ? QString() : email;
     uri = uri.isEmpty() ? QString() : uri;
 
-    if (name.isEmpty() && email.isEmpty() && uri.isEmpty())
+    if (name.isEmpty() && email.isEmpty() && uri.isEmpty()) {
         return PersonPtr(new PersonImpl());
+    }
 
     return PersonPtr(new PersonImpl(name, uri, email));
 }
 
-ElementType::ElementType(const QString& localnamep,
-            const QString& nsp) : ns(nsp), localname(localnamep)
+ElementType::ElementType(const QString &localnamep,
+                         const QString &nsp) : ns(nsp), localname(localnamep)
 {
 }
 
-bool ElementType::operator==(const ElementType& other) const
+bool ElementType::operator==(const ElementType &other) const
 {
     return localname == other.localname && ns == other.ns;
 }
 
 } // namespace Syndication
-
 

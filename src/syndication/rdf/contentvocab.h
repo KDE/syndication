@@ -26,13 +26,16 @@
 
 class QString;
 
-namespace boost {
-    template <class T> class shared_ptr;
+namespace boost
+{
+template <class T> class shared_ptr;
 }
 
-namespace Syndication {
+namespace Syndication
+{
 
-namespace RDF {
+namespace RDF
+{
 
 class Property;
 //@cond PRIVATE
@@ -47,35 +50,35 @@ typedef boost::shared_ptr<Property> PropertyPtr;
  */
 class SYNDICATION_EXPORT ContentVocab
 {
-    public:
+public:
 
-        /**
-         * returns the singleton instance
-         */
-        static ContentVocab* self();
+    /**
+     * returns the singleton instance
+     */
+    static ContentVocab *self();
 
-        /**
-         * destructor
-         */
-        ~ContentVocab();
-        
-        /** 
-         * Namespace of the Content module
-         * 
-         * http://purl.org/rss/1.0/modules/content/ 
-        **/
-        const QString& namespaceURI() const;
+    /**
+     * destructor
+     */
+    ~ContentVocab();
 
-        /**
-         * content:encoded property
-         */
-        PropertyPtr encoded() const;
-    
-    private:
-        ContentVocab();
+    /**
+     * Namespace of the Content module
+     *
+     * http://purl.org/rss/1.0/modules/content/
+    **/
+    const QString &namespaceURI() const;
 
-        class ContentVocabPrivate;
-        ContentVocabPrivate * const d;
+    /**
+     * content:encoded property
+     */
+    PropertyPtr encoded() const;
+
+private:
+    ContentVocab();
+
+    class ContentVocabPrivate;
+    ContentVocabPrivate *const d;
 };
 
 } // namespace RDF

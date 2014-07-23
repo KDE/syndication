@@ -25,14 +25,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 Link::Link() : ElementWrapper()
 {
 }
 
-Link::Link(const QDomElement& element) : ElementWrapper(element)
+Link::Link(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -65,7 +67,7 @@ QString Link::title() const
 uint Link::length() const
 {
     QString lengthStr = attribute(QLatin1String("length"));
-    
+
     bool ok;
     uint c = lengthStr.toUInt(&ok);
     return ok ? c : 0;
@@ -75,18 +77,24 @@ QString Link::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Link: ###################\n");
-    if (!title().isEmpty())
+    if (!title().isEmpty()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
-    if (!href().isEmpty())
+    }
+    if (!href().isEmpty()) {
         info += QLatin1String("href: #") + href() + QLatin1String("#\n");
-    if (!rel().isEmpty())
+    }
+    if (!rel().isEmpty()) {
         info += QLatin1String("rel: #") + rel() + QLatin1String("#\n");
-    if (!type().isEmpty())
+    }
+    if (!type().isEmpty()) {
         info += QLatin1String("type: #") + type() + QLatin1String("#\n");
-    if (length() != 0)
+    }
+    if (length() != 0) {
         info += QLatin1String("length: #") + QString::number(length()) + QLatin1String("#\n");
-    if (!hrefLanguage().isEmpty())
+    }
+    if (!hrefLanguage().isEmpty()) {
         info += QLatin1String("hrefLanguage: #") + hrefLanguage() + QLatin1String("#\n");
+    }
     info += QLatin1String("### Link end ################\n");
     return info;
 }

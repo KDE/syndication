@@ -27,11 +27,12 @@
 #include <QtXml/QDomDocument>
 #include <QtXml/QXmlSimpleReader>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class DocumentSource::DocumentSourcePrivate
 {
-    public:
+public:
     QByteArray array;
     QString url;
     mutable QDomDocument domDoc;
@@ -47,8 +48,7 @@ DocumentSource::DocumentSource() : d(new DocumentSourcePrivate)
     d->hash = 0;
 }
 
-
-DocumentSource::DocumentSource(const QByteArray& source, const QString& url) : d(new DocumentSourcePrivate)
+DocumentSource::DocumentSource(const QByteArray &source, const QString &url) : d(new DocumentSourcePrivate)
 {
     d->array = source;
     d->url = url;
@@ -56,16 +56,16 @@ DocumentSource::DocumentSource(const QByteArray& source, const QString& url) : d
     d->parsed = false;
 }
 
-DocumentSource::DocumentSource(const DocumentSource& other) : d()
+DocumentSource::DocumentSource(const DocumentSource &other) : d()
 {
-     *this = other;
+    *this = other;
 }
 
 DocumentSource::~DocumentSource()
 {
 }
 
-DocumentSource& DocumentSource::operator=(const DocumentSource& other)
+DocumentSource &DocumentSource::operator=(const DocumentSource &other)
 {
     d = other.d;
     return *this;
@@ -78,16 +78,16 @@ QByteArray DocumentSource::asByteArray() const
 
 QDomDocument DocumentSource::asDomDocument() const
 {
-    if (!d->parsed)
-    {
+    if (!d->parsed) {
         QXmlInputSource source;
         source.setData(d->array);
-        
+
         QXmlSimpleReader reader;
         reader.setFeature(QLatin1String("http://xml.org/sax/features/namespaces"), true);
-        
-        if (!d->domDoc.setContent(&source, &reader))
+
+        if (!d->domDoc.setContent(&source, &reader)) {
             d->domDoc.clear();
+        }
 
         d->parsed = true;
     }
@@ -102,12 +102,11 @@ unsigned int DocumentSource::size() const
 
 unsigned int DocumentSource::hash() const
 {
-    if (!d->calculatedHash)
-    {
+    if (!d->calculatedHash) {
         d->hash = calcHash(d->array);
         d->calculatedHash = true;
     }
-    
+
     return d->hash;
 }
 

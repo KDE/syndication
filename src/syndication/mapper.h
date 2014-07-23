@@ -25,11 +25,13 @@
 
 #include "syndication_export.h"
 
-namespace boost {
-    template <class T> class shared_ptr;
+namespace boost
+{
+template <class T> class shared_ptr;
 }
 
-namespace Syndication {
+namespace Syndication
+{
 
 class SpecificDocument;
 //@cond PRIVATE
@@ -109,28 +111,28 @@ typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
 template <class T>
 class SYNDICATION_EXPORT Mapper
 {
-    public:
+public:
 
-        /**
-         * virtual destructor
-         */
-        virtual ~Mapper() {}
+    /**
+     * virtual destructor
+     */
+    virtual ~Mapper() {}
 
-        /**
-         * maps a format-specific document to abstraction of type
-         * @c T.
-         *
-         * \note implementations may assume @c doc to have the
-         * type whose mapping they implement and may just statically cast
-         * to the subclass without further checking. If you register your
-         * own mapper, it's your responsibility to register the mapper
-         * only for the format it actually handles.
-         *
-         * @param doc the document to map.
-         * @return a newly created object implementing the abstraction
-         * @c T.
-         */
-        virtual boost::shared_ptr<T> map(SpecificDocumentPtr doc) const = 0;
+    /**
+     * maps a format-specific document to abstraction of type
+     * @c T.
+     *
+     * \note implementations may assume @c doc to have the
+     * type whose mapping they implement and may just statically cast
+     * to the subclass without further checking. If you register your
+     * own mapper, it's your responsibility to register the mapper
+     * only for the format it actually handles.
+     *
+     * @param doc the document to map.
+     * @return a newly created object implementing the abstraction
+     * @c T.
+     */
+    virtual boost::shared_ptr<T> map(SpecificDocumentPtr doc) const = 0;
 };
 
 } // namespace syndication

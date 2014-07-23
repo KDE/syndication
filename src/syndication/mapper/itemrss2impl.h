@@ -26,7 +26,8 @@
 #include <rss2/item.h>
 #include <item.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class ItemRSS2Impl;
 typedef boost::shared_ptr<ItemRSS2Impl> ItemRSS2ImplPtr;
@@ -36,47 +37,47 @@ typedef boost::shared_ptr<ItemRSS2Impl> ItemRSS2ImplPtr;
  */
 class ItemRSS2Impl : public Syndication::Item
 {
-    public:
-        
-        explicit ItemRSS2Impl(const Syndication::RSS2::Item& item);
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QString content() const;
-        
-        QList<PersonPtr> authors() const;
-                
-        QString language() const;
-        
-        QString id() const;
-        
-        time_t datePublished() const;
-        
-        time_t dateUpdated() const;
-        
-        QList<EnclosurePtr> enclosures() const;
-        
-        QList<CategoryPtr> categories() const;
-        
-        SpecificItemPtr specificItem() const;
-        
-        int commentsCount() const;
-        
-        QString commentsLink() const;
-        
-        QString commentsFeed() const;
-        
-        QString commentPostUri() const;
-        
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-        
-    private:
-        
-        Syndication::RSS2::Item m_item;
+public:
+
+    explicit ItemRSS2Impl(const Syndication::RSS2::Item &item);
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QString content() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString id() const;
+
+    time_t datePublished() const;
+
+    time_t dateUpdated() const;
+
+    QList<EnclosurePtr> enclosures() const;
+
+    QList<CategoryPtr> categories() const;
+
+    SpecificItemPtr specificItem() const;
+
+    int commentsCount() const;
+
+    QString commentsLink() const;
+
+    QString commentsFeed() const;
+
+    QString commentPostUri() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+
+private:
+
+    Syndication::RSS2::Item m_item;
 };
 
 } // namespace Syndication

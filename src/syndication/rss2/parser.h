@@ -26,11 +26,13 @@
 #include <syndication/rss2/document.h>
 #include <syndication/abstractparser.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class DocumentSource;
 
-namespace RSS2 {
+namespace RSS2
+{
 
 class Document;
 
@@ -41,49 +43,49 @@ class Document;
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
-    public:
+public:
 
-        /** default constructor */
-        Parser();
+    /** default constructor */
+    Parser();
 
-        /** destructor */
-        virtual ~Parser();
+    /** destructor */
+    virtual ~Parser();
 
-        /**
-         * checks whether a document source looks like an RSS0.9x/2.0 document
-         *
-         * @param source a document source to check
-         * @return @c true if the source looks like an RSS2 document
-         */
-        bool accept(const DocumentSource& source) const;
+    /**
+     * checks whether a document source looks like an RSS0.9x/2.0 document
+     *
+     * @param source a document source to check
+     * @return @c true if the source looks like an RSS2 document
+     */
+    bool accept(const DocumentSource &source) const;
 
-        /**
-         * creates an RSS2 wrapper for a document source.
-         * The wrapper will only return useful values if the source is really
-         * RSS 0.9x/2.0, so call accept() before to check.
-         *
-         * @param source the source to wrap
-         * @return A Syndication::RSS2::Document instance wrapping the XML
-         * source, or a null document (not a null pointer!) if there is no @c
-         * &lt;channel> root element in the source.
-         */
-        Syndication::SpecificDocumentPtr parse(const DocumentSource& source) const;
+    /**
+     * creates an RSS2 wrapper for a document source.
+     * The wrapper will only return useful values if the source is really
+     * RSS 0.9x/2.0, so call accept() before to check.
+     *
+     * @param source the source to wrap
+     * @return A Syndication::RSS2::Document instance wrapping the XML
+     * source, or a null document (not a null pointer!) if there is no @c
+     * &lt;channel> root element in the source.
+     */
+    Syndication::SpecificDocumentPtr parse(const DocumentSource &source) const;
 
-        /**
-         * returns the format string of this parser implementation, which is
-         * "rss2".
-         *
-         * @return @c "rss2"
-         */
-        QString format() const;
+    /**
+     * returns the format string of this parser implementation, which is
+     * "rss2".
+     *
+     * @return @c "rss2"
+     */
+    QString format() const;
 
-    private:
+private:
 
-        Parser(const Parser& other);
-        Parser& operator=(const Parser& other);
-        
-        class ParserPrivate;
-        ParserPrivate* const d;
+    Parser(const Parser &other);
+    Parser &operator=(const Parser &other);
+
+    class ParserPrivate;
+    ParserPrivate *const d;
 };
 
 } // namespace RSS2

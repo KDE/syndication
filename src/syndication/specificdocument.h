@@ -28,7 +28,8 @@
 
 class QString;
 
-namespace Syndication {
+namespace Syndication
+{
 
 class DocumentVisitor;
 class SpecificDocument;
@@ -51,41 +52,41 @@ typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
  */
 class SYNDICATION_EXPORT SpecificDocument
 {
-    public:
+public:
 
-        /**
-         * virtual dtor
-         */
-        virtual ~SpecificDocument();
+    /**
+     * virtual dtor
+     */
+    virtual ~SpecificDocument();
 
-        /**
-         * This must be implemented for the double dispatch
-         * technique (Visitor pattern).
-         *
-         * The usual implementation is
-         * @code
-         * return visitor->visit(this);
-         * @endcode
-         *
-         * See also DocumentVisitor.
-         *
-         * @param visitor the visitor "visiting" this object
-         */
-        virtual bool accept(DocumentVisitor* visitor) = 0;
+    /**
+     * This must be implemented for the double dispatch
+     * technique (Visitor pattern).
+     *
+     * The usual implementation is
+     * @code
+     * return visitor->visit(this);
+     * @endcode
+     *
+     * See also DocumentVisitor.
+     *
+     * @param visitor the visitor "visiting" this object
+     */
+    virtual bool accept(DocumentVisitor *visitor) = 0;
 
-        /**
-         * Returns whether this document is valid or not.
-         * Invalid documents do not contain any useful
-         * information.
-         */
-        virtual bool isValid() const = 0;
+    /**
+     * Returns whether this document is valid or not.
+     * Invalid documents do not contain any useful
+     * information.
+     */
+    virtual bool isValid() const = 0;
 
-        /**
-         * Returns a description of the document for debugging purposes.
-         *
-         * @return debug string
-         */
-        virtual QString debugInfo() const = 0;
+    /**
+     * Returns a description of the document for debugging purposes.
+     *
+     * @return debug string
+     */
+    virtual QString debugInfo() const = 0;
 };
 
 } // namespace Syndication

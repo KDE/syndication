@@ -24,12 +24,13 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-ImageRDFImpl::ImageRDFImpl(const Syndication::RDF::Image& image)
+ImageRDFImpl::ImageRDFImpl(const Syndication::RDF::Image &image)
     : m_image(image)
 {}
-        
+
 bool ImageRDFImpl::isNull() const
 {
     return m_image.isNull();
@@ -59,8 +60,8 @@ uint ImageRDFImpl::height() const
 {
     return 0;
 }
- 
- uint ImageRDFImpl::width() const
+
+uint ImageRDFImpl::width() const
 {
     return 0;
 }

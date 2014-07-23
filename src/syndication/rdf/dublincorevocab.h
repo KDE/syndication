@@ -27,8 +27,10 @@
 
 class QString;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 /**
  * Singleton holding RDF class and property constants of the Dublin Core
@@ -39,119 +41,119 @@ namespace RDF {
  */
 class SYNDICATION_EXPORT DublinCoreVocab
 {
-    public:
+public:
 
-        /**
-         * returns the singleton instance
-         */
-        static DublinCoreVocab* self();
+    /**
+     * returns the singleton instance
+     */
+    static DublinCoreVocab *self();
 
-        /**
-         * destructor
-         */
-        ~DublinCoreVocab();
-        
-        /**
-         * the namespace of the Dublin Core vocabulary, 
-         * http://purl.org/dc/elements/1.1/
-         */
-        const QString& namespaceURI() const;
+    /**
+     * destructor
+     */
+    ~DublinCoreVocab();
 
-        /**
-         * dc:contributor property. See DublinCore::contributor() for 
-         * an explanation.
-         */
-        PropertyPtr contributor() const;
+    /**
+     * the namespace of the Dublin Core vocabulary,
+     * http://purl.org/dc/elements/1.1/
+     */
+    const QString &namespaceURI() const;
 
-        /**
-         * dc:creator property. See DublinCore::creator() for 
-         * an explanation.
-         */
-        PropertyPtr creator() const;
-        
-        /**
-         * dc:coverage property. See DublinCore::coverage() for 
-         * an explanation.
-         */
-        PropertyPtr coverage() const;
-        
-        /**
-         * dc:date property. See DublinCore::date() for 
-         * an explanation.
-         */
-        PropertyPtr date() const;
-        
-        /**
-         * dc:description property. See DublinCore::description() for 
-         * an explanation.
-         */
-        PropertyPtr description() const;
-        
-        /**
-         * dc:format property. See DublinCore::format() for 
-         * an explanation.
-         */
-        PropertyPtr format() const;
-        
-        /**
-         * dc:identifier property. See DublinCore::identifier() for 
-         * an explanation.
-         */
-        PropertyPtr identifier() const;
-        
-        /**
-         * dc:language property. See DublinCore::language() for 
-         * an explanation.
-         */
-        PropertyPtr language() const;
-        
-        /**
-         * dc:publisher property. See DublinCore::publisher() for 
-         * an explanation.
-         */
-        PropertyPtr publisher() const;
-        
-        /**
-         * dc:relation property. See DublinCore::relation() for 
-         * an explanation.
-         */
-        PropertyPtr relation() const;
-        
-        /**
-         * dc:rights property. See DublinCore::rights() for 
-         * an explanation.
-         */
-        PropertyPtr rights() const;
-        
-        /**
-         * dc:source property. See DublinCore::source() for 
-         * an explanation.
-         */
-        PropertyPtr source() const;
-        
-        /**
-         * dc:subject property. See DublinCore::subject() for 
-         * an explanation.
-         */
-        PropertyPtr subject() const;
-        
-        /**
-         * dc:title property. See DublinCore::title() for 
-         * an explanation.
-         */
-        PropertyPtr title() const;
-        
-        /**
-         * dc:type property. See DublinCore::type() for 
-         * an explanation.
-         */
-        PropertyPtr type() const;
+    /**
+     * dc:contributor property. See DublinCore::contributor() for
+     * an explanation.
+     */
+    PropertyPtr contributor() const;
 
-    private:
-        DublinCoreVocab();
+    /**
+     * dc:creator property. See DublinCore::creator() for
+     * an explanation.
+     */
+    PropertyPtr creator() const;
 
-        class DublinCoreVocabPrivate;
-        DublinCoreVocabPrivate * const d;
+    /**
+     * dc:coverage property. See DublinCore::coverage() for
+     * an explanation.
+     */
+    PropertyPtr coverage() const;
+
+    /**
+     * dc:date property. See DublinCore::date() for
+     * an explanation.
+     */
+    PropertyPtr date() const;
+
+    /**
+     * dc:description property. See DublinCore::description() for
+     * an explanation.
+     */
+    PropertyPtr description() const;
+
+    /**
+     * dc:format property. See DublinCore::format() for
+     * an explanation.
+     */
+    PropertyPtr format() const;
+
+    /**
+     * dc:identifier property. See DublinCore::identifier() for
+     * an explanation.
+     */
+    PropertyPtr identifier() const;
+
+    /**
+     * dc:language property. See DublinCore::language() for
+     * an explanation.
+     */
+    PropertyPtr language() const;
+
+    /**
+     * dc:publisher property. See DublinCore::publisher() for
+     * an explanation.
+     */
+    PropertyPtr publisher() const;
+
+    /**
+     * dc:relation property. See DublinCore::relation() for
+     * an explanation.
+     */
+    PropertyPtr relation() const;
+
+    /**
+     * dc:rights property. See DublinCore::rights() for
+     * an explanation.
+     */
+    PropertyPtr rights() const;
+
+    /**
+     * dc:source property. See DublinCore::source() for
+     * an explanation.
+     */
+    PropertyPtr source() const;
+
+    /**
+     * dc:subject property. See DublinCore::subject() for
+     * an explanation.
+     */
+    PropertyPtr subject() const;
+
+    /**
+     * dc:title property. See DublinCore::title() for
+     * an explanation.
+     */
+    PropertyPtr title() const;
+
+    /**
+     * dc:type property. See DublinCore::type() for
+     * an explanation.
+     */
+    PropertyPtr type() const;
+
+private:
+    DublinCoreVocab();
+
+    class DublinCoreVocabPrivate;
+    DublinCoreVocabPrivate *const d;
 };
 
 } // namespace RDF

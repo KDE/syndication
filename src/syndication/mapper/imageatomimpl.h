@@ -28,8 +28,9 @@
 #include <QtCore/QMultiMap>
 #include <QtCore/QString>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class ImageAtomImpl;
 typedef boost::shared_ptr<ImageAtomImpl> ImageAtomImplPtr;
 
@@ -40,30 +41,51 @@ typedef boost::shared_ptr<ImageAtomImpl> ImageAtomImplPtr;
  */
 class ImageAtomImpl : public Syndication::Image
 {
-    public:
-        
-        explicit ImageAtomImpl(const QString& logoURI) : m_logoURI(logoURI)
-        {}
-        
-        bool isNull() const { return m_logoURI.isEmpty(); }
-                
-        QString url() const { return m_logoURI; }
-        
-        QString title() const { return QString(); }
-        
-        QString link() const { return QString(); }
-        
-        QString description() const { return QString(); }
-        
-        uint width() const { return 0; }
-        
-        uint height() const { return 0; }
-        
-    private:
-        
-        QString m_logoURI;
+public:
+
+    explicit ImageAtomImpl(const QString &logoURI) : m_logoURI(logoURI)
+    {}
+
+    bool isNull() const
+    {
+        return m_logoURI.isEmpty();
+    }
+
+    QString url() const
+    {
+        return m_logoURI;
+    }
+
+    QString title() const
+    {
+        return QString();
+    }
+
+    QString link() const
+    {
+        return QString();
+    }
+
+    QString description() const
+    {
+        return QString();
+    }
+
+    uint width() const
+    {
+        return 0;
+    }
+
+    uint height() const
+    {
+        return 0;
+    }
+
+private:
+
+    QString m_logoURI;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_IMAGEATOMIMPL_H

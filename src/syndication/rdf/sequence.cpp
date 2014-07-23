@@ -27,13 +27,15 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Sequence::SequencePrivate
 {
-    public:
-    
+public:
+
     QList<NodePtr> items;
 };
 
@@ -41,12 +43,12 @@ Sequence::Sequence() : Resource(), d()
 {
 }
 
-Sequence::Sequence(const QString& uri)
+Sequence::Sequence(const QString &uri)
     : Resource(uri), d(new SequencePrivate)
 {
 }
 
-Sequence::Sequence(const Sequence& other) : Resource(other)
+Sequence::Sequence(const Sequence &other) : Resource(other)
 {
     *this = other;
 }
@@ -54,19 +56,20 @@ Sequence::Sequence(const Sequence& other) : Resource(other)
 Sequence::~Sequence()
 {
 }
-void Sequence::accept(NodeVisitor* visitor, NodePtr ptr)
+void Sequence::accept(NodeVisitor *visitor, NodePtr ptr)
 {
     SequencePtr sptr = boost::static_pointer_cast<Sequence>(ptr);
-    if (!visitor->visitSequence(sptr))
+    if (!visitor->visitSequence(sptr)) {
         Resource::accept(visitor, ptr);
+    }
 }
-                
-Sequence* Sequence::clone() const
+
+Sequence *Sequence::clone() const
 {
     return new Sequence(*this);
 }
 
-Sequence& Sequence::operator=(const Sequence& other)
+Sequence &Sequence::operator=(const Sequence &other)
 {
     Resource::operator=(other);
     d = other.d;
@@ -75,8 +78,9 @@ Sequence& Sequence::operator=(const Sequence& other)
 
 void Sequence::append(NodePtr node)
 {
-    if (d)
+    if (d) {
         d->items.append(node);
+    }
 }
 
 QList<NodePtr> Sequence::items() const

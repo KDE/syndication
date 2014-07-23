@@ -29,23 +29,26 @@
 #include <QtXml/QDomElement>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 class Parser::ParserPrivate {};
-    
-bool Parser::accept(const Syndication::DocumentSource& source) const
+
+bool Parser::accept(const Syndication::DocumentSource &source) const
 {
     QDomDocument doc = source.asDomDocument();
-    if (doc.isNull())
+    if (doc.isNull()) {
         return false;
-    
+    }
+
     QDomNode root = doc.namedItem(QLatin1String("rss")).toElement();
 
     return !root.isNull();
 }
 
-Syndication::SpecificDocumentPtr Parser::parse(const DocumentSource& source) const
+Syndication::SpecificDocumentPtr Parser::parse(const DocumentSource &source) const
 {
     return DocumentPtr(new Document(Document::fromXML(source.asDomDocument())));
 }
@@ -56,9 +59,12 @@ QString Parser::format() const
 }
 
 Parser::Parser() : d(0) {}
-Parser::Parser(const Parser& other) : AbstractParser(other), d(0) {}
+Parser::Parser(const Parser &other) : AbstractParser(other), d(0) {}
 Parser::~Parser() {}
-Parser& Parser::operator=(const Parser& /*other*/) { return *this; }
+Parser &Parser::operator=(const Parser & /*other*/)
+{
+    return *this;
+}
 
 } // namespace RSS2
 } // namespace Syndication

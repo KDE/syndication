@@ -33,15 +33,18 @@
 
 #include <QtCore/QCoreApplication>
 
-namespace {
-    static bool collectionIsInitialized = false;
+namespace
+{
+static bool collectionIsInitialized = false;
 }
 
-namespace Syndication {
+namespace Syndication
+{
 
 static ParserCollectionImpl<Syndication::Feed> *parserColl = 0;
 
-namespace {
+namespace
+{
 
 // only executed when then was a QCoreApplication
 static void cleanupParserCollection()
@@ -52,10 +55,9 @@ static void cleanupParserCollection()
 
 } // namespace
 
-ParserCollection<Feed>* parserCollection()
+ParserCollection<Feed> *parserCollection()
 {
-    if (!collectionIsInitialized)
-    {
+    if (!collectionIsInitialized) {
         parserColl = new ParserCollectionImpl<Syndication::Feed>;
         qAddPostRoutine(cleanupParserCollection);
         parserColl->registerParser(new RSS2::Parser, new RSS2Mapper);
@@ -66,7 +68,7 @@ ParserCollection<Feed>* parserCollection()
     return parserColl;
 }
 
-FeedPtr parse(const DocumentSource& src, const QString& formatHint)
+FeedPtr parse(const DocumentSource &src, const QString &formatHint)
 {
     return parserCollection()->parse(src, formatHint);
 }

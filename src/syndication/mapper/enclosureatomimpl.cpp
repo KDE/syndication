@@ -24,12 +24,13 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-EnclosureAtomImpl::EnclosureAtomImpl(const Syndication::Atom::Link& link)
+EnclosureAtomImpl::EnclosureAtomImpl(const Syndication::Atom::Link &link)
     : m_link(link)
 {}
-        
+
 bool EnclosureAtomImpl::isNull() const
 {
     return m_link.isNull();
@@ -59,5 +60,5 @@ uint EnclosureAtomImpl::duration() const
 {
     return 0;
 }
- 
+
 } // namespace Syndication

@@ -29,10 +29,12 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
-    
-    SyndicationInfo::SyndicationInfo(ResourcePtr resource) : ResourceWrapper(resource)
+namespace Syndication
+{
+namespace RDF
+{
+
+SyndicationInfo::SyndicationInfo(ResourcePtr resource) : ResourceWrapper(resource)
 {
 }
 
@@ -48,72 +50,80 @@ SyndicationInfo::Period SyndicationInfo::updatePeriod() const
 int SyndicationInfo::updateFrequency() const
 {
     QString freqStr =  resource()->property(SyndicationVocab::self()->updateFrequency())->asString();
-    
-    if (freqStr.isEmpty())
-        return 1; // 1 is default
-    
+
+    if (freqStr.isEmpty()) {
+        return 1;    // 1 is default
+    }
+
     bool ok = false;
     int freq = freqStr.toInt(&ok);
-    
-    if (ok)
+
+    if (ok) {
         return freq;
-    else
-        return 1; // 1 is default
+    } else {
+        return 1;    // 1 is default
+    }
 }
 
 time_t SyndicationInfo::updateBase() const
 {
     QString str =  resource()->property(SyndicationVocab::self()->updateBase())->asString();
-    
+
     return parseDate(str, ISODate);
 }
 
 QString SyndicationInfo::debugInfo() const
 {
     QString info;
-    if (updatePeriod() != Daily)
+    if (updatePeriod() != Daily) {
         info += QString::fromLatin1("syn:updatePeriod: #%1#\n").arg(periodToString(updatePeriod()));
+    }
     info += QString::fromLatin1("syn:updateFrequency: #%1#\n").arg(QString::number(updateFrequency()));
-    
+
     QString dbase = dateTimeToString(updateBase());
-    if (!dbase.isNull())
+    if (!dbase.isNull()) {
         info += QString::fromLatin1("syn:updateBase: #%1#\n").arg(dbase);
+    }
 
     return info;
 }
 
 QString SyndicationInfo::periodToString(Period period)
 {
-    switch (period)
-    {
-        case Daily:
-            return QLatin1String("daily");
-        case Hourly:
-            return QLatin1String("hourly");
-        case Monthly:
-            return QLatin1String("monthly");
-        case Weekly:
-            return QLatin1String("weekly");
-        case Yearly:
-            return QLatin1String("yearly");
-            default: // should never happen
-            return QString();
+    switch (period) {
+    case Daily:
+        return QLatin1String("daily");
+    case Hourly:
+        return QLatin1String("hourly");
+    case Monthly:
+        return QLatin1String("monthly");
+    case Weekly:
+        return QLatin1String("weekly");
+    case Yearly:
+        return QLatin1String("yearly");
+    default: // should never happen
+        return QString();
     }
 }
 
-SyndicationInfo::Period SyndicationInfo::stringToPeriod(const QString& str)
+SyndicationInfo::Period SyndicationInfo::stringToPeriod(const QString &str)
 {
-    if (str.isEmpty())
-        return Daily; // default is "daily"
-    
-    if (str == QLatin1String("hourly"))
+    if (str.isEmpty()) {
+        return Daily;    // default is "daily"
+    }
+
+    if (str == QLatin1String("hourly")) {
         return Hourly;
-    if (str == QLatin1String("monthly"))
+    }
+    if (str == QLatin1String("monthly")) {
         return Monthly;
-    if (str == QLatin1String("weekly"))
+    }
+    if (str == QLatin1String("weekly")) {
         return Weekly;
-    if (str == QLatin1String("yearly"))
+    }
+    if (str == QLatin1String("yearly")) {
         return Yearly;
+    }
 
     return Daily;  // default is "daily"
 }

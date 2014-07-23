@@ -26,13 +26,15 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class ContentVocab::ContentVocabPrivate
 {
-    public:
-        
+public:
+
     QString namespaceURI;
     PropertyPtr encoded;
 
@@ -48,11 +50,11 @@ ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = 0;
 ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 {
     QString ns = QLatin1String("http://purl.org/rss/1.0/modules/content/");
-    
+
     d->namespaceURI = ns;
-    
-    d->encoded = PropertyPtr( new Property(ns + QLatin1String("encoded")) );
-    
+
+    d->encoded = PropertyPtr(new Property(ns + QLatin1String("encoded")));
+
 }
 
 ContentVocab::~ContentVocab()
@@ -60,17 +62,17 @@ ContentVocab::~ContentVocab()
     delete d;
 }
 
-ContentVocab* ContentVocab::self()
+ContentVocab *ContentVocab::self()
 {
     static ContentVocabPrivate p;
-    if(!p.sSelf) {
+    if (!p.sSelf) {
         p.sSelf = new ContentVocab;
         qAddPostRoutine(ContentVocabPrivate::cleanupContentVocab);
     }
     return p.sSelf;
 }
-        
-const QString& ContentVocab::namespaceURI() const
+
+const QString &ContentVocab::namespaceURI() const
 {
     return d->namespaceURI;
 }

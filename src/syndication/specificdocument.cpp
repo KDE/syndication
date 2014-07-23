@@ -22,7 +22,8 @@
 
 #include "specificdocument.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 SpecificDocument::~SpecificDocument()
 {

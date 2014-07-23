@@ -20,7 +20,6 @@
  *
  */
 
-
 #ifndef SYNDICATION_MAPPER_MAPPERRDFIMPL_H
 #define SYNDICATION_MAPPER_MAPPERRDFIMPL_H
 
@@ -31,9 +30,8 @@
 #include <feed.h>
 #include <mapper.h>
 
-
-
-namespace Syndication {
+namespace Syndication
+{
 
 /** @internal */
 class RDFMapper : public Mapper<Feed>

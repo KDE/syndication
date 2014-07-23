@@ -27,13 +27,16 @@
 
 class QString;
 
-namespace boost {
-    template <class T> class shared_ptr;
+namespace boost
+{
+template <class T> class shared_ptr;
 }
 
-namespace Syndication {
-    
-namespace RDF {
+namespace Syndication
+{
+
+namespace RDF
+{
 
 //@cond PRIVATE
 class Property;
@@ -41,56 +44,56 @@ typedef boost::shared_ptr<Property> PropertyPtr;
 //@endcond
 
 /**
- * Singleton providing Property constants for 
+ * Singleton providing Property constants for
  * the Syndication module.
  * For a specification, see
  * http://web.resource.org/rss/1.0/modules/syndication/
- * 
+ *
  * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT SyndicationVocab
 {
-    public:
+public:
 
-        /**
-         * destructor
-         */
-        ~SyndicationVocab();
-        
-        /**
-         * returns the singleton instance
-         */
-        static SyndicationVocab* self();
-        
-        /**
-         * namespace URI of the syndication vocabulary, 
-         * @p "http://purl.org/rss/1.0/modules/syndication/"
-         */
-        const QString& namespaceURI() const;
+    /**
+     * destructor
+     */
+    ~SyndicationVocab();
 
-        /**
-         * updatePeriod property, see Syndication::updatePeriod() for more
-         * information.
-         */
-        PropertyPtr updatePeriod() const;
-        
-        /**
-         * updateFrequency property, see Syndication::updateFrequency() for more
-         * information.
-         */
-        PropertyPtr updateFrequency() const;
-        
-        /**
-         * updateBase property, see Syndication::updateBase() for more
-         * information.
-         */
-        PropertyPtr updateBase() const;
-                
-    private:
-        SyndicationVocab();
+    /**
+     * returns the singleton instance
+     */
+    static SyndicationVocab *self();
 
-        class SyndicationVocabPrivate;
-        SyndicationVocabPrivate * const d;
+    /**
+     * namespace URI of the syndication vocabulary,
+     * @p "http://purl.org/rss/1.0/modules/syndication/"
+     */
+    const QString &namespaceURI() const;
+
+    /**
+     * updatePeriod property, see Syndication::updatePeriod() for more
+     * information.
+     */
+    PropertyPtr updatePeriod() const;
+
+    /**
+     * updateFrequency property, see Syndication::updateFrequency() for more
+     * information.
+     */
+    PropertyPtr updateFrequency() const;
+
+    /**
+     * updateBase property, see Syndication::updateBase() for more
+     * information.
+     */
+    PropertyPtr updateBase() const;
+
+private:
+    SyndicationVocab();
+
+    class SyndicationVocabPrivate;
+    SyndicationVocabPrivate *const d;
 };
 
 } // namespace RDF

@@ -31,8 +31,10 @@ class QString;
 
 template <class T> class QList;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Model;
 class Property;
@@ -52,161 +54,160 @@ class SYNDICATION_EXPORT Resource : public Node
 {
     friend class Model;
 
-    public:
+public:
 
-        /**
-         * creates a null resource
-         */
-        Resource();
+    /**
+     * creates a null resource
+     */
+    Resource();
 
-        /**
-         * copies a resource
-         *
-         * @param other the resource to copy
-         */
-        Resource(const Resource& other);
+    /**
+     * copies a resource
+     *
+     * @param other the resource to copy
+     */
+    Resource(const Resource &other);
 
-        /**
-         * creates a resource with a given URI.
-         * Do not use this directly, use Model::createResource() instead.
-         *
-         * @param uri the URI of the new resource
-         */
-        explicit Resource(const QString& uri);
+    /**
+     * creates a resource with a given URI.
+     * Do not use this directly, use Model::createResource() instead.
+     *
+     * @param uri the URI of the new resource
+     */
+    explicit Resource(const QString &uri);
 
-        /**
-         * destructor
-         */
-        virtual ~Resource();
+    /**
+     * destructor
+     */
+    virtual ~Resource();
 
-        /**
-         * assigns a resource
-         *
-         * @param other the resource to assign
-         */
-        Resource& operator=(const Resource& other);
+    /**
+     * assigns a resource
+     *
+     * @param other the resource to assign
+     */
+    Resource &operator=(const Resource &other);
 
-        /**
-         * checks two resources for equality. Currently both URI (or anonID)
-         * _and_ id() must be equal!
-         *
-         * @param other the node to compare this node to
-         */
-        bool operator==(const Node& other) const;
+    /**
+     * checks two resources for equality. Currently both URI (or anonID)
+     * _and_ id() must be equal!
+     *
+     * @param other the node to compare this node to
+     */
+    bool operator==(const Node &other) const;
 
-        /**
-         * Used by visitors for double dispatch. See NodeVisitor
-         * for more information.
-         * @param visitor the visitor calling the method
-         * @param ptr a shared pointer object for this node
-         */
-        virtual void accept(NodeVisitor* visitor,  NodePtr ptr);
+    /**
+     * Used by visitors for double dispatch. See NodeVisitor
+     * for more information.
+     * @param visitor the visitor calling the method
+     * @param ptr a shared pointer object for this node
+     */
+    virtual void accept(NodeVisitor *visitor,  NodePtr ptr);
 
-        /**
-         * creates a copy of the resource object
-         */
-        virtual Resource* clone() const;
+    /**
+     * creates a copy of the resource object
+     */
+    virtual Resource *clone() const;
 
-        /**
-         * the model this resource belongs to
-         */
-        virtual Model model() const;
+    /**
+     * the model this resource belongs to
+     */
+    virtual Model model() const;
 
-        /**
-         * returns whether the resource has a property @p property in the
-         * associated model.
-         *
-         * @param property the property to check for
-         */
-        virtual bool hasProperty(PropertyPtr property) const;
+    /**
+     * returns whether the resource has a property @p property in the
+     * associated model.
+     *
+     * @param property the property to check for
+     */
+    virtual bool hasProperty(PropertyPtr property) const;
 
-        /**
-         * returns a statement from the associated model where this resource is
-         * the subject and the given property the predicate.
-         *
-         * @param property the property to check for
-         *
-         * @return the first statement found that satisfies the conditions.
-         * If there are multiple statements, an arbitrary one is returned.
-         */
-        virtual StatementPtr property(PropertyPtr property) const;
+    /**
+     * returns a statement from the associated model where this resource is
+     * the subject and the given property the predicate.
+     *
+     * @param property the property to check for
+     *
+     * @return the first statement found that satisfies the conditions.
+     * If there are multiple statements, an arbitrary one is returned.
+     */
+    virtual StatementPtr property(PropertyPtr property) const;
 
-        /**
-         * returns the list of all statements from the associated model where
-         * this resource is the subject and the given property the predicate.
-         *
-         * @param property the property to check for
-         *
-         * @return a list of the statements that satisfy the conditions.
-         */
-        virtual QList<StatementPtr> properties(PropertyPtr property) const;
+    /**
+     * returns the list of all statements from the associated model where
+     * this resource is the subject and the given property the predicate.
+     *
+     * @param property the property to check for
+     *
+     * @return a list of the statements that satisfy the conditions.
+     */
+    virtual QList<StatementPtr> properties(PropertyPtr property) const;
 
-        /**
-         * returns whether the resource is a null resource
-         */
-        virtual bool isNull() const;
+    /**
+     * returns whether the resource is a null resource
+     */
+    virtual bool isNull() const;
 
-        /**
-         * the identifier of this node. the ID is unique per model
-         * and set by the associated model at creation time.
-         */
-        virtual unsigned int id() const;
+    /**
+     * the identifier of this node. the ID is unique per model
+     * and set by the associated model at creation time.
+     */
+    virtual unsigned int id() const;
 
-        /**
-         * returns @p true
-         */
-        virtual bool isResource() const;
+    /**
+     * returns @p true
+     */
+    virtual bool isResource() const;
 
-        /**
-         * returns @p false
-         */
-        virtual bool isLiteral() const;
+    /**
+     * returns @p false
+     */
+    virtual bool isLiteral() const;
 
-        /**
-         * returns @p true if this resource is also a property, @p false
-         * otherwise
-         */
-        virtual bool isProperty() const;
+    /**
+     * returns @p true if this resource is also a property, @p false
+     * otherwise
+     */
+    virtual bool isProperty() const;
 
-        /**
-         * returns whether this resource is an anonymous resource
-         */
-        virtual bool isAnon() const;
+    /**
+     * returns whether this resource is an anonymous resource
+     */
+    virtual bool isAnon() const;
 
-        /**
-         * returns @p true if this resource is also a sequence, @p false
-         * otherwise.
-         */
-        virtual bool isSequence() const;
+    /**
+     * returns @p true if this resource is also a sequence, @p false
+     * otherwise.
+     */
+    virtual bool isSequence() const;
 
-        /**
-         * returns a null string
-         */
-        virtual QString text() const;
+    /**
+     * returns a null string
+     */
+    virtual QString text() const;
 
-        /**
-         * returns the URI of the resource
-         */
-        virtual QString uri() const;
+    /**
+     * returns the URI of the resource
+     */
+    virtual QString uri() const;
 
+    /**
+     * used in Model
+     * @internal
+     */
+    virtual void setModel(const Model &model);
 
-        /**
-         * used in Model
-         * @internal
-         */
-        virtual void setModel(const Model& model);
+    /**
+     * used in Model
+     * @internal
+     */
+    virtual void setId(unsigned int id);
 
-        /**
-         * used in Model
-         * @internal
-         */
-        virtual void setId(unsigned int id);
+private:
 
-    private:
-
-        class ResourcePrivate;
-        typedef boost::shared_ptr<ResourcePrivate> ResourcePrivatePtr;
-        ResourcePrivatePtr d;
+    class ResourcePrivate;
+    typedef boost::shared_ptr<ResourcePrivate> ResourcePrivatePtr;
+    ResourcePrivatePtr d;
 };
 
 } // namespace RDF

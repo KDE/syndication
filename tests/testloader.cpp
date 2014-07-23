@@ -50,35 +50,33 @@
 
 using namespace Syndication;
 
-TestLibSyndication::TestLibSyndication(const QString& url)
+TestLibSyndication::TestLibSyndication(const QString &url)
 {
     QUrl kurl;
-    if (!QUrl(url).isRelative())
+    if (!QUrl(url).isRelative()) {
         kurl = QUrl(url);
-    else
-        kurl = QUrl(QString(QLatin1String("file://") + QDir::currentPath() + QLatin1Char('/'))+ url);
+    } else {
+        kurl = QUrl(QString(QLatin1String("file://") + QDir::currentPath() + QLatin1Char('/')) + url);
+    }
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
-    Loader* loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader*,
+    Loader *loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader *,
                                     Syndication::FeedPtr,
                                     Syndication::ErrorCode)));
     loader->loadFrom(kurl);
 }
 
-void TestLibSyndication::slotLoadingComplete(Syndication::Loader* loader,
-                    Syndication::FeedPtr feed,
-                    Syndication::ErrorCode error)
+void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader,
+        Syndication::FeedPtr feed,
+        Syndication::ErrorCode error)
 {
     Q_UNUSED(loader)
     Q_UNUSED(error)
 
-    if (feed)
-    {
+    if (feed) {
         std::cout << feed->debugInfo().toUtf8().data() << std::endl;
         exit(0);
-    }
-    else
-    {
+    } else {
         std::cerr << "error" << std::endl;
         exit(1);
     }
@@ -87,8 +85,7 @@ void TestLibSyndication::slotLoadingComplete(Syndication::Loader* loader,
 
 int main(int argc, char **argv)
 {
-    if (argc < 2)
-    {
+    if (argc < 2) {
         std::cerr << "filename expected" << std::endl;
         return 1;
     }
@@ -112,9 +109,11 @@ int main(int argc, char **argv)
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-    if ( parser.positionalArguments().count() != 1 ) parser.showHelp();
+    if (parser.positionalArguments().count() != 1) {
+        parser.showHelp();
+    }
 
-    TestLibSyndication* tester = new TestLibSyndication(parser.positionalArguments().at(0));
+    TestLibSyndication *tester = new TestLibSyndication(parser.positionalArguments().at(0));
     Q_UNUSED(tester)
 
     return app.exec();

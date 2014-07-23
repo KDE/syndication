@@ -33,25 +33,27 @@
 
 using namespace boost;
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Statement::StatementPrivate
 {
-    public:
+public:
 
-        uint subjectID;
-        uint predicateID;
-        uint objectID;
-        weak_ptr<Model::ModelPrivate> model;
+    uint subjectID;
+    uint predicateID;
+    uint objectID;
+    weak_ptr<Model::ModelPrivate> model;
 
-        bool operator==(const StatementPrivate& other) const
-        {
-            // FIXME: use better check that works also with multiple models
-            return subjectID == other.subjectID &&
-                   predicateID == other.predicateID &&
-                   objectID == other.objectID;
-        }
+    bool operator==(const StatementPrivate &other) const
+    {
+        // FIXME: use better check that works also with multiple models
+        return subjectID == other.subjectID &&
+               predicateID == other.predicateID &&
+               objectID == other.objectID;
+    }
 };
 
 Statement::Statement() : d(new StatementPrivate)
@@ -61,13 +63,13 @@ Statement::Statement() : d(new StatementPrivate)
     d->objectID = 0;
 }
 
-Statement::Statement(const Statement& other)
+Statement::Statement(const Statement &other)
 {
     d = other.d;
 }
 
 Statement::Statement(ResourcePtr subject, PropertyPtr predicate,
-                        NodePtr object) : d(new StatementPrivate)
+                     NodePtr object) : d(new StatementPrivate)
 {
     d->model = subject->model().d;
     d->subjectID = subject->id();
@@ -79,16 +81,17 @@ Statement::~Statement()
 {
 }
 
-Statement& Statement::operator=(const Statement& other)
+Statement &Statement::operator=(const Statement &other)
 {
     d = other.d;
     return *this;
 }
 
-bool Statement::operator==(const Statement& other) const
+bool Statement::operator==(const Statement &other) const
 {
-    if (!d || !other.d)
+    if (!d || !other.d) {
         return d == other.d;
+    }
 
     return *d == *(other.d);
 }
@@ -107,29 +110,31 @@ ResourcePtr Statement::subject() const
 PropertyPtr Statement::predicate() const
 {
     const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
-    return m ? m->propertyByID(d->predicateID) : PropertyPtr( new Property() );
+    return m ? m->propertyByID(d->predicateID) : PropertyPtr(new Property());
 }
 
 NodePtr Statement::object() const
 {
     const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
-    return m ? m->nodeByID(d->objectID) : NodePtr( LiteralPtr( new Literal() ) );
+    return m ? m->nodeByID(d->objectID) : NodePtr(LiteralPtr(new Literal()));
 }
 
 ResourcePtr Statement::asResource() const
 {
     const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
 
-    if (isNull() || !m || !m->nodeByID(d->objectID)->isResource())
+    if (isNull() || !m || !m->nodeByID(d->objectID)->isResource()) {
         return ResourcePtr(new Resource);
+    }
 
     return m->resourceByID(d->objectID);
 }
 
 QString Statement::asString() const
 {
-    if (isNull())
+    if (isNull()) {
         return QString();
+    }
 
     const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
     return m ? m->nodeByID(d->objectID)->text() : QString();

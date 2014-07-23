@@ -24,15 +24,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
-
+namespace Syndication
+{
+namespace RSS2
+{
 
 Cloud::Cloud() : ElementWrapper()
 {
 }
 
-Cloud::Cloud(const QDomElement& element) : ElementWrapper(element)
+Cloud::Cloud(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -43,13 +44,12 @@ QString Cloud::domain() const
 
 int Cloud::port() const
 {
-    if (hasAttribute(QLatin1String("port")))
-    {
+    if (hasAttribute(QLatin1String("port"))) {
         bool ok;
         int c = attribute(QLatin1String("port")).toInt(&ok);
         return ok ? c : -1;
     }
-    
+
     return -1;
 }
 
@@ -65,7 +65,7 @@ QString Cloud::registerProcedure() const
 
 QString Cloud::protocol() const
 {
-    
+
     return attribute(QLatin1String("protocol"));
 }
 
@@ -73,20 +73,24 @@ QString Cloud::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Cloud: ###################\n");
-    if (!domain().isNull())
+    if (!domain().isNull()) {
         info += QLatin1String("domain: #") + domain() + QLatin1String("#\n");
-    if (port() != -1)
+    }
+    if (port() != -1) {
         info += QLatin1String("port: #") + QString::number(port()) + QLatin1String("#\n");
-    if (!path().isNull())
+    }
+    if (!path().isNull()) {
         info += QLatin1String("path: #") + path() + QLatin1String("#\n");
-    if (!registerProcedure().isNull())
+    }
+    if (!registerProcedure().isNull()) {
         info += QLatin1String("registerProcedure: #") + registerProcedure() + QLatin1String("#\n");
-    if (!protocol().isNull())
+    }
+    if (!protocol().isNull()) {
         info += QLatin1String("protocol: #") + protocol() + QLatin1String("#\n");
+    }
     info += QLatin1String("### Cloud end ################\n");
     return info;
 }
-
 
 } // namespace RSS2
 } // namespace Syndication

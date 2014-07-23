@@ -26,8 +26,9 @@
 #include <category.h>
 #include <atom/category.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class CategoryAtomImpl;
 typedef boost::shared_ptr<CategoryAtomImpl> CategoryAtomImplPtr;
 
@@ -38,22 +39,22 @@ typedef boost::shared_ptr<CategoryAtomImpl> CategoryAtomImplPtr;
  */
 class CategoryAtomImpl : public Syndication::Category
 {
-    public:
+public:
 
-        explicit CategoryAtomImpl(const Syndication::Atom::Category& category);
-        
-        bool isNull() const;
-        
-        QString term() const;
-        
-        QString scheme() const;
-        
-        QString label() const;
-        
-    private:
-        Syndication::Atom::Category m_category;
+    explicit CategoryAtomImpl(const Syndication::Atom::Category &category);
+
+    bool isNull() const;
+
+    QString term() const;
+
+    QString scheme() const;
+
+    QString label() const;
+
+private:
+    Syndication::Atom::Category m_category;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_CATEGORYATOMIMPL_H

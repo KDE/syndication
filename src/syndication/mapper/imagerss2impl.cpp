@@ -24,12 +24,13 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-ImageRSS2Impl::ImageRSS2Impl(const Syndication::RSS2::Image& image)
+ImageRSS2Impl::ImageRSS2Impl(const Syndication::RSS2::Image &image)
     : m_image(image)
 {}
-        
+
 bool ImageRSS2Impl::isNull() const
 {
     return m_image.isNull();
@@ -59,8 +60,8 @@ uint ImageRSS2Impl::height() const
 {
     return m_image.height();
 }
- 
- uint ImageRSS2Impl::width() const
+
+uint ImageRSS2Impl::width() const
 {
     return m_image.width();
 }

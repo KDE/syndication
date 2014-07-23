@@ -26,7 +26,8 @@
 #include <rss2/document.h>
 #include <feed.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class FeedRSS2Impl;
 typedef boost::shared_ptr<FeedRSS2Impl> FeedRSS2ImplPtr;
@@ -38,35 +39,35 @@ typedef boost::shared_ptr<Image> ImagePtr;
  */
 class FeedRSS2Impl : public Syndication::Feed
 {
-    public:
-        
-        explicit FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc);
-        
-        Syndication::SpecificDocumentPtr specificDocument() const;
-        
-        QList<ItemPtr> items() const;
-        
-        QList<CategoryPtr> categories() const;
-        
-        QString title() const;
-        
-        QString link() const;
-        
-        QString description() const;
-        
-        QList<PersonPtr> authors() const;
-        
-        QString language() const;
-        
-        QString copyright() const;
-        
-        ImagePtr image() const;
-        
-        QMultiMap<QString, QDomElement> additionalProperties() const;
-        
-    private:
-        
-        Syndication::RSS2::DocumentPtr m_doc;
+public:
+
+    explicit FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc);
+
+    Syndication::SpecificDocumentPtr specificDocument() const;
+
+    QList<ItemPtr> items() const;
+
+    QList<CategoryPtr> categories() const;
+
+    QString title() const;
+
+    QString link() const;
+
+    QString description() const;
+
+    QList<PersonPtr> authors() const;
+
+    QString language() const;
+
+    QString copyright() const;
+
+    ImagePtr image() const;
+
+    QMultiMap<QString, QDomElement> additionalProperties() const;
+
+private:
+
+    Syndication::RSS2::DocumentPtr m_doc;
 };
 
 } // namespace Syndication

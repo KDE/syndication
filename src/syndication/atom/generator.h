@@ -28,8 +28,10 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
-namespace Atom {
+namespace Syndication
+{
+namespace Atom
+{
 
 /**
  * Description of the agent used to generate the feed.
@@ -38,44 +40,44 @@ namespace Atom {
  */
 class SYNDICATION_EXPORT Generator : public ElementWrapper
 {
-    public:
+public:
 
-        /**
-         * default constructor, creates a null generator
-         */
-        Generator();
+    /**
+     * default constructor, creates a null generator
+     */
+    Generator();
 
-        /**
-         * creates a Generator wrapping an atom:generator element.
-         * @param element a DOM element, should be a atom:generator element
-         * (although not enforced), otherwise this object will not parse
-         * anything useful
-         */
-        explicit Generator(const QDomElement& element);
+    /**
+     * creates a Generator wrapping an atom:generator element.
+     * @param element a DOM element, should be a atom:generator element
+     * (although not enforced), otherwise this object will not parse
+     * anything useful
+     */
+    explicit Generator(const QDomElement &element);
 
-        /**
-         * A URI for the generator (e.g. its homepage) (optional)
-         */
-        QString uri() const;
+    /**
+     * A URI for the generator (e.g. its homepage) (optional)
+     */
+    QString uri() const;
 
-        /**
-         * version of the agent (optional)
-         */
-        QString version() const;
+    /**
+     * version of the agent (optional)
+     */
+    QString version() const;
 
-        /**
-         * human-readable name of the generator. (optional)
-         *
-         * @return generator name as plain text
-         */
-        QString name() const;
+    /**
+     * human-readable name of the generator. (optional)
+     *
+     * @return generator name as plain text
+     */
+    QString name() const;
 
-        /**
-         * a description of this generator for debugging purposes.
-         *
-         * @return debug info
-         */
-        QString debugInfo() const;
+    /**
+     * a description of this generator for debugging purposes.
+     *
+     * @return debug info
+     */
+    QString debugInfo() const;
 
 };
 

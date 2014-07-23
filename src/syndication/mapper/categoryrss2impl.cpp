@@ -24,12 +24,13 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
-CategoryRSS2Impl::CategoryRSS2Impl(const Syndication::RSS2::Category& category)
+CategoryRSS2Impl::CategoryRSS2Impl(const Syndication::RSS2::Category &category)
     : m_category(category)
 {}
-        
+
 bool CategoryRSS2Impl::isNull() const
 {
     return m_category.isNull();

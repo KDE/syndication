@@ -25,8 +25,10 @@
 #include <syndication_export.h>
 #include <boost/shared_ptr.hpp>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Resource;
 typedef boost::shared_ptr<Resource> ResourcePtr;
@@ -39,70 +41,70 @@ typedef boost::shared_ptr<Resource> ResourcePtr;
  */
 class SYNDICATION_EXPORT ResourceWrapper
 {
-    public:
-        /**
-         * creates a wrapper wrapping a null resource, isNull() will be
-         * @p true.
-         */
-        ResourceWrapper();
+public:
+    /**
+     * creates a wrapper wrapping a null resource, isNull() will be
+     * @p true.
+     */
+    ResourceWrapper();
 
-        /**
-         * Copy constructor.
-         * Due to the shared d pointer, this is a cheap operation.
-         *
-         * @param other resource wrapper to copy
-         */
-        ResourceWrapper(const ResourceWrapper& other);
+    /**
+     * Copy constructor.
+     * Due to the shared d pointer, this is a cheap operation.
+     *
+     * @param other resource wrapper to copy
+     */
+    ResourceWrapper(const ResourceWrapper &other);
 
-        /**
-         * creates a resource wrapper for a given resource.
-         * If a null pointer is passed, a null resource is
-         * created internally (resource() will _not_ return a null
-         * pointer!)
-         * @param resource a resource wrapper instance
-         */
-        explicit ResourceWrapper(ResourcePtr resource);
-        
-        /**
-         * destructor
-         */
-        virtual ~ResourceWrapper();
+    /**
+     * creates a resource wrapper for a given resource.
+     * If a null pointer is passed, a null resource is
+     * created internally (resource() will _not_ return a null
+     * pointer!)
+     * @param resource a resource wrapper instance
+     */
+    explicit ResourceWrapper(ResourcePtr resource);
 
-        /**
-         * Assignment oeprator
-         * Due to the shared d pointer, this is a cheap operation.
-         *
-         * @param other resource wrapper to assign.
-         */
-        ResourceWrapper& operator=(const ResourceWrapper& other);
+    /**
+     * destructor
+     */
+    virtual ~ResourceWrapper();
 
-        /**
-         * compares two resource wrapper instances.
-         * Two resource wrappers are equal when the wrapped resources
-         * are equal, i.e. they have the same URI.
-         * @see Resource::uri()
-         * @param other resource wrapper instance to compare to
-         */
-        bool operator==(const ResourceWrapper& other) const;
+    /**
+     * Assignment oeprator
+     * Due to the shared d pointer, this is a cheap operation.
+     *
+     * @param other resource wrapper to assign.
+     */
+    ResourceWrapper &operator=(const ResourceWrapper &other);
 
-        /**
-         * returns the wrapped resource. Whether a null resource or
-         * not, the returned pointer itself is never a null
-         * _pointer_!
-         */
-        ResourcePtr resource() const;
+    /**
+     * compares two resource wrapper instances.
+     * Two resource wrappers are equal when the wrapped resources
+     * are equal, i.e. they have the same URI.
+     * @see Resource::uri()
+     * @param other resource wrapper instance to compare to
+     */
+    bool operator==(const ResourceWrapper &other) const;
 
-        /**
-         * returns whether the wrapped resource is a null resource
-         * @return @c true if isNull() is true for the wrapped resource,
-         * @c false otherwise
-         */
-        bool isNull() const;
+    /**
+     * returns the wrapped resource. Whether a null resource or
+     * not, the returned pointer itself is never a null
+     * _pointer_!
+     */
+    ResourcePtr resource() const;
 
-    private:
+    /**
+     * returns whether the wrapped resource is a null resource
+     * @return @c true if isNull() is true for the wrapped resource,
+     * @c false otherwise
+     */
+    bool isNull() const;
 
-        class ResourceWrapperPrivate;
-        boost::shared_ptr<ResourceWrapperPrivate> d;
+private:
+
+    class ResourceWrapperPrivate;
+    boost::shared_ptr<ResourceWrapperPrivate> d;
 };
 
 } // namespace RDF

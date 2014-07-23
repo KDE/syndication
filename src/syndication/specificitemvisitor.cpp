@@ -20,32 +20,32 @@
  *
  */
 
-
 #include "specificitemvisitor.h"
 #include "specificitem.h"
 
-namespace Syndication {
+namespace Syndication
+{
 
 SpecificItemVisitor::~SpecificItemVisitor()
 {
 }
 
-bool SpecificItemVisitor::visit(SpecificItem* item)
+bool SpecificItemVisitor::visit(SpecificItem *item)
 {
     return item->accept(this);
 }
 
-bool SpecificItemVisitor::visitRSS2Item(Syndication::RSS2::Item*)
+bool SpecificItemVisitor::visitRSS2Item(Syndication::RSS2::Item *)
 {
     return false;
 }
-        
-bool SpecificItemVisitor::visitRDFItem(Syndication::RDF::Item*)
+
+bool SpecificItemVisitor::visitRDFItem(Syndication::RDF::Item *)
 {
     return false;
 }
-       
-bool SpecificItemVisitor::visitAtomEntry(Syndication::Atom::Entry*)
+
+bool SpecificItemVisitor::visitAtomEntry(Syndication::Atom::Entry *)
 {
     return false;
 }

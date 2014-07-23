@@ -28,8 +28,10 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class Literal;
 
@@ -43,121 +45,120 @@ typedef boost::shared_ptr<Literal> LiteralPtr;
  */
 class SYNDICATION_EXPORT Literal : public Node
 {
-    public:
+public:
 
-        /**
-         * creates a null literal. text() will return a null string.
-         */
-        Literal();
+    /**
+     * creates a null literal. text() will return a null string.
+     */
+    Literal();
 
-        /**
-         * copies a literal node
-         *
-         * @param other the literal node to copy
-         */
-        Literal(const Literal& other);
+    /**
+     * copies a literal node
+     *
+     * @param other the literal node to copy
+     */
+    Literal(const Literal &other);
 
-        /**
-         * creates a new literal node with a given text
-         *
-         * @param text the literal string
-         */
-        explicit Literal(const QString& text);
+    /**
+     * creates a new literal node with a given text
+     *
+     * @param text the literal string
+     */
+    explicit Literal(const QString &text);
 
-        /**
-         * destructor
-         */
-        virtual ~Literal();
+    /**
+     * destructor
+     */
+    virtual ~Literal();
 
-        /**
-         * assigns another literal
-         *
-         * @param other the literal to assign
-         */
-        virtual Literal& operator=(const Literal& other);
+    /**
+     * assigns another literal
+     *
+     * @param other the literal to assign
+     */
+    virtual Literal &operator=(const Literal &other);
 
-        /**
-         * two literal nodes are equal iff their text _and_ ID's
-         * are equal.
-         */
-        virtual bool operator==(const Node& other) const;
+    /**
+     * two literal nodes are equal iff their text _and_ ID's
+     * are equal.
+     */
+    virtual bool operator==(const Node &other) const;
 
-        /**
-         * clones the literal node.
-         */
-        virtual Literal* clone() const;
+    /**
+     * clones the literal node.
+     */
+    virtual Literal *clone() const;
 
-        /**
-         * Used by visitors for double dispatch. See NodeVisitor
-         * for more information.
-         * @param visitor the visitor calling the method
-         * @param ptr a shared pointer object for this node
-         */
-        virtual void accept( NodeVisitor* visitor, NodePtr ptr);
+    /**
+     * Used by visitors for double dispatch. See NodeVisitor
+     * for more information.
+     * @param visitor the visitor calling the method
+     * @param ptr a shared pointer object for this node
+     */
+    virtual void accept(NodeVisitor *visitor, NodePtr ptr);
 
-        /**
-         * returns whether this node is a null node
-         */
-        virtual bool isNull() const;
+    /**
+     * returns whether this node is a null node
+     */
+    virtual bool isNull() const;
 
-        /**
-         * the identifier of this node. the ID is unique per model
-         * and set by the associated model at creation time.
-         */
-        virtual unsigned int id() const;
+    /**
+     * the identifier of this node. the ID is unique per model
+     * and set by the associated model at creation time.
+     */
+    virtual unsigned int id() const;
 
-        /**
-         * returns false, as a literal is not a resource
-         */
-        virtual bool isResource() const;
-        /**
-         * returns false, as a literal is not a property
-         */
-        virtual bool isProperty() const;
+    /**
+     * returns false, as a literal is not a resource
+     */
+    virtual bool isResource() const;
+    /**
+     * returns false, as a literal is not a property
+     */
+    virtual bool isProperty() const;
 
-        /**
-         * returns true for literals
-         */
-        virtual bool isLiteral() const;
+    /**
+     * returns true for literals
+     */
+    virtual bool isLiteral() const;
 
-        /**
-         * returns false, literals are not anonymous resources
-         */
-        virtual bool isAnon() const;
+    /**
+     * returns false, literals are not anonymous resources
+     */
+    virtual bool isAnon() const;
 
-        /**
-         * returns false, literals are not sequences
-         */
-        virtual bool isSequence() const;
+    /**
+     * returns false, literals are not sequences
+     */
+    virtual bool isSequence() const;
 
-        /**
-         * implicit conversion to string. returns text()
-         */
-        virtual operator QString() const;
+    /**
+     * implicit conversion to string. returns text()
+     */
+    virtual operator QString() const;
 
-        /**
-         * the string value of the literal
-         */
-        virtual QString text() const;
+    /**
+     * the string value of the literal
+     */
+    virtual QString text() const;
 
-        /**
-         * used in Model
-         * @internal
-         */
-        virtual void setModel(const Model& model);
+    /**
+     * used in Model
+     * @internal
+     */
+    virtual void setModel(const Model &model);
 
-        /**
-         * used in Model
-         * @internal
-         */
-        virtual void setId(unsigned int id);
+    /**
+     * used in Model
+     * @internal
+     */
+    virtual void setId(unsigned int id);
 
-    private:
-        class LiteralPrivate;
-        typedef boost::shared_ptr<LiteralPrivate> LiteralPrivatePtr;
-        LiteralPrivatePtr d;
+private:
+    class LiteralPrivate;
+    typedef boost::shared_ptr<LiteralPrivate> LiteralPrivatePtr;
+    LiteralPrivatePtr d;
 };
-
 
 } // namespace RDF
 } // namespace Syndication

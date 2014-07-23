@@ -23,13 +23,14 @@
 #include "model.h"
 #include "resource.h"
 
-
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 class ResourceWrapper::ResourceWrapperPrivate
 {
-    public:
+public:
 
     ResourcePtr resource;
     Model model;
@@ -37,10 +38,10 @@ class ResourceWrapper::ResourceWrapperPrivate
 
 ResourceWrapper::ResourceWrapper() : d(new ResourceWrapperPrivate)
 {
-    d->resource = ResourcePtr( new Resource() );
+    d->resource = ResourcePtr(new Resource());
 }
 
-ResourceWrapper::ResourceWrapper(const ResourceWrapper& other)
+ResourceWrapper::ResourceWrapper(const ResourceWrapper &other)
 {
     *this = other;
 }
@@ -48,7 +49,7 @@ ResourceWrapper::ResourceWrapper(const ResourceWrapper& other)
 ResourceWrapper::ResourceWrapper(ResourcePtr resource) : d(new ResourceWrapperPrivate)
 {
     // if a null pointer is passed, we create a null resource
-    d->resource = !resource ? ResourcePtr( new Resource() ) : resource;
+    d->resource = !resource ? ResourcePtr(new Resource()) : resource;
     d->model = d->resource->model();
 }
 
@@ -56,13 +57,13 @@ ResourceWrapper::~ResourceWrapper()
 {
 }
 
-ResourceWrapper& ResourceWrapper::operator=(const ResourceWrapper& other)
+ResourceWrapper &ResourceWrapper::operator=(const ResourceWrapper &other)
 {
     d = other.d;
     return *this;
 }
 
-bool ResourceWrapper::operator==(const ResourceWrapper& other) const
+bool ResourceWrapper::operator==(const ResourceWrapper &other) const
 {
     return *(d->resource) == *(other.d->resource);
 }

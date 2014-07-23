@@ -28,8 +28,10 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RDF {
+namespace Syndication
+{
+namespace RDF
+{
 
 TextInput::TextInput() : ResourceWrapper()
 {
@@ -74,7 +76,6 @@ QString TextInput::debugInfo() const
     info += QLatin1String("### TextInput end ################\n");
     return info;
 }
-
 
 } // namespace RDF
 } // namespace Syndication

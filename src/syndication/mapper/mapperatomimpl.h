@@ -30,9 +30,8 @@
 #include <feed.h>
 #include <mapper.h>
 
-
-
-namespace Syndication {
+namespace Syndication
+{
 
 /** @internal */
 class AtomMapper : public Mapper<Feed>

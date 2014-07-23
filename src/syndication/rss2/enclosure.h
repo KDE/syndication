@@ -28,8 +28,10 @@
 class QDomElement;
 class QString;
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 /**
  * Describes a media object that is "attached" to the item.
@@ -41,44 +43,43 @@ namespace RSS2 {
  */
 class SYNDICATION_EXPORT Enclosure : public ElementWrapper
 {
-    public:
+public:
 
+    /**
+     * Default constructor, creates a null object, for which isNull() is
+     * @c true.
+     */
+    Enclosure();
 
-        /**
-         * Default constructor, creates a null object, for which isNull() is
-         * @c true.
-         */
-        Enclosure();
+    /**
+     * Creates an Enclosure object wrapping an @c &lt;enclosure> XML element.
+     *
+     * @param element The @c &lt;enclosure> element to wrap
+     */
+    explicit Enclosure(const QDomElement &element);
 
-        /**
-         * Creates an Enclosure object wrapping an @c &lt;enclosure> XML element.
-         *
-         * @param element The @c &lt;enclosure> element to wrap
-         */
-        explicit Enclosure(const QDomElement& element);
+    /**
+     * returns the URL of the enclosure
+     */
+    QString url() const;
 
-        /**
-         * returns the URL of the enclosure
-         */
-        QString url() const;
+    /**
+     * returns the size of the enclosure in bytes
+     */
+    int length() const;
 
-        /**
-         * returns the size of the enclosure in bytes
-         */
-        int length() const;
+    /**
+     * returns the mime type of the enclosure
+     * (e.g. "audio/mpeg")
+     */
+    QString type() const;
 
-        /**
-         * returns the mime type of the enclosure
-         * (e.g. "audio/mpeg")
-         */
-        QString type() const;
-
-        /**
-         * Returns a description of the object for debugging purposes.
-         *
-         * @return debug string
-         */
-        QString debugInfo() const;
+    /**
+     * Returns a description of the object for debugging purposes.
+     *
+     * @return debug string
+     */
+    QString debugInfo() const;
 };
 
 } // namespace RSS2

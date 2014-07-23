@@ -26,8 +26,9 @@
 #include <category.h>
 #include <rss2/category.h>
 
-namespace Syndication {
-    
+namespace Syndication
+{
+
 class CategoryRSS2Impl;
 typedef boost::shared_ptr<CategoryRSS2Impl> CategoryRSS2ImplPtr;
 
@@ -38,22 +39,22 @@ typedef boost::shared_ptr<CategoryRSS2Impl> CategoryRSS2ImplPtr;
  */
 class CategoryRSS2Impl : public Syndication::Category
 {
-    public:
+public:
 
-        explicit CategoryRSS2Impl(const Syndication::RSS2::Category& category);
-        
-        bool isNull() const;
-        
-        QString term() const;
-        
-        QString label() const;
-        
-        QString scheme() const;
-        
-    private:
-        Syndication::RSS2::Category m_category;
+    explicit CategoryRSS2Impl(const Syndication::RSS2::Category &category);
+
+    bool isNull() const;
+
+    QString term() const;
+
+    QString label() const;
+
+    QString scheme() const;
+
+private:
+    Syndication::RSS2::Category m_category;
 };
-    
+
 } // namespace Syndication
 
 #endif // SYNDICATION_MAPPER_CATEGORYRSS2IMPL_H

@@ -33,7 +33,8 @@
 #include <syndication/atom/person.h>
 #include <syndication/atom/source.h>
 
-namespace Syndication {
+namespace Syndication
+{
 
 /**
  * Atom parser and model classes, representing

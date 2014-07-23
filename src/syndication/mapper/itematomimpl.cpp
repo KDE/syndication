@@ -43,9 +43,10 @@ using Syndication::Atom::Content;
 using Syndication::Atom::Link;
 using Syndication::Atom::Person;
 
-namespace Syndication {
+namespace Syndication
+{
 
-ItemAtomImpl::ItemAtomImpl(const Syndication::Atom::Entry& entry) : m_entry(entry)
+ItemAtomImpl::ItemAtomImpl(const Syndication::Atom::Entry &entry) : m_entry(entry)
 {
 }
 
@@ -61,14 +62,12 @@ QString ItemAtomImpl::link() const
     QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
 
     // return first link where rel="alternate"
-    for ( ; it != end; ++it)
-    {
-        if ((*it).rel() == QLatin1String("alternate"))
-        {
+    for (; it != end; ++it) {
+        if ((*it).rel() == QLatin1String("alternate")) {
             return (*it).href();
         }
     }
-    
+
     return QString();
 }
 
@@ -80,9 +79,10 @@ QString ItemAtomImpl::description() const
 QString ItemAtomImpl::content() const
 {
     Content content = m_entry.content();
-    if (content.isNull())
+    if (content.isNull()) {
         return QString();
-    
+    }
+
     return content.asString();
 }
 
@@ -91,47 +91,47 @@ QList<PersonPtr> ItemAtomImpl::authors() const
     QList<Syndication::Atom::Person> atomps = m_entry.authors();
     QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
     QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
-    
+
     QList<PersonPtr> list;
-    
-    for ( ; it != end; ++it)
-    {
+
+    for (; it != end; ++it) {
         PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
         list.append(ptr);
     }
-    
+
     atomps = m_entry.contributors();
-    
+
     it = atomps.constBegin();
     end = atomps.constEnd();
-    
-    for ( ; it != end; ++it)
-    {
+
+    for (; it != end; ++it) {
         PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
         list.append(ptr);
     }
-    
+
     return list;
 }
 
-time_t ItemAtomImpl::datePublished() const 
+time_t ItemAtomImpl::datePublished() const
 {
     time_t pub = m_entry.published();
-    if (pub == 0)
+    if (pub == 0) {
         return m_entry.updated();
-    else
+    } else {
         return pub;
+    }
 }
 
-time_t ItemAtomImpl::dateUpdated() const 
+time_t ItemAtomImpl::dateUpdated() const
 {
     time_t upd = m_entry.updated();
-    if (upd == 0)
+    if (upd == 0) {
         return m_entry.published();
-    else
+    } else {
         return upd;
+    }
 }
-   
+
 QString ItemAtomImpl::language() const
 {
     return m_entry.xmlLang();
@@ -140,12 +140,12 @@ QString ItemAtomImpl::language() const
 QString ItemAtomImpl::id() const
 {
     QString id = m_entry.id();
-    if (!id.isEmpty())
+    if (!id.isEmpty()) {
         return id;
-    
+    }
+
     return QString::fromLatin1("hash:%1").arg(Syndication::calcMD5Sum(title() + description() + link() + content()));
 }
-
 
 QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
 {
@@ -155,10 +155,8 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
     QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
     QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
 
-    for ( ; it != end; ++it)
-    {
-        if ((*it).rel() == QLatin1String("enclosure"))
-        {
+    for (; it != end; ++it) {
+        if ((*it).rel() == QLatin1String("enclosure")) {
             list.append(EnclosureAtomImplPtr(new EnclosureAtomImpl(*it)));
 
         }
@@ -170,17 +168,16 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
 QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
 {
     QList<Syndication::CategoryPtr> list;
-    
+
     QList<Syndication::Atom::Category> cats = m_entry.categories();
     QList<Syndication::Atom::Category>::ConstIterator it = cats.constBegin();
     QList<Syndication::Atom::Category>::ConstIterator end = cats.constEnd();
-    
-    for ( ; it != end; ++it)
-    {
+
+    for (; it != end; ++it) {
         CategoryAtomImplPtr impl(new CategoryAtomImpl(*it));
         list.append(impl);
     }
-    
+
     return list;
 }
 
@@ -215,14 +212,12 @@ Syndication::SpecificItemPtr ItemAtomImpl::specificItem() const
 QMultiMap<QString, QDomElement> ItemAtomImpl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
-    
-    foreach (const QDomElement &i, m_entry.unhandledElements())
-    {
-        ret.insert(i.namespaceURI() + i.localName(), i); 
+
+    foreach (const QDomElement &i, m_entry.unhandledElements()) {
+        ret.insert(i.namespaceURI() + i.localName(), i);
     }
-    
+
     return ret;
 }
-
 
 } // namespace Syndication

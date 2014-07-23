@@ -25,14 +25,16 @@
 
 #include <QtCore/QString>
 
-namespace Syndication {
-namespace RSS2 {
+namespace Syndication
+{
+namespace RSS2
+{
 
 Source::Source() : ElementWrapper()
 {
 }
 
-Source::Source(const QDomElement& element) : ElementWrapper(element)
+Source::Source(const QDomElement &element) : ElementWrapper(element)
 {
 }
 
@@ -50,14 +52,15 @@ QString Source::debugInfo() const
 {
     QString info;
     info += QLatin1String("### Source: ###################\n");
-    if (!source().isNull())
+    if (!source().isNull()) {
         info += QLatin1String("source: #") + source() + QLatin1String("#\n");
-    if (!url().isNull())
+    }
+    if (!url().isNull()) {
         info += QLatin1String("url: #") + url() + QLatin1String("#\n");
+    }
     info += QLatin1String("### Source end ################\n");
     return info;
 }
-
 
 } // namespace RSS2
 } // namespace Syndication

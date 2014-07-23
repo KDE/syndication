@@ -30,12 +30,13 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTextStream>
 
-namespace Syndication {
+namespace Syndication
+{
 
 class ElementWrapper::ElementWrapperPrivate
 {
-    public:
-        
+public:
+
     QDomElement element;
     QDomDocument ownerDoc;
     mutable QString xmlBase;
@@ -50,12 +51,12 @@ ElementWrapper::ElementWrapper() : d(new ElementWrapperPrivate)
     d->xmlLangParsed = true;
 }
 
-ElementWrapper::ElementWrapper(const ElementWrapper& other)
+ElementWrapper::ElementWrapper(const ElementWrapper &other)
 {
     *this = other;
 }
 
-ElementWrapper::ElementWrapper(const QDomElement& element) : d(new ElementWrapperPrivate)
+ElementWrapper::ElementWrapper(const QDomElement &element) : d(new ElementWrapperPrivate)
 {
     d->element = element;
     d->ownerDoc = element.ownerDocument(); //keep a copy of the (shared, thus cheap) document around to ensure the element isn't deleted too early (Bug 190068)
@@ -67,13 +68,13 @@ ElementWrapper::~ElementWrapper()
 {
 }
 
-ElementWrapper& ElementWrapper::operator=(const ElementWrapper& other)
+ElementWrapper &ElementWrapper::operator=(const ElementWrapper &other)
 {
     d = other.d;
     return *this;
 }
 
-bool ElementWrapper::operator==(const ElementWrapper& other) const
+bool ElementWrapper::operator==(const ElementWrapper &other) const
 {
     return d->element == other.d->element;
 }
@@ -83,15 +84,14 @@ bool ElementWrapper::isNull() const
     return d->element.isNull();
 }
 
-const QDomElement& ElementWrapper::element() const
+const QDomElement &ElementWrapper::element() const
 {
     return d->element;
 }
 
 QString ElementWrapper::xmlBase() const
 {
-    if (!d->xmlBaseParsed) // xmlBase not computed yet
-    {
+    if (!d->xmlBaseParsed) { // xmlBase not computed yet
         QDomElement current = d->element;
 
         /*
@@ -108,107 +108,102 @@ QString ElementWrapper::xmlBase() const
         the root element.
         */
         QStringList bases;
-        while (!current.isNull())
-        {
-            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("base")))
-            {
+        while (!current.isNull()) {
+            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("base"))) {
                 bases << current.attributeNS(xmlNamespace(), QLatin1String("base"));
             }
-            
+
             QDomNode parent = current.parentNode();
 
-            if (!parent.isNull() && parent.isElement())
+            if (!parent.isNull() && parent.isElement()) {
                 current = parent.toElement();
-            else
+            } else {
                 current = QDomElement();
+            }
         }
-        while (!bases.isEmpty())
-        {
+        while (!bases.isEmpty()) {
             QUrl u = QUrl(d->xmlBase).resolved(QUrl(bases.takeLast()));
             d->xmlBase = u.url();
         }
-        
+
         d->xmlBaseParsed = true;
     }
-    
+
     return d->xmlBase;
 }
 
-QString ElementWrapper::completeURI(const QString& uri) const
+QString ElementWrapper::completeURI(const QString &uri) const
 {
     QUrl u = QUrl(xmlBase()).resolved(QUrl(uri));
-    
-    if (u.isValid())
+
+    if (u.isValid()) {
         return u.url();
-    
+    }
+
     return uri;
 }
 
 QString ElementWrapper::xmlLang() const
 {
-    if (!d->xmlLangParsed) // xmlLang not computed yet
-    {
+    if (!d->xmlLangParsed) { // xmlLang not computed yet
         QDomElement current = d->element;
-        
-        while (!current.isNull())
-        {
-            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("lang")))
-            {
+
+        while (!current.isNull()) {
+            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("lang"))) {
                 d->xmlLang = current.attributeNS(xmlNamespace(), QLatin1String("lang"));
                 return d->xmlLang;
             }
-            
+
             QDomNode parent = current.parentNode();
 
-            if (!parent.isNull() && parent.isElement())
+            if (!parent.isNull() && parent.isElement()) {
                 current = parent.toElement();
-            else
+            } else {
                 current = QDomElement();
+            }
         }
         d->xmlLangParsed = true;
     }
     return d->xmlLang;
 }
-        
-QString ElementWrapper::extractElementText(const QString& tagName) const
+
+QString ElementWrapper::extractElementText(const QString &tagName) const
 {
     QDomElement el = d->element.namedItem(tagName).toElement();
     return el.isNull() ? QString() : el.text().trimmed();
 }
 
-QString ElementWrapper::extractElementTextNS(const QString& namespaceURI, const QString& localName) const
+QString ElementWrapper::extractElementTextNS(const QString &namespaceURI, const QString &localName) const
 {
     QDomElement el = firstElementByTagNameNS(namespaceURI, localName);
     return el.isNull() ? QString() : el.text().trimmed();
 }
 
-QString ElementWrapper::childNodesAsXML(const QDomElement& parent)
+QString ElementWrapper::childNodesAsXML(const QDomElement &parent)
 {
     ElementWrapper wrapper(parent);
-    
-    if (parent.isNull())
+
+    if (parent.isNull()) {
         return QString();
+    }
 
     QDomNodeList list = parent.childNodes();
-    
+
     QString str;
-    QTextStream ts( &str, QIODevice::WriteOnly );
-    
+    QTextStream ts(&str, QIODevice::WriteOnly);
+
     // if there is a xml:base in our scope, first set it for
     // each child element so the xml:base shows up in the
     // serialization
     QString base = wrapper.xmlBase();
 
-
-    for (int i = 0; i < list.count(); ++i)
-    {
+    for (int i = 0; i < list.count(); ++i) {
         QDomNode it = list.item(i);
-        if (!base.isEmpty() && it.isElement() 
-             && !it.toElement().hasAttributeNS(xmlNamespace(), QLatin1String("base")))
-        {
+        if (!base.isEmpty() && it.isElement()
+                && !it.toElement().hasAttributeNS(xmlNamespace(), QLatin1String("base"))) {
             it.toElement().setAttributeNS(xmlNamespace(), QLatin1String("base"), base);
         }
-            
+
         ts << it;
     }
     return str.trimmed();
@@ -219,53 +214,51 @@ QString ElementWrapper::childNodesAsXML() const
     return childNodesAsXML(d->element);
 }
 
-QList<QDomElement> ElementWrapper::elementsByTagName(const QString& tagName) const
+QList<QDomElement> ElementWrapper::elementsByTagName(const QString &tagName) const
 {
     QList<QDomElement> elements;
-    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling())
-    {
-        if (n.isElement())
-        {
+    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling()) {
+        if (n.isElement()) {
             QDomElement e = n.toElement();
-            if (e.tagName() == tagName)
+            if (e.tagName() == tagName) {
                 elements.append(e);
+            }
         }
     }
     return elements;
 }
 
-QDomElement ElementWrapper::firstElementByTagNameNS(const QString& nsURI, const QString& localName) const
+QDomElement ElementWrapper::firstElementByTagNameNS(const QString &nsURI, const QString &localName) const
 {
-    if (isNull())
+    if (isNull()) {
         return QDomElement();
-    
-    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling())
-    {
-        if (n.isElement())
-        {
+    }
+
+    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling()) {
+        if (n.isElement()) {
             QDomElement e = n.toElement();
-            if (e.localName() == localName && e.namespaceURI() == nsURI)
+            if (e.localName() == localName && e.namespaceURI() == nsURI) {
                 return e;
+            }
         }
     }
-    
+
     return QDomElement();
 }
 
-
-QList<QDomElement> ElementWrapper::elementsByTagNameNS(const QString& nsURI, const QString& localName) const
+QList<QDomElement> ElementWrapper::elementsByTagNameNS(const QString &nsURI, const QString &localName) const
 {
-    if (isNull())
+    if (isNull()) {
         return QList<QDomElement>();
-    
+    }
+
     QList<QDomElement> elements;
-    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling())
-    {
-        if (n.isElement())
-        {
+    for (QDomNode n = d->element.firstChild(); !n.isNull(); n = n.nextSibling()) {
+        if (n.isElement()) {
             QDomElement e = n.toElement();
-            if (e.localName() == localName && e.namespaceURI() == nsURI)
+            if (e.localName() == localName && e.namespaceURI() == nsURI) {
                 elements.append(e);
+            }
         }
     }
     return elements;
@@ -275,23 +268,23 @@ QString ElementWrapper::text() const
 {
     return d->element.text();
 }
-        
-QString ElementWrapper::attribute(const QString& name, const QString& defValue) const
+
+QString ElementWrapper::attribute(const QString &name, const QString &defValue) const
 {
     return d->element.attribute(name, defValue);
 }
-        
-QString ElementWrapper::attributeNS(const QString& nsURI, const QString& localName, const QString& defValue) const
+
+QString ElementWrapper::attributeNS(const QString &nsURI, const QString &localName, const QString &defValue) const
 {
     return d->element.attributeNS(nsURI, localName, defValue);
 }
 
-bool ElementWrapper::hasAttribute(const QString& name) const
+bool ElementWrapper::hasAttribute(const QString &name) const
 {
     return d->element.hasAttribute(name);
 }
 
-bool ElementWrapper::hasAttributeNS(const QString& nsURI, const QString& localName) const
+bool ElementWrapper::hasAttributeNS(const QString &nsURI, const QString &localName) const
 {
     return d->element.hasAttributeNS(nsURI, localName);
 }

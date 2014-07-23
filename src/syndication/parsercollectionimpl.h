@@ -35,7 +35,8 @@
 #include <QtCore/QHash>
 #include <QtCore/QString>
 
-namespace Syndication {
+namespace Syndication
+{
 
 //@cond PRIVATE
 /** @internal
@@ -47,31 +48,30 @@ namespace Syndication {
 template <class T>
 class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
 {
-    public:
+public:
 
-        ParserCollectionImpl();
+    ParserCollectionImpl();
 
-        virtual ~ParserCollectionImpl();
+    virtual ~ParserCollectionImpl();
 
-        boost::shared_ptr<T> parse(const DocumentSource& source,
-                            const QString& formatHint=QString());
+    boost::shared_ptr<T> parse(const DocumentSource &source,
+                               const QString &formatHint = QString());
 
+    bool registerParser(AbstractParser *parser, Mapper<T> *mapper);
 
-        bool registerParser(AbstractParser* parser, Mapper<T>* mapper);
+    void changeMapper(const QString &format, Mapper<T> *mapper);
 
-        void changeMapper(const QString& format, Mapper<T>* mapper);
+    ErrorCode lastError() const;
 
-        ErrorCode lastError() const;
+private:
 
-    private:
+    ParserCollectionImpl(const ParserCollectionImpl &);
+    ParserCollectionImpl &operator=(const ParserCollectionImpl &);
+    QHash<QString, AbstractParser *> m_parsers;
+    QHash<QString, Mapper<T>*> m_mappers;
+    QList<AbstractParser *> m_parserList;
 
-        ParserCollectionImpl(const ParserCollectionImpl&);
-        ParserCollectionImpl& operator=(const ParserCollectionImpl&);
-        QHash<QString, AbstractParser*> m_parsers;
-        QHash<QString, Mapper<T>*> m_mappers;
-        QList<AbstractParser*> m_parserList;
-
-        ErrorCode m_lastError;
+    ErrorCode m_lastError;
 };
 
 //@endcond
@@ -87,27 +87,30 @@ ParserCollectionImpl<T>::ParserCollectionImpl()
 template <class T>
 ParserCollectionImpl<T>::~ParserCollectionImpl()
 {
-    QList<AbstractParser*> list = m_parsers.values();
-    QList<AbstractParser*>::ConstIterator it = list.constBegin();
-    QList<AbstractParser*>::ConstIterator end = list.constEnd();
+    QList<AbstractParser *> list = m_parsers.values();
+    QList<AbstractParser *>::ConstIterator it = list.constBegin();
+    QList<AbstractParser *>::ConstIterator end = list.constEnd();
 
-    for ( ; it != end; ++it)
+    for (; it != end; ++it) {
         delete *it;
+    }
 
     QList<QString> m = m_mappers.keys();
     QList<QString>::ConstIterator itm = m.constBegin();
     QList<QString>::ConstIterator endm = m.constEnd();
 
-    for ( ; itm != endm; ++itm)
+    for (; itm != endm; ++itm) {
         delete m_mappers[*itm];
+    }
 
 }
 
 template <class T>
-bool ParserCollectionImpl<T>::registerParser(AbstractParser* parser, Mapper<T>* mapper)
+bool ParserCollectionImpl<T>::registerParser(AbstractParser *parser, Mapper<T> *mapper)
 {
-    if (m_parsers.contains(parser->format()))
+    if (m_parsers.contains(parser->format())) {
         return false;
+    }
 
     m_parserList.append(parser);
     m_parsers.insert(parser->format(), parser);
@@ -115,23 +118,20 @@ bool ParserCollectionImpl<T>::registerParser(AbstractParser* parser, Mapper<T>* 
     return true;
 }
 template <class T>
-void ParserCollectionImpl<T>::changeMapper(const QString& format, Mapper<T>* mapper)
+void ParserCollectionImpl<T>::changeMapper(const QString &format, Mapper<T> *mapper)
 {
     m_mappers[format] = mapper;
 }
 
 template <class T>
-boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source, const QString& formatHint)
+boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, const QString &formatHint)
 {
     m_lastError = Syndication::Success;
 
-    if (!formatHint.isNull() && m_parsers.contains(formatHint))
-    {
-        if (m_parsers[formatHint]->accept(source))
-        {
+    if (!formatHint.isNull() && m_parsers.contains(formatHint)) {
+        if (m_parsers[formatHint]->accept(source)) {
             SpecificDocumentPtr doc = m_parsers[formatHint]->parse(source);
-            if (!doc->isValid())
-            {
+            if (!doc->isValid()) {
                 m_lastError = InvalidFormat;
                 return FeedPtr();
             }
@@ -140,13 +140,10 @@ boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source
         }
     }
 
-    Q_FOREACH (AbstractParser* i, m_parserList)
-    {
-        if (i->accept(source))
-        {
+    Q_FOREACH (AbstractParser *i, m_parserList) {
+        if (i->accept(source)) {
             SpecificDocumentPtr doc = i->parse(source);
-            if (!doc->isValid())
-            {
+            if (!doc->isValid()) {
                 m_lastError = InvalidFormat;
                 return FeedPtr();
             }
@@ -154,10 +151,11 @@ boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource& source
             return m_mappers[i->format()]->map(doc);
         }
     }
-    if (source.asDomDocument().isNull())
+    if (source.asDomDocument().isNull()) {
         m_lastError = InvalidXml;
-    else
+    } else {
         m_lastError = XmlNotAccepted;
+    }
 
     return FeedPtr();
 }
@@ -169,12 +167,12 @@ Syndication::ErrorCode ParserCollectionImpl<T>::lastError() const
 }
 
 template <class T>
-ParserCollectionImpl<T>::ParserCollectionImpl(const ParserCollectionImpl&)
+ParserCollectionImpl<T>::ParserCollectionImpl(const ParserCollectionImpl &)
 {
 }
 
 template <class T>
-ParserCollectionImpl<T>& ParserCollectionImpl<T>::operator=(const ParserCollectionImpl&)
+ParserCollectionImpl<T> &ParserCollectionImpl<T>::operator=(const ParserCollectionImpl &)
 {
     return *this;
 }
