@@ -95,11 +95,6 @@ int main(int argc, char **argv)
 
     KAboutData::setApplicationData(aboutData);
 
-    app.setApplicationName(aboutData.componentName());
-    app.setApplicationDisplayName(aboutData.displayName());
-    app.setOrganizationDomain(aboutData.organizationDomain());
-    app.setApplicationVersion(aboutData.version());
-
     QCommandLineParser parser;
     app.setApplicationVersion(QLatin1String(SYNDICATION_VERSION_STRING));
     parser.addVersionOption();
