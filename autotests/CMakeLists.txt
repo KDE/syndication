@@ -6,6 +6,10 @@ find_package(Qt5Test CONFIG REQUIRED)
 
 ########### next target ###############
 
+set(testlibsyndication_SRCS testlibsyndication.cpp)
+add_executable(testlibsyndication ${testlibsyndication_SRCS})
+target_link_libraries(testlibsyndication KF5Syndication)
+
 FILE(GLOB_RECURSE atomFiles atom/*xml)
 FILE(GLOB_RECURSE rdfFiles rdf/*xml)
 FILE(GLOB_RECURSE rss2Files rss2/*xml)
