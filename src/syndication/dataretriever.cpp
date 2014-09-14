@@ -96,7 +96,7 @@ void FileRetriever::retrieveData(const QUrl &url)
 
     connect(d->job, SIGNAL(data(KIO::Job*,QByteArray)),
             SLOT(slotData(KIO::Job*,QByteArray)));
-    connect(d->job, SIGNAL(result(KJob*)), SLOT(slotResult(KJob*)));
+    connect(d->job, &KIO::TransferJob::result, this, &FileRetriever::slotResult);
     connect(d->job, SIGNAL(permanentRedirection(KIO::Job*,QUrl,QUrl)),
             SLOT(slotPermanentRedirection(KIO::Job*,QUrl,QUrl)));
 }
