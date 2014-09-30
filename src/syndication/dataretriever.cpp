@@ -94,11 +94,9 @@ void FileRetriever::retrieveData(const QUrl &url)
 
     QTimer::singleShot(1000 * 90, this, SLOT(slotTimeout()));
 
-    connect(d->job, SIGNAL(data(KIO::Job*,QByteArray)),
-            SLOT(slotData(KIO::Job*,QByteArray)));
+    connect(d->job, &KIO::TransferJob::data, this, &FileRetriever::slotData);
     connect(d->job, &KIO::TransferJob::result, this, &FileRetriever::slotResult);
-    connect(d->job, SIGNAL(permanentRedirection(KIO::Job*,QUrl,QUrl)),
-            SLOT(slotPermanentRedirection(KIO::Job*,QUrl,QUrl)));
+    connect(d->job, &KIO::TransferJob::permanentRedirection, this, &FileRetriever::slotPermanentRedirection);
 }
 
 void FileRetriever::slotTimeout()
