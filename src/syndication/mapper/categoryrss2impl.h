@@ -30,7 +30,7 @@ namespace Syndication
 {
 
 class CategoryRSS2Impl;
-typedef boost::shared_ptr<CategoryRSS2Impl> CategoryRSS2ImplPtr;
+typedef QSharedPointer<CategoryRSS2Impl> CategoryRSS2ImplPtr;
 
 /**
  *

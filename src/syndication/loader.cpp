@@ -22,8 +22,6 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QStringList>
 
-#include <boost/shared_ptr.hpp>
-
 // test: TODO remove
 #include <iostream>
 

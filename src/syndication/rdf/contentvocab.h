@@ -22,14 +22,12 @@
 #ifndef SYNDICATION_RDF_CONTENTVOCAB_H
 #define SYNDICATION_RDF_CONTENTVOCAB_H
 
+#include <QtCore/QSharedPointer>
+
 #include <syndication_export.h>
 
 class QString;
 
-namespace boost
-{
-template <class T> class shared_ptr;
-}
 
 namespace Syndication
 {
@@ -39,7 +37,7 @@ namespace RDF
 
 class Property;
 //@cond PRIVATE
-typedef boost::shared_ptr<Property> PropertyPtr;
+typedef QSharedPointer<Property> PropertyPtr;
 //@endcond
 /**
  * Singleton holding RDF class and property constants of the RSS 1.0 content

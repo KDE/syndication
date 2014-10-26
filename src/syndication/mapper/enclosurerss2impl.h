@@ -31,7 +31,7 @@ namespace Syndication
 {
 
 class EnclosureRSS2Impl;
-typedef boost::shared_ptr<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
+typedef QSharedPointer<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 
 /**
  *

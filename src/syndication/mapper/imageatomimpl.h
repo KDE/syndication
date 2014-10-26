@@ -32,7 +32,7 @@ namespace Syndication
 {
 
 class ImageAtomImpl;
-typedef boost::shared_ptr<ImageAtomImpl> ImageAtomImplPtr;
+typedef QSharedPointer<ImageAtomImpl> ImageAtomImplPtr;
 
 /**
  *

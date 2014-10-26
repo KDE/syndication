@@ -46,8 +46,8 @@ class Generator;
 class Link;
 class Person;
 //@cond PRIVATE
-typedef boost::shared_ptr<EntryDocument> EntryDocumentPtr;
-typedef boost::shared_ptr<FeedDocument> FeedDocumentPtr;
+typedef QSharedPointer<EntryDocument> EntryDocumentPtr;
+typedef QSharedPointer<FeedDocument> FeedDocumentPtr;
 //@endcond
 
 /**

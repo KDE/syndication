@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_DOCUMENTSOURCE_H
 #define SYNDICATION_DOCUMENTSOURCE_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -135,7 +135,7 @@ public:
 private:
 
     class DocumentSourcePrivate;
-    boost::shared_ptr<DocumentSourcePrivate> d;
+    QSharedPointer<DocumentSourcePrivate> d;
 };
 
 } // namespace Syndication

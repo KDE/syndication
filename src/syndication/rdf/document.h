@@ -42,7 +42,7 @@ class Item;
 class SyndicationInfo;
 class TextInput;
 //@cond PRIVATE
-typedef boost::shared_ptr<Document> DocumentPtr;
+typedef QSharedPointer<Document> DocumentPtr;
 //@endcond
 
 /**

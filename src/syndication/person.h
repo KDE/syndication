@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_PERSON_H
 #define SYNDICATION_PERSON_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -34,7 +34,7 @@ namespace Syndication
 class Person;
 
 //@cond PRIVATE
-typedef boost::shared_ptr<Person> PersonPtr;
+typedef QSharedPointer<Person> PersonPtr;
 //@endcond
 
 /**

@@ -31,7 +31,7 @@ namespace Syndication
 {
 
 class ImageRDFImpl;
-typedef boost::shared_ptr<ImageRDFImpl> ImageRDFImplPtr;
+typedef QSharedPointer<ImageRDFImpl> ImageRDFImplPtr;
 
 /**
  *

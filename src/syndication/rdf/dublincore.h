@@ -37,7 +37,7 @@ namespace RDF
 
 class Resource;
 //@cond PRIVATE
-typedef boost::shared_ptr<Resource> ResourcePtr;
+typedef QSharedPointer<Resource> ResourcePtr;
 //@endcond
 
 /**

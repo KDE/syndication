@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_ITEM_H
 #define SYNDICATION_ITEM_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -39,15 +39,15 @@ namespace Syndication
 
 //@cond PRIVATE
 class Category;
-typedef boost::shared_ptr<Category> CategoryPtr;
+typedef QSharedPointer<Category> CategoryPtr;
 class Enclosure;
-typedef boost::shared_ptr<Enclosure> EnclosurePtr;
+typedef QSharedPointer<Enclosure> EnclosurePtr;
 class Item;
-typedef boost::shared_ptr<Item> ItemPtr;
+typedef QSharedPointer<Item> ItemPtr;
 class Person;
-typedef boost::shared_ptr<Person> PersonPtr;
+typedef QSharedPointer<Person> PersonPtr;
 class SpecificItem;
-typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
+typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 //@endcond
 
 /**

@@ -26,8 +26,6 @@
 #include <QtCore/QString>
 #include <syndication/rdf/node.h>
 
-#include <boost/shared_ptr.hpp>
-
 namespace Syndication
 {
 namespace RDF
@@ -36,7 +34,7 @@ namespace RDF
 class Literal;
 
 //@cond PRIVATE
-typedef boost::shared_ptr<Literal> LiteralPtr;
+typedef QSharedPointer<Literal> LiteralPtr;
 //@endcond
 
 /**
@@ -156,7 +154,7 @@ public:
 
 private:
     class LiteralPrivate;
-    typedef boost::shared_ptr<LiteralPrivate> LiteralPrivatePtr;
+    typedef QSharedPointer<LiteralPrivate> LiteralPrivatePtr;
     LiteralPrivatePtr d;
 };
 

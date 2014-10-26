@@ -22,9 +22,8 @@
 #ifndef SYNDICATION_ELEMENTWRAPPER_H
 #define SYNDICATION_ELEMENTWRAPPER_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -293,7 +292,7 @@ public:
 private:
 
     class ElementWrapperPrivate;
-    boost::shared_ptr<ElementWrapperPrivate> d;
+    QSharedPointer<ElementWrapperPrivate> d;
 };
 
 } // namespace Syndication

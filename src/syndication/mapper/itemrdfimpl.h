@@ -32,7 +32,7 @@ namespace Syndication
 {
 
 class ItemRDFImpl;
-typedef boost::shared_ptr<ItemRDFImpl> ItemRDFImplPtr;
+typedef QSharedPointer<ItemRDFImpl> ItemRDFImplPtr;
 
 /**
  * @internal

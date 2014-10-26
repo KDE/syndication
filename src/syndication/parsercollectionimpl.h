@@ -54,7 +54,7 @@ public:
 
     virtual ~ParserCollectionImpl();
 
-    boost::shared_ptr<T> parse(const DocumentSource &source,
+    QSharedPointer<T> parse(const DocumentSource &source,
                                const QString &formatHint = QString());
 
     bool registerParser(AbstractParser *parser, Mapper<T> *mapper);
@@ -124,7 +124,7 @@ void ParserCollectionImpl<T>::changeMapper(const QString &format, Mapper<T> *map
 }
 
 template <class T>
-boost::shared_ptr<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, const QString &formatHint)
+QSharedPointer<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, const QString &formatHint)
 {
     m_lastError = Syndication::Success;
 

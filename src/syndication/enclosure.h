@@ -25,8 +25,7 @@
 
 #include "syndication_export.h"
 
-#include <boost/shared_ptr.hpp>
-
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
 
 namespace Syndication
@@ -34,7 +33,7 @@ namespace Syndication
 
 class Enclosure;
 //@cond PRIVATE
-typedef boost::shared_ptr<Enclosure> EnclosurePtr;
+typedef QSharedPointer<Enclosure> EnclosurePtr;
 //@endcond
 
 /**

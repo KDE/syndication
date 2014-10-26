@@ -25,8 +25,6 @@
 
 #include <syndication/rdf/node.h>
 
-#include <boost/shared_ptr.hpp>
-
 class QString;
 
 template <class T> class QList;
@@ -38,12 +36,12 @@ namespace RDF
 
 class Model;
 class Property;
-typedef boost::shared_ptr<Property> PropertyPtr;
+typedef QSharedPointer<Property> PropertyPtr;
 class Resource;
 class Statement;
-typedef boost::shared_ptr<Statement> StatementPtr;
+typedef QSharedPointer<Statement> StatementPtr;
 
-typedef boost::shared_ptr<Resource> ResourcePtr;
+typedef QSharedPointer<Resource> ResourcePtr;
 
 /**
  * Resources are the entities in the RDF graph.
@@ -206,7 +204,7 @@ public:
 private:
 
     class ResourcePrivate;
-    typedef boost::shared_ptr<ResourcePrivate> ResourcePrivatePtr;
+    typedef QSharedPointer<ResourcePrivate> ResourcePrivatePtr;
     ResourcePrivatePtr d;
 };
 

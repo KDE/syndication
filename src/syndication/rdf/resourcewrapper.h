@@ -22,8 +22,9 @@
 #ifndef SYNDICATION_RDF_RESOURCEWRAPPER_H
 #define SYNDICATION_RDF_RESOURCEWRAPPER_H
 
+#include <QtCore/QSharedPointer>
+
 #include <syndication_export.h>
-#include <boost/shared_ptr.hpp>
 
 namespace Syndication
 {
@@ -31,7 +32,7 @@ namespace RDF
 {
 
 class Resource;
-typedef boost::shared_ptr<Resource> ResourcePtr;
+typedef QSharedPointer<Resource> ResourcePtr;
 
 /**
  * A wrapper for RDF resources. Base class for convenience wrappers
@@ -104,7 +105,7 @@ public:
 private:
 
     class ResourceWrapperPrivate;
-    boost::shared_ptr<ResourceWrapperPrivate> d;
+    QSharedPointer<ResourceWrapperPrivate> d;
 };
 
 } // namespace RDF

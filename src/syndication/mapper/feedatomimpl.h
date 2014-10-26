@@ -30,9 +30,9 @@ namespace Syndication
 {
 
 class FeedAtomImpl;
-typedef boost::shared_ptr<FeedAtomImpl> FeedAtomImplPtr;
+typedef QSharedPointer<FeedAtomImpl> FeedAtomImplPtr;
 class Image;
-typedef boost::shared_ptr<Image> ImagePtr;
+typedef QSharedPointer<Image> ImagePtr;
 
 /**
  * @internal

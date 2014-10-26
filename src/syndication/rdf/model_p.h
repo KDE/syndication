@@ -35,14 +35,12 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-#include <boost/enable_shared_from_this.hpp>
-
 namespace Syndication
 {
 namespace RDF
 {
 
-class Model::ModelPrivate : public boost::enable_shared_from_this<Model::ModelPrivate>
+class Model::ModelPrivate
 {
 public:
     long id;
@@ -155,11 +153,11 @@ public:
 
     }
 
-    void init()
+    void init(const QSharedPointer<ModelPrivate> &sharedThis)
     {
         if (!initialized) {
             Model m;
-            m.d = shared_from_this();
+            m.d = sharedThis;
             nullLiteral = LiteralPtr(new Literal());
             nullLiteral->setModel(m);
             nullProperty = PropertyPtr(new Property());

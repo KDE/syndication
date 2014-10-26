@@ -46,7 +46,7 @@ class Document;
 class Image;
 class Item;
 class TextInput;
-typedef boost::shared_ptr<Document> DocumentPtr;
+typedef QSharedPointer<Document> DocumentPtr;
 
 /**
  * document implementation, representing an RSS feed from the 0.91-0.94/2.0
@@ -312,7 +312,7 @@ private:
     explicit Document(const QDomElement &element);
 
     class DocumentPrivate;
-    boost::shared_ptr<DocumentPrivate> d;
+    QSharedPointer<DocumentPrivate> d;
 
 };
 

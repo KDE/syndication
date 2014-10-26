@@ -28,10 +28,7 @@
 #include "resource.h"
 
 #include <QtCore/QString>
-
-#include <boost/weak_ptr.hpp>
-
-using namespace boost;
+#include <QtCore/QWeakPointer>
 
 namespace Syndication
 {
@@ -45,7 +42,7 @@ public:
     uint subjectID;
     uint predicateID;
     uint objectID;
-    weak_ptr<Model::ModelPrivate> model;
+    QWeakPointer<Model::ModelPrivate> model;
 
     bool operator==(const StatementPrivate &other) const
     {
@@ -103,25 +100,25 @@ bool Statement::isNull() const
 
 ResourcePtr Statement::subject() const
 {
-    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    const QSharedPointer<Model::ModelPrivate> m = d ? d->model.toStrongRef() : QSharedPointer<Model::ModelPrivate>();
     return m ? m->resourceByID(d->subjectID) : ResourcePtr(new Resource);
 }
 
 PropertyPtr Statement::predicate() const
 {
-    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    const QSharedPointer<Model::ModelPrivate> m = d ? d->model.toStrongRef() : QSharedPointer<Model::ModelPrivate>();
     return m ? m->propertyByID(d->predicateID) : PropertyPtr(new Property());
 }
 
 NodePtr Statement::object() const
 {
-    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    const QSharedPointer<Model::ModelPrivate> m = d ? d->model.toStrongRef() : QSharedPointer<Model::ModelPrivate>();
     return m ? m->nodeByID(d->objectID) : NodePtr(LiteralPtr(new Literal()));
 }
 
 ResourcePtr Statement::asResource() const
 {
-    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    const QSharedPointer<Model::ModelPrivate> m = d ? d->model.toStrongRef() : QSharedPointer<Model::ModelPrivate>();
 
     if (isNull() || !m || !m->nodeByID(d->objectID)->isResource()) {
         return ResourcePtr(new Resource);
@@ -136,7 +133,7 @@ QString Statement::asString() const
         return QString();
     }
 
-    const shared_ptr<Model::ModelPrivate> m = d ? d->model.lock() : shared_ptr<Model::ModelPrivate>();
+    const QSharedPointer<Model::ModelPrivate> m = d ? d->model.toStrongRef() : QSharedPointer<Model::ModelPrivate>();
     return m ? m->nodeByID(d->objectID)->text() : QString();
 }
 

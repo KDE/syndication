@@ -34,7 +34,7 @@ namespace RDF
 
 //@cond PRIVATE
 class Property;
-typedef boost::shared_ptr<Property> PropertyPtr;
+typedef QSharedPointer<Property> PropertyPtr;
 //@endcond
 
 /**

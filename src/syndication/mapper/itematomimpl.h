@@ -30,7 +30,7 @@ namespace Syndication
 {
 
 class ItemAtomImpl;
-typedef boost::shared_ptr<ItemAtomImpl> ItemAtomImplPtr;
+typedef QSharedPointer<ItemAtomImpl> ItemAtomImplPtr;
 
 /**
  * @internal

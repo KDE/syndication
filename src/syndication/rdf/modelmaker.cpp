@@ -94,7 +94,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
                 NodePtr obj = model.createResource(ce.attribute(resource));
 
                 if (isSeq && *pred == *(RDFVocab::self()->li())) {
-                    SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
+                    SequencePtr tseq = res.staticCast<Sequence>();
                     tseq->append(obj);
                 } else {
                     model.addStatement(res, pred, obj);
@@ -103,7 +103,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
                 NodePtr obj = model.createLiteral(ce.text());
 
                 if (isSeq && *pred == *(RDFVocab::self()->li())) {
-                    SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
+                    SequencePtr tseq = res.staticCast<Sequence>();
                     tseq->append(obj);
                 } else {
                     model.addStatement(res, pred, obj);
@@ -117,7 +117,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
                 NodePtr obj = readResource(model, re);
 
                 if (isSeq && *pred == *(RDFVocab::self()->li())) {
-                    SequencePtr tseq = boost::static_pointer_cast<Sequence>(res);
+                    SequencePtr tseq = res.staticCast<Sequence>();
                     tseq->append(obj);
                 } else {
                     model.addStatement(res, pred, obj);

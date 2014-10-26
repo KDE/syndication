@@ -135,7 +135,7 @@ void Model::removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr 
 
 StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
 {
-    d->init();
+    d->init(d);
     ResourcePtr subjInternal = subject;
 
     if (!d->nodes.contains(subjInternal->id())) {
@@ -320,7 +320,7 @@ ResourcePtr Model::ModelPrivate::resourceByID(uint _id) const
     } else {
         NodePtr node = nodes.value(_id);
         if (node->isResource()) {
-            return boost::static_pointer_cast<Resource>(node);
+            return node.staticCast<Resource>();
         } else {
             return nullResource;
         }
@@ -339,7 +339,7 @@ PropertyPtr Model::ModelPrivate::propertyByID(uint _id) const
     } else {
         NodePtr node = nodes.value(_id);
         if (node->isProperty()) {
-            return  boost::static_pointer_cast<Property>(node);
+            return node.staticCast<Property>();
         } else {
             return nullProperty;
         }
@@ -358,7 +358,7 @@ LiteralPtr Model::ModelPrivate::literalByID(uint _id) const
     } else {
         NodePtr node = nodes.value(_id);
         if (node->isLiteral()) {
-            return boost::static_pointer_cast<Literal>(node);
+            return node.staticCast<Literal>();
         } else {
             return nullLiteral;
         }

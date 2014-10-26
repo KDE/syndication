@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_CATEGORY_H
 #define SYNDICATION_CATEGORY_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -32,7 +32,7 @@ namespace Syndication
 {
 
 class Category;
-typedef boost::shared_ptr<Category> CategoryPtr;
+typedef QSharedPointer<Category> CategoryPtr;
 
 /**
  * A category for categorizing items or whole feeds.

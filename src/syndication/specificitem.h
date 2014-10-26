@@ -22,9 +22,9 @@
 #ifndef SYNDICATION_SPECIFICITEM_H
 #define SYNDICATION_SPECIFICITEM_H
 
-#include "syndication_export.h"
+#include <QtCore/QSharedPointer>
 
-#include <boost/shared_ptr.hpp>
+#include "syndication_export.h"
 
 namespace Syndication
 {
@@ -33,7 +33,7 @@ class SpecificItemVisitor;
 class SpecificItem;
 
 //@cond PRIVATE
-typedef boost::shared_ptr<SpecificItem> SpecificItemPtr;
+typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 //@endcond
 
 /**

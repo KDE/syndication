@@ -30,9 +30,9 @@ namespace Syndication
 {
 
 class FeedRDFImpl;
-typedef boost::shared_ptr<FeedRDFImpl> FeedRDFImplPtr;
+typedef QSharedPointer<FeedRDFImpl> FeedRDFImplPtr;
 class Image;
-typedef boost::shared_ptr<Image> ImagePtr;
+typedef QSharedPointer<Image> ImagePtr;
 
 /**
  * @internal

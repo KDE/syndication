@@ -43,8 +43,6 @@
 
 #include <algorithm>
 
-using namespace boost;
-
 namespace Syndication
 {
 namespace RDF
@@ -62,7 +60,7 @@ public:
     mutable bool itemTitlesGuessed;
     mutable bool itemDescriptionContainsMarkup;
     mutable bool itemDescGuessed;
-    shared_ptr<Model::ModelPrivate> modelPrivate;
+    QSharedPointer<Model::ModelPrivate> modelPrivate;
 };
 
 Document::Document() : Syndication::SpecificDocument(),
@@ -199,7 +197,7 @@ QList<Item> Document::items() const
     if (resource()->hasProperty(RSSVocab::self()->items())) {
         NodePtr n = resource()->property(RSSVocab::self()->items())->object();
         if (n->isSequence()) {
-            Sequence *seq = static_cast<Sequence *>(n.get());
+            const SequencePtr seq = n.staticCast<Sequence>();
 
             const QList<NodePtr> seqItems = seq->items();
 
@@ -208,7 +206,7 @@ QList<Item> Document::items() const
 
             Q_FOREACH (const NodePtr &i, seqItems)
                 if (i->isResource()) {
-                    uriSequence.append(static_cast<Resource *>(i.get())->uri());
+                    uriSequence.append(i.staticCast<Resource>()->uri());
                 }
             list = sortListToMatchSequence(list, uriSequence);
         }

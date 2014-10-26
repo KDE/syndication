@@ -30,7 +30,7 @@ namespace Syndication
 {
 
 class EnclosureAtomImpl;
-typedef boost::shared_ptr<EnclosureAtomImpl> EnclosureAtomImplPtr;
+typedef QSharedPointer<EnclosureAtomImpl> EnclosureAtomImplPtr;
 
 /**
  *

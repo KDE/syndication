@@ -31,10 +31,8 @@
 
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QWeakPointer>
 
-#include <boost/weak_ptr.hpp>
-
-using namespace boost;
 
 namespace Syndication
 {
@@ -46,7 +44,7 @@ class Resource::ResourcePrivate
 public:
 
     QString uri;
-    weak_ptr<Model::ModelPrivate> model;
+    QWeakPointer<Model::ModelPrivate> model;
     bool isAnon;
     unsigned int id;
 
@@ -110,7 +108,7 @@ bool Resource::hasProperty(PropertyPtr property) const
     if (!d) {
         return false;
     }
-    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    const QSharedPointer<Model::ModelPrivate> m = d->model.toStrongRef();
     if (!m) {
         return false;
     }
@@ -123,7 +121,7 @@ StatementPtr Resource::property(PropertyPtr property) const
     if (!d) {
         return ptr;
     }
-    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    const QSharedPointer<Model::ModelPrivate> m = d->model.toStrongRef();
     if (!m) {
         return ptr;
     }
@@ -135,7 +133,7 @@ QList<StatementPtr> Resource::properties(PropertyPtr property) const
     if (!d) {
         return QList<StatementPtr>();
     }
-    const shared_ptr<Model::ModelPrivate> m = d->model.lock();
+    const QSharedPointer<Model::ModelPrivate> m = d->model.toStrongRef();
     if (!m) {
         return QList<StatementPtr>();
     }
@@ -150,7 +148,7 @@ Resource *Resource::clone() const
 
 void Resource::accept(NodeVisitor *visitor, NodePtr ptr)
 {
-    ResourcePtr rptr = boost::static_pointer_cast<Resource>(ptr);
+    ResourcePtr rptr = ptr.staticCast<Resource>();
     if (!visitor->visitResource(rptr)) {
         Node::accept(visitor, ptr);
     }
@@ -172,7 +170,7 @@ Model Resource::model() const
         return Model();
     }
 
-    const shared_ptr<Model::ModelPrivate> mp = d->model.lock();
+    const QSharedPointer<Model::ModelPrivate> mp = d->model.toStrongRef();
 
     Model m;
 

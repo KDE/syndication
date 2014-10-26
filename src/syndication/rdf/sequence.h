@@ -25,8 +25,6 @@
 #include <syndication_export.h>
 #include <syndication/rdf/resource.h>
 
-#include <boost/shared_ptr.hpp>
-
 template <class T> class QList;
 
 namespace Syndication
@@ -36,7 +34,7 @@ namespace RDF
 
 //@cond PRIVATE
 class Sequence;
-typedef boost::shared_ptr<Sequence> SequencePtr;
+typedef QSharedPointer<Sequence> SequencePtr;
 //@endcond
 
 /**
@@ -112,7 +110,7 @@ public:
 private:
 
     class SequencePrivate;
-    boost::shared_ptr<SequencePrivate> d;
+    QSharedPointer<SequencePrivate> d;
 };
 
 } // namespace RDF

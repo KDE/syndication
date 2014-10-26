@@ -28,15 +28,13 @@
 
 #include <QtCore/QString>
 
-#include <boost/shared_ptr.hpp>
-
 namespace Syndication
 {
 
 class PersonImpl;
 
 //@cond PRIVATE
-typedef boost::shared_ptr<PersonImpl> PersonImplPtr;
+typedef QSharedPointer<PersonImpl> PersonImplPtr;
 
 /**
  * @internal

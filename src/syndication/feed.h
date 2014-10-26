@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_FEED_H
 #define SYNDICATION_FEED_H
 
-#include <boost/shared_ptr.hpp>
+#include <QtCore/QSharedPointer>
 
 #include "syndication_export.h"
 
@@ -38,17 +38,17 @@ namespace Syndication
 
 //@cond PRIVATE
 class SpecificDocument;
-typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
+typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 class Category;
-typedef boost::shared_ptr<Category> CategoryPtr;
+typedef QSharedPointer<Category> CategoryPtr;
 class Feed;
-typedef boost::shared_ptr<Feed> FeedPtr;
+typedef QSharedPointer<Feed> FeedPtr;
 class Image;
-typedef boost::shared_ptr<Image> ImagePtr;
+typedef QSharedPointer<Image> ImagePtr;
 class Item;
-typedef boost::shared_ptr<Item> ItemPtr;
+typedef QSharedPointer<Item> ItemPtr;
 class Person;
-typedef boost::shared_ptr<Person> PersonPtr;
+typedef QSharedPointer<Person> PersonPtr;
 //@endcond
 
 /**

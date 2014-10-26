@@ -12,7 +12,6 @@
 #define SYNDICATION_LOADER_H
 
 #include <syndication/global.h>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -26,7 +25,7 @@ namespace Syndication
 class DataRetriever;
 class Feed;
 //@cond PRIVATE
-typedef boost::shared_ptr<Feed> FeedPtr;
+typedef QSharedPointer<Feed> FeedPtr;
 //@endcond
 
 /**

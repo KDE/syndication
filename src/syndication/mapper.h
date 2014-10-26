@@ -25,17 +25,12 @@
 
 #include "syndication_export.h"
 
-namespace boost
-{
-template <class T> class shared_ptr;
-}
-
 namespace Syndication
 {
 
 class SpecificDocument;
 //@cond PRIVATE
-typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
+typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
 /**
@@ -132,7 +127,7 @@ public:
      * @return a newly created object implementing the abstraction
      * @c T.
      */
-    virtual boost::shared_ptr<T> map(SpecificDocumentPtr doc) const = 0;
+    virtual QSharedPointer<T> map(SpecificDocumentPtr doc) const = 0;
 };
 
 } // namespace syndication

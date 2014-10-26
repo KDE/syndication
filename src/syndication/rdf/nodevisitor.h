@@ -22,12 +22,9 @@
 #ifndef SYNDICATION_RDF_NODEVISITOR_H
 #define SYNDICATION_RDF_NODEVISITOR_H
 
-#include <syndication_export.h>
+#include <QSharedPointer>
 
-namespace boost
-{
-template <class T> class shared_ptr;
-}
+#include <syndication_export.h>
 
 namespace Syndication
 {
@@ -37,15 +34,15 @@ namespace RDF
 
 //@cond PRIVATE
 class Literal;
-typedef boost::shared_ptr<Literal> LiteralPtr;
+typedef QSharedPointer<Literal> LiteralPtr;
 class Node;
-typedef boost::shared_ptr<Node> NodePtr;
+typedef QSharedPointer<Node> NodePtr;
 class Property;
-typedef boost::shared_ptr<Property> PropertyPtr;
+typedef QSharedPointer<Property> PropertyPtr;
 class Resource;
-typedef boost::shared_ptr<Resource> ResourcePtr;
+typedef QSharedPointer<Resource> ResourcePtr;
 class Sequence;
-typedef boost::shared_ptr<Sequence> SequencePtr;
+typedef QSharedPointer<Sequence> SequencePtr;
 //@endcond
 
 /**

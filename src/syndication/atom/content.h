@@ -27,8 +27,6 @@
 
 #include <QtCore/QString>
 
-#include <boost/shared_ptr.hpp>
-
 class QByteArray;
 class QDomElement;
 
@@ -194,7 +192,7 @@ public:
 
 private:
     class ContentPrivate;
-    boost::shared_ptr<ContentPrivate> d;
+    QSharedPointer<ContentPrivate> d;
 };
 
 } // namespace Atom

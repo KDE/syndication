@@ -58,7 +58,7 @@ Sequence::~Sequence()
 }
 void Sequence::accept(NodeVisitor *visitor, NodePtr ptr)
 {
-    SequencePtr sptr = boost::static_pointer_cast<Sequence>(ptr);
+    SequencePtr sptr = ptr.staticCast<Sequence>();
     if (!visitor->visitSequence(sptr)) {
         Resource::accept(visitor, ptr);
     }

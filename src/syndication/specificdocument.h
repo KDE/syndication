@@ -24,7 +24,7 @@
 
 #include "syndication_export.h"
 
-#include <boost/shared_ptr.hpp>
+#include <QtCore/QSharedPointer>
 
 class QString;
 
@@ -35,7 +35,7 @@ class DocumentVisitor;
 class SpecificDocument;
 
 //@cond PRIVATE
-typedef boost::shared_ptr<SpecificDocument> SpecificDocumentPtr;
+typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
 /**

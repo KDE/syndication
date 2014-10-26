@@ -30,7 +30,6 @@
 #include <syndication/rdf/node.h>
 #include <syndication/rdf/property.h>
 #include <syndication/rdf/sequence.h>
-#include <boost/shared_ptr.hpp>
 #include <syndication_export.h>
 
 #include <QtCore/QString>
@@ -259,7 +258,7 @@ public:
 
 private:
     class ModelPrivate;
-    boost::shared_ptr<ModelPrivate> d;
+    QSharedPointer<ModelPrivate> d;
 };
 
 } // namespace RDF

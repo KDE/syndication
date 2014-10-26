@@ -22,14 +22,11 @@
 #ifndef SYNDICATION_RDF_RDFVOCAB_H
 #define SYNDICATION_RDF_RDFVOCAB_H
 
+#include <QtCore/QSharedPointer>
+
 #include <syndication_export.h>
 
 class QString;
-
-namespace boost
-{
-template <class T> class shared_ptr;
-}
 
 namespace Syndication
 {
@@ -38,9 +35,9 @@ namespace RDF
 {
 
 class Property;
-typedef boost::shared_ptr<Property> PropertyPtr;
+typedef QSharedPointer<Property> PropertyPtr;
 class Resource;
-typedef boost::shared_ptr<Resource> ResourcePtr;
+typedef QSharedPointer<Resource> ResourcePtr;
 
 /**
  * singleton holding RDF vocabulary, expressed as RDF.

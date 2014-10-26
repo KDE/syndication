@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_IMAGE_H
 #define SYNDICATION_IMAGE_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
-#include <boost/shared_ptr.hpp>
 
 #include "syndication_export.h"
 
@@ -33,7 +33,7 @@ namespace Syndication
 
 class Image;
 //@cond PRIVATE
-typedef boost::shared_ptr<Image> ImagePtr;
+typedef QSharedPointer<Image> ImagePtr;
 //@endcond
 
 /**

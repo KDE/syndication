@@ -1,12 +1,5 @@
 @PACKAGE_INIT@
 
-find_dependency(Boost "@Boost_MINIMUM_VERSION@")
-
 include(FeatureSummary)
-
-set_package_properties(Boost PROPERTIES
-                             DESCRIPTION "Boost C++ Libraries"
-                             URL "http://www.boost.org"
-)
 
 include("${CMAKE_CURRENT_LIST_DIR}/KF5SyndicationTargets.cmake")

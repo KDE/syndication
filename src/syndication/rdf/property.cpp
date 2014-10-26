@@ -47,7 +47,7 @@ bool Property::isProperty() const
 
 void Property::accept(NodeVisitor *visitor, NodePtr ptr)
 {
-    PropertyPtr pptr = boost::static_pointer_cast<Syndication::RDF::Property>(ptr);
+    PropertyPtr pptr = ptr.staticCast<Syndication::RDF::Property>();
 
     if (!visitor->visitProperty(pptr)) {
         Resource::accept(visitor, ptr);

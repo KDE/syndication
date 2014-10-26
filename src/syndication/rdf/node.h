@@ -22,9 +22,9 @@
 #ifndef SYNDICATION_RDF_NODE_H
 #define SYNDICATION_RDF_NODE_H
 
+#include <QtCore/QSharedPointer>
 #include <QtCore/QString>
 #include <syndication_export.h>
-#include <boost/shared_ptr.hpp>
 
 namespace Syndication
 {
@@ -35,7 +35,7 @@ class Model;
 class Node;
 class NodeVisitor;
 //@cond PRIVATE
-typedef boost::shared_ptr<Node> NodePtr;
+typedef QSharedPointer<Node> NodePtr;
 //@endcond
 
 /**
