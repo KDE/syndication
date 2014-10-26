@@ -58,7 +58,12 @@ QString Parser::format() const
     return QLatin1String("rss2");
 }
 
-Parser::Parser() : d(0) {}
+Parser::Parser()
+    : d(0)
+{
+    Q_UNUSED(d) // silence -Wunused-private-field
+}
+
 Parser::Parser(const Parser &other) : AbstractParser(other), d(0) {}
 Parser::~Parser() {}
 Parser &Parser::operator=(const Parser & /*other*/)
