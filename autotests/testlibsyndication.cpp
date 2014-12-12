@@ -56,7 +56,7 @@ void printUsage(const QString &error)
 
 int main(int argc, char **argv)
 {
-    setenv("LC_ALL", "C", 1);
+    qputenv("LC_ALL", "C");
 
     int pcompare = 2;
     if (argc < 2) {
