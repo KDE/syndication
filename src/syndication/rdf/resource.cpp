@@ -33,7 +33,6 @@
 #include <QtCore/QString>
 #include <QtCore/QWeakPointer>
 
-
 namespace Syndication
 {
 namespace RDF

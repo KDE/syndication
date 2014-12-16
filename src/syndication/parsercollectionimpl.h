@@ -55,7 +55,7 @@ public:
     virtual ~ParserCollectionImpl();
 
     QSharedPointer<T> parse(const DocumentSource &source,
-                               const QString &formatHint = QString());
+                            const QString &formatHint = QString());
 
     bool registerParser(AbstractParser *parser, Mapper<T> *mapper);
 

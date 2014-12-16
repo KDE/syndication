@@ -91,7 +91,7 @@ public:
      * parser accepted the source.
      */
     virtual QSharedPointer<T> parse(const DocumentSource &source,
-                                       const QString &formatHint = QString()) = 0;
+                                    const QString &formatHint = QString()) = 0;
 
     /**
      * returns the error code of the last parse() call.

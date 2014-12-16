@@ -28,7 +28,6 @@
 
 class QString;
 
-
 namespace Syndication
 {
 
