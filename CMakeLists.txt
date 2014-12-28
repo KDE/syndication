@@ -17,11 +17,10 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings)
 
 
-# FIXME: Do we want the same versions in kdepimlibs and kf5?
 set(KF5_VERSION "5.5.0")
-set(SYNDICATIONLIB_VERSION "4.79.0")
+set(SYNDICATION_LIB_VERSION "4.79.0")
 
-ecm_setup_version(${SYNDICATIONLIB_VERSION} VARIABLE_PREFIX SYNDICATION
+ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfigVersion.cmake"
                         SOVERSION 5
