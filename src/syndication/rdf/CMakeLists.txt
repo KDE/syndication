@@ -32,13 +32,13 @@ ecm_generate_headers(Syndication_Rdf_CamelCase_HEADERS
 
 install(FILES
     ${Syndication_Rdf_CamelCase_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/Syndication/Rdf
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication/Rdf
     COMPONENT Devel
 
 )
 
 install(FILES
     ${Syndication_Rdf_HEADERS}
-        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication/rdf
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/rdf
         COMPONENT Devel
 )

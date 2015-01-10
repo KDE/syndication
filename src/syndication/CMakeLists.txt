@@ -110,7 +110,7 @@ generate_export_header(KF5Syndication BASE_NAME syndication)
 
 add_library(KF5::Syndication ALIAS KF5Syndication)
 
-target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/Syndication;${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication>")
+target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
 
@@ -169,13 +169,13 @@ install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${KF5_INSTALL_TARGET
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
     ${Syndication_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication
     COMPONENT Devel
 )
 
 install(FILES
     ${Syndication_CamelCase_HEADERS}
-    DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Syndication/Syndication
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication
     COMPONENT Devel
 
 )
