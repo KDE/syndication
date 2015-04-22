@@ -35,7 +35,6 @@
 #include <qapplication.h>
 #include <kaboutdata.h>
 
-#include <klocalizedstring.h>
 #include <qurl.h>
 
 #include <QtCore/QByteArray>
@@ -90,7 +89,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    KAboutData aboutData(QLatin1String("testlibsyndication"), i18n("testlibsyndication"), QLatin1String("0.1"));
+    KAboutData aboutData(QLatin1String("testlibsyndication"), QLatin1String("testlibsyndication"), QLatin1String("0.1"));
     QApplication app(argc, argv);
 
     KAboutData::setApplicationData(aboutData);
@@ -99,7 +98,7 @@ int main(int argc, char **argv)
     app.setApplicationVersion(QLatin1String(SYNDICATION_VERSION_STRING));
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+url"), i18n("URL of feed")));
+    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+url"), QLatin1String("URL of feed")));
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
