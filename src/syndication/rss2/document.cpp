@@ -294,29 +294,32 @@ QList<Item> Document::items() const
 QList<QDomElement> Document::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    QList<ElementType> handled;
-    handled.append(ElementType(QLatin1String("title")));
-    handled.append(ElementType(QLatin1String("link")));
-    handled.append(ElementType(QLatin1String("description")));
-    handled.append(ElementType(QLatin1String("language")));
-    handled.append(ElementType(QLatin1String("copyright")));
-    handled.append(ElementType(QLatin1String("managingEditor")));
-    handled.append(ElementType(QLatin1String("webMaster")));
-    handled.append(ElementType(QLatin1String("pubDate")));
-    handled.append(ElementType(QLatin1String("lastBuildDate")));
-    handled.append(ElementType(QLatin1String("skipDays")));
-    handled.append(ElementType(QLatin1String("skipHours")));
-    handled.append(ElementType(QLatin1String("item")));
-    handled.append(ElementType(QLatin1String("textinput")));
-    handled.append(ElementType(QLatin1String("textInput")));
-    handled.append(ElementType(QLatin1String("image")));
-    handled.append(ElementType(QLatin1String("ttl")));
-    handled.append(ElementType(QLatin1String("generator")));
-    handled.append(ElementType(QLatin1String("docs")));
-    handled.append(ElementType(QLatin1String("cloud")));
-    handled.append(ElementType(QLatin1String("language"), dublinCoreNamespace()));
-    handled.append(ElementType(QLatin1String("rights"), dublinCoreNamespace()));
-    handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+    static QList<ElementType> handled;
+    if (handled.isEmpty()) {
+        handled.reserve(22);
+        handled.append(ElementType(QLatin1String("title")));
+        handled.append(ElementType(QLatin1String("link")));
+        handled.append(ElementType(QLatin1String("description")));
+        handled.append(ElementType(QLatin1String("language")));
+        handled.append(ElementType(QLatin1String("copyright")));
+        handled.append(ElementType(QLatin1String("managingEditor")));
+        handled.append(ElementType(QLatin1String("webMaster")));
+        handled.append(ElementType(QLatin1String("pubDate")));
+        handled.append(ElementType(QLatin1String("lastBuildDate")));
+        handled.append(ElementType(QLatin1String("skipDays")));
+        handled.append(ElementType(QLatin1String("skipHours")));
+        handled.append(ElementType(QLatin1String("item")));
+        handled.append(ElementType(QLatin1String("textinput")));
+        handled.append(ElementType(QLatin1String("textInput")));
+        handled.append(ElementType(QLatin1String("image")));
+        handled.append(ElementType(QLatin1String("ttl")));
+        handled.append(ElementType(QLatin1String("generator")));
+        handled.append(ElementType(QLatin1String("docs")));
+        handled.append(ElementType(QLatin1String("cloud")));
+        handled.append(ElementType(QLatin1String("language"), dublinCoreNamespace()));
+        handled.append(ElementType(QLatin1String("rights"), dublinCoreNamespace()));
+        handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+    }
 
     QList<QDomElement> notHandled;
 

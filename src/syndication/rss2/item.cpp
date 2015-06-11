@@ -287,18 +287,21 @@ QString Item::debugInfo() const
 QList<QDomElement> Item::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    QList<ElementType> handled;
-    handled.append(ElementType(QLatin1String("title")));
-    handled.append(ElementType(QLatin1String("link")));
-    handled.append(ElementType(QLatin1String("description")));
-    handled.append(ElementType(QLatin1String("pubDate")));
-    handled.append(ElementType(QLatin1String("expirationDate")));
-    handled.append(ElementType(QLatin1String("rating")));
-    handled.append(ElementType(QLatin1String("source")));
-    handled.append(ElementType(QLatin1String("guid")));
-    handled.append(ElementType(QLatin1String("comments")));
-    handled.append(ElementType(QLatin1String("author")));
-    handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+    static QList<ElementType> handled;
+    if (handled.isEmpty()) {
+        handled.reserve(11);
+        handled.append(ElementType(QLatin1String("title")));
+        handled.append(ElementType(QLatin1String("link")));
+        handled.append(ElementType(QLatin1String("description")));
+        handled.append(ElementType(QLatin1String("pubDate")));
+        handled.append(ElementType(QLatin1String("expirationDate")));
+        handled.append(ElementType(QLatin1String("rating")));
+        handled.append(ElementType(QLatin1String("source")));
+        handled.append(ElementType(QLatin1String("guid")));
+        handled.append(ElementType(QLatin1String("comments")));
+        handled.append(ElementType(QLatin1String("author")));
+        handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+    }
 
     QList<QDomElement> notHandled;
 

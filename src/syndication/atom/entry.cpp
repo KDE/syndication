@@ -183,19 +183,22 @@ Content Entry::content() const
 QList<QDomElement> Entry::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    QList<ElementType> handled;
-    handled.append(ElementType(QLatin1String("author"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("contributor"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("category"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("id"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("link"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("rights"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("source"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("published"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("updated"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("summary"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("title"), atom1Namespace()));
-    handled.append(ElementType(QLatin1String("content"), atom1Namespace()));
+    static QList<ElementType> handled;
+    if (handled.isEmpty()) {
+        handled.reserve(12);
+        handled.append(ElementType(QLatin1String("author"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("contributor"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("category"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("id"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("link"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("rights"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("source"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("published"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("updated"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("summary"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("title"), atom1Namespace()));
+        handled.append(ElementType(QLatin1String("content"), atom1Namespace()));
+    }
 
     QList<QDomElement> notHandled;
 
