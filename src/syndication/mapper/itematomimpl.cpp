@@ -89,20 +89,20 @@ QString ItemAtomImpl::content() const
 QList<PersonPtr> ItemAtomImpl::authors() const
 {
     QList<Syndication::Atom::Person> atomps = m_entry.authors();
+    QList<Syndication::Atom::Person> contributorAtoms = m_entry.contributors();
     QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
     QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
 
     QList<PersonPtr> list;
+    list.reserve(atomps.count() + contributorAtoms.count());
 
     for (; it != end; ++it) {
         PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
         list.append(ptr);
     }
 
-    atomps = m_entry.contributors();
-
-    it = atomps.constBegin();
-    end = atomps.constEnd();
+    it = contributorAtoms.constBegin();
+    end = contributorAtoms.constEnd();
 
     for (; it != end; ++it) {
         PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
@@ -172,6 +172,7 @@ QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
     QList<Syndication::Atom::Category> cats = m_entry.categories();
     QList<Syndication::Atom::Category>::ConstIterator it = cats.constBegin();
     QList<Syndication::Atom::Category>::ConstIterator end = cats.constEnd();
+    list.reserve(cats.count());
 
     for (; it != end; ++it) {
         CategoryAtomImplPtr impl(new CategoryAtomImpl(*it));

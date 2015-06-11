@@ -53,6 +53,7 @@ QList<Person> Source::authors() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("author"));
     QList<Person> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
@@ -70,6 +71,7 @@ QList<Person> Source::contributors() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("contributor"));
     QList<Person> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
@@ -87,6 +89,7 @@ QList<Category> Source::categories() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("category"));
     QList<Category> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
@@ -122,6 +125,7 @@ QList<Link> Source::links() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("link"));
     QList<Link> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();

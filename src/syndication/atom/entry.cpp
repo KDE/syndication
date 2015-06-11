@@ -62,6 +62,7 @@ QList<Person> Entry::authors() const
     if (!a.isEmpty()) {
         QList<QDomElement>::ConstIterator it = a.constBegin();
         QList<QDomElement>::ConstIterator end = a.constEnd();
+        list.reserve(a.count());
 
         for (; it != end; ++it) {
             list.append(Person(*it));
@@ -86,6 +87,7 @@ QList<Person> Entry::contributors() const
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
+    list.reserve(a.count());
 
     for (; it != end; ++it) {
         list.append(Person(*it));
@@ -100,6 +102,7 @@ QList<Category> Entry::categories() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("category"));
     QList<Category> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();
@@ -124,6 +127,7 @@ QList<Link> Entry::links() const
         elementsByTagNameNS(atom1Namespace(),
                             QLatin1String("link"));
     QList<Link> list;
+    list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
     QList<QDomElement>::ConstIterator end = a.constEnd();

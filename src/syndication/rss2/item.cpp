@@ -143,6 +143,7 @@ QList<Category> Item::categories() const
                               QLatin1String("category"));
 
     QList<Category> categories;
+    categories.reserve(cats.count());
 
     QList<QDomElement>::ConstIterator it = cats.constBegin();
     for (; it != cats.constEnd(); ++it) {
@@ -175,6 +176,7 @@ QList<Enclosure> Item::enclosures() const
                               QLatin1String("enclosure"));
 
     QList<Enclosure> enclosures;
+    enclosures.reserve(encs.count());
 
     QList<QDomElement>::ConstIterator it = encs.constBegin();
     for (; it != encs.constEnd(); ++it) {

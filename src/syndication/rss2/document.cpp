@@ -175,6 +175,7 @@ QList<Category> Document::categories() const
 
     QList<QDomElement> catNodes = elementsByTagNameNS(QString(),
                                   QLatin1String("category"));
+    categories.reserve(catNodes.count());
     QList<QDomElement>::ConstIterator it = catNodes.constBegin();
     for (; it != catNodes.constEnd(); ++it) {
         categories.append(Category(*it));
@@ -282,6 +283,7 @@ QList<Item> Document::items() const
     QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QLatin1String("item"));
 
     DocumentPtr doccpy(new Document(*this));
+    items.reserve(itemNodes.count());
 
     for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it) {
         items.append(Item(*it, doccpy));

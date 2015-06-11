@@ -54,6 +54,7 @@ QList<Syndication::ItemPtr> FeedRDFImpl::items() const
     QList<Syndication::RDF::Item> entries = m_doc->items();
     QList<Syndication::RDF::Item>::ConstIterator it = entries.constBegin();
     QList<Syndication::RDF::Item>::ConstIterator end = entries.constEnd();
+    items.reserve(entries.count());
 
     for (; it != end; ++it) {
         ItemRDFImplPtr item(new ItemRDFImpl(*it));

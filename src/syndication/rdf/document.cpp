@@ -189,6 +189,7 @@ QList<Item> Document::items() const
     DocumentPtr doccpy(new Document(*this));
 
     QList<Item> list;
+    list.reserve(items.count());
 
     Q_FOREACH (const ResourcePtr &i, items) {
         list.append(Item(i, doccpy));
