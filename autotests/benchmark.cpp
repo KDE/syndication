@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     QTime time;
     time.start();
 
-    foreach (QString filename, filenames) {
+    foreach(const QString &filename, filenames) {
 
         QFile f(filename);
 
