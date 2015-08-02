@@ -46,37 +46,37 @@ public:
     explicit ImageAtomImpl(const QString &logoURI) : m_logoURI(logoURI)
     {}
 
-    bool isNull() const
+    bool isNull() const Q_DECL_OVERRIDE
     {
         return m_logoURI.isEmpty();
     }
 
-    QString url() const
+    QString url() const Q_DECL_OVERRIDE
     {
         return m_logoURI;
     }
 
-    QString title() const
+    QString title() const Q_DECL_OVERRIDE
     {
         return QString();
     }
 
-    QString link() const
+    QString link() const Q_DECL_OVERRIDE
     {
         return QString();
     }
 
-    QString description() const
+    QString description() const Q_DECL_OVERRIDE
     {
         return QString();
     }
 
-    uint width() const
+    uint width() const Q_DECL_OVERRIDE
     {
         return 0;
     }
 
-    uint height() const
+    uint height() const Q_DECL_OVERRIDE
     {
         return 0;
     }

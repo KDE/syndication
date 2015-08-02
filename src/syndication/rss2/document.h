@@ -98,14 +98,14 @@ public:
      * for more information.
      * @param visitor the visitor calling the method
      */
-    virtual bool accept(DocumentVisitor *visitor);
+    bool accept(DocumentVisitor *visitor) Q_DECL_OVERRIDE;
 
     /**
      * returns whether this document is valid or not.
      * Invalid documents do not contain any useful
      * information.
      */
-    bool isValid() const;
+    bool isValid() const Q_DECL_OVERRIDE;
 
     /**
      * The title of the channel.
@@ -281,7 +281,7 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    QString debugInfo() const Q_DECL_OVERRIDE;
 
     //@cond PRIVATE
     /**

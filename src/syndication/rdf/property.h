@@ -71,17 +71,17 @@ public:
      * @param visitor the visitor calling the method
      * @param ptr a shared pointer object for this node
      */
-    virtual void accept(NodeVisitor *visitor, NodePtr ptr);
+    void accept(NodeVisitor *visitor, NodePtr ptr) Q_DECL_OVERRIDE;
 
     /**
      * returns true for properties
      */
-    virtual bool isProperty() const;
+    bool isProperty() const Q_DECL_OVERRIDE;
 
     /**
      * creates a copy of the property object
      */
-    virtual Property *clone() const;
+    Property *clone() const Q_DECL_OVERRIDE;
 };
 
 } // namespace RDF

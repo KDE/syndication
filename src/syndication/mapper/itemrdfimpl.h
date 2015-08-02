@@ -43,39 +43,39 @@ public:
 
     explicit ItemRDFImpl(const Syndication::RDF::Item &item);
 
-    QString title() const;
+    QString title() const Q_DECL_OVERRIDE;
 
-    QString link() const;
+    QString link() const Q_DECL_OVERRIDE;
 
-    QString description() const;
+    QString description() const Q_DECL_OVERRIDE;
 
-    QString content() const;
+    QString content() const Q_DECL_OVERRIDE;
 
-    QList<PersonPtr> authors() const;
+    QList<PersonPtr> authors() const Q_DECL_OVERRIDE;
 
-    QString language() const;
+    QString language() const Q_DECL_OVERRIDE;
 
-    QString id() const;
+    QString id() const Q_DECL_OVERRIDE;
 
-    time_t datePublished() const;
+    time_t datePublished() const Q_DECL_OVERRIDE;
 
-    time_t dateUpdated() const;
+    time_t dateUpdated() const Q_DECL_OVERRIDE;
 
-    QList<EnclosurePtr> enclosures() const;
+    QList<EnclosurePtr> enclosures() const Q_DECL_OVERRIDE;
 
-    QList<CategoryPtr> categories() const;
+    QList<CategoryPtr> categories() const Q_DECL_OVERRIDE;
 
-    SpecificItemPtr specificItem() const;
+    SpecificItemPtr specificItem() const Q_DECL_OVERRIDE;
 
-    int commentsCount() const;
+    int commentsCount() const Q_DECL_OVERRIDE;
 
-    QString commentsLink() const;
+    QString commentsLink() const Q_DECL_OVERRIDE;
 
-    QString commentsFeed() const;
+    QString commentsFeed() const Q_DECL_OVERRIDE;
 
-    QString commentPostUri() const;
+    QString commentPostUri() const Q_DECL_OVERRIDE;
 
-    QMultiMap<QString, QDomElement> additionalProperties() const;
+    QMultiMap<QString, QDomElement> additionalProperties() const Q_DECL_OVERRIDE;
 
 private:
 

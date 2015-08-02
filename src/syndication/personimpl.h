@@ -46,19 +46,19 @@ public:
     PersonImpl();
     PersonImpl(const QString &name, const QString &uri, const QString &email);
 
-    virtual bool isNull() const
+    bool isNull() const Q_DECL_OVERRIDE
     {
         return m_null;
     }
-    virtual QString name() const
+    QString name() const Q_DECL_OVERRIDE
     {
         return m_name;
     }
-    virtual QString uri() const
+    QString uri() const Q_DECL_OVERRIDE
     {
         return m_uri;
     }
-    virtual QString email() const
+    QString email() const Q_DECL_OVERRIDE
     {
         return m_email;
     }

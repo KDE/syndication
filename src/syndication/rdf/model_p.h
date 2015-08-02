@@ -83,28 +83,28 @@ public:
         AddToHashesVisitor(ModelPrivate *parent) : p(parent)
         {}
 
-        bool visitResource(ResourcePtr res)
+        bool visitResource(ResourcePtr res) Q_DECL_OVERRIDE
         {
             visitNode(res);
             p->resources[res->uri()] = res;
             return true;
         }
 
-        bool visitSequence(SequencePtr seq)
+        bool visitSequence(SequencePtr seq) Q_DECL_OVERRIDE
         {
             visitResource(seq);
             p->sequences[seq->uri()] = seq;
             return true;
         }
 
-        bool visitProperty(PropertyPtr prop)
+        bool visitProperty(PropertyPtr prop) Q_DECL_OVERRIDE
         {
             visitResource(prop);
             p->properties[prop->uri()] = prop;
             return true;
         }
 
-        bool visitNode(NodePtr node)
+        bool visitNode(NodePtr node) Q_DECL_OVERRIDE
         {
             p->nodes[node->id()] = node;
             return true;

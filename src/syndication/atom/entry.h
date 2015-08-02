@@ -75,7 +75,7 @@ public:
      * @param visitor the visitor calling the method
      */
 
-    bool accept(SpecificItemVisitor *visitor);
+    bool accept(SpecificItemVisitor *visitor) Q_DECL_OVERRIDE;
 
     /**
      * list of persons who are authors of this entry. (required)

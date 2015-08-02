@@ -45,17 +45,17 @@ public:
     explicit EnclosureRSS2Impl(const Syndication::RSS2::Item &item,
                                const Syndication::RSS2::Enclosure &enc);
 
-    bool isNull() const;
+    bool isNull() const Q_DECL_OVERRIDE;
 
-    QString url() const;
+    QString url() const Q_DECL_OVERRIDE;
 
-    QString title() const;
+    QString title() const Q_DECL_OVERRIDE;
 
-    QString type() const;
+    QString type() const Q_DECL_OVERRIDE;
 
-    uint length() const;
+    uint length() const Q_DECL_OVERRIDE;
 
-    uint duration() const;
+    uint duration() const Q_DECL_OVERRIDE;
 
 private:
     Syndication::RSS2::Item m_item;

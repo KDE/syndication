@@ -101,7 +101,7 @@ public:
      *
      * @param visitor a visitor visiting this object
      */
-    bool accept(SpecificItemVisitor *visitor);
+    bool accept(SpecificItemVisitor *visitor) Q_DECL_OVERRIDE;
 
     /**
      * The item's title (required).

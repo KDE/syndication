@@ -92,7 +92,7 @@ public:
      *
      * @param other the node to compare this node to
      */
-    bool operator==(const Node &other) const;
+    bool operator==(const Node &other) const Q_DECL_OVERRIDE;
 
     /**
      * Used by visitors for double dispatch. See NodeVisitor
@@ -100,12 +100,12 @@ public:
      * @param visitor the visitor calling the method
      * @param ptr a shared pointer object for this node
      */
-    virtual void accept(NodeVisitor *visitor,  NodePtr ptr);
+    void accept(NodeVisitor *visitor,  NodePtr ptr) Q_DECL_OVERRIDE;
 
     /**
      * creates a copy of the resource object
      */
-    virtual Resource *clone() const;
+    Resource *clone() const Q_DECL_OVERRIDE;
 
     /**
      * the model this resource belongs to
@@ -144,45 +144,45 @@ public:
     /**
      * returns whether the resource is a null resource
      */
-    virtual bool isNull() const;
+    bool isNull() const Q_DECL_OVERRIDE;
 
     /**
      * the identifier of this node. the ID is unique per model
      * and set by the associated model at creation time.
      */
-    virtual unsigned int id() const;
+    unsigned int id() const Q_DECL_OVERRIDE;
 
     /**
      * returns @p true
      */
-    virtual bool isResource() const;
+    bool isResource() const Q_DECL_OVERRIDE;
 
     /**
      * returns @p false
      */
-    virtual bool isLiteral() const;
+    bool isLiteral() const Q_DECL_OVERRIDE;
 
     /**
      * returns @p true if this resource is also a property, @p false
      * otherwise
      */
-    virtual bool isProperty() const;
+    bool isProperty() const Q_DECL_OVERRIDE;
 
     /**
      * returns whether this resource is an anonymous resource
      */
-    virtual bool isAnon() const;
+    bool isAnon() const Q_DECL_OVERRIDE;
 
     /**
      * returns @p true if this resource is also a sequence, @p false
      * otherwise.
      */
-    virtual bool isSequence() const;
+    bool isSequence() const Q_DECL_OVERRIDE;
 
     /**
      * returns a null string
      */
-    virtual QString text() const;
+    QString text() const Q_DECL_OVERRIDE;
 
     /**
      * returns the URI of the resource
@@ -193,13 +193,13 @@ public:
      * used in Model
      * @internal
      */
-    virtual void setModel(const Model &model);
+    void setModel(const Model &model) Q_DECL_OVERRIDE;
 
     /**
      * used in Model
      * @internal
      */
-    virtual void setId(unsigned int id);
+    void setId(unsigned int id) Q_DECL_OVERRIDE;
 
 private:
 

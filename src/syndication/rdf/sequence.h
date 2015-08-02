@@ -82,12 +82,12 @@ public:
     * @param visitor the visitor calling the method
     * @param ptr a shared pointer object for this node
     */
-    virtual void accept(NodeVisitor *visitor, NodePtr ptr);
+    void accept(NodeVisitor *visitor, NodePtr ptr) Q_DECL_OVERRIDE;
 
     /**
      * creates a copy of the sequence
      */
-    virtual Sequence *clone() const;
+    Sequence *clone() const Q_DECL_OVERRIDE;
 
     /**
      * appends a node at the end of the sequence
@@ -105,7 +105,7 @@ public:
     /**
      * returns @p true
      */
-    virtual bool isSequence() const;
+    bool isSequence() const Q_DECL_OVERRIDE;
 
 private:
 

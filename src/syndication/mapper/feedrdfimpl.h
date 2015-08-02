@@ -43,27 +43,27 @@ public:
 
     explicit FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
 
-    Syndication::SpecificDocumentPtr specificDocument() const;
+    Syndication::SpecificDocumentPtr specificDocument() const Q_DECL_OVERRIDE;
 
-    QList<ItemPtr> items() const;
+    QList<ItemPtr> items() const Q_DECL_OVERRIDE;
 
-    QList<CategoryPtr> categories() const;
+    QList<CategoryPtr> categories() const Q_DECL_OVERRIDE;
 
-    QString title() const;
+    QString title() const Q_DECL_OVERRIDE;
 
-    QString link() const;
+    QString link() const Q_DECL_OVERRIDE;
 
-    QString description() const;
+    QString description() const Q_DECL_OVERRIDE;
 
-    QList<PersonPtr> authors() const;
+    QList<PersonPtr> authors() const Q_DECL_OVERRIDE;
 
-    QString language() const;
+    QString language() const Q_DECL_OVERRIDE;
 
-    QString copyright() const;
+    QString copyright() const Q_DECL_OVERRIDE;
 
-    ImagePtr image() const;
+    ImagePtr image() const Q_DECL_OVERRIDE;
 
-    QMultiMap<QString, QDomElement> additionalProperties() const;
+    QMultiMap<QString, QDomElement> additionalProperties() const Q_DECL_OVERRIDE;
 
 private:
 

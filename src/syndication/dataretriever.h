@@ -119,7 +119,7 @@ public:
      * file.
      * @see Loader::loadFrom()
      */
-    virtual void retrieveData(const QUrl &url);
+    void retrieveData(const QUrl &url) Q_DECL_OVERRIDE;
 
     /**
      * @return The error code for the last process of retrieving data.
@@ -127,9 +127,9 @@ public:
      * code which depends on the particular program which was run is
      * returned.
      */
-    virtual int errorCode() const;
+    int errorCode() const Q_DECL_OVERRIDE;
 
-    virtual void abort() {}
+    void abort() Q_DECL_OVERRIDE {}
 
 private Q_SLOTS:
     void slotFinished(int exitCode, QProcess::ExitStatus exitStatus) ;
@@ -169,7 +169,7 @@ public:
      * reference valid XML.
      * @see Loader::loadFrom()
      */
-    virtual void retrieveData(const QUrl &url);
+    void retrieveData(const QUrl &url) Q_DECL_OVERRIDE;
 
     /**
      * @return The error code for the last process of retrieving data.
@@ -177,12 +177,12 @@ public:
      * <a href="http://developer.kde.org/documentation/library/cvs-api/classref/kio/KIO.html#Error">as
      * defined by KIO</a>.
      */
-    virtual int errorCode() const;
+    int errorCode() const Q_DECL_OVERRIDE;
 
     /**
      * aborts the retrieval process.
      */
-    virtual void abort();
+    void abort() Q_DECL_OVERRIDE;
 
     /**
      * sets whether the retriever should use the KHTML cache or

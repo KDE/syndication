@@ -53,7 +53,7 @@ public:
      * an RSS 0.9 or RSS 1.0 document.
      * @param source the document source to check
      */
-    virtual bool accept(const DocumentSource &source) const;
+    bool accept(const DocumentSource &source) const Q_DECL_OVERRIDE;
 
     /**
      * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
@@ -64,14 +64,14 @@ public:
      * invalid document if parsing failed.
      * @see Document::isValid()
      */
-    virtual SpecificDocumentPtr parse(const DocumentSource &source) const;
+    SpecificDocumentPtr parse(const DocumentSource &source) const Q_DECL_OVERRIDE;
 
     /**
      * format string of this parser, which is @c "rdf".
      *
      * @return @c "rdf"
      */
-    virtual QString format() const;
+    QString format() const Q_DECL_OVERRIDE;
 
 private:
 
