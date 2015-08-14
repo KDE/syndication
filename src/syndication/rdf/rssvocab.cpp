@@ -59,7 +59,7 @@ RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = 0;
 
 RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
 {
-    QString ns = QLatin1String("http://purl.org/rss/1.0/");
+    QString ns = QStringLiteral("http://purl.org/rss/1.0/");
 
     d->namespaceURI = ns;
 
@@ -173,7 +173,7 @@ RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = 0;
 
 RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
 {
-    QString ns = QLatin1String("http://my.netscape.com/rdf/simple/0.9/");
+    QString ns = QStringLiteral("http://my.netscape.com/rdf/simple/0.9/");
 
     d->namespaceURI = ns;
 

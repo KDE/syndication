@@ -51,7 +51,7 @@ QList<Person> Source::authors() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("author"));
+                            QStringLiteral("author"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -69,7 +69,7 @@ QList<Person> Source::contributors() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("contributor"));
+                            QStringLiteral("contributor"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -87,7 +87,7 @@ QList<Category> Source::categories() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("category"));
+                            QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
@@ -104,26 +104,26 @@ QList<Category> Source::categories() const
 Generator Source::generator() const
 {
     return Generator(firstElementByTagNameNS(atom1Namespace(),
-                     QLatin1String("generator")));
+                     QStringLiteral("generator")));
 }
 
 QString Source::icon() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QLatin1String("icon"));
+                                QStringLiteral("icon"));
 }
 
 QString Source::id() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QLatin1String("id"));
+                                QStringLiteral("id"));
 }
 
 QList<Link> Source::links() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("link"));
+                            QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
@@ -140,28 +140,28 @@ QList<Link> Source::links() const
 QString Source::logo() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QLatin1String("logo"));
+                                QStringLiteral("logo"));
 }
 
 QString Source::rights() const
 {
-    return extractAtomText(*this, QLatin1String("rights"));
+    return extractAtomText(*this, QStringLiteral("rights"));
 }
 
 QString Source::subtitle() const
 {
-    return extractAtomText(*this, QLatin1String("subtitle"));
+    return extractAtomText(*this, QStringLiteral("subtitle"));
 }
 
 QString Source::title() const
 {
-    return extractAtomText(*this, QLatin1String("title"));
+    return extractAtomText(*this, QStringLiteral("title"));
 }
 
 time_t Source::updated() const
 {
     QString upd = extractElementTextNS(atom1Namespace(),
-                                       QLatin1String("updated"));
+                                       QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 

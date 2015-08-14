@@ -70,12 +70,12 @@ Content &Content::operator=(const Content &other)
 
 QString Content::type() const
 {
-    return attribute(QLatin1String("type"));
+    return attribute(QStringLiteral("type"));
 }
 
 QString Content::src() const
 {
-    return completeURI(attribute(QLatin1String("src")));
+    return completeURI(attribute(QStringLiteral("src")));
 }
 
 QByteArray Content::asByteArray() const
@@ -97,7 +97,7 @@ Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &s
     //Atom Processors MUST behave as though the type attribute were
     //present with a value of "text""
     if (type.isNull() && src.isEmpty()) {
-        type = QLatin1String("text");
+        type = QStringLiteral("text");
     }
 
     if (type == QLatin1String("html")
@@ -113,15 +113,15 @@ Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &s
     }
 
     if (xmltypes.isEmpty()) {
-        xmltypes.append(QLatin1String("xhtml"));
-        xmltypes.append(QLatin1String("application/xhtml+xml"));
+        xmltypes.append(QStringLiteral("xhtml"));
+        xmltypes.append(QStringLiteral("application/xhtml+xml"));
         // XML media types as defined in RFC3023:
-        xmltypes.append(QLatin1String("text/xml"));
-        xmltypes.append(QLatin1String("application/xml"));
-        xmltypes.append(QLatin1String("text/xml-external-parsed-entity"));
-        xmltypes.append(QLatin1String("application/xml-external-parsed-entity"));
-        xmltypes.append(QLatin1String("application/xml-dtd"));
-        xmltypes.append(QLatin1String("text/x-dtd")); // from shared-mime-info
+        xmltypes.append(QStringLiteral("text/xml"));
+        xmltypes.append(QStringLiteral("application/xml"));
+        xmltypes.append(QStringLiteral("text/xml-external-parsed-entity"));
+        xmltypes.append(QStringLiteral("application/xml-external-parsed-entity"));
+        xmltypes.append(QStringLiteral("application/xml-dtd"));
+        xmltypes.append(QStringLiteral("text/x-dtd")); // from shared-mime-info
     }
 
     if (xmltypes.contains(type)

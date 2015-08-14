@@ -49,7 +49,7 @@ ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = 0;
 
 ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 {
-    QString ns = QLatin1String("http://purl.org/rss/1.0/modules/content/");
+    QString ns = QStringLiteral("http://purl.org/rss/1.0/modules/content/");
 
     d->namespaceURI = ns;
 

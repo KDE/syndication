@@ -39,14 +39,14 @@ Cloud::Cloud(const QDomElement &element) : ElementWrapper(element)
 
 QString Cloud::domain() const
 {
-    return attribute(QLatin1String("domain"));
+    return attribute(QStringLiteral("domain"));
 }
 
 int Cloud::port() const
 {
-    if (hasAttribute(QLatin1String("port"))) {
+    if (hasAttribute(QStringLiteral("port"))) {
         bool ok;
-        int c = attribute(QLatin1String("port")).toInt(&ok);
+        int c = attribute(QStringLiteral("port")).toInt(&ok);
         return ok ? c : -1;
     }
 
@@ -55,18 +55,18 @@ int Cloud::port() const
 
 QString Cloud::path() const
 {
-    return attribute(QLatin1String("path"));
+    return attribute(QStringLiteral("path"));
 }
 
 QString Cloud::registerProcedure() const
 {
-    return attribute(QLatin1String("registerProcedure"));
+    return attribute(QStringLiteral("registerProcedure"));
 }
 
 QString Cloud::protocol() const
 {
 
-    return attribute(QLatin1String("protocol"));
+    return attribute(QStringLiteral("protocol"));
 }
 
 QString Cloud::debugInfo() const

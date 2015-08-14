@@ -61,8 +61,8 @@ Model ModelMaker::createFromXML(const QDomDocument &doc)
 
 ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
 {
-    QString about = QLatin1String("about");
-    QString resource = QLatin1String("resource");
+    QString about = QStringLiteral("about");
+    QString resource = QStringLiteral("resource");
 
     ResourcePtr res;
 

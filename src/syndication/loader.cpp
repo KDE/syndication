@@ -160,7 +160,7 @@ void Loader::discoverFeeds(const QByteArray &data)
     // "<[\\s]link[^>]*rel[\\s]=[\\s]\\\"[\\s]alternate[\\s]\\\"[^>]*>"
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
-    QRegExp rx(QLatin1String("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
+    QRegExp rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
     if (rx.indexIn(str) != -1) {
         s2 = rx.cap(1);
     } else {
@@ -168,7 +168,7 @@ void Loader::discoverFeeds(const QByteArray &data)
         int pos = 0;
         QStringList feeds;
         QString host = d->url.host();
-        rx.setPattern(QLatin1String("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
+        rx.setPattern(QStringLiteral("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
         while (pos >= 0) {
             pos = rx.indexIn(str, pos);
             s2 = rx.cap(1);

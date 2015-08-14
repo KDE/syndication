@@ -62,7 +62,7 @@ RDFVocab *RDFVocab::self()
 
 RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
 {
-    QString ns = QLatin1String("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+    QString ns = QStringLiteral("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 
     d->namespaceURI = ns;
 

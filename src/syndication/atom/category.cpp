@@ -41,7 +41,7 @@ Category::Category(const QDomElement &element) : ElementWrapper(element)
 
 QString Category::term() const
 {
-    return attribute(QLatin1String("term"));
+    return attribute(QStringLiteral("term"));
 }
 
 QString Category::scheme() const
@@ -49,12 +49,12 @@ QString Category::scheme() const
     // NOTE: The scheme IRI is not completed by purpose.
     // According to Atom spec, it must be an absolute IRI.
     // If this is a problem with real-world feeds, it might be changed.
-    return attribute(QLatin1String("scheme"));
+    return attribute(QStringLiteral("scheme"));
 }
 
 QString Category::label() const
 {
-    return attribute(QLatin1String("label"));
+    return attribute(QStringLiteral("label"));
 }
 
 QString Category::debugInfo() const

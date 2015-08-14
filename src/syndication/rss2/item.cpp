@@ -88,17 +88,17 @@ QString Item::title() const
 
 QString Item::originalDescription() const
 {
-    return extractElementTextNS(QString(), QLatin1String("description"));
+    return extractElementTextNS(QString(), QStringLiteral("description"));
 }
 
 QString Item::originalTitle() const
 {
-    return extractElementTextNS(QString(), QLatin1String("title"));
+    return extractElementTextNS(QString(), QStringLiteral("title"));
 }
 
 QString Item::link() const
 {
-    QString url = extractElementTextNS(QString(), QLatin1String("link"));
+    QString url = extractElementTextNS(QString(), QStringLiteral("link"));
     if (url.startsWith(QLatin1String("http://")) || url.startsWith(QLatin1String("https://"))) {
         return url;
     }
@@ -140,7 +140,7 @@ QString Item::content() const
 QList<Category> Item::categories() const
 {
     QList<QDomElement> cats = elementsByTagNameNS(QString(),
-                              QLatin1String("category"));
+                              QStringLiteral("category"));
 
     QList<Category> categories;
     categories.reserve(cats.count());
@@ -154,18 +154,18 @@ QList<Category> Item::categories() const
 
 QString Item::comments() const
 {
-    return extractElementTextNS(QString(), QLatin1String("comments"));
+    return extractElementTextNS(QString(), QStringLiteral("comments"));
 }
 
 QString Item::author() const
 {
-    QString a = extractElementTextNS(QString(), QLatin1String("author"));
+    QString a = extractElementTextNS(QString(), QStringLiteral("author"));
     if (!a.isNull()) {
         return a;
     } else {
         // if author is not available, fall back to dc:creator
         return extractElementTextNS(dublinCoreNamespace(),
-                                    QLatin1String("creator"));
+                                    QStringLiteral("creator"));
     }
 
 }
@@ -173,7 +173,7 @@ QString Item::author() const
 QList<Enclosure> Item::enclosures() const
 {
     QList<QDomElement> encs = elementsByTagNameNS(QString(),
-                              QLatin1String("enclosure"));
+                              QStringLiteral("enclosure"));
 
     QList<Enclosure> enclosures;
     enclosures.reserve(encs.count());
@@ -187,7 +187,7 @@ QList<Enclosure> Item::enclosures() const
 
 QString Item::guid() const
 {
-    return extractElementTextNS(QString(), QLatin1String("guid"));
+    return extractElementTextNS(QString(), QStringLiteral("guid"));
 }
 
 bool Item::guidIsPermaLink() const
@@ -195,9 +195,9 @@ bool Item::guidIsPermaLink() const
     bool guidIsPermaLink = true;  // true is default
 
     QDomElement guidNode = firstElementByTagNameNS(QString(),
-                           QLatin1String("guid"));
+                           QStringLiteral("guid"));
     if (!guidNode.isNull()) {
-        if (guidNode.attribute(QLatin1String("isPermaLink"))
+        if (guidNode.attribute(QStringLiteral("isPermaLink"))
                 == QLatin1String("false")) {
             guidIsPermaLink = false;
         }
@@ -208,31 +208,31 @@ bool Item::guidIsPermaLink() const
 
 time_t Item::pubDate() const
 {
-    QString str = extractElementTextNS(QString(), QLatin1String("pubDate"));
+    QString str = extractElementTextNS(QString(), QStringLiteral("pubDate"));
 
     if (!str.isNull()) {
         return parseDate(str, RFCDate);
     }
 
     // if there is no pubDate, check for dc:date
-    str = extractElementTextNS(dublinCoreNamespace(), QLatin1String("date"));
+    str = extractElementTextNS(dublinCoreNamespace(), QStringLiteral("date"));
     return parseDate(str, ISODate);
 }
 
 time_t Item::expirationDate() const
 {
-    QString str = extractElementTextNS(QString(), QLatin1String("expirationDate"));
+    QString str = extractElementTextNS(QString(), QStringLiteral("expirationDate"));
     return parseDate(str, RFCDate);
 }
 
 Source Item::source() const
 {
-    return Source(firstElementByTagNameNS(QString(), QLatin1String("source")));
+    return Source(firstElementByTagNameNS(QString(), QStringLiteral("source")));
 }
 
 QString Item::rating() const
 {
-    return extractElementTextNS(QString(), QLatin1String("rating"));
+    return extractElementTextNS(QString(), QStringLiteral("rating"));
 }
 
 QString Item::debugInfo() const
@@ -290,17 +290,17 @@ QList<QDomElement> Item::unhandledElements() const
     static QList<ElementType> handled;
     if (handled.isEmpty()) {
         handled.reserve(11);
-        handled.append(ElementType(QLatin1String("title")));
-        handled.append(ElementType(QLatin1String("link")));
-        handled.append(ElementType(QLatin1String("description")));
-        handled.append(ElementType(QLatin1String("pubDate")));
-        handled.append(ElementType(QLatin1String("expirationDate")));
-        handled.append(ElementType(QLatin1String("rating")));
-        handled.append(ElementType(QLatin1String("source")));
-        handled.append(ElementType(QLatin1String("guid")));
-        handled.append(ElementType(QLatin1String("comments")));
-        handled.append(ElementType(QLatin1String("author")));
-        handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+        handled.append(ElementType(QStringLiteral("title")));
+        handled.append(ElementType(QStringLiteral("link")));
+        handled.append(ElementType(QStringLiteral("description")));
+        handled.append(ElementType(QStringLiteral("pubDate")));
+        handled.append(ElementType(QStringLiteral("expirationDate")));
+        handled.append(ElementType(QStringLiteral("rating")));
+        handled.append(ElementType(QStringLiteral("source")));
+        handled.append(ElementType(QStringLiteral("guid")));
+        handled.append(ElementType(QStringLiteral("comments")));
+        handled.append(ElementType(QStringLiteral("author")));
+        handled.append(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
     }
 
     QList<QDomElement> notHandled;

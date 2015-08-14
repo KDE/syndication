@@ -45,7 +45,7 @@ QString Source::source() const
 
 QString Source::url() const
 {
-    return attribute(QLatin1String("url"));
+    return attribute(QStringLiteral("url"));
 }
 
 QString Source::debugInfo() const

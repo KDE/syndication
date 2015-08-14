@@ -42,7 +42,7 @@ QString extractAtomText(const Syndication::ElementWrapper &parent, const QString
 
     bool isCDATA = el.firstChild().isCDATASection();
 
-    QString type = el.attribute(QLatin1String("type"), QLatin1String("text"));
+    QString type = el.attribute(QStringLiteral("type"), QStringLiteral("text"));
 
     if (type == QLatin1String("text")) {
         str = parent.extractElementTextNS(atom1Namespace(), tagname).trimmed();

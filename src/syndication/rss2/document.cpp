@@ -67,7 +67,7 @@ Document::Document(const QDomElement &element) : SpecificDocument(),
 
 Document Document::fromXML(const QDomDocument &doc)
 {
-    QDomNode channelNode = doc.namedItem(QLatin1String("rss")).namedItem(QLatin1String("channel"));
+    QDomNode channelNode = doc.namedItem(QStringLiteral("rss")).namedItem(QStringLiteral("channel"));
 
     return Document(channelNode.toElement());
 }
@@ -98,30 +98,30 @@ bool Document::isValid() const
 
 QString Document::title() const
 {
-    return extractElementTextNS(QString(), QLatin1String("title"));
+    return extractElementTextNS(QString(), QStringLiteral("title"));
 }
 
 QString Document::link() const
 {
-    return extractElementTextNS(QString(), QLatin1String("link"));
+    return extractElementTextNS(QString(), QStringLiteral("link"));
 }
 
 QString Document::description() const
 {
-    QString desc = extractElementTextNS(QString(), QLatin1String("description"));
+    QString desc = extractElementTextNS(QString(), QStringLiteral("description"));
     return normalize(desc);
 }
 
 QString Document::language() const
 {
     QString lang = extractElementTextNS(QString(),
-                                        QLatin1String("language"));
+                                        QStringLiteral("language"));
 
     if (!lang.isNull()) {
         return lang;
     } else {
         return extractElementTextNS(
-                   dublinCoreNamespace(), QLatin1String("language"));
+                   dublinCoreNamespace(), QStringLiteral("language"));
     }
 
 }
@@ -129,42 +129,42 @@ QString Document::language() const
 QString Document::copyright() const
 {
     QString rights = extractElementTextNS(QString(),
-                                          QLatin1String("copyright"));
+                                          QStringLiteral("copyright"));
     if (!rights.isNull()) {
         return rights;
     } else {
         // if <copyright> is not provided, use <dc:rights>
         return extractElementTextNS(dublinCoreNamespace(),
-                                    QLatin1String("rights"));
+                                    QStringLiteral("rights"));
     }
 }
 
 QString Document::managingEditor() const
 {
-    return extractElementTextNS(QString(), QLatin1String("managingEditor"));
+    return extractElementTextNS(QString(), QStringLiteral("managingEditor"));
 }
 
 QString Document::webMaster() const
 {
-    return extractElementTextNS(QString(), QLatin1String("webMaster"));
+    return extractElementTextNS(QString(), QStringLiteral("webMaster"));
 }
 
 time_t Document::pubDate() const
 {
-    QString str = extractElementTextNS(QString(), QLatin1String("pubDate"));
+    QString str = extractElementTextNS(QString(), QStringLiteral("pubDate"));
 
     if (!str.isNull()) {
         return parseDate(str, RFCDate);
     } else {
         // if there is no pubDate, check for dc:date
-        str = extractElementTextNS(dublinCoreNamespace(), QLatin1String("date"));
+        str = extractElementTextNS(dublinCoreNamespace(), QStringLiteral("date"));
         return parseDate(str, ISODate);
     }
 }
 
 time_t Document::lastBuildDate() const
 {
-    QString str = extractElementTextNS(QString(), QLatin1String("lastBuildDate"));
+    QString str = extractElementTextNS(QString(), QStringLiteral("lastBuildDate"));
 
     return parseDate(str, RFCDate);
 }
@@ -174,7 +174,7 @@ QList<Category> Document::categories() const
     QList<Category> categories;
 
     QList<QDomElement> catNodes = elementsByTagNameNS(QString(),
-                                  QLatin1String("category"));
+                                  QStringLiteral("category"));
     categories.reserve(catNodes.count());
     QList<QDomElement>::ConstIterator it = catNodes.constBegin();
     for (; it != catNodes.constEnd(); ++it) {
@@ -186,17 +186,17 @@ QList<Category> Document::categories() const
 
 QString Document::generator() const
 {
-    return extractElementTextNS(QString(), QLatin1String("generator"));
+    return extractElementTextNS(QString(), QStringLiteral("generator"));
 }
 
 QString Document::docs() const
 {
-    return extractElementTextNS(QString(), QLatin1String("docs"));
+    return extractElementTextNS(QString(), QStringLiteral("docs"));
 }
 
 Cloud Document::cloud() const
 {
-    return Cloud(firstElementByTagNameNS(QString(), QLatin1String("cloud")));
+    return Cloud(firstElementByTagNameNS(QString(), QStringLiteral("cloud")));
 }
 
 int Document::ttl() const
@@ -204,39 +204,39 @@ int Document::ttl() const
     bool ok;
     int c;
 
-    QString text = extractElementTextNS(QString(), QLatin1String("ttl"));
+    QString text = extractElementTextNS(QString(), QStringLiteral("ttl"));
     c = text.toInt(&ok);
     return ok ? c : 0;
 }
 
 Image Document::image() const
 {
-    return Image(firstElementByTagNameNS(QString(), QLatin1String("image")));
+    return Image(firstElementByTagNameNS(QString(), QStringLiteral("image")));
 }
 
 TextInput Document::textInput() const
 {
-    TextInput ti = TextInput(firstElementByTagNameNS(QString(), QLatin1String("textInput")));
+    TextInput ti = TextInput(firstElementByTagNameNS(QString(), QStringLiteral("textInput")));
 
     if (!ti.isNull()) {
         return ti;
     }
 
     // Netscape's version of RSS 0.91 has textinput, not textInput
-    return TextInput(firstElementByTagNameNS(QString(), QLatin1String("textinput")));
+    return TextInput(firstElementByTagNameNS(QString(), QStringLiteral("textinput")));
 }
 
 QSet<int> Document::skipHours() const
 {
     QSet<int> skipHours;
     QDomElement skipHoursNode = firstElementByTagNameNS(QString(),
-                                QLatin1String("skipHours"));
+                                QStringLiteral("skipHours"));
     if (!skipHoursNode.isNull()) {
         ElementWrapper skipHoursWrapper(skipHoursNode);
         bool ok = false;
         QList<QDomElement> hours =
             skipHoursWrapper.elementsByTagNameNS(QString(),
-                    QLatin1String("hour"));
+                    QStringLiteral("hour"));
         QList<QDomElement>::ConstIterator it = hours.constBegin();
         for (; it != hours.constEnd(); ++it) {
             int h = (*it).text().toInt(&ok);
@@ -252,20 +252,20 @@ QSet<int> Document::skipHours() const
 QSet<Document::DayOfWeek> Document::skipDays() const
 {
     QSet<DayOfWeek> skipDays;
-    QDomElement skipDaysNode = firstElementByTagNameNS(QString(), QLatin1String("skipDays"));
+    QDomElement skipDaysNode = firstElementByTagNameNS(QString(), QStringLiteral("skipDays"));
     if (!skipDaysNode.isNull()) {
         ElementWrapper skipDaysWrapper(skipDaysNode);
         QHash<QString, DayOfWeek> weekDays;
 
-        weekDays[QLatin1String("Monday")] = Monday;
-        weekDays[QLatin1String("Tuesday")] = Tuesday;
-        weekDays[QLatin1String("Wednesday")] = Wednesday;
-        weekDays[QLatin1String("Thursday")] = Thursday;
-        weekDays[QLatin1String("Friday")] = Friday;
-        weekDays[QLatin1String("Saturday")] = Saturday;
-        weekDays[QLatin1String("Sunday")] = Sunday;
+        weekDays[QStringLiteral("Monday")] = Monday;
+        weekDays[QStringLiteral("Tuesday")] = Tuesday;
+        weekDays[QStringLiteral("Wednesday")] = Wednesday;
+        weekDays[QStringLiteral("Thursday")] = Thursday;
+        weekDays[QStringLiteral("Friday")] = Friday;
+        weekDays[QStringLiteral("Saturday")] = Saturday;
+        weekDays[QStringLiteral("Sunday")] = Sunday;
 
-        QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QLatin1String("day"));
+        QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QStringLiteral("day"));
         for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != days.constEnd(); ++it) {
             if (weekDays.contains((*it).text())) {
                 skipDays.insert(weekDays[(*it).text()]);
@@ -280,7 +280,7 @@ QList<Item> Document::items() const
 {
     QList<Item> items;
 
-    QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QLatin1String("item"));
+    QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QStringLiteral("item"));
 
     DocumentPtr doccpy(new Document(*this));
     items.reserve(itemNodes.count());
@@ -297,28 +297,28 @@ QList<QDomElement> Document::unhandledElements() const
     static QList<ElementType> handled;
     if (handled.isEmpty()) {
         handled.reserve(22);
-        handled.append(ElementType(QLatin1String("title")));
-        handled.append(ElementType(QLatin1String("link")));
-        handled.append(ElementType(QLatin1String("description")));
-        handled.append(ElementType(QLatin1String("language")));
-        handled.append(ElementType(QLatin1String("copyright")));
-        handled.append(ElementType(QLatin1String("managingEditor")));
-        handled.append(ElementType(QLatin1String("webMaster")));
-        handled.append(ElementType(QLatin1String("pubDate")));
-        handled.append(ElementType(QLatin1String("lastBuildDate")));
-        handled.append(ElementType(QLatin1String("skipDays")));
-        handled.append(ElementType(QLatin1String("skipHours")));
-        handled.append(ElementType(QLatin1String("item")));
-        handled.append(ElementType(QLatin1String("textinput")));
-        handled.append(ElementType(QLatin1String("textInput")));
-        handled.append(ElementType(QLatin1String("image")));
-        handled.append(ElementType(QLatin1String("ttl")));
-        handled.append(ElementType(QLatin1String("generator")));
-        handled.append(ElementType(QLatin1String("docs")));
-        handled.append(ElementType(QLatin1String("cloud")));
-        handled.append(ElementType(QLatin1String("language"), dublinCoreNamespace()));
-        handled.append(ElementType(QLatin1String("rights"), dublinCoreNamespace()));
-        handled.append(ElementType(QLatin1String("date"), dublinCoreNamespace()));
+        handled.append(ElementType(QStringLiteral("title")));
+        handled.append(ElementType(QStringLiteral("link")));
+        handled.append(ElementType(QStringLiteral("description")));
+        handled.append(ElementType(QStringLiteral("language")));
+        handled.append(ElementType(QStringLiteral("copyright")));
+        handled.append(ElementType(QStringLiteral("managingEditor")));
+        handled.append(ElementType(QStringLiteral("webMaster")));
+        handled.append(ElementType(QStringLiteral("pubDate")));
+        handled.append(ElementType(QStringLiteral("lastBuildDate")));
+        handled.append(ElementType(QStringLiteral("skipDays")));
+        handled.append(ElementType(QStringLiteral("skipHours")));
+        handled.append(ElementType(QStringLiteral("item")));
+        handled.append(ElementType(QStringLiteral("textinput")));
+        handled.append(ElementType(QStringLiteral("textInput")));
+        handled.append(ElementType(QStringLiteral("image")));
+        handled.append(ElementType(QStringLiteral("ttl")));
+        handled.append(ElementType(QStringLiteral("generator")));
+        handled.append(ElementType(QStringLiteral("docs")));
+        handled.append(ElementType(QStringLiteral("cloud")));
+        handled.append(ElementType(QStringLiteral("language"), dublinCoreNamespace()));
+        handled.append(ElementType(QStringLiteral("rights"), dublinCoreNamespace()));
+        handled.append(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
     }
 
     QList<QDomElement> notHandled;
@@ -405,7 +405,7 @@ void Document::getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const
             return;
         }
 
-        QDomElement titleEl = (*litems.begin()).firstElementByTagNameNS(QString(), QLatin1String("title"));
+        QDomElement titleEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("title"));
         d->itemTitleIsCDATA = titleEl.firstChild().isCDATASection();
 
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
@@ -442,7 +442,7 @@ void Document::getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup)
             return;
         }
 
-        QDomElement descEl = (*litems.begin()).firstElementByTagNameNS(QString(), QLatin1String("description"));
+        QDomElement descEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("description"));
         d->itemDescriptionIsCDATA = descEl.firstChild().isCDATASection();
 
         int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items

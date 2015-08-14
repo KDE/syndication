@@ -84,13 +84,13 @@ void FileRetriever::retrieveData(const QUrl &url)
     QUrl u = url;
 
     if (u.scheme() == QLatin1String("feed")) {
-        u.setScheme(QLatin1String("http"));
+        u.setScheme(QStringLiteral("http"));
     }
 
     d->job = KIO::get(u, KIO::NoReload, KIO::HideProgressInfo);
 
-    d->job->addMetaData(QLatin1String("UserAgent"), m_userAgent);
-    d->job->addMetaData(QLatin1String("cache"), m_useCache ? QLatin1String("refresh") : QLatin1String("reload"));
+    d->job->addMetaData(QStringLiteral("UserAgent"), m_userAgent);
+    d->job->addMetaData(QStringLiteral("cache"), m_useCache ? QStringLiteral("refresh") : QStringLiteral("reload"));
 
     QTimer::singleShot(1000 * 90, this, SLOT(slotTimeout()));
 

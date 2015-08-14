@@ -104,7 +104,7 @@ QString dateTimeToString(uint date)
         return QString();
     }
 
-    const QString format = QLatin1String("ddd MMM d HH:mm:ss yyyy");
+    const QString format = QStringLiteral("ddd MMM d HH:mm:ss yyyy");
     QDateTime dt;
     dt.setTime_t(date);
     return dt.toUTC().toString(format);
@@ -155,7 +155,7 @@ QString htmlToPlainText(const QString &html)
 {
     QString str(html);
     //TODO: preserve some formatting, such as line breaks
-    str.remove(QRegExp(QLatin1String("<[^>]*>"))); // remove tags
+    str.remove(QRegExp(QStringLiteral("<[^>]*>"))); // remove tags
     str = resolveEntities(str);
     return str.trimmed();
 }
@@ -169,7 +169,7 @@ static bool tagRegExpSet = false;
 bool stringContainsMarkup(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;")))) {
+    if (str.contains(QRegExp(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
 
@@ -179,7 +179,7 @@ bool stringContainsMarkup(const QString &str)
     }
 
     if (!tagRegExpSet) {
-        tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
+        tagRegExp = QRegExp(QStringLiteral("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
     return str.contains(tagRegExp);
@@ -188,7 +188,7 @@ bool stringContainsMarkup(const QString &str)
 bool isHtml(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QLatin1String("&[a-zA-Z0-9#]+;")))) {
+    if (str.contains(QRegExp(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
 
@@ -198,7 +198,7 @@ bool isHtml(const QString &str)
     }
 
     if (!tagRegExpSet) {
-        tagRegExp = QRegExp(QLatin1String("<\\w+.*/?>"));
+        tagRegExp = QRegExp(QStringLiteral("<\\w+.*/?>"));
         tagRegExpSet = true;
     }
     if (str.contains(tagRegExp)) {
@@ -247,7 +247,7 @@ PersonPtr personFromString(const QString &strp)
     // look for something looking like a mail address ("foo@bar.com",
     // "<foo@bar.com>") and extract it
 
-    QRegExp remail(QLatin1String("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
+    QRegExp remail(QStringLiteral("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
     // search kmail source for it
 
     int pos = remail.indexIn(str);
@@ -258,8 +258,8 @@ PersonPtr personFromString(const QString &strp)
     }
 
     // replace "mailto", "(", ")" (to be extended)
-    email.remove(QLatin1String("mailto:"));
-    email.remove(QRegExp(QLatin1String("[\\(\\)]")));
+    email.remove(QStringLiteral("mailto:"));
+    email.remove(QRegExp(QStringLiteral("[\\(\\)]")));
 
     // simplify the rest and use it as name
 
@@ -271,7 +271,7 @@ PersonPtr personFromString(const QString &strp)
     // str is of the format "Foo M. Bar (President)",
     // we should not cut anything.
 
-    QRegExp rename(QLatin1String("^\\(([^\\)]*)\\)"));
+    QRegExp rename(QStringLiteral("^\\(([^\\)]*)\\)"));
 
     if (rename.exactMatch(name)) {
         name = rename.cap(1);

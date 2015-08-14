@@ -92,15 +92,15 @@ QString SyndicationInfo::periodToString(Period period)
 {
     switch (period) {
     case Daily:
-        return QLatin1String("daily");
+        return QStringLiteral("daily");
     case Hourly:
-        return QLatin1String("hourly");
+        return QStringLiteral("hourly");
     case Monthly:
-        return QLatin1String("monthly");
+        return QStringLiteral("monthly");
     case Weekly:
-        return QLatin1String("weekly");
+        return QStringLiteral("weekly");
     case Yearly:
-        return QLatin1String("yearly");
+        return QStringLiteral("yearly");
     default: // should never happen
         return QString();
     }

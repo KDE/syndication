@@ -56,7 +56,7 @@ QList<Person> Entry::authors() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("author"));
+                            QStringLiteral("author"));
     QList<Person> list;
 
     if (!a.isEmpty()) {
@@ -82,7 +82,7 @@ QList<Person> Entry::contributors() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("contributor"));
+                            QStringLiteral("contributor"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -100,7 +100,7 @@ QList<Category> Entry::categories() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("category"));
+                            QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
@@ -117,7 +117,7 @@ QList<Category> Entry::categories() const
 QString Entry::id() const
 {
     return extractElementTextNS(atom1Namespace(),
-                                QLatin1String("id"));
+                                QStringLiteral("id"));
 
 }
 
@@ -125,7 +125,7 @@ QList<Link> Entry::links() const
 {
     QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
-                            QLatin1String("link"));
+                            QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
@@ -141,43 +141,43 @@ QList<Link> Entry::links() const
 
 QString Entry::rights() const
 {
-    return extractAtomText(*this, QLatin1String("rights"));
+    return extractAtomText(*this, QStringLiteral("rights"));
 }
 
 Source Entry::source() const
 {
     return Source(firstElementByTagNameNS(atom1Namespace(),
-                                          QLatin1String("source")));
+                                          QStringLiteral("source")));
 }
 
 time_t Entry::published() const
 {
     QString pub = extractElementTextNS(atom1Namespace(),
-                                       QLatin1String("published"));
+                                       QStringLiteral("published"));
     return parseDate(pub, ISODate);
 }
 
 time_t Entry::updated() const
 {
     QString upd = extractElementTextNS(atom1Namespace(),
-                                       QLatin1String("updated"));
+                                       QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 
 QString Entry::summary() const
 {
-    return extractAtomText(*this, QLatin1String("summary"));
+    return extractAtomText(*this, QStringLiteral("summary"));
 }
 
 QString Entry::title() const
 {
-    return extractAtomText(*this, QLatin1String("title"));
+    return extractAtomText(*this, QStringLiteral("title"));
 }
 
 Content Entry::content() const
 {
     return Content(firstElementByTagNameNS(atom1Namespace(),
-                                           QLatin1String("content")));
+                                           QStringLiteral("content")));
 }
 
 QList<QDomElement> Entry::unhandledElements() const
@@ -186,18 +186,18 @@ QList<QDomElement> Entry::unhandledElements() const
     static QList<ElementType> handled;
     if (handled.isEmpty()) {
         handled.reserve(12);
-        handled.append(ElementType(QLatin1String("author"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("contributor"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("category"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("id"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("link"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("rights"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("source"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("published"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("updated"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("summary"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("title"), atom1Namespace()));
-        handled.append(ElementType(QLatin1String("content"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("author"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("contributor"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("category"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("id"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("link"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("rights"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("source"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("published"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("updated"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("summary"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("title"), atom1Namespace()));
+        handled.append(ElementType(QStringLiteral("content"), atom1Namespace()));
     }
 
     QList<QDomElement> notHandled;

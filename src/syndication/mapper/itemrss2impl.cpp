@@ -110,7 +110,7 @@ time_t ItemRSS2Impl::datePublished() const
 time_t ItemRSS2Impl::dateUpdated() const
 {
     //Some RSS feeds contain atom elements - return atom:dateUpdated if present
-    const QString updstr = m_item.extractElementTextNS(Atom::atom1Namespace(), QLatin1String("updated"));
+    const QString updstr = m_item.extractElementTextNS(Atom::atom1Namespace(), QStringLiteral("updated"));
     if (!updstr.isEmpty()) {
         return parseDate(updstr, ISODate);
     } else {
@@ -151,7 +151,7 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 
 int ItemRSS2Impl::commentsCount() const
 {
-    QString cstr = m_item.extractElementTextNS(slashNamespace(), QLatin1String("comments"));
+    QString cstr = m_item.extractElementTextNS(slashNamespace(), QStringLiteral("comments"));
     bool ok = false;
     int comments = cstr.toInt(&ok);
     return ok ? comments : -1;
@@ -164,16 +164,16 @@ QString ItemRSS2Impl::commentsLink() const
 
 QString ItemRSS2Impl::commentsFeed() const
 {
-    QString t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRss"));
+    QString t = m_item.extractElementTextNS(commentApiNamespace(), QStringLiteral("commentRss"));
     if (t.isNull()) {
-        t = m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRSS"));
+        t = m_item.extractElementTextNS(commentApiNamespace(), QStringLiteral("commentRSS"));
     }
     return t;
 }
 
 QString ItemRSS2Impl::commentPostUri() const
 {
-    return m_item.extractElementTextNS(commentApiNamespace(), QLatin1String("comment"));
+    return m_item.extractElementTextNS(commentApiNamespace(), QStringLiteral("comment"));
 }
 
 Syndication::SpecificItemPtr ItemRSS2Impl::specificItem() const

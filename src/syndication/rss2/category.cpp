@@ -44,7 +44,7 @@ QString Category::category() const
 
 QString Category::domain() const
 {
-    return attribute(QLatin1String("domain"));
+    return attribute(QStringLiteral("domain"));
 }
 
 QString Category::debugInfo() const

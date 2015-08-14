@@ -109,8 +109,8 @@ QString ElementWrapper::xmlBase() const
         */
         QStringList bases;
         while (!current.isNull()) {
-            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("base"))) {
-                bases << current.attributeNS(xmlNamespace(), QLatin1String("base"));
+            if (current.hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
+                bases << current.attributeNS(xmlNamespace(), QStringLiteral("base"));
             }
 
             QDomNode parent = current.parentNode();
@@ -149,8 +149,8 @@ QString ElementWrapper::xmlLang() const
         QDomElement current = d->element;
 
         while (!current.isNull()) {
-            if (current.hasAttributeNS(xmlNamespace(), QLatin1String("lang"))) {
-                d->xmlLang = current.attributeNS(xmlNamespace(), QLatin1String("lang"));
+            if (current.hasAttributeNS(xmlNamespace(), QStringLiteral("lang"))) {
+                d->xmlLang = current.attributeNS(xmlNamespace(), QStringLiteral("lang"));
                 return d->xmlLang;
             }
 
@@ -200,8 +200,8 @@ QString ElementWrapper::childNodesAsXML(const QDomElement &parent)
     for (int i = 0; i < list.count(); ++i) {
         QDomNode it = list.item(i);
         if (!base.isEmpty() && it.isElement()
-                && !it.toElement().hasAttributeNS(xmlNamespace(), QLatin1String("base"))) {
-            it.toElement().setAttributeNS(xmlNamespace(), QLatin1String("base"), base);
+                && !it.toElement().hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
+            it.toElement().setAttributeNS(xmlNamespace(), QStringLiteral("base"), base);
         }
 
         ts << it;

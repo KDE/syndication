@@ -40,33 +40,33 @@ Link::Link(const QDomElement &element) : ElementWrapper(element)
 
 QString Link::href() const
 {
-    return completeURI(attribute(QLatin1String("href")));
+    return completeURI(attribute(QStringLiteral("href")));
 }
 
 QString Link::rel() const
 {
     //"alternate" is default
-    return attribute(QLatin1String("rel"), QLatin1String("alternate"));
+    return attribute(QStringLiteral("rel"), QStringLiteral("alternate"));
 }
 
 QString Link::type() const
 {
-    return attribute(QLatin1String("type"));
+    return attribute(QStringLiteral("type"));
 }
 
 QString Link::hrefLanguage() const
 {
-    return attribute(QLatin1String("hreflang"));
+    return attribute(QStringLiteral("hreflang"));
 }
 
 QString Link::title() const
 {
-    return attribute(QLatin1String("title"));
+    return attribute(QStringLiteral("title"));
 }
 
 uint Link::length() const
 {
-    QString lengthStr = attribute(QLatin1String("length"));
+    QString lengthStr = attribute(QStringLiteral("length"));
 
     bool ok;
     uint c = lengthStr.toUInt(&ok);

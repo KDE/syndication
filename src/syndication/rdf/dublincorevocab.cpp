@@ -63,7 +63,7 @@ DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = 0;
 
 DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 {
-    QString ns = QLatin1String("http://purl.org/dc/elements/1.1/");
+    QString ns = QStringLiteral("http://purl.org/dc/elements/1.1/");
 
     d->namespaceURI = ns;
 

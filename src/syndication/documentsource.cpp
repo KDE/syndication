@@ -83,7 +83,7 @@ QDomDocument DocumentSource::asDomDocument() const
         source.setData(d->array);
 
         QXmlSimpleReader reader;
-        reader.setFeature(QLatin1String("http://xml.org/sax/features/namespaces"), true);
+        reader.setFeature(QStringLiteral("http://xml.org/sax/features/namespaces"), true);
 
         if (!d->domDoc.setContent(&source, &reader)) {
             d->domDoc.clear();

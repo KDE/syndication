@@ -51,7 +51,7 @@ SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = 0;
 
 SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 {
-    QString ns = QLatin1String("http://purl.org/rss/1.0/modules/syndication/");
+    QString ns = QStringLiteral("http://purl.org/rss/1.0/modules/syndication/");
 
     d->namespaceURI = ns;
 

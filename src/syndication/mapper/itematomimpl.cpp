@@ -184,7 +184,7 @@ QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
 
 int ItemAtomImpl::commentsCount() const
 {
-    QString cstr = m_entry.extractElementTextNS(slashNamespace(), QLatin1String("comments"));
+    QString cstr = m_entry.extractElementTextNS(slashNamespace(), QStringLiteral("comments"));
     bool ok = false;
     int comments = cstr.toInt(&ok);
     return ok ? comments : -1;
@@ -197,12 +197,12 @@ QString ItemAtomImpl::commentsLink() const
 
 QString ItemAtomImpl::commentsFeed() const
 {
-    return m_entry.extractElementTextNS(commentApiNamespace(), QLatin1String("commentRss"));
+    return m_entry.extractElementTextNS(commentApiNamespace(), QStringLiteral("commentRss"));
 }
 
 QString ItemAtomImpl::commentPostUri() const
 {
-    return m_entry.extractElementTextNS(commentApiNamespace(), QLatin1String("comment"));
+    return m_entry.extractElementTextNS(commentApiNamespace(), QStringLiteral("comment"));
 }
 
 Syndication::SpecificItemPtr ItemAtomImpl::specificItem() const

@@ -39,19 +39,19 @@ QString extractContent(const ElementWrapper &wrapper)
         return QString();
     }
 
-    QList<QDomElement> list = wrapper.elementsByTagNameNS(contentNameSpace(), QLatin1String("encoded"));
+    QList<QDomElement> list = wrapper.elementsByTagNameNS(contentNameSpace(), QStringLiteral("encoded"));
 
     if (!list.isEmpty()) {
         return list.first().text().trimmed();
     }
 
-    list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QLatin1String("body"));
+    list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QStringLiteral("body"));
 
     if (!list.isEmpty()) {
         return ElementWrapper::childNodesAsXML(list.first()).trimmed();
     }
 
-    list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QLatin1String("div"));
+    list = wrapper.elementsByTagNameNS(xhtmlNamespace(), QStringLiteral("div"));
 
     if (!list.isEmpty()) {
         return ElementWrapper::childNodesAsXML(list.first()).trimmed();
