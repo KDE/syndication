@@ -66,7 +66,7 @@ QString Enclosure::debugInfo() const
         int hours = dduration / 3600;
         int minutes = (dduration - hours * 3600) / 60;
         int seconds = dduration - hours * 3600 - minutes * 60;
-        info += QString::fromLatin1("duration: #%1 (%2:%3:%4)#\n").arg(dduration).arg(hours).arg(minutes).arg(seconds);
+        info += QStringLiteral("duration: #%1 (%2:%3:%4)#\n").arg(dduration).arg(hours).arg(minutes).arg(seconds);
     }
 
     info += QLatin1String("# Enclosure end ###################\n");

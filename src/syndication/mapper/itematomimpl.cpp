@@ -144,7 +144,7 @@ QString ItemAtomImpl::id() const
         return id;
     }
 
-    return QString::fromLatin1("hash:%1").arg(Syndication::calcMD5Sum(title() + description() + link() + content()));
+    return QStringLiteral("hash:%1").arg(Syndication::calcMD5Sum(title() + description() + link() + content()));
 }
 
 QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const

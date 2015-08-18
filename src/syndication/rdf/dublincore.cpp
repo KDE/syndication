@@ -170,52 +170,52 @@ QString DublinCore::debugInfo() const
 {
     QString info;
     if (!contributor().isNull()) {
-        info += QString::fromLatin1("dc:contributor: #%1#\n").arg(contributor());
+        info += QStringLiteral("dc:contributor: #%1#\n").arg(contributor());
     }
     if (!coverage().isNull()) {
-        info += QString::fromLatin1("dc:coverage: #%1#\n").arg(coverage());
+        info += QStringLiteral("dc:coverage: #%1#\n").arg(coverage());
     }
     if (!creator().isNull()) {
-        info += QString::fromLatin1("dc:creator: #%1#\n").arg(creator());
+        info += QStringLiteral("dc:creator: #%1#\n").arg(creator());
     }
 
     QString ddate = dateTimeToString(date());
     if (!ddate.isNull()) {
-        info += QString::fromLatin1("dc:date: #%1#\n").arg(ddate);
+        info += QStringLiteral("dc:date: #%1#\n").arg(ddate);
     }
 
     if (!description().isNull()) {
-        info += QString::fromLatin1("dc:description: #%1#\n").arg(description());
+        info += QStringLiteral("dc:description: #%1#\n").arg(description());
     }
     if (!format().isNull()) {
-        info += QString::fromLatin1("dc:format: #%1#\n").arg(format());
+        info += QStringLiteral("dc:format: #%1#\n").arg(format());
     }
     if (!identifier().isNull()) {
-        info += QString::fromLatin1("dc:identifier: #%1#\n").arg(identifier());
+        info += QStringLiteral("dc:identifier: #%1#\n").arg(identifier());
     }
     if (!language().isNull()) {
-        info += QString::fromLatin1("dc:language: #%1#\n").arg(language());
+        info += QStringLiteral("dc:language: #%1#\n").arg(language());
     }
     if (!publisher().isNull()) {
-        info += QString::fromLatin1("dc:publisher: #%1#\n").arg(publisher());
+        info += QStringLiteral("dc:publisher: #%1#\n").arg(publisher());
     }
     if (!relation().isNull()) {
-        info += QString::fromLatin1("dc:relation: #%1#\n").arg(relation());
+        info += QStringLiteral("dc:relation: #%1#\n").arg(relation());
     }
     if (!rights().isNull()) {
-        info += QString::fromLatin1("dc:rights: #%1#\n").arg(rights());
+        info += QStringLiteral("dc:rights: #%1#\n").arg(rights());
     }
     if (!source().isNull()) {
-        info += QString::fromLatin1("dc:source: #%1#\n").arg(source());
+        info += QStringLiteral("dc:source: #%1#\n").arg(source());
     }
     if (!subject().isNull()) {
-        info += QString::fromLatin1("dc:subject: #%1#\n").arg(subject());
+        info += QStringLiteral("dc:subject: #%1#\n").arg(subject());
     }
     if (!title().isNull()) {
-        info += QString::fromLatin1("dc:title: #%1#\n").arg(title());
+        info += QStringLiteral("dc:title: #%1#\n").arg(title());
     }
     if (!type().isNull()) {
-        info += QString::fromLatin1("dc:type: #%1#\n").arg(type());
+        info += QStringLiteral("dc:type: #%1#\n").arg(type());
     }
     return info;
 }
