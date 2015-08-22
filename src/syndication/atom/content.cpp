@@ -86,10 +86,6 @@ QByteArray Content::asByteArray() const
     return QByteArray::fromBase64(text().trimmed().toLatin1());
 }
 
-//@cond PRIVATE
-static QStringList xmltypes;
-//@endcond
-
 Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &src)
 {
     QString type = typep;
@@ -112,7 +108,9 @@ Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &s
         return PlainText;
     }
 
+    static QStringList xmltypes;
     if (xmltypes.isEmpty()) {
+        xmltypes.reserve(8);
         xmltypes.append(QStringLiteral("xhtml"));
         xmltypes.append(QStringLiteral("application/xhtml+xml"));
         // XML media types as defined in RFC3023:

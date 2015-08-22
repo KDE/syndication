@@ -160,10 +160,10 @@ QString htmlToPlainText(const QString &html)
     return str.trimmed();
 }
 
-namespace
+static QRegExp tagRegExp()
 {
-static QRegExp tagRegExp;
-static bool tagRegExpSet = false;
+    static QRegExp exp(QStringLiteral("<\\w+.*/?>"));
+    return exp;
 }
 
 bool stringContainsMarkup(const QString &str)
@@ -178,11 +178,7 @@ bool stringContainsMarkup(const QString &str)
         return false;
     }
 
-    if (!tagRegExpSet) {
-        tagRegExp = QRegExp(QStringLiteral("<\\w+.*/?>"));
-        tagRegExpSet = true;
-    }
-    return str.contains(tagRegExp);
+    return str.contains(tagRegExp());
 }
 
 bool isHtml(const QString &str)
@@ -197,15 +193,7 @@ bool isHtml(const QString &str)
         return false;
     }
 
-    if (!tagRegExpSet) {
-        tagRegExp = QRegExp(QStringLiteral("<\\w+.*/?>"));
-        tagRegExpSet = true;
-    }
-    if (str.contains(tagRegExp)) {
-        return true;
-    }
-
-    return false;
+    return str.contains(tagRegExp());
 }
 
 QString normalize(const QString &str)
