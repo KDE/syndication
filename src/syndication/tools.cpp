@@ -32,6 +32,8 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QString>
 
+#include <ctime>
+
 namespace Syndication
 {
 
