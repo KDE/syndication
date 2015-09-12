@@ -92,7 +92,7 @@ void FileRetriever::retrieveData(const QUrl &url)
     d->job->addMetaData(QStringLiteral("UserAgent"), m_userAgent);
     d->job->addMetaData(QStringLiteral("cache"), m_useCache ? QStringLiteral("refresh") : QStringLiteral("reload"));
 
-    QTimer::singleShot(1000 * 90, this, SLOT(slotTimeout()));
+    QTimer::singleShot(1000 * 90, this, &FileRetriever::slotTimeout);
 
     connect(d->job, &KIO::TransferJob::data, this, &FileRetriever::slotData);
     connect(d->job, &KIO::TransferJob::result, this, &FileRetriever::slotResult);

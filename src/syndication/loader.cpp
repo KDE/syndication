@@ -83,8 +83,8 @@ void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
     d->url = url;
     d->retriever = retriever;
 
-    connect(d->retriever, SIGNAL(dataRetrieved(QByteArray,bool)),
-            this, SLOT(slotRetrieverDone(QByteArray,bool)));
+    connect(d->retriever, &DataRetriever::dataRetrieved,
+            this, &Loader::slotRetrieverDone);
 
     d->retriever->retrieveData(url);
 }
