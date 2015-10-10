@@ -258,20 +258,14 @@ QList<StatementPtr> Model::statements() const
 QString Model::debugInfo() const
 {
     QString info;
+    foreach (const StatementPtr &stmtPtr, d->statements) {
+        info += QStringLiteral("<%1> <%2> ").arg(stmtPtr->subject()->uri()).arg(stmtPtr->predicate()->uri());
 
-    QList<StatementPtr> stmts = d->statements.values();
-    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
-    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
-
-    for (; it != end; ++it) {
-        info += QStringLiteral("<%1> <%2> ").arg((*it)->subject()->uri()).arg((*it)->predicate()->uri());
-
-        if ((*it)->object()->isLiteral()) {
-            info += QStringLiteral("\"%1\"\n").arg((*it)->asString());
+        if (stmtPtr->object()->isLiteral()) {
+            info += QStringLiteral("\"%1\"\n").arg(stmtPtr->asString());
         } else {
-            info += QStringLiteral("<%1>\n").arg((*it)->asResource()->uri());
+            info += QStringLiteral("<%1>\n").arg(stmtPtr->asResource()->uri());
         }
-
     }
 
     return info;
@@ -281,13 +275,9 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
 {
     QList<ResourcePtr> list;
 
-    QList<StatementPtr> stmts = d->statements.values();
-    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
-    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
-
-    for (; it != end; ++it) {
-        if (*((*it)->predicate()) == *(RDFVocab::self()->type()) && *((*it)->object()) == *type) {
-            list.append((*it)->subject());
+    foreach (const StatementPtr &stmtPtr, d->statements) {
+        if (*(stmtPtr->predicate()) == *(RDFVocab::self()->type()) && *(stmtPtr->object()) == *type) {
+            list.append(stmtPtr->subject());
         }
     }
 
