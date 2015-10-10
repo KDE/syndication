@@ -87,22 +87,9 @@ ParserCollectionImpl<T>::ParserCollectionImpl()
 template <class T>
 ParserCollectionImpl<T>::~ParserCollectionImpl()
 {
-    QList<AbstractParser *> list = m_parsers.values();
-    QList<AbstractParser *>::ConstIterator it = list.constBegin();
-    QList<AbstractParser *>::ConstIterator end = list.constEnd();
-
-    for (; it != end; ++it) {
-        delete *it;
-    }
-
-    QList<QString> m = m_mappers.keys();
-    QList<QString>::ConstIterator itm = m.constBegin();
-    QList<QString>::ConstIterator endm = m.constEnd();
-
-    for (; itm != endm; ++itm) {
-        delete m_mappers[*itm];
-    }
-
+    // Delete the values
+    qDeleteAll(m_parsers);
+    qDeleteAll(m_mappers);
 }
 
 template <class T>
