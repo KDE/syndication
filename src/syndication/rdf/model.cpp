@@ -127,9 +127,7 @@ void Model::removeStatement(StatementPtr statement)
 void Model::removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
 {
     QString key = QStringLiteral("%1-%2-%3")
-                  .arg(QString::number(subject->id()))
-                  .arg(QString::number(predicate->id()))
-                  .arg(QString::number(object->id()));
+                  .arg(QString::number(subject->id()), QString::number(predicate->id()), QString::number(object->id()));
     d->removeFromHashes(key);
 }
 
@@ -163,9 +161,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
     // TODO: avoid duplicated stmts with literal objects!
 
     QString key = QStringLiteral("%1-%2-%3")
-                  .arg(QString::number(subjInternal->id()))
-                  .arg(QString::number(predInternal->id()))
-                  .arg(QString::number(objInternal->id()));
+                  .arg(QString::number(subjInternal->id()), QString::number(predInternal->id()), QString::number(objInternal->id()));
 
     StatementPtr stmt;
 
@@ -259,7 +255,7 @@ QString Model::debugInfo() const
 {
     QString info;
     foreach (const StatementPtr &stmtPtr, d->statements) {
-        info += QStringLiteral("<%1> <%2> ").arg(stmtPtr->subject()->uri()).arg(stmtPtr->predicate()->uri());
+        info += QStringLiteral("<%1> <%2> ").arg(stmtPtr->subject()->uri(), stmtPtr->predicate()->uri());
 
         if (stmtPtr->object()->isLiteral()) {
             info += QStringLiteral("\"%1\"\n").arg(stmtPtr->asString());
