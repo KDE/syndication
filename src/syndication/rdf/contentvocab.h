@@ -73,6 +73,7 @@ public:
 
 private:
     ContentVocab();
+    Q_DISABLE_COPY(ContentVocab)
 
     class ContentVocabPrivate;
     ContentVocabPrivate *const d;

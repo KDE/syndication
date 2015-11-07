@@ -151,6 +151,7 @@ public:
 
 private:
     DublinCoreVocab();
+    Q_DISABLE_COPY(DublinCoreVocab)
 
     class DublinCoreVocabPrivate;
     DublinCoreVocabPrivate *const d;

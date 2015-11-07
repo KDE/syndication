@@ -88,7 +88,7 @@ public:
 
 private:
     SyndicationVocab();
-
+    Q_DISABLE_COPY(SyndicationVocab)
     class SyndicationVocabPrivate;
     SyndicationVocabPrivate *const d;
 };

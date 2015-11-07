@@ -80,7 +80,7 @@ public:
 
 private:
     RDFVocab();
-
+    Q_DISABLE_COPY(RDFVocab)
     class RDFVocabPrivate;
     RDFVocabPrivate *const d;
 };
