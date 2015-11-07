@@ -168,6 +168,8 @@ public:
             initialized = true;
         }
     }
+private:
+    Q_DISABLE_COPY(ModelPrivate)
 };
 
 } // namespace RDF
