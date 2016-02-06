@@ -36,6 +36,8 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
+#include <vector>
+
 namespace Syndication
 {
 namespace Atom
@@ -198,31 +200,32 @@ QList<Entry> FeedDocument::entries() const
 QList<QDomElement> FeedDocument::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    static QList<ElementType> handled;
-    if (handled.isEmpty()) {
+    static std::vector<ElementType> handled; // QVector would require a default ctor, and ElementType is too big for QList
+    if (handled.empty()) {
         handled.reserve(13);
-        handled.append(ElementType(QStringLiteral("author"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("contributor"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("category"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("generator"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("icon"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("logo"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("id"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("rights"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("title"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("subtitle"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("updated"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("link"), atom1Namespace()));
-        handled.append(ElementType(QStringLiteral("entry"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("author"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("contributor"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("category"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("generator"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("icon"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("logo"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("id"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("rights"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("title"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("subtitle"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("updated"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("link"), atom1Namespace()));
+        handled.push_back(ElementType(QStringLiteral("entry"), atom1Namespace()));
     }
 
     QList<QDomElement> notHandled;
 
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i) {
+    const int numChildren = children.size();
+    for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
         if (!el.isNull()
-                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
+                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }

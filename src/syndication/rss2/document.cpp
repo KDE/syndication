@@ -36,6 +36,8 @@
 #include <QtCore/QSet>
 #include <QtCore/QString>
 
+#include <vector>
+
 namespace Syndication
 {
 namespace RSS2
@@ -294,40 +296,41 @@ QList<Item> Document::items() const
 QList<QDomElement> Document::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    static QList<ElementType> handled;
-    if (handled.isEmpty()) {
+    static std::vector<ElementType> handled; // QVector would require a default ctor, and ElementType is too big for QList
+    if (handled.empty()) {
         handled.reserve(22);
-        handled.append(ElementType(QStringLiteral("title")));
-        handled.append(ElementType(QStringLiteral("link")));
-        handled.append(ElementType(QStringLiteral("description")));
-        handled.append(ElementType(QStringLiteral("language")));
-        handled.append(ElementType(QStringLiteral("copyright")));
-        handled.append(ElementType(QStringLiteral("managingEditor")));
-        handled.append(ElementType(QStringLiteral("webMaster")));
-        handled.append(ElementType(QStringLiteral("pubDate")));
-        handled.append(ElementType(QStringLiteral("lastBuildDate")));
-        handled.append(ElementType(QStringLiteral("skipDays")));
-        handled.append(ElementType(QStringLiteral("skipHours")));
-        handled.append(ElementType(QStringLiteral("item")));
-        handled.append(ElementType(QStringLiteral("textinput")));
-        handled.append(ElementType(QStringLiteral("textInput")));
-        handled.append(ElementType(QStringLiteral("image")));
-        handled.append(ElementType(QStringLiteral("ttl")));
-        handled.append(ElementType(QStringLiteral("generator")));
-        handled.append(ElementType(QStringLiteral("docs")));
-        handled.append(ElementType(QStringLiteral("cloud")));
-        handled.append(ElementType(QStringLiteral("language"), dublinCoreNamespace()));
-        handled.append(ElementType(QStringLiteral("rights"), dublinCoreNamespace()));
-        handled.append(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
+        handled.push_back(ElementType(QStringLiteral("title")));
+        handled.push_back(ElementType(QStringLiteral("link")));
+        handled.push_back(ElementType(QStringLiteral("description")));
+        handled.push_back(ElementType(QStringLiteral("language")));
+        handled.push_back(ElementType(QStringLiteral("copyright")));
+        handled.push_back(ElementType(QStringLiteral("managingEditor")));
+        handled.push_back(ElementType(QStringLiteral("webMaster")));
+        handled.push_back(ElementType(QStringLiteral("pubDate")));
+        handled.push_back(ElementType(QStringLiteral("lastBuildDate")));
+        handled.push_back(ElementType(QStringLiteral("skipDays")));
+        handled.push_back(ElementType(QStringLiteral("skipHours")));
+        handled.push_back(ElementType(QStringLiteral("item")));
+        handled.push_back(ElementType(QStringLiteral("textinput")));
+        handled.push_back(ElementType(QStringLiteral("textInput")));
+        handled.push_back(ElementType(QStringLiteral("image")));
+        handled.push_back(ElementType(QStringLiteral("ttl")));
+        handled.push_back(ElementType(QStringLiteral("generator")));
+        handled.push_back(ElementType(QStringLiteral("docs")));
+        handled.push_back(ElementType(QStringLiteral("cloud")));
+        handled.push_back(ElementType(QStringLiteral("language"), dublinCoreNamespace()));
+        handled.push_back(ElementType(QStringLiteral("rights"), dublinCoreNamespace()));
+        handled.push_back(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
     }
 
     QList<QDomElement> notHandled;
 
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i) {
+    const int numChildren = children.size();
+    for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
         if (!el.isNull()
-                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
+                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }

@@ -34,6 +34,8 @@
 #include <QtCore/QString>
 #include <QtCore/QList>
 
+#include <vector>
+
 namespace Syndication
 {
 namespace RSS2
@@ -287,29 +289,30 @@ QString Item::debugInfo() const
 QList<QDomElement> Item::unhandledElements() const
 {
     // TODO: do not hardcode this list here
-    static QList<ElementType> handled;
-    if (handled.isEmpty()) {
+    static std::vector<ElementType> handled; // QVector would require a default ctor, and ElementType is too big for QList
+    if (handled.empty()) {
         handled.reserve(11);
-        handled.append(ElementType(QStringLiteral("title")));
-        handled.append(ElementType(QStringLiteral("link")));
-        handled.append(ElementType(QStringLiteral("description")));
-        handled.append(ElementType(QStringLiteral("pubDate")));
-        handled.append(ElementType(QStringLiteral("expirationDate")));
-        handled.append(ElementType(QStringLiteral("rating")));
-        handled.append(ElementType(QStringLiteral("source")));
-        handled.append(ElementType(QStringLiteral("guid")));
-        handled.append(ElementType(QStringLiteral("comments")));
-        handled.append(ElementType(QStringLiteral("author")));
-        handled.append(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
+        handled.push_back(ElementType(QStringLiteral("title")));
+        handled.push_back(ElementType(QStringLiteral("link")));
+        handled.push_back(ElementType(QStringLiteral("description")));
+        handled.push_back(ElementType(QStringLiteral("pubDate")));
+        handled.push_back(ElementType(QStringLiteral("expirationDate")));
+        handled.push_back(ElementType(QStringLiteral("rating")));
+        handled.push_back(ElementType(QStringLiteral("source")));
+        handled.push_back(ElementType(QStringLiteral("guid")));
+        handled.push_back(ElementType(QStringLiteral("comments")));
+        handled.push_back(ElementType(QStringLiteral("author")));
+        handled.push_back(ElementType(QStringLiteral("date"), dublinCoreNamespace()));
     }
 
     QList<QDomElement> notHandled;
 
     QDomNodeList children = element().childNodes();
-    for (int i = 0; i < children.size(); ++i) {
+    const int numChildren = children.size();
+    for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
         if (!el.isNull()
-                && !handled.contains(ElementType(el.localName(), el.namespaceURI()))) {
+                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }
