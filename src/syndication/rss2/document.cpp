@@ -179,7 +179,8 @@ QList<Category> Document::categories() const
                                   QStringLiteral("category"));
     categories.reserve(catNodes.count());
     QList<QDomElement>::ConstIterator it = catNodes.constBegin();
-    for (; it != catNodes.constEnd(); ++it) {
+    QList<QDomElement>::ConstIterator end(catNodes.constEnd());
+    for (; it != end; ++it) {
         categories.append(Category(*it));
     }
 
@@ -240,7 +241,8 @@ QSet<int> Document::skipHours() const
             skipHoursWrapper.elementsByTagNameNS(QString(),
                     QStringLiteral("hour"));
         QList<QDomElement>::ConstIterator it = hours.constBegin();
-        for (; it != hours.constEnd(); ++it) {
+        const QList<QDomElement>::ConstIterator end(hours.constEnd());
+        for (; it != end; ++it) {
             int h = (*it).text().toInt(&ok);
             if (ok) {
                 skipHours.insert(h);
@@ -268,7 +270,8 @@ QSet<Document::DayOfWeek> Document::skipDays() const
         weekDays[QStringLiteral("Sunday")] = Sunday;
 
         QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QStringLiteral("day"));
-        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != days.constEnd(); ++it) {
+        const QList<QDomElement>::ConstIterator daysEnd(days.constEnd());
+        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != daysEnd; ++it) {
             if (weekDays.contains((*it).text())) {
                 skipDays.insert(weekDays[(*it).text()]);
             }
@@ -287,7 +290,8 @@ QList<Item> Document::items() const
     DocumentPtr doccpy(new Document(*this));
     items.reserve(itemNodes.count());
 
-    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != itemNodes.constEnd(); ++it) {
+    const QList<QDomElement>::ConstIterator end(itemNodes.constEnd());
+    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != end; ++it) {
         items.append(Item(*it, doccpy));
     }
 
@@ -386,11 +390,13 @@ QString Document::debugInfo() const
 
     QList<Category> cats = categories();
 
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it) {
+    const QList<Category>::ConstIterator end(cats.constEnd());
+    for (QList<Category>::ConstIterator it = cats.constBegin(); it != end; ++it) {
         info += (*it).debugInfo();
     }
     QList<Item> litems = items();
-    for (QList<Item>::ConstIterator it = litems.constBegin(); it != litems.constEnd(); ++it) {
+    const QList<Item>::ConstIterator itEnd(litems.constEnd());
+    for (QList<Item>::ConstIterator it = litems.constBegin(); it != itEnd; ++it) {
         info += (*it).debugInfo();
     }
     info += QLatin1String("### Document end ################\n");

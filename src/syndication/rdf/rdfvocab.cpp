@@ -32,7 +32,7 @@ namespace Syndication
 namespace RDF
 {
 
-class RDFVocab::RDFVocabPrivate
+class Q_DECL_HIDDEN RDFVocab::RDFVocabPrivate
 {
 public:
 

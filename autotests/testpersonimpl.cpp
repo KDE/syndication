@@ -43,38 +43,38 @@ void TestPersonImpl::fromString()
     s.append(QLatin1String(""));
     p.append(PersonPtr(new PersonImpl(QString(), QString(), QString())));
 
-    s.append(QLatin1String("foo@bar.com"));
-    p.append(PersonPtr(new PersonImpl(QString(), QString(), QLatin1String("foo@bar.com"))));
+    s.append(QStringLiteral("foo@bar.com"));
+    p.append(PersonPtr(new PersonImpl(QString(), QString(), QStringLiteral("foo@bar.com"))));
 
-    s.append(QLatin1String("<foo@bar.com>"));
-    p.append(PersonPtr(new PersonImpl(QString(), QString(), QLatin1String("foo@bar.com"))));
+    s.append(QStringLiteral("<foo@bar.com>"));
+    p.append(PersonPtr(new PersonImpl(QString(), QString(), QStringLiteral("foo@bar.com"))));
 
-    s.append(QLatin1String("Foo"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("Foo"), QString(), QString())));
+    s.append(QStringLiteral("Foo"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("Foo"), QString(), QString())));
 
-    s.append(QLatin1String("Foo M. Bar"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("Foo M. Bar"), QString(), QString())));
+    s.append(QStringLiteral("Foo M. Bar"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("Foo M. Bar"), QString(), QString())));
 
-    s.append(QLatin1String("Foo <foo@bar.com>"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("Foo"), QString(), QLatin1String("foo@bar.com"))));
+    s.append(QStringLiteral("Foo <foo@bar.com>"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("Foo"), QString(), QStringLiteral("foo@bar.com"))));
 
-    s.append(QLatin1String("Foo Bar <foo@bar.com>"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("Foo Bar"), QString(), QLatin1String("foo@bar.com"))));
+    s.append(QStringLiteral("Foo Bar <foo@bar.com>"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("Foo Bar"), QString(), QStringLiteral("foo@bar.com"))));
 
-    s.append(QLatin1String("John Doe (President) <john@doe.com>"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President)"), QString(), QLatin1String("john@doe.com"))));
+    s.append(QStringLiteral("John Doe (President) <john@doe.com>"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("John Doe (President)"), QString(), QStringLiteral("john@doe.com"))));
 
-    s.append(QLatin1String("John Doe (President)"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President)"), QString(), QString())));
+    s.append(QStringLiteral("John Doe (President)"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("John Doe (President)"), QString(), QString())));
 
-    s.append(QLatin1String("John Doe (President)) <john@doe.com>"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("John Doe (President))"), QString(), QLatin1String("john@doe.com"))));
+    s.append(QStringLiteral("John Doe (President)) <john@doe.com>"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("John Doe (President))"), QString(), QStringLiteral("john@doe.com"))));
 
-    s.append(QLatin1String("(President) John Doe <john@doe.com>"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("(President) John Doe"), QString(), QLatin1String("john@doe.com"))));
+    s.append(QStringLiteral("(President) John Doe <john@doe.com>"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("(President) John Doe"), QString(), QStringLiteral("john@doe.com"))));
 
-    s.append(QLatin1String("<foo@bar.com> (Foo Bar)"));
-    p.append(PersonPtr(new PersonImpl(QLatin1String("Foo Bar"), QString(), QLatin1String("foo@bar.com"))));
+    s.append(QStringLiteral("<foo@bar.com> (Foo Bar)"));
+    p.append(PersonPtr(new PersonImpl(QStringLiteral("Foo Bar"), QString(), QStringLiteral("foo@bar.com"))));
 
     // s.append("OnAhlmann(mailto:&amp;#111;&amp;#110;&amp;#97;&amp;#104;&amp;#108;&amp;#109;&amp;#97;&amp;#110;&amp;#110;&amp;#64;&amp;#103;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#46;&amp;#99;&amp;#111;&amp;#109;)");
     // p.append(PersonPtr(new PersonImpl("OnAhlmann", QString(), "onahlmann@gmail.com")));
