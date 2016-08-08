@@ -148,7 +148,8 @@ QList<Category> Item::categories() const
     categories.reserve(cats.count());
 
     QList<QDomElement>::ConstIterator it = cats.constBegin();
-    for (; it != cats.constEnd(); ++it) {
+    const QList<QDomElement>::ConstIterator end(cats.constEnd());
+    for (; it != end; ++it) {
         categories.append(Category(*it));
     }
     return categories;
@@ -181,7 +182,8 @@ QList<Enclosure> Item::enclosures() const
     enclosures.reserve(encs.count());
 
     QList<QDomElement>::ConstIterator it = encs.constBegin();
-    for (; it != encs.constEnd(); ++it) {
+    QList<QDomElement>::ConstIterator end(encs.constEnd());
+    for (; it != end; ++it) {
         enclosures.append(Enclosure(*it));
     }
     return enclosures;
@@ -274,11 +276,13 @@ QString Item::debugInfo() const
     }
 
     QList<Category> cats = categories();
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != cats.constEnd(); ++it) {
+    const QList<Category>::ConstIterator endCategories(cats.constEnd());
+    for (QList<Category>::ConstIterator it = cats.constBegin(); it != endCategories; ++it) {
         info += (*it).debugInfo();
     }
     QList<Enclosure> encs = enclosures();
-    for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != encs.constEnd(); ++it) {
+    const QList<Enclosure>::ConstIterator endEnclosures(encs.constEnd());
+    for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != endEnclosures; ++it) {
         info += (*it).debugInfo();
     }
 

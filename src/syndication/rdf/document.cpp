@@ -48,7 +48,7 @@ namespace Syndication
 namespace RDF
 {
 
-class Document::Private
+class Q_DECL_HIDDEN Document::Private
 {
 public:
     Private() : itemTitleContainsMarkup(false),

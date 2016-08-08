@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 
     int pcompare = 2;
     if (argc < 2) {
-        printUsage(QLatin1String("filename expected"));
+        printUsage(QStringLiteral("filename expected"));
         return 1;
     }
 
@@ -68,9 +68,9 @@ int main(int argc, char **argv)
 
     bool specificformat = false;
 
-    if (filename == QLatin1String("--specific-format")) {
+    if (filename == QStringLiteral("--specific-format")) {
         if (argc < 3) {
-            printUsage(QLatin1String("filename expected"));
+            printUsage(QStringLiteral("filename expected"));
             return 1;
         }
         filename = QFile::decodeName(argv[2]);
@@ -80,18 +80,18 @@ int main(int argc, char **argv)
 
     QString expfname;
 
-    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QLatin1String("--compare")) {
+    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QStringLiteral("--compare")) {
         expfname = QString::fromLatin1(argv[pcompare + 1]);
     }
 
     QFile f(filename);
 
     if (!f.open(QIODevice::ReadOnly)) {
-        printUsage(QLatin1String("Couldn't open file"));
+        printUsage(QStringLiteral("Couldn't open file"));
         return 1;
     }
 
-    DocumentSource src(f.readAll(), QLatin1String("http://libsyndicationtest"));
+    DocumentSource src(f.readAll(), QStringLiteral("http://libsyndicationtest"));
     f.close();
 
     FeedPtr ptr(Syndication::parse(src));

@@ -122,7 +122,8 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument &doc, const QDomNode &n
     QDomNamedNodeMap attributes = oldEl.attributes();
 
     // copy over attributes
-    for (int i = 0; i < attributes.count(); ++i) {
+    const int numberOfAttributes(attributes.count());
+    for (int i = 0; i < numberOfAttributes; ++i) {
         QDomAttr attr = attributes.item(i).toAttr();
         if (attr.namespaceURI().isEmpty()) {
             newEl.setAttribute(attr.name(), attr.value());

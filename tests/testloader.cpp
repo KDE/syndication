@@ -51,12 +51,7 @@ using namespace Syndication;
 
 TestLibSyndication::TestLibSyndication(const QString &url)
 {
-    QUrl kurl;
-    if (!QUrl(url).isRelative()) {
-        kurl = QUrl(url);
-    } else {
-        kurl = QUrl(QString(QLatin1String("file://") + QDir::currentPath() + QLatin1Char('/')) + url);
-    }
+    QUrl kurl = QUrl::fromUserInput(url);
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
     Loader *loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader *,

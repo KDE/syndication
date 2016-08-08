@@ -49,7 +49,6 @@ typedef QSharedPointer<Resource> ResourcePtr;
 class SYNDICATION_EXPORT ModelMaker
 {
 public:
-
     /**
      * parses an RDF model from RDF/XML
      * @param doc an DOM document, must contain RDF/XML
@@ -58,7 +57,6 @@ public:
     Model createFromXML(const QDomDocument &doc);
 
 private:
-
     ResourcePtr readResource(Model &model, const QDomElement &el);
 };
 

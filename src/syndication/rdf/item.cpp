@@ -38,7 +38,7 @@ namespace Syndication
 namespace RDF
 {
 
-class Item::Private
+class Q_DECL_HIDDEN Item::Private
 {
 public:
     DocumentPtr doc;
