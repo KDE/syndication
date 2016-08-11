@@ -84,8 +84,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    KAboutData aboutData(QLatin1String("testlibsyndication"), QLatin1String("testlibsyndication"), QLatin1String("0.1"));
     QApplication app(argc, argv);
+    KAboutData aboutData(QLatin1String("testlibsyndication"), QLatin1String("testlibsyndication"), QLatin1String("0.1"));
 
     KAboutData::setApplicationData(aboutData);
 
