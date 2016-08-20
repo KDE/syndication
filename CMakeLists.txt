@@ -17,7 +17,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
 
-set(KF5_VERSION "5.23.0")
+set(KF5_VERSION "5.25.0")
 set(SYNDICATION_LIB_VERSION "5.3.40")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
