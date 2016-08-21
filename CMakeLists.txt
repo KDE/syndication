@@ -16,9 +16,9 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
-
+set(PIM_VERSION "5.3.1")
 set(KF5_VERSION "5.23.0")
-set(SYNDICATION_LIB_VERSION "5.3.0")
+set(SYNDICATION_LIB_VERSION ${PIM_VERSION})
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
