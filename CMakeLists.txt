@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 2.8.12)
 project(Syndication)
 
 # ECM setup
-find_package(ECM 5.23.0 CONFIG REQUIRED)
+set(KF5_VERSION "5.25.0")
+find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
@@ -17,7 +18,6 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
 
-set(KF5_VERSION "5.25.0")
 set(SYNDICATION_LIB_VERSION "5.3.40")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
