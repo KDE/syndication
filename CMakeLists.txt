@@ -18,7 +18,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
 
-set(SYNDICATION_LIB_VERSION "5.3.80")
+set(SYNDICATION_LIB_VERSION "5.3.90")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
