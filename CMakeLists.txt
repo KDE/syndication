@@ -16,6 +16,7 @@ include(FeatureSummary)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(ECMCoverageOption)
 
 
 set(SYNDICATION_LIB_VERSION "5.4.40")
