@@ -55,13 +55,13 @@ public:
     virtual ~ParserCollectionImpl();
 
     QSharedPointer<T> parse(const DocumentSource &source,
-                            const QString &formatHint = QString());
+                            const QString &formatHint = QString()) Q_DECL_OVERRIDE;
 
-    bool registerParser(AbstractParser *parser, Mapper<T> *mapper);
+    bool registerParser(AbstractParser *parser, Mapper<T> *mapper) Q_DECL_OVERRIDE;
 
-    void changeMapper(const QString &format, Mapper<T> *mapper);
+    void changeMapper(const QString &format, Mapper<T> *mapper) Q_DECL_OVERRIDE;
 
-    ErrorCode lastError() const;
+    ErrorCode lastError() const Q_DECL_OVERRIDE;
 
 private:
 
