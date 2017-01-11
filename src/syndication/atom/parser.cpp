@@ -200,13 +200,13 @@ QDomDocument Parser::ParserPrivate::convertAtom0_3(const QDomDocument &doc03)
 }
 
 Parser::Parser()
-    : d(0)
+    : d(nullptr)
 {
     Q_UNUSED(d) // silence -Wunused-private-field
 }
 
 Parser::~Parser() {}
-Parser::Parser(const Parser &other) : AbstractParser(other), d(0) {}
+Parser::Parser(const Parser &other) : AbstractParser(other), d(nullptr) {}
 Parser &Parser::operator=(const Parser & /*other*/)
 {
     return *this;

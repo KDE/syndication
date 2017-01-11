@@ -42,10 +42,10 @@ public:
     static void cleanupContentVocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = 0;
+ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = nullptr;
 
 ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
 {

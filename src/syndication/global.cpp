@@ -41,7 +41,7 @@ static bool collectionIsInitialized = false;
 namespace Syndication
 {
 
-static ParserCollectionImpl<Syndication::Feed> *parserColl = 0;
+static ParserCollectionImpl<Syndication::Feed> *parserColl = nullptr;
 
 namespace
 {
@@ -50,7 +50,7 @@ namespace
 static void cleanupParserCollection()
 {
     delete parserColl;
-    parserColl = 0;
+    parserColl = nullptr;
 }
 
 } // namespace

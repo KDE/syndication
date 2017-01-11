@@ -255,7 +255,7 @@ void Document::getItemTitleFormatInfo(bool *containsMarkup) const
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
         d->itemTitlesGuessed = true;
     }
-    if (containsMarkup != 0L) {
+    if (containsMarkup != nullptr) {
         *containsMarkup = d->itemTitleContainsMarkup;
     }
 }
@@ -286,7 +286,7 @@ void Document::getItemDescriptionFormatInfo(bool *containsMarkup) const
         d->itemDescGuessed = true;
     }
 
-    if (containsMarkup != 0L) {
+    if (containsMarkup != nullptr) {
         *containsMarkup = d->itemDescriptionContainsMarkup;
     }
 }

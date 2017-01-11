@@ -29,7 +29,7 @@ namespace Syndication
 {
 
 struct Loader::LoaderPrivate {
-    LoaderPrivate() : retriever(0), lastError(Success),
+    LoaderPrivate() : retriever(nullptr), lastError(Success),
         retrieverError(0)
     {
     }
@@ -76,7 +76,7 @@ void Loader::loadFrom(const QUrl &url)
 
 void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
 {
-    if (d->retriever != 0L) {
+    if (d->retriever != nullptr) {
         return;
     }
 
@@ -104,7 +104,7 @@ void Loader::abort()
     if (d && d->retriever) {
         d->retriever->abort();
         delete d->retriever;
-        d->retriever = 0L;
+        d->retriever = nullptr;
     }
 
     emit loadingComplete(this, FeedPtr(), Aborted);
@@ -121,9 +121,9 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
     d->retrieverError = d->retriever->errorCode();
     ErrorCode status = Success;
     FeedPtr feed;
-    bool isFileRetriever = dynamic_cast<FileRetriever *>(d->retriever) != 0;
+    bool isFileRetriever = dynamic_cast<FileRetriever *>(d->retriever) != nullptr;
     delete d->retriever;
-    d->retriever = 0;
+    d->retriever = nullptr;
 
     if (success) {
         DocumentSource src(data, d->url.url());

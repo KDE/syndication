@@ -44,10 +44,10 @@ public:
     static void cleanupSyndicationVocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = 0;
+SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = nullptr;
 
 SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
 {

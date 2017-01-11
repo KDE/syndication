@@ -56,10 +56,10 @@ public:
     static void cleanupDublinCoreVocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = 0;
+DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = nullptr;
 
 DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
 {

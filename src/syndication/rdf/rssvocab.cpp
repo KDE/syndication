@@ -52,10 +52,10 @@ public:
     static void cleanupRSSVocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = 0;
+RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = nullptr;
 
 RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
 {
@@ -166,10 +166,10 @@ public:
     static void cleanupRSS09Vocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = 0;
+RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = nullptr;
 
 RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
 {

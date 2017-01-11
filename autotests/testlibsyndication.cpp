@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 
     FeedPtr ptr(Syndication::parse(src));
 
-    if (ptr == 0L) {
+    if (ptr == nullptr) {
         printUsage(QStringLiteral("Couldn't parse file: (%1)").arg(Syndication::parserCollection()->lastError()));
         return 1;
     }

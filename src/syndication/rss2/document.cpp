@@ -432,10 +432,10 @@ void Document::getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const
         d->itemTitlesGuessed = true;
     }
 
-    if (isCDATA != 0L) {
+    if (isCDATA != nullptr) {
         *isCDATA = d->itemTitleIsCDATA;
     }
-    if (containsMarkup != 0L) {
+    if (containsMarkup != nullptr) {
         *containsMarkup = d->itemTitleContainsMarkup;
     }
 }
@@ -469,10 +469,10 @@ void Document::getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup)
         d->itemDescGuessed = true;
     }
 
-    if (isCDATA != 0L) {
+    if (isCDATA != nullptr) {
         *isCDATA = d->itemDescriptionIsCDATA;
     }
-    if (containsMarkup != 0L) {
+    if (containsMarkup != nullptr) {
         *containsMarkup = d->itemDescriptionContainsMarkup;
     }
 }

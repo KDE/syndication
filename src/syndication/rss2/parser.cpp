@@ -59,12 +59,12 @@ QString Parser::format() const
 }
 
 Parser::Parser()
-    : d(0)
+    : d(nullptr)
 {
     Q_UNUSED(d) // silence -Wunused-private-field
 }
 
-Parser::Parser(const Parser &other) : AbstractParser(other), d(0) {}
+Parser::Parser(const Parser &other) : AbstractParser(other), d(nullptr) {}
 Parser::~Parser() {}
 Parser &Parser::operator=(const Parser & /*other*/)
 {

@@ -45,10 +45,10 @@ public:
     static void cleanupRDFVocab()
     {
         delete sSelf;
-        sSelf = 0;
+        sSelf = nullptr;
     }
 };
-RDFVocab *RDFVocab::RDFVocabPrivate::sSelf = 0;
+RDFVocab *RDFVocab::RDFVocabPrivate::sSelf = nullptr;
 
 RDFVocab *RDFVocab::self()
 {

@@ -34,8 +34,8 @@ DataRetriever::~DataRetriever()
 
 struct FileRetriever::FileRetrieverPrivate {
     FileRetrieverPrivate()
-        : buffer(NULL),
-          lastError(0), job(NULL)
+        : buffer(nullptr),
+          lastError(0), job(nullptr)
     {
     }
 
@@ -104,7 +104,7 @@ void FileRetriever::slotTimeout()
     abort();
 
     delete d->buffer;
-    d->buffer = NULL;
+    d->buffer = nullptr;
 
     d->lastError = KIO::ERR_SERVER_TIMEOUT;
 
@@ -127,7 +127,7 @@ void FileRetriever::slotResult(KJob *job)
     data.detach();
 
     delete d->buffer;
-    d->buffer = NULL;
+    d->buffer = nullptr;
 
     d->lastError = job->error();
     emit dataRetrieved(data, d->lastError == 0);
@@ -143,12 +143,12 @@ void FileRetriever::abort()
 {
     if (d->job) {
         d->job->kill();
-        d->job = NULL;
+        d->job = nullptr;
     }
 }
 
 struct OutputRetriever::OutputRetrieverPrivate {
-    OutputRetrieverPrivate() : process(0L), buffer(0L), lastError(0)
+    OutputRetrieverPrivate() : process(nullptr), buffer(nullptr), lastError(0)
     {
     }
 
@@ -204,12 +204,12 @@ void OutputRetriever::slotFinished(int exitCode, QProcess::ExitStatus exitStatus
     QByteArray data = d->process->readAllStandardOutput();
 
     delete d->buffer;
-    d->buffer = NULL;
+    d->buffer = nullptr;
 
     int code = d->process->exitCode();
 
     delete d->process;
-    d->process = NULL;
+    d->process = nullptr;
 
     emit dataRetrieved(data, exitStatus == QProcess::NormalExit && code == 0);
 }
