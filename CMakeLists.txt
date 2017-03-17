@@ -19,7 +19,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMCoverageOption)
 
 
-set(SYNDICATION_LIB_VERSION "5.4.40")
+set(SYNDICATION_LIB_VERSION "5.4.80")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
