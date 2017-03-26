@@ -17,6 +17,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMCoverageOption)
+include(ECMQtDeclareLoggingCategory)
 
 
 set(SYNDICATION_LIB_VERSION "5.5.40")

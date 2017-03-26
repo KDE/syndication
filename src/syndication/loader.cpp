@@ -22,8 +22,7 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QStringList>
 
-// test: TODO remove
-#include <iostream>
+#include <syndication_debug.h>
 
 namespace Syndication
 {
@@ -138,7 +137,7 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
             // retriever is a FileRetriever, so we interpret the
             // error code and set lastError accordingly
             status = FileNotFound; // TODO
-            std::cout << "file retriever error: " <<  d->retrieverError << std::endl;
+            qCDebug(SYNDICATION_LOG) << "file retriever error:" << d->retrieverError;
         } else {
             // retriever is a custom impl, so we set OtherRetrieverError
             status = OtherRetrieverError;
