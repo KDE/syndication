@@ -161,7 +161,7 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList 
         item.index = uriSequence.indexOf(i.resource()->uri());
         toSort.append(item);
     }
-    qSort(toSort.begin(), toSort.end(), LessThanByIndex());
+    std::sort(toSort.begin(), toSort.end(), LessThanByIndex());
 
     int i = 0;
     Q_FOREACH (const SortItem &sortItem, toSort) {
