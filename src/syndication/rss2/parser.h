@@ -57,7 +57,7 @@ public:
      * @param source a document source to check
      * @return @c true if the source looks like an RSS2 document
      */
-    bool accept(const DocumentSource &source) const Q_DECL_OVERRIDE;
+    bool accept(const DocumentSource &source) const override;
 
     /**
      * creates an RSS2 wrapper for a document source.
@@ -69,7 +69,7 @@ public:
      * source, or a null document (not a null pointer!) if there is no @c
      * &lt;channel> root element in the source.
      */
-    Syndication::SpecificDocumentPtr parse(const DocumentSource &source) const Q_DECL_OVERRIDE;
+    Syndication::SpecificDocumentPtr parse(const DocumentSource &source) const override;
 
     /**
      * returns the format string of this parser implementation, which is
@@ -77,7 +77,7 @@ public:
      *
      * @return @c "rss2"
      */
-    QString format() const Q_DECL_OVERRIDE;
+    QString format() const override;
 
 private:
 

@@ -80,12 +80,12 @@ public:
      * two literal nodes are equal iff their text _and_ ID's
      * are equal.
      */
-    bool operator==(const Node &other) const Q_DECL_OVERRIDE;
+    bool operator==(const Node &other) const override;
 
     /**
      * clones the literal node.
      */
-    Literal *clone() const Q_DECL_OVERRIDE;
+    Literal *clone() const override;
 
     /**
      * Used by visitors for double dispatch. See NodeVisitor
@@ -93,42 +93,42 @@ public:
      * @param visitor the visitor calling the method
      * @param ptr a shared pointer object for this node
      */
-    void accept(NodeVisitor *visitor, NodePtr ptr) Q_DECL_OVERRIDE;
+    void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
     /**
      * returns whether this node is a null node
      */
-    bool isNull() const Q_DECL_OVERRIDE;
+    bool isNull() const override;
 
     /**
      * the identifier of this node. the ID is unique per model
      * and set by the associated model at creation time.
      */
-    unsigned int id() const Q_DECL_OVERRIDE;
+    unsigned int id() const override;
 
     /**
      * returns false, as a literal is not a resource
      */
-    bool isResource() const Q_DECL_OVERRIDE;
+    bool isResource() const override;
     /**
      * returns false, as a literal is not a property
      */
-    bool isProperty() const Q_DECL_OVERRIDE;
+    bool isProperty() const override;
 
     /**
      * returns true for literals
      */
-    bool isLiteral() const Q_DECL_OVERRIDE;
+    bool isLiteral() const override;
 
     /**
      * returns false, literals are not anonymous resources
      */
-    bool isAnon() const Q_DECL_OVERRIDE;
+    bool isAnon() const override;
 
     /**
      * returns false, literals are not sequences
      */
-    bool isSequence() const Q_DECL_OVERRIDE;
+    bool isSequence() const override;
 
     /**
      * implicit conversion to string. returns text()
@@ -138,19 +138,19 @@ public:
     /**
      * the string value of the literal
      */
-    QString text() const Q_DECL_OVERRIDE;
+    QString text() const override;
 
     /**
      * used in Model
      * @internal
      */
-    void setModel(const Model &model) Q_DECL_OVERRIDE;
+    void setModel(const Model &model) override;
 
     /**
      * used in Model
      * @internal
      */
-    void setId(unsigned int id) Q_DECL_OVERRIDE;
+    void setId(unsigned int id) override;
 
 private:
     class LiteralPrivate;

@@ -44,19 +44,19 @@ public:
 
     explicit ImageRDFImpl(const Syndication::RDF::Image &image);
 
-    bool isNull() const Q_DECL_OVERRIDE;
+    bool isNull() const override;
 
-    QString url() const Q_DECL_OVERRIDE;
+    QString url() const override;
 
-    QString title() const Q_DECL_OVERRIDE;
+    QString title() const override;
 
-    QString link() const Q_DECL_OVERRIDE;
+    QString link() const override;
 
-    QString description() const Q_DECL_OVERRIDE;
+    QString description() const override;
 
-    uint width() const Q_DECL_OVERRIDE;
+    uint width() const override;
 
-    uint height() const Q_DECL_OVERRIDE;
+    uint height() const override;
 
 private:
     Syndication::RDF::Image m_image;

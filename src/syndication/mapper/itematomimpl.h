@@ -41,39 +41,39 @@ public:
 
     explicit ItemAtomImpl(const Syndication::Atom::Entry &entry);
 
-    QString title() const Q_DECL_OVERRIDE;
+    QString title() const override;
 
-    QString link() const Q_DECL_OVERRIDE;
+    QString link() const override;
 
-    QString description() const Q_DECL_OVERRIDE;
+    QString description() const override;
 
-    QString content() const Q_DECL_OVERRIDE;
+    QString content() const override;
 
-    QList<PersonPtr> authors() const Q_DECL_OVERRIDE;
+    QList<PersonPtr> authors() const override;
 
-    QString language() const Q_DECL_OVERRIDE;
+    QString language() const override;
 
-    QString id() const Q_DECL_OVERRIDE;
+    QString id() const override;
 
-    time_t datePublished() const Q_DECL_OVERRIDE;
+    time_t datePublished() const override;
 
-    time_t dateUpdated() const Q_DECL_OVERRIDE;
+    time_t dateUpdated() const override;
 
-    QList<EnclosurePtr> enclosures() const Q_DECL_OVERRIDE;
+    QList<EnclosurePtr> enclosures() const override;
 
-    QList<CategoryPtr> categories() const Q_DECL_OVERRIDE;
+    QList<CategoryPtr> categories() const override;
 
-    SpecificItemPtr specificItem() const Q_DECL_OVERRIDE;
+    SpecificItemPtr specificItem() const override;
 
-    int commentsCount() const Q_DECL_OVERRIDE;
+    int commentsCount() const override;
 
-    QString commentsLink() const Q_DECL_OVERRIDE;
+    QString commentsLink() const override;
 
-    QString commentsFeed() const Q_DECL_OVERRIDE;
+    QString commentsFeed() const override;
 
-    QString commentPostUri() const Q_DECL_OVERRIDE;
+    QString commentPostUri() const override;
 
-    QMultiMap<QString, QDomElement> additionalProperties() const Q_DECL_OVERRIDE;
+    QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:
 

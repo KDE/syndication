@@ -36,7 +36,7 @@ namespace Syndication
 /** @internal */
 class RSS2Mapper : public Mapper<Feed>
 {
-    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const Q_DECL_OVERRIDE
+    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const override
     {
         return QSharedPointer<Feed>(new FeedRSS2Impl(doc.staticCast<RSS2::Document>()));
     }

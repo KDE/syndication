@@ -43,17 +43,17 @@ public:
 
     explicit EnclosureAtomImpl(const Syndication::Atom::Link &link);
 
-    bool isNull() const Q_DECL_OVERRIDE;
+    bool isNull() const override;
 
-    QString url() const Q_DECL_OVERRIDE;
+    QString url() const override;
 
-    QString title() const Q_DECL_OVERRIDE;
+    QString title() const override;
 
-    QString type() const Q_DECL_OVERRIDE;
+    QString type() const override;
 
-    uint length() const Q_DECL_OVERRIDE;
+    uint length() const override;
 
-    uint duration() const Q_DECL_OVERRIDE;
+    uint duration() const override;
 
 private:
     Syndication::Atom::Link m_link;

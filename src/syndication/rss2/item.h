@@ -94,7 +94,7 @@ public:
      * for more information.
      * @param visitor the visitor calling the method
      */
-    bool accept(SpecificItemVisitor *visitor) Q_DECL_OVERRIDE;
+    bool accept(SpecificItemVisitor *visitor) override;
 
     /**
      * The title of the item.

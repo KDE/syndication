@@ -43,27 +43,27 @@ public:
 
     explicit FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
 
-    Syndication::SpecificDocumentPtr specificDocument() const Q_DECL_OVERRIDE;
+    Syndication::SpecificDocumentPtr specificDocument() const override;
 
-    QList<Syndication::ItemPtr> items() const Q_DECL_OVERRIDE;
+    QList<Syndication::ItemPtr> items() const override;
 
-    QList<CategoryPtr> categories() const Q_DECL_OVERRIDE;
+    QList<CategoryPtr> categories() const override;
 
-    QString title() const Q_DECL_OVERRIDE;
+    QString title() const override;
 
-    QString link() const Q_DECL_OVERRIDE;
+    QString link() const override;
 
-    QString description() const Q_DECL_OVERRIDE;
+    QString description() const override;
 
-    QList<PersonPtr> authors() const Q_DECL_OVERRIDE;
+    QList<PersonPtr> authors() const override;
 
-    QString language() const Q_DECL_OVERRIDE;
+    QString language() const override;
 
-    QString copyright() const Q_DECL_OVERRIDE;
+    QString copyright() const override;
 
-    ImagePtr image() const Q_DECL_OVERRIDE;
+    ImagePtr image() const override;
 
-    QMultiMap<QString, QDomElement> additionalProperties() const Q_DECL_OVERRIDE;
+    QMultiMap<QString, QDomElement> additionalProperties() const override;
 private:
 
     Syndication::Atom::FeedDocumentPtr m_doc;

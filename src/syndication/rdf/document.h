@@ -99,14 +99,14 @@ public:
      * for more information.
      * @param visitor the visitor calling the method
      */
-    bool accept(DocumentVisitor *visitor) Q_DECL_OVERRIDE;
+    bool accept(DocumentVisitor *visitor) override;
 
     /**
      * returns whether this document is valid or not.
      * Invalid documents do not contain any useful
      * information.
      */
-    bool isValid() const Q_DECL_OVERRIDE;
+    bool isValid() const override;
 
     /**
      * title of the feed (required)
@@ -178,7 +178,7 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const Q_DECL_OVERRIDE;
+    QString debugInfo() const override;
 
 private:
     class Private;

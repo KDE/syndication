@@ -36,7 +36,7 @@ namespace Syndication
 /** @internal */
 class AtomMapper : public Mapper<Feed>
 {
-    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const Q_DECL_OVERRIDE
+    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const override
     {
         return QSharedPointer<Feed>(new FeedAtomImpl(doc.staticCast<Atom::FeedDocument>()));
     }

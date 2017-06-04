@@ -57,7 +57,7 @@ public:
      * document, by checking the root element.
      * @param source document source to check
      */
-    bool accept(const Syndication::DocumentSource &source) const Q_DECL_OVERRIDE;
+    bool accept(const Syndication::DocumentSource &source) const override;
 
     /**
      * parses either an EntryDocument or a FeedDocument from a
@@ -67,14 +67,14 @@ public:
      * @param source the document source to parse
      */
     Syndication::SpecificDocumentPtr parse(
-        const Syndication::DocumentSource &source) const Q_DECL_OVERRIDE;
+        const Syndication::DocumentSource &source) const override;
 
     /**
      * returns the format string for this parser implementation, which is
      * @c "atom"
      * @return @c "atom"
      */
-    QString format() const Q_DECL_OVERRIDE;
+    QString format() const override;
 
 private:
 

@@ -36,7 +36,7 @@ namespace Syndication
 /** @internal */
 class RDFMapper : public Mapper<Feed>
 {
-    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const Q_DECL_OVERRIDE
+    QSharedPointer<Feed> map(SpecificDocumentPtr doc) const override
     {
         return QSharedPointer<Feed>(new FeedRDFImpl(doc.staticCast<RDF::Document>()));
     }
