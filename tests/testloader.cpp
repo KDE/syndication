@@ -37,12 +37,12 @@
 
 #include <qurl.h>
 
-#include <QtCore/QByteArray>
-#include <QtCore/QCommandLineParser>
-#include <QtCore/QCommandLineOption>
-#include <QtCore/QDir>
-#include <QtCore/QFile>
-#include <QtCore/QString>
+#include <QByteArray>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+#include <QDir>
+#include <QFile>
+#include <QString>
 
 #include <cstdlib>
 #include <iostream>

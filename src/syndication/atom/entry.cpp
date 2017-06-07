@@ -31,8 +31,8 @@
 #include <specificitemvisitor.h>
 #include <tools.h>
 
-#include <QtXml/QDomElement>
-#include <QtCore/QString>
+#include <QDomElement>
+#include <QString>
 
 #include <vector>
 

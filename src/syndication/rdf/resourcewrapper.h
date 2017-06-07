@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_RESOURCEWRAPPER_H
 #define SYNDICATION_RDF_RESOURCEWRAPPER_H
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 #include <syndication_export.h>
 

@@ -23,9 +23,9 @@
 #include "documentsource.h"
 #include "tools.h"
 
-#include <QtCore/QByteArray>
-#include <QtXml/QDomDocument>
-#include <QtXml/QXmlSimpleReader>
+#include <QByteArray>
+#include <QDomDocument>
+#include <QXmlSimpleReader>
 
 namespace Syndication
 {

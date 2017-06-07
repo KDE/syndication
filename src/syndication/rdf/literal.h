@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_LITERAL_H
 #define SYNDICATION_RDF_LITERAL_H
 
-#include <QtCore/QString>
+#include <QString>
 #include <syndication/rdf/node.h>
 
 namespace Syndication

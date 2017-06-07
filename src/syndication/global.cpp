@@ -31,7 +31,7 @@
 #include "rdf/parser.h"
 #include "rss2/parser.h"
 
-#include <QtCore/QCoreApplication>
+#include <QCoreApplication>
 
 namespace
 {

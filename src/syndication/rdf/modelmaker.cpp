@@ -29,8 +29,8 @@
 #include "sequence.h"
 #include "statement.h"
 
-#include <QtXml/QDomElement>
-#include <QtCore/QString>
+#include <QDomElement>
+#include <QString>
 
 namespace Syndication
 {

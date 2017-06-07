@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_CATEGORY_H
 #define SYNDICATION_CATEGORY_H
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QString>
+#include <QSharedPointer>
+#include <QString>
 
 #include "syndication_export.h"
 

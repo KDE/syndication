@@ -15,7 +15,7 @@
 
 #include "syndication_export.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class QUrl;
 

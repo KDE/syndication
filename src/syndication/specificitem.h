@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_SPECIFICITEM_H
 #define SYNDICATION_SPECIFICITEM_H
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 #include "syndication_export.h"
 

@@ -26,7 +26,7 @@
 #include <syndication/elementwrapper.h>
 #include <syndication/specificitem.h>
 
-#include <QtCore/QList>
+#include <QList>
 
 #include <ctime>
 

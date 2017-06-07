@@ -32,7 +32,7 @@
 #include <syndication/rdf/sequence.h>
 #include <syndication_export.h>
 
-#include <QtCore/QString>
+#include <QString>
 
 template <class T> class QList;
 

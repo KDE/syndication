@@ -28,9 +28,9 @@
 #include "parsercollection.h"
 
 #include <QDebug>
-#include <QtCore/QByteArray>
-#include <QtCore/QFile>
-#include <QtCore/QString>
+#include <QByteArray>
+#include <QFile>
+#include <QString>
 
 #include <iostream>
 

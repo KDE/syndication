@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_PERSON_H
 #define SYNDICATION_PERSON_H
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QString>
+#include <QSharedPointer>
+#include <QString>
 
 #include "syndication_export.h"
 

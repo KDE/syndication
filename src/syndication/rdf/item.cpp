@@ -31,7 +31,7 @@
 #include <specificitemvisitor.h>
 #include <tools.h>
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

@@ -31,9 +31,9 @@
 #include <syndication/global.h>
 #include <syndication/mapper.h>
 
-#include <QtXml/QDomDocument>
-#include <QtCore/QHash>
-#include <QtCore/QString>
+#include <QDomDocument>
+#include <QHash>
+#include <QString>
 
 namespace Syndication
 {

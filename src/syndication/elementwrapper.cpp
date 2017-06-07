@@ -24,11 +24,11 @@
 
 #include <QUrl>
 
-#include <QtXml/QDomDocument>
-#include <QtXml/QDomElement>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QTextStream>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QString>
+#include <QStringList>
+#include <QTextStream>
 
 namespace Syndication
 {

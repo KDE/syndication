@@ -26,7 +26,7 @@
 #include <rdf/item.h>
 #include <item.h>
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

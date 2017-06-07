@@ -24,7 +24,7 @@
 
 #include "loader.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class TestLibSyndication : public QObject
 {

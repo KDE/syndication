@@ -22,7 +22,7 @@
 #ifndef SYNDICATION_RDF_RDFVOCAB_H
 #define SYNDICATION_RDF_RDFVOCAB_H
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 #include <syndication_export.h>
 

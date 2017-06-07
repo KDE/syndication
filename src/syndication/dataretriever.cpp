@@ -18,8 +18,8 @@
 #include <kprocess.h>
 #include <QUrl>
 
-#include <QtCore/QBuffer>
-#include <QtCore/QTimer>
+#include <QBuffer>
+#include <QTimer>
 
 namespace Syndication
 {

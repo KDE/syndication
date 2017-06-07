@@ -26,11 +26,11 @@
 #include <kcharsets.h>
 #include <kcodecs.h>
 
-#include <QtCore/QByteArray>
-#include <QtCore/QCryptographicHash>
-#include <QtCore/QDateTime>
-#include <QtCore/QRegExp>
-#include <QtCore/QString>
+#include <QByteArray>
+#include <QCryptographicHash>
+#include <QDateTime>
+#include <QRegExp>
+#include <QString>
 
 #include <ctime>
 

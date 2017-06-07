@@ -27,8 +27,8 @@
 #include "property.h"
 #include "resource.h"
 
-#include <QtCore/QString>
-#include <QtCore/QWeakPointer>
+#include <QString>
+#include <QWeakPointer>
 
 namespace Syndication
 {

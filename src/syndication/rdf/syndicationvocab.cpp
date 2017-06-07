@@ -23,8 +23,8 @@
 #include "syndicationvocab.h"
 #include "property.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
+#include <QCoreApplication>
+#include <QString>
 
 namespace Syndication
 {

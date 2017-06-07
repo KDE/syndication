@@ -36,10 +36,10 @@
 #include <documentvisitor.h>
 #include <tools.h>
 
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVector>
+#include <QList>
+#include <QString>
+#include <QStringList>
+#include <QVector>
 
 #include <algorithm>
 

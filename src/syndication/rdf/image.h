@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_RDF_IMAGE_H
 #define SYNDICATION_RDF_IMAGE_H
 
-#include <QtCore/QString>
+#include <QString>
 #include <syndication/rdf/resourcewrapper.h>
 
 namespace Syndication

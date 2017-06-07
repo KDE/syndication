@@ -25,8 +25,8 @@
 #include <syndication/elementwrapper.h>
 #include <syndication/tools.h>
 
-#include <QtXml/QDomElement>
-#include <QtCore/QString>
+#include <QDomElement>
+#include <QString>
 
 namespace Syndication
 {

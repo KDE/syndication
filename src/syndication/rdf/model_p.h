@@ -31,9 +31,9 @@
 #include "sequence.h"
 #include "statement.h"
 
-#include <QtCore/QHash>
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QHash>
+#include <QList>
+#include <QString>
 
 namespace Syndication
 {

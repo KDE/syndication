@@ -31,10 +31,10 @@
 #include <documentvisitor.h>
 #include <tools.h>
 
-#include <QtXml/QDomDocument>
-#include <QtCore/QList>
-#include <QtCore/QSet>
-#include <QtCore/QString>
+#include <QDomDocument>
+#include <QList>
+#include <QSet>
+#include <QString>
 
 #include <vector>
 

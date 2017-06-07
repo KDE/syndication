@@ -34,10 +34,10 @@
 #include <personimpl.h>
 #include <tools.h>
 
-#include <QtXml/QDomElement>
-#include <QtCore/QList>
-#include <QtCore/QMultiMap>
-#include <QtCore/QString>
+#include <QDomElement>
+#include <QList>
+#include <QMultiMap>
+#include <QString>
 
 using Syndication::Atom::Content;
 using Syndication::Atom::Link;

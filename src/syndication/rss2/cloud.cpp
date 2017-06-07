@@ -22,7 +22,7 @@
 
 #include "cloud.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

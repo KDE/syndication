@@ -24,7 +24,7 @@
 #include "rssvocab.h"
 #include "statement.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

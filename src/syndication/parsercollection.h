@@ -30,7 +30,7 @@
 #include <syndication/global.h>
 #include <syndication/mapper.h>
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

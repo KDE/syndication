@@ -25,7 +25,7 @@
 
 #include <syndication/elementwrapper.h>
 
-#include <QtCore/QString>
+#include <QString>
 
 class QByteArray;
 class QDomElement;

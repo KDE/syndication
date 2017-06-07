@@ -18,9 +18,9 @@
 #include <kio/global.h>
 #include <QUrl>
 
-#include <QtCore/QBuffer>
-#include <QtCore/QRegExp>
-#include <QtCore/QStringList>
+#include <QBuffer>
+#include <QRegExp>
+#include <QStringList>
 
 #include <syndication_debug.h>
 

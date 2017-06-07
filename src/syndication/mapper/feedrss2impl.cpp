@@ -28,10 +28,10 @@
 #include <rss2/category.h>
 #include <rss2/item.h>
 
-#include <QtCore/QList>
-#include <QtCore/QMultiMap>
-#include <QtCore/QString>
-#include <QtXml/QDomElement>
+#include <QList>
+#include <QMultiMap>
+#include <QString>
+#include <QDomElement>
 
 namespace Syndication
 {

@@ -26,7 +26,7 @@
 #include <syndication/person.h>
 #include "syndication_export.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 class QByteArray;
 class QString;

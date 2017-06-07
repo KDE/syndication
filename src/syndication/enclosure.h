@@ -25,8 +25,8 @@
 
 #include "syndication_export.h"
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QString>
+#include <QSharedPointer>
+#include <QString>
 
 namespace Syndication
 {

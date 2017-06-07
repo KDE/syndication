@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_TESTS_TESTPERSONIMPL_H
 #define SYNDICATION_TESTS_TESTPERSONIMPL_H
 
-#include <QtTest/QtTest>
+#include <QtTest>
 
 class TestPersonImpl : public QObject
 {

@@ -24,9 +24,9 @@
 #include "person.h"
 #include "personimpl.h"
 #include "tools.h"
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
+#include <QList>
+#include <QString>
+#include <QStringList>
 
 using Syndication::Person;
 using Syndication::PersonPtr;

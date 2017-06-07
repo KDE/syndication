@@ -23,7 +23,7 @@
 #include "literal.h"
 #include "nodevisitor.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

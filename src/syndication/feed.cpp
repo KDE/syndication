@@ -26,8 +26,8 @@
 #include "item.h"
 #include "person.h"
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 namespace Syndication
 {

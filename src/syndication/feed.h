@@ -23,7 +23,7 @@
 #ifndef SYNDICATION_FEED_H
 #define SYNDICATION_FEED_H
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 #include "syndication_export.h"
 

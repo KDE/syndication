@@ -22,8 +22,8 @@
 #ifndef SYNDICATION_ELEMENTWRAPPER_H
 #define SYNDICATION_ELEMENTWRAPPER_H
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QString>
+#include <QSharedPointer>
+#include <QString>
 
 #include "syndication_export.h"
 

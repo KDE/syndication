@@ -29,9 +29,9 @@
 
 #include <krandom.h>
 
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QWeakPointer>
+#include <QList>
+#include <QString>
+#include <QWeakPointer>
 
 namespace Syndication
 {

@@ -30,9 +30,9 @@
 
 #include <tools.h>
 
-#include <QtXml/QDomElement>
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QDomElement>
+#include <QList>
+#include <QString>
 
 namespace Syndication
 {

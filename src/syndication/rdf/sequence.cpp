@@ -24,8 +24,8 @@
 #include "node.h"
 #include "nodevisitor.h"
 
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QList>
+#include <QString>
 
 namespace Syndication
 {

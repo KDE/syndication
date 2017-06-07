@@ -27,16 +27,16 @@
 
 #include <documentsource.h>
 
-#include <QtXml/QDomAttr>
-#include <QtXml/QDomDocument>
-#include <QtXml/QDomElement>
-#include <QtXml/QDomNamedNodeMap>
-#include <QtXml/QDomNode>
-#include <QtXml/QDomNodeList>
+#include <QDomAttr>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomNamedNodeMap>
+#include <QDomNode>
+#include <QDomNodeList>
 
-#include <QtCore/QHash>
-#include <QtCore/QRegExp>
-#include <QtCore/QString>
+#include <QHash>
+#include <QRegExp>
+#include <QString>
 
 namespace Syndication
 {

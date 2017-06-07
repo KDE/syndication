@@ -12,9 +12,9 @@
 
 #include "syndication_export.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QProcess>
+#include <QObject>
+#include <QString>
+#include <QProcess>
 
 namespace KIO
 {

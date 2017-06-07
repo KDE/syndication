@@ -24,7 +24,7 @@
 
 #include "syndication_export.h"
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 class QString;
 

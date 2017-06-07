@@ -23,7 +23,7 @@
 #include "textinput.h"
 #include "tools.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Syndication
 {

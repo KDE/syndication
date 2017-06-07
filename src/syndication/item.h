@@ -23,8 +23,8 @@
 #ifndef SYNDICATION_ITEM_H
 #define SYNDICATION_ITEM_H
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QString>
+#include <QSharedPointer>
+#include <QString>
 
 #include "syndication_export.h"
 
