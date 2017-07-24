@@ -20,7 +20,7 @@ include(ECMCoverageOption)
 include(ECMQtDeclareLoggingCategory)
 
 
-set(SYNDICATION_LIB_VERSION "5.5.80")
+set(SYNDICATION_LIB_VERSION "5.6.40")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
