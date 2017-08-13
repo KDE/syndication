@@ -53,8 +53,8 @@ Loader *Loader::create()
 Loader *Loader::create(QObject *object, const char *slot)
 {
     Loader *loader = create();
-    connect(loader, SIGNAL(loadingComplete(Syndication::Loader *,
-                                           Syndication::FeedPtr, Syndication::ErrorCode)),
+    connect(loader,
+            SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
             object, slot);
     return loader;
 }
@@ -217,4 +217,3 @@ void Loader::discoverFeeds(const QByteArray &data)
 }
 
 } // namespace Syndication
-
