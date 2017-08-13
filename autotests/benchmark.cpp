@@ -27,15 +27,14 @@
 #include "feed.h"
 #include "parsercollection.h"
 
-#include <QtCore/QByteArray>
-#include <QtCore/QFile>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QTime>
-#include <QtCore/QTextStream>
+#include <QByteArray>
+#include <QFile>
+#include <QString>
+#include <QStringList>
+#include <QTime>
+#include <QTextStream>
 
 #include <iostream>
-
 #include <cstdio>
 
 using namespace Syndication;
@@ -75,7 +74,7 @@ int main(int argc, char **argv)
     QTime time;
     time.start();
 
-    foreach(const QString &filename, filenames) {
+    foreach (const QString &filename, filenames) {
 
         QFile f(filename);
 
