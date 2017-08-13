@@ -80,7 +80,7 @@ public:
     {
     public:
 
-        AddToHashesVisitor(ModelPrivate *parent) : p(parent)
+        explicit AddToHashesVisitor(ModelPrivate *parent) : p(parent)
         {}
 
         bool visitResource(ResourcePtr res) override
@@ -150,7 +150,6 @@ public:
             stmtsBySubject[stmt->subject()->uri()].removeAll(stmt);
         }
         statements.remove(key);
-
     }
 
     void init(const QSharedPointer<ModelPrivate> &sharedThis)
