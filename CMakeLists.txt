@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
+set(SYNDICATION_LIB_VERSION "5.6.40")
 
-project(Syndication)
+project(Syndication VERSION ${SYNDICATION_LIB_VERSION})
 
 # ECM setup
 set(KF5_VERSION "5.37.0")
@@ -28,7 +29,6 @@ include(ECMCoverageOption)
 include(ECMQtDeclareLoggingCategory)
 
 
-set(SYNDICATION_LIB_VERSION "5.6.40")
 
 ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
