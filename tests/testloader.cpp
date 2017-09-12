@@ -33,7 +33,6 @@
 #include "syndication_version.h"
 
 #include <qapplication.h>
-#include <kaboutdata.h>
 
 #include <qurl.h>
 
@@ -85,18 +84,13 @@ int main(int argc, char **argv)
     }
 
     QApplication app(argc, argv);
-    KAboutData aboutData(QLatin1String("testlibsyndication"), QLatin1String("testlibsyndication"), QLatin1String("0.1"));
-
-    KAboutData::setApplicationData(aboutData);
 
     QCommandLineParser parser;
     app.setApplicationVersion(QLatin1String(SYNDICATION_VERSION_STRING));
     parser.addVersionOption();
     parser.addHelpOption();
     parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+url"), QLatin1String("URL of feed")));
-    aboutData.setupCommandLine(&parser);
     parser.process(app);
-    aboutData.processCommandLine(&parser);
 
     if (parser.positionalArguments().count() != 1) {
         parser.showHelp();
