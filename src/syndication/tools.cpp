@@ -67,7 +67,7 @@ static uint toTimeT(QDateTime &kdt)
             kdt.setTimeSpec(Qt::UTC);
             kdt.setTime(QTime(12, 0));
         }
-        return kdt.toTime_t();
+        return kdt.toSecsSinceEpoch();
     } else {
         return 0;
     }
@@ -108,7 +108,7 @@ QString dateTimeToString(uint date)
 
     const QString format = QStringLiteral("ddd MMM d HH:mm:ss yyyy");
     QDateTime dt;
-    dt.setTime_t(date);
+    dt.setSecsSinceEpoch(date);
     return dt.toUTC().toString(format);
 }
 
