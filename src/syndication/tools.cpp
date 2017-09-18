@@ -108,7 +108,7 @@ QString dateTimeToString(uint date)
 
     const QString format = QStringLiteral("ddd MMM d HH:mm:ss yyyy");
     QDateTime dt;
-    dt.setMSecsSinceEpoch(date * 1000);
+    dt.setMSecsSinceEpoch(quint64(date) * 1000);
     return dt.toUTC().toString(format);
 }
 
