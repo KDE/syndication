@@ -183,8 +183,7 @@ void OutputRetriever::retrieveData(const QUrl &url)
     d->buffer->open(QIODevice::WriteOnly);
 
     d->process = new KProcess();
-    connect(d->process, SIGNAL(finished(int,QProcess::ExitStatus)),
-            SLOT(slotFinished(int,QProcess::ExitStatus)));
+    connect(d->process, QOverload<int,QProcess::ExitStatus>::of(&KProcess::finished), this, &OutputRetriever::slotFinished);
     d->process->setShellCommand(url.path());
     d->process->start();
 }
