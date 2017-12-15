@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
-set(SYNDICATION_LIB_VERSION "5.7.40")
+set(PIM_VERSION "5.7.40")
+set(SYNDICATION_LIB_VERSION ${PIM_VERSION})
 
 project(Syndication VERSION ${SYNDICATION_LIB_VERSION})
 
