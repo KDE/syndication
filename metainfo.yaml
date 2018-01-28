@@ -11,4 +11,6 @@ libraries:
  - qmake: Syndication
    cmake: "KF5::Syndication"
 cmakename: KF5Syndication
+public_lib: true
+group: kdepim
 
