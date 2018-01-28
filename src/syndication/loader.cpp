@@ -15,7 +15,6 @@
 #include "global.h"
 #include "parsercollection.h"
 
-#include <kio/global.h>
 #include <QUrl>
 
 #include <QBuffer>

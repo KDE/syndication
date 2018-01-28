@@ -24,7 +24,6 @@
 #include "personimpl.h"
 
 #include <kcharsets.h>
-#include <kcodecs.h>
 
 #include <QByteArray>
 #include <QCryptographicHash>
