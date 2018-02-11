@@ -61,7 +61,7 @@ public:
     /**
      * virtual destructor
      */
-    virtual ~DublinCore();
+    ~DublinCore() override;
 
     /**
      * A name given to the resource.

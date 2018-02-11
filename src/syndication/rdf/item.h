@@ -77,7 +77,7 @@ public:
     /**
      * virtual destructor
      */
-    virtual ~Item();
+    ~Item() override;
 
     /**
      * assigns another item

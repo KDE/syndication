@@ -67,7 +67,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Sequence();
+    ~Sequence() override;
 
     /**
      * assigns another sequence

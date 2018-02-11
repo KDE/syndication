@@ -77,7 +77,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Document();
+    ~Document() override;
 
     /**
      * compares two documents. Two documents are equal if they wrap

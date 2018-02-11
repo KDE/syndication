@@ -52,7 +52,7 @@ public:
 
     ParserCollectionImpl();
 
-    virtual ~ParserCollectionImpl();
+    ~ParserCollectionImpl() override;
 
     QSharedPointer<T> parse(const DocumentSource &source,
                             const QString &formatHint = QString()) override;

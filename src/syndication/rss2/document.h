@@ -83,7 +83,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Document();
+    ~Document() override;
 
     /**
      * assigns another document. As the d pointer is shared,

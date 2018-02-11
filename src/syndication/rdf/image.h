@@ -59,7 +59,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Image();
+    ~Image() override;
 
     /**
      * Describes the image, can be used in the ALT attribute of the

@@ -46,7 +46,7 @@ public:
     Parser();
 
     /** destructor */
-    virtual ~Parser();
+    ~Parser() override;
 
     /**
      * returns whether the passed document looks like

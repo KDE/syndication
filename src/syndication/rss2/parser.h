@@ -49,7 +49,7 @@ public:
     Parser();
 
     /** destructor */
-    virtual ~Parser();
+    ~Parser() override;
 
     /**
      * checks whether a document source looks like an RSS0.9x/2.0 document

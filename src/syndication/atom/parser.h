@@ -50,7 +50,7 @@ public:
     Parser();
 
     /** destructor */
-    virtual ~Parser();
+    ~Parser() override;
 
     /**
      * returns whether the source looks like an Atom 1.0 or 0.3

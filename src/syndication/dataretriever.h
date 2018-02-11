@@ -45,7 +45,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~DataRetriever();
+    ~DataRetriever() override;
 
     /**
      * Retrieve data from the given URL. This method is supposed to get
@@ -110,7 +110,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~OutputRetriever();
+    ~OutputRetriever() override;
 
     /**
      * Executes the program referenced by the given URL and retrieves
@@ -160,7 +160,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~FileRetriever();
+    ~FileRetriever() override;
 
     /**
      * Downloads the file referenced by the given URL and passes it's
