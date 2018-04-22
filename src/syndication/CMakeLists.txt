@@ -124,7 +124,7 @@ PUBLIC
 PRIVATE
     Qt5::Xml
     KF5::Codecs
-    KF5::KIOCore
+    KF5::CoreAddons
 )
 
 set_target_properties(KF5Syndication PROPERTIES

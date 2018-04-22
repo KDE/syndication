@@ -8,5 +8,5 @@ find_package(Qt5Test CONFIG REQUIRED)
 
 set(testloader_SRCS testloader.cpp)
 add_executable(testloader ${testloader_SRCS})
-target_link_libraries(testloader KF5Syndication KF5::CoreAddons Qt5::Widgets)
+target_link_libraries(testloader KF5Syndication KF5::CoreAddons Qt5::Widgets Qt5::Network)
 

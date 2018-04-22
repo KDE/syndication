@@ -115,14 +115,6 @@ public:
     void loadFrom(const QUrl &url, DataRetriever *retriever);
 
     /**
-     * Convenience method. Does the same as the above method, where
-     * FileRetriever is used as retriever implementation.
-     *
-     * @param url A URL referencing the input file.
-     */
-    void loadFrom(const QUrl &url);
-
-    /**
      * Retrieves the error code of the last loading process (if any).
      */
     ErrorCode errorCode() const;

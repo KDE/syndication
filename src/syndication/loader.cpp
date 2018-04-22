@@ -67,11 +67,6 @@ Loader::~Loader()
     delete d;
 }
 
-void Loader::loadFrom(const QUrl &url)
-{
-    loadFrom(url, new FileRetriever);
-}
-
 void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
 {
     if (d->retriever != nullptr) {
@@ -119,7 +114,6 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
     d->retrieverError = d->retriever->errorCode();
     ErrorCode status = Success;
     FeedPtr feed;
-    bool isFileRetriever = dynamic_cast<FileRetriever *>(d->retriever) != nullptr;
     delete d->retriever;
     d->retriever = nullptr;
 
@@ -132,15 +126,9 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
             discoverFeeds(data);
         }
     } else {
-        if (isFileRetriever) {
-            // retriever is a FileRetriever, so we interpret the
-            // error code and set lastError accordingly
-            status = FileNotFound; // TODO
-            qCDebug(SYNDICATION_LOG) << "file retriever error:" << d->retrieverError;
-        } else {
-            // retriever is a custom impl, so we set OtherRetrieverError
-            status = OtherRetrieverError;
-        }
+        qCDebug(SYNDICATION_LOG) << "Retriever error:" << d->retrieverError;
+        // retriever is a custom impl, so we set OtherRetrieverError
+        status = OtherRetrieverError;
     }
 
     emit loadingComplete(this, feed, status);

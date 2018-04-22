@@ -27,6 +27,7 @@
 #include "specificdocument.h"
 #include "feed.h"
 #include "loader.h"
+#include "dataretriever.h"
 #include "atom/parser.h"
 #include "rdf/parser.h"
 #include "rss2/parser.h"
@@ -42,11 +43,61 @@
 #include <QDir>
 #include <QFile>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 
 #include <cstdlib>
 #include <iostream>
 
 using namespace Syndication;
+
+class SimpleRetriever : public Syndication::DataRetriever
+{
+    Q_OBJECT
+public:
+    explicit SimpleRetriever()
+        : mMgr(new QNetworkAccessManager)
+        , mReply(nullptr)
+    {
+    }
+    ~SimpleRetriever()
+    {
+        delete mReply;
+        delete mMgr;
+    }
+
+    void retrieveData(const QUrl & url) override
+    {
+        mReply = mMgr->get(QNetworkRequest(url));
+        connect(mReply, &QNetworkReply::finished,
+                this, [this]() {
+                    if (mReply->error() == QNetworkReply::NoError) {
+                        Q_EMIT dataRetrieved(mReply->readAll(), true);
+                    } else {
+                        Q_EMIT dataRetrieved({}, false);
+                    }
+                });
+    }
+    void abort() override
+    {
+        if (mReply) {
+            mReply->abort();
+        }
+    }
+    int errorCode() const override
+    {
+        if (mReply) {
+            return mReply->error();
+        } else {
+            return 0;
+        }
+    }
+
+private:
+    QNetworkAccessManager *mMgr;
+    QNetworkReply *mReply;
+};
 
 TestLibSyndication::TestLibSyndication(const QString &url)
 {
@@ -56,7 +107,7 @@ TestLibSyndication::TestLibSyndication(const QString &url)
     Loader *loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader *,
                                     Syndication::FeedPtr,
                                     Syndication::ErrorCode)));
-    loader->loadFrom(kurl);
+    loader->loadFrom(kurl, new SimpleRetriever());
 }
 
 void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader,
@@ -102,3 +153,4 @@ int main(int argc, char **argv)
     return app.exec();
 }
 
+#include "testloader.moc"

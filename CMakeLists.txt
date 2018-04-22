@@ -6,6 +6,7 @@ project(Syndication VERSION ${SYNDICATION_LIB_VERSION})
 
 # ECM setup
 set(KF5_VERSION "5.44.0")
+set(QT5_VERSION "5.8.0")
 
 find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -31,7 +32,11 @@ ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
 )
 
 ########### Find packages ###########
-find_package(KF5KIO ${KF5_VERSION} CONFIG REQUIRED)
+find_package(Qt5Widgets ${QT5_VERSION} CONFIG REQUIRED)
+find_package(Qt5Xml ${QT5_VERSION} CONFIG REQUIRED)
+find_package(Qt5Network ${QT5_VERSION} CONFIG REQUIRED) # for testloader
+
+find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
 find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
