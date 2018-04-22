@@ -27,11 +27,10 @@
 #include "property.h"
 #include "statement.h"
 
-#include <krandom.h>
-
 #include <QList>
 #include <QString>
 #include <QWeakPointer>
+#include <QUuid>
 
 namespace Syndication
 {
@@ -69,7 +68,7 @@ Resource::Resource() : d()
 Resource::Resource(const QString &uri) : d(new ResourcePrivate)
 {
     if (uri.isNull()) {
-        d->uri = KRandom::randomString(10); // TODO: ensure uniqueness
+        d->uri = QUuid().createUuid().toString();
         d->isAnon = true;
     } else {
         d->uri = uri;
