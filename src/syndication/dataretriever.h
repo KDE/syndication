@@ -14,13 +14,7 @@
 
 #include <QObject>
 #include <QString>
-#include <QProcess>
 
-namespace KIO
-{
-class Job;
-}
-class KJob;
 class QUrl;
 
 class QByteArray;
@@ -89,57 +83,6 @@ Q_SIGNALS:
 private:
     DataRetriever(const DataRetriever &other);
     DataRetriever &operator=(const DataRetriever &other);
-};
-
-/**
- * Implements a data retriever which executes a program and stores returned
- * by the program on stdout. To be used with Loader::loadFrom().
- * @see DataRetriever, Loader::loadFrom()
- */
-class SYNDICATION_EXPORT OutputRetriever : public DataRetriever
-{
-    Q_OBJECT
-
-public:
-
-    /**
-     * Default constructor.
-     */
-    OutputRetriever();
-
-    /**
-     * Destructor.
-     */
-    ~OutputRetriever() override;
-
-    /**
-     * Executes the program referenced by the given URL and retrieves
-     * the data which the program prints to stdout.
-     * @param url An URL which is supposed to reference an executable
-     * file.
-     * @see Loader::loadFrom()
-     */
-    void retrieveData(const QUrl &url) override;
-
-    /**
-     * @return The error code for the last process of retrieving data.
-     * 0 is returned in case there was no error, otherwise an error
-     * code which depends on the particular program which was run is
-     * returned.
-     */
-    int errorCode() const override;
-
-    void abort() override {}
-
-private Q_SLOTS:
-    void slotFinished(int exitCode, QProcess::ExitStatus exitStatus) ;
-
-private:
-    OutputRetriever(const OutputRetriever &other);
-    OutputRetriever &operator=(const OutputRetriever &other);
-
-    struct OutputRetrieverPrivate;
-    OutputRetrieverPrivate *const d;
 };
 
 } // namespace Syndication
