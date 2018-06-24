@@ -85,24 +85,24 @@ public:
      * the list of authors of the containing feed is used. That list
      * is set by setFeedAuthors().
      */
-    QList<Person> authors() const;
+    Q_REQUIRED_RESULT QList<Person> authors() const;
 
     /**
      * a list of categories this entry is filed to (optional)
      */
-    QList<Category> categories() const;
+    Q_REQUIRED_RESULT QList<Category> categories() const;
 
     /**
      * list of persons contributing to this entry (optional)
      */
-    QList<Person> contributors() const;
+    Q_REQUIRED_RESULT QList<Person> contributors() const;
 
     /**
      * ID of the article. (required)
      * The ID must be unique inside this feed. The atom spec defines it as a
      * URI (which is not enforced by this parser)
      */
-    QString id() const;
+    Q_REQUIRED_RESULT QString id() const;
 
     /**
      * links pointing to associated web sites and other resources.
@@ -111,7 +111,7 @@ public:
      * Otherwise, it must contain at least one link with
      * a @c rel value of @c "alternate". (see Link).
      */
-    QList<Link> links() const;
+    Q_REQUIRED_RESULT QList<Link> links() const;
 
     /**
      * copyright information (optional)
@@ -119,7 +119,7 @@ public:
      * @return copyright information for the entry (intended for human
      * readers), or a null string if not specified
      */
-    QString rights() const;
+    Q_REQUIRED_RESULT QString rights() const;
 
     /**
      * source description of the content (optional)
@@ -130,21 +130,21 @@ public:
      * @return source description, or a null object if not
      * specified
      */
-    Source source() const;
+    Q_REQUIRED_RESULT Source source() const;
 
     /**
      * The datetime of the publication of this entry (optional).
      *
      * @return the publication date in seconds since epoch
      */
-    time_t published() const;
+    Q_REQUIRED_RESULT time_t published() const;
 
     /**
      * The datetime of the last modification of this entry (required).
      *
      * @return the modification date in seconds since epoch
      */
-    time_t updated() const;
+    Q_REQUIRED_RESULT time_t updated() const;
 
     /**
      * a short summary, abstract or excerpt of an entry. (optional)
@@ -153,14 +153,14 @@ public:
      *
      * @return the summary as HTML, or a null string if not specified
      */
-    QString summary() const;
+    Q_REQUIRED_RESULT QString summary() const;
 
     /**
      * title of the entry (required).
      *
      * @return the title as HTML
      */
-    QString title() const;
+    Q_REQUIRED_RESULT QString title() const;
 
     /**
      * content of the entry (optional)
@@ -168,13 +168,13 @@ public:
      *
      * @return entry content, or a null content object if not specified
      */
-    Content content() const;
+    Q_REQUIRED_RESULT Content content() const;
 
     /**
      * returns all child elements of this entry not covered by this class.
      * This can be used to access additional metadata from Atom extensions.
      */
-    QList<QDomElement> unhandledElements() const;
+    Q_REQUIRED_RESULT QList<QDomElement> unhandledElements() const;
 
     /**
      * Sets the list of the containing feed's authors, which will be used
@@ -189,7 +189,7 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 
 private:
 

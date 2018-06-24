@@ -58,26 +58,26 @@ public:
     /**
      * A URI for the generator (e.g. its homepage) (optional)
      */
-    QString uri() const;
+    Q_REQUIRED_RESULT QString uri() const;
 
     /**
      * version of the agent (optional)
      */
-    QString version() const;
+    Q_REQUIRED_RESULT QString version() const;
 
     /**
      * human-readable name of the generator. (optional)
      *
      * @return generator name as plain text
      */
-    QString name() const;
+    Q_REQUIRED_RESULT QString name() const;
 
     /**
      * a description of this generator for debugging purposes.
      *
      * @return debug info
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 
 };
 

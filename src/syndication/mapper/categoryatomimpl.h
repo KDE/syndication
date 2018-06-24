@@ -43,13 +43,13 @@ public:
 
     explicit CategoryAtomImpl(const Syndication::Atom::Category &category);
 
-    bool isNull() const override;
+    Q_REQUIRED_RESULT bool isNull() const override;
 
-    QString term() const override;
+    Q_REQUIRED_RESULT QString term() const override;
 
-    QString scheme() const override;
+    Q_REQUIRED_RESULT QString scheme() const override;
 
-    QString label() const override;
+    Q_REQUIRED_RESULT QString label() const override;
 
 private:
     Syndication::Atom::Category m_category;

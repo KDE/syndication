@@ -87,31 +87,31 @@ public:
      * According to the Atom 1.0 spec, a feed must have an
      * author unless all entries in it have one.
      */
-    QList<Person> authors() const;
+    Q_REQUIRED_RESULT QList<Person> authors() const;
 
     /**
      * a list of persons who contribute to this feed. (optional)
      */
-    QList<Person> contributors() const;
+    Q_REQUIRED_RESULT QList<Person> contributors() const;
 
     /**
      * a list of categories this feed is assigned to (optional)
      */
-    QList<Category> categories() const;
+    Q_REQUIRED_RESULT QList<Category> categories() const;
 
     /**
      * URL of an image serving as a feed icon (optional)
      *
      * @return icon URL, or a null string if not specified in the feed.
      */
-    QString icon() const;
+    Q_REQUIRED_RESULT QString icon() const;
 
     /**
      * URL of an image serving as a feed logo (optional)
      *
      * @return image URL, or a null string if not specified in the feed.
      */
-    QString logo() const;
+    Q_REQUIRED_RESULT QString logo() const;
 
     /**
      * a string that unambigously identifies the feed (required)
@@ -120,7 +120,7 @@ public:
      * a valid URI (which is neither checked nor enforced by this parser)
      *
      */
-    QString id() const;
+    Q_REQUIRED_RESULT QString id() const;
 
     /**
      * copyright information (optional)
@@ -128,14 +128,14 @@ public:
      * @return copyright information for the feed (intended for human
      * readers), or a null string if not specified
      */
-    QString rights() const;
+    Q_REQUIRED_RESULT QString rights() const;
 
     /**
      * feed title (required).
      *
      * @return title string as HTML.
      */
-    QString title() const;
+    Q_REQUIRED_RESULT QString title() const;
 
     /**
      * description or subtitle of the feed (optional).
@@ -143,7 +143,7 @@ public:
      * @return subtitle string as HTML, or a null string
      * if not specified in the feed.
      */
-    QString subtitle() const;
+    Q_REQUIRED_RESULT QString subtitle() const;
 
     /**
      * description of the agent used to generate the feed. See
@@ -152,31 +152,31 @@ public:
      * @return description of the generator, or a null Generator object
      * if not specified in the feed.
      */
-    Generator generator() const;
+    Q_REQUIRED_RESULT Generator generator() const;
 
     /**
      * The datetime of the last modification of the feed content.
      *
      * @return the modification date in seconds since epoch
      */
-    time_t updated() const;
+    Q_REQUIRED_RESULT time_t updated() const;
 
     /**
      * a list of links. See Link for more information on
      * link types.
      */
-    QList<Link> links() const;
+    Q_REQUIRED_RESULT QList<Link> links() const;
 
     /**
      * a list of the entries (items) in this feed.
      */
-    QList<Entry> entries() const;
+    Q_REQUIRED_RESULT QList<Entry> entries() const;
 
     /**
      * returns all child elements of this feed not covered by this class.
      * This can be used to access additional metadata from Atom extensions.
      */
-    QList<QDomElement> unhandledElements() const;
+    Q_REQUIRED_RESULT QList<QDomElement> unhandledElements() const;
 
     /**
      * returns a description of this feed document for debugging
@@ -184,14 +184,14 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const override;
+    Q_REQUIRED_RESULT QString debugInfo() const override;
 
     /**
      * returns whether this document is valid or not.
      * Invalid documents do not contain any useful
      * information.
      */
-    bool isValid() const override;
+    Q_REQUIRED_RESULT bool isValid() const override;
 };
 
 /**
@@ -230,7 +230,7 @@ public:
      *
      * @return the entry
      */
-    Entry entry() const;
+    Q_REQUIRED_RESULT Entry entry() const;
 
     /**
      * returns a description of this entry document for debugging
@@ -238,14 +238,14 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const override;
+    Q_REQUIRED_RESULT QString debugInfo() const override;
 
     /**
      * returns whether this document is valid or not.
      * Invalid documents do not contain any useful
      * information.
      */
-    bool isValid() const override;
+    Q_REQUIRED_RESULT bool isValid() const override;
 };
 
 } // namespace Atom

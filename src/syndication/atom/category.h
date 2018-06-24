@@ -67,7 +67,7 @@ public:
      * @return the category term as plain text (no HTML, "&", "<" etc. are
      * unescaped!)
      */
-    QString term() const;
+    Q_REQUIRED_RESULT QString term() const;
 
     /**
      * naming scheme the category term is part of. (optional)
@@ -77,7 +77,7 @@ public:
      * @return a URI representing the scheme, or a null string
      * if not specified
      */
-    QString scheme() const;
+    Q_REQUIRED_RESULT QString scheme() const;
 
     /**
      * Label of the category (optional).
@@ -88,14 +88,14 @@ public:
      * @return the label as plain text (no HTML, "&", "<" etc. are
      * unescaped!), or a null string if not specified
      */
-    QString label() const;
+    Q_REQUIRED_RESULT QString label() const;
 
     /**
      * description of this category object for debugging purposes
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 };
 
 } // namespace Atom

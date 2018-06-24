@@ -110,7 +110,7 @@ public:
      * @return the content type. If no type is specified, "text" (the
      * default) is returned.
      */
-    QString type() const;
+    Q_REQUIRED_RESULT QString type() const;
 
     /**
      * If src() is set, the content of this entry is not contained in the
@@ -123,7 +123,7 @@ public:
      * @return  a null string if the content is contained in the feed
      * source, or a URL linking to the remote content
      */
-    QString src() const;
+    Q_REQUIRED_RESULT QString src() const;
 
     /**
      * returns the content as string. If the content format is Text, the
@@ -135,7 +135,7 @@ public:
      * (see isContained())
      */
 
-    QString asString() const;
+    Q_REQUIRED_RESULT QString asString() const;
 
     /**
      * returns binary content as byte array.
@@ -143,44 +143,44 @@ public:
      * @return byte array containing the embedded binary data, or
      * an empty array if the content is not in binary format
      */
-    QByteArray asByteArray() const;
+    Q_REQUIRED_RESULT QByteArray asByteArray() const;
 
     /**
      * returns the content format
      */
-    Format format() const;
+    Q_REQUIRED_RESULT Format format() const;
 
     /**
      * returns whether the content is contained in the feed source,
      * or not. If it is not contained, src() provides a URL to the
      * content.
      */
-    bool isContained() const;
+    Q_REQUIRED_RESULT bool isContained() const;
 
     /**
      * returns whether the content is embedded XML.
      * Use element() to access the DOM tree, or asString() to get the XML
      * as string.
      */
-    bool isXML() const;
+    Q_REQUIRED_RESULT bool isXML() const;
 
     /**
      * returns whether the content is binary content or not.
      * Use asByteArray() to access it.
      */
-    bool isBinary() const;
+    Q_REQUIRED_RESULT bool isBinary() const;
 
     /**
      * returns whether the content is plain text or not.
      * Use asString() to access it.
      */
-    bool isPlainText() const;
+    Q_REQUIRED_RESULT bool isPlainText() const;
 
     /**
      * returns whether the content is escaped HTML or not
      * Use asString() to access it
      */
-    bool isEscapedHTML() const;
+    Q_REQUIRED_RESULT bool isEscapedHTML() const;
 
     /**
      * returns a description of the content object
@@ -188,7 +188,7 @@ public:
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 
 private:
     class ContentPrivate;

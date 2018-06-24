@@ -63,28 +63,28 @@ public:
      *
      * @return a human-readable name of the person
      */
-    QString name() const;
+    Q_REQUIRED_RESULT QString name() const;
 
     /**
      * A URI associated with the person (optional). Usually the homepage.
      *
      * @return the URI of the person, or a null string if not specified
      */
-    QString uri() const;
+    Q_REQUIRED_RESULT QString uri() const;
 
     /**
      * returns an e-mail address associated with the person. (optional)
      *
      * @return an e-mail address, or a null string if not specified
      */
-    QString email() const;
+    Q_REQUIRED_RESULT QString email() const;
 
     /**
      * description for debugging purposes
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 };
 
 } // namespace Atom

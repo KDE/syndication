@@ -93,7 +93,7 @@ public:
      * @return @c true if isNull() is true for the wrapped element,
      * @c false otherwise
      */
-    bool isNull() const;
+    Q_REQUIRED_RESULT bool isNull() const;
 
     /**
      * returns the xml:base value to be used for the wrapped element.
@@ -103,7 +103,7 @@ public:
      *
      * @return the xml:base value, or a null string if not set
      */
-    QString xmlBase() const;
+    Q_REQUIRED_RESULT QString xmlBase() const;
 
     /**
      * returns the xml:lang value to be used for the wrapped element.
@@ -112,7 +112,7 @@ public:
      *
      * @return the xml:lang value, or a null string if not set
      */
-    QString xmlLang() const;
+    Q_REQUIRED_RESULT QString xmlLang() const;
 
     /**
      * completes relative URIs with a prefix specified via xml:base.
@@ -132,7 +132,7 @@ public:
      * xml:base is set in the scope of this element, @c uri is returned
      * unmodified.
      */
-    QString completeURI(const QString &uri) const;
+    Q_REQUIRED_RESULT QString completeURI(const QString &uri) const;
 
     /**
      * extracts the text from a child element, respecting namespaces. If
@@ -157,7 +157,7 @@ public:
      * if there is no such tag
      */
 
-    QString extractElementTextNS(const QString &namespaceURI,
+    Q_REQUIRED_RESULT QString extractElementTextNS(const QString &namespaceURI,
                                  const QString &localName) const;
 
     /**
@@ -175,7 +175,7 @@ public:
      * @return the (trimmed) text content of @c tagName, or a null string if
      * there is no such tag
      */
-    QString extractElementText(const QString &tagName) const;
+    Q_REQUIRED_RESULT QString extractElementText(const QString &tagName) const;
 
     /**
      * returns all child elements with tag name @c tagName
@@ -185,7 +185,7 @@ public:
      * @param tagName the tag name of the elements to extract
      * @return a list of child elements with the given tag name
      */
-    QList<QDomElement> elementsByTagName(const QString &tagName) const;
+    Q_REQUIRED_RESULT QList<QDomElement> elementsByTagName(const QString &tagName) const;
 
     /**
      * returns the child nodes of the wrapped element as XML.
@@ -193,7 +193,7 @@ public:
      * See childNodesAsXML(const QDomElement& parent) for details
      * @return XML serialization of the wrapped element's children
      */
-    QString childNodesAsXML() const;
+    Q_REQUIRED_RESULT QString childNodesAsXML() const;
 
     /**
      * concatenates the XML representations of all children. Example: If
@@ -212,7 +212,7 @@ public:
      * XML
      * @return XML serialization of parent's children
      */
-    static QString childNodesAsXML(const QDomElement &parent);
+    Q_REQUIRED_RESULT static QString childNodesAsXML(const QDomElement &parent);
 
     /**
      * returns all child elements with tag name @c tagname
@@ -226,7 +226,7 @@ public:
      * @return a list of child elements with the given namespace URI
      * and tag name
      */
-    QList<QDomElement> elementsByTagNameNS(const QString &nsURI,
+    Q_REQUIRED_RESULT QList<QDomElement> elementsByTagNameNS(const QString &nsURI,
                                            const QString &tagName) const;
 
     /**
@@ -239,14 +239,14 @@ public:
      * @return the first child element with the given namespace URI and tag
      * name, or a null element if no such element was found.
      */
-    QDomElement firstElementByTagNameNS(const QString &nsURI,
+    Q_REQUIRED_RESULT QDomElement firstElementByTagNameNS(const QString &nsURI,
                                         const QString &tagName) const;
 
     /**
      * Returns the wrapped element's text or an empty string.
      * For more information, see QDomElement::text();
      */
-    QString text() const;
+    Q_REQUIRED_RESULT QString text() const;
 
     /**
      * Returns the attribute called name. If the attribute does not exist
@@ -256,7 +256,7 @@ public:
      * @param name tag name
      * @param defValue the default value
      */
-    QString attribute(const QString &name,
+    Q_REQUIRED_RESULT QString attribute(const QString &name,
                       const QString &defValue = QString()) const;
 
     /**
@@ -269,7 +269,7 @@ public:
      * @param localName local tag name
      * @param defValue the default value
      */
-    QString attributeNS(const QString &nsURI, const QString &localName,
+    Q_REQUIRED_RESULT QString attributeNS(const QString &nsURI, const QString &localName,
                         const QString &defValue = QString()) const;
 
     /**
@@ -278,7 +278,7 @@ public:
      *
      * @param name the attribute name (without namespace)
      */
-    bool hasAttribute(const QString &name) const;
+    Q_REQUIRED_RESULT bool hasAttribute(const QString &name) const;
 
     /**
      * Returns true if this element has an attribute with the local name
@@ -287,7 +287,7 @@ public:
      * @param nsURI namespace URI
      * @param localName local attribute name
      */
-    bool hasAttributeNS(const QString &nsURI, const QString &localName) const;
+    Q_REQUIRED_RESULT bool hasAttributeNS(const QString &nsURI, const QString &localName) const;
 
 private:
 

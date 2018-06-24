@@ -58,7 +58,7 @@ public:
     /**
      * URL of the referenced resource (required)
      */
-    QString href() const;
+    Q_REQUIRED_RESULT QString href() const;
 
     /**
      * the relation between the feed/entry and the linked resource.
@@ -84,7 +84,7 @@ public:
      * @return the rel value specified in the feed. Default value is
      * @c "alternate"
      */
-    QString rel() const;
+    Q_REQUIRED_RESULT QString rel() const;
 
     /**
      * MIME type of the linked resource. (optional)
@@ -92,7 +92,7 @@ public:
      * @return MIME type following (e.g., "text/html", "audio/mpeg"),
      * or a null string if not set
      */
-    QString type() const;
+    Q_REQUIRED_RESULT QString type() const;
 
     /**
      * the language of the linked resource. (optional)
@@ -102,7 +102,7 @@ public:
      * @return a language tag as defined in RFC 3066,
      * or a null string if not specified
      */
-    QString hrefLanguage() const;
+    Q_REQUIRED_RESULT QString hrefLanguage() const;
 
     /**
      * human-readable information about the link. (optional)
@@ -110,21 +110,21 @@ public:
      * @return the link title as plain text ("<", "&" are text, not
      * markup!), or a null string if not specified
      */
-    QString title() const;
+    Q_REQUIRED_RESULT QString title() const;
 
     /**
      * size of the linked resource in bytes. (optional)
      *
      * @return file size in bytes, or 0 if not specified
      */
-    uint length() const;
+    Q_REQUIRED_RESULT uint length() const;
 
     /**
      * description of the link object for debugging purposes
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 };
 
 } // namespace Atom

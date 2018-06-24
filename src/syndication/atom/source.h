@@ -69,30 +69,30 @@ public:
     /**
      * authors of the original content (optional)
      */
-    QList<Person> authors() const;
+    Q_REQUIRED_RESULT QList<Person> authors() const;
 
     /**
      * contributors to the original content (optional)
      */
-    QList<Person> contributors() const;
+    Q_REQUIRED_RESULT QList<Person> contributors() const;
 
     /**
      * categories the source feed is assigned to (optional)
      */
-    QList<Category> categories() const;
+    Q_REQUIRED_RESULT QList<Category> categories() const;
 
     /**
      * description of the software which generated the source feed
      * (optional)
      */
-    Generator generator() const;
+    Q_REQUIRED_RESULT Generator generator() const;
 
     /**
      * URL of an image serving as a feed icon (optional)
      *
      * @return icon URL, or a null string if not specified
      */
-    QString icon() const;
+    Q_REQUIRED_RESULT QString icon() const;
 
     /**
      * a string that unambigously identifies the source feed (optional)
@@ -100,20 +100,20 @@ public:
      * @return the ID of the source feed, or a null string if not
      * specified.
      */
-    QString id() const;
+    Q_REQUIRED_RESULT QString id() const;
 
     /**
      * a list of links. See Link for more information on
      * link types.
      */
-    QList<Link> links() const;
+    Q_REQUIRED_RESULT QList<Link> links() const;
 
     /**
      * URL of an image, the logo of the source feed (optional)
      *
      * @return image URL, or a null string if not specified in the feed.
      */
-    QString logo() const;
+    Q_REQUIRED_RESULT QString logo() const;
 
     /**
      * copyright information (optional)
@@ -121,7 +121,7 @@ public:
      * @return copyright information for the source,
      * or a null string if not specified
      */
-    QString rights() const;
+    Q_REQUIRED_RESULT QString rights() const;
 
     /**
      * description or subtitle of the source feed (optional).
@@ -129,14 +129,14 @@ public:
      * @return subtitle string as HTML, or a null string
      * if not specified.
      */
-    QString subtitle() const;
+    Q_REQUIRED_RESULT QString subtitle() const;
 
     /**
      * source feed title (optional).
      *
      * @return title string as HTML, or a null string if not specified
      */
-    QString title() const;
+    Q_REQUIRED_RESULT QString title() const;
 
     /**
      * The datetime of the last modification of the source feed
@@ -144,14 +144,14 @@ public:
      *
      * @return the modification date in seconds since epoch
      */
-    time_t updated() const;
+    Q_REQUIRED_RESULT time_t updated() const;
 
     /**
      * description of this source object for debugging purposes
      *
      * @return debug string
      */
-    QString debugInfo() const;
+    Q_REQUIRED_RESULT QString debugInfo() const;
 };
 
 } // namespace Atom

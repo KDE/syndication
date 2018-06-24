@@ -66,7 +66,7 @@ public:
      * @see SpecificDocument::isValid()
      * @param source the document source to parse
      */
-    Syndication::SpecificDocumentPtr parse(
+    Q_REQUIRED_RESULT Syndication::SpecificDocumentPtr parse(
         const Syndication::DocumentSource &source) const override;
 
     /**
@@ -74,7 +74,7 @@ public:
      * @c "atom"
      * @return @c "atom"
      */
-    QString format() const override;
+    Q_REQUIRED_RESULT QString format() const override;
 
 private:
 

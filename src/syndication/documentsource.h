@@ -93,7 +93,7 @@ public:
      *
      * @return the feed source as raw byte array.
      */
-    QByteArray asByteArray() const;
+    Q_REQUIRED_RESULT QByteArray asByteArray() const;
 
     /**
      * returns the size the source array in bytes.
@@ -101,7 +101,7 @@ public:
      * @return the size of the byte array in bytes.
      * See also QByteArray::size()
      */
-    unsigned int size() const;
+    Q_REQUIRED_RESULT unsigned int size() const;
 
     /**
      * calculates a hash value for the source array.
@@ -112,7 +112,7 @@ public:
      * @return the hash calculated from the source, 0 if the
      * source is empty
      */
-    unsigned int hash() const;
+    Q_REQUIRED_RESULT unsigned int hash() const;
 
     /**
      * Returns the feed source as DOM document.
@@ -125,12 +125,12 @@ public:
      *
      * @return XML representation parsed from the raw source
      */
-    QDomDocument asDomDocument() const;
+    Q_REQUIRED_RESULT QDomDocument asDomDocument() const;
 
     /**
      * returns the URL the document source was loaded from
      */
-    QString url() const;
+    Q_REQUIRED_RESULT QString url() const;
 
 private:
 

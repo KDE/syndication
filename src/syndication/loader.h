@@ -117,19 +117,19 @@ public:
     /**
      * Retrieves the error code of the last loading process (if any).
      */
-    ErrorCode errorCode() const;
+    Q_REQUIRED_RESULT ErrorCode errorCode() const;
 
     /**
      * the error code returned from the retriever.
      * Use this if you use your custom retriever implementation and
      * need the specific error, not covered by errorCode().
      */
-    int retrieverError() const;
+    Q_REQUIRED_RESULT int retrieverError() const;
 
     /**
      * returns the URL of a feed discovered in the feed source
      */
-    QUrl discoveredFeedURL() const;
+    Q_REQUIRED_RESULT QUrl discoveredFeedURL() const;
 
     /**
      * aborts the loading process

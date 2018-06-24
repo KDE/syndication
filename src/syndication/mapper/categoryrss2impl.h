@@ -43,13 +43,13 @@ public:
 
     explicit CategoryRSS2Impl(const Syndication::RSS2::Category &category);
 
-    bool isNull() const override;
+    Q_REQUIRED_RESULT bool isNull() const override;
 
-    QString term() const override;
+    Q_REQUIRED_RESULT QString term() const override;
 
-    QString label() const override;
+    Q_REQUIRED_RESULT QString label() const override;
 
-    QString scheme() const override;
+    Q_REQUIRED_RESULT QString scheme() const override;
 
 private:
     Syndication::RSS2::Category m_category;
