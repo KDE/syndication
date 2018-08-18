@@ -42,7 +42,7 @@ add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 ########### Targets ###########
 
-add_subdirectory(src/syndication)
+add_subdirectory(src)
 
 if(BUILD_TESTING)
     add_subdirectory(autotests)

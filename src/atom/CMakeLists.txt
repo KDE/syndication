@@ -14,6 +14,7 @@ ecm_generate_headers(Syndication_Atom_CamelCase_HEADERS
   Person
   Source
 
+  OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/..
   PREFIX Syndication/Atom
   REQUIRED_HEADERS Syndication_Atom_HEADERS
 )

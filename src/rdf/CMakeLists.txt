@@ -26,6 +26,7 @@ ecm_generate_headers(Syndication_Rdf_CamelCase_HEADERS
   SyndicationVocab
   TextInput
 
+  OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/..
   PREFIX Syndication/Rdf
   REQUIRED_HEADERS Syndication_Rdf_HEADERS
 )

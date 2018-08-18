@@ -13,6 +13,7 @@ ecm_generate_headers(Syndication_Rss2_CamelCase_HEADERS
   Source
   TextInput
 
+  OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/..
   PREFIX Syndication/Rss2
   REQUIRED_HEADERS Syndication_Rss2_HEADERS
 )
