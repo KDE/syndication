@@ -1,6 +1,6 @@
 maintainer: 
 description: An RSS/Atom parser library
-tier: 3
+tier: 2
 type: functional
 platforms:
     - name: All
@@ -12,5 +12,5 @@ libraries:
    cmake: "KF5::Syndication"
 cmakename: KF5Syndication
 public_lib: true
-group: kdepim
-
+group: Frameworks
+subgroup: Tier 2
