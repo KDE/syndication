@@ -34,7 +34,6 @@ ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
 ########### Find packages ###########
 find_package(Qt5Widgets ${QT5_VERSION} CONFIG REQUIRED)
 find_package(Qt5Xml ${QT5_VERSION} CONFIG REQUIRED)
-find_package(Qt5Network ${QT5_VERSION} CONFIG REQUIRED) # for testloader
 
 find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
