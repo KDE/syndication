@@ -3,6 +3,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 include(ECMMarkAsTest)
 
 find_package(Qt5Network ${QT5_VERSION} CONFIG REQUIRED) # for testloader
+find_package(Qt5Widgets ${QT5_VERSION} CONFIG REQUIRED)
 
 ########### next target ###############
 
