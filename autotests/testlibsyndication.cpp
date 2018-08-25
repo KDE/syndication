@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
     QFile f(filename);
 
-    if (!f.open(QIODevice::ReadOnly)) {
+    if (!f.open(QIODevice::ReadOnly|QIODevice::Text)) {
         printUsage(QStringLiteral("Couldn't open file"));
         return 1;
     }
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
         return 0;
     } else {
         QFile expFile(expfname);
-        expFile.open(QIODevice::ReadOnly);
+        expFile.open(QIODevice::ReadOnly|QIODevice::Text);
         QByteArray expected = expFile.readAll();
         expFile.close();
         if (expected.trimmed() != res.toUtf8().trimmed()) {
