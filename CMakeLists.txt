@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.0)
-set(PIM_VERSION "5.9.40")
-set(SYNDICATION_LIB_VERSION ${PIM_VERSION})
 
-project(Syndication VERSION ${SYNDICATION_LIB_VERSION})
+set(KF5_VERSION "5.50.0") # handled by release scripts
+set(KF5_DEP_VERSION "5.49.0") # handled by release scripts
+
+project(Syndication VERSION ${KF5_VERSION})
 
 # ECM setup
-set(KF5_VERSION "5.48.0")
-set(QT5_VERSION "5.9.0")
+set(REQUIRED_QT_VERSION "5.9.0")
 
-find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
+find_package(ECM ${KF5_DEP_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
@@ -23,18 +23,16 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMCoverageOption)
 include(ECMQtDeclareLoggingCategory)
 
-
-
-ecm_setup_version(${SYNDICATION_LIB_VERSION} VARIABLE_PREFIX SYNDICATION
+ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfigVersion.cmake"
                         SOVERSION 5
 )
 
 ########### Find packages ###########
-find_package(Qt5Xml ${QT5_VERSION} CONFIG REQUIRED)
+find_package(Qt5Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
-find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
+find_package(KF5Codecs ${KF5_DEP_VERSION} CONFIG REQUIRED)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
