@@ -6,7 +6,7 @@ platforms:
     - name: All
 portingAid: false
 deprecated: false
-release: false
+release: true
 libraries:
  - qmake: Syndication
    cmake: "KF5::Syndication"
