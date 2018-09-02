@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 
 set(KF5_VERSION "5.50.0") # handled by release scripts
-set(KF5_DEP_VERSION "5.49.0") # handled by release scripts
+set(KF5_DEP_VERSION "5.50.0") # handled by release scripts
 
 project(Syndication VERSION ${KF5_VERSION})
 
-# ECM setup
 set(REQUIRED_QT_VERSION "5.9.0")
 
+# ECM setup
 find_package(ECM ${KF5_DEP_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
