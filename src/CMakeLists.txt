@@ -104,7 +104,7 @@ set(syndication_SRCS
     ${libsyndicationlocal_SRCS}
 )
 
-ecm_qt_declare_logging_category(syndication_SRCS HEADER syndication_debug.h IDENTIFIER SYNDICATION_LOG CATEGORY_NAME org.kde.pim.syndication)
+ecm_qt_declare_logging_category(syndication_SRCS HEADER syndication_debug.h IDENTIFIER SYNDICATION_LOG CATEGORY_NAME kf5.syndication)
 
 add_library(KF5Syndication ${syndication_SRCS})
 
