@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
-set(PIM_VERSION "5.9.1")
+set(PIM_VERSION "5.9.2")
 set(SYNDICATION_LIB_VERSION ${PIM_VERSION})
 
 project(Syndication VERSION ${SYNDICATION_LIB_VERSION})
 
 # ECM setup
 set(KF5_VERSION "5.47.0")
-set(QT5_VERSION "5.9.1")
+set(QT5_VERSION "5.9.0")
 
 find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
