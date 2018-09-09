@@ -30,3 +30,6 @@ install(FILES
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/rss2
         COMPONENT Devel
 )
+
+# make available to ecm_add_qch in parent folder
+set(Syndication_Rss2_APIDOX_SRCS ${Syndication_Rss2_HEADERS} PARENT_SCOPE)

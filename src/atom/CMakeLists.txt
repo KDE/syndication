@@ -31,3 +31,6 @@ install(FILES
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/atom
         COMPONENT Devel
 )
+
+# make available to ecm_add_qch in parent folder
+set(Syndication_Atom_APIDOX_SRCS ${Syndication_Atom_HEADERS} PARENT_SCOPE)

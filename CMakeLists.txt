@@ -22,6 +22,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMCoverageOption)
 include(ECMQtDeclareLoggingCategory)
+include(ECMAddQch)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
@@ -36,6 +37,10 @@ find_package(KF5Codecs ${KF5_DEP_VERSION} CONFIG REQUIRED)
 add_definitions(-DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT)
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+
+option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+
 ########### Targets ###########
 
 add_subdirectory(src)
@@ -47,6 +52,16 @@ endif()
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Syndication")
+
+if (BUILD_QCH)
+    ecm_install_qch_export(
+        TARGETS KF5Syndication_QCH
+        FILE KF5SyndicationQchTargets.cmake
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel
+    )
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5SyndicationQchTargets.cmake\")")
+endif()
 
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/KF5SyndicationConfig.cmake.in"

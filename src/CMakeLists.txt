@@ -181,5 +181,29 @@ install(FILES
 
 )
 
+if(BUILD_QCH)
+    ecm_add_qch(
+        KF5Syndication_QCH
+        NAME Syndication
+        BASE_NAME KF5Syndication
+        VERSION ${KF5_VERSION}
+        ORG_DOMAIN org.kde
+        SOURCES # using only public headers, to cover only public API
+            ${Syndication_HEADERS}
+            ${Syndication_Atom_APIDOX_SRCS}
+            ${Syndication_Rdf_APIDOX_SRCS}
+            ${Syndication_Rss2_APIDOX_SRCS}
+        MD_MAINPAGE "${CMAKE_SOURCE_DIR}/Mainpage.dox"
+        LINK_QCHS
+            Qt5Core_QCH
+        BLANK_MACROS
+            SYNDICATION_EXPORT
+            SYNDICATION_DEPRECATED
+        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        COMPONENT Devel
+    )
+endif()
+
 ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

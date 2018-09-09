@@ -43,3 +43,6 @@ install(FILES
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/rdf
         COMPONENT Devel
 )
+
+# make available to ecm_add_qch in parent folder
+set(Syndication_Rdf_APIDOX_SRCS ${Syndication_Rdf_HEADERS} PARENT_SCOPE)
