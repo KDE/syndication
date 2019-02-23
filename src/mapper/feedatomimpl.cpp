@@ -150,8 +150,8 @@ ImagePtr FeedAtomImpl::image() const
 QMultiMap<QString, QDomElement> FeedAtomImpl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
-
-    foreach (const QDomElement &i, m_doc->unhandledElements()) {
+    const auto unhandledElements = m_doc->unhandledElements();
+    for (const QDomElement &i : unhandledElements) {
         ret.insert(i.namespaceURI() + i.localName(), i);
     }
 

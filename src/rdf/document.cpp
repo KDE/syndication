@@ -155,7 +155,7 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList 
 {
     QVector<SortItem> toSort;
     toSort.reserve(items.size());
-    Q_FOREACH (const Item &i, items) {
+    for (const Item &i : items) {
         SortItem item;
         item.item = i;
         item.index = uriSequence.indexOf(i.resource()->uri());
@@ -164,7 +164,7 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList 
     std::sort(toSort.begin(), toSort.end(), LessThanByIndex());
 
     int i = 0;
-    Q_FOREACH (const SortItem &sortItem, toSort) {
+    for (const SortItem &sortItem : qAsConst(toSort)) {
         items[i] = sortItem.item;
         i++;
     }
@@ -191,7 +191,7 @@ QList<Item> Document::items() const
     QList<Item> list;
     list.reserve(items.count());
 
-    Q_FOREACH (const ResourcePtr &i, items) {
+    for (const ResourcePtr &i : qAsConst(items)) {
         list.append(Item(i, doccpy));
     }
 
@@ -205,7 +205,7 @@ QList<Item> Document::items() const
             QStringList uriSequence;
             uriSequence.reserve(seqItems.size());
 
-            Q_FOREACH (const NodePtr &i, seqItems)
+            for (const NodePtr &i : seqItems)
                 if (i->isResource()) {
                     uriSequence.append(i.staticCast<Resource>()->uri());
                 }

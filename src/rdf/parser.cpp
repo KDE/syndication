@@ -183,7 +183,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     // use QMap here, not QHash. as we need the sorting functionality
     QMap<uint, ResourcePtr> sorted;
 
-    foreach (const ResourcePtr &i, items) {
+    for (const ResourcePtr &i : items) {
         QString numstr = i->property(itemIndex)->asString();
         bool ok = false;
         uint num = numstr.toUInt(&ok);
@@ -195,7 +195,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     SequencePtr seq = model.createSequence();
     model.addStatement(channels.first(), RSSVocab::self()->items(), seq);
 
-    foreach (const ResourcePtr &i, sorted) {
+    for (const ResourcePtr &i : qAsConst(sorted)) {
         seq->append(i);
         // add rdf:about (type)
         model.addStatement(i, RDFVocab::self()->type(), RSSVocab::self()->item());

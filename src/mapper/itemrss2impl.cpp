@@ -184,7 +184,8 @@ QMultiMap<QString, QDomElement> ItemRSS2Impl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
 
-    foreach (const QDomElement &i, m_item.unhandledElements()) {
+    const auto unhandledElements = m_item.unhandledElements();
+    for (const QDomElement &i : unhandledElements) {
         ret.insert(i.namespaceURI() + i.localName(), i);
     }
 

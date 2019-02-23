@@ -213,8 +213,8 @@ Syndication::SpecificItemPtr ItemAtomImpl::specificItem() const
 QMultiMap<QString, QDomElement> ItemAtomImpl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;
-
-    foreach (const QDomElement &i, m_entry.unhandledElements()) {
+    const auto unhandledElements = m_entry.unhandledElements();
+    for (const QDomElement &i : unhandledElements) {
         ret.insert(i.namespaceURI() + i.localName(), i);
     }
 
