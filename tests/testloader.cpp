@@ -137,10 +137,10 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     QCommandLineParser parser;
-    app.setApplicationVersion(QLatin1String(SYNDICATION_VERSION_STRING));
+    app.setApplicationVersion(QStringLiteral(SYNDICATION_VERSION_STRING));
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("+url"), QLatin1String("URL of feed")));
+    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("+url"), QStringLiteral("URL of feed")));
     parser.process(app);
 
     if (parser.positionalArguments().count() != 1) {
