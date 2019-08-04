@@ -13,7 +13,6 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
 include(ECMGenerateHeaders)
-include(ECMGeneratePriFile)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(FeatureSummary)
@@ -23,6 +22,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMCoverageOption)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddQch)
+include(ECMGeneratePriFile)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
