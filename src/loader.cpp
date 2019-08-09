@@ -17,7 +17,6 @@
 
 #include <QUrl>
 
-#include <QBuffer>
 #include <QRegExp>
 #include <QStringList>
 

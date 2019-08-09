@@ -37,11 +37,8 @@
 
 #include <qurl.h>
 
-#include <QByteArray>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-#include <QDir>
-#include <QFile>
 #include <QString>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>

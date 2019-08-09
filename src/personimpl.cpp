@@ -22,7 +22,6 @@
 
 #include "personimpl.h"
 
-#include <QRegExp>
 
 namespace Syndication
 {

@@ -13,7 +13,6 @@
 #include "syndication_export.h"
 
 #include <QObject>
-#include <QString>
 
 class QUrl;
 

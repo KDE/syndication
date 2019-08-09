@@ -26,7 +26,6 @@
 #include <documentsource.h>
 
 #include <QDomDocument>
-#include <QDomElement>
 #include <QString>
 
 namespace Syndication

@@ -35,7 +35,6 @@
 #include <QDomNodeList>
 
 #include <QHash>
-#include <QRegExp>
 #include <QString>
 
 namespace Syndication
