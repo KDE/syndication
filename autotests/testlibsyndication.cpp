@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 
     bool specificformat = false;
 
-    if (filename == QStringLiteral("--specific-format")) {
+    if (filename == QLatin1String("--specific-format")) {
         if (argc < 3) {
             printUsage(QStringLiteral("filename expected"));
             return 1;
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
     QString expfname;
 
-    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QStringLiteral("--compare")) {
+    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QLatin1String("--compare")) {
         expfname = QString::fromLatin1(argv[pcompare + 1]);
     }
 

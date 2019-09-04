@@ -68,7 +68,7 @@ uint EnclosureRSS2Impl::duration() const
         return 0;
     }
 
-    QStringList strTokens = durStr.split(QStringLiteral(":"));
+    QStringList strTokens = durStr.split(QLatin1Char(':'));
     QList<int> intTokens;
 
     int count = strTokens.count();

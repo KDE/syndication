@@ -185,7 +185,7 @@ void Loader::discoverFeeds(const QByteArray &data)
 
     if (QUrl(s2).isRelative()) {
         if (s2.startsWith(QLatin1String("//"))) {
-            s2 = s2.prepend(d->url.scheme() + QLatin1Char(':'));
+            s2.prepend(d->url.scheme() + QLatin1Char(':'));
             d->discoveredFeedURL = QUrl(s2);
         } else if (s2.startsWith(QLatin1Char('/'))) {
             d->discoveredFeedURL = d->url;
