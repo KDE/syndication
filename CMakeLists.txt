@@ -35,7 +35,7 @@ find_package(Qt5Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
 find_package(KF5Codecs ${KF5_DEP_VERSION} CONFIG REQUIRED)
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
