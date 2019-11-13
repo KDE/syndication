@@ -102,7 +102,13 @@ int main(int argc, char **argv)
     }
 
     QString res = specificformat ? ptr->specificDocument()->debugInfo() : ptr->debugInfo();
-
+#if 0
+    QFile headerFile(QStringLiteral("/tmp/bb.txt"));
+    headerFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream outHeaderStream(&headerFile);
+    outHeaderStream << res.toLatin1().trimmed();
+    headerFile.close();
+#endif
     if (expfname.isNull()) {
         std::cout << res.toUtf8().data() << std::endl;
         return 0;
