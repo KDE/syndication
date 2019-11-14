@@ -35,11 +35,20 @@
 #include <QTest>
 QTEST_GUILESS_MAIN(SyndicationTest)
 using namespace Syndication;
+#ifndef Q_OS_WIN
+void initLocale()
+{
+    setenv("LC_ALL", "en_US.utf-8", 1);
+}
+
+Q_CONSTRUCTOR_FUNCTION(initLocale)
+#endif
+
 SyndicationTest::SyndicationTest(QObject *parent)
     : QObject(parent)
 {
-    qputenv("LC_ALL", "C");
 }
+
 
 void SyndicationTest::testSyncationFile_data()
 {
@@ -83,12 +92,12 @@ void SyndicationTest::testSyncationFile()
     const QByteArray expected = expFile.readAll();
     expFile.close();
 
-    const bool compare = (result.trimmed() != QString::fromUtf8(expected));
+    const QByteArray baResult = result.toUtf8().trimmed();
+    const QByteArray baExpected = expected.trimmed();
+    const bool compare = (baResult == baExpected);
     if (!compare) {
-        qDebug() << " result.toUtf8().trimmed()" << result.trimmed();
-        qDebug() << " expected.trimmed()" << expected.trimmed();
+        qDebug() << " result.toUtf8().trimmed()" << baResult;
+        qDebug() << " expected" << baExpected;
     }
     QVERIFY(compare);
-
-    //QCOMPARE(result.toUtf8().trimmed(), expected.trimmed());
 }
