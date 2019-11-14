@@ -147,6 +147,11 @@ ImagePtr FeedAtomImpl::image() const
     return ImageAtomImplPtr(new ImageAtomImpl(m_doc->logo()));
 }
 
+ImagePtr FeedAtomImpl::icon() const
+{
+    return ImageAtomImplPtr(new ImageAtomImpl(m_doc->icon()));
+}
+
 QMultiMap<QString, QDomElement> FeedAtomImpl::additionalProperties() const
 {
     QMultiMap<QString, QDomElement> ret;

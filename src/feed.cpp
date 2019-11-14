@@ -89,6 +89,12 @@ QString Feed::debugInfo() const
         info += dimage->debugInfo();
     }
 
+    ImagePtr dicon = icon();
+
+    if (!dicon->isNull()) {
+        info += dicon->debugInfo();
+    }
+
     QList<ItemPtr> ditems = items();
     QList<ItemPtr>::ConstIterator it = ditems.constBegin();
     QList<ItemPtr>::ConstIterator end = ditems.constEnd();

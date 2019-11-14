@@ -120,9 +120,17 @@ ImagePtr FeedRDFImpl::image() const
     return ptr;
 }
 
+ImagePtr FeedRDFImpl::icon() const
+{
+    ImageRDFImplPtr ptr(new ImageRDFImpl({}));
+    return ptr;
+}
+
 QMultiMap<QString, QDomElement> FeedRDFImpl::additionalProperties() const
 {
     return QMultiMap<QString, QDomElement>();
 }
 
 } // namespace Syndication
+
+

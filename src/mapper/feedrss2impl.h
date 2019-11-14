@@ -63,6 +63,8 @@ public:
 
     ImagePtr image() const override;
 
+    ImagePtr icon() const override;
+
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:

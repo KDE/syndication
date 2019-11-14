@@ -6,6 +6,9 @@ copyright: #Copyright (c) 2019 by Tobias Leupold#
 # Person begin ####################
 name: #Tobias Leupold#
 # Person end ######################
+# Image begin #####################
+url: #http://nasauber.de/bilder/favsonne.png#
+# Image end #######################
 # Item begin ######################
 id: #http://nasauber.de/blog/text.php?text=168#
 title: #Calculating the difference between two QDates#

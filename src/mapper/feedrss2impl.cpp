@@ -125,4 +125,12 @@ QMultiMap<QString, QDomElement> FeedRSS2Impl::additionalProperties() const
     return ret;
 }
 
+ImagePtr FeedRSS2Impl::icon() const
+{
+    ImageRSS2ImplPtr ptr(new ImageRSS2Impl({}));
+    return ptr;
+}
+
 } // namespace Syndication
+
+

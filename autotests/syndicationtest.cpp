@@ -98,6 +98,13 @@ void SyndicationTest::testSyncationFile()
     if (!compare) {
         qDebug() << " result.toUtf8().trimmed()" << baResult;
         qDebug() << " expected" << baExpected;
+#if 0
+        QFile headerFile(QStringLiteral("/tmp/bb.txt"));
+        headerFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        QTextStream outHeaderStream(&headerFile);
+        outHeaderStream << baResult.trimmed();
+        headerFile.close();
+#endif
     }
     QVERIFY(compare);
 }

@@ -137,6 +137,16 @@ public:
     virtual ImagePtr image() const = 0;
 
     /**
+     * returns an icon associated with this item.
+     *
+     * @return an icon object, or a null icon (Not a null pointer!
+     * I.e., icon()->isNull() is @c true)
+     * if no image is specified in the feed
+     *
+     */
+    virtual ImagePtr icon() const = 0;
+
+    /**
      * returns a list of persons who created the feed content. If there is a
      * distinction between authors and contributors (Atom), both are added
      * to the list, where authors are added first.

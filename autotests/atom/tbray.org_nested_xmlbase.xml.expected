@@ -11,6 +11,9 @@ uri: #https://www.tbray.org/ongoing/ongoing.atom#
 # Image begin #####################
 url: #https://www.tbray.org/ongoing/rsslogo.jpg#
 # Image end #######################
+# Image begin #####################
+url: #https://www.tbray.org/favicon.ico#
+# Image end #######################
 # Item begin ######################
 id: #https://www.tbray.org/ongoing/When/201x/2013/06/27/Air-Travel#
 title: #Rent-seeking for Nomads#
@@ -49,4 +52,3 @@ scheme: #https://www.tbray.org/ongoing/What/#
 # Category end ####################
 # Item end ########################
 # Feed end ########################
-

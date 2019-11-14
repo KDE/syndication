@@ -118,8 +118,12 @@ Generator FeedDocument::generator() const
 
 QString FeedDocument::icon() const
 {
-    return completeURI(extractElementTextNS(atom1Namespace(),
-                                            QStringLiteral("icon")));
+    const QString iconPath = extractElementTextNS(atom1Namespace(),
+                                                  QStringLiteral("icon"));
+    if (iconPath.isEmpty()) {
+        return {};
+    }
+    return completeURI(iconPath);
 
 }
 

@@ -29,6 +29,7 @@
 #include <QString>
 #include <QStringList>
 #include <QTextStream>
+#include <QDebug>
 
 namespace Syndication
 {

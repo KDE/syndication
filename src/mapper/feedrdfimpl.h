@@ -65,6 +65,8 @@ public:
 
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
+    ImagePtr icon() const override;
+
 private:
 
     Syndication::RDF::DocumentPtr m_doc;
