@@ -21,9 +21,23 @@
  */
 
 #include "loaderutil_p.h"
+#include <QDebug>
 
+//#define DEBUG_PARSING_FEED
+#ifdef DEBUG_PARSING_FEED
+#include <QFile>
+#include <QTextStream>
+#endif
 QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
 {
+#ifdef DEBUG_PARSING_FEED
+    qDebug() << " QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)";
+    QFile headerFile(QStringLiteral("/tmp/bb.txt"));
+    headerFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream outHeaderStream(&headerFile);
+    outHeaderStream << data;
+    headerFile.close();
+#endif
     QUrl discoveredFeedURL;
     QString str = QString::fromLatin1(data.constData()).simplified();
     QString s2;
@@ -34,36 +48,42 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
 
-    QRegExp rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
+    QRegExp rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)[\\s]*[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
     if (rx.indexIn(str) != -1) {
         s2 = rx.cap(1);
     } else {
-        // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
-        int pos = 0;
-        QStringList feeds;
-        QString host = url.host();
-        rx.setPattern(QStringLiteral("(?:<A )[^H]*(?)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
-        while (pos >= 0) {
-            pos = rx.indexIn(str, pos);
-            s2 = rx.cap(1);
-            if (s2.endsWith(QLatin1String(".rdf")) ||
-                    s2.endsWith(QLatin1String(".rss")) ||
-                    s2.endsWith(QLatin1String(".xml"))) {
-                feeds.append(s2);
-            }
-            if (pos >= 0) {
-                pos += rx.matchedLength();
-            }
-        }
+        QRegExp rx2(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
+        if (rx2.indexIn(str) != -1) {
+            s2 = rx2.cap(1);
+        } else {
 
-        QUrl testURL;
-        // loop through, prefer feeds on same host
-        QStringList::const_iterator end(feeds.constEnd());
-        for (QStringList::const_iterator it = feeds.constBegin(); it != end; ++it) {
-            testURL = QUrl(*it);
-            if (testURL.host() == host) {
-                s2 = *it;
-                break;
+            // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
+            int pos = 0;
+            QStringList feeds;
+            QString host = url.host();
+            rx.setPattern(QStringLiteral("(?:<A )[^H]*(?)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
+            while (pos >= 0) {
+                pos = rx.indexIn(str, pos);
+                s2 = rx.cap(1);
+                if (s2.endsWith(QLatin1String(".rdf")) ||
+                        s2.endsWith(QLatin1String(".rss")) ||
+                        s2.endsWith(QLatin1String(".xml"))) {
+                    feeds.append(s2);
+                }
+                if (pos >= 0) {
+                    pos += rx.matchedLength();
+                }
+            }
+
+            QUrl testURL;
+            // loop through, prefer feeds on same host
+            QStringList::const_iterator end(feeds.constEnd());
+            for (QStringList::const_iterator it = feeds.constBegin(); it != end; ++it) {
+                testURL = QUrl(*it);
+                if (testURL.host() == host) {
+                    s2 = *it;
+                    break;
+                }
             }
         }
     }

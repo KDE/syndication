@@ -38,7 +38,7 @@ void LoaderUtilTest::testParsing_data()
     QTest::addColumn<QUrl>("urlfound");
     QTest::addRow("bug-383381") << QString(QStringLiteral(SYNDICATION_DATA_FEEDPARSING_DIR) + QStringLiteral("/bug-383381.txt"))
                                 << QUrl(QStringLiteral("https://www.youtube.com/user/bigclivedotcom/videos"))
-                                << QUrl(QStringLiteral("https://m.youtube.com/user/bigclivedotcom/videos"));
+                                << QUrl(QStringLiteral("https://www.youtube.com/feeds/videos.xml?channel_id=UCtM5z2gkrGRuWd0JQMx76qA"));
 }
 
 void LoaderUtilTest::testParsing()
