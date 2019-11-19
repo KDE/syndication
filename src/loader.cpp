@@ -13,12 +13,15 @@
 #include "documentsource.h"
 #include "feed.h"
 #include "global.h"
+#include "loaderutil_p.h"
 #include "parsercollection.h"
 
 #include <QUrl>
 
 #include <QRegExp>
 #include <QStringList>
+#include <QDebug>
+#include <QFile>
 
 #include <syndication_debug.h>
 
@@ -26,8 +29,7 @@ namespace Syndication
 {
 
 struct Loader::LoaderPrivate {
-    LoaderPrivate() : retriever(nullptr), lastError(Success),
-        retrieverError(0)
+    LoaderPrivate()
     {
     }
 
@@ -36,9 +38,9 @@ struct Loader::LoaderPrivate {
         delete retriever;
     }
 
-    DataRetriever *retriever;
-    Syndication::ErrorCode lastError;
-    int retrieverError;
+    DataRetriever *retriever = nullptr;
+    Syndication::ErrorCode lastError = Success;
+    int retrieverError = 0;
     QUrl discoveredFeedURL;
     QUrl url;
 };
@@ -137,69 +139,10 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
 
 void Loader::discoverFeeds(const QByteArray &data)
 {
-    QString str = QString::fromLatin1(data.constData()).simplified();
-    QString s2;
-    //QTextStream ts( &str, QIODevice::WriteOnly );
-    //ts << data.data();
-
-    // "<[\\s]link[^>]*rel[\\s]=[\\s]\\\"[\\s]alternate[\\s]\\\"[^>]*>"
-    // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
-    // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
-    QRegExp rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
-    if (rx.indexIn(str) != -1) {
-        s2 = rx.cap(1);
-    } else {
-        // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
-        int pos = 0;
-        QStringList feeds;
-        QString host = d->url.host();
-        rx.setPattern(QStringLiteral("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
-        while (pos >= 0) {
-            pos = rx.indexIn(str, pos);
-            s2 = rx.cap(1);
-            if (s2.endsWith(QLatin1String(".rdf")) ||
-                    s2.endsWith(QLatin1String(".rss")) ||
-                    s2.endsWith(QLatin1String(".xml"))) {
-                feeds.append(s2);
-            }
-            if (pos >= 0) {
-                pos += rx.matchedLength();
-            }
-        }
-
-        QUrl testURL;
-        // loop through, prefer feeds on same host
-        QStringList::const_iterator end(feeds.constEnd());
-        for (QStringList::const_iterator it = feeds.constBegin(); it != end; ++it) {
-            testURL = QUrl(*it);
-            if (testURL.host() == host) {
-                s2 = *it;
-                break;
-            }
-        }
+    const QUrl url = LoaderUtil::parseFeed(data, d->url);
+    if (!url.isEmpty()) {
+        d->discoveredFeedURL = url;
     }
-
-    if (s2.isNull()) {
-        return;
-    }
-
-    if (QUrl(s2).isRelative()) {
-        if (s2.startsWith(QLatin1String("//"))) {
-            s2.prepend(d->url.scheme() + QLatin1Char(':'));
-            d->discoveredFeedURL = QUrl(s2);
-        } else if (s2.startsWith(QLatin1Char('/'))) {
-            d->discoveredFeedURL = d->url;
-            d->discoveredFeedURL.setPath(s2);
-        } else {
-            d->discoveredFeedURL = d->url;
-            d->discoveredFeedURL.setPath(d->discoveredFeedURL.path() + QLatin1Char('/') + s2);
-        }
-        //QT5 d->discoveredFeedURL.cleanPath();
-    } else {
-        d->discoveredFeedURL = QUrl(s2);
-    }
-
-    //QT5 d->discoveredFeedURL.cleanPath();
 }
 
 } // namespace Syndication

@@ -91,6 +91,7 @@ set(libsyndicationlocal_SRCS
     specificitem.cpp
     specificitemvisitor.cpp
     tools.cpp
+    loaderutil.cpp
 )
 
 set(syndication_SRCS
