@@ -20,15 +20,13 @@
  *
  */
 
-#ifndef LOADERUTIL_H
-#define LOADERUTIL_H
-#include <QUrl>
-#include "syndication_export.h"
-namespace Syndication {
-namespace LoaderUtil
-{
-Q_REQUIRED_RESULT SYNDICATION_EXPORT QUrl parseFeed(const QByteArray &data, const QUrl &url);
-}
-}
+#include "loaderutiltest.h"
+#include "loaderutil_p.h"
+#include <QTest>
+QTEST_GUILESS_MAIN(LoaderUtilTest)
 
-#endif // LOADERUTIL_H
+LoaderUtilTest::LoaderUtilTest(QObject *parent)
+    : QObject(parent)
+{
+
+}

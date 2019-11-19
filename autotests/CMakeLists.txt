@@ -23,3 +23,9 @@ add_executable(syndicationtest syndicationtest.cpp)
 add_test(NAME syndicationtest COMMAND syndicationtest)
 ecm_mark_as_test(syndicationtest)
 target_link_libraries(syndicationtest KF5Syndication Qt5::Test)
+
+#########
+add_executable(loaderutiltest loaderutiltest.cpp)
+add_test(NAME loaderutiltest COMMAND loaderutiltest)
+ecm_mark_as_test(loaderutiltest)
+target_link_libraries(loaderutiltest KF5Syndication Qt5::Test)
