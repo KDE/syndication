@@ -30,3 +30,24 @@ LoaderUtilTest::LoaderUtilTest(QObject *parent)
 {
 
 }
+
+void LoaderUtilTest::testParsing_data()
+{
+    QTest::addColumn<QString>("fileName");
+    QTest::addColumn<QUrl>("url");
+    QTest::addColumn<QUrl>("urlfound");
+    QTest::addRow("bug-383381") << QString(QStringLiteral(SYNDICATION_DATA_FEEDPARSING_DIR) + QStringLiteral("/bug-383381.txt"))
+                                << QUrl(QStringLiteral("https://www.youtube.com/user/bigclivedotcom/videos"))
+                                << QUrl(QStringLiteral("https://m.youtube.com/user/bigclivedotcom/videos"));
+}
+
+void LoaderUtilTest::testParsing()
+{
+    QFETCH(QString, fileName);
+    QFETCH(QUrl, url);
+    QFETCH(QUrl, urlfound);
+    QFile f(fileName);
+    QVERIFY(f.open(QIODevice::ReadOnly|QIODevice::Text));
+    const QByteArray ba = f.readAll();
+    QCOMPARE(Syndication::LoaderUtil::parseFeed(ba, url), urlfound);
+}

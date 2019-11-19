@@ -25,6 +25,7 @@ ecm_mark_as_test(syndicationtest)
 target_link_libraries(syndicationtest KF5Syndication Qt5::Test)
 
 #########
+add_definitions(-DSYNDICATION_DATA_FEEDPARSING_DIR="${CMAKE_CURRENT_SOURCE_DIR}/feeds/")
 add_executable(loaderutiltest loaderutiltest.cpp)
 add_test(NAME loaderutiltest COMMAND loaderutiltest)
 ecm_mark_as_test(loaderutiltest)

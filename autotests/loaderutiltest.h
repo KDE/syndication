@@ -32,7 +32,9 @@ class LoaderUtilTest : public QObject
 public:
     explicit LoaderUtilTest(QObject *parent = nullptr);
     ~LoaderUtilTest() = default;
-//private Q_SLOTS:
+private Q_SLOTS:
+    void testParsing_data();
+    void testParsing();
 };
 
 #endif // LOADERUTILTEST_H
