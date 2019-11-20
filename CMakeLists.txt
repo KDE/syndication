@@ -41,6 +41,9 @@ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, 
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
 ########### Targets ###########
+if(BUILD_TESTING)
+   add_definitions(-DBUILD_TESTING)
+endif()
 add_definitions(-DQT_NO_FOREACH)
 add_subdirectory(src)
 

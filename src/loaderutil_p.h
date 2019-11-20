@@ -23,11 +23,11 @@
 #ifndef LOADERUTIL_H
 #define LOADERUTIL_H
 #include <QUrl>
-#include "syndication_export.h"
+#include "syndication_private_export.h"
 namespace Syndication {
 namespace LoaderUtil
 {
-Q_REQUIRED_RESULT SYNDICATION_EXPORT QUrl parseFeed(const QByteArray &data, const QUrl &url);
+Q_REQUIRED_RESULT SYNDICATION_TESTS_EXPORT QUrl parseFeed(const QByteArray &data, const QUrl &url);
 }
 }
 
