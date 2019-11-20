@@ -38,9 +38,7 @@ Item::~Item()
 
 QString Item::debugInfo() const
 {
-    QString info;
-
-    info += QLatin1String("# Item begin ######################\n");
+    QString info = QLatin1String("# Item begin ######################\n");
 
     QString did = id();
     if (!did.isNull()) {

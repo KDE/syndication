@@ -83,8 +83,7 @@ QString Image::description() const
 
 QString Image::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Image: ###################\n");
+    QString info = QLatin1String("### Image: ###################\n");
     if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

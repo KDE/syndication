@@ -33,8 +33,7 @@ Category::~Category()
 
 QString Category::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("# Category begin ##################\n");
+    QString info = QLatin1String("# Category begin ##################\n");
 
     QString dterm = term();
 

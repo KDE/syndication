@@ -241,8 +241,7 @@ QString Item::rating() const
 
 QString Item::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Item: ###################\n");
+    QString info = QLatin1String("### Item: ###################\n");
     if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

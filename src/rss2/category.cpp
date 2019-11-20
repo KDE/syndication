@@ -49,8 +49,7 @@ QString Category::domain() const
 
 QString Category::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Category: ###################\n");
+    QString info = QLatin1String("### Category: ###################\n");
     if (!category().isNull()) {
         info += QLatin1String("category: #") + category() + QLatin1String("#\n");
     }

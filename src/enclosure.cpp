@@ -33,28 +33,27 @@ Enclosure::~Enclosure()
 
 QString Enclosure::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("# Enclosure begin #################\n");
+    QString info = QLatin1String("# Enclosure begin #################\n");
 
-    QString durl = url();
+    const QString durl = url();
 
     if (!durl.isNull()) {
         info += QLatin1String("url: #") + durl + QLatin1String("#\n");
     }
 
-    QString dtitle = title();
+    const QString dtitle = title();
 
     if (!dtitle.isNull()) {
         info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     }
 
-    QString dtype = type();
+    const QString dtype = type();
 
     if (!dtype.isNull()) {
         info += QLatin1String("type: #") + dtype + QLatin1String("#\n");
     }
 
-    int dlength = length();
+    const int dlength = length();
 
     if (dlength != 0) {
         info += QLatin1String("length: #") + QString::number(dlength) + QLatin1String("#\n");

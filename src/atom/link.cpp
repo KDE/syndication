@@ -75,8 +75,7 @@ uint Link::length() const
 
 QString Link::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Link: ###################\n");
+    QString info = QLatin1String("### Link: ###################\n");
     if (!title().isEmpty()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

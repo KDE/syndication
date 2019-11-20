@@ -49,7 +49,7 @@ Source::Source(const QDomElement &element) : ElementWrapper(element)
 
 QList<Person> Source::authors() const
 {
-    QList<QDomElement> a =
+    const QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
                             QStringLiteral("author"));
     QList<Person> list;
@@ -67,7 +67,7 @@ QList<Person> Source::authors() const
 
 QList<Person> Source::contributors() const
 {
-    QList<QDomElement> a =
+    const QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
                             QStringLiteral("contributor"));
     QList<Person> list;
@@ -85,7 +85,7 @@ QList<Person> Source::contributors() const
 
 QList<Category> Source::categories() const
 {
-    QList<QDomElement> a =
+    const QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
                             QStringLiteral("category"));
     QList<Category> list;
@@ -121,7 +121,7 @@ QString Source::id() const
 
 QList<Link> Source::links() const
 {
-    QList<QDomElement> a =
+   const QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
                             QStringLiteral("link"));
     QList<Link> list;
@@ -160,15 +160,14 @@ QString Source::title() const
 
 time_t Source::updated() const
 {
-    QString upd = extractElementTextNS(atom1Namespace(),
+    const QString upd = extractElementTextNS(atom1Namespace(),
                                        QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 
 QString Source::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Source: ###################\n");
+    QString info = QLatin1String("### Source: ###################\n");
     if (!title().isEmpty()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

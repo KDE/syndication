@@ -182,8 +182,7 @@ QString Content::asString() const
 
 QString Content::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Content: ###################\n");
+    QString info = QLatin1String("### Content: ###################\n");
     info += QLatin1String("type: #") + type() + QLatin1String("#\n");
     if (!src().isNull()) {
         info += QLatin1String("src: #") + src() + QLatin1String("#\n");

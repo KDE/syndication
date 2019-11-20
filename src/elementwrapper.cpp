@@ -170,13 +170,13 @@ QString ElementWrapper::xmlLang() const
 
 QString ElementWrapper::extractElementText(const QString &tagName) const
 {
-    QDomElement el = d->element.namedItem(tagName).toElement();
+    const QDomElement el = d->element.namedItem(tagName).toElement();
     return el.isNull() ? QString() : el.text().trimmed();
 }
 
 QString ElementWrapper::extractElementTextNS(const QString &namespaceURI, const QString &localName) const
 {
-    QDomElement el = firstElementByTagNameNS(namespaceURI, localName);
+    const QDomElement el = firstElementByTagNameNS(namespaceURI, localName);
     return el.isNull() ? QString() : el.text().trimmed();
 }
 

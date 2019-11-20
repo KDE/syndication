@@ -65,7 +65,7 @@ QList<Person> FeedDocument::authors() const
     list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
+    const QList<QDomElement>::ConstIterator end = a.constEnd();
 
     for (; it != end; ++it) {
         list.append(Person(*it));
@@ -83,7 +83,7 @@ QList<Person> FeedDocument::contributors() const
     list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
+    const QList<QDomElement>::ConstIterator end = a.constEnd();
 
     for (; it != end; ++it) {
         list.append(Person(*it));
@@ -101,7 +101,7 @@ QList<Category> FeedDocument::categories() const
     list.reserve(a.count());
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
+    const QList<QDomElement>::ConstIterator end = a.constEnd();
 
     for (; it != end; ++it) {
         list.append(Category(*it));
@@ -244,8 +244,7 @@ bool FeedDocument::isValid() const
 
 QString FeedDocument::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### FeedDocument: ###################\n");
+    QString info = QLatin1String("### FeedDocument: ###################\n");
     if (!title().isEmpty()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

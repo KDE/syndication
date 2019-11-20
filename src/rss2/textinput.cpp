@@ -61,8 +61,7 @@ QString TextInput::link() const
 
 QString TextInput::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### TextInput: ###################\n");
+    QString info = QLatin1String("### TextInput: ###################\n");
     if (!title().isNull()) {
         info += QLatin1String("title: #") + title() + QLatin1String("#\n");
     }

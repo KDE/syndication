@@ -113,14 +113,14 @@ bool Document::isValid() const
 
 QString Document::title() const
 {
-    QString str = resource()->property(RSSVocab::self()->title())->asString();
+    const QString str = resource()->property(RSSVocab::self()->title())->asString();
     return normalize(str);
 
 }
 
 QString Document::description() const
 {
-    QString str = resource()->property(RSSVocab::self()->description())->asString();
+    const QString str = resource()->property(RSSVocab::self()->description())->asString();
     return normalize(str);
 }
 

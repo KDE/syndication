@@ -110,13 +110,13 @@ QString Document::link() const
 
 QString Document::description() const
 {
-    QString desc = extractElementTextNS(QString(), QStringLiteral("description"));
+    const QString desc = extractElementTextNS(QString(), QStringLiteral("description"));
     return normalize(desc);
 }
 
 QString Document::language() const
 {
-    QString lang = extractElementTextNS(QString(),
+    const QString lang = extractElementTextNS(QString(),
                                         QStringLiteral("language"));
 
     if (!lang.isNull()) {
@@ -130,7 +130,7 @@ QString Document::language() const
 
 QString Document::copyright() const
 {
-    QString rights = extractElementTextNS(QString(),
+    const QString rights = extractElementTextNS(QString(),
                                           QStringLiteral("copyright"));
     if (!rights.isNull()) {
         return rights;
@@ -166,7 +166,7 @@ time_t Document::pubDate() const
 
 time_t Document::lastBuildDate() const
 {
-    QString str = extractElementTextNS(QString(), QStringLiteral("lastBuildDate"));
+    const QString str = extractElementTextNS(QString(), QStringLiteral("lastBuildDate"));
 
     return parseDate(str, RFCDate);
 }

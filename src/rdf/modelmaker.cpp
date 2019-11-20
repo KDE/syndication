@@ -45,13 +45,13 @@ Model ModelMaker::createFromXML(const QDomDocument &doc)
         return model;
     }
 
-    QDomElement rdfNode = doc.documentElement();
+    const QDomElement rdfNode = doc.documentElement();
 
-    QDomNodeList list = rdfNode.childNodes();
+    const QDomNodeList list = rdfNode.childNodes();
 
     for (int i = 0; i < list.length(); ++i) {
         if (list.item(i).isElement()) {
-            QDomElement el = list.item(i).toElement();
+            const QDomElement el = list.item(i).toElement();
             readResource(model, el);
         }
     }
@@ -78,7 +78,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
 
     model.addStatement(res, RDFVocab::self()->type(), type);
 
-    QDomNodeList children = el.childNodes();
+    const QDomNodeList children = el.childNodes();
 
     bool isSeq = res->isSequence();
 
@@ -109,7 +109,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
             } else { // embedded description
                 QDomElement re = ce.lastChildElement();
 
-                QString uri = re.attribute(about);
+                //QString uri = re.attribute(about);
 
                 // read recursively
                 NodePtr obj = readResource(model, re);

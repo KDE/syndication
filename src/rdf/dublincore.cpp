@@ -56,7 +56,7 @@ QStringList DublinCore::contributors() const
     QList<StatementPtr>::ConstIterator it = list.constBegin();
     QList<StatementPtr>::ConstIterator end = list.constEnd();
     for (; it != end; ++it) {
-        QString str = (*it)->asString();
+        const QString str = (*it)->asString();
         if (!str.isNull()) {
             res.append(str);
         }
@@ -81,7 +81,7 @@ QStringList DublinCore::creators() const
     QList<StatementPtr>::ConstIterator it = list.constBegin();
     QList<StatementPtr>::ConstIterator end = list.constEnd();
     for (; it != end; ++it) {
-        QString str = (*it)->asString();
+        const QString str = (*it)->asString();
         if (!str.isNull()) {
             res.append(str);
         }
@@ -179,7 +179,7 @@ QString DublinCore::debugInfo() const
         info += QStringLiteral("dc:creator: #%1#\n").arg(creator());
     }
 
-    QString ddate = dateTimeToString(date());
+    const QString ddate = dateTimeToString(date());
     if (!ddate.isNull()) {
         info += QStringLiteral("dc:date: #%1#\n").arg(ddate);
     }

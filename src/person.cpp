@@ -33,8 +33,7 @@ Person::~Person()
 
 QString Person::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("# Person begin ####################\n");
+    QString info = QLatin1String("# Person begin ####################\n");
 
     QString dname = name();
 

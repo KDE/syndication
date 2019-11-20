@@ -56,7 +56,7 @@ void Entry::setFeedAuthors(const QList<Person> &feedAuthors)
 
 QList<Person> Entry::authors() const
 {
-    QList<QDomElement> a =
+    const QList<QDomElement> a =
         elementsByTagNameNS(atom1Namespace(),
                             QStringLiteral("author"));
     QList<Person> list;

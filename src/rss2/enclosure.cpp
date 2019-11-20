@@ -59,8 +59,7 @@ QString Enclosure::type() const
 
 QString Enclosure::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Enclosure: ###################\n");
+    QString info = QLatin1String("### Enclosure: ###################\n");
     if (!url().isNull()) {
         info += QLatin1String("url: #") + url() + QLatin1String("#\n");
     }

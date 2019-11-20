@@ -38,31 +38,29 @@ Feed::~Feed()
 
 QString Feed::debugInfo() const
 {
-    QString info;
+    QString info = QLatin1String("# Feed begin ######################\n");
 
-    info += QLatin1String("# Feed begin ######################\n");
-
-    QString dtitle = title();
+    const QString dtitle = title();
     if (!dtitle.isNull()) {
         info += QLatin1String("title: #") + dtitle + QLatin1String("#\n");
     }
 
-    QString dlink = link();
+    const QString dlink = link();
     if (!dlink.isNull()) {
         info += QLatin1String("link: #") + dlink + QLatin1String("#\n");
     }
 
-    QString ddescription = description();
+    const QString ddescription = description();
     if (!ddescription.isNull()) {
         info += QLatin1String("description: #") + ddescription + QLatin1String("#\n");
     }
 
-    QString dcopyright = copyright();
+    const QString dcopyright = copyright();
     if (!dcopyright.isNull()) {
         info += QLatin1String("copyright: #") + dcopyright + QLatin1String("#\n");
     }
 
-    QString dlanguage = language();
+    const QString dlanguage = language();
     if (!dlanguage.isNull()) {
         info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
     }

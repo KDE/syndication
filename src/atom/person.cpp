@@ -59,8 +59,7 @@ QString Person::email() const
 
 QString Person::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Person: ###################\n");
+    QString info = QLatin1String("### Person: ###################\n");
     info += QLatin1String("name: #") + name() + QLatin1String("#\n");
     info += QLatin1String("email: #") + email() + QLatin1String("#\n");
     info += QLatin1String("uri: #") + uri() + QLatin1String("#\n");

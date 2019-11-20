@@ -139,7 +139,7 @@ QString ItemAtomImpl::language() const
 
 QString ItemAtomImpl::id() const
 {
-    QString id = m_entry.id();
+    const QString id = m_entry.id();
     if (!id.isEmpty()) {
         return id;
     }

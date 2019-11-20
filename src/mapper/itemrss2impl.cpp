@@ -50,12 +50,12 @@ QString ItemRSS2Impl::title() const
 
 QString ItemRSS2Impl::link() const
 {
-    QString link = m_item.link();
+    const QString link = m_item.link();
     if (!link.isEmpty()) {
         return link;
     }
 
-    QString guid = m_item.guid();
+    const QString guid = m_item.guid();
     if (m_item.guidIsPermaLink()) {
         return guid;
     }
@@ -122,7 +122,7 @@ QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
 {
     QList<Syndication::EnclosurePtr> list;
 
-    QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
+    const QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
     list.reserve(encs.size());
 
     for (auto it = encs.cbegin(); it != encs.cend(); ++it) {
@@ -137,7 +137,7 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 {
     QList<Syndication::CategoryPtr> list;
 
-    QList<Syndication::RSS2::Category> cats = m_item.categories();
+    const QList<Syndication::RSS2::Category> cats = m_item.categories();
     list.reserve(cats.size());
 
     for (auto it = cats.cbegin(), end = cats.cend(); it != end; ++it) {
@@ -150,7 +150,7 @@ QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 
 int ItemRSS2Impl::commentsCount() const
 {
-    QString cstr = m_item.extractElementTextNS(slashNamespace(), QStringLiteral("comments"));
+    const QString cstr = m_item.extractElementTextNS(slashNamespace(), QStringLiteral("comments"));
     bool ok = false;
     int comments = cstr.toInt(&ok);
     return ok ? comments : -1;

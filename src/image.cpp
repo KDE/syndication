@@ -33,8 +33,7 @@ Image::~Image()
 
 QString Image::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("# Image begin #####################\n");
+    QString info = QLatin1String("# Image begin #####################\n");
 
     QString durl = url();
 

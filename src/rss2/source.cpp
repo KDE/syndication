@@ -50,8 +50,7 @@ QString Source::url() const
 
 QString Source::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Source: ###################\n");
+    QString info= QLatin1String("### Source: ###################\n");
     if (!source().isNull()) {
         info += QLatin1String("source: #") + source() + QLatin1String("#\n");
     }

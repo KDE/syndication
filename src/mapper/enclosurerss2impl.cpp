@@ -68,10 +68,10 @@ uint EnclosureRSS2Impl::duration() const
         return 0;
     }
 
-    QStringList strTokens = durStr.split(QLatin1Char(':'));
+    const QStringList strTokens = durStr.split(QLatin1Char(':'));
     QList<int> intTokens;
 
-    int count = strTokens.count();
+    const int count = strTokens.count();
     bool ok;
 
     for (int i = 0; i < count; ++i) {

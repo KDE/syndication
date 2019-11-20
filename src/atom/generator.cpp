@@ -55,8 +55,7 @@ QString Generator::version() const
 
 QString Generator::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Generator: ###################\n");
+    QString info = QLatin1String("### Generator: ###################\n");
     if (!name().isEmpty()) {
         info += QLatin1String("name: #") + name() + QLatin1String("#\n");
     }

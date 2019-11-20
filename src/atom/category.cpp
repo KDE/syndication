@@ -59,8 +59,7 @@ QString Category::label() const
 
 QString Category::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Category: ###################\n");
+    QString info = QLatin1String("### Category: ###################\n");
     info += QLatin1String("term: #") + term() + QLatin1String("#\n");
     if (!scheme().isEmpty()) {
         info += QLatin1String("scheme: #") + scheme() + QLatin1String("#\n");

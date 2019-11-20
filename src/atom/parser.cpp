@@ -123,7 +123,7 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument &doc, const QDomNode &n
     // copy over attributes
     const int numberOfAttributes(attributes.count());
     for (int i = 0; i < numberOfAttributes; ++i) {
-        QDomAttr attr = attributes.item(i).toAttr();
+        const QDomAttr attr = attributes.item(i).toAttr();
         if (attr.namespaceURI().isEmpty()) {
             newEl.setAttribute(attr.name(), attr.value());
         } else {
@@ -189,7 +189,7 @@ QDomDocument Parser::ParserPrivate::convertAtom0_3(const QDomDocument &doc03)
     nameMapper.insert(QStringLiteral("copyright"), QStringLiteral("rights"));
     nameMapper.insert(QStringLiteral("tagline"), QStringLiteral("subtitle"));
 
-    QDomNodeList children = doc03.childNodes();
+    const QDomNodeList children = doc03.childNodes();
 
     for (int i = 0; i < children.count(); ++i) {
         doc.appendChild(convertNode(doc, children.item(i), nameMapper));

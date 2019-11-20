@@ -71,8 +71,7 @@ QString Cloud::protocol() const
 
 QString Cloud::debugInfo() const
 {
-    QString info;
-    info += QLatin1String("### Cloud: ###################\n");
+    QString info = QLatin1String("### Cloud: ###################\n");
     if (!domain().isNull()) {
         info += QLatin1String("domain: #") + domain() + QLatin1String("#\n");
     }

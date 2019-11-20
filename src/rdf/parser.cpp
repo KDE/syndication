@@ -105,7 +105,7 @@ QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument &docp)
 {
     QDomDocument doc(docp);
 
-    QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(),
+    const QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(),
                         QStringLiteral("item"));
 
     for (int i = 0; i < list.size(); ++i) {

@@ -80,7 +80,7 @@ QString SyndicationInfo::debugInfo() const
     }
     info += QStringLiteral("syn:updateFrequency: #%1#\n").arg(QString::number(updateFrequency()));
 
-    QString dbase = dateTimeToString(updateBase());
+    const QString dbase = dateTimeToString(updateBase());
     if (!dbase.isNull()) {
         info += QStringLiteral("syn:updateBase: #%1#\n").arg(dbase);
     }
