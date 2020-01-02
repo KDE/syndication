@@ -28,7 +28,7 @@
 #include <QByteArray>
 #include <QCryptographicHash>
 #include <QDateTime>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QString>
 
 #include <ctime>
@@ -156,21 +156,21 @@ QString htmlToPlainText(const QString &html)
 {
     QString str(html);
     //TODO: preserve some formatting, such as line breaks
-    str.remove(QRegExp(QStringLiteral("<[^>]*>"))); // remove tags
+    str.remove(QRegularExpression(QStringLiteral("<[^>]*?>"))); // remove tags
     str = resolveEntities(str);
     return str.trimmed();
 }
 
-static QRegExp tagRegExp()
+static QRegularExpression tagRegExp()
 {
-    static QRegExp exp(QStringLiteral("<\\w+.*/?>"));
+    static QRegularExpression exp(QStringLiteral("<\\w+.*/?>"));
     return exp;
 }
 
 bool stringContainsMarkup(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
+    if (str.contains(QRegularExpression(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
 
@@ -185,7 +185,7 @@ bool stringContainsMarkup(const QString &str)
 bool isHtml(const QString &str)
 {
     //check for entities
-    if (str.contains(QRegExp(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
+    if (str.contains(QRegularExpression(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
 
@@ -236,19 +236,19 @@ PersonPtr personFromString(const QString &strp)
     // look for something looking like a mail address ("foo@bar.com",
     // "<foo@bar.com>") and extract it
 
-    QRegExp remail(QStringLiteral("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
+    const QRegularExpression remail(QStringLiteral("<?([^@\\s<]+@[^>\\s]+)>?")); // FIXME: user "proper" regexp,
     // search kmail source for it
 
-    int pos = remail.indexIn(str);
-    if (pos != -1) {
-        QString all = remail.cap(0);
-        email = remail.cap(1);
+    QRegularExpressionMatch match = remail.match(str);
+    if (match.hasMatch()) {
+        const QString all = match.captured(0);
+        email = match.captured(1);
         str.remove(all); // remove mail address
     }
 
     // replace "mailto", "(", ")" (to be extended)
     email.remove(QStringLiteral("mailto:"));
-    email.remove(QRegExp(QStringLiteral("[\\(\\)]")));
+    email.remove(QRegularExpression(QStringLiteral("[()]")));
 
     // simplify the rest and use it as name
 
@@ -260,10 +260,10 @@ PersonPtr personFromString(const QString &strp)
     // str is of the format "Foo M. Bar (President)",
     // we should not cut anything.
 
-    QRegExp rename(QStringLiteral("^\\(([^\\)]*)\\)"));
-
-    if (rename.exactMatch(name)) {
-        name = rename.cap(1);
+    QRegularExpression rename(QRegularExpression::anchoredPattern(QStringLiteral("^\\(([^)]*)\\)")));
+    match = rename.match(name);
+    if (match.hasMatch()) {
+        name = match.captured(1);
     }
 
     name = name.isEmpty() ? QString() : name;

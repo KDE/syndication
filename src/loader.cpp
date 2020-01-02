@@ -18,7 +18,6 @@
 
 #include <QUrl>
 
-#include <QRegExp>
 #include <QStringList>
 #include <QDebug>
 #include <QFile>

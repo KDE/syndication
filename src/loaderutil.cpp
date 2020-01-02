@@ -22,6 +22,7 @@
 
 #include "loaderutil_p.h"
 #include <QDebug>
+#include <QRegularExpression>
 
 //#define DEBUG_PARSING_FEED
 #ifdef DEBUG_PARSING_FEED
@@ -48,30 +49,32 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
 
-    QRegExp rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)[\\s]*[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
-    if (rx.indexIn(str) != -1) {
-        s2 = rx.cap(1);
+    QRegularExpression rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*"
+                                         "[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)"
+                                         "[\\s]*[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
+                           QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch match;
+    if ((match = rx.match(str)).hasMatch()) {
+        s2 = match.captured(1);
     } else {
-        QRegExp rx2(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"), Qt::CaseInsensitive);
-        if (rx2.indexIn(str) != -1) {
-            s2 = rx2.cap(1);
+        const QRegularExpression rx2(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)"
+                                                    "[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
+                                     QRegularExpression::CaseInsensitiveOption);
+        if ((match = rx2.match(str)).hasMatch()) {
+            s2 = match.captured(1);
         } else {
-
             // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
-            int pos = 0;
             QStringList feeds;
             QString host = url.host();
-            rx.setPattern(QStringLiteral("(?:<A )[^H]*(?)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
-            while (pos >= 0) {
-                pos = rx.indexIn(str, pos);
-                s2 = rx.cap(1);
-                if (s2.endsWith(QLatin1String(".rdf")) ||
-                        s2.endsWith(QLatin1String(".rss")) ||
-                        s2.endsWith(QLatin1String(".xml"))) {
+            rx.setPattern(QStringLiteral("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
+            QRegularExpressionMatchIterator iter = rx.globalMatch(str);
+            while (iter.hasNext()) {
+                match = iter.next();
+                s2 = match.captured(1);
+                if (s2.endsWith(QLatin1String(".rdf"))
+                    || s2.endsWith(QLatin1String(".rss"))
+                    || s2.endsWith(QLatin1String(".xml"))) {
                     feeds.append(s2);
-                }
-                if (pos >= 0) {
-                    pos += rx.matchedLength();
                 }
             }
 
