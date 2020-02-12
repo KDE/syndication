@@ -105,7 +105,13 @@ set(syndication_SRCS
     ${libsyndicationlocal_SRCS}
 )
 
-ecm_qt_declare_logging_category(syndication_SRCS HEADER syndication_debug.h IDENTIFIER SYNDICATION_LOG CATEGORY_NAME kf5.syndication)
+ecm_qt_declare_logging_category(syndication_SRCS
+    HEADER syndication_debug.h
+    IDENTIFIER SYNDICATION_LOG
+    CATEGORY_NAME kf5.syndication
+    DESCRIPTION "syndication"
+    EXPORT SYNDICATION
+)
 
 add_library(KF5Syndication ${syndication_SRCS})
 
@@ -180,6 +186,12 @@ install(FILES
     DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication
     COMPONENT Devel
 
+)
+
+ecm_qt_install_logging_categories(
+    EXPORT SYNDICATION
+    FILE syndication.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
 
 if(BUILD_QCH)
