@@ -23,7 +23,7 @@
 #include "tools.h"
 #include "personimpl.h"
 
-#include <kcharsets.h>
+#include <KCharsets>
 
 #include <QByteArray>
 #include <QCryptographicHash>

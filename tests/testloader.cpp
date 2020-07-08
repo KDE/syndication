@@ -33,9 +33,9 @@
 #include "rss2/parser.h"
 #include "syndication_version.h"
 
-#include <qapplication.h>
+#include <QApplication>
 
-#include <qurl.h>
+#include <QUrl>
 
 #include <QCommandLineParser>
 #include <QCommandLineOption>
