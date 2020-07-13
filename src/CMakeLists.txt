@@ -108,7 +108,8 @@ set(syndication_SRCS
 ecm_qt_declare_logging_category(syndication_SRCS
     HEADER syndication_debug.h
     IDENTIFIER SYNDICATION_LOG
-    CATEGORY_NAME kf5.syndication
+    CATEGORY_NAME kf.syndication
+    OLD_CATEGORY_NAMES kf5.syndication
     DESCRIPTION "syndication"
     EXPORT SYNDICATION
 )
