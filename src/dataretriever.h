@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
- *
- * SPDX-License-Identifier: BSD-2-Clause
- */
+    SPDX-FileCopyrightText: 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
+
+    SPDX-License-Identifier: BSD-2-Clause
+*/
 
 #ifndef SYNDICATION_DATARETRIEVER_H
 #define SYNDICATION_DATARETRIEVER_H

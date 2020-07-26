@@ -1,10 +1,10 @@
 /*
- * loader.h
- *
- * Copyright (c) 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
- *
- * SPDX-License-Identifier: BSD-2-Clause
- */
+    loader.h
+    SPDX-FileCopyrightText: 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
+
+    SPDX-License-Identifier: BSD-2-Clause
+*/
+
 #ifndef SYNDICATION_LOADER_H
 #define SYNDICATION_LOADER_H
 

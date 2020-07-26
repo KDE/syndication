@@ -1,10 +1,10 @@
 /*
- * loader.cpp
- *
- * Copyright (c) 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
- *
- * SPDX-License-Identifier: BSD-2-Clause
- */
+    loader.cpp
+    SPDX-FileCopyrightText: 2001, 2002, 2003 Frerich Raabe <raabe@kde.org>
+
+    SPDX-License-Identifier: BSD-2-Clause
+*/
+
 #include "loader.h"
 #include "dataretriever.h"
 #include "documentsource.h"
