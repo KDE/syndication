@@ -2,7 +2,7 @@
     This file is part of LibSyndication.
     SPDX-FileCopyrightText: 2006 Frank Osterfeld <osterfeld@kde.org>
 
-    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
 #include "specificdocument.h"
