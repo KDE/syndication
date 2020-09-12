@@ -8,9 +8,9 @@
 #include "documentsource.h"
 #include "tools.h"
 
+#include <QDebug>
 #include <QByteArray>
 #include <QDomDocument>
-#include <QXmlSimpleReader>
 
 namespace Syndication
 {
@@ -64,13 +64,11 @@ QByteArray DocumentSource::asByteArray() const
 QDomDocument DocumentSource::asDomDocument() const
 {
     if (!d->parsed) {
-        QXmlInputSource source;
-        source.setData(d->array);
-
-        QXmlSimpleReader reader;
-        reader.setFeature(QStringLiteral("http://xml.org/sax/features/namespaces"), true);
-
-        if (!d->domDoc.setContent(&source, &reader)) {
+        QString errorMsg;
+        int errorLine;
+        int errorColumn;
+        if (!d->domDoc.setContent(d->array, true, &errorMsg, &errorLine, &errorColumn)) {
+            qWarning() << errorMsg << "on line" << errorLine;
             d->domDoc.clear();
         }
 

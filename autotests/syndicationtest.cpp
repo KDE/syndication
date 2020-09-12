@@ -80,7 +80,7 @@ void SyndicationTest::testSyncationFile()
     const bool compare = (baResult == baExpected);
     if (!compare) {
         qDebug() << " result.toUtf8().trimmed()" << baResult;
-        qDebug() << " expected" << baExpected;
+        qDebug() << " expected                 " << baExpected;
 #if 0
         QFile headerFile(QStringLiteral("/tmp/bb.txt"));
         headerFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -88,6 +88,8 @@ void SyndicationTest::testSyncationFile()
         outHeaderStream << baResult.trimmed();
         headerFile.close();
 #endif
+        QCOMPARE(QString::fromUtf8( baResult ).split(QLatin1Char('\n')),
+                 QString::fromUtf8(baExpected).split(QLatin1Char('\n')));
     }
     QVERIFY(compare);
 }
