@@ -7,7 +7,6 @@
 
 #include "image.h"
 
-#include <QString>
 
 namespace Syndication
 {

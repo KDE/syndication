@@ -8,7 +8,6 @@
 #include "literal.h"
 #include "nodevisitor.h"
 
-#include <QString>
 
 namespace Syndication
 {

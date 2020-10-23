@@ -9,7 +9,6 @@
 
 #include "specificdocument.h"
 #include "feed.h"
-#include "loader.h"
 #include "dataretriever.h"
 #include "atom/parser.h"
 #include "rdf/parser.h"

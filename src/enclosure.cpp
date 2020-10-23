@@ -7,7 +7,6 @@
 
 #include "enclosure.h"
 
-#include <QString>
 
 namespace Syndication
 {

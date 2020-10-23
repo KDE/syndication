@@ -11,7 +11,6 @@
 #include "resource.h"
 #include "statement.h"
 
-#include <QString>
 
 namespace Syndication
 {

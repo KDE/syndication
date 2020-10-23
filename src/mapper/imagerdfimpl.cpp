@@ -7,7 +7,6 @@
 
 #include "imagerdfimpl.h"
 
-#include <QString>
 
 namespace Syndication
 {

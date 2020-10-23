@@ -7,7 +7,6 @@
 
 #include "person.h"
 
-#include <QString>
 
 namespace Syndication
 {

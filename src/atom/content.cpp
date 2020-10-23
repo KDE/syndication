@@ -11,7 +11,6 @@
 
 #include <QByteArray>
 #include <QDomElement>
-#include <QString>
 #include <QStringList>
 
 namespace Syndication

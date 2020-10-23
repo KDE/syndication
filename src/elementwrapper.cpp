@@ -12,7 +12,6 @@
 
 #include <QDomDocument>
 #include <QDomElement>
-#include <QString>
 #include <QStringList>
 #include <QTextStream>
 #include <QDebug>

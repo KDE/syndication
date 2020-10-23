@@ -12,7 +12,6 @@
 #include "tools.h"
 
 #include <QList>
-#include <QString>
 
 namespace Syndication
 {

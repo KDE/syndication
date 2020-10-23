@@ -7,7 +7,6 @@
 
 #include "category.h"
 
-#include <QString>
 
 namespace Syndication
 {

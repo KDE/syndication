@@ -21,7 +21,6 @@
 #include <QDomElement>
 #include <QList>
 #include <QMultiMap>
-#include <QString>
 #include <QStringList>
 
 using Syndication::RDF::Property;

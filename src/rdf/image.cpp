@@ -9,7 +9,6 @@
 #include "rssvocab.h"
 #include "statement.h"
 
-#include <QString>
 
 namespace Syndication
 {

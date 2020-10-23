@@ -14,7 +14,6 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QRegularExpression>
-#include <QString>
 
 #include <ctime>
 
