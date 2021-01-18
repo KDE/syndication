@@ -97,7 +97,7 @@ void Loader::abort()
         d->retriever = nullptr;
     }
 
-    emit loadingComplete(this, FeedPtr(), Aborted);
+    Q_EMIT loadingComplete(this, FeedPtr(), Aborted);
     delete this;
 }
 
@@ -128,7 +128,7 @@ void Loader::slotRetrieverDone(const QByteArray &data, bool success)
         status = OtherRetrieverError;
     }
 
-    emit loadingComplete(this, feed, status);
+    Q_EMIT loadingComplete(this, feed, status);
 
     delete this;
 }
