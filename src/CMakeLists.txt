@@ -120,7 +120,7 @@ generate_export_header(KF5Syndication BASE_NAME syndication)
 
 add_library(KF5::Syndication ALIAS KF5Syndication)
 
-target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KF5_INCLUDE_INSTALL_DIR}/Syndication/syndication>")
+target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication>")
 target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
 target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
 
