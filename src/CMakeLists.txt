@@ -200,7 +200,7 @@ if(BUILD_QCH)
         KF5Syndication_QCH
         NAME Syndication
         BASE_NAME KF5Syndication
-        VERSION ${KF5_VERSION}
+        VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
             ${Syndication_HEADERS}

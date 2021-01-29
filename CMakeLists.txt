@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(KF5_VERSION "5.79.0") # handled by release scripts
-set(KF5_DEP_VERSION "5.79.0") # handled by release scripts
+set(KF_VERSION "5.79.0") # handled by release scripts
+set(KF_DEP_VERSION "5.79.0") # handled by release scripts
 
-project(Syndication VERSION ${KF5_VERSION})
+project(Syndication VERSION ${KF_VERSION})
 
 set(REQUIRED_QT_VERSION 5.14.0)
 
 # ECM setup
-find_package(ECM ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package(ECM ${KF_DEP_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
@@ -33,7 +33,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
 ########### Find packages ###########
 find_package(Qt5Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
-find_package(KF5Codecs ${KF5_DEP_VERSION} CONFIG REQUIRED)
+find_package(KF5Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054B00)
