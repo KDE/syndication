@@ -19,7 +19,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Model;
 class Resource;
 //@cond PRIVATE

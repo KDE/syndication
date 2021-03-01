@@ -5,13 +5,13 @@
     SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#include "specificdocument.h"
 #include "documentsource.h"
 #include "feed.h"
 #include "parsercollection.h"
+#include "specificdocument.h"
 
-#include <QDebug>
 #include <QByteArray>
+#include <QDebug>
 #include <QFile>
 #include <QString>
 
@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 
     QFile f(filename);
 
-    if (!f.open(QIODevice::ReadOnly|QIODevice::Text)) {
+    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
         printUsage(QStringLiteral("Couldn't open file"));
         return 1;
     }
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
         return 0;
     } else {
         QFile expFile(expfname);
-        expFile.open(QIODevice::ReadOnly|QIODevice::Text);
+        expFile.open(QIODevice::ReadOnly | QIODevice::Text);
         QByteArray expected = expFile.readAll();
         expFile.close();
         if (expected.trimmed() != res.toUtf8().trimmed()) {

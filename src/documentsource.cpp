@@ -8,13 +8,12 @@
 #include "documentsource.h"
 #include "tools.h"
 
-#include <QDebug>
 #include <QByteArray>
+#include <QDebug>
 #include <QDomDocument>
 
 namespace Syndication
 {
-
 class DocumentSource::DocumentSourcePrivate
 {
 public:
@@ -26,14 +25,16 @@ public:
     mutable bool calculatedHash;
 };
 
-DocumentSource::DocumentSource() : d(new DocumentSourcePrivate)
+DocumentSource::DocumentSource()
+    : d(new DocumentSourcePrivate)
 {
     d->parsed = true;
     d->calculatedHash = true;
     d->hash = 0;
 }
 
-DocumentSource::DocumentSource(const QByteArray &source, const QString &url) : d(new DocumentSourcePrivate)
+DocumentSource::DocumentSource(const QByteArray &source, const QString &url)
+    : d(new DocumentSourcePrivate)
 {
     d->array = source;
     d->url = url;
@@ -41,7 +42,8 @@ DocumentSource::DocumentSource(const QByteArray &source, const QString &url) : d
     d->parsed = false;
 }
 
-DocumentSource::DocumentSource(const DocumentSource &other) : d()
+DocumentSource::DocumentSource(const DocumentSource &other)
+    : d()
 {
     *this = other;
 }

@@ -21,14 +21,14 @@
 
 namespace Syndication
 {
-
 /**
  * Atom parser and model classes, representing
  * Atom 1.0 documents (Atom 0.3 documents are
  * converted by the parser)
  */
-namespace Atom {}
-
+namespace Atom
+{
+}
 }
 
 #endif // SYNDICATION_ATOM_ATOM_H

@@ -32,15 +32,16 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Q_DECL_HIDDEN Document::Private
 {
 public:
-    Private() : itemTitleContainsMarkup(false),
-        itemTitlesGuessed(false),
-        itemDescriptionContainsMarkup(false),
-        itemDescGuessed(false)
-    {}
+    Private()
+        : itemTitleContainsMarkup(false)
+        , itemTitlesGuessed(false)
+        , itemDescriptionContainsMarkup(false)
+        , itemDescGuessed(false)
+    {
+    }
     mutable bool itemTitleContainsMarkup;
     mutable bool itemTitlesGuessed;
     mutable bool itemDescriptionContainsMarkup;
@@ -48,22 +49,26 @@ public:
     QSharedPointer<Model::ModelPrivate> modelPrivate;
 };
 
-Document::Document() : Syndication::SpecificDocument(),
-    ResourceWrapper(),
-    d(new Private)
+Document::Document()
+    : Syndication::SpecificDocument()
+    , ResourceWrapper()
+    , d(new Private)
 {
     d->modelPrivate = resource()->model().d;
 }
 
-Document::Document(ResourcePtr resource) : Syndication::SpecificDocument(),
-    ResourceWrapper(resource),
-    d(new Private)
+Document::Document(ResourcePtr resource)
+    : Syndication::SpecificDocument()
+    , ResourceWrapper(resource)
+    , d(new Private)
 {
     d->modelPrivate = resource->model().d;
 }
 
-Document::Document(const Document &other) : SpecificDocument(other),                                                      ResourceWrapper(other),
-    d(new Private)
+Document::Document(const Document &other)
+    : SpecificDocument(other)
+    , ResourceWrapper(other)
+    , d(new Private)
 {
     *d = *(other.d);
 }
@@ -100,7 +105,6 @@ QString Document::title() const
 {
     const QString str = resource()->property(RSSVocab::self()->title())->asString();
     return normalize(str);
-
 }
 
 QString Document::description() const

@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 /**
  * "The purpose of the &lt;textInput> element is something of a mystery.
  * You can use it to specify a search engine box. Or to allow a
@@ -28,7 +27,6 @@ namespace RSS2
 class SYNDICATION_EXPORT TextInput : public ElementWrapper
 {
 public:
-
     /**
      * Default constructor, creates a null object, for which isNull() is
      * @c true.

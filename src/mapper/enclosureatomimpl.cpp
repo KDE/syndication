@@ -11,10 +11,10 @@
 
 namespace Syndication
 {
-
 EnclosureAtomImpl::EnclosureAtomImpl(const Syndication::Atom::Link &link)
     : m_link(link)
-{}
+{
+}
 
 bool EnclosureAtomImpl::isNull() const
 {

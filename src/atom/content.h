@@ -19,7 +19,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 /**
  * The content element either contains or links the content of an entry.
  * The content is usually plain text or HTML, but arbitrary XML or binary
@@ -31,16 +30,15 @@ namespace Atom
 class SYNDICATION_EXPORT Content : public ElementWrapper
 {
 public:
-
     /**
      * format of the content.
      */
     enum Format {
         PlainText, /**< the content is plain text (i.e. "<", ">"
-                        * etc. are text, not
-                   * markup */
+                    * etc. are text, not
+                    * markup */
         EscapedHTML, /**< the content is escaped HTML, (i.e., "<", ">" etc.
-                          * are markup) */
+                      * are markup) */
         XML, /**< the content is embedded XML */
         Binary, /**< the content is base64-encoded binary content */
     };
@@ -53,8 +51,7 @@ public:
      * @param src content source, see src() for details.
      *
      */
-    static Format mapTypeToFormat(const QString &type,
-                                  const QString &src = QString());
+    static Format mapTypeToFormat(const QString &type, const QString &src = QString());
 
     /**
      * creates a null content object.

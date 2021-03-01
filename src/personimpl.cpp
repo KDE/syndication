@@ -7,17 +7,18 @@
 
 #include "personimpl.h"
 
-
 namespace Syndication
 {
-
-PersonImpl::PersonImpl() : m_null(true)
+PersonImpl::PersonImpl()
+    : m_null(true)
 {
 }
 
-PersonImpl::PersonImpl(const QString &name, const QString &uri,
-                       const QString &email) :
-    m_null(false), m_name(name), m_uri(uri), m_email(email)
+PersonImpl::PersonImpl(const QString &name, const QString &uri, const QString &email)
+    : m_null(false)
+    , m_name(name)
+    , m_uri(uri)
+    , m_email(email)
 {
 }
 

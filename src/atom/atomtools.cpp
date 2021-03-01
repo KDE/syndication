@@ -16,10 +16,8 @@
 
 namespace Syndication
 {
-
 namespace Atom
 {
-
 QString extractAtomText(const Syndication::ElementWrapper &parent, const QString &tagname)
 {
     QString str;
@@ -48,4 +46,3 @@ QString extractAtomText(const Syndication::ElementWrapper &parent, const QString
 
 } // namespace Atom
 } // namespace Syndication
-

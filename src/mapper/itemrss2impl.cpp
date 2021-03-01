@@ -8,10 +8,10 @@
 #include "categoryrss2impl.h"
 #include "enclosurerss2impl.h"
 #include <atom/constants.h>
-#include <rss2/category.h>
-#include <rss2/enclosure.h>
 #include <constants.h>
 #include <personimpl.h>
+#include <rss2/category.h>
+#include <rss2/enclosure.h>
 #include <tools.h>
 
 #include <QDomElement>
@@ -21,8 +21,8 @@
 
 namespace Syndication
 {
-
-ItemRSS2Impl::ItemRSS2Impl(const Syndication::RSS2::Item &item) : m_item(item)
+ItemRSS2Impl::ItemRSS2Impl(const Syndication::RSS2::Item &item)
+    : m_item(item)
 {
 }
 
@@ -81,8 +81,7 @@ QString ItemRSS2Impl::id() const
         return guid;
     }
 
-    return QStringLiteral("hash:%1").arg(calcMD5Sum(title()
-            + description() + link() + content()));
+    return QStringLiteral("hash:%1").arg(calcMD5Sum(title() + description() + link() + content()));
 }
 
 time_t ItemRSS2Impl::datePublished() const
@@ -92,7 +91,7 @@ time_t ItemRSS2Impl::datePublished() const
 
 time_t ItemRSS2Impl::dateUpdated() const
 {
-    //Some RSS feeds contain atom elements - return atom:dateUpdated if present
+    // Some RSS feeds contain atom elements - return atom:dateUpdated if present
     const QString updstr = m_item.extractElementTextNS(Atom::atom1Namespace(), QStringLiteral("updated"));
     if (!updstr.isEmpty()) {
         return parseDate(updstr, ISODate);

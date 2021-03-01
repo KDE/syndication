@@ -8,16 +8,13 @@
 #include "literal.h"
 #include "nodevisitor.h"
 
-
 namespace Syndication
 {
 namespace RDF
 {
-
 class Literal::LiteralPrivate
 {
 public:
-
     QString text;
     unsigned int id;
 
@@ -27,11 +24,13 @@ public:
     }
 };
 
-Literal::Literal() : d()
+Literal::Literal()
+    : d()
 {
 }
 
-Literal::Literal(const Literal &other) : Node(other)
+Literal::Literal(const Literal &other)
+    : Node(other)
 {
     d = other.d;
 }
@@ -49,7 +48,8 @@ void Literal::accept(NodeVisitor *visitor, NodePtr ptr)
     }
 }
 
-Literal::Literal(const QString &text) : d(new LiteralPrivate)
+Literal::Literal(const QString &text)
+    : d(new LiteralPrivate)
 {
     d->text = text;
     d->id = idCounter++;

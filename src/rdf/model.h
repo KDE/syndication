@@ -20,13 +20,13 @@
 
 #include <QString>
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
 namespace RDF
 {
-
 /**
  * An RDF model, a set of RDF statements.
  * Model objects are implicitely shared.
@@ -43,7 +43,6 @@ class SYNDICATION_EXPORT Model
     friend class ::Syndication::RDF::Statement::StatementPrivate;
 
 public:
-
     /**
      * default constructor, creates an empty model
      * containing no statements
@@ -135,9 +134,7 @@ public:
      * @return a shared pointer to a statement associated with this
      * model, with the given @c subject, @c predicate and @c object
      */
-    virtual StatementPtr addStatement(ResourcePtr subject,
-                                      PropertyPtr predicate,
-                                      NodePtr object);
+    virtual StatementPtr addStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
     /**
      * removes a statement from the model.
@@ -146,9 +143,7 @@ public:
      * @param predicate predicate of the statement
      * @param object object of the statement
      */
-    virtual void removeStatement(ResourcePtr subject,
-                                 PropertyPtr predicate,
-                                 NodePtr object);
+    virtual void removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
     /**
      * removes a statement from the model.
@@ -211,29 +206,26 @@ public:
      * model doesn't contain a literal with this ID
      */
     virtual LiteralPtr literalByID(uint id) const;
-//@cond PRIVATE
+    //@cond PRIVATE
     /**
      * @internal
      * used by Resource::hasProperty()
      */
-    virtual bool resourceHasProperty(const Resource *resource,
-                                     PropertyPtr property) const;
+    virtual bool resourceHasProperty(const Resource *resource, PropertyPtr property) const;
 
     /**
      * @internal
      * used by Resource::property()
      */
-    virtual StatementPtr resourceProperty(const Resource *resource,
-                                          PropertyPtr property) const;
+    virtual StatementPtr resourceProperty(const Resource *resource, PropertyPtr property) const;
 
     /**
      * @internal
      * used by Resource::properties()
      */
-    virtual QList<StatementPtr> resourceProperties(const Resource *resource,
-            PropertyPtr property) const;
+    virtual QList<StatementPtr> resourceProperties(const Resource *resource, PropertyPtr property) const;
 
-//@endcond
+    //@endcond
     /**
      * a debug string listing the contained statements for
      * debugging purposes

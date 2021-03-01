@@ -26,7 +26,6 @@ namespace Atom
 class SYNDICATION_EXPORT Link : public Syndication::ElementWrapper
 {
 public:
-
     /**
      * creates a null link object.
      */

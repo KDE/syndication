@@ -14,12 +14,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-TextInput::TextInput() : ElementWrapper()
+TextInput::TextInput()
+    : ElementWrapper()
 {
 }
 
-TextInput::TextInput(const QDomElement &element) : ElementWrapper(element)
+TextInput::TextInput(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -41,7 +42,6 @@ QString TextInput::description() const
 QString TextInput::link() const
 {
     return extractElementTextNS(QString(), QStringLiteral("link"));
-
 }
 
 QString TextInput::debugInfo() const

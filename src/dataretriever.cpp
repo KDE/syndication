@@ -9,7 +9,6 @@
 
 namespace Syndication
 {
-
 DataRetriever::DataRetriever()
 {
 }
@@ -19,4 +18,3 @@ DataRetriever::~DataRetriever()
 }
 
 } // namespace Syndication
-

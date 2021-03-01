@@ -8,12 +8,11 @@
 #ifndef SYNDICATION_MAPPER_CATEGORYATOMIMPL_H
 #define SYNDICATION_MAPPER_CATEGORYATOMIMPL_H
 
-#include <category.h>
 #include <atom/category.h>
+#include <category.h>
 
 namespace Syndication
 {
-
 class CategoryAtomImpl;
 typedef QSharedPointer<CategoryAtomImpl> CategoryAtomImplPtr;
 
@@ -25,7 +24,6 @@ typedef QSharedPointer<CategoryAtomImpl> CategoryAtomImplPtr;
 class CategoryAtomImpl : public Syndication::Category
 {
 public:
-
     explicit CategoryAtomImpl(const Syndication::Atom::Category &category);
 
     Q_REQUIRED_RESULT bool isNull() const override;

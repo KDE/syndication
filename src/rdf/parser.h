@@ -8,17 +8,15 @@
 #ifndef SYNDICATION_RDF_PARSER_H
 #define SYNDICATION_RDF_PARSER_H
 
-#include <syndication/rdf/document.h>
 #include <syndication/abstractparser.h>
+#include <syndication/rdf/document.h>
 
 namespace Syndication
 {
-
 class DocumentSource;
 
 namespace RDF
 {
-
 /**
  * Parser implementation for RDF-based RSS 0.9 and RSS 1.0 feeds.
  *
@@ -27,7 +25,6 @@ namespace RDF
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
 public:
-
     /** default constructor */
     Parser();
 
@@ -60,7 +57,6 @@ public:
     QString format() const override;
 
 private:
-
     Parser(const Parser &other);
     Parser &operator=(const Parser &other);
 

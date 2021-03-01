@@ -11,17 +11,16 @@
 #include <syndication/abstractparser.h>
 
 class QString;
-template <class T, class U> class QHash;
+template<class T, class U>
+class QHash;
 
 namespace Syndication
 {
-
 class SpecificDocument;
 class DocumentSource;
 
 namespace Atom
 {
-
 /**
  * parser implementation for Atom 1.0 and 0.3.
  *
@@ -30,7 +29,6 @@ namespace Atom
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
 public:
-
     /** default constructor */
     Parser();
 
@@ -51,8 +49,7 @@ public:
      * @see SpecificDocument::isValid()
      * @param source the document source to parse
      */
-    Q_REQUIRED_RESULT Syndication::SpecificDocumentPtr parse(
-        const Syndication::DocumentSource &source) const override;
+    Q_REQUIRED_RESULT Syndication::SpecificDocumentPtr parse(const Syndication::DocumentSource &source) const override;
 
     /**
      * returns the format string for this parser implementation, which is
@@ -62,7 +59,6 @@ public:
     Q_REQUIRED_RESULT QString format() const override;
 
 private:
-
     Parser(const Parser &other);
     Parser &operator=(const Parser &other);
     class ParserPrivate;

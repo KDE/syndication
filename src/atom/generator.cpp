@@ -14,12 +14,13 @@ namespace Syndication
 {
 namespace Atom
 {
-
-Generator::Generator() : ElementWrapper()
+Generator::Generator()
+    : ElementWrapper()
 {
 }
 
-Generator::Generator(const QDomElement &element) : ElementWrapper(element)
+Generator::Generator(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -55,5 +56,4 @@ QString Generator::debugInfo() const
 }
 
 } // namespace Atom
-} //namespace Syndication
-
+} // namespace Syndication

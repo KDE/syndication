@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 /**
  * A category which can be assigned to items or whole feeds.
  * These can be simple tags as known from delicious or Technorati, or
@@ -28,7 +27,6 @@ namespace RSS2
 class SYNDICATION_EXPORT Category : public ElementWrapper
 {
 public:
-
     /**
      * Creates a Category object wrapping a @c &lt;category> XML element.
      *

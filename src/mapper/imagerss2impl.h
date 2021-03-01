@@ -13,7 +13,6 @@
 
 namespace Syndication
 {
-
 class ImageRSS2Impl;
 typedef QSharedPointer<ImageRSS2Impl> ImageRSS2ImplPtr;
 
@@ -25,7 +24,6 @@ typedef QSharedPointer<ImageRSS2Impl> ImageRSS2ImplPtr;
 class ImageRSS2Impl : public Syndication::Image
 {
 public:
-
     explicit ImageRSS2Impl(const Syndication::RSS2::Image &image);
 
     bool isNull() const override;

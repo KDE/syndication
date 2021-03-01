@@ -15,11 +15,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class DublinCoreVocab::DublinCoreVocabPrivate
 {
 public:
-
     QString namespaceURI;
     PropertyPtr contributor;
     PropertyPtr coverage;
@@ -46,7 +44,8 @@ public:
 };
 DublinCoreVocab *DublinCoreVocab::DublinCoreVocabPrivate::sSelf = nullptr;
 
-DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
+DublinCoreVocab::DublinCoreVocab()
+    : d(new DublinCoreVocabPrivate)
 {
     QString ns = QStringLiteral("http://purl.org/dc/elements/1.1/");
 
@@ -67,7 +66,6 @@ DublinCoreVocab::DublinCoreVocab() : d(new DublinCoreVocabPrivate)
     d->subject = PropertyPtr(new Property(ns + QLatin1String("subject")));
     d->title = PropertyPtr(new Property(ns + QLatin1String("title")));
     d->type = PropertyPtr(new Property(ns + QLatin1String("type")));
-
 }
 
 DublinCoreVocab::~DublinCoreVocab()

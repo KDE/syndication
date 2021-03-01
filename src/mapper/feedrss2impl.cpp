@@ -13,15 +13,15 @@
 #include <rss2/category.h>
 #include <rss2/item.h>
 
+#include <QDomElement>
 #include <QList>
 #include <QMultiMap>
 #include <QString>
-#include <QDomElement>
 
 namespace Syndication
 {
-
-FeedRSS2Impl::FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc) : m_doc(doc)
+FeedRSS2Impl::FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc)
+    : m_doc(doc)
 {
 }
 
@@ -117,5 +117,3 @@ ImagePtr FeedRSS2Impl::icon() const
 }
 
 } // namespace Syndication
-
-

@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 /**
  * A category for categorizing items or whole feeds.
  * A category can be an informal string set by the feed author ("General",
@@ -32,7 +31,6 @@ namespace Atom
 class SYNDICATION_EXPORT Category : public ElementWrapper
 {
 public:
-
     /**
      * creates a null category object.
      */

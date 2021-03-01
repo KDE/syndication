@@ -11,10 +11,10 @@
 
 namespace Syndication
 {
-
 ImageRSS2Impl::ImageRSS2Impl(const Syndication::RSS2::Image &image)
     : m_image(image)
-{}
+{
+}
 
 bool ImageRSS2Impl::isNull() const
 {

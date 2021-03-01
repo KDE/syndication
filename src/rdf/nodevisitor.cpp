@@ -7,8 +7,8 @@
 
 #include "nodevisitor.h"
 
-#include "node.h"
 #include "literal.h"
+#include "node.h"
 #include "property.h"
 #include "resource.h"
 #include "sequence.h"
@@ -17,8 +17,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
-NodeVisitor::~NodeVisitor() {}
+NodeVisitor::~NodeVisitor()
+{
+}
 
 void NodeVisitor::visit(NodePtr node)
 {

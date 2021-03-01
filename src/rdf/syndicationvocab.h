@@ -16,10 +16,8 @@ class QString;
 
 namespace Syndication
 {
-
 namespace RDF
 {
-
 //@cond PRIVATE
 class Property;
 typedef QSharedPointer<Property> PropertyPtr;
@@ -36,7 +34,6 @@ typedef QSharedPointer<Property> PropertyPtr;
 class SYNDICATION_EXPORT SyndicationVocab
 {
 public:
-
     /**
      * destructor
      */

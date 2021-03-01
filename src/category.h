@@ -15,7 +15,6 @@
 
 namespace Syndication
 {
-
 class Category;
 typedef QSharedPointer<Category> CategoryPtr;
 
@@ -33,7 +32,6 @@ typedef QSharedPointer<Category> CategoryPtr;
 class SYNDICATION_EXPORT Category
 {
 public:
-
     /**
      * destructor
      */

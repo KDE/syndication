@@ -7,24 +7,24 @@
 
 #include "testloader.h"
 
-#include "specificdocument.h"
-#include "feed.h"
-#include "dataretriever.h"
 #include "atom/parser.h"
+#include "dataretriever.h"
+#include "feed.h"
 #include "rdf/parser.h"
 #include "rss2/parser.h"
+#include "specificdocument.h"
 #include "syndication_version.h"
 
 #include <QApplication>
 
 #include <QUrl>
 
-#include <QCommandLineParser>
 #include <QCommandLineOption>
-#include <QString>
+#include <QCommandLineParser>
 #include <QNetworkAccessManager>
-#include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QString>
 
 #include <cstdlib>
 #include <iostream>
@@ -46,17 +46,16 @@ public:
         delete mMgr;
     }
 
-    void retrieveData(const QUrl & url) override
+    void retrieveData(const QUrl &url) override
     {
         mReply = mMgr->get(QNetworkRequest(url));
-        connect(mReply, &QNetworkReply::finished,
-                this, [this]() {
-                    if (mReply->error() == QNetworkReply::NoError) {
-                        Q_EMIT dataRetrieved(mReply->readAll(), true);
-                    } else {
-                        Q_EMIT dataRetrieved({}, false);
-                    }
-                });
+        connect(mReply, &QNetworkReply::finished, this, [this]() {
+            if (mReply->error() == QNetworkReply::NoError) {
+                Q_EMIT dataRetrieved(mReply->readAll(), true);
+            } else {
+                Q_EMIT dataRetrieved({}, false);
+            }
+        });
     }
     void abort() override
     {
@@ -83,15 +82,11 @@ TestLibSyndication::TestLibSyndication(const QString &url)
     QUrl kurl = QUrl::fromUserInput(url);
 
     std::cerr << kurl.url().toLocal8Bit().data() << std::endl;
-    Loader *loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader *,
-                                    Syndication::FeedPtr,
-                                    Syndication::ErrorCode)));
+    Loader *loader = Loader::create(this, SLOT(slotLoadingComplete(Syndication::Loader *, Syndication::FeedPtr, Syndication::ErrorCode)));
     loader->loadFrom(kurl, new SimpleRetriever());
 }
 
-void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader,
-        Syndication::FeedPtr feed,
-        Syndication::ErrorCode error)
+void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader, Syndication::FeedPtr feed, Syndication::ErrorCode error)
 {
     Q_UNUSED(loader)
     Q_UNUSED(error)
@@ -103,7 +98,6 @@ void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader,
         std::cerr << "error" << std::endl;
         exit(1);
     }
-
 }
 
 int main(int argc, char **argv)

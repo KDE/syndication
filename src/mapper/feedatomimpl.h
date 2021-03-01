@@ -13,7 +13,6 @@
 
 namespace Syndication
 {
-
 class FeedAtomImpl;
 typedef QSharedPointer<FeedAtomImpl> FeedAtomImplPtr;
 class Image;
@@ -25,7 +24,6 @@ typedef QSharedPointer<Image> ImagePtr;
 class FeedAtomImpl : public Syndication::Feed
 {
 public:
-
     explicit FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc);
 
     Syndication::SpecificDocumentPtr specificDocument() const override;
@@ -51,8 +49,8 @@ public:
     ImagePtr icon() const override;
 
     QMultiMap<QString, QDomElement> additionalProperties() const override;
-private:
 
+private:
     Syndication::Atom::FeedDocumentPtr m_doc;
 };
 

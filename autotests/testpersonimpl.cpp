@@ -14,8 +14,8 @@
 #include <QStringList>
 
 using Syndication::Person;
-using Syndication::PersonPtr;
 using Syndication::PersonImpl;
+using Syndication::PersonPtr;
 
 void TestPersonImpl::fromString()
 {
@@ -82,4 +82,3 @@ void TestPersonImpl::fromString()
 }
 
 QTEST_MAIN(TestPersonImpl)
-

@@ -16,12 +16,13 @@
 #include <ctime>
 
 class QDomElement;
-template <class T> class QList;
-template <class K, class T> class QMultiMap;
+template<class T>
+class QList;
+template<class K, class T>
+class QMultiMap;
 
 namespace Syndication
 {
-
 //@cond PRIVATE
 class Category;
 typedef QSharedPointer<Category> CategoryPtr;
@@ -43,7 +44,6 @@ typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 class SYNDICATION_EXPORT Item
 {
 public:
-
     /**
      * destructor
      */

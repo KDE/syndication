@@ -13,7 +13,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 QString atom1Namespace()
 {
     return QStringLiteral("http://www.w3.org/2005/Atom");

@@ -12,12 +12,13 @@ namespace Syndication
 {
 namespace RDF
 {
-
-Property::Property() : Resource()
+Property::Property()
+    : Resource()
 {
 }
 
-Property::Property(const QString &uri) : Resource(uri)
+Property::Property(const QString &uri)
+    : Resource(uri)
 {
 }
 

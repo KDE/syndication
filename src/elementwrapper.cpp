@@ -10,19 +10,17 @@
 
 #include <QUrl>
 
+#include <QDebug>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QStringList>
 #include <QTextStream>
-#include <QDebug>
 
 namespace Syndication
 {
-
 class ElementWrapper::ElementWrapperPrivate
 {
 public:
-
     QDomElement element;
     QDomDocument ownerDoc;
     mutable QString xmlBase;
@@ -31,7 +29,8 @@ public:
     mutable bool xmlLangParsed;
 };
 
-ElementWrapper::ElementWrapper() : d(new ElementWrapperPrivate)
+ElementWrapper::ElementWrapper()
+    : d(new ElementWrapperPrivate)
 {
     d->xmlBaseParsed = true;
     d->xmlLangParsed = true;
@@ -42,10 +41,11 @@ ElementWrapper::ElementWrapper(const ElementWrapper &other)
     *this = other;
 }
 
-ElementWrapper::ElementWrapper(const QDomElement &element) : d(new ElementWrapperPrivate)
+ElementWrapper::ElementWrapper(const QDomElement &element)
+    : d(new ElementWrapperPrivate)
 {
     d->element = element;
-    d->ownerDoc = element.ownerDocument(); //keep a copy of the (shared, thus cheap) document around to ensure the element isn't deleted too early (Bug 190068)
+    d->ownerDoc = element.ownerDocument(); // keep a copy of the (shared, thus cheap) document around to ensure the element isn't deleted too early (Bug 190068)
     d->xmlBaseParsed = false;
     d->xmlLangParsed = false;
 }
@@ -185,8 +185,7 @@ QString ElementWrapper::childNodesAsXML(const QDomElement &parent)
 
     for (int i = 0; i < list.count(); ++i) {
         QDomNode it = list.item(i);
-        if (!base.isEmpty() && it.isElement()
-                && !it.toElement().hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
+        if (!base.isEmpty() && it.isElement() && !it.toElement().hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
             it.toElement().setAttributeNS(xmlNamespace(), QStringLiteral("base"), base);
         }
 

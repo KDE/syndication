@@ -7,10 +7,8 @@
 
 #include "category.h"
 
-
 namespace Syndication
 {
-
 Category::~Category()
 {
 }

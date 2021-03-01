@@ -15,15 +15,14 @@
 
 #include <QUrl>
 
-#include <QStringList>
 #include <QDebug>
 #include <QFile>
+#include <QStringList>
 
 #include <syndication_debug.h>
 
 namespace Syndication
 {
-
 struct Loader::LoaderPrivate {
     LoaderPrivate()
     {
@@ -49,13 +48,12 @@ Loader *Loader::create()
 Loader *Loader::create(QObject *object, const char *slot)
 {
     Loader *loader = create();
-    connect(loader,
-            SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
-            object, slot);
+    connect(loader, SIGNAL(loadingComplete(Syndication::Loader *, Syndication::FeedPtr, Syndication::ErrorCode)), object, slot);
     return loader;
 }
 
-Loader::Loader() : d(new LoaderPrivate)
+Loader::Loader()
+    : d(new LoaderPrivate)
 {
 }
 
@@ -73,8 +71,7 @@ void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
     d->url = url;
     d->retriever = retriever;
 
-    connect(d->retriever, &DataRetriever::dataRetrieved,
-            this, &Loader::slotRetrieverDone);
+    connect(d->retriever, &DataRetriever::dataRetrieved, this, &Loader::slotRetrieverDone);
 
     d->retriever->retrieveData(url);
 }

@@ -10,7 +10,6 @@
 
 namespace Syndication
 {
-
 SpecificItemVisitor::~SpecificItemVisitor()
 {
 }

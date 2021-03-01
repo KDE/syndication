@@ -7,10 +7,8 @@
 
 #include "image.h"
 
-
 namespace Syndication
 {
-
 Image::~Image()
 {
 }

@@ -15,7 +15,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Resource;
 //@cond PRIVATE
 typedef QSharedPointer<Resource> ResourcePtr;
@@ -26,9 +25,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  */
 class SYNDICATION_EXPORT Image : public ResourceWrapper
 {
-
 public:
-
     /**
      * creates a wrapper wrapping a null resource
      */
@@ -61,15 +58,15 @@ public:
     QString link() const;
 
     /**
-      * the URL of the image file
-      */
+     * the URL of the image file
+     */
     QString url() const;
 
     /**
-    * Returns a description of the image for debugging purposes.
-    *
-    * @return debug string
-    */
+     * Returns a description of the image for debugging purposes.
+     *
+     * @return debug string
+     */
     QString debugInfo() const;
 };
 

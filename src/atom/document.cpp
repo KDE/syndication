@@ -6,13 +6,13 @@
 */
 
 #include "document.h"
+#include "atomtools.h"
 #include "category.h"
 #include "constants.h"
 #include "entry.h"
 #include "generator.h"
 #include "link.h"
 #include "person.h"
-#include "atomtools.h"
 
 #include <documentvisitor.h>
 #include <tools.h>
@@ -27,12 +27,13 @@ namespace Syndication
 {
 namespace Atom
 {
-
-FeedDocument::FeedDocument() : ElementWrapper()
+FeedDocument::FeedDocument()
+    : ElementWrapper()
 {
 }
 
-FeedDocument::FeedDocument(const QDomElement &element)  : ElementWrapper(element)
+FeedDocument::FeedDocument(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -43,9 +44,7 @@ bool FeedDocument::accept(DocumentVisitor *visitor)
 
 QList<Person> FeedDocument::authors() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("author"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -61,9 +60,7 @@ QList<Person> FeedDocument::authors() const
 
 QList<Person> FeedDocument::contributors() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("contributor"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -79,9 +76,7 @@ QList<Person> FeedDocument::contributors() const
 
 QList<Category> FeedDocument::categories() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("category"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
@@ -97,36 +92,30 @@ QList<Category> FeedDocument::categories() const
 
 Generator FeedDocument::generator() const
 {
-    return Generator(firstElementByTagNameNS(atom1Namespace(),
-                     QStringLiteral("generator")));
+    return Generator(firstElementByTagNameNS(atom1Namespace(), QStringLiteral("generator")));
 }
 
 QString FeedDocument::icon() const
 {
-    const QString iconPath = extractElementTextNS(atom1Namespace(),
-                                                  QStringLiteral("icon"));
+    const QString iconPath = extractElementTextNS(atom1Namespace(), QStringLiteral("icon"));
     if (iconPath.isEmpty()) {
         return {};
     }
     return completeURI(iconPath);
-
 }
 
 QString FeedDocument::logo() const
 {
-    return completeURI(extractElementTextNS(atom1Namespace(),
-                                            QStringLiteral("logo")));
+    return completeURI(extractElementTextNS(atom1Namespace(), QStringLiteral("logo")));
 }
 
 QString FeedDocument::id() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("id"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("id"));
 }
 
 QString FeedDocument::rights() const
 {
-
     return extractAtomText(*this, QStringLiteral("rights"));
 }
 
@@ -142,16 +131,13 @@ QString FeedDocument::subtitle() const
 
 time_t FeedDocument::updated() const
 {
-    QString upd = extractElementTextNS(atom1Namespace(),
-                                       QStringLiteral("updated"));
+    QString upd = extractElementTextNS(atom1Namespace(), QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 
 QList<Link> FeedDocument::links() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("link"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
@@ -167,9 +153,7 @@ QList<Link> FeedDocument::links() const
 
 QList<Entry> FeedDocument::entries() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("entry"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("entry"));
     QList<Entry> list;
     list.reserve(a.count());
 
@@ -213,8 +197,7 @@ QList<QDomElement> FeedDocument::unhandledElements() const
     const int numChildren = children.size();
     for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull()
-                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
+        if (!el.isNull() && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }
@@ -297,11 +280,13 @@ QString FeedDocument::debugInfo() const
     return info;
 }
 
-EntryDocument::EntryDocument() : ElementWrapper()
+EntryDocument::EntryDocument()
+    : ElementWrapper()
 {
 }
 
-EntryDocument::EntryDocument(const QDomElement &element)  : ElementWrapper(element)
+EntryDocument::EntryDocument(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 

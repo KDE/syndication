@@ -17,8 +17,9 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-class Parser::ParserPrivate {};
+class Parser::ParserPrivate
+{
+};
 
 bool Parser::accept(const Syndication::DocumentSource &source) const
 {
@@ -48,8 +49,14 @@ Parser::Parser()
     Q_UNUSED(d) // silence -Wunused-private-field
 }
 
-Parser::Parser(const Parser &other) : AbstractParser(other), d(nullptr) {}
-Parser::~Parser() {}
+Parser::Parser(const Parser &other)
+    : AbstractParser(other)
+    , d(nullptr)
+{
+}
+Parser::~Parser()
+{
+}
 Parser &Parser::operator=(const Parser & /*other*/)
 {
     return *this;

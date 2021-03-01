@@ -15,7 +15,6 @@
 
 namespace Syndication
 {
-
 class Image;
 //@cond PRIVATE
 typedef QSharedPointer<Image> ImagePtr;
@@ -31,7 +30,6 @@ typedef QSharedPointer<Image> ImagePtr;
 class SYNDICATION_EXPORT Image
 {
 public:
-
     /**
      * destructor
      */

@@ -16,11 +16,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class RSSVocab::RSSVocabPrivate
 {
 public:
-
     QString namespaceURI;
     PropertyPtr title;
     PropertyPtr link;
@@ -42,7 +40,8 @@ public:
 };
 RSSVocab *RSSVocab::RSSVocabPrivate::sSelf = nullptr;
 
-RSSVocab::RSSVocab() : d(new RSSVocabPrivate)
+RSSVocab::RSSVocab()
+    : d(new RSSVocabPrivate)
 {
     QString ns = QStringLiteral("http://purl.org/rss/1.0/");
 
@@ -133,7 +132,6 @@ ResourcePtr RSSVocab::channel() const
 class RSS09Vocab::RSS09VocabPrivate
 {
 public:
-
     QString namespaceURI;
     PropertyPtr title;
     PropertyPtr link;
@@ -156,7 +154,8 @@ public:
 };
 RSS09Vocab *RSS09Vocab::RSS09VocabPrivate::sSelf = nullptr;
 
-RSS09Vocab::RSS09Vocab() : d(new RSS09VocabPrivate)
+RSS09Vocab::RSS09Vocab()
+    : d(new RSS09VocabPrivate)
 {
     QString ns = QStringLiteral("http://my.netscape.com/rdf/simple/0.9/");
 

@@ -8,21 +8,20 @@
 #ifndef SYNDICATION_ATOM_DOCUMENT_H
 #define SYNDICATION_ATOM_DOCUMENT_H
 
-#include <syndication/specificdocument.h>
 #include <syndication/elementwrapper.h>
+#include <syndication/specificdocument.h>
 
 #include <ctime>
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
-
 class DocumentVisitor;
 
 namespace Atom
 {
-
 class Category;
 class Entry;
 class EntryDocument;
@@ -44,7 +43,6 @@ typedef QSharedPointer<FeedDocument> FeedDocumentPtr;
 class SYNDICATION_EXPORT FeedDocument : public Syndication::SpecificDocument, public ElementWrapper
 {
 public:
-
     /**
      * default constructor, creates a null feed, which
      * is invalid.
@@ -188,7 +186,6 @@ public:
 class SYNDICATION_EXPORT EntryDocument : public Syndication::SpecificDocument, public Syndication::ElementWrapper
 {
 public:
-
     /**
      * default constructor, creates a null document, which is invalid.
      * @see isValid()

@@ -12,7 +12,6 @@
 
 namespace Syndication
 {
-
 class SpecificItem;
 
 namespace Atom
@@ -39,10 +38,9 @@ class Item;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT SpecificItemVisitor //krazy:exclude=dpointer
+class SYNDICATION_EXPORT SpecificItemVisitor // krazy:exclude=dpointer
 {
 public:
-
     /**
      * destructor
      */

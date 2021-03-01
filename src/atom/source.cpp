@@ -6,12 +6,12 @@
 */
 
 #include "source.h"
+#include "atomtools.h"
 #include "category.h"
 #include "constants.h"
 #include "generator.h"
 #include "link.h"
 #include "person.h"
-#include "atomtools.h"
 
 #include <tools.h>
 
@@ -23,20 +23,19 @@ namespace Syndication
 {
 namespace Atom
 {
-
-Source::Source() : ElementWrapper()
+Source::Source()
+    : ElementWrapper()
 {
 }
 
-Source::Source(const QDomElement &element) : ElementWrapper(element)
+Source::Source(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
 QList<Person> Source::authors() const
 {
-    const QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("author"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -52,9 +51,7 @@ QList<Person> Source::authors() const
 
 QList<Person> Source::contributors() const
 {
-    const QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("contributor"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
     QList<Person> list;
     list.reserve(a.count());
 
@@ -70,9 +67,7 @@ QList<Person> Source::contributors() const
 
 QList<Category> Source::categories() const
 {
-    const QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("category"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
@@ -88,27 +83,22 @@ QList<Category> Source::categories() const
 
 Generator Source::generator() const
 {
-    return Generator(firstElementByTagNameNS(atom1Namespace(),
-                     QStringLiteral("generator")));
+    return Generator(firstElementByTagNameNS(atom1Namespace(), QStringLiteral("generator")));
 }
 
 QString Source::icon() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("icon"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("icon"));
 }
 
 QString Source::id() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("id"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("id"));
 }
 
 QList<Link> Source::links() const
 {
-   const QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("link"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
@@ -124,8 +114,7 @@ QList<Link> Source::links() const
 
 QString Source::logo() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("logo"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("logo"));
 }
 
 QString Source::rights() const
@@ -145,8 +134,7 @@ QString Source::title() const
 
 time_t Source::updated() const
 {
-    const QString upd = extractElementTextNS(atom1Namespace(),
-                                       QStringLiteral("updated"));
+    const QString upd = extractElementTextNS(atom1Namespace(), QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 
@@ -215,4 +203,4 @@ QString Source::debugInfo() const
 }
 
 } // namespace Atom
-} //namespace Syndication
+} // namespace Syndication

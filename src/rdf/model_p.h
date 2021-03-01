@@ -8,8 +8,8 @@
 #ifndef SYNDICATION_RDF_MODEL_P_H
 #define SYNDICATION_RDF_MODEL_P_H
 
-#include "model.h"
 #include "literal.h"
+#include "model.h"
 #include "nodevisitor.h"
 #include "property.h"
 #include "rdfvocab.h"
@@ -25,7 +25,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Model::ModelPrivate
 {
 public:
@@ -36,7 +35,7 @@ public:
     ResourcePtr nullResource;
     StatementPtr nullStatement;
     QHash<QString, StatementPtr> statements;
-    QHash<QString, QList<StatementPtr> > stmtsBySubject;
+    QHash<QString, QList<StatementPtr>> stmtsBySubject;
 
     QHash<int, NodePtr> nodes;
     QHash<QString, ResourcePtr> resources;
@@ -46,7 +45,8 @@ public:
 
     class AddToHashesVisitor;
 
-    ModelPrivate() : id(idCounter++)
+    ModelPrivate()
+        : id(idCounter++)
     {
         addToHashesVisitor = new AddToHashesVisitor(this);
         initialized = false;
@@ -65,9 +65,10 @@ public:
     class AddToHashesVisitor : public NodeVisitor
     {
     public:
-
-        explicit AddToHashesVisitor(ModelPrivate *parent) : p(parent)
-        {}
+        explicit AddToHashesVisitor(ModelPrivate *parent)
+            : p(parent)
+        {
+        }
 
         bool visitResource(ResourcePtr res) override
         {
@@ -101,14 +102,11 @@ public:
 
     AddToHashesVisitor *addToHashesVisitor;
 
-    bool resourceHasProperty(const Resource *resource,
-                             PropertyPtr property) const;
+    bool resourceHasProperty(const Resource *resource, PropertyPtr property) const;
 
-    StatementPtr resourceProperty(const Resource *resource,
-                                  PropertyPtr property) const;
+    StatementPtr resourceProperty(const Resource *resource, PropertyPtr property) const;
 
-    QList<StatementPtr> resourceProperties(const Resource *resource,
-                                           PropertyPtr property) const;
+    QList<StatementPtr> resourceProperties(const Resource *resource, PropertyPtr property) const;
 
     NodePtr nodeByID(uint id) const;
 
@@ -153,6 +151,7 @@ public:
             initialized = true;
         }
     }
+
 private:
     Q_DISABLE_COPY(ModelPrivate)
 };

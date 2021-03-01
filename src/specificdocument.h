@@ -16,7 +16,6 @@ class QString;
 
 namespace Syndication
 {
-
 class DocumentVisitor;
 class SpecificDocument;
 
@@ -39,7 +38,6 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 class SYNDICATION_EXPORT SpecificDocument
 {
 public:
-
     /**
      * virtual dtor
      */
@@ -78,4 +76,3 @@ public:
 } // namespace Syndication
 
 #endif // SYNDICATION_SPECIFICDOCUMENT_H
-

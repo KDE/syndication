@@ -16,7 +16,6 @@ class QString;
 
 namespace Syndication
 {
-
 class DocumentSource;
 
 /**
@@ -28,7 +27,6 @@ class DocumentSource;
 class SYNDICATION_EXPORT AbstractParser
 {
 public:
-
     /**
      * virtual destructor
      */

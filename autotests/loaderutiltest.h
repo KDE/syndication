@@ -5,7 +5,6 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-
 #ifndef LOADERUTILTEST_H
 #define LOADERUTILTEST_H
 

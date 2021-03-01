@@ -8,8 +8,8 @@
 #ifndef SYNDICATION_RSS2_DOCUMENT_H
 #define SYNDICATION_RSS2_DOCUMENT_H
 
-#include <syndication/specificdocument.h>
 #include <syndication/elementwrapper.h>
+#include <syndication/specificdocument.h>
 
 #include <ctime>
 
@@ -17,14 +17,15 @@ class QDomDocument;
 class QDomElement;
 class QString;
 
-template <class T> class QList;
-template <class T> class QSet;
+template<class T>
+class QList;
+template<class T>
+class QSet;
 
 namespace Syndication
 {
 namespace RSS2
 {
-
 class Category;
 class Cloud;
 class Document;
@@ -39,11 +40,9 @@ typedef QSharedPointer<Document> DocumentPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument,
-    public Syndication::ElementWrapper
+class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public Syndication::ElementWrapper
 {
 public:
-
     /**
      * Parses an RSS2 document from an XML document.
      * TODO: More on supported formats etc.
@@ -298,7 +297,6 @@ private:
 
     class DocumentPrivate;
     QSharedPointer<DocumentPrivate> d;
-
 };
 
 } // namespace RSS2

@@ -27,8 +27,8 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
     QUrl discoveredFeedURL;
     QString str = QString::fromLatin1(data.constData()).simplified();
     QString s2;
-    //QTextStream ts( &str, QIODevice::WriteOnly );
-    //ts << data.data();
+    // QTextStream ts( &str, QIODevice::WriteOnly );
+    // ts << data.data();
 
     // "<[\\s]link[^>]*rel[\\s]=[\\s]\\\"[\\s]alternate[\\s]\\\"[^>]*>"
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
@@ -37,7 +37,7 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
     QRegularExpression rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*"
                                          "[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)"
                                          "[\\s]*[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
-                           QRegularExpression::CaseInsensitiveOption);
+                          QRegularExpression::CaseInsensitiveOption);
     QRegularExpressionMatch match;
     if ((match = rx.match(str)).hasMatch()) {
         s2 = match.captured(1);
@@ -56,9 +56,7 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
             while (iter.hasNext()) {
                 match = iter.next();
                 s2 = match.captured(1);
-                if (s2.endsWith(QLatin1String(".rdf"))
-                    || s2.endsWith(QLatin1String(".rss"))
-                    || s2.endsWith(QLatin1String(".xml"))) {
+                if (s2.endsWith(QLatin1String(".rdf")) || s2.endsWith(QLatin1String(".rss")) || s2.endsWith(QLatin1String(".xml"))) {
                     feeds.append(s2);
                 }
             }

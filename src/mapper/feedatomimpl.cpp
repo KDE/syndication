@@ -9,11 +9,11 @@
 #include "categoryatomimpl.h"
 #include "imageatomimpl.h"
 #include "itematomimpl.h"
-#include <personimpl.h>
 #include <atom/category.h>
 #include <atom/entry.h>
 #include <atom/link.h>
 #include <atom/person.h>
+#include <personimpl.h>
 
 #include <QDomElement>
 #include <QList>
@@ -22,8 +22,8 @@
 
 namespace Syndication
 {
-
-FeedAtomImpl::FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc) : m_doc(doc)
+FeedAtomImpl::FeedAtomImpl(Syndication::Atom::FeedDocumentPtr doc)
+    : m_doc(doc)
 {
 }
 

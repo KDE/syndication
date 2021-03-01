@@ -29,7 +29,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Parser::ParserPrivate
 {
 public:
@@ -90,8 +89,7 @@ QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument &docp)
 {
     QDomDocument doc(docp);
 
-    const QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(),
-                        QStringLiteral("item"));
+    const QDomNodeList list = doc.elementsByTagNameNS(RSS09Vocab::self()->namespaceURI(), QStringLiteral("item"));
 
     for (int i = 0; i < list.size(); ++i) {
         QDomElement item = list.item(i).toElement();
@@ -99,7 +97,6 @@ QDomDocument Parser::ParserPrivate::addEnumeration(const QDomDocument &docp)
             QDomElement ie = doc.createElementNS(strInternalNs, strItemIndex);
             item.appendChild(ie);
             ie.appendChild(doc.createTextNode(QString::number(i)));
-
         }
     }
 
@@ -149,7 +146,7 @@ void Parser::ParserPrivate::map09to10(Model model)
 
 void Parser::ParserPrivate::addSequenceFor09(Model model)
 {
-    //RDF 0.9 doesn't contain an item sequence, and the items don't have rdf:about, so add both
+    // RDF 0.9 doesn't contain an item sequence, and the items don't have rdf:about, so add both
 
     const QList<ResourcePtr> items = model.resourcesWithType(RSS09Vocab::self()->item());
 
@@ -185,12 +182,13 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
         // add rdf:about (type)
         model.addStatement(i, RDFVocab::self()->type(), RSSVocab::self()->item());
 
-        //add to items sequence
+        // add to items sequence
         model.addStatement(seq, RDFVocab::self()->li(), i);
     }
 }
 
-Parser::Parser() : d(new ParserPrivate)
+Parser::Parser()
+    : d(new ParserPrivate)
 {
     d->strInternalNs = QStringLiteral("http://akregator.sf.net/libsyndication/internal#");
     d->strItemIndex = QStringLiteral("itemIndex");
@@ -201,7 +199,11 @@ Parser::~Parser()
     delete d;
 }
 
-Parser::Parser(const Parser &other) : AbstractParser(other), d(nullptr) {}
+Parser::Parser(const Parser &other)
+    : AbstractParser(other)
+    , d(nullptr)
+{
+}
 Parser &Parser::operator=(const Parser & /*other*/)
 {
     return *this;

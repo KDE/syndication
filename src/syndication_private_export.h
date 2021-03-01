@@ -11,11 +11,11 @@
 
 /* Classes which are exported only for unit tests */
 #ifdef BUILD_TESTING
-# ifndef SYNDICATION_TESTS_EXPORT
-#  define SYNDICATION_TESTS_EXPORT SYNDICATION_EXPORT
-# endif
+#ifndef SYNDICATION_TESTS_EXPORT
+#define SYNDICATION_TESTS_EXPORT SYNDICATION_EXPORT
+#endif
 #else /* not compiling tests */
-# define SYNDICATION_TESTS_EXPORT
+#define SYNDICATION_TESTS_EXPORT
 #endif
 
 #endif

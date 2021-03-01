@@ -26,7 +26,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 class Parser::ParserPrivate
 {
 public:
@@ -53,11 +52,9 @@ Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource
 
     bool feedValid = !feed.isNull();
 
-    if (feedValid && feed.attribute(QStringLiteral("version"))
-            == QLatin1String("0.3")) {
+    if (feedValid && feed.attribute(QStringLiteral("version")) == QLatin1String("0.3")) {
         doc = ParserPrivate::convertAtom0_3(doc);
         feed = doc.namedItem(QStringLiteral("feed")).toElement();
-
     }
 
     feedValid = !feed.isNull() && feed.namespaceURI() == atom1Namespace();
@@ -117,10 +114,8 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument &doc, const QDomNode &n
     }
 
     bool isTextConstruct = newNS == atom1Namespace()
-                           && (newName == QLatin1String("title")
-                               || newName == QLatin1String("rights")
-                               || newName == QLatin1String("subtitle")
-                               || newName == QLatin1String("summary"));
+        && (newName == QLatin1String("title") || newName == QLatin1String("rights") || newName == QLatin1String("subtitle")
+            || newName == QLatin1String("summary"));
 
     // for atom text constructs, map to new type schema (which only allows text, type, xhtml)
 
@@ -140,7 +135,6 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument &doc, const QDomNode &n
         case Content::Binary:
         default:
             newType = QStringLiteral("text");
-
         }
 
         newEl.setAttribute(QStringLiteral("type"), newType);
@@ -189,8 +183,14 @@ Parser::Parser()
     Q_UNUSED(d) // silence -Wunused-private-field
 }
 
-Parser::~Parser() {}
-Parser::Parser(const Parser &other) : AbstractParser(other), d(nullptr) {}
+Parser::~Parser()
+{
+}
+Parser::Parser(const Parser &other)
+    : AbstractParser(other)
+    , d(nullptr)
+{
+}
 Parser &Parser::operator=(const Parser & /*other*/)
 {
     return *this;

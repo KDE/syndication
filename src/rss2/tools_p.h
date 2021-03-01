@@ -9,16 +9,15 @@
 #define SYNDICATION_RSS2_TOOLS_P_H
 
 class QString;
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
-
 class ElementWrapper;
 
 namespace RSS2
 {
-
 /**
  * @internal
  * extracts encoded content from XHTML, content:encoded and friends

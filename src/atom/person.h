@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 /**
  * describes a person, with name and optional URI and e-mail address.
  * Used to describe authors and contributors of feeds/entries
@@ -27,7 +26,6 @@ namespace Atom
 class SYNDICATION_EXPORT Person : public ElementWrapper
 {
 public:
-
     /**
      * creates a null person object
      */

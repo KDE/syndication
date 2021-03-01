@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 //@cond PRIVATE
 class Statement;
 typedef QSharedPointer<Statement> StatementPtr;
@@ -29,8 +28,8 @@ typedef QSharedPointer<Statement> StatementPtr;
 class SYNDICATION_EXPORT Statement
 {
     friend class Model;
-public:
 
+public:
     /**
      * creates a null statement
      */

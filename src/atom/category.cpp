@@ -15,12 +15,13 @@ namespace Syndication
 {
 namespace Atom
 {
-
-Category::Category() : ElementWrapper()
+Category::Category()
+    : ElementWrapper()
 {
 }
 
-Category::Category(const QDomElement &element) : ElementWrapper(element)
+Category::Category(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -58,4 +59,4 @@ QString Category::debugInfo() const
 }
 
 } // namespace Atom
-} //namespace Syndication
+} // namespace Syndication

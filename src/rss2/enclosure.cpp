@@ -11,12 +11,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-Enclosure::Enclosure() : ElementWrapper()
+Enclosure::Enclosure()
+    : ElementWrapper()
 {
 }
 
-Enclosure::Enclosure(const QDomElement &element) : ElementWrapper(element)
+Enclosure::Enclosure(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -59,4 +60,4 @@ QString Enclosure::debugInfo() const
 }
 
 } // namespace RSS2
-}  // namespace Syndication
+} // namespace Syndication

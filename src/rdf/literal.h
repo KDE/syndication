@@ -15,7 +15,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Literal;
 
 //@cond PRIVATE
@@ -29,7 +28,6 @@ typedef QSharedPointer<Literal> LiteralPtr;
 class SYNDICATION_EXPORT Literal : public Node
 {
 public:
-
     /**
      * creates a null literal. text() will return a null string.
      */

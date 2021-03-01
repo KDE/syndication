@@ -9,10 +9,10 @@
 #include "imagerdfimpl.h"
 #include "itemrdfimpl.h"
 
-#include <rdf/dublincore.h>
-#include <rdf/item.h>
 #include <category.h>
 #include <personimpl.h>
+#include <rdf/dublincore.h>
+#include <rdf/item.h>
 #include <tools.h>
 
 #include <QDomElement>
@@ -23,8 +23,8 @@
 
 namespace Syndication
 {
-
-FeedRDFImpl::FeedRDFImpl(Syndication::RDF::DocumentPtr doc) : m_doc(doc)
+FeedRDFImpl::FeedRDFImpl(Syndication::RDF::DocumentPtr doc)
+    : m_doc(doc)
 {
 }
 
@@ -117,5 +117,3 @@ QMultiMap<QString, QDomElement> FeedRDFImpl::additionalProperties() const
 }
 
 } // namespace Syndication
-
-

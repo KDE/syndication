@@ -8,16 +8,16 @@
 #ifndef SYNDICATION_RDF_SEQUENCE_H
 #define SYNDICATION_RDF_SEQUENCE_H
 
-#include <syndication_export.h>
 #include <syndication/rdf/resource.h>
+#include <syndication_export.h>
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
 namespace RDF
 {
-
 //@cond PRIVATE
 class Sequence;
 typedef QSharedPointer<Sequence> SequencePtr;
@@ -31,7 +31,6 @@ typedef QSharedPointer<Sequence> SequencePtr;
 class SYNDICATION_EXPORT Sequence : public Resource
 {
 public:
-
     /**
      * creates a null sequence
      */
@@ -63,11 +62,11 @@ public:
     virtual Sequence &operator=(const Sequence &other);
 
     /**
-    * Used by visitors for double dispatch. See NodeVisitor
-    * for more information.
-    * @param visitor the visitor calling the method
-    * @param ptr a shared pointer object for this node
-    */
+     * Used by visitors for double dispatch. See NodeVisitor
+     * for more information.
+     * @param visitor the visitor calling the method
+     * @param ptr a shared pointer object for this node
+     */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
     /**
@@ -94,7 +93,6 @@ public:
     bool isSequence() const override;
 
 private:
-
     class SequencePrivate;
     QSharedPointer<SequencePrivate> d;
 };

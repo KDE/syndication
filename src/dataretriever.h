@@ -17,7 +17,6 @@ class QByteArray;
 
 namespace Syndication
 {
-
 /**
  * Abstract baseclass for all data retriever classes. Subclass this to add
  * a new retrieval algorithm which can then be plugged into the RSS loader.

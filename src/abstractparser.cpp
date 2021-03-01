@@ -9,7 +9,6 @@
 
 namespace Syndication
 {
-
 AbstractParser::~AbstractParser()
 {
 }

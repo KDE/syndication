@@ -10,14 +10,13 @@
 
 #include "feedrss2impl.h"
 
-#include <rss2/document.h>
-#include <specificdocument.h>
 #include <feed.h>
 #include <mapper.h>
+#include <rss2/document.h>
+#include <specificdocument.h>
 
 namespace Syndication
 {
-
 /** @internal */
 class RSS2Mapper : public Mapper<Feed>
 {

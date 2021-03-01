@@ -14,12 +14,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-Category::Category() : ElementWrapper()
+Category::Category()
+    : ElementWrapper()
 {
 }
 
-Category::Category(const QDomElement &element) : ElementWrapper(element)
+Category::Category(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 QString Category::category() const

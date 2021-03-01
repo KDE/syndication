@@ -12,12 +12,10 @@ class QString;
 
 namespace Syndication
 {
-
 class ElementWrapper;
 
 namespace Atom
 {
-
 /**
  * extracts the content of an @c atomTextConstruct. An atomTextConstruct is an element containing
  * either plain text, escaped html, or embedded XHTML.

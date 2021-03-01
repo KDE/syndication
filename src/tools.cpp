@@ -19,7 +19,6 @@
 
 namespace Syndication
 {
-
 QCryptographicHash md5Machine(QCryptographicHash::Md5);
 
 unsigned int calcHash(const QString &str)
@@ -36,7 +35,7 @@ unsigned int calcHash(const QByteArray &array)
         unsigned int hash = 5381;
         int c;
         while ((c = *s++)) {
-            hash = ((hash << 5) + hash) + c;    // hash*33 + c
+            hash = ((hash << 5) + hash) + c; // hash*33 + c
         }
         return hash;
     }
@@ -45,7 +44,7 @@ unsigned int calcHash(const QByteArray &array)
 static uint toTimeT(QDateTime &kdt)
 {
     if (kdt.isValid()) {
-        //work around unspecified timezones/date-only timestamps by setting the time to 12:00 UTC
+        // work around unspecified timezones/date-only timestamps by setting the time to 12:00 UTC
         if (kdt.time().isNull() || (kdt.time() == QTime(0, 0) && kdt.timeSpec() == Qt::LocalTime)) {
             kdt.setTimeSpec(Qt::UTC);
             kdt.setTime(QTime(12, 0));
@@ -131,7 +130,7 @@ QString plainTextToHtml(const QString &plainText)
     str.replace(QLatin1Char('&'), QLatin1String("&amp;"));
     str.replace(QLatin1Char('\"'), QLatin1String("&quot;"));
     str.replace(QLatin1Char('<'), QLatin1String("&lt;"));
-    //str.replace(QLatin1Char('>'), QLatin1String("&gt;"));
+    // str.replace(QLatin1Char('>'), QLatin1String("&gt;"));
     str.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
     return str.trimmed();
 }
@@ -139,7 +138,7 @@ QString plainTextToHtml(const QString &plainText)
 QString htmlToPlainText(const QString &html)
 {
     QString str(html);
-    //TODO: preserve some formatting, such as line breaks
+    // TODO: preserve some formatting, such as line breaks
     str.remove(QRegularExpression(QStringLiteral("<[^>]*?>"))); // remove tags
     str = resolveEntities(str);
     return str.trimmed();
@@ -153,7 +152,7 @@ static QRegularExpression tagRegExp()
 
 bool stringContainsMarkup(const QString &str)
 {
-    //check for entities
+    // check for entities
     if (str.contains(QRegularExpression(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
@@ -168,7 +167,7 @@ bool stringContainsMarkup(const QString &str)
 
 bool isHtml(const QString &str)
 {
-    //check for entities
+    // check for entities
     if (str.contains(QRegularExpression(QStringLiteral("&[a-zA-Z0-9#]+;")))) {
         return true;
     }
@@ -261,8 +260,9 @@ PersonPtr personFromString(const QString &strp)
     return PersonPtr(new PersonImpl(name, uri, email));
 }
 
-ElementType::ElementType(const QString &localnamep,
-                         const QString &nsp) : ns(nsp), localname(localnamep)
+ElementType::ElementType(const QString &localnamep, const QString &nsp)
+    : ns(nsp)
+    , localname(localnamep)
 {
 }
 
@@ -272,4 +272,3 @@ bool ElementType::operator==(const ElementType &other) const
 }
 
 } // namespace Syndication
-

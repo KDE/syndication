@@ -18,7 +18,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 /**
  * Wrapper to access syndication information for a feed.
  * The RSS 1.0 syndication module provides syndication hints to
@@ -32,7 +31,6 @@ namespace RDF
 class SYNDICATION_EXPORT SyndicationInfo : public ResourceWrapper
 {
 public:
-
     /**
      * update period enum as used by updatePeriod().
      */
@@ -100,7 +98,6 @@ public:
     QString debugInfo() const;
 
 protected:
-
     /**
      * returns Period value as string.
      * @param period period enum to convert to a string

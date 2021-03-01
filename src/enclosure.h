@@ -15,7 +15,6 @@
 
 namespace Syndication
 {
-
 class Enclosure;
 //@cond PRIVATE
 typedef QSharedPointer<Enclosure> EnclosurePtr;
@@ -32,7 +31,6 @@ typedef QSharedPointer<Enclosure> EnclosurePtr;
 class SYNDICATION_EXPORT Enclosure
 {
 public:
-
     /**
      * destructor
      */

@@ -14,7 +14,6 @@
 
 namespace Syndication
 {
-
 class EnclosureRSS2Impl;
 typedef QSharedPointer<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 
@@ -26,9 +25,7 @@ typedef QSharedPointer<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 class EnclosureRSS2Impl : public Syndication::Enclosure
 {
 public:
-
-    explicit EnclosureRSS2Impl(const Syndication::RSS2::Item &item,
-                               const Syndication::RSS2::Enclosure &enc);
+    explicit EnclosureRSS2Impl(const Syndication::RSS2::Item &item, const Syndication::RSS2::Enclosure &enc);
 
     Q_REQUIRED_RESULT bool isNull() const override;
 

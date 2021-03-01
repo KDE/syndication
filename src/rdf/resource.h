@@ -12,13 +12,13 @@
 
 class QString;
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
 namespace RDF
 {
-
 class Model;
 class Property;
 typedef QSharedPointer<Property> PropertyPtr;
@@ -38,7 +38,6 @@ class SYNDICATION_EXPORT Resource : public Node
     friend class Model;
 
 public:
-
     /**
      * creates a null resource
      */
@@ -85,7 +84,7 @@ public:
      * @param visitor the visitor calling the method
      * @param ptr a shared pointer object for this node
      */
-    void accept(NodeVisitor *visitor,  NodePtr ptr) override;
+    void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
     /**
      * creates a copy of the resource object
@@ -187,7 +186,6 @@ public:
     void setId(unsigned int id) override;
 
 private:
-
     class ResourcePrivate;
     typedef QSharedPointer<ResourcePrivate> ResourcePrivatePtr;
     ResourcePrivatePtr d;

@@ -13,7 +13,6 @@
 
 namespace Syndication
 {
-
 class CategoryRSS2Impl;
 typedef QSharedPointer<CategoryRSS2Impl> CategoryRSS2ImplPtr;
 
@@ -25,7 +24,6 @@ typedef QSharedPointer<CategoryRSS2Impl> CategoryRSS2ImplPtr;
 class CategoryRSS2Impl : public Syndication::Category
 {
 public:
-
     explicit CategoryRSS2Impl(const Syndication::RSS2::Category &category);
 
     Q_REQUIRED_RESULT bool isNull() const override;

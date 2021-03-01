@@ -14,7 +14,6 @@
 
 namespace Syndication
 {
-
 class SpecificItemVisitor;
 class SpecificItem;
 
@@ -32,7 +31,6 @@ typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 class SYNDICATION_EXPORT SpecificItem
 {
 public:
-
     /**
      * virtual dtor
      */
@@ -52,10 +50,8 @@ public:
      * @param visitor the visitor "visiting" this object
      */
     virtual bool accept(SpecificItemVisitor *visitor) = 0;
-
 };
 
 } // namespace Syndication
 
 #endif // SYNDICATION_SPECIFICITEM_H
-

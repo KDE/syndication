@@ -16,11 +16,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Q_DECL_HIDDEN RDFVocab::RDFVocabPrivate
 {
 public:
-
     QString namespaceURI;
     ResourcePtr seq;
     PropertyPtr type;
@@ -45,7 +43,8 @@ RDFVocab *RDFVocab::self()
     return p.sSelf;
 }
 
-RDFVocab::RDFVocab() : d(new RDFVocabPrivate)
+RDFVocab::RDFVocab()
+    : d(new RDFVocabPrivate)
 {
     QString ns = QStringLiteral("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 

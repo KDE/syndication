@@ -19,7 +19,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Resource;
 //@cond PRIVATE
 typedef QSharedPointer<Resource> ResourcePtr;
@@ -35,7 +34,6 @@ typedef QSharedPointer<Resource> ResourcePtr;
 class SYNDICATION_EXPORT DublinCore : public ResourceWrapper
 {
 public:
-
     /**
      * creates a dublin core convenience wrapper for a resource
      *

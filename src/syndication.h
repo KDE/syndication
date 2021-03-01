@@ -8,7 +8,6 @@
 #ifndef SYNDICATION_SYNDICATION_H
 #define SYNDICATION_SYNDICATION_H
 
-#include <syndication/specificdocument.h>
 #include <syndication/abstractparser.h>
 #include <syndication/category.h>
 #include <syndication/constants.h>
@@ -25,6 +24,7 @@
 #include <syndication/mapper.h>
 #include <syndication/parsercollection.h>
 #include <syndication/person.h>
+#include <syndication/specificdocument.h>
 #include <syndication/specificitem.h>
 #include <syndication/specificitemvisitor.h>
 #include <syndication/tools.h>
@@ -32,6 +32,8 @@
 /**
  * TODO
  */
-namespace Syndication {}
+namespace Syndication
+{
+}
 
 #endif // SYNDICATION_SYNDICATION_H

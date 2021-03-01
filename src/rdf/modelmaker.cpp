@@ -21,7 +21,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 Model ModelMaker::createFromXML(const QDomDocument &doc)
 {
     Model model;
@@ -94,7 +93,7 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
             } else { // embedded description
                 QDomElement re = ce.lastChildElement();
 
-                //QString uri = re.attribute(about);
+                // QString uri = re.attribute(about);
 
                 // read recursively
                 NodePtr obj = readResource(model, re);
@@ -105,10 +104,9 @@ ResourcePtr ModelMaker::readResource(Model &model, const QDomElement &el)
                 } else {
                     model.addStatement(res, pred, obj);
                 }
-
             }
 
-            //TODO: bag, reification (nice to have, but not important for basic RSS 1.0)
+            // TODO: bag, reification (nice to have, but not important for basic RSS 1.0)
         }
     }
 

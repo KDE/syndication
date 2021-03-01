@@ -20,12 +20,13 @@
 
 namespace Syndication
 {
-
 /**
  * A parser and model classes for RSS 0.91 (Userland and Netscape flavor), 0.92, 0.93, 0.94
  * and 2.0(.1)
  */
-namespace RSS2 {}
+namespace RSS2
+{
+}
 
 } // namespace Syndication
 

@@ -14,10 +14,8 @@
 
 namespace Syndication
 {
-
 namespace RDF
 {
-
 //@cond PRIVATE
 class Literal;
 typedef QSharedPointer<Literal> LiteralPtr;
@@ -40,10 +38,9 @@ typedef QSharedPointer<Sequence> SequencePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT NodeVisitor //krazy:exclude=dpointer
+class SYNDICATION_EXPORT NodeVisitor // krazy:exclude=dpointer
 {
 public:
-
     /**
      * destructor
      */

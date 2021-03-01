@@ -5,19 +5,19 @@
     SPDX-License-Identifier: GPL-2.0-or-later WITH Qt-Commercial-exception-1.0
 */
 
-#include "specificdocument.h"
 #include "documentsource.h"
 #include "feed.h"
 #include "parsercollection.h"
+#include "specificdocument.h"
 
 #include <QFile>
 #include <QString>
 #include <QStringList>
-#include <QTime>
 #include <QTextStream>
+#include <QTime>
 
-#include <iostream>
 #include <cstdio>
+#include <iostream>
 
 using namespace Syndication;
 
@@ -57,7 +57,6 @@ int main(int argc, char **argv)
     time.start();
 
     foreach (const QString &filename, filenames) {
-
         QFile f(filename);
 
         if (!f.open(QIODevice::ReadOnly)) {

@@ -12,7 +12,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 unsigned int Node::idCounter = 1;
 
 void Node::accept(NodeVisitor *visitor, NodePtr ptr)

@@ -15,7 +15,6 @@
 
 namespace Syndication
 {
-
 class Person;
 
 //@cond PRIVATE
@@ -37,7 +36,6 @@ typedef QSharedPointer<Person> PersonPtr;
 class SYNDICATION_EXPORT Person
 {
 public:
-
     /**
      * destructor
      */

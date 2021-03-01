@@ -9,7 +9,6 @@
 
 namespace Syndication
 {
-
 SpecificItem::~SpecificItem()
 {
 }

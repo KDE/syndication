@@ -6,13 +6,13 @@
 */
 
 #include "entry.h"
+#include "atomtools.h"
 #include "category.h"
 #include "constants.h"
 #include "content.h"
 #include "link.h"
 #include "person.h"
 #include "source.h"
-#include "atomtools.h"
 
 #include <specificitemvisitor.h>
 #include <tools.h>
@@ -26,12 +26,13 @@ namespace Syndication
 {
 namespace Atom
 {
-
-Entry::Entry() : ElementWrapper()
+Entry::Entry()
+    : ElementWrapper()
 {
 }
 
-Entry::Entry(const QDomElement &element) : ElementWrapper(element)
+Entry::Entry(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -42,9 +43,7 @@ void Entry::setFeedAuthors(const QList<Person> &feedAuthors)
 
 QList<Person> Entry::authors() const
 {
-    const QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("author"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
     QList<Person> list;
 
     if (!a.isEmpty()) {
@@ -68,9 +67,7 @@ QList<Person> Entry::authors() const
 
 QList<Person> Entry::contributors() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("contributor"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
     QList<Person> list;
 
     QList<QDomElement>::ConstIterator it = a.constBegin();
@@ -86,9 +83,7 @@ QList<Person> Entry::contributors() const
 
 QList<Category> Entry::categories() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("category"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
@@ -104,16 +99,12 @@ QList<Category> Entry::categories() const
 
 QString Entry::id() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("id"));
-
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("id"));
 }
 
 QList<Link> Entry::links() const
 {
-    QList<QDomElement> a =
-        elementsByTagNameNS(atom1Namespace(),
-                            QStringLiteral("link"));
+    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
@@ -134,21 +125,18 @@ QString Entry::rights() const
 
 Source Entry::source() const
 {
-    return Source(firstElementByTagNameNS(atom1Namespace(),
-                                          QStringLiteral("source")));
+    return Source(firstElementByTagNameNS(atom1Namespace(), QStringLiteral("source")));
 }
 
 time_t Entry::published() const
 {
-    QString pub = extractElementTextNS(atom1Namespace(),
-                                       QStringLiteral("published"));
+    QString pub = extractElementTextNS(atom1Namespace(), QStringLiteral("published"));
     return parseDate(pub, ISODate);
 }
 
 time_t Entry::updated() const
 {
-    QString upd = extractElementTextNS(atom1Namespace(),
-                                       QStringLiteral("updated"));
+    QString upd = extractElementTextNS(atom1Namespace(), QStringLiteral("updated"));
     return parseDate(upd, ISODate);
 }
 
@@ -164,8 +152,7 @@ QString Entry::title() const
 
 Content Entry::content() const
 {
-    return Content(firstElementByTagNameNS(atom1Namespace(),
-                                           QStringLiteral("content")));
+    return Content(firstElementByTagNameNS(atom1Namespace(), QStringLiteral("content")));
 }
 
 QList<QDomElement> Entry::unhandledElements() const
@@ -194,8 +181,7 @@ QList<QDomElement> Entry::unhandledElements() const
     const int numChildren = children.size();
     for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull()
-                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
+        if (!el.isNull() && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }
@@ -277,5 +263,4 @@ bool Entry::accept(SpecificItemVisitor *visitor)
 }
 
 } // namespace Atom
-} //namespace Syndication
-
+} // namespace Syndication

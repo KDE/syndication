@@ -13,12 +13,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-Image::Image() : ElementWrapper()
+Image::Image()
+    : ElementWrapper()
 {
 }
 
-Image::Image(const QDomElement &element) : ElementWrapper(element)
+Image::Image(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -30,13 +31,11 @@ QString Image::url() const
 QString Image::title() const
 {
     return extractElementTextNS(QString(), QStringLiteral("title"));
-
 }
 
 QString Image::link() const
 {
     return extractElementTextNS(QString(), QStringLiteral("link"));
-
 }
 
 uint Image::width() const
@@ -88,4 +87,4 @@ QString Image::debugInfo() const
 }
 
 } // namespace RSS2
-} //namespace Syndication
+} // namespace Syndication

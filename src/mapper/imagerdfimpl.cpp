@@ -7,13 +7,12 @@
 
 #include "imagerdfimpl.h"
 
-
 namespace Syndication
 {
-
 ImageRDFImpl::ImageRDFImpl(const Syndication::RDF::Image &image)
     : m_image(image)
-{}
+{
+}
 
 bool ImageRDFImpl::isNull() const
 {

@@ -11,10 +11,10 @@
 
 namespace Syndication
 {
-
 CategoryAtomImpl::CategoryAtomImpl(const Syndication::Atom::Category &category)
     : m_category(category)
-{}
+{
+}
 
 bool CategoryAtomImpl::isNull() const
 {

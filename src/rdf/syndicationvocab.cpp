@@ -15,11 +15,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class SyndicationVocab::SyndicationVocabPrivate
 {
 public:
-
     QString namespaceURI;
     PropertyPtr updatePeriod;
     PropertyPtr updateFrequency;
@@ -34,7 +32,8 @@ public:
 };
 SyndicationVocab *SyndicationVocab::SyndicationVocabPrivate::sSelf = nullptr;
 
-SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
+SyndicationVocab::SyndicationVocab()
+    : d(new SyndicationVocabPrivate)
 {
     QString ns = QStringLiteral("http://purl.org/rss/1.0/modules/syndication/");
 
@@ -43,7 +42,6 @@ SyndicationVocab::SyndicationVocab() : d(new SyndicationVocabPrivate)
     d->updatePeriod = PropertyPtr(new Property(ns + QLatin1String("updatePeriod")));
     d->updateFrequency = PropertyPtr(new Property(ns + QLatin1String("updateFrequency")));
     d->updateBase = PropertyPtr(new Property(ns + QLatin1String("updateBase")));
-
 }
 
 SyndicationVocab::~SyndicationVocab()

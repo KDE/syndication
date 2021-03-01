@@ -17,14 +17,12 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 /**
  * An RSS2 image, used to describe feed logos.
  */
 class SYNDICATION_EXPORT Image : public ElementWrapper
 {
 public:
-
     /**
      * Default constructor, creates a null object, for which isNull() is
      * @c true.
@@ -90,6 +88,6 @@ public:
 };
 
 } // namespace RSS2
-}  // namespace Syndication
+} // namespace Syndication
 
 #endif // SYNDICATION_RSS2_IMAGE_H

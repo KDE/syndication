@@ -16,24 +16,26 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Sequence::SequencePrivate
 {
 public:
-
     QList<NodePtr> items;
 };
 
-Sequence::Sequence() : Resource(), d()
+Sequence::Sequence()
+    : Resource()
+    , d()
 {
 }
 
 Sequence::Sequence(const QString &uri)
-    : Resource(uri), d(new SequencePrivate)
+    : Resource(uri)
+    , d(new SequencePrivate)
 {
 }
 
-Sequence::Sequence(const Sequence &other) : Resource(other)
+Sequence::Sequence(const Sequence &other)
+    : Resource(other)
 {
     *this = other;
 }

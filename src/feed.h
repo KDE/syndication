@@ -14,13 +14,14 @@
 
 class QDomElement;
 
-template <class T> class QList;
-template <class K, class T> class QMultiMap;
+template<class T>
+class QList;
+template<class K, class T>
+class QMultiMap;
 class QString;
 
 namespace Syndication
 {
-
 //@cond PRIVATE
 class SpecificDocument;
 typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
@@ -51,7 +52,6 @@ typedef QSharedPointer<Person> PersonPtr;
 class SYNDICATION_EXPORT Feed
 {
 public:
-
     /**
      * destructor
      */

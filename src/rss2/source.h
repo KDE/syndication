@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 /**
  * Class representing the @c &lt;source&gt; element in RSS2.
  * "The purpose of this element is to propagate credit for links, to publicize
@@ -29,9 +28,7 @@ namespace RSS2
  */
 class SYNDICATION_EXPORT Source : public ElementWrapper
 {
-
 public:
-
     /**
      * Default constructor, creates a null object, for which isNull() is
      * @c true.

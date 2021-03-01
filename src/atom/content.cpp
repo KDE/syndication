@@ -17,27 +17,32 @@ namespace Syndication
 {
 namespace Atom
 {
-
 class Content::ContentPrivate
 {
 public:
-
-    ContentPrivate() : formatIdentified(false)
+    ContentPrivate()
+        : formatIdentified(false)
     {
     }
     mutable Format format;
     mutable bool formatIdentified;
 };
 
-Content::Content() : ElementWrapper(), d(new ContentPrivate)
+Content::Content()
+    : ElementWrapper()
+    , d(new ContentPrivate)
 {
 }
 
-Content::Content(const QDomElement &element) : ElementWrapper(element), d(new ContentPrivate)
+Content::Content(const QDomElement &element)
+    : ElementWrapper(element)
+    , d(new ContentPrivate)
 {
 }
 
-Content::Content(const Content &other) : ElementWrapper(other), d(other.d)
+Content::Content(const Content &other)
+    : ElementWrapper(other)
+    , d(other.d)
 {
 }
 
@@ -70,25 +75,22 @@ QByteArray Content::asByteArray() const
     return QByteArray::fromBase64(text().trimmed().toLatin1());
 }
 
-Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &src)
+Content::Format Content::mapTypeToFormat(const QString &typep, const QString &src)
 {
     QString type = typep;
     //"If neither the type attribute nor the src attribute is provided,
-    //Atom Processors MUST behave as though the type attribute were
-    //present with a value of "text""
+    // Atom Processors MUST behave as though the type attribute were
+    // present with a value of "text""
     if (type.isNull() && src.isEmpty()) {
         type = QStringLiteral("text");
     }
 
-    if (type == QLatin1String("html")
-            || type == QLatin1String("text/html")) {
+    if (type == QLatin1String("html") || type == QLatin1String("text/html")) {
         return EscapedHTML;
     }
 
     if (type == QLatin1String("text")
-            || (type.startsWith(QLatin1String("text/"), Qt::CaseInsensitive)
-                && !type.startsWith(QLatin1String("text/xml"), Qt::CaseInsensitive))
-       ) {
+        || (type.startsWith(QLatin1String("text/"), Qt::CaseInsensitive) && !type.startsWith(QLatin1String("text/xml"), Qt::CaseInsensitive))) {
         return PlainText;
     }
 
@@ -106,9 +108,7 @@ Content::Format Content::mapTypeToFormat(const QString &typep,  const QString &s
         xmltypes.append(QStringLiteral("text/x-dtd")); // from shared-mime-info
     }
 
-    if (xmltypes.contains(type)
-            || type.endsWith(QLatin1String("+xml"), Qt::CaseInsensitive)
-            || type.endsWith(QLatin1String("/xml"), Qt::CaseInsensitive)) {
+    if (xmltypes.contains(type) || type.endsWith(QLatin1String("+xml"), Qt::CaseInsensitive) || type.endsWith(QLatin1String("/xml"), Qt::CaseInsensitive)) {
         return XML;
     }
 
@@ -182,4 +182,4 @@ QString Content::debugInfo() const
 }
 
 } // namespace Atom
-} //namespace Syndication
+} // namespace Syndication

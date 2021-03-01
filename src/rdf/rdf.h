@@ -27,19 +27,19 @@
 #include <syndication/rdf/rssvocab.h>
 #include <syndication/rdf/sequence.h>
 #include <syndication/rdf/statement.h>
-#include <syndication/syndication.h>
 #include <syndication/rdf/syndicationvocab.h>
 #include <syndication/rdf/textinput.h>
+#include <syndication/syndication.h>
 
 namespace Syndication
 {
-
 /**
  * Syndication's parser for the RDF-based
  * RSS 0.9 and RSS 1.0 formats
  */
-namespace RDF {}
-
+namespace RDF
+{
+}
 }
 
 #endif // SYNDICATION_RDF_RDF_H

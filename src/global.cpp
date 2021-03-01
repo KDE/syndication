@@ -9,10 +9,10 @@
 #include "documentsource.h"
 #include "parsercollectionimpl.h"
 
+#include "atom/parser.h"
 #include "mapper/mapperatomimpl.h"
 #include "mapper/mapperrdfimpl.h"
 #include "mapper/mapperrss2impl.h"
-#include "atom/parser.h"
 #include "rdf/parser.h"
 #include "rss2/parser.h"
 
@@ -25,12 +25,10 @@ static bool collectionIsInitialized = false;
 
 namespace Syndication
 {
-
 static ParserCollectionImpl<Syndication::Feed> *parserColl = nullptr;
 
 namespace
 {
-
 // only executed when then was a QCoreApplication
 static void cleanupParserCollection()
 {
@@ -59,4 +57,3 @@ FeedPtr parse(const DocumentSource &src, const QString &formatHint)
 }
 
 } // namespace Syndication
-

@@ -14,12 +14,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-Source::Source() : ElementWrapper()
+Source::Source()
+    : ElementWrapper()
 {
 }
 
-Source::Source(const QDomElement &element) : ElementWrapper(element)
+Source::Source(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -35,7 +36,7 @@ QString Source::url() const
 
 QString Source::debugInfo() const
 {
-    QString info= QLatin1String("### Source: ###################\n");
+    QString info = QLatin1String("### Source: ###################\n");
     if (!source().isNull()) {
         info += QLatin1String("source: #") + source() + QLatin1String("#\n");
     }
@@ -48,4 +49,3 @@ QString Source::debugInfo() const
 
 } // namespace RSS2
 } // namespace Syndication
-

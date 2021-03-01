@@ -16,10 +16,8 @@ class QString;
 
 namespace Syndication
 {
-
 namespace RDF
 {
-
 class Property;
 typedef QSharedPointer<Property> PropertyPtr;
 class Resource;
@@ -31,7 +29,6 @@ typedef QSharedPointer<Resource> ResourcePtr;
 class SYNDICATION_EXPORT RDFVocab
 {
 public:
-
     /**
      * returns the singleton instance
      */

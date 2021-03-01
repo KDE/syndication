@@ -14,7 +14,6 @@
 
 namespace Syndication
 {
-
 class ItemAtomImpl;
 typedef QSharedPointer<ItemAtomImpl> ItemAtomImplPtr;
 
@@ -24,7 +23,6 @@ typedef QSharedPointer<ItemAtomImpl> ItemAtomImplPtr;
 class ItemAtomImpl : public Syndication::Item
 {
 public:
-
     explicit ItemAtomImpl(const Syndication::Atom::Entry &entry);
 
     QString title() const override;
@@ -62,7 +60,6 @@ public:
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:
-
     Syndication::Atom::Entry m_entry;
 };
 

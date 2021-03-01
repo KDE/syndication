@@ -14,11 +14,11 @@
 #include "syndication_export.h"
 
 class QDomElement;
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
-
 /**
  * A wrapper for XML elements. This is the base class for the (lazy) wrappers
  * used in the RSS2 and Atom parsers. The wrapped element can be accessed
@@ -29,7 +29,6 @@ namespace Syndication
 class SYNDICATION_EXPORT ElementWrapper
 {
 public:
-
     /**
      * creates a element wrapper wrapping a null element.
      * isNull() will return @c true for these instances.
@@ -143,8 +142,7 @@ public:
      * if there is no such tag
      */
 
-    Q_REQUIRED_RESULT QString extractElementTextNS(const QString &namespaceURI,
-                                 const QString &localName) const;
+    Q_REQUIRED_RESULT QString extractElementTextNS(const QString &namespaceURI, const QString &localName) const;
 
     /**
      * extracts the text from a child element, ignoring namespaces. For
@@ -212,8 +210,7 @@ public:
      * @return a list of child elements with the given namespace URI
      * and tag name
      */
-    Q_REQUIRED_RESULT QList<QDomElement> elementsByTagNameNS(const QString &nsURI,
-                                           const QString &tagName) const;
+    Q_REQUIRED_RESULT QList<QDomElement> elementsByTagNameNS(const QString &nsURI, const QString &tagName) const;
 
     /**
      * searches the direct children of the wrapped element for an element
@@ -225,8 +222,7 @@ public:
      * @return the first child element with the given namespace URI and tag
      * name, or a null element if no such element was found.
      */
-    Q_REQUIRED_RESULT QDomElement firstElementByTagNameNS(const QString &nsURI,
-                                        const QString &tagName) const;
+    Q_REQUIRED_RESULT QDomElement firstElementByTagNameNS(const QString &nsURI, const QString &tagName) const;
 
     /**
      * Returns the wrapped element's text or an empty string.
@@ -242,8 +238,7 @@ public:
      * @param name tag name
      * @param defValue the default value
      */
-    Q_REQUIRED_RESULT QString attribute(const QString &name,
-                      const QString &defValue = QString()) const;
+    Q_REQUIRED_RESULT QString attribute(const QString &name, const QString &defValue = QString()) const;
 
     /**
      * Returns the attribute with the local @c name localName and the
@@ -255,8 +250,7 @@ public:
      * @param localName local tag name
      * @param defValue the default value
      */
-    Q_REQUIRED_RESULT QString attributeNS(const QString &nsURI, const QString &localName,
-                        const QString &defValue = QString()) const;
+    Q_REQUIRED_RESULT QString attributeNS(const QString &nsURI, const QString &localName, const QString &defValue = QString()) const;
 
     /**
      * Returns true if this element has an attribute called @c name;
@@ -276,7 +270,6 @@ public:
     Q_REQUIRED_RESULT bool hasAttributeNS(const QString &nsURI, const QString &localName) const;
 
 private:
-
     class ElementWrapperPrivate;
     QSharedPointer<ElementWrapperPrivate> d;
 };

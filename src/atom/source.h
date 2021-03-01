@@ -15,13 +15,13 @@
 class QDomElement;
 class QString;
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
 namespace Atom
 {
-
 class Category;
 class Generator;
 class Link;
@@ -36,7 +36,6 @@ class Person;
 class SYNDICATION_EXPORT Source : public ElementWrapper
 {
 public:
-
     /**
      * creates a null source object
      */

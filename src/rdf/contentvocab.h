@@ -16,10 +16,8 @@ class QString;
 
 namespace Syndication
 {
-
 namespace RDF
 {
-
 class Property;
 //@cond PRIVATE
 typedef QSharedPointer<Property> PropertyPtr;
@@ -34,7 +32,6 @@ typedef QSharedPointer<Property> PropertyPtr;
 class SYNDICATION_EXPORT ContentVocab
 {
 public:
-
     /**
      * returns the singleton instance
      */
@@ -49,7 +46,7 @@ public:
      * Namespace of the Content module
      *
      * http://purl.org/rss/1.0/modules/content/
-    **/
+     **/
     const QString &namespaceURI() const;
 
     /**

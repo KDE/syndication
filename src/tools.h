@@ -8,8 +8,8 @@
 #ifndef SYNDICATION_TOOLS_H
 #define SYNDICATION_TOOLS_H
 
-#include <syndication/person.h>
 #include "syndication_export.h"
+#include <syndication/person.h>
 
 #include <QString>
 
@@ -18,7 +18,6 @@ class QString;
 
 namespace Syndication
 {
-
 /** date formats supported by date parsers */
 
 enum DateFormat {
@@ -178,7 +177,7 @@ QString normalize(const QString &str, bool isCDATA, bool containsMarkup);
  * Parses a person object from a string by identifying name and email address
  * in the string. Currently detected variants are:
  * "foo@bar.com", "Foo", "Foo &lt;foo@bar.com>", "foo@bar.com (Foo)".
-  *
+ *
  * @param str the string to parse the person from.
  * @return a Person object containing the parsed information.
  */

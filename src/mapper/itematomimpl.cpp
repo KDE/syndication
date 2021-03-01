@@ -30,8 +30,8 @@ using Syndication::Atom::Person;
 
 namespace Syndication
 {
-
-ItemAtomImpl::ItemAtomImpl(const Syndication::Atom::Entry &entry) : m_entry(entry)
+ItemAtomImpl::ItemAtomImpl(const Syndication::Atom::Entry &entry)
+    : m_entry(entry)
 {
 }
 
@@ -143,7 +143,6 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
     for (; it != end; ++it) {
         if ((*it).rel() == QLatin1String("enclosure")) {
             list.append(EnclosureAtomImplPtr(new EnclosureAtomImpl(*it)));
-
         }
     }
 

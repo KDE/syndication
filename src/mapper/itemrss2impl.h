@@ -8,12 +8,11 @@
 #ifndef SYNDICATION_MAPPER_ITEMRSS2IMPL_H
 #define SYNDICATION_MAPPER_ITEMRSS2IMPL_H
 
-#include <rss2/item.h>
 #include <item.h>
+#include <rss2/item.h>
 
 namespace Syndication
 {
-
 class ItemRSS2Impl;
 typedef QSharedPointer<ItemRSS2Impl> ItemRSS2ImplPtr;
 
@@ -23,7 +22,6 @@ typedef QSharedPointer<ItemRSS2Impl> ItemRSS2ImplPtr;
 class ItemRSS2Impl : public Syndication::Item
 {
 public:
-
     explicit ItemRSS2Impl(const Syndication::RSS2::Item &item);
 
     QString title() const override;
@@ -61,7 +59,6 @@ public:
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:
-
     Syndication::RSS2::Item m_item;
 };
 

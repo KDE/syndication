@@ -8,18 +8,17 @@
 #ifndef SYNDICATION_PARSERCOLLECTION_H
 #define SYNDICATION_PARSERCOLLECTION_H
 
-#include <syndication/specificdocument.h>
 #include <syndication/abstractparser.h>
 #include <syndication/documentsource.h>
 #include <syndication/feed.h>
 #include <syndication/global.h>
 #include <syndication/mapper.h>
+#include <syndication/specificdocument.h>
 
 #include <QString>
 
 namespace Syndication
 {
-
 /**
  * A collection of format-specific parser implementations.
  * To parse a feed source, pass it to the parse() method of this class.
@@ -54,13 +53,14 @@ namespace Syndication
  *
  * @author Frank Osterfeld
  */
-template <class T>
+template<class T>
 class SYNDICATION_EXPORT ParserCollection
 {
 public:
-
     /** destructor */
-    virtual ~ParserCollection() {}
+    virtual ~ParserCollection()
+    {
+    }
 
     /**
      * tries to parse a given source with the parsers registered.
@@ -75,8 +75,7 @@ public:
      * @return The feed document parsed from the source, or NULL if no
      * parser accepted the source.
      */
-    virtual QSharedPointer<T> parse(const DocumentSource &source,
-                                    const QString &formatHint = QString()) = 0;
+    virtual QSharedPointer<T> parse(const DocumentSource &source, const QString &formatHint = QString()) = 0;
 
     /**
      * returns the error code of the last parse() call.
@@ -111,7 +110,6 @@ public:
      * format specific representation to abstraction of type T.
      */
     virtual void changeMapper(const QString &format, Mapper<T> *mapper) = 0;
-
 };
 
 } // namespace Syndication

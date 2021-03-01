@@ -14,7 +14,6 @@
 
 namespace Syndication
 {
-
 class ImageAtomImpl;
 typedef QSharedPointer<ImageAtomImpl> ImageAtomImplPtr;
 
@@ -26,9 +25,10 @@ typedef QSharedPointer<ImageAtomImpl> ImageAtomImplPtr;
 class ImageAtomImpl : public Syndication::Image
 {
 public:
-
-    explicit ImageAtomImpl(const QString &logoURI) : m_logoURI(logoURI)
-    {}
+    explicit ImageAtomImpl(const QString &logoURI)
+        : m_logoURI(logoURI)
+    {
+    }
 
     bool isNull() const override
     {
@@ -66,7 +66,6 @@ public:
     }
 
 private:
-
     QString m_logoURI;
 };
 

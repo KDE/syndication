@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 /**
  * Description of the agent used to generate the feed.
  *
@@ -26,7 +25,6 @@ namespace Atom
 class SYNDICATION_EXPORT Generator : public ElementWrapper
 {
 public:
-
     /**
      * default constructor, creates a null generator
      */
@@ -63,7 +61,6 @@ public:
      * @return debug info
      */
     Q_REQUIRED_RESULT QString debugInfo() const;
-
 };
 
 } // namespace Atom

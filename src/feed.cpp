@@ -16,7 +16,6 @@
 
 namespace Syndication
 {
-
 Feed::~Feed()
 {
 }

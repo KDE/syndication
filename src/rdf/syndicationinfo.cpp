@@ -18,8 +18,8 @@ namespace Syndication
 {
 namespace RDF
 {
-
-SyndicationInfo::SyndicationInfo(ResourcePtr resource) : ResourceWrapper(resource)
+SyndicationInfo::SyndicationInfo(ResourcePtr resource)
+    : ResourceWrapper(resource)
 {
 }
 
@@ -34,10 +34,10 @@ SyndicationInfo::Period SyndicationInfo::updatePeriod() const
 
 int SyndicationInfo::updateFrequency() const
 {
-    QString freqStr =  resource()->property(SyndicationVocab::self()->updateFrequency())->asString();
+    QString freqStr = resource()->property(SyndicationVocab::self()->updateFrequency())->asString();
 
     if (freqStr.isEmpty()) {
-        return 1;    // 1 is default
+        return 1; // 1 is default
     }
 
     bool ok = false;
@@ -46,13 +46,13 @@ int SyndicationInfo::updateFrequency() const
     if (ok) {
         return freq;
     } else {
-        return 1;    // 1 is default
+        return 1; // 1 is default
     }
 }
 
 time_t SyndicationInfo::updateBase() const
 {
-    QString str =  resource()->property(SyndicationVocab::self()->updateBase())->asString();
+    QString str = resource()->property(SyndicationVocab::self()->updateBase())->asString();
 
     return parseDate(str, ISODate);
 }
@@ -94,7 +94,7 @@ QString SyndicationInfo::periodToString(Period period)
 SyndicationInfo::Period SyndicationInfo::stringToPeriod(const QString &str)
 {
     if (str.isEmpty()) {
-        return Daily;    // default is "daily"
+        return Daily; // default is "daily"
     }
 
     if (str == QLatin1String("hourly")) {
@@ -110,7 +110,7 @@ SyndicationInfo::Period SyndicationInfo::stringToPeriod(const QString &str)
         return Yearly;
     }
 
-    return Daily;  // default is "daily"
+    return Daily; // default is "daily"
 }
 
 } // namespace RDF

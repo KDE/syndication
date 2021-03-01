@@ -14,32 +14,29 @@ namespace Syndication
 {
 namespace Atom
 {
-
-Person::Person() : ElementWrapper()
+Person::Person()
+    : ElementWrapper()
 {
 }
 
-Person::Person(const QDomElement &element) : ElementWrapper(element)
+Person::Person(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
 QString Person::name() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("name"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("name"));
 }
 
 QString Person::uri() const
 {
-
-    return completeURI(extractElementTextNS(atom1Namespace(),
-                                            QStringLiteral("uri")));
+    return completeURI(extractElementTextNS(atom1Namespace(), QStringLiteral("uri")));
 }
 
 QString Person::email() const
 {
-    return extractElementTextNS(atom1Namespace(),
-                                QStringLiteral("email"));
+    return extractElementTextNS(atom1Namespace(), QStringLiteral("email"));
 }
 
 QString Person::debugInfo() const
@@ -54,4 +51,4 @@ QString Person::debugInfo() const
 }
 
 } // namespace Atom
-} //namespace Syndication
+} // namespace Syndication

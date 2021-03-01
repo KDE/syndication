@@ -8,12 +8,11 @@
 #ifndef SYNDICATION_MAPPER_FEEDRSS2IMPL_H
 #define SYNDICATION_MAPPER_FEEDRSS2IMPL_H
 
-#include <rss2/document.h>
 #include <feed.h>
+#include <rss2/document.h>
 
 namespace Syndication
 {
-
 class FeedRSS2Impl;
 typedef QSharedPointer<FeedRSS2Impl> FeedRSS2ImplPtr;
 class Image;
@@ -25,7 +24,6 @@ typedef QSharedPointer<Image> ImagePtr;
 class FeedRSS2Impl : public Syndication::Feed
 {
 public:
-
     explicit FeedRSS2Impl(Syndication::RSS2::DocumentPtr doc);
 
     Syndication::SpecificDocumentPtr specificDocument() const override;
@@ -53,7 +51,6 @@ public:
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:
-
     Syndication::RSS2::DocumentPtr m_doc;
 };
 

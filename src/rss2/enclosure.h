@@ -17,7 +17,6 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 /**
  * Describes a media object that is "attached" to the item.
  * The most common use case for enclosures are podcasts:
@@ -29,7 +28,6 @@ namespace RSS2
 class SYNDICATION_EXPORT Enclosure : public ElementWrapper
 {
 public:
-
     /**
      * Default constructor, creates a null object, for which isNull() is
      * @c true.

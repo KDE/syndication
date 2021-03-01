@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace Atom
 {
-
 /**
  * namespace used by Atom 1.0 elements
  */

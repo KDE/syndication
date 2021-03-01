@@ -18,7 +18,6 @@ class QDomDocument;
 
 namespace Syndication
 {
-
 /**
  * Represents the source of a syndication document, as read from the
  * downloaded file.
@@ -36,7 +35,6 @@ namespace Syndication
 class SYNDICATION_EXPORT DocumentSource
 {
 public:
-
     /**
      * Creates an empty document source. The raw representation is empty and
      * the DOM representation will be invalid.
@@ -118,7 +116,6 @@ public:
     Q_REQUIRED_RESULT QString url() const;
 
 private:
-
     class DocumentSourcePrivate;
     QSharedPointer<DocumentSourcePrivate> d;
 };

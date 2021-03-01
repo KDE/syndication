@@ -8,14 +8,13 @@
 #ifndef SYNDICATION_MAPPER_ITEMRDFIMPL_H
 #define SYNDICATION_MAPPER_ITEMRDFIMPL_H
 
-#include <rdf/item.h>
 #include <item.h>
+#include <rdf/item.h>
 
 #include <QString>
 
 namespace Syndication
 {
-
 class ItemRDFImpl;
 typedef QSharedPointer<ItemRDFImpl> ItemRDFImplPtr;
 
@@ -25,7 +24,6 @@ typedef QSharedPointer<ItemRDFImpl> ItemRDFImplPtr;
 class ItemRDFImpl : public Syndication::Item
 {
 public:
-
     explicit ItemRDFImpl(const Syndication::RDF::Item &item);
 
     QString title() const override;
@@ -63,7 +61,6 @@ public:
     QMultiMap<QString, QDomElement> additionalProperties() const override;
 
 private:
-
     Syndication::RDF::Item m_item;
 };
 

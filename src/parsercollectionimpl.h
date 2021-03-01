@@ -8,13 +8,13 @@
 #ifndef SYNDICATION_PARSERCOLLECTIONIMPL_H
 #define SYNDICATION_PARSERCOLLECTIONIMPL_H
 
-#include <syndication/specificdocument.h>
 #include <syndication/abstractparser.h>
 #include <syndication/documentsource.h>
-#include <syndication/parsercollection.h>
 #include <syndication/feed.h>
 #include <syndication/global.h>
 #include <syndication/mapper.h>
+#include <syndication/parsercollection.h>
+#include <syndication/specificdocument.h>
 
 #include <QDomDocument>
 #include <QHash>
@@ -22,7 +22,6 @@
 
 namespace Syndication
 {
-
 //@cond PRIVATE
 /** @internal
  */
@@ -30,17 +29,15 @@ namespace Syndication
 // from the interface to move the implementation out of the public API
 // (template classes require implementations to be in the header)
 
-template <class T>
+template<class T>
 class SYNDICATION_EXPORT ParserCollectionImpl : public ParserCollection<T>
 {
 public:
-
     ParserCollectionImpl();
 
     ~ParserCollectionImpl() override;
 
-    QSharedPointer<T> parse(const DocumentSource &source,
-                            const QString &formatHint = QString()) override;
+    QSharedPointer<T> parse(const DocumentSource &source, const QString &formatHint = QString()) override;
 
     bool registerParser(AbstractParser *parser, Mapper<T> *mapper) override;
 
@@ -49,11 +46,10 @@ public:
     ErrorCode lastError() const override;
 
 private:
-
     ParserCollectionImpl(const ParserCollectionImpl &);
     ParserCollectionImpl &operator=(const ParserCollectionImpl &);
     QHash<QString, AbstractParser *> m_parsers;
-    QHash<QString, Mapper<T>*> m_mappers;
+    QHash<QString, Mapper<T> *> m_mappers;
     QList<AbstractParser *> m_parserList;
 
     ErrorCode m_lastError;
@@ -61,15 +57,15 @@ private:
 
 //@endcond
 
-//template <class T>
-//class ParserCollectionImpl<T>::ParserCollectionImplPrivate
+// template <class T>
+// class ParserCollectionImpl<T>::ParserCollectionImplPrivate
 
-template <class T>
+template<class T>
 ParserCollectionImpl<T>::ParserCollectionImpl()
 {
 }
 
-template <class T>
+template<class T>
 ParserCollectionImpl<T>::~ParserCollectionImpl()
 {
     // Delete the values
@@ -77,7 +73,7 @@ ParserCollectionImpl<T>::~ParserCollectionImpl()
     qDeleteAll(m_mappers);
 }
 
-template <class T>
+template<class T>
 bool ParserCollectionImpl<T>::registerParser(AbstractParser *parser, Mapper<T> *mapper)
 {
     if (m_parsers.contains(parser->format())) {
@@ -89,13 +85,13 @@ bool ParserCollectionImpl<T>::registerParser(AbstractParser *parser, Mapper<T> *
     m_mappers.insert(parser->format(), mapper);
     return true;
 }
-template <class T>
+template<class T>
 void ParserCollectionImpl<T>::changeMapper(const QString &format, Mapper<T> *mapper)
 {
     m_mappers[format] = mapper;
 }
 
-template <class T>
+template<class T>
 QSharedPointer<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, const QString &formatHint)
 {
     m_lastError = Syndication::Success;
@@ -132,18 +128,18 @@ QSharedPointer<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, c
     return FeedPtr();
 }
 
-template <class T>
+template<class T>
 Syndication::ErrorCode ParserCollectionImpl<T>::lastError() const
 {
     return m_lastError;
 }
 
-template <class T>
+template<class T>
 ParserCollectionImpl<T>::ParserCollectionImpl(const ParserCollectionImpl &)
 {
 }
 
-template <class T>
+template<class T>
 ParserCollectionImpl<T> &ParserCollectionImpl<T>::operator=(const ParserCollectionImpl &)
 {
     return *this;

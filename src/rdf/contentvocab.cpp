@@ -15,11 +15,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class ContentVocab::ContentVocabPrivate
 {
 public:
-
     QString namespaceURI;
     PropertyPtr encoded;
 
@@ -32,14 +30,14 @@ public:
 };
 ContentVocab *ContentVocab::ContentVocabPrivate::sSelf = nullptr;
 
-ContentVocab::ContentVocab() : d(new ContentVocabPrivate)
+ContentVocab::ContentVocab()
+    : d(new ContentVocabPrivate)
 {
     QString ns = QStringLiteral("http://purl.org/rss/1.0/modules/content/");
 
     d->namespaceURI = ns;
 
     d->encoded = PropertyPtr(new Property(ns + QLatin1String("encoded")));
-
 }
 
 ContentVocab::~ContentVocab()

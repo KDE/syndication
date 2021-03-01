@@ -7,10 +7,8 @@
 
 #include "enclosure.h"
 
-
 namespace Syndication
 {
-
 Enclosure::~Enclosure()
 {
 }

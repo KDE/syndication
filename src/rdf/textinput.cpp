@@ -6,22 +6,22 @@
 */
 
 #include "textinput.h"
-#include "rssvocab.h"
 #include "property.h"
 #include "resource.h"
+#include "rssvocab.h"
 #include "statement.h"
-
 
 namespace Syndication
 {
 namespace RDF
 {
-
-TextInput::TextInput() : ResourceWrapper()
+TextInput::TextInput()
+    : ResourceWrapper()
 {
 }
 
-TextInput::TextInput(ResourcePtr resource) : ResourceWrapper(resource)
+TextInput::TextInput(ResourcePtr resource)
+    : ResourceWrapper(resource)
 {
 }
 

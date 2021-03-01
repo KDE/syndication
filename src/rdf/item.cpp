@@ -22,26 +22,29 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Q_DECL_HIDDEN Item::Private
 {
 public:
     DocumentPtr doc;
 };
 
-Item::Item() : ResourceWrapper(), d(new Private)
+Item::Item()
+    : ResourceWrapper()
+    , d(new Private)
 {
 }
 
-Item::Item(ResourcePtr resource, DocumentPtr doc) : ResourceWrapper(resource),
-    d(new Private)
+Item::Item(ResourcePtr resource, DocumentPtr doc)
+    : ResourceWrapper(resource)
+    , d(new Private)
 {
     d->doc = doc;
 }
 
-Item::Item(const Item &other) : ResourceWrapper(other),
-    SpecificItem(other),
-    d(new Private)
+Item::Item(const Item &other)
+    : ResourceWrapper(other)
+    , SpecificItem(other)
+    , d(new Private)
 {
     *d = *(other.d);
 }

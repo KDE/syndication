@@ -16,9 +16,9 @@
 
 namespace Syndication
 {
-
 class DocumentSource;
-template <class T> class ParserCollection;
+template<class T>
+class ParserCollection;
 
 /**
  *

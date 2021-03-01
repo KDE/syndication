@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Resource;
 typedef QSharedPointer<Resource> ResourcePtr;
 
@@ -89,7 +88,6 @@ public:
     bool isNull() const;
 
 private:
-
     class ResourceWrapperPrivate;
     QSharedPointer<ResourceWrapperPrivate> d;
 };

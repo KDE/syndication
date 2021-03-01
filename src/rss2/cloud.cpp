@@ -13,12 +13,13 @@ namespace Syndication
 {
 namespace RSS2
 {
-
-Cloud::Cloud() : ElementWrapper()
+Cloud::Cloud()
+    : ElementWrapper()
 {
 }
 
-Cloud::Cloud(const QDomElement &element) : ElementWrapper(element)
+Cloud::Cloud(const QDomElement &element)
+    : ElementWrapper(element)
 {
 }
 
@@ -50,7 +51,6 @@ QString Cloud::registerProcedure() const
 
 QString Cloud::protocol() const
 {
-
     return attribute(QStringLiteral("protocol"));
 }
 
@@ -78,4 +78,3 @@ QString Cloud::debugInfo() const
 
 } // namespace RSS2
 } // namespace Syndication
-

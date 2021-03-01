@@ -9,17 +9,17 @@
 #include "rssvocab.h"
 #include "statement.h"
 
-
 namespace Syndication
 {
 namespace RDF
 {
-
-Image::Image() : ResourceWrapper()
+Image::Image()
+    : ResourceWrapper()
 {
 }
 
-Image::Image(ResourcePtr resource) : ResourceWrapper(resource)
+Image::Image(ResourcePtr resource)
+    : ResourceWrapper(resource)
 {
 }
 

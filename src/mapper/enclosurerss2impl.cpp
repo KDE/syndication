@@ -13,11 +13,11 @@
 
 namespace Syndication
 {
-
-EnclosureRSS2Impl::EnclosureRSS2Impl(const Syndication::RSS2::Item &item,
-                                     const Syndication::RSS2::Enclosure &enc)
-    : m_item(item), m_enclosure(enc)
-{}
+EnclosureRSS2Impl::EnclosureRSS2Impl(const Syndication::RSS2::Item &item, const Syndication::RSS2::Enclosure &enc)
+    : m_item(item)
+    , m_enclosure(enc)
+{
+}
 
 bool EnclosureRSS2Impl::isNull() const
 {

@@ -14,18 +14,16 @@
 
 #include <QList>
 #include <QString>
-#include <QWeakPointer>
 #include <QUuid>
+#include <QWeakPointer>
 
 namespace Syndication
 {
 namespace RDF
 {
-
 class Resource::ResourcePrivate
 {
 public:
-
     QString uri;
     QWeakPointer<Model::ModelPrivate> model;
     bool isAnon;
@@ -41,16 +39,19 @@ public:
     }
 };
 
-Resource::Resource(const Resource &other) : Node(other)
+Resource::Resource(const Resource &other)
+    : Node(other)
 {
     *this = other;
 }
 
-Resource::Resource() : d()
+Resource::Resource()
+    : d()
 {
 }
 
-Resource::Resource(const QString &uri) : d(new ResourcePrivate)
+Resource::Resource(const QString &uri)
+    : d(new ResourcePrivate)
 {
     if (uri.isNull()) {
         d->uri = QUuid().createUuid().toString();

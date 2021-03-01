@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 /**
  * Singleton holding RDF class and property constants of the Dublin Core
  * vocabulary. See http://dublincore.org/documents/dces/ for a
@@ -27,7 +26,6 @@ namespace RDF
 class SYNDICATION_EXPORT DublinCoreVocab
 {
 public:
-
     /**
      * returns the singleton instance
      */

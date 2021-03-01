@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 //@cond PRIVATE
 class Property;
 typedef QSharedPointer<Property> PropertyPtr;
@@ -32,7 +31,6 @@ typedef QSharedPointer<Property> PropertyPtr;
 class SYNDICATION_EXPORT Property : public Resource
 {
 public:
-
     /**
      * creates a null property
      */

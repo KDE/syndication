@@ -19,11 +19,9 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Statement::StatementPrivate
 {
 public:
-
     uint subjectID;
     uint predicateID;
     uint objectID;
@@ -32,13 +30,12 @@ public:
     bool operator==(const StatementPrivate &other) const
     {
         // FIXME: use better check that works also with multiple models
-        return subjectID == other.subjectID &&
-               predicateID == other.predicateID &&
-               objectID == other.objectID;
+        return subjectID == other.subjectID && predicateID == other.predicateID && objectID == other.objectID;
     }
 };
 
-Statement::Statement() : d(new StatementPrivate)
+Statement::Statement()
+    : d(new StatementPrivate)
 {
     d->subjectID = 0;
     d->predicateID = 0;
@@ -50,8 +47,8 @@ Statement::Statement(const Statement &other)
     d = other.d;
 }
 
-Statement::Statement(ResourcePtr subject, PropertyPtr predicate,
-                     NodePtr object) : d(new StatementPrivate)
+Statement::Statement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
+    : d(new StatementPrivate)
 {
     d->model = subject->model().d;
     d->subjectID = subject->id();

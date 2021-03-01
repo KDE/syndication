@@ -13,16 +13,15 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class ResourceWrapper::ResourceWrapperPrivate
 {
 public:
-
     ResourcePtr resource;
     Model model;
 };
 
-ResourceWrapper::ResourceWrapper() : d(new ResourceWrapperPrivate)
+ResourceWrapper::ResourceWrapper()
+    : d(new ResourceWrapperPrivate)
 {
     d->resource = ResourcePtr(new Resource());
 }
@@ -32,7 +31,8 @@ ResourceWrapper::ResourceWrapper(const ResourceWrapper &other)
     *this = other;
 }
 
-ResourceWrapper::ResourceWrapper(ResourcePtr resource) : d(new ResourceWrapperPrivate)
+ResourceWrapper::ResourceWrapper(ResourcePtr resource)
+    : d(new ResourceWrapperPrivate)
 {
     // if a null pointer is passed, we create a null resource
     d->resource = !resource ? ResourcePtr(new Resource()) : resource;

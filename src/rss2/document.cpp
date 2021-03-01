@@ -5,9 +5,9 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#include <rss2/document.h>
 #include <rss2/category.h>
 #include <rss2/cloud.h>
+#include <rss2/document.h>
 #include <rss2/image.h>
 #include <rss2/item.h>
 #include <rss2/textinput.h>
@@ -27,17 +27,18 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 class Document::DocumentPrivate
 {
 public:
-    DocumentPrivate() : itemDescriptionIsCDATA(false),
-        itemDescriptionContainsMarkup(false),
-        itemDescGuessed(false),
-        itemTitleIsCDATA(false),
-        itemTitleContainsMarkup(false),
-        itemTitlesGuessed(false)
-    {}
+    DocumentPrivate()
+        : itemDescriptionIsCDATA(false)
+        , itemDescriptionContainsMarkup(false)
+        , itemDescGuessed(false)
+        , itemTitleIsCDATA(false)
+        , itemTitleContainsMarkup(false)
+        , itemTitlesGuessed(false)
+    {
+    }
     mutable bool itemDescriptionIsCDATA;
     mutable bool itemDescriptionContainsMarkup;
     mutable bool itemDescGuessed;
@@ -46,9 +47,10 @@ public:
     mutable bool itemTitlesGuessed;
 };
 
-Document::Document(const QDomElement &element) : SpecificDocument(),
-    ElementWrapper(element),
-    d(new DocumentPrivate)
+Document::Document(const QDomElement &element)
+    : SpecificDocument()
+    , ElementWrapper(element)
+    , d(new DocumentPrivate)
 {
 }
 
@@ -59,11 +61,16 @@ Document Document::fromXML(const QDomDocument &doc)
     return Document(channelNode.toElement());
 }
 
-Document::Document() : SpecificDocument(), ElementWrapper(), d(new DocumentPrivate)
+Document::Document()
+    : SpecificDocument()
+    , ElementWrapper()
+    , d(new DocumentPrivate)
 {
 }
 
-Document::Document(const Document &other) : SpecificDocument(other), ElementWrapper(other)
+Document::Document(const Document &other)
+    : SpecificDocument(other)
+    , ElementWrapper(other)
 {
     d = other.d;
 }
@@ -101,28 +108,23 @@ QString Document::description() const
 
 QString Document::language() const
 {
-    const QString lang = extractElementTextNS(QString(),
-                                        QStringLiteral("language"));
+    const QString lang = extractElementTextNS(QString(), QStringLiteral("language"));
 
     if (!lang.isNull()) {
         return lang;
     } else {
-        return extractElementTextNS(
-                   dublinCoreNamespace(), QStringLiteral("language"));
+        return extractElementTextNS(dublinCoreNamespace(), QStringLiteral("language"));
     }
-
 }
 
 QString Document::copyright() const
 {
-    const QString rights = extractElementTextNS(QString(),
-                                          QStringLiteral("copyright"));
+    const QString rights = extractElementTextNS(QString(), QStringLiteral("copyright"));
     if (!rights.isNull()) {
         return rights;
     } else {
         // if <copyright> is not provided, use <dc:rights>
-        return extractElementTextNS(dublinCoreNamespace(),
-                                    QStringLiteral("rights"));
+        return extractElementTextNS(dublinCoreNamespace(), QStringLiteral("rights"));
     }
 }
 
@@ -160,8 +162,7 @@ QList<Category> Document::categories() const
 {
     QList<Category> categories;
 
-    QList<QDomElement> catNodes = elementsByTagNameNS(QString(),
-                                  QStringLiteral("category"));
+    QList<QDomElement> catNodes = elementsByTagNameNS(QString(), QStringLiteral("category"));
     categories.reserve(catNodes.count());
     QList<QDomElement>::ConstIterator it = catNodes.constBegin();
     QList<QDomElement>::ConstIterator end(catNodes.constEnd());
@@ -217,14 +218,11 @@ TextInput Document::textInput() const
 QSet<int> Document::skipHours() const
 {
     QSet<int> skipHours;
-    QDomElement skipHoursNode = firstElementByTagNameNS(QString(),
-                                QStringLiteral("skipHours"));
+    QDomElement skipHoursNode = firstElementByTagNameNS(QString(), QStringLiteral("skipHours"));
     if (!skipHoursNode.isNull()) {
         ElementWrapper skipHoursWrapper(skipHoursNode);
         bool ok = false;
-        QList<QDomElement> hours =
-            skipHoursWrapper.elementsByTagNameNS(QString(),
-                    QStringLiteral("hour"));
+        QList<QDomElement> hours = skipHoursWrapper.elementsByTagNameNS(QString(), QStringLiteral("hour"));
         QList<QDomElement>::ConstIterator it = hours.constBegin();
         const QList<QDomElement>::ConstIterator end(hours.constEnd());
         for (; it != end; ++it) {
@@ -318,8 +316,7 @@ QList<QDomElement> Document::unhandledElements() const
     const int numChildren = children.size();
     for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull()
-                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
+        if (!el.isNull() && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }

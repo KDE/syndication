@@ -20,8 +20,8 @@ namespace Syndication
 {
 namespace RDF
 {
-
-DublinCore::DublinCore(ResourcePtr resource) : ResourceWrapper(resource)
+DublinCore::DublinCore(ResourcePtr resource)
+    : ResourceWrapper(resource)
 {
 }
 
@@ -76,9 +76,8 @@ QStringList DublinCore::creators() const
 
 time_t DublinCore::date() const
 {
-    QString str =  resource()->property(DublinCoreVocab::self()->date())->asString();
+    QString str = resource()->property(DublinCoreVocab::self()->date())->asString();
     return parseDate(str, ISODate);
-
 }
 
 QString DublinCore::description() const
@@ -207,4 +206,3 @@ QString DublinCore::debugInfo() const
 
 } // namespace RDF
 } // namespace Syndication
-

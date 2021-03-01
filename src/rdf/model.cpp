@@ -12,10 +12,10 @@ namespace Syndication
 {
 namespace RDF
 {
-
 long Model::ModelPrivate::idCounter = 0;
 
-Model::Model() : d(new ModelPrivate)
+Model::Model()
+    : d(new ModelPrivate)
 {
 }
 
@@ -57,7 +57,6 @@ PropertyPtr Model::createProperty(const QString &uri)
     }
 
     return prop;
-
 }
 
 ResourcePtr Model::createResource(const QString &uri)
@@ -111,8 +110,7 @@ void Model::removeStatement(StatementPtr statement)
 
 void Model::removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
 {
-    QString key = QStringLiteral("%1-%2-%3")
-                  .arg(QString::number(subject->id()), QString::number(predicate->id()), QString::number(object->id()));
+    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subject->id()), QString::number(predicate->id()), QString::number(object->id()));
     d->removeFromHashes(key);
 }
 
@@ -145,8 +143,7 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
 
     // TODO: avoid duplicated stmts with literal objects!
 
-    QString key = QStringLiteral("%1-%2-%3")
-                  .arg(QString::number(subjInternal->id()), QString::number(predInternal->id()), QString::number(objInternal->id()));
+    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subjInternal->id()), QString::number(predInternal->id()), QString::number(objInternal->id()));
 
     StatementPtr stmt;
 

@@ -8,17 +8,15 @@
 #ifndef SYNDICATION_RSS2_PARSER_H
 #define SYNDICATION_RSS2_PARSER_H
 
-#include <syndication/rss2/document.h>
 #include <syndication/abstractparser.h>
+#include <syndication/rss2/document.h>
 
 namespace Syndication
 {
-
 class DocumentSource;
 
 namespace RSS2
 {
-
 class Document;
 
 /**
@@ -29,7 +27,6 @@ class Document;
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
 public:
-
     /** default constructor */
     Parser();
 
@@ -65,7 +62,6 @@ public:
     QString format() const override;
 
 private:
-
     Parser(const Parser &other);
     Parser &operator=(const Parser &other);
 

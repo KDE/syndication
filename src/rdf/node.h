@@ -16,7 +16,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 class Model;
 class Node;
 class NodeVisitor;
@@ -31,7 +30,6 @@ typedef QSharedPointer<Node> NodePtr;
 class SYNDICATION_EXPORT Node
 {
 public:
-
     /**
      * destructor
      */
@@ -116,7 +114,6 @@ public:
     virtual void setId(unsigned int id) = 0;
 
 protected:
-
     /**
      * used to generate unique IDs for node objects
      */

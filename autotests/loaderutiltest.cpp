@@ -13,7 +13,6 @@ QTEST_GUILESS_MAIN(LoaderUtilTest)
 LoaderUtilTest::LoaderUtilTest(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 void LoaderUtilTest::testParsing_data()
@@ -32,7 +31,7 @@ void LoaderUtilTest::testParsing()
     QFETCH(QUrl, url);
     QFETCH(QUrl, urlfound);
     QFile f(fileName);
-    QVERIFY(f.open(QIODevice::ReadOnly|QIODevice::Text));
+    QVERIFY(f.open(QIODevice::ReadOnly | QIODevice::Text));
     const QByteArray ba = f.readAll();
     QCOMPARE(Syndication::LoaderUtil::parseFeed(ba, url), urlfound);
 }

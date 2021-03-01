@@ -17,12 +17,10 @@ class QString;
 
 namespace Syndication
 {
-
 class SpecificItemVisitor;
 
 namespace RDF
 {
-
 class DublinCore;
 class Item;
 
@@ -35,9 +33,7 @@ class Item;
  */
 class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
 {
-
 public:
-
     /**
      * creates an item object wrapping a null resource, isNull() is
      * @c true.
@@ -152,7 +148,6 @@ public:
     QString debugInfo() const;
 
 private:
-
     class Private;
     Private *const d;
 };

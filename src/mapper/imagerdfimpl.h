@@ -14,7 +14,6 @@
 
 namespace Syndication
 {
-
 class ImageRDFImpl;
 typedef QSharedPointer<ImageRDFImpl> ImageRDFImplPtr;
 
@@ -26,7 +25,6 @@ typedef QSharedPointer<ImageRDFImpl> ImageRDFImplPtr;
 class ImageRDFImpl : public Syndication::Image
 {
 public:
-
     explicit ImageRDFImpl(const Syndication::RDF::Image &image);
 
     bool isNull() const override;

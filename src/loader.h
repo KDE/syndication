@@ -18,7 +18,6 @@ class QUrl;
 
 namespace Syndication
 {
-
 class DataRetriever;
 class Feed;
 //@cond PRIVATE
@@ -74,7 +73,6 @@ class SYNDICATION_EXPORT Loader : public QObject
     Q_OBJECT
 
 public:
-
     /**
      * Constructs a Loader instance. This is pretty much what the
      * default constructor would do, except that it ensures that all
@@ -147,16 +145,13 @@ Q_SIGNALS:
      * problems while retrieving or parsing the data.
      * @see Feed, ErrorCode
      */
-    void loadingComplete(Syndication::Loader *loader,
-                         Syndication::FeedPtr feed,
-                         Syndication::ErrorCode error);
+    void loadingComplete(Syndication::Loader *loader, Syndication::FeedPtr feed, Syndication::ErrorCode error);
 
 private Q_SLOTS:
 
     void slotRetrieverDone(const QByteArray &data, bool success);
 
 private:
-
     Loader();
     Loader(const Loader &other);
     Loader &operator=(const Loader &other);

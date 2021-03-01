@@ -12,7 +12,6 @@
 
 namespace Syndication
 {
-
 class SpecificDocument;
 //@cond PRIVATE
 typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
@@ -88,15 +87,16 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
  *
  * @author Frank Osterfeld
  */
-template <class T>
+template<class T>
 class SYNDICATION_EXPORT Mapper
 {
 public:
-
     /**
      * virtual destructor
      */
-    virtual ~Mapper() {}
+    virtual ~Mapper()
+    {
+    }
 
     /**
      * maps a format-specific document to abstraction of type

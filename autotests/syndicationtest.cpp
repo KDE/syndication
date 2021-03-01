@@ -6,13 +6,13 @@
 */
 
 #include "syndicationtest.h"
-#include "specificdocument.h"
 #include "documentsource.h"
 #include "feed.h"
 #include "parsercollection.h"
+#include "specificdocument.h"
 
-#include <QDebug>
 #include <QByteArray>
+#include <QDebug>
 #include <QFile>
 
 #include <QTest>
@@ -32,26 +32,28 @@ SyndicationTest::SyndicationTest(QObject *parent)
 {
 }
 
-
 void SyndicationTest::testSyncationFile_data()
 {
     QTest::addColumn<QString>("fileName");
     QTest::addColumn<QString>("referenceFileName");
 
-    QDir dir(QStringLiteral(SYNDICATION_DATA_DIR  "/atom"));
+    QDir dir(QStringLiteral(SYNDICATION_DATA_DIR "/atom"));
     auto l = dir.entryList(QStringList(QStringLiteral("*.xml")), QDir::Files | QDir::Readable | QDir::NoSymLinks);
     for (const QString &file : l) {
-        QTest::newRow(file.toLatin1().constData()) << QString(dir.path() + QLatin1Char('/') +  file) << QString(dir.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
+        QTest::newRow(file.toLatin1().constData()) << QString(dir.path() + QLatin1Char('/') + file)
+                                                   << QString(dir.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
     }
-    QDir dirRdf(QStringLiteral(SYNDICATION_DATA_DIR  "/rdf"));
+    QDir dirRdf(QStringLiteral(SYNDICATION_DATA_DIR "/rdf"));
     l = dirRdf.entryList(QStringList(QStringLiteral("*.xml")), QDir::Files | QDir::Readable | QDir::NoSymLinks);
     for (const QString &file : l) {
-        QTest::newRow(file.toLatin1().constData()) << QString(dirRdf.path() + QLatin1Char('/') +  file) << QString(dirRdf.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
+        QTest::newRow(file.toLatin1().constData()) << QString(dirRdf.path() + QLatin1Char('/') + file)
+                                                   << QString(dirRdf.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
     }
-    QDir dirRss2(QStringLiteral(SYNDICATION_DATA_DIR  "/rss2"));
+    QDir dirRss2(QStringLiteral(SYNDICATION_DATA_DIR "/rss2"));
     l = dirRss2.entryList(QStringList(QStringLiteral("*.xml")), QDir::Files | QDir::Readable | QDir::NoSymLinks);
     for (const QString &file : l) {
-        QTest::newRow(file.toLatin1().constData()) << QString(dirRss2.path() + QLatin1Char('/') +  file) << QString(dirRss2.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
+        QTest::newRow(file.toLatin1().constData()) << QString(dirRss2.path() + QLatin1Char('/') + file)
+                                                   << QString(dirRss2.path() + QLatin1Char('/') + file + QLatin1String(".expected"));
     }
 }
 
@@ -60,7 +62,7 @@ void SyndicationTest::testSyncationFile()
     QFETCH(QString, fileName);
     QFETCH(QString, referenceFileName);
     QFile f(fileName);
-    QVERIFY(f.open(QIODevice::ReadOnly|QIODevice::Text));
+    QVERIFY(f.open(QIODevice::ReadOnly | QIODevice::Text));
 
     DocumentSource src(f.readAll(), QStringLiteral("http://libsyndicationtest"));
     f.close();
@@ -71,7 +73,7 @@ void SyndicationTest::testSyncationFile()
     const QString result = ptr->debugInfo();
 
     QFile expFile(referenceFileName);
-    QVERIFY(expFile.open(QIODevice::ReadOnly|QIODevice::Text));
+    QVERIFY(expFile.open(QIODevice::ReadOnly | QIODevice::Text));
     const QByteArray expected = expFile.readAll();
     expFile.close();
 
@@ -88,8 +90,7 @@ void SyndicationTest::testSyncationFile()
         outHeaderStream << baResult.trimmed();
         headerFile.close();
 #endif
-        QCOMPARE(QString::fromUtf8( baResult ).split(QLatin1Char('\n')),
-                 QString::fromUtf8(baExpected).split(QLatin1Char('\n')));
+        QCOMPARE(QString::fromUtf8(baResult).split(QLatin1Char('\n')), QString::fromUtf8(baExpected).split(QLatin1Char('\n')));
     }
     QVERIFY(compare);
 }

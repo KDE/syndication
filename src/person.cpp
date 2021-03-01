@@ -7,10 +7,8 @@
 
 #include "person.h"
 
-
 namespace Syndication
 {
-
 Person::~Person()
 {
 }

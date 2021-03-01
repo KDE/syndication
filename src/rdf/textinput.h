@@ -15,7 +15,6 @@ namespace Syndication
 {
 namespace RDF
 {
-
 /**
  * "The textinput element affords a method for submitting form data to an
  * arbitrary URL - usually located at the parent website.
@@ -25,9 +24,7 @@ namespace RDF
  */
 class SYNDICATION_EXPORT TextInput : public ResourceWrapper
 {
-
 public:
-
     /**
      * creates an object wrapping a null resource.
      * isNull() is @p true.
@@ -82,10 +79,10 @@ public:
     QString name() const;
 
     /**
-    * Returns a description of the text input for debugging purposes.
-    *
-    * @return debug string
-    */
+     * Returns a description of the text input for debugging purposes.
+     *
+     * @return debug string
+     */
     QString debugInfo() const;
 };
 

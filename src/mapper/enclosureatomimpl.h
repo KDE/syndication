@@ -8,12 +8,11 @@
 #ifndef SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
 #define SYNDICATION_MAPPER_ENCLOSUREATOMIMPL_H
 
-#include <enclosure.h>
 #include <atom/link.h>
+#include <enclosure.h>
 
 namespace Syndication
 {
-
 class EnclosureAtomImpl;
 typedef QSharedPointer<EnclosureAtomImpl> EnclosureAtomImplPtr;
 
@@ -25,7 +24,6 @@ typedef QSharedPointer<EnclosureAtomImpl> EnclosureAtomImplPtr;
 class EnclosureAtomImpl : public Syndication::Enclosure
 {
 public:
-
     explicit EnclosureAtomImpl(const Syndication::Atom::Link &link);
 
     Q_REQUIRED_RESULT bool isNull() const override;

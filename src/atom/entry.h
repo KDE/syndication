@@ -20,12 +20,10 @@ class QString;
 
 namespace Syndication
 {
-
 class SpecificItemVisitor;
 
 namespace Atom
 {
-
 class Category;
 class Content;
 class Link;
@@ -40,7 +38,6 @@ class Source;
 class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
 {
 public:
-
     /**
      * creates a null entry object
      */
@@ -177,7 +174,6 @@ public:
     Q_REQUIRED_RESULT QString debugInfo() const;
 
 private:
-
     QList<Person> m_feedAuthors;
 };
 

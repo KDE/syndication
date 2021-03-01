@@ -5,19 +5,19 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#include <rss2/item.h>
+#include <constants.h>
 #include <rss2/category.h>
 #include <rss2/enclosure.h>
+#include <rss2/item.h>
 #include <rss2/source.h>
 #include <rss2/tools_p.h>
-#include <constants.h>
 #include <specificitem.h>
 #include <specificitemvisitor.h>
 #include <tools.h>
 
 #include <QDomElement>
-#include <QString>
 #include <QList>
+#include <QString>
 
 #include <vector>
 
@@ -25,20 +25,22 @@ namespace Syndication
 {
 namespace RSS2
 {
-
 class Item::ItemPrivate
 {
 public:
-
     QSharedPointer<Document> doc;
 };
 
-Item::Item(QSharedPointer<Document> doc) : ElementWrapper(), d(new ItemPrivate)
+Item::Item(QSharedPointer<Document> doc)
+    : ElementWrapper()
+    , d(new ItemPrivate)
 {
     d->doc = doc;
 }
 
-Item::Item(const QDomElement &element, QSharedPointer<Document> doc) : ElementWrapper(element), d(new ItemPrivate)
+Item::Item(const QDomElement &element, QSharedPointer<Document> doc)
+    : ElementWrapper(element)
+    , d(new ItemPrivate)
 {
     d->doc = doc;
 }
@@ -47,7 +49,9 @@ Item::~Item()
 {
 }
 
-Item::Item(const Item &other) : ElementWrapper(other), SpecificItem(other)
+Item::Item(const Item &other)
+    : ElementWrapper(other)
+    , SpecificItem(other)
 {
     d = other.d;
 }
@@ -126,8 +130,7 @@ QString Item::content() const
 
 QList<Category> Item::categories() const
 {
-    QList<QDomElement> cats = elementsByTagNameNS(QString(),
-                              QStringLiteral("category"));
+    QList<QDomElement> cats = elementsByTagNameNS(QString(), QStringLiteral("category"));
 
     QList<Category> categories;
     categories.reserve(cats.count());
@@ -152,16 +155,13 @@ QString Item::author() const
         return a;
     } else {
         // if author is not available, fall back to dc:creator
-        return extractElementTextNS(dublinCoreNamespace(),
-                                    QStringLiteral("creator"));
+        return extractElementTextNS(dublinCoreNamespace(), QStringLiteral("creator"));
     }
-
 }
 
 QList<Enclosure> Item::enclosures() const
 {
-    QList<QDomElement> encs = elementsByTagNameNS(QString(),
-                              QStringLiteral("enclosure"));
+    QList<QDomElement> encs = elementsByTagNameNS(QString(), QStringLiteral("enclosure"));
 
     QList<Enclosure> enclosures;
     enclosures.reserve(encs.count());
@@ -181,13 +181,11 @@ QString Item::guid() const
 
 bool Item::guidIsPermaLink() const
 {
-    bool guidIsPermaLink = true;  // true is default
+    bool guidIsPermaLink = true; // true is default
 
-    QDomElement guidNode = firstElementByTagNameNS(QString(),
-                           QStringLiteral("guid"));
+    QDomElement guidNode = firstElementByTagNameNS(QString(), QStringLiteral("guid"));
     if (!guidNode.isNull()) {
-        if (guidNode.attribute(QStringLiteral("isPermaLink"))
-                == QLatin1String("false")) {
+        if (guidNode.attribute(QStringLiteral("isPermaLink")) == QLatin1String("false")) {
             guidIsPermaLink = false;
         }
     }
@@ -299,8 +297,7 @@ QList<QDomElement> Item::unhandledElements() const
     const int numChildren = children.size();
     for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull()
-                && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
+        if (!el.isNull() && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }

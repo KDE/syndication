@@ -7,15 +7,15 @@
 
 #include "itemrdfimpl.h"
 
+#include <category.h>
+#include <constants.h>
+#include <enclosure.h>
+#include <personimpl.h>
 #include <rdf/dublincore.h>
 #include <rdf/property.h>
 #include <rdf/resource.h>
 #include <rdf/resourcewrapper.h>
 #include <rdf/statement.h>
-#include <constants.h>
-#include <category.h>
-#include <enclosure.h>
-#include <personimpl.h>
 #include <tools.h>
 
 #include <QDomElement>
@@ -28,8 +28,8 @@ using Syndication::RDF::PropertyPtr;
 
 namespace Syndication
 {
-
-ItemRDFImpl::ItemRDFImpl(const Syndication::RDF::Item &item) : m_item(item)
+ItemRDFImpl::ItemRDFImpl(const Syndication::RDF::Item &item)
+    : m_item(item)
 {
 }
 

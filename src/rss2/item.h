@@ -8,24 +8,23 @@
 #ifndef SYNDICATION_RSS2_ITEM_H
 #define SYNDICATION_RSS2_ITEM_H
 
-#include <syndication/rss2/document.h>
 #include <syndication/elementwrapper.h>
+#include <syndication/rss2/document.h>
 #include <syndication/specificitem.h>
 
 #include <ctime>
 
 class QDomElement;
 class QString;
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
-
 class SpecificItemVisitor;
 
 namespace RSS2
 {
-
 class Category;
 class Enclosure;
 class Source;
@@ -38,7 +37,6 @@ class Source;
 class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::SpecificItem
 {
 public:
-
     /**
      * Default constructor, creates a null object, for which isNull() is
      * @c true.
@@ -186,8 +184,8 @@ public:
     /**
      * Indicates when the item was published. If it's a date in the future,
      * you may choose to not display the item until that date.
-      * This returns the content of the @c &lt;pubDate> element. If @c
-      * &lt;pubDate> is not available, the method returns
+     * This returns the content of the @c &lt;pubDate> element. If @c
+     * &lt;pubDate> is not available, the method returns
      * @c &lt;dc:date> instead, if available.
      *
      * @return the publication date, or 0 if no date was specified or
@@ -254,7 +252,6 @@ public:
     //@endcond
 
 private:
-
     class ItemPrivate;
     QSharedPointer<ItemPrivate> d;
 };

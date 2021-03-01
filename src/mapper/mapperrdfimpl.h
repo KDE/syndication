@@ -10,14 +10,13 @@
 
 #include "feedrdfimpl.h"
 
-#include <rdf/document.h>
-#include <specificdocument.h>
 #include <feed.h>
 #include <mapper.h>
+#include <rdf/document.h>
+#include <specificdocument.h>
 
 namespace Syndication
 {
-
 /** @internal */
 class RDFMapper : public Mapper<Feed>
 {

@@ -12,13 +12,13 @@
 
 #include <syndication/specificdocument.h>
 
-template <class T> class QList;
+template<class T>
+class QList;
 
 namespace Syndication
 {
 namespace RDF
 {
-
 class Document;
 class Model;
 class DublinCore;
@@ -38,8 +38,8 @@ typedef QSharedPointer<Document> DocumentPtr;
 class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public ResourceWrapper
 {
     friend class ::Syndication::RDF::Model;
-public:
 
+public:
     /**
      * creates a wrapper wrapping a null resource
      */
@@ -138,7 +138,7 @@ public:
      * An optional text input element associated with the channel
      */
     TextInput textInput() const;
-//@cond PRIVATE
+    //@cond PRIVATE
     /**
      * @internal
      * checks the format of titles and returns the results
@@ -156,7 +156,7 @@ public:
      * descriptions
      */
     void getItemDescriptionFormatInfo(bool *containsMarkup) const;
-//@endcond PRIVATE
+    //@endcond PRIVATE
 
     /**
      * Returns a description of the document for debugging purposes.

@@ -8,14 +8,13 @@
 #ifndef SYNDICATION_PERSONIMPL_H
 #define SYNDICATION_PERSONIMPL_H
 
-#include <syndication/person.h>
 #include "syndication_export.h"
+#include <syndication/person.h>
 
 #include <QString>
 
 namespace Syndication
 {
-
 class PersonImpl;
 
 //@cond PRIVATE
@@ -27,7 +26,6 @@ typedef QSharedPointer<PersonImpl> PersonImplPtr;
 class SYNDICATION_EXPORT PersonImpl : public Person
 {
 public:
-
     PersonImpl();
     PersonImpl(const QString &name, const QString &uri, const QString &email);
 
@@ -49,7 +47,6 @@ public:
     }
 
 private:
-
     bool m_null;
     QString m_name;
     QString m_uri;

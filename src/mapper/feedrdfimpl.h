@@ -8,12 +8,11 @@
 #ifndef SYNDICATION_MAPPER_FEEDRDFIMPL_H
 #define SYNDICATION_MAPPER_FEEDRDFIMPL_H
 
-#include <rdf/document.h>
 #include <feed.h>
+#include <rdf/document.h>
 
 namespace Syndication
 {
-
 class FeedRDFImpl;
 typedef QSharedPointer<FeedRDFImpl> FeedRDFImplPtr;
 class Image;
@@ -25,7 +24,6 @@ typedef QSharedPointer<Image> ImagePtr;
 class FeedRDFImpl : public Syndication::Feed
 {
 public:
-
     explicit FeedRDFImpl(Syndication::RDF::DocumentPtr doc);
 
     Syndication::SpecificDocumentPtr specificDocument() const override;
@@ -53,7 +51,6 @@ public:
     ImagePtr icon() const override;
 
 private:
-
     Syndication::RDF::DocumentPtr m_doc;
 };
 
