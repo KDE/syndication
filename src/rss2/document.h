@@ -245,7 +245,7 @@ public:
         Thursday = 3, /**< self-explanatory */
         Friday = 4, /**< self-explanatory */
         Saturday = 5, /**< self-explanatory */
-        Sunday = 6 /**< self-explanatory */
+        Sunday = 6, /**< self-explanatory */
     };
 
     /**

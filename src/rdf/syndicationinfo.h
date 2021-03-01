@@ -41,7 +41,7 @@ public:
         Daily, /**< the feed is updated daily */
         Weekly, /**< the feed is updated weekly */
         Monthly, /**< the feed is updated monthly */
-        Yearly /**< the feed is updated yearly */
+        Yearly, /**< the feed is updated yearly */
     };
 
     /**
