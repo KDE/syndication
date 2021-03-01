@@ -52,7 +52,8 @@ Syndication::SpecificDocumentPtr Parser::parse(const Syndication::DocumentSource
 
     bool feedValid = !feed.isNull();
 
-    if (feedValid && feed.attribute(QStringLiteral("version")) == QLatin1String("0.3")) {
+    if (feedValid //
+        && feed.attribute(QStringLiteral("version")) == QLatin1String("0.3")) {
         doc = ParserPrivate::convertAtom0_3(doc);
         feed = doc.namedItem(QStringLiteral("feed")).toElement();
     }
@@ -113,9 +114,13 @@ QDomNode Parser::ParserPrivate::convertNode(QDomDocument &doc, const QDomNode &n
         }
     }
 
+    /* clang-format off */
     bool isTextConstruct = newNS == atom1Namespace()
-        && (newName == QLatin1String("title") || newName == QLatin1String("rights") || newName == QLatin1String("subtitle")
-            || newName == QLatin1String("summary"));
+                           && (newName == QLatin1String("title")
+                               || newName == QLatin1String("rights")
+                               || newName == QLatin1String("subtitle")
+                               || newName == QLatin1String("summary"));
+    /* clang-format on */
 
     // for atom text constructs, map to new type schema (which only allows text, type, xhtml)
 

@@ -89,8 +89,10 @@ Content::Format Content::mapTypeToFormat(const QString &typep, const QString &sr
         return EscapedHTML;
     }
 
+    /* clang-format off */
     if (type == QLatin1String("text")
-        || (type.startsWith(QLatin1String("text/"), Qt::CaseInsensitive) && !type.startsWith(QLatin1String("text/xml"), Qt::CaseInsensitive))) {
+        || (type.startsWith(QLatin1String("text/"), Qt::CaseInsensitive)
+            && !type.startsWith(QLatin1String("text/xml"), Qt::CaseInsensitive))) { /* clang-format on */
         return PlainText;
     }
 
@@ -108,7 +110,10 @@ Content::Format Content::mapTypeToFormat(const QString &typep, const QString &sr
         xmltypes.append(QStringLiteral("text/x-dtd")); // from shared-mime-info
     }
 
-    if (xmltypes.contains(type) || type.endsWith(QLatin1String("+xml"), Qt::CaseInsensitive) || type.endsWith(QLatin1String("/xml"), Qt::CaseInsensitive)) {
+    /* clang-format off */
+    if (xmltypes.contains(type)
+        || type.endsWith(QLatin1String("+xml"), Qt::CaseInsensitive)
+        || type.endsWith(QLatin1String("/xml"), Qt::CaseInsensitive)) { /* clang-format on */
         return XML;
     }
 

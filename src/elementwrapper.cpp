@@ -185,7 +185,9 @@ QString ElementWrapper::childNodesAsXML(const QDomElement &parent)
 
     for (int i = 0; i < list.count(); ++i) {
         QDomNode it = list.item(i);
-        if (!base.isEmpty() && it.isElement() && !it.toElement().hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
+        if (!base.isEmpty() //
+            && it.isElement() //
+            && !it.toElement().hasAttributeNS(xmlNamespace(), QStringLiteral("base"))) {
             it.toElement().setAttributeNS(xmlNamespace(), QStringLiteral("base"), base);
         }
 

@@ -110,7 +110,12 @@ void Model::removeStatement(StatementPtr statement)
 
 void Model::removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object)
 {
-    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subject->id()), QString::number(predicate->id()), QString::number(object->id()));
+    /* clang-format off */
+    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subject->id()),
+                                                 QString::number(predicate->id()),
+                                                 QString::number(object->id()));
+    /* clang-format on */
+
     d->removeFromHashes(key);
 }
 
@@ -143,7 +148,11 @@ StatementPtr Model::addStatement(ResourcePtr subject, PropertyPtr predicate, Nod
 
     // TODO: avoid duplicated stmts with literal objects!
 
-    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subjInternal->id()), QString::number(predInternal->id()), QString::number(objInternal->id()));
+    /* clang-format off */
+    QString key = QStringLiteral("%1-%2-%3").arg(QString::number(subjInternal->id()),
+                                                 QString::number(predInternal->id()),
+                                                 QString::number(objInternal->id()));
+    /* clang-format on */
 
     StatementPtr stmt;
 
@@ -254,7 +263,8 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
     QList<ResourcePtr> list;
 
     for (const StatementPtr &stmtPtr : qAsConst(d->statements)) {
-        if (*(stmtPtr->predicate()) == *(RDFVocab::self()->type()) && *(stmtPtr->object()) == *type) {
+        if (*(stmtPtr->predicate()) == *(RDFVocab::self()->type()) //
+            && *(stmtPtr->object()) == *type) {
             list.append(stmtPtr->subject());
         }
     }

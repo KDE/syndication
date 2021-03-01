@@ -56,7 +56,9 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
             while (iter.hasNext()) {
                 match = iter.next();
                 s2 = match.captured(1);
-                if (s2.endsWith(QLatin1String(".rdf")) || s2.endsWith(QLatin1String(".rss")) || s2.endsWith(QLatin1String(".xml"))) {
+                if (s2.endsWith(QLatin1String(".rdf")) //
+                    || s2.endsWith(QLatin1String(".rss")) //
+                    || s2.endsWith(QLatin1String(".xml"))) {
                     feeds.append(s2);
                 }
             }

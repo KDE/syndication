@@ -63,7 +63,8 @@ int main(int argc, char **argv)
 
     QString expfname;
 
-    if (argc >= pcompare + 1 && QString::fromLatin1(argv[pcompare]) == QLatin1String("--compare")) {
+    if (argc >= (pcompare + 1) //
+        && QString::fromLatin1(argv[pcompare]) == QLatin1String("--compare")) {
         expfname = QString::fromLatin1(argv[pcompare + 1]);
     }
 

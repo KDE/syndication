@@ -181,7 +181,8 @@ QList<QDomElement> Entry::unhandledElements() const
     const int numChildren = children.size();
     for (int i = 0; i < numChildren; ++i) {
         QDomElement el = children.at(i).toElement();
-        if (!el.isNull() && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
+        if (!el.isNull() //
+            && std::find(handled.cbegin(), handled.cend(), ElementType(el.localName(), el.namespaceURI())) == handled.cend()) {
             notHandled.append(el);
         }
     }
