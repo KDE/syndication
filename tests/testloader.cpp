@@ -15,7 +15,7 @@
 #include "specificdocument.h"
 #include "syndication_version.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 
 #include <QUrl>
 
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    QApplication app(argc, argv);
+    QCoreApplication app(argc, argv);
 
     QCommandLineParser parser;
     app.setApplicationVersion(QStringLiteral(SYNDICATION_VERSION_STRING));
