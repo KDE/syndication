@@ -45,7 +45,6 @@ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt 
 if(BUILD_TESTING)
    add_definitions(-DBUILD_TESTING)
 endif()
-add_definitions(-DQT_NO_FOREACH)
 add_subdirectory(src)
 
 if(BUILD_TESTING)
