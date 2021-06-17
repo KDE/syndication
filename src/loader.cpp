@@ -15,9 +15,6 @@
 
 #include <QUrl>
 
-#include <QDebug>
-#include <QFile>
-#include <QStringList>
 
 #include <syndication_debug.h>
 

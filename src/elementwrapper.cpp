@@ -10,7 +10,6 @@
 
 #include <QUrl>
 
-#include <QDebug>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QStringList>
