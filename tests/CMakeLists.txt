@@ -6,7 +6,6 @@ find_package(Qt5Network ${REQUIRED_QT_VERSION} CONFIG REQUIRED) # for testloader
 
 ########### next target ###############
 
-set(testloader_SRCS testloader.cpp)
-add_executable(testloader ${testloader_SRCS})
+add_executable(testloader testloader.cpp)
 target_link_libraries(testloader KF5Syndication Qt5::Core Qt5::Network)
 

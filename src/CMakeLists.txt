@@ -1,5 +1,14 @@
+add_library(KF5Syndication)
+add_library(KF5::Syndication ALIAS KF5Syndication)
 
-set(librss2local_SRCS
+set_target_properties(KF5Syndication PROPERTIES
+    VERSION     ${SYNDICATION_VERSION}
+    SOVERSION   ${SYNDICATION_SOVERSION}
+    EXPORT_NAME Syndication
+)
+
+target_sources(KF5Syndication PRIVATE
+    # librss2local
     rss2/category.cpp
     rss2/cloud.cpp
     rss2/document.cpp
@@ -10,9 +19,8 @@ set(librss2local_SRCS
     rss2/source.cpp
     rss2/textinput.cpp
     rss2/tools_p.cpp
-)
 
-set(librdflocal_la_SRCS
+    # librdflocal
     rdf/contentvocab.cpp
     rdf/document.cpp
     rdf/dublincore.cpp
@@ -35,9 +43,8 @@ set(librdflocal_la_SRCS
     rdf/syndicationinfo.cpp
     rdf/syndicationvocab.cpp
     rdf/textinput.cpp
-)
 
-set(libatomlocal_SRCS
+    # libatomlocal
     atom/atomtools.cpp
     atom/category.cpp
     atom/constants.cpp
@@ -49,29 +56,26 @@ set(libatomlocal_SRCS
     atom/parser.cpp
     atom/person.cpp
     atom/source.cpp
-)
 
-set(libmapperrss2local_SRCS
+    # libmapperrss2local
     mapper/categoryrss2impl.cpp
     mapper/enclosurerss2impl.cpp
     mapper/feedrss2impl.cpp
     mapper/imagerss2impl.cpp
     mapper/itemrss2impl.cpp
-)
 
-set(libmapperrdflocal_SRCS
+    # libmapperrdflocal
     mapper/feedrdfimpl.cpp
     mapper/imagerdfimpl.cpp
     mapper/itemrdfimpl.cpp
-)
 
-set(libmapperatomlocal_SRCS
+    # libmapperatomlocal
     mapper/categoryatomimpl.cpp
     mapper/enclosureatomimpl.cpp
     mapper/feedatomimpl.cpp
     mapper/itematomimpl.cpp
-)
-set(libsyndicationlocal_SRCS
+
+    # libsyndicationlocal
     abstractparser.cpp
     category.cpp
     constants.cpp
@@ -94,18 +98,7 @@ set(libsyndicationlocal_SRCS
     loaderutil.cpp
 )
 
-set(syndication_SRCS
-    ${librss2local_SRCS}
-    ${librdflocal_la_SRCS}
-    ${libatomlocal_SRCS}
-    ${libmappercommonlocal_SRCS}
-    ${libmapperrss2local_SRCS}
-    ${libmapperrdflocal_SRCS}
-    ${libmapperatomlocal_SRCS}
-    ${libsyndicationlocal_SRCS}
-)
-
-ecm_qt_declare_logging_category(syndication_SRCS
+ecm_qt_declare_logging_category(KF5Syndication
     HEADER syndication_debug.h
     IDENTIFIER SYNDICATION_LOG
     CATEGORY_NAME kf.syndication
@@ -114,15 +107,14 @@ ecm_qt_declare_logging_category(syndication_SRCS
     EXPORT SYNDICATION
 )
 
-add_library(KF5Syndication ${syndication_SRCS})
-
 generate_export_header(KF5Syndication BASE_NAME syndication)
 
-add_library(KF5::Syndication ALIAS KF5Syndication)
-
-target_include_directories(KF5Syndication INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication>")
-target_include_directories(KF5Syndication PUBLIC "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src>")
-target_include_directories(KF5Syndication  PUBLIC "$<BUILD_INTERFACE:${Syndication_BINARY_DIR}>")
+target_include_directories(KF5Syndication
+    INTERFACE
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication>"
+    PUBLIC
+        "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src;${Syndication_BINARY_DIR}>"
+)
 
 kde_target_enable_exceptions(KF5Syndication PUBLIC)
 
@@ -132,12 +124,6 @@ PUBLIC
 PRIVATE
     Qt5::Xml
     KF5::Codecs
-)
-
-set_target_properties(KF5Syndication PROPERTIES
-    VERSION ${SYNDICATION_VERSION}
-    SOVERSION ${SYNDICATION_SOVERSION}
-    EXPORT_NAME Syndication
 )
 
 add_subdirectory(atom)
