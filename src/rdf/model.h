@@ -29,7 +29,7 @@ namespace RDF
 {
 /**
  * An RDF model, a set of RDF statements.
- * Model objects are implicitely shared.
+ * Model objects are implicitly shared.
  *
  * @author Frank Osterfeld
  */
@@ -77,7 +77,7 @@ public:
      * Returns whether two models objects represent the same model
      * (i.e. share the same underlying statement set). Currently this
      * method does _not_ compare the statement list.
-     * Two indepently created models containing the same statements
+     * Two independently created models containing the same statements
      * are not equal!
      *
      * @param other the model to compare to

@@ -79,7 +79,7 @@ public:
     Q_REQUIRED_RESULT QString icon() const;
 
     /**
-     * a string that unambigously identifies the source feed (optional)
+     * a string that unambiguously identifies the source feed (optional)
      *
      * @return the ID of the source feed, or a null string if not
      * specified.

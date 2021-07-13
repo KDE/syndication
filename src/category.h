@@ -58,7 +58,7 @@ public:
      * vocabulary/ontology such as Dublin Core.
      * Think of it as the term's namespace, grouping a set of categories.
      * When managing categories, scheme() + term() identifies a category
-     * unambigously and can be used as key.
+     * unambiguously and can be used as key.
      *
      * @return the scheme this category is part of, or a null string
      * if not specified

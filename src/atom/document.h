@@ -97,7 +97,7 @@ public:
     Q_REQUIRED_RESULT QString logo() const;
 
     /**
-     * a string that unambigously identifies the feed (required)
+     * a string that unambiguously identifies the feed (required)
      *
      * @return the ID of the feed. As defined in the Atom spec it must be
      * a valid URI (which is neither checked nor enforced by this parser)
