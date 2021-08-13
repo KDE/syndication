@@ -194,10 +194,11 @@ QList<Item> Document::items() const
             QStringList uriSequence;
             uriSequence.reserve(seqItems.size());
 
-            for (const NodePtr &i : seqItems)
+            for (const NodePtr &i : seqItems) {
                 if (i->isResource()) {
                     uriSequence.append(i.staticCast<Resource>()->uri());
                 }
+            }
             list = sortListToMatchSequence(list, uriSequence);
         }
     }
