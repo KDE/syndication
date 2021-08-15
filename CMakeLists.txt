@@ -5,7 +5,7 @@ set(KF_DEP_VERSION "5.85.0") # handled by release scripts
 
 project(Syndication VERSION ${KF_VERSION})
 
-set(REQUIRED_QT_VERSION 5.15.0)
+set(REQUIRED_QT_VERSION 5.15.2)
 
 # ECM setup
 find_package(ECM ${KF_DEP_VERSION} CONFIG REQUIRED)
@@ -35,7 +35,7 @@ find_package(Qt5Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
 find_package(KF5Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
