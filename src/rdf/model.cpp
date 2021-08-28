@@ -245,7 +245,7 @@ QList<StatementPtr> Model::statements() const
 QString Model::debugInfo() const
 {
     QString info;
-    for (const StatementPtr &stmtPtr : qAsConst(d->statements)) {
+    for (const StatementPtr &stmtPtr : std::as_const(d->statements)) {
         info += QStringLiteral("<%1> <%2> ").arg(stmtPtr->subject()->uri(), stmtPtr->predicate()->uri());
 
         if (stmtPtr->object()->isLiteral()) {
@@ -262,7 +262,7 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
 {
     QList<ResourcePtr> list;
 
-    for (const StatementPtr &stmtPtr : qAsConst(d->statements)) {
+    for (const StatementPtr &stmtPtr : std::as_const(d->statements)) {
         if (*(stmtPtr->predicate()) == *(RDFVocab::self()->type()) //
             && *(stmtPtr->object()) == *type) {
             list.append(stmtPtr->subject());

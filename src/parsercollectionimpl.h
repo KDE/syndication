@@ -108,7 +108,7 @@ QSharedPointer<T> ParserCollectionImpl<T>::parse(const DocumentSource &source, c
         }
     }
 
-    for (AbstractParser *i : qAsConst(m_parserList)) {
+    for (AbstractParser *i : std::as_const(m_parserList)) {
         if (i->accept(source)) {
             SpecificDocumentPtr doc = i->parse(source);
             if (!doc->isValid()) {

@@ -177,7 +177,7 @@ void Parser::ParserPrivate::addSequenceFor09(Model model)
     SequencePtr seq = model.createSequence();
     model.addStatement(channels.first(), RSSVocab::self()->items(), seq);
 
-    for (const ResourcePtr &i : qAsConst(sorted)) {
+    for (const ResourcePtr &i : std::as_const(sorted)) {
         seq->append(i);
         // add rdf:about (type)
         model.addStatement(i, RDFVocab::self()->type(), RSSVocab::self()->item());

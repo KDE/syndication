@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     QTime time;
     time.start();
 
-    for (const QString &filename : qAsConst(filenames)) {
+    for (const QString &filename : std::as_const(filenames)) {
         QFile f(filename);
 
         if (!f.open(QIODevice::ReadOnly)) {

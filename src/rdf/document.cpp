@@ -153,7 +153,7 @@ static QList<Item> sortListToMatchSequence(QList<Item> items, const QStringList 
     std::sort(toSort.begin(), toSort.end(), LessThanByIndex());
 
     int i = 0;
-    for (const SortItem &sortItem : qAsConst(toSort)) {
+    for (const SortItem &sortItem : std::as_const(toSort)) {
         items[i] = sortItem.item;
         i++;
     }
@@ -180,7 +180,7 @@ QList<Item> Document::items() const
     QList<Item> list;
     list.reserve(items.count());
 
-    for (const ResourcePtr &i : qAsConst(items)) {
+    for (const ResourcePtr &i : std::as_const(items)) {
         list.append(Item(i, doccpy));
     }
 
