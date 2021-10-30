@@ -102,30 +102,28 @@ time_t ItemRSS2Impl::dateUpdated() const
 
 QList<Syndication::EnclosurePtr> ItemRSS2Impl::enclosures() const
 {
-    QList<Syndication::EnclosurePtr> list;
-
     const QList<Syndication::RSS2::Enclosure> encs = m_item.enclosures();
+
+    QList<Syndication::EnclosurePtr> list;
     list.reserve(encs.size());
 
-    for (auto it = encs.cbegin(); it != encs.cend(); ++it) {
-        EnclosureRSS2ImplPtr impl(new EnclosureRSS2Impl(m_item, *it));
-        list.append(impl);
-    }
+    std::transform(encs.cbegin(), encs.cend(), std::back_inserter(list), [this](const Syndication::RSS2::Enclosure &e) {
+        return EnclosureRSS2ImplPtr(new EnclosureRSS2Impl(m_item, e));
+    });
 
     return list;
 }
 
 QList<Syndication::CategoryPtr> ItemRSS2Impl::categories() const
 {
-    QList<Syndication::CategoryPtr> list;
-
     const QList<Syndication::RSS2::Category> cats = m_item.categories();
+
+    QList<Syndication::CategoryPtr> list;
     list.reserve(cats.size());
 
-    for (auto it = cats.cbegin(), end = cats.cend(); it != end; ++it) {
-        CategoryRSS2ImplPtr impl(new CategoryRSS2Impl(*it));
-        list.append(impl);
-    }
+    std::transform(cats.cbegin(), cats.cend(), std::back_inserter(list), [](const Syndication::RSS2::Category &c) {
+        return CategoryRSS2ImplPtr(new CategoryRSS2Impl(c));
+    });
 
     return list;
 }

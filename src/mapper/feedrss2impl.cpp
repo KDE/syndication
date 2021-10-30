@@ -32,32 +32,28 @@ Syndication::SpecificDocumentPtr FeedRSS2Impl::specificDocument() const
 
 QList<Syndication::ItemPtr> FeedRSS2Impl::items() const
 {
+    const QList<Syndication::RSS2::Item> entries = m_doc->items();
+
     QList<ItemPtr> items;
-    QList<Syndication::RSS2::Item> entries = m_doc->items();
-    QList<Syndication::RSS2::Item>::ConstIterator it = entries.constBegin();
-    QList<Syndication::RSS2::Item>::ConstIterator end = entries.constEnd();
     items.reserve(entries.count());
 
-    for (; it != end; ++it) {
-        ItemRSS2ImplPtr item(new ItemRSS2Impl(*it));
-        items.append(item);
-    }
+    std::transform(entries.cbegin(), entries.cend(), std::back_inserter(items), [](const Syndication::RSS2::Item &entry) {
+        return ItemRSS2ImplPtr(new ItemRSS2Impl(entry));
+    });
 
     return items;
 }
 
 QList<Syndication::CategoryPtr> FeedRSS2Impl::categories() const
 {
+    const QList<Syndication::RSS2::Category> entries = m_doc->categories();
+
     QList<CategoryPtr> categories;
-    QList<Syndication::RSS2::Category> entries = m_doc->categories();
-    QList<Syndication::RSS2::Category>::ConstIterator it = entries.constBegin();
-    QList<Syndication::RSS2::Category>::ConstIterator end = entries.constEnd();
     categories.reserve(entries.count());
 
-    for (; it != end; ++it) {
-        CategoryRSS2ImplPtr item(new CategoryRSS2Impl(*it));
-        categories.append(item);
-    }
+    std::transform(entries.cbegin(), entries.cend(), std::back_inserter(categories), [](const Syndication::RSS2::Category &entry) {
+        return CategoryRSS2ImplPtr(new CategoryRSS2Impl(entry));
+    });
 
     return categories;
 }

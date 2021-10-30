@@ -35,16 +35,14 @@ Syndication::SpecificDocumentPtr FeedRDFImpl::specificDocument() const
 
 QList<Syndication::ItemPtr> FeedRDFImpl::items() const
 {
+    const QList<Syndication::RDF::Item> entries = m_doc->items();
+
     QList<ItemPtr> items;
-    QList<Syndication::RDF::Item> entries = m_doc->items();
-    QList<Syndication::RDF::Item>::ConstIterator it = entries.constBegin();
-    QList<Syndication::RDF::Item>::ConstIterator end = entries.constEnd();
     items.reserve(entries.count());
 
-    for (; it != end; ++it) {
-        ItemRDFImplPtr item(new ItemRDFImpl(*it));
-        items.append(item);
-    }
+    std::transform(entries.cbegin(), entries.cend(), std::back_inserter(items), [](const Syndication::RDF::Item &entry) {
+        return ItemRDFImplPtr(new ItemRDFImpl(entry));
+    });
 
     return items;
 }

@@ -183,17 +183,11 @@ bool Model::ModelPrivate::resourceHasProperty(const Resource *resource, Property
         return false;
     }
 
-    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
-    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
+    const QList<StatementPtr> &stmts = stmtsBySubject[resource->uri()];
 
-    for (; it != end; ++it) {
-        if (*((*it)->predicate()) == *property) {
-            return true;
-        }
-    }
-
-    return false;
+    return std::any_of(stmts.cbegin(), stmts.cend(), [&property](const StatementPtr &p) {
+        return *(p->predicate()) == *property;
+    });
 }
 
 StatementPtr Model::resourceProperty(const Resource *resource, PropertyPtr property) const
@@ -203,17 +197,11 @@ StatementPtr Model::resourceProperty(const Resource *resource, PropertyPtr prope
 
 StatementPtr Model::ModelPrivate::resourceProperty(const Resource *resource, PropertyPtr property) const
 {
-    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
-    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
-
-    for (; it != end; ++it) {
-        if (*((*it)->predicate()) == *property) {
-            return *it;
-        }
-    }
-
-    return nullStatement;
+    const QList<StatementPtr> &stmts = stmtsBySubject[resource->uri()];
+    auto it = std::find_if(stmts.cbegin(), stmts.cend(), [&property](const StatementPtr &p) {
+        return *(p->predicate()) == *property;
+    });
+    return it != stmts.cend() ? *it : nullStatement;
 }
 
 QList<StatementPtr> Model::resourceProperties(const Resource *resource, PropertyPtr property) const

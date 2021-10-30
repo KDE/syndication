@@ -63,15 +63,12 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
                 }
             }
 
-            QUrl testURL;
-            // loop through, prefer feeds on same host
-            QStringList::const_iterator end(feeds.constEnd());
-            for (QStringList::const_iterator it = feeds.constBegin(); it != end; ++it) {
-                testURL = QUrl(*it);
-                if (testURL.host() == host) {
-                    s2 = *it;
-                    break;
-                }
+            // Prefer feeds on same host
+            auto it = std::find_if(feeds.cbegin(), feeds.cend(), [&host](const QString &s) {
+                return QUrl(s).host() == host;
+            });
+            if (it != feeds.cend()) {
+                s2 = *it;
             }
         }
     }

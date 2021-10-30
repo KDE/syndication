@@ -42,18 +42,13 @@ QString ItemAtomImpl::title() const
 
 QString ItemAtomImpl::link() const
 {
-    QList<Syndication::Atom::Link> links = m_entry.links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
+    const QList<Syndication::Atom::Link> links = m_entry.links();
 
     // return first link where rel="alternate"
-    for (; it != end; ++it) {
-        if ((*it).rel() == QLatin1String("alternate")) {
-            return (*it).href();
-        }
-    }
-
-    return QString();
+    auto it = std::find_if(links.cbegin(), links.cend(), [](const Syndication::Atom::Link &link) {
+        return link.rel() == QLatin1String("alternate");
+    });
+    return it != links.cend() ? it->href() : QString{};
 }
 
 QString ItemAtomImpl::description() const
@@ -73,26 +68,14 @@ QString ItemAtomImpl::content() const
 
 QList<PersonPtr> ItemAtomImpl::authors() const
 {
-    QList<Syndication::Atom::Person> atomps = m_entry.authors();
-    QList<Syndication::Atom::Person> contributorAtoms = m_entry.contributors();
-    QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
-    QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
+    const QList<Syndication::Atom::Person> people = m_entry.authors() + m_entry.contributors();
 
     QList<PersonPtr> list;
-    list.reserve(atomps.count() + contributorAtoms.count());
+    list.reserve(people.size());
 
-    for (; it != end; ++it) {
-        PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
-        list.append(ptr);
-    }
-
-    it = contributorAtoms.constBegin();
-    end = contributorAtoms.constEnd();
-
-    for (; it != end; ++it) {
-        PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
-        list.append(ptr);
-    }
+    std::transform(people.cbegin(), people.cend(), std::back_inserter(list), [](const Syndication::Atom::Person &person) {
+        return PersonImplPtr(new PersonImpl(person.name(), person.uri(), person.email()));
+    });
 
     return list;
 }
@@ -151,17 +134,14 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
 
 QList<Syndication::CategoryPtr> ItemAtomImpl::categories() const
 {
-    QList<Syndication::CategoryPtr> list;
+    const QList<Syndication::Atom::Category> cats = m_entry.categories();
 
-    QList<Syndication::Atom::Category> cats = m_entry.categories();
-    QList<Syndication::Atom::Category>::ConstIterator it = cats.constBegin();
-    QList<Syndication::Atom::Category>::ConstIterator end = cats.constEnd();
+    QList<Syndication::CategoryPtr> list;
     list.reserve(cats.count());
 
-    for (; it != end; ++it) {
-        CategoryAtomImplPtr impl(new CategoryAtomImpl(*it));
-        list.append(impl);
-    }
+    std::transform(cats.cbegin(), cats.cend(), std::back_inserter(list), [](const Syndication::Atom::Category &c) {
+        return CategoryAtomImplPtr(new CategoryAtomImpl(c));
+    });
 
     return list;
 }

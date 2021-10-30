@@ -44,48 +44,39 @@ bool FeedDocument::accept(DocumentVisitor *visitor)
 
 QList<Person> FeedDocument::authors() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
     QList<Person> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    const QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Person(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Person(element);
+    });
 
     return list;
 }
 
 QList<Person> FeedDocument::contributors() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
     QList<Person> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    const QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Person(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Person(element);
+    });
 
     return list;
 }
 
 QList<Category> FeedDocument::categories() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    const QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Category(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Category(element);
+    });
 
     return list;
 }
@@ -137,35 +128,30 @@ time_t FeedDocument::updated() const
 
 QList<Link> FeedDocument::links() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Link(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Link(element);
+    });
 
     return list;
 }
 
 QList<Entry> FeedDocument::entries() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("entry"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("entry"));
     QList<Entry> list;
     list.reserve(a.count());
 
-    QList<Person> feedAuthors = authors();
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
+    const QList<Person> feedAuthors = authors();
 
-    for (; it != end; ++it) {
-        Entry entry(*it);
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [&feedAuthors](const QDomElement &element) {
+        Entry entry(element);
         entry.setFeedAuthors(feedAuthors);
-        list.append(entry);
-    }
+        return entry;
+    });
 
     return list;
 }

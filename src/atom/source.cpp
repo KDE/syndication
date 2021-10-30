@@ -36,15 +36,13 @@ Source::Source(const QDomElement &element)
 QList<Person> Source::authors() const
 {
     const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("author"));
+
     QList<Person> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Person(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Person(element);
+    });
 
     return list;
 }
@@ -55,12 +53,9 @@ QList<Person> Source::contributors() const
     QList<Person> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Person(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Person(element);
+    });
 
     return list;
 }
@@ -71,12 +66,9 @@ QList<Category> Source::categories() const
     QList<Category> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Category(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Category(element);
+    });
 
     return list;
 }
@@ -102,12 +94,9 @@ QList<Link> Source::links() const
     QList<Link> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Link(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Link(element);
+    });
 
     return list;
 }

@@ -47,52 +47,40 @@ QList<Person> Entry::authors() const
     QList<Person> list;
 
     if (!a.isEmpty()) {
-        QList<QDomElement>::ConstIterator it = a.constBegin();
-        QList<QDomElement>::ConstIterator end = a.constEnd();
         list.reserve(a.count());
 
-        for (; it != end; ++it) {
-            list.append(Person(*it));
-        }
+        std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+            return Person(element);
+        });
     } else {
         list = source().authors();
     }
 
-    if (!list.isEmpty()) {
-        return list;
-    }
-
-    return m_feedAuthors;
+    return !list.isEmpty() ? list : m_feedAuthors;
 }
 
 QList<Person> Entry::contributors() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("contributor"));
     QList<Person> list;
-
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
     list.reserve(a.count());
 
-    for (; it != end; ++it) {
-        list.append(Person(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Person(element);
+    });
 
     return list;
 }
 
 QList<Category> Entry::categories() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("category"));
     QList<Category> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Category(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Category(element);
+    });
 
     return list;
 }
@@ -104,16 +92,13 @@ QString Entry::id() const
 
 QList<Link> Entry::links() const
 {
-    QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
+    const QList<QDomElement> a = elementsByTagNameNS(atom1Namespace(), QStringLiteral("link"));
     QList<Link> list;
     list.reserve(a.count());
 
-    QList<QDomElement>::ConstIterator it = a.constBegin();
-    QList<QDomElement>::ConstIterator end = a.constEnd();
-
-    for (; it != end; ++it) {
-        list.append(Link(*it));
-    }
+    std::transform(a.cbegin(), a.cend(), std::back_inserter(list), [](const QDomElement &element) {
+        return Link(element);
+    });
 
     return list;
 }

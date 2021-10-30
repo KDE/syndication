@@ -34,32 +34,27 @@ Syndication::SpecificDocumentPtr FeedAtomImpl::specificDocument() const
 
 QList<Syndication::ItemPtr> FeedAtomImpl::items() const
 {
+    const QList<Syndication::Atom::Entry> entries = m_doc->entries();
+
     QList<ItemPtr> items;
-    QList<Syndication::Atom::Entry> entries = m_doc->entries();
-    QList<Syndication::Atom::Entry>::ConstIterator it = entries.constBegin();
-    QList<Syndication::Atom::Entry>::ConstIterator end = entries.constEnd();
     items.reserve(entries.count());
 
-    for (; it != end; ++it) {
-        ItemAtomImplPtr item(new ItemAtomImpl(*it));
-        items.append(item);
-    }
+    std::transform(entries.cbegin(), entries.cend(), std::back_inserter(items), [](const Syndication::Atom::Entry &entry) {
+        return ItemAtomImplPtr(new ItemAtomImpl(entry));
+    });
 
     return items;
 }
 
 QList<Syndication::CategoryPtr> FeedAtomImpl::categories() const
 {
+    const QList<Syndication::Atom::Category> entries = m_doc->categories();
     QList<CategoryPtr> categories;
-    QList<Syndication::Atom::Category> entries = m_doc->categories();
-    QList<Syndication::Atom::Category>::ConstIterator it = entries.constBegin();
-    QList<Syndication::Atom::Category>::ConstIterator end = entries.constEnd();
     categories.reserve(entries.count());
 
-    for (; it != end; ++it) {
-        CategoryAtomImplPtr item(new CategoryAtomImpl(*it));
-        categories.append(item);
-    }
+    std::transform(entries.cbegin(), entries.cend(), std::back_inserter(categories), [](const Syndication::Atom::Category &entry) {
+        return CategoryAtomImplPtr(new CategoryAtomImpl(entry));
+    });
 
     return categories;
 }
@@ -71,19 +66,13 @@ QString FeedAtomImpl::title() const
 
 QString FeedAtomImpl::link() const
 {
-    QList<Syndication::Atom::Link> links = m_doc->links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
-
+    const QList<Syndication::Atom::Link> links = m_doc->links();
     // return first link where rel="alternate"
     // TODO: if there are multiple "alternate" links, find other criteria to choose one of them
-    for (; it != end; ++it) {
-        if ((*it).rel() == QLatin1String("alternate")) {
-            return (*it).href();
-        }
-    }
-
-    return QString();
+    auto it = std::find_if(links.cbegin(), links.cend(), [](const Syndication::Atom::Link &link) {
+        return link.rel() == QLatin1String("alternate");
+    });
+    return it != links.cend() ? it->href() : QString{};
 }
 
 QString FeedAtomImpl::description() const
@@ -93,26 +82,14 @@ QString FeedAtomImpl::description() const
 
 QList<PersonPtr> FeedAtomImpl::authors() const
 {
-    QList<Syndication::Atom::Person> atomps = m_doc->authors();
-    QList<Syndication::Atom::Person> contributorAtoms = m_doc->contributors();
-    QList<Syndication::Atom::Person>::ConstIterator it = atomps.constBegin();
-    QList<Syndication::Atom::Person>::ConstIterator end = atomps.constEnd();
+    const QList<Syndication::Atom::Person> people = m_doc->authors() + m_doc->contributors();
 
     QList<PersonPtr> list;
-    list.reserve(atomps.count() + contributorAtoms.count());
+    list.reserve(people.size());
 
-    for (; it != end; ++it) {
-        PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
-        list.append(ptr);
-    }
-
-    it = contributorAtoms.constBegin();
-    end = contributorAtoms.constEnd();
-
-    for (; it != end; ++it) {
-        PersonImplPtr ptr(new PersonImpl((*it).name(), (*it).uri(), (*it).email()));
-        list.append(ptr);
-    }
+    std::transform(people.cbegin(), people.cend(), std::back_inserter(list), [](const Syndication::Atom::Person &person) {
+        return PersonImplPtr(new PersonImpl(person.name(), person.uri(), person.email()));
+    });
 
     return list;
 }

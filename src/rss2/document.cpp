@@ -160,15 +160,14 @@ time_t Document::lastBuildDate() const
 
 QList<Category> Document::categories() const
 {
-    QList<Category> categories;
+    const QList<QDomElement> catNodes = elementsByTagNameNS(QString(), QStringLiteral("category"));
 
-    QList<QDomElement> catNodes = elementsByTagNameNS(QString(), QStringLiteral("category"));
+    QList<Category> categories;
     categories.reserve(catNodes.count());
-    QList<QDomElement>::ConstIterator it = catNodes.constBegin();
-    QList<QDomElement>::ConstIterator end(catNodes.constEnd());
-    for (; it != end; ++it) {
-        categories.append(Category(*it));
-    }
+
+    std::transform(catNodes.cbegin(), catNodes.cend(), std::back_inserter(categories), [](const QDomElement &element) {
+        return Category(element);
+    });
 
     return categories;
 }
@@ -266,17 +265,16 @@ QSet<Document::DayOfWeek> Document::skipDays() const
 
 QList<Item> Document::items() const
 {
+    const QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QStringLiteral("item"));
+
     QList<Item> items;
-
-    QList<QDomElement> itemNodes = elementsByTagNameNS(QString(), QStringLiteral("item"));
-
-    DocumentPtr doccpy(new Document(*this));
     items.reserve(itemNodes.count());
 
-    const QList<QDomElement>::ConstIterator end(itemNodes.constEnd());
-    for (QList<QDomElement>::ConstIterator it = itemNodes.constBegin(); it != end; ++it) {
-        items.append(Item(*it, doccpy));
-    }
+    DocumentPtr doccpy(new Document(*this));
+
+    std::transform(itemNodes.cbegin(), itemNodes.cend(), std::back_inserter(items), [&doccpy](const QDomElement &element) {
+        return Item(element, doccpy);
+    });
 
     return items;
 }
