@@ -119,14 +119,10 @@ void Parser::ParserPrivate::map09to10(Model model)
 
     // map statement predicates to RSS 1.0
 
-    QList<StatementPtr> statements = model.statements();
-    QList<StatementPtr>::ConstIterator it = statements.constBegin();
-    QList<StatementPtr>::ConstIterator end = statements.constEnd();
+    const QList<StatementPtr> &statements = model.statements();
 
-    for (; it != end; ++it) {
-        StatementPtr stmt = *it;
-
-        QString predUri = stmt->predicate()->uri();
+    for (const auto &stmt : statements) {
+        const QString predUri = stmt->predicate()->uri();
         if (uris09.contains(predUri)) {
             model.addStatement(stmt->subject(), hash[predUri], stmt->object());
         }

@@ -221,11 +221,9 @@ QSet<int> Document::skipHours() const
     if (!skipHoursNode.isNull()) {
         ElementWrapper skipHoursWrapper(skipHoursNode);
         bool ok = false;
-        QList<QDomElement> hours = skipHoursWrapper.elementsByTagNameNS(QString(), QStringLiteral("hour"));
-        QList<QDomElement>::ConstIterator it = hours.constBegin();
-        const QList<QDomElement>::ConstIterator end(hours.constEnd());
-        for (; it != end; ++it) {
-            int h = (*it).text().toInt(&ok);
+        const QList<QDomElement> hours = skipHoursWrapper.elementsByTagNameNS(QString(), QStringLiteral("hour"));
+        for (const auto &element : hours) {
+            const int h = element.text().toInt(&ok);
             if (ok) {
                 skipHours.insert(h);
             }
@@ -241,21 +239,28 @@ QSet<Document::DayOfWeek> Document::skipDays() const
     QDomElement skipDaysNode = firstElementByTagNameNS(QString(), QStringLiteral("skipDays"));
     if (!skipDaysNode.isNull()) {
         ElementWrapper skipDaysWrapper(skipDaysNode);
-        QHash<QString, DayOfWeek> weekDays;
+        struct DayInfo {
+            QLatin1String name;
+            DayOfWeek enumValue;
+        };
+        static const std::vector<DayInfo> weekDays = {
+            {QLatin1String("Monday"), Monday},
+            {QLatin1String("Tuesday"), Tuesday},
+            {QLatin1String("Wednesday"), Wednesday},
+            {QLatin1String("Thursday"), Thursday},
+            {QLatin1String("Friday"), Friday},
+            {QLatin1String("Saturday"), Saturday},
+            {QLatin1String("Sunday"), Sunday},
+        };
 
-        weekDays[QStringLiteral("Monday")] = Monday;
-        weekDays[QStringLiteral("Tuesday")] = Tuesday;
-        weekDays[QStringLiteral("Wednesday")] = Wednesday;
-        weekDays[QStringLiteral("Thursday")] = Thursday;
-        weekDays[QStringLiteral("Friday")] = Friday;
-        weekDays[QStringLiteral("Saturday")] = Saturday;
-        weekDays[QStringLiteral("Sunday")] = Sunday;
-
-        QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QStringLiteral("day"));
-        const QList<QDomElement>::ConstIterator daysEnd(days.constEnd());
-        for (QList<QDomElement>::ConstIterator it = days.constBegin(); it != daysEnd; ++it) {
-            if (weekDays.contains((*it).text())) {
-                skipDays.insert(weekDays[(*it).text()]);
+        const QList<QDomElement> days = skipDaysWrapper.elementsByTagNameNS(QString(), QStringLiteral("day"));
+        for (const auto &element : days) {
+            const QString day = element.text();
+            auto it = std::find_if(weekDays.cbegin(), weekDays.cend(), [&day](const DayInfo &info) {
+                return info.name == day;
+            });
+            if (it != weekDays.cend()) {
+                skipDays.insert(it->enumValue);
             }
         }
     }
@@ -369,16 +374,15 @@ QString Document::debugInfo() const
         info += image().debugInfo();
     }
 
-    QList<Category> cats = categories();
+    const QList<Category> cats = categories();
 
-    const QList<Category>::ConstIterator end(cats.constEnd());
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != end; ++it) {
-        info += (*it).debugInfo();
+    for (const auto &c : cats) {
+        info += c.debugInfo();
     }
-    QList<Item> litems = items();
-    const QList<Item>::ConstIterator itEnd(litems.constEnd());
-    for (QList<Item>::ConstIterator it = litems.constBegin(); it != itEnd; ++it) {
-        info += (*it).debugInfo();
+
+    const QList<Item> litems = items();
+    for (const auto &item : litems) {
+        info += item.debugInfo();
     }
     info += QLatin1String("### Document end ################\n");
     return info;
@@ -398,15 +402,14 @@ void Document::getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const
         QDomElement titleEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("title"));
         d->itemTitleIsCDATA = titleEl.firstChild().isCDATASection();
 
-        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin();
-
-        while (i < nmax) {
-            titles += (*it).originalTitle();
-            ++it;
-            ++i;
+        for (const auto &item : litems) {
+            if (i++ >= nmax) {
+                break;
+            }
+            titles += item.originalTitle();
         }
 
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
@@ -435,15 +438,14 @@ void Document::getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup)
         QDomElement descEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("description"));
         d->itemDescriptionIsCDATA = descEl.firstChild().isCDATASection();
 
-        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin();
-
-        while (i < nmax) {
-            desc += (*it).originalDescription();
-            ++it;
-            ++i;
+        for (const auto &item : litems) {
+            if (i++ >= nmax) {
+                break;
+            }
+            desc += item.originalDescription();
         }
 
         d->itemDescriptionContainsMarkup = stringContainsMarkup(desc);

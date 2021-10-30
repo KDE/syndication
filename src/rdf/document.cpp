@@ -231,15 +231,14 @@ void Document::getItemTitleFormatInfo(bool *containsMarkup) const
             return;
         }
 
-        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin();
-
-        while (i < nmax) {
-            titles += (*it).originalTitle();
-            ++it;
-            ++i;
+        for (const auto &item : litems) {
+            if (i++ >= nmax) {
+                break;
+            }
+            titles += item.originalTitle();
         }
 
         d->itemTitleContainsMarkup = stringContainsMarkup(titles);
@@ -261,15 +260,14 @@ void Document::getItemDescriptionFormatInfo(bool *containsMarkup) const
             return;
         }
 
-        int nmax = litems.size() < 10 ? litems.size() : 10; // we check a maximum of 10 items
+        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
-        QList<Item>::ConstIterator it = litems.constBegin();
-
-        while (i < nmax) {
-            desc += (*it).originalDescription();
-            ++it;
-            ++i;
+        for (const auto &item : litems) {
+            if (i++ >= nmax) {
+                break;
+            }
+            desc += item.originalDescription();
         }
 
         d->itemDescriptionContainsMarkup = stringContainsMarkup(desc);
@@ -299,11 +297,9 @@ QString Document::debugInfo() const
         info += input.debugInfo();
     }
 
-    QList<Item> itlist = items();
-    QList<Item>::ConstIterator it = itlist.constBegin();
-    QList<Item>::ConstIterator end = itlist.constEnd();
-    for (; it != end; ++it) {
-        info += (*it).debugInfo();
+    const QList<Item> itlist = items();
+    for (const auto &item : itlist) {
+        info += item.debugInfo();
     }
 
     info += QLatin1String("### Document end ################\n");

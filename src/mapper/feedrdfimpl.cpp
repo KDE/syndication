@@ -70,15 +70,13 @@ QString FeedRDFImpl::description() const
 
 QList<PersonPtr> FeedRDFImpl::authors() const
 {
+    const QStringList people = m_doc->dc().creators() + m_doc->dc().contributors();
+
     QList<PersonPtr> list;
+    list.reserve(people.size());
 
-    QStringList people = m_doc->dc().creators();
-    people += m_doc->dc().contributors();
-    QStringList::ConstIterator it = people.constBegin();
-    QStringList::ConstIterator end = people.constEnd();
-
-    for (; it != end; ++it) {
-        PersonPtr ptr = personFromString(*it);
+    for (const auto &person : people) {
+        PersonPtr ptr = personFromString(person);
         if (!ptr->isNull()) {
             list.append(ptr);
         }

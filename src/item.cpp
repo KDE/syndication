@@ -63,28 +63,19 @@ QString Item::debugInfo() const
         info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
     }
 
-    QList<PersonPtr> dauthors = authors();
-    QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
-    QList<PersonPtr>::ConstIterator endp = dauthors.constEnd();
-
-    for (; itp != endp; ++itp) {
-        info += (*itp)->debugInfo();
+    const QList<PersonPtr> dauthors = authors();
+    for (const auto &author : dauthors) {
+        info += author->debugInfo();
     }
 
-    QList<CategoryPtr> dcategories = categories();
-    QList<CategoryPtr>::ConstIterator itc = dcategories.constBegin();
-    QList<CategoryPtr>::ConstIterator endc = dcategories.constEnd();
-
-    for (; itc != endc; ++itc) {
-        info += (*itc)->debugInfo();
+    const QList<CategoryPtr> dcategories = categories();
+    for (const auto &cat : dcategories) {
+        info += cat->debugInfo();
     }
 
-    QList<EnclosurePtr> denclosures = enclosures();
-    QList<EnclosurePtr>::ConstIterator ite = denclosures.constBegin();
-    QList<EnclosurePtr>::ConstIterator ende = denclosures.constEnd();
-
-    for (; ite != ende; ++ite) {
-        info += (*ite)->debugInfo();
+    const QList<EnclosurePtr> denclosures = enclosures();
+    for (const auto &e : denclosures) {
+        info += e->debugInfo();
     }
 
     int dcommentsCount = commentsCount();

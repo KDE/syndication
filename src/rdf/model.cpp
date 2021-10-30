@@ -212,13 +212,11 @@ QList<StatementPtr> Model::resourceProperties(const Resource *resource, Property
 QList<StatementPtr> Model::ModelPrivate::resourceProperties(const Resource *resource, PropertyPtr property) const
 {
     QList<StatementPtr> res;
-    QList<StatementPtr> stmts = stmtsBySubject[resource->uri()];
-    QList<StatementPtr>::ConstIterator it = stmts.constBegin();
-    QList<StatementPtr>::ConstIterator end = stmts.constEnd();
 
-    for (; it != end; ++it) {
-        if (*((*it)->predicate()) == *property) {
-            res.append(*it);
+    const QList<StatementPtr> &stmts = stmtsBySubject[resource->uri()];
+    for (const auto &p : stmts) {
+        if (*(p->predicate()) == *property) {
+            res.append(p);
         }
     }
 

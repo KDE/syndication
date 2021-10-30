@@ -119,13 +119,11 @@ QList<Syndication::EnclosurePtr> ItemAtomImpl::enclosures() const
 {
     QList<Syndication::EnclosurePtr> list;
 
-    QList<Syndication::Atom::Link> links = m_entry.links();
-    QList<Syndication::Atom::Link>::ConstIterator it = links.constBegin();
-    QList<Syndication::Atom::Link>::ConstIterator end = links.constEnd();
+    const QList<Syndication::Atom::Link> links = m_entry.links();
 
-    for (; it != end; ++it) {
-        if ((*it).rel() == QLatin1String("enclosure")) {
-            list.append(EnclosureAtomImplPtr(new EnclosureAtomImpl(*it)));
+    for (const auto &link : links) {
+        if (link.rel() == QLatin1String("enclosure")) {
+            list.append(EnclosureAtomImplPtr(new EnclosureAtomImpl(link)));
         }
     }
 

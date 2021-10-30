@@ -255,15 +255,14 @@ QString Item::debugInfo() const
         info += source().debugInfo();
     }
 
-    QList<Category> cats = categories();
-    const QList<Category>::ConstIterator endCategories(cats.constEnd());
-    for (QList<Category>::ConstIterator it = cats.constBegin(); it != endCategories; ++it) {
-        info += (*it).debugInfo();
+    const QList<Category> cats = categories();
+    for (const auto &c : cats) {
+        info += c.debugInfo();
     }
-    QList<Enclosure> encs = enclosures();
-    const QList<Enclosure>::ConstIterator endEnclosures(encs.constEnd());
-    for (QList<Enclosure>::ConstIterator it = encs.constBegin(); it != endEnclosures; ++it) {
-        info += (*it).debugInfo();
+
+    const QList<Enclosure> encs = enclosures();
+    for (const auto &e : encs) {
+        info += e.debugInfo();
     }
 
     info += QLatin1String("### Item end ################\n");

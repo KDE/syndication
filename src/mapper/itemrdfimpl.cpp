@@ -57,13 +57,10 @@ QList<PersonPtr> ItemRDFImpl::authors() const
 {
     QList<PersonPtr> list;
 
-    QStringList people = m_item.dc().creators();
-    people += m_item.dc().contributors();
-    QStringList::ConstIterator it = people.constBegin();
-    QStringList::ConstIterator end = people.constEnd();
+    const QStringList people = m_item.dc().creators() + m_item.dc().contributors();
 
-    for (; it != end; ++it) {
-        PersonPtr ptr = personFromString(*it);
+    for (const auto &person : people) {
+        PersonPtr ptr = personFromString(person);
         if (!ptr->isNull()) {
             list.append(ptr);
         }

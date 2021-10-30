@@ -49,20 +49,14 @@ QString Feed::debugInfo() const
         info += QLatin1String("language: #") + dlanguage + QLatin1String("#\n");
     }
 
-    QList<PersonPtr> dauthors = authors();
-    QList<PersonPtr>::ConstIterator itp = dauthors.constBegin();
-    QList<PersonPtr>::ConstIterator endp = dauthors.constEnd();
-
-    for (; itp != endp; ++itp) {
-        info += (*itp)->debugInfo();
+    const QList<PersonPtr> dauthors = authors();
+    for (const auto &author : dauthors) {
+        info += author->debugInfo();
     }
 
-    QList<CategoryPtr> dcategories = categories();
-    QList<CategoryPtr>::ConstIterator itc = dcategories.constBegin();
-    QList<CategoryPtr>::ConstIterator endc = dcategories.constEnd();
-
-    for (; itc != endc; ++itc) {
-        info += (*itc)->debugInfo();
+    const QList<CategoryPtr> dcategories = categories();
+    for (const auto &catPtr : dcategories) {
+        info += catPtr->debugInfo();
     }
 
     ImagePtr dimage = image();
@@ -77,12 +71,10 @@ QString Feed::debugInfo() const
         info += dicon->debugInfo();
     }
 
-    QList<ItemPtr> ditems = items();
-    QList<ItemPtr>::ConstIterator it = ditems.constBegin();
-    QList<ItemPtr>::ConstIterator end = ditems.constEnd();
+    const QList<ItemPtr> ditems = items();
 
-    for (; it != end; ++it) {
-        info += (*it)->debugInfo();
+    for (const auto &item : ditems) {
+        info += item->debugInfo();
     }
 
     info += QLatin1String("# Feed end ########################\n");
