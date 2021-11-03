@@ -15,7 +15,7 @@ class SyndicationTest : public QObject
     Q_OBJECT
 public:
     explicit SyndicationTest(QObject *parent = nullptr);
-    ~SyndicationTest() = default;
+    ~SyndicationTest() override = default;
 private Q_SLOTS:
     void testSyncationFile_data();
     void testSyncationFile();

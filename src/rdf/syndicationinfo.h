@@ -58,7 +58,7 @@ public:
     /**
      * virtual destructor
      */
-    virtual ~SyndicationInfo();
+    ~SyndicationInfo() override;
 
     /**
      * Describes the period over which the channel format is updated.

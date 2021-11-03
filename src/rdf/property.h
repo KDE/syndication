@@ -46,7 +46,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Property();
+    ~Property() override;
 
     /**
      * Used by visitors for double dispatch. See NodeVisitor

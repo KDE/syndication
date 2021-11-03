@@ -76,7 +76,7 @@ public:
     /**
      * destructor
      */
-    ~Content();
+    ~Content() override;
 
     /**
      * assigns another content objecct

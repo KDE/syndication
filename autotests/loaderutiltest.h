@@ -15,7 +15,7 @@ class LoaderUtilTest : public QObject
     Q_OBJECT
 public:
     explicit LoaderUtilTest(QObject *parent = nullptr);
-    ~LoaderUtilTest() = default;
+    ~LoaderUtilTest() override = default;
 private Q_SLOTS:
     void testParsing_data();
     void testParsing();

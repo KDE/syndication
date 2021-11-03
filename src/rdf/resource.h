@@ -61,7 +61,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Resource();
+    ~Resource() override;
 
     /**
      * assigns a resource

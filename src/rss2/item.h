@@ -62,7 +62,7 @@ public:
     /**
      * destructor
      */
-    ~Item();
+    ~Item() override;
 
     /**
      * assigns another item. As the d pointer is shared,

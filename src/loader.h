@@ -155,7 +155,7 @@ private:
     Loader();
     Loader(const Loader &other);
     Loader &operator=(const Loader &other);
-    ~Loader();
+    ~Loader() override;
     void discoverFeeds(const QByteArray &data);
 
     struct LoaderPrivate;

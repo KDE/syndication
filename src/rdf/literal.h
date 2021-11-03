@@ -50,7 +50,7 @@ public:
     /**
      * destructor
      */
-    virtual ~Literal();
+    ~Literal() override;
 
     /**
      * assigns another literal

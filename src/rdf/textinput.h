@@ -43,7 +43,7 @@ public:
     /**
      * destructor
      */
-    virtual ~TextInput();
+    ~TextInput() override;
 
     /**
      * A descriptive title for the textinput field. For example: "Subscribe"

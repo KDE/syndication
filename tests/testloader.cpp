@@ -40,7 +40,7 @@ public:
         , mReply(nullptr)
     {
     }
-    ~SimpleRetriever()
+    ~SimpleRetriever() override
     {
         delete mReply;
         delete mMgr;
