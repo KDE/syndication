@@ -111,7 +111,7 @@ generate_export_header(KF5Syndication BASE_NAME syndication)
 
 target_include_directories(KF5Syndication
     INTERFACE
-        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication>"
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication>"
     PUBLIC
         "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src;${Syndication_BINARY_DIR}>"
 )
@@ -120,9 +120,9 @@ kde_target_enable_exceptions(KF5Syndication PUBLIC)
 
 target_link_libraries(KF5Syndication
 PUBLIC
-    Qt5::Core
+    Qt${QT_MAJOR_VERSION}::Core
 PRIVATE
-    Qt5::Xml
+    Qt${QT_MAJOR_VERSION}::Xml
     KF5::Codecs
 )
 
@@ -164,13 +164,13 @@ install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${KF5_INSTALL_TARGET
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
     ${Syndication_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication
     COMPONENT Devel
 )
 
 install(FILES
     ${Syndication_CamelCase_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/Syndication
     COMPONENT Devel
 
 )

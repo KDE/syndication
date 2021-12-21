@@ -21,14 +21,14 @@ ecm_generate_headers(Syndication_Atom_CamelCase_HEADERS
 
 install(FILES
     ${Syndication_Atom_CamelCase_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication/Atom
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/Syndication/Atom
     COMPONENT Devel
 
 )
 
 install(FILES
     ${Syndication_Atom_HEADERS}
-        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/atom
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication/atom
         COMPONENT Devel
 )
 

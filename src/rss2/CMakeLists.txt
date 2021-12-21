@@ -20,14 +20,14 @@ ecm_generate_headers(Syndication_Rss2_CamelCase_HEADERS
 
 install(FILES
     ${Syndication_Rss2_CamelCase_HEADERS}
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/Syndication/Rss2
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/Syndication/Rss2
     COMPONENT Devel
 
 )
 
 install(FILES
     ${Syndication_Rss2_HEADERS}
-        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Syndication/syndication/rss2
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication/rss2
         COMPONENT Devel
 )
 

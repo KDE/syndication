@@ -9,11 +9,11 @@
 #define SYNDICATION_RDF_RSSVOCAB_H
 
 #include <QSharedPointer>
+#include <QStringList>
 
 #include <syndication_export.h>
 
 class QString;
-class QStringList;
 
 namespace Syndication
 {

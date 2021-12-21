@@ -10,10 +10,11 @@
 
 #include <syndication/rdf/resourcewrapper.h>
 
+#include <QStringList>
+
 #include <ctime>
 
 class QString;
-class QStringList;
 
 namespace Syndication
 {
