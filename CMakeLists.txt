@@ -23,6 +23,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddQch)
 include(ECMGeneratePriFile)
+include(ECMDeprecationSettings)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
@@ -35,8 +36,10 @@ find_package(Qt${QT_MAJOR_VERSION}Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
 find_package(KF5Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900)
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.90.0
+)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
