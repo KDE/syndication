@@ -231,7 +231,7 @@ void Document::getItemTitleFormatInfo(bool *containsMarkup) const
             return;
         }
 
-        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
+        const int nmax = std::min<int>(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
         for (const auto &item : litems) {
@@ -260,7 +260,7 @@ void Document::getItemDescriptionFormatInfo(bool *containsMarkup) const
             return;
         }
 
-        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
+        const int nmax = std::min<int>(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
         for (const auto &item : litems) {

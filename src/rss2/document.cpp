@@ -402,7 +402,7 @@ void Document::getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const
         QDomElement titleEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("title"));
         d->itemTitleIsCDATA = titleEl.firstChild().isCDATASection();
 
-        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
+        const int nmax = std::min<int>(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
         for (const auto &item : litems) {
@@ -438,7 +438,7 @@ void Document::getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup)
         QDomElement descEl = (*litems.begin()).firstElementByTagNameNS(QString(), QStringLiteral("description"));
         d->itemDescriptionIsCDATA = descEl.firstChild().isCDATASection();
 
-        const int nmax = std::min(litems.size(), 10); // we check a maximum of 10 items
+        const int nmax = std::min<int>(litems.size(), 10); // we check a maximum of 10 items
         int i = 0;
 
         for (const auto &item : litems) {
