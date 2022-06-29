@@ -10,7 +10,6 @@
 
 #include <QCoreApplication>
 #include <QString>
-#include <QStringList>
 
 namespace Syndication
 {
