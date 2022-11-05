@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(KF_VERSION "5.100.0") # handled by release scripts
-set(KF_DEP_VERSION "5.99.0") # handled by release scripts
+set(KF_DEP_VERSION "5.100.0") # handled by release scripts
 
 project(Syndication VERSION ${KF_VERSION})
 
