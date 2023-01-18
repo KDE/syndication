@@ -5,7 +5,7 @@ set(KF_DEP_VERSION "5.102.0") # handled by release scripts
 
 project(Syndication VERSION ${KF_VERSION})
 
-set(REQUIRED_QT_VERSION 5.15.2)
+set(REQUIRED_QT_VERSION 6.4.0)
 
 # ECM setup
 find_package(ECM ${KF_DEP_VERSION} CONFIG REQUIRED)
