@@ -7,5 +7,5 @@ find_package(Qt${QT_MAJOR_VERSION}Network ${REQUIRED_QT_VERSION} CONFIG REQUIRED
 ########### next target ###############
 
 add_executable(testloader testloader.cpp)
-target_link_libraries(testloader KF5Syndication Qt${QT_MAJOR_VERSION}::Core Qt${QT_MAJOR_VERSION}::Network)
+target_link_libraries(testloader KF6Syndication Qt${QT_MAJOR_VERSION}::Core Qt${QT_MAJOR_VERSION}::Network)
 

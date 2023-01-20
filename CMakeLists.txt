@@ -27,14 +27,14 @@ include(ECMDeprecationSettings)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfigVersion.cmake"
-                        SOVERSION 5
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SyndicationConfigVersion.cmake"
+                        SOVERSION 6
 )
 
 ########### Find packages ###########
 find_package(Qt${QT_MAJOR_VERSION}Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
-find_package(KF5Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
+find_package(KF6Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
     QT 5.15.2
@@ -56,32 +56,32 @@ if(BUILD_TESTING)
 endif()
 
 ########### CMake Config Files ###########
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Syndication")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Syndication")
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KF5Syndication_QCH
-        FILE KF5SyndicationQchTargets.cmake
+        TARGETS KF6Syndication_QCH
+        FILE KF6SyndicationQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel
     )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5SyndicationQchTargets.cmake\")")
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SyndicationQchTargets.cmake\")")
 endif()
 
 configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/KF5SyndicationConfig.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfig.cmake"
+  "${CMAKE_CURRENT_SOURCE_DIR}/KF6SyndicationConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6SyndicationConfig.cmake"
   INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
 )
 
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfig.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/KF5SyndicationConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6SyndicationConfig.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KF6SyndicationConfigVersion.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   COMPONENT Devel
 )
 
-install(EXPORT KF5SyndicationTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF5SyndicationTargets.cmake NAMESPACE KF5::)
+install(EXPORT KF6SyndicationTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF6SyndicationTargets.cmake NAMESPACE KF6::)
 
 install(FILES
    ${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h

@@ -9,8 +9,8 @@ deprecated: false
 release: true
 libraries:
  - qmake: Syndication
-   cmake: "KF5::Syndication"
-cmakename: KF5Syndication
+   cmake: "KF6::Syndication"
+cmakename: KF6Syndication
 public_lib: true
 group: Frameworks
 subgroup: Tier 2

@@ -1,13 +1,13 @@
-add_library(KF5Syndication)
-add_library(KF5::Syndication ALIAS KF5Syndication)
+add_library(KF6Syndication)
+add_library(KF6::Syndication ALIAS KF6Syndication)
 
-set_target_properties(KF5Syndication PROPERTIES
+set_target_properties(KF6Syndication PROPERTIES
     VERSION     ${SYNDICATION_VERSION}
     SOVERSION   ${SYNDICATION_SOVERSION}
     EXPORT_NAME Syndication
 )
 
-target_sources(KF5Syndication PRIVATE
+target_sources(KF6Syndication PRIVATE
     # librss2local
     rss2/category.cpp
     rss2/cloud.cpp
@@ -98,7 +98,7 @@ target_sources(KF5Syndication PRIVATE
     loaderutil.cpp
 )
 
-ecm_qt_declare_logging_category(KF5Syndication
+ecm_qt_declare_logging_category(KF6Syndication
     HEADER syndication_debug.h
     IDENTIFIER SYNDICATION_LOG
     CATEGORY_NAME kf.syndication
@@ -107,23 +107,23 @@ ecm_qt_declare_logging_category(KF5Syndication
     EXPORT SYNDICATION
 )
 
-generate_export_header(KF5Syndication BASE_NAME syndication)
+generate_export_header(KF6Syndication BASE_NAME syndication)
 
-target_include_directories(KF5Syndication
+target_include_directories(KF6Syndication
     INTERFACE
         "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication>"
     PUBLIC
         "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src;${Syndication_BINARY_DIR}>"
 )
 
-kde_target_enable_exceptions(KF5Syndication PUBLIC)
+kde_target_enable_exceptions(KF6Syndication PUBLIC)
 
-target_link_libraries(KF5Syndication
+target_link_libraries(KF6Syndication
 PUBLIC
     Qt${QT_MAJOR_VERSION}::Core
 PRIVATE
     Qt${QT_MAJOR_VERSION}::Xml
-    KF5::Codecs
+    KF6::Codecs
 )
 
 add_subdirectory(atom)
@@ -159,7 +159,7 @@ ecm_generate_headers(Syndication_CamelCase_HEADERS
 )
 
 
-install(TARGETS KF5Syndication EXPORT KF5SyndicationTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6Syndication EXPORT KF6SyndicationTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/syndication_export.h
@@ -183,9 +183,9 @@ ecm_qt_install_logging_categories(
 
 if(BUILD_QCH)
     ecm_add_qch(
-        KF5Syndication_QCH
+        KF6Syndication_QCH
         NAME Syndication
-        BASE_NAME KF5Syndication
+        BASE_NAME KF6Syndication
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -207,5 +207,5 @@ if(BUILD_QCH)
     )
 endif()
 
-ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF5Syndication DEPS "" FILENAME_VAR PRI_FILENAME)
+ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF6Syndication DEPS "" FILENAME_VAR PRI_FILENAME)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
