@@ -32,13 +32,13 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
 )
 
 ########### Find packages ###########
-find_package(Qt${QT_MAJOR_VERSION}Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
+find_package(Qt6Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 
 find_package(KF6Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
-    QT 5.15.2
-    KF 5.97.0
+    QT 6.4
+    KF 5.102.0
 )
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)

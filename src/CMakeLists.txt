@@ -120,9 +120,9 @@ kde_target_enable_exceptions(KF6Syndication PUBLIC)
 
 target_link_libraries(KF6Syndication
 PUBLIC
-    Qt${QT_MAJOR_VERSION}::Core
+    Qt6::Core
 PRIVATE
-    Qt${QT_MAJOR_VERSION}::Xml
+    Qt6::Xml
     KF6::Codecs
 )
 
@@ -195,7 +195,7 @@ if(BUILD_QCH)
             ${Syndication_Rss2_APIDOX_SRCS}
         MD_MAINPAGE "${CMAKE_SOURCE_DIR}/Mainpage.dox"
         LINK_QCHS
-            Qt5Core_QCH
+            Qt6Core_QCH
         INCLUDE_DIRS
             ${CMAKE_CURRENT_BINARY_DIR}
         BLANK_MACROS
