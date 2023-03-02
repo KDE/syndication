@@ -111,7 +111,7 @@ generate_export_header(KF6Syndication BASE_NAME syndication)
 
 target_include_directories(KF6Syndication
     INTERFACE
-        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Syndication;${KDE_INSTALL_INCLUDEDIR_KF}/Syndication/syndication>"
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Syndication>"
     PUBLIC
         "$<BUILD_INTERFACE:${Syndication_SOURCE_DIR}/src;${Syndication_BINARY_DIR}/src;${Syndication_BINARY_DIR}>"
 )
