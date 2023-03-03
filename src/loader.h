@@ -8,7 +8,7 @@
 #ifndef SYNDICATION_LOADER_H
 #define SYNDICATION_LOADER_H
 
-#include <syndication/global.h>
+#include "global.h"
 
 #include "syndication_export.h"
 

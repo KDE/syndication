@@ -8,8 +8,8 @@
 #ifndef SYNDICATION_RDF_SEQUENCE_H
 #define SYNDICATION_RDF_SEQUENCE_H
 
-#include <syndication/rdf/resource.h>
-#include <syndication_export.h>
+#include "../syndication_export.h"
+#include "resource.h"
 
 template<class T>
 class QList;

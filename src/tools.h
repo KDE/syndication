@@ -8,8 +8,8 @@
 #ifndef SYNDICATION_TOOLS_H
 #define SYNDICATION_TOOLS_H
 
+#include "person.h"
 #include "syndication_export.h"
-#include <syndication/person.h>
 
 #include <QString>
 

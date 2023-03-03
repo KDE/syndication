@@ -8,7 +8,7 @@
 #ifndef SYNDICATION_ABSTRACTPARSER_H
 #define SYNDICATION_ABSTRACTPARSER_H
 
-#include <syndication/specificdocument.h>
+#include "specificdocument.h"
 
 #include "syndication_export.h"
 

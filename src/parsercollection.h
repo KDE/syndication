@@ -8,12 +8,12 @@
 #ifndef SYNDICATION_PARSERCOLLECTION_H
 #define SYNDICATION_PARSERCOLLECTION_H
 
-#include <syndication/abstractparser.h>
-#include <syndication/documentsource.h>
-#include <syndication/feed.h>
-#include <syndication/global.h>
-#include <syndication/mapper.h>
-#include <syndication/specificdocument.h>
+#include "abstractparser.h"
+#include "documentsource.h"
+#include "feed.h"
+#include "global.h"
+#include "mapper.h"
+#include "specificdocument.h"
 
 #include <QString>
 

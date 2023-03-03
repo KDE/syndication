@@ -8,15 +8,15 @@
 #ifndef SYNDICATION_RDF_MODEL_H
 #define SYNDICATION_RDF_MODEL_H
 
-#include <syndication/rdf/document.h>
-#include <syndication/rdf/resource.h>
-#include <syndication/rdf/statement.h>
+#include "../syndication_export.h"
 
-#include <syndication/rdf/literal.h>
-#include <syndication/rdf/node.h>
-#include <syndication/rdf/property.h>
-#include <syndication/rdf/sequence.h>
-#include <syndication_export.h>
+#include "document.h"
+#include "literal.h"
+#include "node.h"
+#include "property.h"
+#include "resource.h"
+#include "sequence.h"
+#include "statement.h"
 
 #include <QString>
 

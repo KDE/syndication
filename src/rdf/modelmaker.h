@@ -10,7 +10,7 @@
 
 #include <QSharedPointer>
 
-#include <syndication_export.h>
+#include "../syndication_export.h"
 
 class QDomDocument;
 class QDomElement;

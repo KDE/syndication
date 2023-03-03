@@ -11,7 +11,7 @@
 #include <QSharedPointer>
 #include <QStringList>
 
-#include <syndication_export.h>
+#include "../syndication_export.h"
 
 class QString;
 

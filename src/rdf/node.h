@@ -8,9 +8,10 @@
 #ifndef SYNDICATION_RDF_NODE_H
 #define SYNDICATION_RDF_NODE_H
 
+#include "../syndication_export.h"
+
 #include <QSharedPointer>
 #include <QString>
-#include <syndication_export.h>
 
 namespace Syndication
 {
