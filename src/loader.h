@@ -148,8 +148,7 @@ Q_SIGNALS:
     void loadingComplete(Syndication::Loader *loader, Syndication::FeedPtr feed, Syndication::ErrorCode error);
 
 private Q_SLOTS:
-
-    void slotRetrieverDone(const QByteArray &data, bool success);
+    SYNDICATION_NO_EXPORT void slotRetrieverDone(const QByteArray &data, bool success);
 
 private:
     Loader();
