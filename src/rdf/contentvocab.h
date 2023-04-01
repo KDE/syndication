@@ -55,7 +55,7 @@ public:
     PropertyPtr encoded() const;
 
 private:
-    ContentVocab();
+    SYNDICATION_NO_EXPORT ContentVocab();
     Q_DISABLE_COPY(ContentVocab)
 
     class ContentVocabPrivate;

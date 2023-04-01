@@ -293,7 +293,7 @@ private:
      * private constructor, used by fromXML()
      * TODO: remove fromXML(), make this one private
      */
-    explicit Document(const QDomElement &element);
+    SYNDICATION_NO_EXPORT explicit Document(const QDomElement &element);
 
     class DocumentPrivate;
     QSharedPointer<DocumentPrivate> d;

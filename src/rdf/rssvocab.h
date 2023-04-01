@@ -112,7 +112,7 @@ public:
     PropertyPtr textinput() const;
 
 private:
-    RSSVocab();
+    SYNDICATION_NO_EXPORT RSSVocab();
     Q_DISABLE_COPY(RSSVocab)
     class RSSVocabPrivate;
     RSSVocabPrivate *const d;
@@ -209,7 +209,7 @@ public:
     QStringList classes() const;
 
 private:
-    RSS09Vocab();
+    SYNDICATION_NO_EXPORT RSS09Vocab();
     Q_DISABLE_COPY(RSS09Vocab)
     class RSS09VocabPrivate;
     RSS09VocabPrivate *const d;

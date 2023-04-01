@@ -62,7 +62,7 @@ public:
     PropertyPtr li();
 
 private:
-    RDFVocab();
+    SYNDICATION_NO_EXPORT RDFVocab();
     Q_DISABLE_COPY(RDFVocab)
     class RDFVocabPrivate;
     RDFVocabPrivate *const d;

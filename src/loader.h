@@ -151,10 +151,10 @@ private Q_SLOTS:
     SYNDICATION_NO_EXPORT void slotRetrieverDone(const QByteArray &data, bool success);
 
 private:
-    Loader();
+    SYNDICATION_NO_EXPORT Loader();
     Loader(const Loader &other);
     Loader &operator=(const Loader &other);
-    ~Loader() override;
+    SYNDICATION_NO_EXPORT ~Loader() override;
     void discoverFeeds(const QByteArray &data);
 
     struct LoaderPrivate;

@@ -133,7 +133,7 @@ public:
     PropertyPtr type() const;
 
 private:
-    DublinCoreVocab();
+    SYNDICATION_NO_EXPORT DublinCoreVocab();
     Q_DISABLE_COPY(DublinCoreVocab)
 
     class DublinCoreVocabPrivate;
