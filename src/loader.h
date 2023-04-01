@@ -155,7 +155,7 @@ private:
     Loader(const Loader &other);
     Loader &operator=(const Loader &other);
     SYNDICATION_NO_EXPORT ~Loader() override;
-    void discoverFeeds(const QByteArray &data);
+    SYNDICATION_NO_EXPORT void discoverFeeds(const QByteArray &data);
 
     struct LoaderPrivate;
     LoaderPrivate *const d;

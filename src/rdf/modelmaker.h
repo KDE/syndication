@@ -42,7 +42,7 @@ public:
     Model createFromXML(const QDomDocument &doc);
 
 private:
-    ResourcePtr readResource(Model &model, const QDomElement &el);
+    SYNDICATION_NO_EXPORT ResourcePtr readResource(Model &model, const QDomElement &el);
 };
 
 } // namespace RDF
