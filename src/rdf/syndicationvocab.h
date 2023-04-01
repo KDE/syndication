@@ -69,7 +69,7 @@ public:
     PropertyPtr updateBase() const;
 
 private:
-    SyndicationVocab();
+    SYNDICATION_NO_EXPORT SyndicationVocab();
     Q_DISABLE_COPY(SyndicationVocab)
     class SyndicationVocabPrivate;
     SyndicationVocabPrivate *const d;
