@@ -16,7 +16,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Sequence::SequencePrivate
+class SYNDICATION_NO_EXPORT Sequence::SequencePrivate
 {
 public:
     QList<NodePtr> items;

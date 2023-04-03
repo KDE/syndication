@@ -25,7 +25,7 @@ namespace Syndication
 {
 namespace RSS2
 {
-class Item::ItemPrivate
+class SYNDICATION_NO_EXPORT Item::ItemPrivate
 {
 public:
     QSharedPointer<Document> doc;

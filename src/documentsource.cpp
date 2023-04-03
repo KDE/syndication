@@ -14,7 +14,7 @@
 
 namespace Syndication
 {
-class DocumentSource::DocumentSourcePrivate
+class SYNDICATION_NO_EXPORT DocumentSource::DocumentSourcePrivate
 {
 public:
     QByteArray array;

@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace Atom
 {
-class Content::ContentPrivate
+class SYNDICATION_NO_EXPORT Content::ContentPrivate
 {
 public:
     ContentPrivate()

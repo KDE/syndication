@@ -12,7 +12,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Literal::LiteralPrivate
+class SYNDICATION_NO_EXPORT Literal::LiteralPrivate
 {
 public:
     QString text;

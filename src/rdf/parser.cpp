@@ -29,7 +29,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Parser::ParserPrivate
+class SYNDICATION_NO_EXPORT Parser::ParserPrivate
 {
 public:
     QDomDocument addEnumeration(const QDomDocument &doc);

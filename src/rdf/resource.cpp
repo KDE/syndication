@@ -21,7 +21,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Resource::ResourcePrivate
+class SYNDICATION_NO_EXPORT Resource::ResourcePrivate
 {
 public:
     QString uri;

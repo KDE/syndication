@@ -20,7 +20,7 @@
 
 namespace Syndication
 {
-struct Loader::LoaderPrivate {
+struct SYNDICATION_NO_EXPORT Loader::LoaderPrivate {
     LoaderPrivate()
     {
     }

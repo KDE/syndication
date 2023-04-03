@@ -15,7 +15,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class DublinCoreVocab::DublinCoreVocabPrivate
+class SYNDICATION_NO_EXPORT DublinCoreVocab::DublinCoreVocabPrivate
 {
 public:
     QString namespaceURI;

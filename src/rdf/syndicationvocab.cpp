@@ -15,7 +15,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class SyndicationVocab::SyndicationVocabPrivate
+class SYNDICATION_NO_EXPORT SyndicationVocab::SyndicationVocabPrivate
 {
 public:
     QString namespaceURI;

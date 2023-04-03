@@ -27,7 +27,7 @@ namespace Syndication
 {
 namespace RSS2
 {
-class Document::DocumentPrivate
+class SYNDICATION_NO_EXPORT Document::DocumentPrivate
 {
 public:
     DocumentPrivate()

@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace RSS2
 {
-class Parser::ParserPrivate
+class SYNDICATION_NO_EXPORT Parser::ParserPrivate
 {
 };
 
