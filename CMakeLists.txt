@@ -25,8 +25,9 @@ include(ECMAddQch)
 include(ECMGeneratePriFile)
 include(ECMDeprecationSettings)
 
+set(syndication_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/syndication_version.h")
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
-                        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h"
+                        VERSION_HEADER "${syndication_version_header}"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SyndicationConfigVersion.cmake"
                         SOVERSION 6
 )
@@ -84,7 +85,7 @@ install(FILES
 install(EXPORT KF6SyndicationTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF6SyndicationTargets.cmake NAMESPACE KF6::)
 
 install(FILES
-   ${CMAKE_CURRENT_BINARY_DIR}/syndication_version.h
+   ${syndication_version_header}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Syndication COMPONENT Devel
 )
 
