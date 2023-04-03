@@ -49,10 +49,7 @@ Item::Item(const Item &other)
     *d = *(other.d);
 }
 
-Item::~Item()
-{
-    delete d;
-}
+Item::~Item() = default;
 
 Item &Item::operator=(const Item &other)
 {

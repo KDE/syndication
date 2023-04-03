@@ -73,10 +73,7 @@ Document::Document(const Document &other)
     *d = *(other.d);
 }
 
-Document::~Document()
-{
-    delete d;
-}
+Document::~Document() = default;
 
 bool Document::operator==(const Document &other) const
 {

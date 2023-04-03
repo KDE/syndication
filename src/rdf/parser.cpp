@@ -190,10 +190,7 @@ Parser::Parser()
     d->strItemIndex = QStringLiteral("itemIndex");
 }
 
-Parser::~Parser()
-{
-    delete d;
-}
+Parser::~Parser() = default;
 
 Parser::Parser(const Parser &other)
     : AbstractParser(other)

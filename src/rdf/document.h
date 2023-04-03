@@ -12,6 +12,8 @@
 
 #include <syndication/specificdocument.h>
 
+#include <memory>
+
 template<class T>
 class QList;
 
@@ -167,7 +169,7 @@ public:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
 };
 
 } // namespace RDF

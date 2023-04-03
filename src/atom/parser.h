@@ -10,6 +10,8 @@
 
 #include <syndication/abstractparser.h>
 
+#include <memory>
+
 class QString;
 template<class T, class U>
 class QHash;
@@ -62,7 +64,7 @@ private:
     Parser(const Parser &other);
     Parser &operator=(const Parser &other);
     class ParserPrivate;
-    ParserPrivate *const d;
+    std::unique_ptr<ParserPrivate> const d;
 };
 
 } // namespace Atom

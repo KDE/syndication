@@ -40,10 +40,7 @@ ContentVocab::ContentVocab()
     d->encoded = PropertyPtr(new Property(ns + QLatin1String("encoded")));
 }
 
-ContentVocab::~ContentVocab()
-{
-    delete d;
-}
+ContentVocab::~ContentVocab() = default;
 
 ContentVocab *ContentVocab::self()
 {

@@ -55,10 +55,7 @@ RDFVocab::RDFVocab()
     d->li = PropertyPtr(new Property(ns + QLatin1String("li")));
 }
 
-RDFVocab::~RDFVocab()
-{
-    delete d;
-}
+RDFVocab::~RDFVocab() = default;
 
 ResourcePtr RDFVocab::seq()
 {

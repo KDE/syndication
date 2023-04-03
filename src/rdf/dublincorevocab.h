@@ -10,6 +10,8 @@
 
 #include <syndication/rdf/property.h>
 
+#include <memory>
+
 class QString;
 
 namespace Syndication
@@ -137,7 +139,7 @@ private:
     Q_DISABLE_COPY(DublinCoreVocab)
 
     class DublinCoreVocabPrivate;
-    DublinCoreVocabPrivate *const d;
+    std::unique_ptr<DublinCoreVocabPrivate> const d;
 };
 
 } // namespace RDF

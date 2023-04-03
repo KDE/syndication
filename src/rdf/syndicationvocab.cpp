@@ -44,10 +44,7 @@ SyndicationVocab::SyndicationVocab()
     d->updateBase = PropertyPtr(new Property(ns + QLatin1String("updateBase")));
 }
 
-SyndicationVocab::~SyndicationVocab()
-{
-    delete d;
-}
+SyndicationVocab::~SyndicationVocab() = default;
 
 SyndicationVocab *SyndicationVocab::self()
 {

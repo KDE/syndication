@@ -54,9 +54,8 @@ Parser::Parser(const Parser &other)
     , d(nullptr)
 {
 }
-Parser::~Parser()
-{
-}
+Parser::~Parser() = default;
+
 Parser &Parser::operator=(const Parser & /*other*/)
 {
     return *this;

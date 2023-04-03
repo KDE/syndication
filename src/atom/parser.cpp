@@ -188,9 +188,8 @@ Parser::Parser()
     Q_UNUSED(d) // silence -Wunused-private-field
 }
 
-Parser::~Parser()
-{
-}
+Parser::~Parser() = default;
+
 Parser::Parser(const Parser &other)
     : AbstractParser(other)
     , d(nullptr)

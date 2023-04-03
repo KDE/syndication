@@ -12,6 +12,8 @@
 
 #include "../syndication_export.h"
 
+#include <memory>
+
 class QString;
 
 namespace Syndication
@@ -65,7 +67,7 @@ private:
     SYNDICATION_NO_EXPORT RDFVocab();
     Q_DISABLE_COPY(RDFVocab)
     class RDFVocabPrivate;
-    RDFVocabPrivate *const d;
+    std::unique_ptr<RDFVocabPrivate> const d;
 };
 
 } // namespace RDF

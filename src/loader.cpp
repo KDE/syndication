@@ -54,10 +54,7 @@ Loader::Loader()
 {
 }
 
-Loader::~Loader()
-{
-    delete d;
-}
+Loader::~Loader() = default;
 
 void Loader::loadFrom(const QUrl &url, DataRetriever *retriever)
 {

@@ -58,10 +58,7 @@ RSSVocab::RSSVocab()
     d->item = ResourcePtr(new Resource(ns + QLatin1String("item")));
 }
 
-RSSVocab::~RSSVocab()
-{
-    delete d;
-}
+RSSVocab::~RSSVocab() = default;
 
 RSSVocab *RSSVocab::self()
 {
@@ -180,10 +177,7 @@ RSS09Vocab::RSS09Vocab()
     d->classes.append(d->channel->uri());
 }
 
-RSS09Vocab::~RSS09Vocab()
-{
-    delete d;
-}
+RSS09Vocab::~RSS09Vocab() = default;
 
 RSS09Vocab *RSS09Vocab::self()
 {

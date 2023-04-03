@@ -11,6 +11,8 @@
 #include <syndication/abstractparser.h>
 #include <syndication/rss2/document.h>
 
+#include <memory>
+
 namespace Syndication
 {
 class DocumentSource;
@@ -66,7 +68,7 @@ private:
     Parser &operator=(const Parser &other);
 
     class ParserPrivate;
-    ParserPrivate *const d;
+    std::unique_ptr<ParserPrivate> const d;
 };
 
 } // namespace RSS2

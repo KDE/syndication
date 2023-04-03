@@ -13,6 +13,8 @@
 
 #include <syndication/specificitem.h>
 
+#include <memory>
+
 class QString;
 
 namespace Syndication
@@ -149,7 +151,7 @@ public:
 
 private:
     class Private;
-    Private *const d;
+    std::unique_ptr<Private> const d;
 };
 
 } // namespace RDF

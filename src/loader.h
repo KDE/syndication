@@ -14,6 +14,8 @@
 
 #include <QObject>
 
+#include <memory>
+
 class QUrl;
 
 namespace Syndication
@@ -158,7 +160,7 @@ private:
     SYNDICATION_NO_EXPORT void discoverFeeds(const QByteArray &data);
 
     struct LoaderPrivate;
-    LoaderPrivate *const d;
+    std::unique_ptr<LoaderPrivate> const d;
 };
 
 } // namespace Syndication

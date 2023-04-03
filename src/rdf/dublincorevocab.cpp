@@ -68,10 +68,7 @@ DublinCoreVocab::DublinCoreVocab()
     d->type = PropertyPtr(new Property(ns + QLatin1String("type")));
 }
 
-DublinCoreVocab::~DublinCoreVocab()
-{
-    delete d;
-}
+DublinCoreVocab::~DublinCoreVocab() = default;
 
 DublinCoreVocab *DublinCoreVocab::self()
 {
