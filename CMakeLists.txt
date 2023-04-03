@@ -11,7 +11,7 @@ set(REQUIRED_QT_VERSION 6.4.0)
 find_package(ECM ${KF_DEP_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-include(GenerateExportHeader)
+include(ECMGenerateExportHeader)
 include(ECMGenerateHeaders)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)

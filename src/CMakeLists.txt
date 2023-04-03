@@ -107,7 +107,13 @@ ecm_qt_declare_logging_category(KF6Syndication
     EXPORT SYNDICATION
 )
 
-generate_export_header(KF6Syndication BASE_NAME syndication)
+ecm_generate_export_header(KF6Syndication
+    BASE_NAME syndication
+    GROUP_BASE_NAME KF
+    VERSION ${KF_VERSION}
+    USE_VERSION_HEADER
+    DEPRECATED_BASE_VERSION 0
+)
 
 target_include_directories(KF6Syndication
     INTERFACE
