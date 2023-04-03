@@ -32,7 +32,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Q_DECL_HIDDEN Document::Private
+class SYNDICATION_NO_EXPORT Document::Private
 {
 public:
     Private()

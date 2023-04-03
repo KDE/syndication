@@ -15,7 +15,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class RSSVocab::RSSVocabPrivate
+class SYNDICATION_NO_EXPORT RSSVocab::RSSVocabPrivate
 {
 public:
     QString namespaceURI;
@@ -128,7 +128,7 @@ ResourcePtr RSSVocab::channel() const
     return d->channel;
 }
 
-class RSS09Vocab::RSS09VocabPrivate
+class SYNDICATION_NO_EXPORT RSS09Vocab::RSS09VocabPrivate
 {
 public:
     QString namespaceURI;

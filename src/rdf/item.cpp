@@ -22,7 +22,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Q_DECL_HIDDEN Item::Private
+class SYNDICATION_NO_EXPORT Item::Private
 {
 public:
     DocumentPtr doc;

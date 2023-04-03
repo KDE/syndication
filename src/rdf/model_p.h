@@ -25,7 +25,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Model::ModelPrivate
+class SYNDICATION_NO_EXPORT Model::ModelPrivate
 {
 public:
     long id;

@@ -26,7 +26,7 @@ namespace Syndication
 {
 namespace Atom
 {
-class Parser::ParserPrivate
+class SYNDICATION_NO_EXPORT Parser::ParserPrivate
 {
 public:
     static QDomDocument convertAtom0_3(const QDomDocument &document);

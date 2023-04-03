@@ -18,7 +18,7 @@
 
 namespace Syndication
 {
-class ElementWrapper::ElementWrapperPrivate
+class SYNDICATION_NO_EXPORT ElementWrapper::ElementWrapperPrivate
 {
 public:
     QDomElement element;

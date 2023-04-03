@@ -19,7 +19,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class Statement::StatementPrivate
+class SYNDICATION_NO_EXPORT Statement::StatementPrivate
 {
 public:
     uint subjectID;

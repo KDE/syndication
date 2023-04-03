@@ -13,7 +13,7 @@ namespace Syndication
 {
 namespace RDF
 {
-class ResourceWrapper::ResourceWrapperPrivate
+class SYNDICATION_NO_EXPORT ResourceWrapper::ResourceWrapperPrivate
 {
 public:
     ResourcePtr resource;
