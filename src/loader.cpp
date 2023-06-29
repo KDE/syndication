@@ -133,3 +133,5 @@ void Loader::discoverFeeds(const QByteArray &data)
 }
 
 } // namespace Syndication
+
+#include "moc_loader.cpp"

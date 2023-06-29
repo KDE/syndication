@@ -35,3 +35,5 @@ void LoaderUtilTest::testParsing()
     const QByteArray ba = f.readAll();
     QCOMPARE(Syndication::LoaderUtil::parseFeed(ba, url), urlfound);
 }
+
+#include "moc_loaderutiltest.cpp"

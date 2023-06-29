@@ -94,3 +94,5 @@ void SyndicationTest::testSyncationFile()
     }
     QVERIFY(compare);
 }
+
+#include "moc_syndicationtest.cpp"

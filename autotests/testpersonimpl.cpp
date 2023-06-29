@@ -82,3 +82,5 @@ void TestPersonImpl::fromString()
 }
 
 QTEST_MAIN(TestPersonImpl)
+
+#include "moc_testpersonimpl.cpp"

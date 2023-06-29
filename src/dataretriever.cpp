@@ -18,3 +18,5 @@ DataRetriever::~DataRetriever()
 }
 
 } // namespace Syndication
+
+#include "moc_dataretriever.cpp"
