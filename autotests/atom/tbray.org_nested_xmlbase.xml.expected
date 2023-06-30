@@ -18,8 +18,8 @@ url: #https://www.tbray.org/favicon.ico#
 id: #https://www.tbray.org/ongoing/When/201x/2013/06/27/Air-Travel#
 title: #Rent-seeking for Nomads#
 link: #https://www.tbray.org/ongoing/When/201x/2013/06/27/Air-Travel#
-description: #<div xmlns="http://www.w3.org/1999/xhtml" :base="https://www.tbray.org/ongoing/When/201x/2013/06/27/">A friend was telling me of a young woman he knows who’d been struggling to get by in New York and he’d been sort of mentoring.  Only she’s spent most of this year traveling in Southeast Asia and South America, “finding herself”.</div>#
-content: #<div xmlns="http://www.w3.org/1999/xhtml" :base="https://www.tbray.org/ongoing/When/201x/2013/06/27/">
+description: #<div xmlns="http://www.w3.org/1999/xhtml" base="https://www.tbray.org/ongoing/When/201x/2013/06/27/">A friend was telling me of a young woman he knows who’d been struggling to get by in New York and he’d been sort of mentoring.  Only she’s spent most of this year traveling in Southeast Asia and South America, “finding herself”.</div>#
+content: #<div xmlns="http://www.w3.org/1999/xhtml" base="https://www.tbray.org/ongoing/When/201x/2013/06/27/">
   <p xmlns="http://www.w3.org/1999/xhtml">A friend was telling me of a young woman he knows who’d been struggling to
 get by in New
 York and he’d been sort of mentoring.  Only she’s spent most of this year
