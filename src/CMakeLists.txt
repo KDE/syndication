@@ -214,5 +214,3 @@ if(BUILD_QCH)
     )
 endif()
 
-ecm_generate_pri_file(BASE_NAME Syndication LIB_NAME KF6Syndication DEPS "" FILENAME_VAR PRI_FILENAME)
-install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

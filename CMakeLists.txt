@@ -22,7 +22,6 @@ include(KDEGitCommitHooks)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 include(ECMAddQch)
-include(ECMGeneratePriFile)
 include(ECMDeprecationSettings)
 
 set(syndication_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/syndication_version.h")

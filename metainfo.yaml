@@ -8,8 +8,7 @@ portingAid: false
 deprecated: false
 release: true
 libraries:
- - qmake: Syndication
-   cmake: "KF6::Syndication"
+ - cmake: "KF6::Syndication"
 cmakename: KF6Syndication
 public_lib: true
 group: Frameworks
