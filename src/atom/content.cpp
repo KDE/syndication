@@ -21,7 +21,8 @@ class SYNDICATION_NO_EXPORT Content::ContentPrivate
 {
 public:
     ContentPrivate()
-        : formatIdentified(false)
+        : format(Format::PlainText)
+        , formatIdentified(false)
     {
     }
     mutable Format format;
