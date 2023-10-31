@@ -8,7 +8,7 @@
 #ifndef SYNDICATION_GLOBAL_H
 #define SYNDICATION_GLOBAL_H
 
-#include <feed.h>
+#include "feed.h"
 
 #include "syndication_export.h"
 
