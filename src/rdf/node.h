@@ -50,7 +50,15 @@ public:
      *
      * @param other the node to compare to
      */
-    virtual bool operator==(const Node &other) const = 0;
+    bool operator==(const Node &other) const;
+
+    /**
+     * checks whether two nodes are equal. The meaning of equality
+     * is defined per subclass (e.g. equality of URIs, IDs etc.)
+     *
+     * @param other the node to compare to
+     */
+    virtual bool isEqual(const Node &other) const = 0;
 
     /**
      * returns a copy of the object. Must be implemented

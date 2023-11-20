@@ -23,5 +23,10 @@ Node::~Node()
 {
 }
 
+bool Node::operator==(const Node &other) const
+{
+    return isEqual(other);
+}
+
 } // namespace RDF
 } // namespace Syndication

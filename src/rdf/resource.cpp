@@ -74,7 +74,7 @@ Resource &Resource::operator=(const Resource &other)
     return *this;
 }
 
-bool Resource::operator==(const Node &other) const
+bool Resource::isEqual(const Node &other) const
 {
     const Resource *o2 = dynamic_cast<const Resource *>(&other);
     if (!o2) {

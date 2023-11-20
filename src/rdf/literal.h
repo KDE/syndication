@@ -63,7 +63,7 @@ public:
      * two literal nodes are equal iff their text _and_ ID's
      * are equal.
      */
-    bool operator==(const Node &other) const override;
+    bool isEqual(const Node &other) const override;
 
     /**
      * clones the literal node.

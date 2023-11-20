@@ -65,7 +65,7 @@ Literal &Literal::operator=(const Literal &other)
     return *this;
 }
 
-bool Literal::operator==(const Node &other) const
+bool Literal::isEqual(const Node &other) const
 {
     const Literal *o2 = dynamic_cast<const Literal *>(&other);
     if (!o2) {
