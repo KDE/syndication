@@ -76,7 +76,7 @@ public:
      *
      * @param other the node to compare this node to
      */
-    bool operator==(const Node &other) const override;
+    bool operator==(const Resource &other) const;
 
     /**
      * Used by visitors for double dispatch. See NodeVisitor

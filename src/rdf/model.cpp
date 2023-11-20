@@ -250,7 +250,7 @@ QList<ResourcePtr> Model::resourcesWithType(ResourcePtr type) const
 
     for (const StatementPtr &stmtPtr : std::as_const(d->statements)) {
         if (*(stmtPtr->predicate()) == *(RDFVocab::self()->type()) //
-            && *(stmtPtr->object()) == *type) {
+            && stmtPtr->object()->isResource() && *(dynamic_cast<Resource *>(stmtPtr->object().data())) == *type) {
             list.append(stmtPtr->subject());
         }
     }

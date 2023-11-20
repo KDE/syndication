@@ -65,18 +65,13 @@ Literal &Literal::operator=(const Literal &other)
     return *this;
 }
 
-bool Literal::operator==(const Node &other) const
+bool Literal::operator==(const Literal &other) const
 {
-    const Literal *o2 = dynamic_cast<const Literal *>(&other);
-    if (!o2) {
-        return false;
+    if (!d || !other.d) {
+        return d == other.d;
     }
 
-    if (!d || !o2->d) {
-        return d == o2->d;
-    }
-
-    return *d == *(o2->d);
+    return *d == *(other.d);
 }
 
 bool Literal::isNull() const

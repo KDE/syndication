@@ -74,17 +74,12 @@ Resource &Resource::operator=(const Resource &other)
     return *this;
 }
 
-bool Resource::operator==(const Node &other) const
+bool Resource::operator==(const Resource &other) const
 {
-    const Resource *o2 = dynamic_cast<const Resource *>(&other);
-    if (!o2) {
-        return false;
+    if (!d || !other.d) {
+        return d == other.d;
     }
-
-    if (!d || !o2->d) {
-        return d == o2->d;
-    }
-    return *d == *(o2->d);
+    return *d == *(other.d);
 }
 
 bool Resource::hasProperty(PropertyPtr property) const
