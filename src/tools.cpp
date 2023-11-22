@@ -14,6 +14,7 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QRegularExpression>
+#include <QTimeZone>
 
 #include <ctime>
 
@@ -47,7 +48,7 @@ static uint toTimeT(QDateTime &kdt)
         // work around unspecified timezones/date-only timestamps by setting the time to 12:00 UTC
         if (kdt.time().isNull() //
             || (kdt.time() == QTime(0, 0) && kdt.timeSpec() == Qt::LocalTime)) {
-            kdt.setTimeSpec(Qt::UTC);
+            kdt.setTimeZone(QTimeZone::utc());
             kdt.setTime(QTime(12, 0));
         }
         return kdt.toMSecsSinceEpoch() / 1000;

@@ -37,7 +37,7 @@ find_package(Qt6Xml ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
 find_package(KF6Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.4
+    QT 6.5
     KF 5.240
 )
 

@@ -66,11 +66,9 @@ QByteArray DocumentSource::asByteArray() const
 QDomDocument DocumentSource::asDomDocument() const
 {
     if (!d->parsed) {
-        QString errorMsg;
-        int errorLine;
-        int errorColumn;
-        if (!d->domDoc.setContent(d->array, true, &errorMsg, &errorLine, &errorColumn)) {
-            qWarning() << errorMsg << "on line" << errorLine;
+        const auto result = d->domDoc.setContent(d->array, QDomDocument::ParseOption::UseNamespaceProcessing);
+        if (!result) {
+            qWarning() << result.errorMessage << "on line" << result.errorLine;
             d->domDoc.clear();
         }
 
