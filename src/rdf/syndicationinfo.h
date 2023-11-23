@@ -28,7 +28,7 @@ namespace RDF
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT SyndicationInfo : public ResourceWrapper
+class SyndicationInfo : public ResourceWrapper
 {
 public:
     /**

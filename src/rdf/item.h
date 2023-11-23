@@ -33,7 +33,7 @@ class Item;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Item : public ResourceWrapper, public SpecificItem
+class Item : public ResourceWrapper, public SpecificItem
 {
 public:
     /**

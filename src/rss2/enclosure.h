@@ -25,7 +25,7 @@ namespace RSS2
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Enclosure : public ElementWrapper
+class Enclosure : public ElementWrapper
 {
 public:
     /**

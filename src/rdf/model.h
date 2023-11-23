@@ -33,7 +33,7 @@ namespace RDF
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Model
+class Model
 {
     friend class ::Syndication::RDF::Document;
     friend class ::Syndication::RDF::Document::Private;

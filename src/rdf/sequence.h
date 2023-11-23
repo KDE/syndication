@@ -28,7 +28,7 @@ typedef QSharedPointer<Sequence> SequencePtr;
  * of RDF nodes. (opposed to the usually unordered graph
  * structure)
  */
-class SYNDICATION_EXPORT Sequence : public Resource
+class Sequence : public Resource
 {
 public:
     /**

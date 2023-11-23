@@ -37,7 +37,7 @@ typedef QSharedPointer<Document> DocumentPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public ResourceWrapper
+class Document : public Syndication::SpecificDocument, public ResourceWrapper
 {
     friend class ::Syndication::RDF::Model;
 

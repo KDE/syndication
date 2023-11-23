@@ -42,7 +42,7 @@ namespace RSS2
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Cloud : public ElementWrapper
+class Cloud : public ElementWrapper
 {
 public:
     /**

@@ -20,7 +20,7 @@ namespace RSS2
 /**
  * An RSS2 image, used to describe feed logos.
  */
-class SYNDICATION_EXPORT Image : public ElementWrapper
+class Image : public ElementWrapper
 {
 public:
     /**

@@ -33,7 +33,7 @@ typedef QSharedPointer<Property> PropertyPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT SyndicationVocab
+class SyndicationVocab
 {
 public:
     /**
@@ -71,7 +71,7 @@ public:
     PropertyPtr updateBase() const;
 
 private:
-    SYNDICATION_NO_EXPORT SyndicationVocab();
+    SyndicationVocab();
     Q_DISABLE_COPY(SyndicationVocab)
     class SyndicationVocabPrivate;
     std::unique_ptr<SyndicationVocabPrivate> const d;

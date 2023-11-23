@@ -25,7 +25,7 @@ typedef QSharedPointer<Statement> StatementPtr;
  * An RDF statement, consisting of a triple
  * (subject, predicate, object).
  */
-class SYNDICATION_EXPORT Statement
+class Statement
 {
     friend class Model;
 

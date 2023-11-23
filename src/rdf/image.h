@@ -23,7 +23,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
 /**
  * An image to be associated with an HTML rendering of the channel.
  */
-class SYNDICATION_EXPORT Image : public ResourceWrapper
+class Image : public ResourceWrapper
 {
 public:
     /**

@@ -198,8 +198,6 @@ if(BUILD_QCH)
         SOURCES # using only public headers, to cover only public API
             ${Syndication_HEADERS}
             ${Syndication_Atom_APIDOX_SRCS}
-            ${Syndication_Rdf_APIDOX_SRCS}
-            ${Syndication_Rss2_APIDOX_SRCS}
         MD_MAINPAGE "${CMAKE_SOURCE_DIR}/Mainpage.dox"
         LINK_QCHS
             Qt6Core_QCH

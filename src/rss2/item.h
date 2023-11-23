@@ -34,7 +34,7 @@ class Source;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Item : public ElementWrapper, public Syndication::SpecificItem
+class Item : public ElementWrapper, public Syndication::SpecificItem
 {
 public:
     /**

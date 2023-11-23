@@ -31,7 +31,7 @@ typedef QSharedPointer<Property> PropertyPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT ContentVocab
+class ContentVocab
 {
 public:
     /**
@@ -57,7 +57,7 @@ public:
     PropertyPtr encoded() const;
 
 private:
-    SYNDICATION_NO_EXPORT ContentVocab();
+    ContentVocab();
     Q_DISABLE_COPY(ContentVocab)
 
     class ContentVocabPrivate;

@@ -28,7 +28,7 @@ typedef QSharedPointer<Property> PropertyPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Property : public Resource
+class Property : public Resource
 {
 public:
     /**

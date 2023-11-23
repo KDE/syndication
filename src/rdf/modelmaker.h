@@ -31,7 +31,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT ModelMaker
+class ModelMaker
 {
 public:
     /**
@@ -42,7 +42,7 @@ public:
     Model createFromXML(const QDomDocument &doc);
 
 private:
-    SYNDICATION_NO_EXPORT ResourcePtr readResource(Model &model, const QDomElement &el);
+    ResourcePtr readResource(Model &model, const QDomElement &el);
 };
 
 } // namespace RDF

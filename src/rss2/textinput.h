@@ -24,7 +24,7 @@ namespace RSS2
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT TextInput : public ElementWrapper
+class TextInput : public ElementWrapper
 {
 public:
     /**

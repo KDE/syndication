@@ -25,7 +25,7 @@ typedef QSharedPointer<Literal> LiteralPtr;
  * a node type representing simple string values. Literals can
  * be object of statement, but neither subject nor predicate.
  */
-class SYNDICATION_EXPORT Literal : public Node
+class Literal : public Node
 {
 public:
     /**

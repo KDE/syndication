@@ -38,7 +38,7 @@ typedef QSharedPointer<Sequence> SequencePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT NodeVisitor // krazy:exclude=dpointer
+class NodeVisitor // krazy:exclude=dpointer
 {
 public:
     /**

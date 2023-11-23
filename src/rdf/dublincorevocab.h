@@ -25,7 +25,7 @@ namespace RDF
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT DublinCoreVocab
+class DublinCoreVocab
 {
 public:
     /**
@@ -135,7 +135,7 @@ public:
     PropertyPtr type() const;
 
 private:
-    SYNDICATION_NO_EXPORT DublinCoreVocab();
+    DublinCoreVocab();
     Q_DISABLE_COPY(DublinCoreVocab)
 
     class DublinCoreVocabPrivate;

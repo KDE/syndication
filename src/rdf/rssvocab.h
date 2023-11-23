@@ -34,7 +34,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT RSSVocab
+class RSSVocab
 {
 public:
     /**
@@ -211,7 +211,7 @@ public:
     QStringList classes() const;
 
 private:
-    SYNDICATION_NO_EXPORT RSS09Vocab();
+    RSS09Vocab();
     Q_DISABLE_COPY(RSS09Vocab)
     class RSS09VocabPrivate;
     std::unique_ptr<RSS09VocabPrivate> const d;

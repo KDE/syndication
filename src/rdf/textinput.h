@@ -22,7 +22,7 @@ namespace RDF
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT TextInput : public ResourceWrapper
+class TextInput : public ResourceWrapper
 {
 public:
     /**

@@ -32,7 +32,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  * For more information on Dublin Core, see
  * http://dublincore.org/
  */
-class SYNDICATION_EXPORT DublinCore : public ResourceWrapper
+class DublinCore : public ResourceWrapper
 {
 public:
     /**

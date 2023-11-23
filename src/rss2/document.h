@@ -40,7 +40,7 @@ typedef QSharedPointer<Document> DocumentPtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Document : public Syndication::SpecificDocument, public Syndication::ElementWrapper
+class Document : public Syndication::SpecificDocument, public Syndication::ElementWrapper
 {
 public:
     /**
@@ -293,7 +293,7 @@ private:
      * private constructor, used by fromXML()
      * TODO: remove fromXML(), make this one private
      */
-    SYNDICATION_NO_EXPORT explicit Document(const QDomElement &element);
+    explicit Document(const QDomElement &element);
 
     class DocumentPrivate;
     QSharedPointer<DocumentPrivate> d;

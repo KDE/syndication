@@ -33,7 +33,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  * In RSS, e.g. the feed channel itself and the items are
  * resources.
  */
-class SYNDICATION_EXPORT Resource : public Node
+class Resource : public Node
 {
     friend class Model;
 

@@ -28,7 +28,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
 /**
  * singleton holding RDF vocabulary, expressed as RDF.
  */
-class SYNDICATION_EXPORT RDFVocab
+class RDFVocab
 {
 public:
     /**
@@ -64,7 +64,7 @@ public:
     PropertyPtr li();
 
 private:
-    SYNDICATION_NO_EXPORT RDFVocab();
+    RDFVocab();
     Q_DISABLE_COPY(RDFVocab)
     class RDFVocabPrivate;
     std::unique_ptr<RDFVocabPrivate> const d;

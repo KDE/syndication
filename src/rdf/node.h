@@ -28,7 +28,7 @@ typedef QSharedPointer<Node> NodePtr;
  * an RDF node, abstract baseclass for all RDF node types, like resources and
  * literals
  */
-class SYNDICATION_EXPORT Node
+class Node
 {
 public:
     /**

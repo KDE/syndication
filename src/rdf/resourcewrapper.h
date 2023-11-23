@@ -25,7 +25,7 @@ typedef QSharedPointer<Resource> ResourcePtr;
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT ResourceWrapper
+class ResourceWrapper
 {
 public:
     /**

@@ -24,7 +24,7 @@ namespace RDF
  *
  * @author Frank Osterfeld
  */
-class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
+class Parser : public Syndication::AbstractParser
 {
 public:
     /** default constructor */
