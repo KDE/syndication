@@ -36,7 +36,7 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
 
     QRegularExpression rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*"
                                          "[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)"
-                                         "[\\s]*[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
+                                         "[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
                           QRegularExpression::CaseInsensitiveOption);
     QRegularExpressionMatch match;
     if ((match = rx.match(str)).hasMatch()) {
