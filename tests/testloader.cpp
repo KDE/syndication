@@ -10,8 +10,6 @@
 #include "atom/parser.h"
 #include "dataretriever.h"
 #include "feed.h"
-#include "rdf/parser.h"
-#include "rss2/parser.h"
 #include "specificdocument.h"
 #include "syndication_version.h"
 
