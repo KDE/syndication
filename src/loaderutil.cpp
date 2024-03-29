@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QRegularExpression>
 
-//#define DEBUG_PARSING_FEED
+// #define DEBUG_PARSING_FEED
 #ifdef DEBUG_PARSING_FEED
 #include <QFile>
 #include <QTextStream>
@@ -34,41 +34,52 @@ QUrl Syndication::LoaderUtil::parseFeed(const QByteArray &data, const QUrl &url)
     // "type[\\s]=[\\s]\\\"application/rss+xml\\\""
     // "href[\\s]=[\\s]\\\"application/rss+xml\\\""
 
-    QRegularExpression rx(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*"
-                                         "[\\s]*type[^=]*=\"application/rss\\+xml\"[^s][^s](?:[^>]*)"
-                                         "[\\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
-                          QRegularExpression::CaseInsensitiveOption);
+    // test regexp: https://www.regexplanet.com/advanced/perl/index.html
+
+    const static QRegularExpression rx0(
+        QStringLiteral(
+            R"((?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*[\s]*type[^=]*="application/rss\+xml"[^s]*[\s]*[^s]*(?:HREF)[^=]*?=[^A-Z0-9-_~,./$]*([^'\">\s]*))"),
+        QRegularExpression::CaseInsensitiveOption);
+
     QRegularExpressionMatch match;
-    if ((match = rx.match(str)).hasMatch()) {
+    if ((match = rx0.match(str)).hasMatch()) {
         s2 = match.captured(1);
     } else {
-        const QRegularExpression rx2(QStringLiteral("(?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)"
-                                                    "[\\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\\s]*)"),
-                                     QRegularExpression::CaseInsensitiveOption);
-        if ((match = rx2.match(str)).hasMatch()) {
+        const static QRegularExpression rx(
+            QStringLiteral(
+                R"((?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[^sAa]*[\s]*type[^=]*=\"application/rss\+xml\"[^s][^s](?:[^>]*)[\s]*[^s]*(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\s]*))"),
+            QRegularExpression::CaseInsensitiveOption);
+        if ((match = rx.match(str)).hasMatch()) {
             s2 = match.captured(1);
         } else {
-            // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
-            QStringList feeds;
-            QString host = url.host();
-            rx.setPattern(QStringLiteral("(?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\\s]*)"));
-            QRegularExpressionMatchIterator iter = rx.globalMatch(str);
-            while (iter.hasNext()) {
-                match = iter.next();
+            static const QRegularExpression rx2(
+                QStringLiteral(R"((?:REL)[^=]*=[^sAa]*(?:service.feed|ALTERNATE)[\s]*[^s][^s](?:[^>]*)(?:HREF)[^=]*=[^A-Z0-9-_~,./$]*([^'\">\s]*))"),
+                QRegularExpression::CaseInsensitiveOption);
+            if ((match = rx2.match(str)).hasMatch()) {
                 s2 = match.captured(1);
-                if (s2.endsWith(QLatin1String(".rdf")) //
-                    || s2.endsWith(QLatin1String(".rss")) //
-                    || s2.endsWith(QLatin1String(".xml"))) {
-                    feeds.append(s2);
+            } else {
+                // does not support Atom/RSS autodiscovery.. try finding feeds by brute force....
+                QStringList feeds;
+                QString host = url.host();
+                static const QRegularExpression rx3(QStringLiteral(R"((?:<A )[^H]*(?:HREF)[^=]*=[^A-Z0-9-_~,./]*([^'\">\s]*))"));
+                QRegularExpressionMatchIterator iter = rx3.globalMatch(str);
+                while (iter.hasNext()) {
+                    match = iter.next();
+                    s2 = match.captured(1);
+                    if (s2.endsWith(QLatin1String(".rdf")) //
+                        || s2.endsWith(QLatin1String(".rss")) //
+                        || s2.endsWith(QLatin1String(".xml"))) {
+                        feeds.append(s2);
+                    }
                 }
-            }
 
-            // Prefer feeds on same host
-            auto it = std::find_if(feeds.cbegin(), feeds.cend(), [&host](const QString &s) {
-                return QUrl(s).host() == host;
-            });
-            if (it != feeds.cend()) {
-                s2 = *it;
+                // Prefer feeds on same host
+                auto it = std::find_if(feeds.cbegin(), feeds.cend(), [&host](const QString &s) {
+                    return QUrl(s).host() == host;
+                });
+                if (it != feeds.cend()) {
+                    s2 = *it;
+                }
             }
         }
     }

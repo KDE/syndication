@@ -23,6 +23,12 @@ void LoaderUtilTest::testParsing_data()
     QTest::addRow("bug-383381") << QString(QStringLiteral(SYNDICATION_DATA_FEEDPARSING_DIR) + QStringLiteral("/bug-383381.txt"))
                                 << QUrl(QStringLiteral("https://www.youtube.com/user/bigclivedotcom/videos"))
                                 << QUrl(QStringLiteral("https://www.youtube.com/feeds/videos.xml?channel_id=UCtM5z2gkrGRuWd0JQMx76qA"));
+
+    QTest::addRow("test-gentoo-url") << QString(QStringLiteral(SYNDICATION_DATA_FEEDPARSING_DIR) + QStringLiteral("/bug-test-gentoo.txt"))
+                                     << QUrl(QStringLiteral("https://planet.gentoo.org")) << QUrl(QStringLiteral("https://planet.gentoo.org/rss20.xml"));
+
+    QTest::addRow("bug-484615") << QString(QStringLiteral(SYNDICATION_DATA_FEEDPARSING_DIR) + QStringLiteral("/bug-484615.txt"))
+                                << QUrl(QStringLiteral("https://www.qt.io/blog")) << QUrl(QStringLiteral("https://www.qt.io/blog/rss.xml"));
 }
 
 void LoaderUtilTest::testParsing()
