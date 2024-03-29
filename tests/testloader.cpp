@@ -93,7 +93,7 @@ void TestLibSyndication::slotLoadingComplete(Syndication::Loader *loader, Syndic
         std::cout << feed->debugInfo().toUtf8().data() << std::endl;
         exit(0);
     } else {
-        std::cerr << "error" << std::endl;
+        std::cerr << "error: " << error << std::endl;
         exit(1);
     }
 }
