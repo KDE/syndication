@@ -34,7 +34,7 @@ class SimpleRetriever : public Syndication::DataRetriever
     Q_OBJECT
 public:
     explicit SimpleRetriever()
-        : mMgr(new QNetworkAccessManager)
+        : mMgr(new QNetworkAccessManager(this))
         , mReply(nullptr)
     {
     }
@@ -71,7 +71,7 @@ public:
     }
 
 private:
-    QNetworkAccessManager *mMgr;
+    QNetworkAccessManager *const mMgr;
     QNetworkReply *mReply;
 };
 
