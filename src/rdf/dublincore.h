@@ -57,7 +57,7 @@ public:
     /**
      * "An entity primarily responsible for making the content of
      * the resource.
-     * Examples of a Creator include a person, an organisation,
+     * Examples of a Creator include a person, an organization,
      * or a service.
      * Typically, the name of a Creator should be used to
      * indicate the entity."
@@ -106,7 +106,7 @@ public:
     /**
      * "An entity responsible for making contributions to the content of the
      * resource.
-     * Examples of a Contributor include a person, an organisation, or a
+     * Examples of a Contributor include a person, an organization, or a
      * service. Typically, the name of a Contributor should be used to
      * indicate the entity."
      * */
@@ -183,7 +183,7 @@ public:
 
     /**
      * "An entity responsible for making the resource available.
-     * Examples of a Publisher include a person, an organisation, or a
+     * Examples of a Publisher include a person, an organization, or a
      * service. Typically, the name of a Publisher should be used to
      * indicate the entity."
      */
