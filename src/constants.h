@@ -29,14 +29,14 @@ QString contentNameSpace();
 SYNDICATION_EXPORT
 QString itunesNamespace();
 
-/**
+/*!
  * wellformedweb.org's RSS namespace for comment functionality
  * "http://wellformedweb.org/CommentAPI/"
  */
 SYNDICATION_EXPORT
 QString commentApiNamespace();
 
-/**
+/*!
  * "slash" namespace
  * http://purl.org/rss/1.0/modules/slash/
  */

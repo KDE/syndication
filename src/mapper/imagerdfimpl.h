@@ -17,7 +17,7 @@ namespace Syndication
 class ImageRDFImpl;
 typedef QSharedPointer<ImageRDFImpl> ImageRDFImplPtr;
 
-/**
+/*!
  *
  * @internal
  * @author Frank Osterfeld

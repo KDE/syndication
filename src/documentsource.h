@@ -18,7 +18,7 @@ class QDomDocument;
 
 namespace Syndication
 {
-/**
+/*!
  * Represents the source of a syndication document, as read from the
  * downloaded file.
  *
@@ -35,13 +35,13 @@ namespace Syndication
 class SYNDICATION_EXPORT DocumentSource
 {
 public:
-    /**
+    /*!
      * Creates an empty document source. The raw representation is empty and
      * the DOM representation will be invalid.
      */
     DocumentSource();
 
-    /**
+    /*!
      * Creates a DocumentSource object from a raw byte array
      *
      * @param source the raw source (of the downloaded feed file usually)
@@ -49,7 +49,7 @@ public:
      */
     DocumentSource(const QByteArray &source, const QString &url);
 
-    /**
+    /*!
      * Copy constructor. The d pointer is shared, so this is a cheap
      * operation.
      *
@@ -57,12 +57,12 @@ public:
      */
     DocumentSource(const DocumentSource &other);
 
-    /**
+    /*!
      * destructor
      */
     ~DocumentSource();
 
-    /**
+    /*!
      * Assignment operator. The d pointer is shared, so this is a cheap
      * operation.
      *
@@ -71,14 +71,14 @@ public:
      */
     DocumentSource &operator=(const DocumentSource &other);
 
-    /**
+    /*!
      * Returns the feed source as byte array.
      *
      * @return the feed source as raw byte array.
      */
     Q_REQUIRED_RESULT QByteArray asByteArray() const;
 
-    /**
+    /*!
      * returns the size the source array in bytes.
      *
      * @return the size of the byte array in bytes.
@@ -86,7 +86,7 @@ public:
      */
     Q_REQUIRED_RESULT unsigned int size() const;
 
-    /**
+    /*!
      * calculates a hash value for the source array.
      * This can be used to decide whether the feed has changed since
      * the last fetch. If the hash hasn't changed since the last fetch,
@@ -97,7 +97,7 @@ public:
      */
     Q_REQUIRED_RESULT unsigned int hash() const;
 
-    /**
+    /*!
      * Returns the feed source as DOM document.
      * The document is parsed only on the first call of this method
      * and then cached.
@@ -110,7 +110,7 @@ public:
      */
     Q_REQUIRED_RESULT QDomDocument asDomDocument() const;
 
-    /**
+    /*!
      * returns the URL the document source was loaded from
      */
     Q_REQUIRED_RESULT QString url() const;

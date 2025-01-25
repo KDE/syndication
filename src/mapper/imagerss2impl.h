@@ -16,7 +16,7 @@ namespace Syndication
 class ImageRSS2Impl;
 typedef QSharedPointer<ImageRSS2Impl> ImageRSS2ImplPtr;
 
-/**
+/*!
  *
  * @internal
  * @author Frank Osterfeld

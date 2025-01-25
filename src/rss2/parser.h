@@ -21,7 +21,7 @@ namespace RSS2
 {
 class Document;
 
-/**
+/*!
  * Parser implementation for the RSS 0.9x/2.0 format family
  *
  * @author Frank Osterfeld
@@ -29,13 +29,13 @@ class Document;
 class Parser : public Syndication::AbstractParser
 {
 public:
-    /** default constructor */
+    /*! default constructor */
     Parser();
 
-    /** destructor */
+    /*! destructor */
     ~Parser() override;
 
-    /**
+    /*!
      * checks whether a document source looks like an RSS0.9x/2.0 document
      *
      * @param source a document source to check
@@ -43,7 +43,7 @@ public:
      */
     bool accept(const DocumentSource &source) const override;
 
-    /**
+    /*!
      * creates an RSS2 wrapper for a document source.
      * The wrapper will only return useful values if the source is really
      * RSS 0.9x/2.0, so call accept() before to check.
@@ -55,7 +55,7 @@ public:
      */
     Syndication::SpecificDocumentPtr parse(const DocumentSource &source) const override;
 
-    /**
+    /*!
      * returns the format string of this parser implementation, which is
      * "rss2".
      *

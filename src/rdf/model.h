@@ -27,7 +27,7 @@ namespace Syndication
 {
 namespace RDF
 {
-/**
+/*!
  * An RDF model, a set of RDF statements.
  * Model objects are implicitly shared.
  *
@@ -43,13 +43,13 @@ class Model
     friend class ::Syndication::RDF::Statement::StatementPrivate;
 
 public:
-    /**
+    /*!
      * default constructor, creates an empty model
      * containing no statements
      */
     Model();
 
-    /**
+    /*!
      * constructs a model from another.
      * Both models will share the same set of statements,
      * so adding/removing statements from one model also
@@ -59,12 +59,12 @@ public:
      */
     Model(const Model &other);
 
-    /**
+    /*!
      * destructor
      */
     virtual ~Model();
 
-    /**
+    /*!
      * assigns another model. Both models will share the same
      * set of statements, so adding/removing statements from
      * one model also modifies the other!
@@ -73,7 +73,7 @@ public:
      */
     Model &operator=(const Model &other);
 
-    /**
+    /*!
      * Returns whether two models objects represent the same model
      * (i.e. share the same underlying statement set). Currently this
      * method does _not_ compare the statement list.
@@ -84,7 +84,7 @@ public:
      */
     bool operator==(const Model &other) const;
 
-    /**
+    /*!
      * creates a resource and associates it with this model. If the model
      * already contains a resource with the given URI, the existing instance
      * is returned.
@@ -95,7 +95,7 @@ public:
      */
     virtual ResourcePtr createResource(const QString &uri = QString());
 
-    /**
+    /*!
      * creates a property and associates it with this model. If the model
      * already contains a property with the given URI, the existing instance
      * is returned.
@@ -106,7 +106,7 @@ public:
      */
     virtual PropertyPtr createProperty(const QString &uri);
 
-    /**
+    /*!
      * creates a sequence and associates it with this model. If the model
      * already contains a sequence with the given URI, the existing
      * instance is returned.
@@ -117,7 +117,7 @@ public:
      */
     virtual SequencePtr createSequence(const QString &uri = QString());
 
-    /**
+    /*!
      * creates a literal and associates it with this model.
      *
      * @param text the literal text
@@ -125,7 +125,7 @@ public:
      */
     virtual LiteralPtr createLiteral(const QString &text);
 
-    /**
+    /*!
      * adds a statement to the model.
      *
      * @param subject
@@ -136,7 +136,7 @@ public:
      */
     virtual StatementPtr addStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
-    /**
+    /*!
      * removes a statement from the model.
      *
      * @param subject subject of the statement
@@ -145,19 +145,19 @@ public:
      */
     virtual void removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
-    /**
+    /*!
      * removes a statement from the model.
      *
      * @param statement the statement to remove
      */
     virtual void removeStatement(StatementPtr statement);
 
-    /**
+    /*!
      * returns whether this model is empty, i.e. contains no statements.
      */
     virtual bool isEmpty() const;
 
-    /**
+    /*!
      * returns all resources of a given type.
      * subClassOf semantics are ignored.
      *
@@ -165,13 +165,13 @@ public:
      */
     virtual QList<ResourcePtr> resourcesWithType(ResourcePtr type) const;
 
-    /**
+    /*!
      * returns a list of the statements in this model.
      *
      */
     virtual QList<StatementPtr> statements() const;
 
-    /**
+    /*!
      * searches the model for a node by ID.
      *
      * @param id the ID to search for
@@ -180,7 +180,7 @@ public:
      */
     virtual NodePtr nodeByID(uint id) const;
 
-    /**
+    /*!
      * searches the model for a resource by ID.
      *
      * @param id the ID to search for
@@ -189,7 +189,7 @@ public:
      */
     virtual ResourcePtr resourceByID(uint id) const;
 
-    /**
+    /*!
      * searches the model for a property by ID.
      *
      * @param id the ID to search for
@@ -198,7 +198,7 @@ public:
      */
     virtual PropertyPtr propertyByID(uint id) const;
 
-    /**
+    /*!
      * searches the model for a literal by ID.
      *
      * @param id the ID to search for
@@ -207,26 +207,26 @@ public:
      */
     virtual LiteralPtr literalByID(uint id) const;
     //@cond PRIVATE
-    /**
+    /*!
      * @internal
      * used by Resource::hasProperty()
      */
     virtual bool resourceHasProperty(const Resource *resource, PropertyPtr property) const;
 
-    /**
+    /*!
      * @internal
      * used by Resource::property()
      */
     virtual StatementPtr resourceProperty(const Resource *resource, PropertyPtr property) const;
 
-    /**
+    /*!
      * @internal
      * used by Resource::properties()
      */
     virtual QList<StatementPtr> resourceProperties(const Resource *resource, PropertyPtr property) const;
 
     //@endcond
-    /**
+    /*!
      * a debug string listing the contained statements for
      * debugging purposes
      *

@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
+/*!
  * A link, pointing to webpages, media files on the web ("podcast"),
  * related content, etc. See rel() for details.
  *
@@ -26,12 +26,12 @@ namespace Atom
 class SYNDICATION_EXPORT Link : public Syndication::ElementWrapper
 {
 public:
-    /**
+    /*!
      * creates a null link object.
      */
     Link();
 
-    /**
+    /*!
      * creates a Link object wrapping an atom:link element.
      * @param element a DOM element, should be a atom:link element
      * (although not enforced), otherwise this object will not parse
@@ -39,12 +39,12 @@ public:
      */
     explicit Link(const QDomElement &element);
 
-    /**
+    /*!
      * URL of the referenced resource (required)
      */
     Q_REQUIRED_RESULT QString href() const;
 
-    /**
+    /*!
      * the relation between the feed/entry and the linked resource.
      *
      * The value of rel() is usually one of the following:
@@ -70,7 +70,7 @@ public:
      */
     Q_REQUIRED_RESULT QString rel() const;
 
-    /**
+    /*!
      * MIME type of the linked resource. (optional)
      *
      * @return MIME type following (e.g., "text/html", "audio/mpeg"),
@@ -78,7 +78,7 @@ public:
      */
     Q_REQUIRED_RESULT QString type() const;
 
-    /**
+    /*!
      * the language of the linked resource. (optional)
      * If used together with a rel() value of "alternate", it
      * implies a translated version of the entry.
@@ -88,7 +88,7 @@ public:
      */
     Q_REQUIRED_RESULT QString hrefLanguage() const;
 
-    /**
+    /*!
      * human-readable information about the link. (optional)
      *
      * @return the link title as plain text ("<", "&" are text, not
@@ -96,14 +96,14 @@ public:
      */
     Q_REQUIRED_RESULT QString title() const;
 
-    /**
+    /*!
      * size of the linked resource in bytes. (optional)
      *
      * @return file size in bytes, or 0 if not specified
      */
     Q_REQUIRED_RESULT uint length() const;
 
-    /**
+    /*!
      * description of the link object for debugging purposes
      *
      * @return debug string

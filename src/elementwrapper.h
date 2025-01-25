@@ -19,7 +19,7 @@ class QList;
 
 namespace Syndication
 {
-/**
+/*!
  * A wrapper for XML elements. This is the base class for the (lazy) wrappers
  * used in the RSS2 and Atom parsers. The wrapped element can be accessed
  * via element(). It also contains several helper functions for XML processing.
@@ -29,30 +29,30 @@ namespace Syndication
 class SYNDICATION_EXPORT ElementWrapper
 {
 public:
-    /**
+    /*!
      * creates a element wrapper wrapping a null element.
      * isNull() will return @c true for these instances.
      */
     ElementWrapper();
 
-    /**
+    /*!
      * Copy constructor.The instances share the same element.
      * @param other the element wrapper to copy
      */
     ElementWrapper(const ElementWrapper &other);
 
-    /**
+    /*!
      * Creates an element wrapper wrapping the DOM element @c element
      * @param element the element to wrap
      */
     ElementWrapper(const QDomElement &element); // implicit
 
-    /**
+    /*!
      * destructor
      */
     virtual ~ElementWrapper();
 
-    /**
+    /*!
      * Assigns another element wrapper to this one. Both instances
      * share the same wrapped element instance.
      *
@@ -61,26 +61,26 @@ public:
      */
     ElementWrapper &operator=(const ElementWrapper &other);
 
-    /**
+    /*!
      * compares two wrappers. Two wrappers are equal if and only if
      * the wrapped elements are equal.
      * @param other another element wrapper to compare to
      */
     bool operator==(const ElementWrapper &other) const;
 
-    /**
+    /*!
      * returns the wrapped resource.
      */
     const QDomElement &element() const;
 
-    /**
+    /*!
      * returns whether the wrapped element is a null element
      * @return @c true if isNull() is true for the wrapped element,
      * @c false otherwise
      */
     Q_REQUIRED_RESULT bool isNull() const;
 
-    /**
+    /*!
      * returns the xml:base value to be used for the wrapped element.
      * The xml:base attribute establishes the base URI for resolving any
      * relative references found in its scope (its own element and all
@@ -90,7 +90,7 @@ public:
      */
     Q_REQUIRED_RESULT QString xmlBase() const;
 
-    /**
+    /*!
      * returns the xml:lang value to be used for the wrapped element.
      * The xml:lang attribute indicates the natural language for its element
      * and all descendants.
@@ -99,7 +99,7 @@ public:
      */
     Q_REQUIRED_RESULT QString xmlLang() const;
 
-    /**
+    /*!
      * completes relative URIs with a prefix specified via xml:base.
      *
      * Example:
@@ -119,7 +119,7 @@ public:
      */
     Q_REQUIRED_RESULT QString completeURI(const QString &uri) const;
 
-    /**
+    /*!
      * extracts the text from a child element, respecting namespaces. If
      * there is more than one child with the same tag name, the first one is
      * processed.
@@ -144,7 +144,7 @@ public:
 
     Q_REQUIRED_RESULT QString extractElementTextNS(const QString &namespaceURI, const QString &localName) const;
 
-    /**
+    /*!
      * extracts the text from a child element, ignoring namespaces. For
      * instance, when the wrapped element is @c &lt;thisElement>:
      * @code
@@ -161,7 +161,7 @@ public:
      */
     Q_REQUIRED_RESULT QString extractElementText(const QString &tagName) const;
 
-    /**
+    /*!
      * returns all child elements with tag name @c tagName
      * Contrary to QDomElement::elementsByTagName() only direct descendents
      * are returned.
@@ -171,7 +171,7 @@ public:
      */
     Q_REQUIRED_RESULT QList<QDomElement> elementsByTagName(const QString &tagName) const;
 
-    /**
+    /*!
      * returns the child nodes of the wrapped element as XML.
      *
      * See childNodesAsXML(const QDomElement& parent) for details
@@ -179,7 +179,7 @@ public:
      */
     Q_REQUIRED_RESULT QString childNodesAsXML() const;
 
-    /**
+    /*!
      * concatenates the XML representations of all children. Example: If
      * @c parent is an @c xhtml:body element like
      * @code
@@ -198,7 +198,7 @@ public:
      */
     Q_REQUIRED_RESULT static QString childNodesAsXML(const QDomElement &parent);
 
-    /**
+    /*!
      * returns all child elements with tag name @c tagname
      * and namespace URI @c nsURI.
      * Contrary to QDomElement::elementsByTagNameNS() only direct
@@ -212,7 +212,7 @@ public:
      */
     Q_REQUIRED_RESULT QList<QDomElement> elementsByTagNameNS(const QString &nsURI, const QString &tagName) const;
 
-    /**
+    /*!
      * searches the direct children of the wrapped element for an element
      * with a given namespace and tag name.
      *
@@ -224,13 +224,13 @@ public:
      */
     Q_REQUIRED_RESULT QDomElement firstElementByTagNameNS(const QString &nsURI, const QString &tagName) const;
 
-    /**
+    /*!
      * Returns the wrapped element's text or an empty string.
      * For more information, see QDomElement::text();
      */
     Q_REQUIRED_RESULT QString text() const;
 
-    /**
+    /*!
      * Returns the attribute called name. If the attribute does not exist
      * defValue is returned.
      * (which is a null string by default).
@@ -240,7 +240,7 @@ public:
      */
     Q_REQUIRED_RESULT QString attribute(const QString &name, const QString &defValue = QString()) const;
 
-    /**
+    /*!
      * Returns the attribute with the local @c name localName and the
      * namespace URI @c nsURI.
      * If the attribute does not exist @c defValue is returned (which is a
@@ -252,7 +252,7 @@ public:
      */
     Q_REQUIRED_RESULT QString attributeNS(const QString &nsURI, const QString &localName, const QString &defValue = QString()) const;
 
-    /**
+    /*!
      * Returns true if this element has an attribute called @c name;
      * otherwise returns @c false.
      *
@@ -260,7 +260,7 @@ public:
      */
     Q_REQUIRED_RESULT bool hasAttribute(const QString &name) const;
 
-    /**
+    /*!
      * Returns true if this element has an attribute with the local name
      * localName and the namespace URI nsURI; otherwise returns false.
      *

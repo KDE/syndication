@@ -18,7 +18,7 @@ namespace Syndication
 class Category;
 typedef QSharedPointer<Category> CategoryPtr;
 
-/**
+/*!
  * A category for categorizing items or whole feeds.
  * A category can be an informal string set by the feed author ("General",
  * "Stuff I like"), a tag assigned by readers, as known from flickr.com
@@ -32,17 +32,17 @@ typedef QSharedPointer<Category> CategoryPtr;
 class SYNDICATION_EXPORT Category
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~Category();
 
-    /**
+    /*!
      * returns whether this object is a null category
      */
     virtual bool isNull() const = 0;
 
-    /**
+    /*!
      * A term identifying the category, e.g. "general", "life", "books"
      * or "Basketball & other sport I like".
      * The term must be unique in its scheme (see scheme()).
@@ -53,7 +53,7 @@ public:
      */
     virtual QString term() const = 0;
 
-    /**
+    /*!
      * An optional scheme the term is part of. This can be some
      * vocabulary/ontology such as Dublin Core.
      * Think of it as the term's namespace, grouping a set of categories.
@@ -65,7 +65,7 @@ public:
      */
     virtual QString scheme() const = 0;
 
-    /**
+    /*!
      * An optional human-readable label of the category. If specified, this
      * string should be used to represent this category in a user interface.
      * If not specified, use term() instead.
@@ -74,7 +74,7 @@ public:
      */
     virtual QString label() const = 0;
 
-    /**
+    /*!
      * Description of the category for debugging purposes.
      *
      * @return debug string

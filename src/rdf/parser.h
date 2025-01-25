@@ -19,7 +19,7 @@ class DocumentSource;
 
 namespace RDF
 {
-/**
+/*!
  * Parser implementation for RDF-based RSS 0.9 and RSS 1.0 feeds.
  *
  * @author Frank Osterfeld
@@ -27,20 +27,20 @@ namespace RDF
 class Parser : public Syndication::AbstractParser
 {
 public:
-    /** default constructor */
+    /*! default constructor */
     Parser();
 
-    /** destructor */
+    /*! destructor */
     ~Parser() override;
 
-    /**
+    /*!
      * returns whether the passed document looks like
      * an RSS 0.9 or RSS 1.0 document.
      * @param source the document source to check
      */
     bool accept(const DocumentSource &source) const override;
 
-    /**
+    /*!
      * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
      * documents are converted to RSS 1.0.
      *
@@ -51,7 +51,7 @@ public:
      */
     SpecificDocumentPtr parse(const DocumentSource &source) const override;
 
-    /**
+    /*!
      * format string of this parser, which is @c "rdf".
      *
      * @return @c "rdf"

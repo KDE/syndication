@@ -17,7 +17,7 @@ class SpecificDocument;
 typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
-/**
+/*!
  * @brief A mapper maps an SpecificDocument to something else.
  * The type of this "something else" is specified by the template
  * parameter T.
@@ -91,14 +91,14 @@ template<class T>
 class SYNDICATION_EXPORT Mapper
 {
 public:
-    /**
+    /*!
      * virtual destructor
      */
     virtual ~Mapper()
     {
     }
 
-    /**
+    /*!
      * maps a format-specific document to abstraction of type
      * @c T.
      *

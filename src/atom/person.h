@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
+/*!
  * describes a person, with name and optional URI and e-mail address.
  * Used to describe authors and contributors of feeds/entries
  *
@@ -26,12 +26,12 @@ namespace Atom
 class SYNDICATION_EXPORT Person : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * creates a null person object
      */
     Person();
 
-    /**
+    /*!
      * creates a Person object wrapping an Atom Person Construct (atom:author,
      * atom:contributor tags)
      * @param element a DOM element, should be a Atom Person Construct
@@ -40,7 +40,7 @@ public:
      */
     explicit Person(const QDomElement &element);
 
-    /**
+    /*!
      * a human-readable name for the person. (required)
      * The name is a required  attribute of person constructs.
      *
@@ -48,21 +48,21 @@ public:
      */
     Q_REQUIRED_RESULT QString name() const;
 
-    /**
+    /*!
      * A URI associated with the person (optional). Usually the homepage.
      *
      * @return the URI of the person, or a null string if not specified
      */
     Q_REQUIRED_RESULT QString uri() const;
 
-    /**
+    /*!
      * returns an e-mail address associated with the person. (optional)
      *
      * @return an e-mail address, or a null string if not specified
      */
     Q_REQUIRED_RESULT QString email() const;
 
-    /**
+    /*!
      * description for debugging purposes
      *
      * @return debug string

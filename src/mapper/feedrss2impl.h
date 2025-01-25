@@ -18,7 +18,7 @@ typedef QSharedPointer<FeedRSS2Impl> FeedRSS2ImplPtr;
 class Image;
 typedef QSharedPointer<Image> ImagePtr;
 
-/**
+/*!
  * @internal
  */
 class FeedRSS2Impl : public Syndication::Feed

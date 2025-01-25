@@ -19,7 +19,7 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
+/*!
  * The content element either contains or links the content of an entry.
  * The content is usually plain text or HTML, but arbitrary XML or binary
  * content are also possible. If isContained() is false, the content is
@@ -30,20 +30,20 @@ namespace Atom
 class SYNDICATION_EXPORT Content : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * format of the content.
      */
     enum Format {
-        PlainText, /**< the content is plain text (i.e. "<", ">"
+        PlainText, /*!< the content is plain text (i.e. "<", ">"
                     * etc. are text, not
                     * markup */
-        EscapedHTML, /**< the content is escaped HTML, (i.e., "<", ">" etc.
+        EscapedHTML, /*!< the content is escaped HTML, (i.e., "<", ">" etc.
                       * are markup) */
-        XML, /**< the content is embedded XML */
-        Binary, /**< the content is base64-encoded binary content */
+        XML, /*!< the content is embedded XML */
+        Binary, /*!< the content is base64-encoded binary content */
     };
 
-    /**
+    /*!
      * maps a mimetype to Format enum according to the Atom 1.0
      * specification
      *
@@ -53,12 +53,12 @@ public:
      */
     static Format mapTypeToFormat(const QString &type, const QString &src = QString());
 
-    /**
+    /*!
      * creates a null content object.
      */
     Content();
 
-    /**
+    /*!
      * creates a Content object wrapping an atom:content element.
      * @param element a DOM element, should be a atom:content element
      * (although not enforced), otherwise this object will not parse
@@ -66,26 +66,26 @@ public:
      */
     explicit Content(const QDomElement &element);
 
-    /**
+    /*!
      * creates a copy of another Content object
      *
      * @param other the content object to copy
      */
     Content(const Content &other);
 
-    /**
+    /*!
      * destructor
      */
     ~Content() override;
 
-    /**
+    /*!
      * assigns another content objecct
      *
      * @param other the Content object to assign
      */
     Content &operator=(const Content &other);
 
-    /**
+    /*!
      * the type of the content. This is either "text" (plain text),
      * "html" (escaped HTML), "xhtml" (embedded XHTML) or a mime type
      *
@@ -94,7 +94,7 @@ public:
      */
     Q_REQUIRED_RESULT QString type() const;
 
-    /**
+    /*!
      * If src() is set, the content of this entry is not contained in the
      * feed source, but available on the net.
      * src() then contains a URL (more precise: IRI reference) linking to
@@ -107,7 +107,7 @@ public:
      */
     Q_REQUIRED_RESULT QString src() const;
 
-    /**
+    /*!
      * returns the content as string. If the content format is Text, the
      * returned string contains the text as HTML.
      * If the content is embedded XML, the XML is returned as string.
@@ -119,7 +119,7 @@ public:
 
     Q_REQUIRED_RESULT QString asString() const;
 
-    /**
+    /*!
      * returns binary content as byte array.
      *
      * @return byte array containing the embedded binary data, or
@@ -127,44 +127,44 @@ public:
      */
     Q_REQUIRED_RESULT QByteArray asByteArray() const;
 
-    /**
+    /*!
      * returns the content format
      */
     Q_REQUIRED_RESULT Format format() const;
 
-    /**
+    /*!
      * returns whether the content is contained in the feed source,
      * or not. If it is not contained, src() provides a URL to the
      * content.
      */
     Q_REQUIRED_RESULT bool isContained() const;
 
-    /**
+    /*!
      * returns whether the content is embedded XML.
      * Use element() to access the DOM tree, or asString() to get the XML
      * as string.
      */
     Q_REQUIRED_RESULT bool isXML() const;
 
-    /**
+    /*!
      * returns whether the content is binary content or not.
      * Use asByteArray() to access it.
      */
     Q_REQUIRED_RESULT bool isBinary() const;
 
-    /**
+    /*!
      * returns whether the content is plain text or not.
      * Use asString() to access it.
      */
     Q_REQUIRED_RESULT bool isPlainText() const;
 
-    /**
+    /*!
      * returns whether the content is escaped HTML or not
      * Use asString() to access it
      */
     Q_REQUIRED_RESULT bool isEscapedHTML() const;
 
-    /**
+    /*!
      * returns a description of the content object
      * for debugging purposes
      *

@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
+/*!
  * A category for categorizing items or whole feeds.
  * A category can be an informal string set by the feed author ("General",
  * "Stuff I like"), a tag assigned by readers, as known from flickr.com
@@ -31,12 +31,12 @@ namespace Atom
 class SYNDICATION_EXPORT Category : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * creates a null category object.
      */
     Category();
 
-    /**
+    /*!
      * creates a Category object wrapping an atom:category element.
      * @param element a DOM element, should be a atom:category element
      * (although not enforced), otherwise this object will not parse
@@ -44,7 +44,7 @@ public:
      */
     explicit Category(const QDomElement &element);
 
-    /**
+    /*!
      * a term describing the category. (required)
      *
      * @return the category term as plain text (no HTML, "&", "<" etc. are
@@ -52,7 +52,7 @@ public:
      */
     Q_REQUIRED_RESULT QString term() const;
 
-    /**
+    /*!
      * naming scheme the category term is part of. (optional)
      * A term is unique in its scheme (like in C++ identifiers are
      * unique in their namespaces)
@@ -62,7 +62,7 @@ public:
      */
     Q_REQUIRED_RESULT QString scheme() const;
 
-    /**
+    /*!
      * Label of the category (optional).
      * If specified, this string should be used to represent this category
      * in a user interface.
@@ -73,7 +73,7 @@ public:
      */
     Q_REQUIRED_RESULT QString label() const;
 
-    /**
+    /*!
      * description of this category object for debugging purposes
      *
      * @return debug string

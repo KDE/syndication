@@ -16,7 +16,7 @@ namespace Syndication
 class EnclosureAtomImpl;
 typedef QSharedPointer<EnclosureAtomImpl> EnclosureAtomImplPtr;
 
-/**
+/*!
  *
  * @internal
  * @author Frank Osterfeld

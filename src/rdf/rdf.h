@@ -33,7 +33,7 @@
 
 namespace Syndication
 {
-/**
+/*!
  * Syndication's parser for the RDF-based
  * RSS 0.9 and RSS 1.0 formats
  */

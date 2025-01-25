@@ -18,7 +18,7 @@ class ElementWrapper;
 
 namespace RSS2
 {
-/**
+/*!
  * @internal
  * extracts encoded content from XHTML, content:encoded and friends
  *

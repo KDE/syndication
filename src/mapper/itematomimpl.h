@@ -17,7 +17,7 @@ namespace Syndication
 class ItemAtomImpl;
 typedef QSharedPointer<ItemAtomImpl> ItemAtomImplPtr;
 
-/**
+/*!
  * @internal
  */
 class ItemAtomImpl : public Syndication::Item

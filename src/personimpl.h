@@ -20,7 +20,7 @@ class PersonImpl;
 //@cond PRIVATE
 typedef QSharedPointer<PersonImpl> PersonImplPtr;
 
-/**
+/*!
  * @internal
  */
 class SYNDICATION_EXPORT PersonImpl : public Person

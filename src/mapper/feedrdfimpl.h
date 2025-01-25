@@ -18,7 +18,7 @@ typedef QSharedPointer<FeedRDFImpl> FeedRDFImplPtr;
 class Image;
 typedef QSharedPointer<Image> ImagePtr;
 
-/**
+/*!
  * @internal
  */
 class FeedRDFImpl : public Syndication::Feed

@@ -29,7 +29,7 @@ class Sequence;
 typedef QSharedPointer<Sequence> SequencePtr;
 //@endcond
 
-/**
+/*!
  * Visitor interface, following the Visitor design pattern. Use this if you
  * want to process nodes and the way how to handle the nodes depends
  * on it's concrete type (e.g. Resource or Literal).
@@ -41,12 +41,12 @@ typedef QSharedPointer<Sequence> SequencePtr;
 class NodeVisitor // krazy:exclude=dpointer
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~NodeVisitor();
 
-    /**
+    /*!
      * call this method to handle a node. Depending on the concrete type
      * of the node, a specialized visit method is called.
      *
@@ -54,7 +54,7 @@ public:
      */
     virtual void visit(NodePtr node);
 
-    /**
+    /*!
      * reimplement this method to handle literals.
      *
      * @param item the literal to visit
@@ -63,7 +63,7 @@ public:
      */
     virtual bool visitLiteral(LiteralPtr);
 
-    /**
+    /*!
      * reimplement this method to handle nodes that weren't handled
      * by the more specific method.
      *
@@ -73,7 +73,7 @@ public:
      */
     virtual bool visitNode(NodePtr node);
 
-    /**
+    /*!
      * reimplement this method to handle properties.
      *
      * @param property the property to visit
@@ -82,7 +82,7 @@ public:
      */
     virtual bool visitProperty(PropertyPtr property);
 
-    /**
+    /*!
      * reimplement this method to handle resources.
      *
      * @param resource the resource to visit
@@ -91,7 +91,7 @@ public:
      */
     virtual bool visitResource(ResourcePtr resource);
 
-    /**
+    /*!
      * reimplement this method to handle sequences.
      *
      * @param seq the sequence to visit

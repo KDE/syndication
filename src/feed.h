@@ -37,7 +37,7 @@ class Person;
 typedef QSharedPointer<Person> PersonPtr;
 //@endcond
 
-/**
+/*!
  * This class represents a feed document ("Channel" in RSS, "Feed" in Atom).
  * It contains a ordered list of items (e.g., articles) and a description of the
  * feed (title, homepage, etc.). This interface abstracts from format-specific
@@ -52,12 +52,12 @@ typedef QSharedPointer<Person> PersonPtr;
 class SYNDICATION_EXPORT Feed
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~Feed();
 
-    /**
+    /*!
      * returns the format-specific document this abstraction wraps.
      * If you want to access format-specific properties, this can be used,
      * in combination with a DocumentVisitor.
@@ -66,7 +66,7 @@ public:
      */
     virtual SpecificDocumentPtr specificDocument() const = 0;
 
-    /**
+    /*!
      * A list of items, in the order they were parsed from the feed source.
      * (usually reverse chronological order, see also Item::datePublished()
      * for sorting purposes).
@@ -75,14 +75,14 @@ public:
      */
     virtual QList<ItemPtr> items() const = 0;
 
-    /**
+    /*!
      * returns a list of categories this feed is associated with.
      * See Category for more information.
      *
      */
     virtual QList<CategoryPtr> categories() const = 0;
 
-    /**
+    /*!
      * The title of the feed.
      *
      * This string may contain HTML markup.(Importantly, occurrences of
@@ -92,7 +92,7 @@ public:
      */
     virtual QString title() const = 0;
 
-    /**
+    /*!
      * returns a link pointing to a website associated with this channel.
      * (blog, news site etc.)
      *
@@ -100,7 +100,7 @@ public:
      */
     virtual QString link() const = 0;
 
-    /**
+    /*!
      * A description of the feed.
      *
      * This string may contain HTML markup.(Importantly, occurrences of
@@ -111,7 +111,7 @@ public:
      */
     virtual QString description() const = 0;
 
-    /**
+    /*!
      * returns an image associated with this item.
      *
      * @return an image object, or a null image (Not a null pointer!
@@ -121,7 +121,7 @@ public:
      */
     virtual ImagePtr image() const = 0;
 
-    /**
+    /*!
      * returns an icon associated with this item.
      *
      * @return an icon object, or a null icon (Not a null pointer!
@@ -131,7 +131,7 @@ public:
      */
     virtual ImagePtr icon() const = 0;
 
-    /**
+    /*!
      * returns a list of persons who created the feed content. If there is a
      * distinction between authors and contributors (Atom), both are added
      * to the list, where authors are added first.
@@ -140,7 +140,7 @@ public:
      */
     virtual QList<PersonPtr> authors() const = 0;
 
-    /**
+    /*!
      * The language used in the feed. This is a global setting, which can
      * be overridden by the contained items.
      *
@@ -148,12 +148,12 @@ public:
      */
     virtual QString language() const = 0;
 
-    /**
+    /*!
      * returns copyright information about the feed
      */
     virtual QString copyright() const = 0;
 
-    /**
+    /*!
      * returns a list of feed metadata not covered by this class.
      * Can be used e.g. to access format extensions.
      *
@@ -171,7 +171,7 @@ public:
      */
     virtual QMultiMap<QString, QDomElement> additionalProperties() const = 0;
 
-    /**
+    /*!
      * returns a description of the feed for debugging purposes
      *
      * @return debug string

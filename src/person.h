@@ -21,7 +21,7 @@ class Person;
 typedef QSharedPointer<Person> PersonPtr;
 //@endcond
 
-/**
+/*!
  * Person objects hold information about a person, such as the author of
  * the content syndicated in the feed. Depending on the feed format, different
  * information is available.
@@ -36,17 +36,17 @@ typedef QSharedPointer<Person> PersonPtr;
 class SYNDICATION_EXPORT Person
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~Person();
 
-    /**
+    /*!
      * returns whether this object is a null person
      */
     virtual bool isNull() const = 0;
 
-    /**
+    /*!
      * the name of the person (optional)
      *
      * @return the name of the person as plain text,
@@ -54,7 +54,7 @@ public:
      */
     virtual QString name() const = 0;
 
-    /**
+    /*!
      * a URI associated with the person. (optional)
      * This is usually the URL of the
      * person's homepage.
@@ -63,21 +63,21 @@ public:
      */
     virtual QString uri() const = 0;
 
-    /**
+    /*!
      * e-mail address of the person (optional)
      *
      * @return email address, or a null string if not specified
      */
     virtual QString email() const = 0;
 
-    /**
+    /*!
      * description of the person for debugging purposes.
      *
      * @return debug string
      */
     virtual QString debugInfo() const;
 
-    /**
+    /*!
      * compares two person instances. Persons are equal if and only if
      * their respective name(), uri() and email() values are equal.
      * @param other another person instance

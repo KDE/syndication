@@ -21,7 +21,7 @@ class SpecificItem;
 typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 //@endcond
 
-/**
+/*!
  * Interface for all format-specific item-like classes, such as
  * RSS2/RDF items, and Atom entries. To process items based on their
  * format, use a SpecificItemVisitor.
@@ -31,12 +31,12 @@ typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 class SYNDICATION_EXPORT SpecificItem
 {
 public:
-    /**
+    /*!
      * virtual dtor
      */
     virtual ~SpecificItem();
 
-    /**
+    /*!
      * This must be implemented for the double dispatch
      * technique (Visitor pattern).
      *

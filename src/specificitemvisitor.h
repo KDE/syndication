@@ -29,7 +29,7 @@ namespace RSS2
 class Item;
 }
 
-/**
+/*!
  * Visitor interface, following the Visitor design pattern. Use this if you
  * want to process items and the way how to handle the items depends
  * on it's concrete type (e.g. RSS2::Item, RDF::Item...).
@@ -41,12 +41,12 @@ class Item;
 class SYNDICATION_EXPORT SpecificItemVisitor // krazy:exclude=dpointer
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~SpecificItemVisitor();
 
-    /**
+    /*!
      * call this method to handle an item. Depending on the concrete type
      * of the item, a specialized visit method is called.
      *
@@ -55,7 +55,7 @@ public:
      */
     virtual bool visit(SpecificItem *item);
 
-    /**
+    /*!
      * reimplement this method to handle RSS2 items.
      *
      * @param item the RSS2 item to visit
@@ -64,7 +64,7 @@ public:
      */
     virtual bool visitRSS2Item(Syndication::RSS2::Item *item);
 
-    /**
+    /*!
      * reimplement this method to handle RDF items.
      *
      * @param item the RDF item to visit
@@ -73,7 +73,7 @@ public:
      */
     virtual bool visitRDFItem(Syndication::RDF::Item *item);
 
-    /**
+    /*!
      * reimplement this method to handle Atom entries.
      *
      * @param item the Atom entry to visit

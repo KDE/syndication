@@ -23,7 +23,7 @@
 namespace Syndication
 {
 //@cond PRIVATE
-/** @internal
+/*! @internal
  */
 // default implementation of ParserCollection. This is separated
 // from the interface to move the implementation out of the public API

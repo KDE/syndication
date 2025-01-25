@@ -23,7 +23,7 @@ class SpecificDocument;
 typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 //@endcond
 
-/**
+/*!
  * Document interface for format-specific feed documents as parsed from a
  * document source (see DocumentSource).
  * The Document classes from the several syndication formats must implement
@@ -38,12 +38,12 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
 class SYNDICATION_EXPORT SpecificDocument
 {
 public:
-    /**
+    /*!
      * virtual dtor
      */
     virtual ~SpecificDocument();
 
-    /**
+    /*!
      * This must be implemented for the double dispatch
      * technique (Visitor pattern).
      *
@@ -58,14 +58,14 @@ public:
      */
     virtual bool accept(DocumentVisitor *visitor) = 0;
 
-    /**
+    /*!
      * Returns whether this document is valid or not.
      * Invalid documents do not contain any useful
      * information.
      */
     virtual bool isValid() const = 0;
 
-    /**
+    /*!
      * Returns a description of the document for debugging purposes.
      *
      * @return debug string

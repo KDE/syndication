@@ -26,7 +26,7 @@ class Feed;
 typedef QSharedPointer<Feed> FeedPtr;
 //@endcond
 
-/**
+/*!
  * This class is the preferred way of loading feed sources. Usage is very
  * straightforward:
  *
@@ -75,7 +75,7 @@ class SYNDICATION_EXPORT Loader : public QObject
     Q_OBJECT
 
 public:
-    /**
+    /*!
      * Constructs a Loader instance. This is pretty much what the
      * default constructor would do, except that it ensures that all
      * Loader instances have been allocated on the heap (this is
@@ -85,7 +85,7 @@ public:
      */
     static Loader *create();
 
-    /**
+    /*!
      * Convenience method. Does the same as the above method except that
      * it also does the job of connecting the loadingComplete() signal
      * to the given slot for you.
@@ -94,7 +94,7 @@ public:
      */
     static Loader *create(QObject *object, const char *slot);
 
-    /**
+    /*!
      * Loads the feed source referenced by the given URL using the
      * specified retrieval algorithm. Make sure that you connected
      * to the loadingComplete() signal before calling this method so
@@ -111,31 +111,31 @@ public:
      */
     void loadFrom(const QUrl &url, DataRetriever *retriever);
 
-    /**
+    /*!
      * Retrieves the error code of the last loading process (if any).
      */
     Q_REQUIRED_RESULT ErrorCode errorCode() const;
 
-    /**
+    /*!
      * the error code returned from the retriever.
      * Use this if you use your custom retriever implementation and
      * need the specific error, not covered by errorCode().
      */
     Q_REQUIRED_RESULT int retrieverError() const;
 
-    /**
+    /*!
      * returns the URL of a feed discovered in the feed source
      */
     Q_REQUIRED_RESULT QUrl discoveredFeedURL() const;
 
-    /**
+    /*!
      * aborts the loading process
      */
     void abort();
 
 Q_SIGNALS:
 
-    /**
+    /*!
      * This signal gets emitted when the loading process triggered by
      * calling loadFrom() finished.
      * @param loader A pointer pointing to the loader object which

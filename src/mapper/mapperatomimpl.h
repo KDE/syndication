@@ -17,7 +17,7 @@
 
 namespace Syndication
 {
-/** @internal */
+/*! @internal */
 class AtomMapper : public Mapper<Feed>
 {
     QSharedPointer<Feed> map(SpecificDocumentPtr doc) const override

@@ -28,7 +28,7 @@ typedef QSharedPointer<Statement> StatementPtr;
 
 typedef QSharedPointer<Resource> ResourcePtr;
 
-/**
+/*!
  * Resources are the entities in the RDF graph.
  * In RSS, e.g. the feed channel itself and the items are
  * resources.
@@ -38,19 +38,19 @@ class Resource : public Node
     friend class Model;
 
 public:
-    /**
+    /*!
      * creates a null resource
      */
     Resource();
 
-    /**
+    /*!
      * copies a resource
      *
      * @param other the resource to copy
      */
     Resource(const Resource &other);
 
-    /**
+    /*!
      * creates a resource with a given URI.
      * Do not use this directly, use Model::createResource() instead.
      *
@@ -58,19 +58,19 @@ public:
      */
     explicit Resource(const QString &uri);
 
-    /**
+    /*!
      * destructor
      */
     ~Resource() override;
 
-    /**
+    /*!
      * assigns a resource
      *
      * @param other the resource to assign
      */
     Resource &operator=(const Resource &other);
 
-    /**
+    /*!
      * checks two resources for equality. Currently both URI (or anonID)
      * _and_ id() must be equal!
      *
@@ -78,7 +78,7 @@ public:
      */
     bool operator==(const Resource &other) const;
 
-    /**
+    /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
      * @param visitor the visitor calling the method
@@ -86,17 +86,17 @@ public:
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
-    /**
+    /*!
      * creates a copy of the resource object
      */
     Resource *clone() const override;
 
-    /**
+    /*!
      * the model this resource belongs to
      */
     virtual Model model() const;
 
-    /**
+    /*!
      * returns whether the resource has a property @p property in the
      * associated model.
      *
@@ -104,7 +104,7 @@ public:
      */
     virtual bool hasProperty(PropertyPtr property) const;
 
-    /**
+    /*!
      * returns a statement from the associated model where this resource is
      * the subject and the given property the predicate.
      *
@@ -115,7 +115,7 @@ public:
      */
     virtual StatementPtr property(PropertyPtr property) const;
 
-    /**
+    /*!
      * returns the list of all statements from the associated model where
      * this resource is the subject and the given property the predicate.
      *
@@ -125,61 +125,61 @@ public:
      */
     virtual QList<StatementPtr> properties(PropertyPtr property) const;
 
-    /**
+    /*!
      * returns whether the resource is a null resource
      */
     bool isNull() const override;
 
-    /**
+    /*!
      * the identifier of this node. the ID is unique per model
      * and set by the associated model at creation time.
      */
     unsigned int id() const override;
 
-    /**
+    /*!
      * returns @p true
      */
     bool isResource() const override;
 
-    /**
+    /*!
      * returns @p false
      */
     bool isLiteral() const override;
 
-    /**
+    /*!
      * returns @p true if this resource is also a property, @p false
      * otherwise
      */
     bool isProperty() const override;
 
-    /**
+    /*!
      * returns whether this resource is an anonymous resource
      */
     bool isAnon() const override;
 
-    /**
+    /*!
      * returns @p true if this resource is also a sequence, @p false
      * otherwise.
      */
     bool isSequence() const override;
 
-    /**
+    /*!
      * returns a null string
      */
     QString text() const override;
 
-    /**
+    /*!
      * returns the URI of the resource
      */
     virtual QString uri() const;
 
-    /**
+    /*!
      * used in Model
      * @internal
      */
     void setModel(const Model &model) override;
 
-    /**
+    /*!
      * used in Model
      * @internal
      */

@@ -36,7 +36,7 @@ class SpecificItem;
 typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 //@endcond
 
-/**
+/*!
  * An item from a news feed.
  *
  * @author Frank Osterfeld
@@ -44,12 +44,12 @@ typedef QSharedPointer<SpecificItem> SpecificItemPtr;
 class SYNDICATION_EXPORT Item
 {
 public:
-    /**
+    /*!
      * destructor
      */
     virtual ~Item();
 
-    /**
+    /*!
      * returns the format-specific item this object abstracts from.
      * Use it if you need to access format-specifics that are not covered
      * by this abstraction.
@@ -57,7 +57,7 @@ public:
      */
     virtual SpecificItemPtr specificItem() const = 0;
 
-    /**
+    /*!
      * The title of the item.
      *
      * This string may contain HTML markup.(Importantly, occurrences of
@@ -68,7 +68,7 @@ public:
      */
     virtual QString title() const = 0;
 
-    /**
+    /*!
      * returns a link to the (web) resource described by this item. In most
      * cases, this will be a website containing the full article associated
      * with this item.
@@ -77,7 +77,7 @@ public:
      */
     virtual QString link() const = 0;
 
-    /**
+    /*!
      * returns the description of the item. The description can either be
      * a tag line, a short summary of the item content up to a complete
      * article. If content() is non-empty, it
@@ -89,7 +89,7 @@ public:
      */
     virtual QString description() const = 0;
 
-    /**
+    /*!
      * returns the content of the item. If provided, this is the most
      * comprehensive text content available for this item. If it is empty,
      * use description() (which might also contain complete article
@@ -102,7 +102,7 @@ public:
      */
     virtual QString content() const = 0;
 
-    /**
+    /*!
      * returns the date when the item was initially published.
      *
      * @return publication date, as seconds since epoch (Jan 1st 1970), or 0
@@ -110,7 +110,7 @@ public:
      */
     virtual time_t datePublished() const = 0;
 
-    /**
+    /*!
      * returns the date when the item was modified the last time. If no such
      * date is provided by the feed, this method returns the value of
      * datePublished().
@@ -119,7 +119,7 @@ public:
      */
     virtual time_t dateUpdated() const = 0;
 
-    /**
+    /*!
      * returns an identifier that identifies the item within its
      * feed. The ID must be unique within its feed. If no ID is provided
      * by the feed source, a hash from title, description and content is
@@ -128,7 +128,7 @@ public:
      */
     virtual QString id() const = 0;
 
-    /**
+    /*!
      * returns a list of persons who created the item content. If there is a
      * distinction between authors and contributors (Atom), both are added
      * to the list, where authors are added first.
@@ -137,14 +137,14 @@ public:
      */
     virtual QList<PersonPtr> authors() const = 0;
 
-    /**
+    /*!
      * returns the language used in the item's content
      *
      * @return TODO: tell about language codes and link them
      */
     virtual QString language() const = 0;
 
-    /**
+    /*!
      * returns a list of enclosures describing files available on the net.
      * (often used for audio files, so-called "Podcasts").
      *
@@ -152,7 +152,7 @@ public:
      */
     virtual QList<EnclosurePtr> enclosures() const = 0;
 
-    /**
+    /*!
      * returns a list of categories this item is filed in.
      * See Category for more information on categories.
      *
@@ -160,7 +160,7 @@ public:
      */
     virtual QList<CategoryPtr> categories() const = 0;
 
-    /**
+    /*!
      * The number of comments posted for this item.
      *
      * @return the number of comments associated to this item, or -1 if not
@@ -168,7 +168,7 @@ public:
      */
     virtual int commentsCount() const = 0;
 
-    /**
+    /*!
      * Link to an HTML site which contains the comments belonging to
      * this item.
      *
@@ -176,14 +176,14 @@ public:
      */
     virtual QString commentsLink() const = 0;
 
-    /**
+    /*!
      * URL of feed syndicating comments belonging to this item.
      *
      * @return comments feed URL, or a null string if not set
      */
     virtual QString commentsFeed() const = 0;
 
-    /**
+    /*!
      * URI that can be used to post comments via an HTTP POST request using
      * the Comment API.
      * For more details on the Comment API, see
@@ -193,7 +193,7 @@ public:
      */
     virtual QString commentPostUri() const = 0;
 
-    /**
+    /*!
      * returns a list of item metadata not covered by this class.
      * Can be used e.g. to access format extensions.
      *
@@ -211,7 +211,7 @@ public:
      */
     virtual QMultiMap<QString, QDomElement> additionalProperties() const = 0;
 
-    /**
+    /*!
      * returns a description of the item for debugging purposes
      *
      * @return debug string

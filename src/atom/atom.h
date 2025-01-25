@@ -21,7 +21,7 @@
 
 namespace Syndication
 {
-/**
+/*!
  * Atom parser and model classes, representing
  * Atom 1.0 documents (Atom 0.3 documents are
  * converted by the parser)

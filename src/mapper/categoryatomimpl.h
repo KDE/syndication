@@ -16,7 +16,7 @@ namespace Syndication
 class CategoryAtomImpl;
 typedef QSharedPointer<CategoryAtomImpl> CategoryAtomImplPtr;
 
-/**
+/*!
  *
  * @internal
  * @author Frank Osterfeld

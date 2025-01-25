@@ -16,7 +16,7 @@ namespace Syndication
 class CategoryRSS2Impl;
 typedef QSharedPointer<CategoryRSS2Impl> CategoryRSS2ImplPtr;
 
-/**
+/*!
  *
  * @internal
  * @author Frank Osterfeld

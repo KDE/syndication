@@ -21,7 +21,7 @@ class Property;
 typedef QSharedPointer<Property> PropertyPtr;
 //@endcond
 
-/**
+/*!
  * a property is node type that represents properties of things,
  * like "name" is a property of a person, or "color" is a property of e.g.
  * a car. Properties can be used as predicates in statements.
@@ -31,24 +31,24 @@ typedef QSharedPointer<Property> PropertyPtr;
 class Property : public Resource
 {
 public:
-    /**
+    /*!
      * creates a null property
      */
     Property();
 
-    /**
+    /*!
      * creates a property with a given URI
      *
      * @param uri the URI of the property
      */
     explicit Property(const QString &uri);
 
-    /**
+    /*!
      * destructor
      */
     ~Property() override;
 
-    /**
+    /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
      * @param visitor the visitor calling the method
@@ -56,12 +56,12 @@ public:
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
-    /**
+    /*!
      * returns true for properties
      */
     bool isProperty() const override;
 
-    /**
+    /*!
      * creates a copy of the property object
      */
     Property *clone() const override;
