@@ -165,6 +165,7 @@ ecm_generate_headers(Syndication_CamelCase_HEADERS
   REQUIRED_HEADERS Syndication_HEADERS
 )
 
+ecm_generate_qdoc(KF6Syndication syndication.qdocconf)
 
 install(TARGETS KF6Syndication EXPORT KF6SyndicationTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
