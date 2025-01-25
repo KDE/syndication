@@ -187,28 +187,3 @@ ecm_qt_install_logging_categories(
     FILE syndication.categories
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
-
-if(BUILD_QCH)
-    ecm_add_qch(
-        KF6Syndication_QCH
-        NAME Syndication
-        BASE_NAME KF6Syndication
-        VERSION ${KF_VERSION}
-        ORG_DOMAIN org.kde
-        SOURCES # using only public headers, to cover only public API
-            ${Syndication_HEADERS}
-            ${Syndication_Atom_APIDOX_SRCS}
-        MD_MAINPAGE "${CMAKE_SOURCE_DIR}/Mainpage.dox"
-        LINK_QCHS
-            Qt6Core_QCH
-        INCLUDE_DIRS
-            ${CMAKE_CURRENT_BINARY_DIR}
-        BLANK_MACROS
-            SYNDICATION_EXPORT
-            SYNDICATION_DEPRECATED
-        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        COMPONENT Devel
-    )
-endif()
-

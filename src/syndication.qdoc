@@ -1,0 +1,11 @@
+/*!
+    \module Syndication
+    \title Syndication C++ Classes
+    \ingroup modules
+    \cmakepackage KF6
+    \cmakecomponent Syndication
+
+    \brief IO.
+
+    Stuff
+*/
