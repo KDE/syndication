@@ -17,23 +17,21 @@ namespace Syndication
 class SpecificItemVisitor;
 class SpecificItem;
 
-//@cond PRIVATE
 typedef QSharedPointer<SpecificItem> SpecificItemPtr;
-//@endcond
 
 /*!
- * Interface for all format-specific item-like classes, such as
- * RSS2/RDF items, and Atom entries. To process items based on their
- * format, use a SpecificItemVisitor.
+ * \class Syndication::SpecificItem
+ * \inmodule Syndication
+ * \inheaderfile Syndication/SpecificItem
  *
- * @author Frank Osterfeld
+ * \brief Interface for all format-specific item-like classes, such as
+ * RSS2/RDF items, and Atom entries.
+ *
+ * To process items based on their format, use a SpecificItemVisitor.
  */
 class SYNDICATION_EXPORT SpecificItem
 {
 public:
-    /*!
-     * virtual dtor
-     */
     virtual ~SpecificItem();
 
     /*!
@@ -41,9 +39,9 @@ public:
      * technique (Visitor pattern).
      *
      * The usual implementation is
-     * @code
+     * \code
      * return visitor->visit(this);
-     * @endcode
+     * \endcode
      *
      * See also SpecificItemVisitor.
      *

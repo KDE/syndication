@@ -14,18 +14,33 @@ class QString;
 
 namespace Syndication
 {
+/*!
+ *
+ */
 SYNDICATION_EXPORT
 QString xmlNamespace();
 
+/*!
+ *
+ */
 SYNDICATION_EXPORT
 QString xhtmlNamespace();
 
+/*!
+ *
+ */
 SYNDICATION_EXPORT
 QString dublinCoreNamespace();
 
+/*!
+ *
+ */
 SYNDICATION_EXPORT
 QString contentNameSpace();
 
+/*!
+ *
+ */
 SYNDICATION_EXPORT
 QString itunesNamespace();
 

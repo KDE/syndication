@@ -57,8 +57,10 @@ public:
      * not.
      *
      * \sa SpecificDocument::isValid()
+     *
      * \a source The document source to be parsed
-     * @return a newly created document parsed from @c source
+     *
+     * Returns a newly created document parsed from \a source
      */
     virtual SpecificDocumentPtr parse(const DocumentSource &source) const = 0;
 
@@ -66,7 +68,7 @@ public:
      * Returns the name of the format supported by this
      * parser.
      *
-     * @return a string like "rss2", "atom" or "rdf"
+     * Returns a string like "rss2", "atom" or "rdf"
      */
     virtual QString format() const = 0;
 };

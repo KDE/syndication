@@ -31,9 +31,11 @@ class Person;
 class Source;
 
 /*!
- * an Atom entry, equivalent to the "items" in the RSS world.
+ * \class Syndication::Atom::Entry
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/Entry
  *
- * @author Frank Osterfeld
+ * \brief An Atom entry, equivalent to the "items" in the RSS world.
  */
 class SYNDICATION_EXPORT Entry : public ElementWrapper, public SpecificItem
 {
@@ -45,6 +47,7 @@ public:
 
     /*!
      * creates an Entry object wrapping an atom:entry element.
+     *
      * \a element a DOM element, should be a atom:entry element
      * (although not enforced), otherwise this object will not parse
      * anything useful
@@ -54,9 +57,9 @@ public:
     /*!
      * Used by visitors for double dispatch. See SpecificVisitor
      * for more information.
+     *
      * \a visitor the visitor calling the method
      */
-
     bool accept(SpecificItemVisitor *visitor) override;
 
     /*!
@@ -91,14 +94,14 @@ public:
      *
      * Links are optional if the entry provides Content.
      * Otherwise, it must contain at least one link with
-     * a @c rel value of @c "alternate". (see Link).
+     * a \c rel value of \c "alternate". (see Link).
      */
     Q_REQUIRED_RESULT QList<Link> links() const;
 
     /*!
      * copyright information (optional)
      *
-     * @return copyright information for the entry (intended for human
+     * Returns copyright information for the entry (intended for human
      * readers), or a null string if not specified
      */
     Q_REQUIRED_RESULT QString rights() const;
@@ -109,7 +112,7 @@ public:
      * If the content was copied from another feed, this object contains
      * information about the source feed.
      *
-     * @return source description, or a null object if not
+     * Returns source description, or a null object if not
      * specified
      */
     Q_REQUIRED_RESULT Source source() const;
@@ -117,14 +120,14 @@ public:
     /*!
      * The datetime of the publication of this entry (optional).
      *
-     * @return the publication date in seconds since epoch
+     * Returns the publication date in seconds since epoch
      */
     Q_REQUIRED_RESULT time_t published() const;
 
     /*!
      * The datetime of the last modification of this entry (required).
      *
-     * @return the modification date in seconds since epoch
+     * Returns the modification date in seconds since epoch
      */
     Q_REQUIRED_RESULT time_t updated() const;
 
@@ -133,22 +136,22 @@ public:
      * This is usually more verbose than title() and but does not
      * contain the whole content as content() does.
      *
-     * @return the summary as HTML, or a null string if not specified
+     * Returns the summary as HTML, or a null string if not specified
      */
     Q_REQUIRED_RESULT QString summary() const;
 
     /*!
      * title of the entry (required).
      *
-     * @return the title as HTML
+     * Returns the title as HTML
      */
     Q_REQUIRED_RESULT QString title() const;
 
     /*!
      * content of the entry (optional)
-     * See @ref Content for details
+     * See Content for details
      *
-     * @return entry content, or a null content object if not specified
+     * Returns entry content, or a null content object if not specified
      */
     Q_REQUIRED_RESULT Content content() const;
 
@@ -162,6 +165,7 @@ public:
      * Sets the list of the containing feed's authors, which will be used
      * as a fallback in authors() in case both the entry itself and its
      * source have no explicit author description.
+     *
      * \a feedAuthors the list of feed's authors
      */
     void setFeedAuthors(const QList<Person> &feedAuthors);
@@ -169,7 +173,7 @@ public:
     /*!
      * returns a description of this entry for debugging purposes
      *
-     * @return debug string
+     * Returns debug string
      */
     Q_REQUIRED_RESULT QString debugInfo() const;
 

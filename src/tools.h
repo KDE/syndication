@@ -18,14 +18,15 @@ class QString;
 
 namespace Syndication
 {
-/*! date formats supported by date parsers */
-
+/*!
+ * date formats supported by date parsers
+ *
+ * \value ISODate ISO 8601 extended format. (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25", datetime with timezone: "2003-12-13T18:30:02.25+01:00")
+ * \value RFCDate RFC 822. (e.g. "Sat, 07 Sep 2002 00:00:01 GMT")
+ */
 enum DateFormat {
-    ISODate, /*!< ISO 8601 extended format.
-              * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
-              * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
-              */
-    RFCDate, /*!< RFC 822. (e.g. "Sat, 07 Sep 2002 00:00:01 GMT") */
+    ISODate,
+    RFCDate,
 };
 
 /*!
@@ -34,7 +35,8 @@ enum DateFormat {
  * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
  *
  * \a str a string in ISO 8601 format
- * @return parsed date in seconds since epoch, 0 if no date could
+ *
+ * Returns parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
@@ -45,7 +47,8 @@ uint parseISODate(const QString &str);
  * (Sat, 07 Sep 2002 00:00:01 GMT)
  *
  * \a str a string in RFC 822 format
- * @return parsed date in seconds since epoch, 0 if no date could
+ *
+ * Returns parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
@@ -54,27 +57,32 @@ uint parseRFCDate(const QString &str);
 /*!
  * parses a date string in ISO (see parseISODate()) or RFC 822 (see
  * parseRFCDate()) format.
+ *
  * It tries both parsers and returns the first valid parsing result found (or 0
  * otherwise).
+ *
  * To speed up parsing, you can give a hint which format you expect.
  * The method will try the corresponding parser first then.
  *
  * \a str a date string
+ *
  * \a hint the expected format
- * @return parsed date in seconds since epoch, 0 if no date could
+ *
+ * Returns parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
 SYNDICATION_EXPORT
 uint parseDate(const QString &str, DateFormat hint = RFCDate);
 
 /*!
- * @internal
+ * \internal
  * returns a string representation of a datetime.
  * this is used internally to create debugging output.
  *
  * \a date the date to convert
- * @return string representation of the date, or a null string if
- * @c date is 0
+ *
+ * Returns string representation of the date, or a null string if
+ * \a date is 0
  */
 SYNDICATION_EXPORT
 QString dateTimeToString(uint date);
@@ -87,15 +95,17 @@ QString dateTimeToString(uint date);
 SYNDICATION_EXPORT
 QString resolveEntities(const QString &str);
 /*!
- * replaces the characters &lt; >, &, ", '
- * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;.
+ * replaces the characters <, >, &, ", '
+ * with &lt; &gt; &amp;, &quot; &apos;.
+ *
  * \a str the string to escape
  */
 SYNDICATION_EXPORT
 QString escapeSpecialCharacters(const QString &str);
 
 /*!
- * replaces newlines ("\n") by &lt;br/>
+ * replaces newlines ("\n") by <br/>
+ *
  * \a str string to convert
  */
 SYNDICATION_EXPORT
@@ -113,7 +123,8 @@ QString plainTextToHtml(const QString &plainText);
  * converts a HTML string to plain text
  *
  * \a html string in HTML format
- * @return stripped text
+ *
+ * Returns stripped text
  */
 SYNDICATION_EXPORT
 QString htmlToPlainText(const QString &html);
@@ -122,7 +133,8 @@ QString htmlToPlainText(const QString &html);
  * guesses whether a string contains plain text or HTML
  *
  * \a str the string in unknown format
- * @return @c true if the heuristic thinks it's HTML, @c false
+ *
+ * Returns \c true if the heuristic thinks it's HTML, \c false
  * if thinks it is plain text
  */
 SYNDICATION_EXPORT
@@ -134,7 +146,8 @@ bool isHtml(const QString &str);
  * simple (and relatively fast) heuristic.
  *
  * \a str the string that might or might not contain markup
- * @return @c true if the heuristic thinks it contains markup, @c false
+ *
+ * Returns \c true if the heuristic thinks it contains markup, \c false
  * if thinks it is markup-free plain text
  */
 SYNDICATION_EXPORT
@@ -142,12 +155,13 @@ bool stringContainsMarkup(const QString &str);
 
 /*!
  * Ensures HTML formatting for a string.
- * guesses via isHtml() if @c str contains HTML or plain text, and returns
- * plainTextToHtml(str) if it thinks it is plain text, or the unmodified @c str
+ *
+ * guesses via isHtml() if \a str contains HTML or plain text, and returns
+ * plainTextToHtml(str) if it thinks it is plain text, or the unmodified \a str
  * otherwise.
  *
  * \a str a string with unknown content
- * @return string as HTML (as long as the heuristics work)
+ * Returns string as HTML (as long as the heuristics work)
  */
 SYNDICATION_EXPORT
 QString normalize(const QString &str);
@@ -159,16 +173,19 @@ QString normalize(const QString &str);
  * vs. HTML). isCDATA and containsMarkup are determined once by the feed,
  * and then passed to this method.
  *
- * The returned string contains HTML, with special characters &lt;, >,
+ * The returned string contains HTML, with special characters <, >,
  * &, ", and ' escaped, and all other entities resolved.
  * Whitespace is collapsed, relevant whitespace is replaced by respective
- * HTML tags (&lt;br/>).
+ * HTML tags (<br/>).
  *
  * \a str a string
- * \a isCDATA whether the feed uses CDATA for the tag @c str was read from
+ *
+ * \a isCDATA whether the feed uses CDATA for the tag \a str was read from
+ *
  * \a containsMarkup whether the feed uses HTML markup in the
- *        tag @c str was read from.
- * @return string as HTML (as long as the heuristics work)
+ *        tag \a str was read from.
+ *
+ * Returns string as HTML (as long as the heuristics work)
  */
 SYNDICATION_EXPORT
 QString normalize(const QString &str, bool isCDATA, bool containsMarkup);
@@ -176,35 +193,35 @@ QString normalize(const QString &str, bool isCDATA, bool containsMarkup);
 /*!
  * Parses a person object from a string by identifying name and email address
  * in the string. Currently detected variants are:
- * "foo@bar.com", "Foo", "Foo &lt;foo@bar.com>", "foo@bar.com (Foo)".
+ * "foo@bar.com", "Foo", "Foo <foo@bar.com>", "foo@bar.com (Foo)".
  *
  * \a str the string to parse the person from.
- * @return a Person object containing the parsed information.
+ *
+ * Returns a Person object containing the parsed information.
  */
 SYNDICATION_EXPORT
 PersonPtr personFromString(const QString &str);
 
 /*!
- * @internal
+ * \internal
  * calculates a hash value for a string
  */
 unsigned int calcHash(const QString &str);
 
 /*!
- * @internal
+ * \internal
  * calculates a hash value for a byte array
  */
 unsigned int calcHash(const QByteArray &array);
 
 /*!
- * @internal
+ * \internal
  * calculates a md5 checksum for a string
  */
 QString calcMD5Sum(const QString &str);
 
-//@cond PRIVATE
 /*!
- * @internal
+ * \internal
  * used internally to represent element types
  */
 struct ElementType {
@@ -216,7 +233,6 @@ struct ElementType {
     QString ns;
     QString localname;
 };
-//@endcond
 
 } // namespace Syndication
 

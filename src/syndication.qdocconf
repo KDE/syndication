@@ -8,6 +8,8 @@ documentationinheaders = true
 headerdirs = .
 sourcedirs = .
 
+excludedirs = mapper rdf rss2
+
 outputformats = HTML
 
 depends += \

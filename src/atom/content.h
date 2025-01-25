@@ -20,27 +20,32 @@ namespace Syndication
 namespace Atom
 {
 /*!
- * The content element either contains or links the content of an entry.
+ * \class Syndication::Atom::Content
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/Content
+ *
+ * \brief The content element either contains or links the content of an entry.
+ *
  * The content is usually plain text or HTML, but arbitrary XML or binary
  * content are also possible. If isContained() is false, the content is
  * not contained in the feed source, but linked.
- *
- * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Content : public ElementWrapper
 {
 public:
     /*!
      * format of the content.
+     *
+     * \value PlainText the content is plain text (i.e. "<", ">" etc. are text, not markup
+     * \value EscapedHTML the content is escaped HTML, (i.e., "<", ">" etc. are markup)
+     * \value XML the content is embedded XML
+     * \value Binary the content is base64-encoded binary content
      */
     enum Format {
-        PlainText, /*!< the content is plain text (i.e. "<", ">"
-                    * etc. are text, not
-                    * markup */
-        EscapedHTML, /*!< the content is escaped HTML, (i.e., "<", ">" etc.
-                      * are markup) */
-        XML, /*!< the content is embedded XML */
-        Binary, /*!< the content is base64-encoded binary content */
+        PlainText,
+        EscapedHTML,
+        XML,
+        Binary,
     };
 
     /*!
@@ -48,8 +53,8 @@ public:
      * specification
      *
      * \a type a valid mimetype, or one of "text", "html", "xhtml"
-     * \a src content source, see src() for details.
      *
+     * \a src content source, see src() for details.
      */
     static Format mapTypeToFormat(const QString &type, const QString &src = QString());
 
@@ -60,6 +65,7 @@ public:
 
     /*!
      * creates a Content object wrapping an atom:content element.
+     *
      * \a element a DOM element, should be a atom:content element
      * (although not enforced), otherwise this object will not parse
      * anything useful
@@ -73,9 +79,6 @@ public:
      */
     Content(const Content &other);
 
-    /*!
-     * destructor
-     */
     ~Content() override;
 
     /*!
@@ -89,7 +92,7 @@ public:
      * the type of the content. This is either "text" (plain text),
      * "html" (escaped HTML), "xhtml" (embedded XHTML) or a mime type
      *
-     * @return the content type. If no type is specified, "text" (the
+     * Returns the content type. If no type is specified, "text" (the
      * default) is returned.
      */
     Q_REQUIRED_RESULT QString type() const;
@@ -102,7 +105,7 @@ public:
      * If src is provided, type() should contain a mimetype, instead of "text",
      * "html" or "xhtml".
      *
-     * @return  a null string if the content is contained in the feed
+     * Returns a null string if the content is contained in the feed
      * source, or a URL linking to the remote content
      */
     Q_REQUIRED_RESULT QString src() const;
@@ -112,17 +115,14 @@ public:
      * returned string contains the text as HTML.
      * If the content is embedded XML, the XML is returned as string.
      *
-     * @return a string representation of the content, or a null string if
+     * Returns a string representation of the content, or a null string if
      * the content is either binary content or not contained but linked
      * (see isContained())
      */
-
     Q_REQUIRED_RESULT QString asString() const;
 
     /*!
-     * returns binary content as byte array.
-     *
-     * @return byte array containing the embedded binary data, or
+     * Returns byte array containing the embedded binary data, or
      * an empty array if the content is not in binary format
      */
     Q_REQUIRED_RESULT QByteArray asByteArray() const;
@@ -167,8 +167,6 @@ public:
     /*!
      * returns a description of the content object
      * for debugging purposes
-     *
-     * @return debug string
      */
     Q_REQUIRED_RESULT QString debugInfo() const;
 

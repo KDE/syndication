@@ -19,22 +19,22 @@ class Category;
 typedef QSharedPointer<Category> CategoryPtr;
 
 /*!
- * A category for categorizing items or whole feeds.
+ * \class Syndication::Category
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Category
+ *
+ * \brief A category for categorizing items or whole feeds.
+ *
  * A category can be an informal string set by the feed author ("General",
  * "Stuff I like"), a tag assigned by readers, as known from flickr.com
  * or de.licio.us ("KDE", "funny"), or a term from a formally defined ontology.
  *
  * To represent the category in a user interface, use label() (or term() as
  * fallback). To create a key for e.g. storage purposes, use scheme() + term().
- *
- * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT Category
 {
 public:
-    /*!
-     * destructor
-     */
     virtual ~Category();
 
     /*!
@@ -49,7 +49,8 @@ public:
      *
      * In user interfaces, use it only if there is no label() available.
      * TODO: specify format (HTML, plain text?) and enforce it in the impl
-     * @return  category term. This string is never empty.
+     *
+     * Returns category term. This string is never empty.
      */
     virtual QString term() const = 0;
 
@@ -60,24 +61,28 @@ public:
      * When managing categories, scheme() + term() identifies a category
      * unambiguously and can be used as key.
      *
-     * @return the scheme this category is part of, or a null string
+     * Returns the scheme this category is part of, or a null string
      * if not specified
      */
     virtual QString scheme() const = 0;
 
     /*!
-     * An optional human-readable label of the category. If specified, this
+     * An optional human-readable label of the category.
+     *
+     * If specified, this
      * string should be used to represent this category in a user interface.
      * If not specified, use term() instead.
+     *
      * TODO: specify format (HTML, plain text?) and enforce it in the impl
-     * @return the label of this category, or a null string if not specified
+     *
+     * Returns the label of this category, or a null string if not specified
      */
     virtual QString label() const = 0;
 
     /*!
      * Description of the category for debugging purposes.
      *
-     * @return debug string
+     * Returns debug string
      */
     virtual QString debugInfo() const;
 };

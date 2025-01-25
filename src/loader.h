@@ -22,13 +22,16 @@ namespace Syndication
 {
 class DataRetriever;
 class Feed;
-//@cond PRIVATE
 typedef QSharedPointer<Feed> FeedPtr;
-//@endcond
 
 /*!
- * This class is the preferred way of loading feed sources. Usage is very
- * straightforward:
+ * \class Syndication::Loader
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Loader
+ *
+ * \brief This class is the preferred way of loading feed sources.
+ *
+ * Usage is very straightforward:
  *
  * \code
  * Loader *loader = Loader::create();
@@ -76,38 +79,51 @@ class SYNDICATION_EXPORT Loader : public QObject
 
 public:
     /*!
-     * Constructs a Loader instance. This is pretty much what the
+     * Constructs a Loader instance.
+     *
+     * This is pretty much what the
      * default constructor would do, except that it ensures that all
      * Loader instances have been allocated on the heap (this is
      * required so that Loader's can delete themselves safely after they
      * emitted the loadingComplete() signal.).
-     * @return A pointer to a new Loader instance.
+     *
+     * Returns a pointer to a new Loader instance.
      */
     static Loader *create();
 
     /*!
-     * Convenience method. Does the same as the above method except that
+     * Convenience method.
+     *
+     * Does the same as the above method except that
      * it also does the job of connecting the loadingComplete() signal
      * to the given slot for you.
+     *
      * \a object A QObject which features the specified slot
+     *
      * \a slot Which slot to connect to.
      */
     static Loader *create(QObject *object, const char *slot);
 
     /*!
      * Loads the feed source referenced by the given URL using the
-     * specified retrieval algorithm. Make sure that you connected
+     * specified retrieval algorithm.
+     *
+     * Make sure that you connected
      * to the loadingComplete() signal before calling this method so
      * that you're guaranteed to get notified when the loading finished.
+     *
      * \note A Loader object cannot load from multiple URLs simultaneously;
      * consequently, subsequent calls to loadFrom will be discarded
      * silently, only the first loadFrom request will be executed.
+     *
      * \a url A URL referencing the input file.
+     *
      * \a retriever A subclass of DataRetriever which implements a
      * specialized retrieval behaviour. Note that the ownership of the
      * retriever is transferred to the Loader, i.e. the Loader will
      * delete it when it doesn't need it anymore.
-     * @see DataRetriever, Loader::loadingComplete()
+     *
+     * \sa DataRetriever, Loader::loadingComplete()
      */
     void loadFrom(const QUrl &url, DataRetriever *retriever);
 
@@ -138,14 +154,18 @@ Q_SIGNALS:
     /*!
      * This signal gets emitted when the loading process triggered by
      * calling loadFrom() finished.
+     *
      * \a loader A pointer pointing to the loader object which
      * emitted this signal; this is handy in case you connect multiple
      * loaders to a single slot.
+     *
      * \a feed In case errortus is Success, this parameter holds the
      * parsed feed. If fetching/parsing failed, feed is NULL.
+     *
      * \a error An error code telling whether there were any
      * problems while retrieving or parsing the data.
-     * @see Feed, ErrorCode
+     *
+     * \sa Feed, ErrorCode
      */
     void loadingComplete(Syndication::Loader *loader, Syndication::FeedPtr feed, Syndication::ErrorCode error);
 

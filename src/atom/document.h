@@ -29,16 +29,16 @@ class FeedDocument;
 class Generator;
 class Link;
 class Person;
-//@cond PRIVATE
 typedef QSharedPointer<EntryDocument> EntryDocumentPtr;
 typedef QSharedPointer<FeedDocument> FeedDocumentPtr;
-//@endcond
 
 /*!
- * An Atom 1.0 Feed Document, containing metadata describing the
- * feed and a number of entries.
+ * \class Syndication::Atom::FeedDocument
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/FeedDocument
  *
- * @author Frank Osterfeld
+ * \brief An Atom 1.0 Feed Document, containing metadata describing the
+ * feed and a number of entries.
  */
 class SYNDICATION_EXPORT FeedDocument : public Syndication::SpecificDocument, public ElementWrapper
 {
@@ -46,12 +46,13 @@ public:
     /*!
      * default constructor, creates a null feed, which
      * is invalid.
-     * @see isValid()
+     * \sa isValid()
      */
     FeedDocument();
 
     /*!
      * creates a FeedDocument wrapping an atom:feed element.
+     *
      * \a element a DOM element, should be a atom:feed document
      * (although not enforced), otherwise this object will not parse
      * anything useful
@@ -61,12 +62,14 @@ public:
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
+     *
      * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 
     /*!
      * a list of persons who are the authors of this feed.
+     *
      * According to the Atom 1.0 spec, a feed must have an
      * author unless all entries in it have one.
      */
@@ -84,22 +87,18 @@ public:
 
     /*!
      * URL of an image serving as a feed icon (optional)
-     *
-     * @return icon URL, or a null string if not specified in the feed.
      */
     Q_REQUIRED_RESULT QString icon() const;
 
     /*!
      * URL of an image serving as a feed logo (optional)
-     *
-     * @return image URL, or a null string if not specified in the feed.
      */
     Q_REQUIRED_RESULT QString logo() const;
 
     /*!
      * a string that unambiguously identifies the feed (required)
      *
-     * @return the ID of the feed. As defined in the Atom spec it must be
+     * Returns the ID of the feed. As defined in the Atom spec it must be
      * a valid URI (which is neither checked nor enforced by this parser)
      *
      */
@@ -108,7 +107,7 @@ public:
     /*!
      * copyright information (optional)
      *
-     * @return copyright information for the feed (intended for human
+     * Returns copyright information for the feed (intended for human
      * readers), or a null string if not specified
      */
     Q_REQUIRED_RESULT QString rights() const;
@@ -116,14 +115,14 @@ public:
     /*!
      * feed title (required).
      *
-     * @return title string as HTML.
+     * Returns title string as HTML.
      */
     Q_REQUIRED_RESULT QString title() const;
 
     /*!
      * description or subtitle of the feed (optional).
      *
-     * @return subtitle string as HTML, or a null string
+     * Returns subtitle string as HTML, or a null string
      * if not specified in the feed.
      */
     Q_REQUIRED_RESULT QString subtitle() const;
@@ -132,7 +131,7 @@ public:
      * description of the agent used to generate the feed. See
      * Generator for more information (optional).
      *
-     * @return description of the generator, or a null Generator object
+     * Returns description of the generator, or a null Generator object
      * if not specified in the feed.
      */
     Q_REQUIRED_RESULT Generator generator() const;
@@ -140,7 +139,7 @@ public:
     /*!
      * The datetime of the last modification of the feed content.
      *
-     * @return the modification date in seconds since epoch
+     * Returns the modification date in seconds since epoch
      */
     Q_REQUIRED_RESULT time_t updated() const;
 
@@ -164,8 +163,6 @@ public:
     /*!
      * returns a description of this feed document for debugging
      * purposes.
-     *
-     * @return debug string
      */
     Q_REQUIRED_RESULT QString debugInfo() const override;
 
@@ -178,22 +175,25 @@ public:
 };
 
 /*!
- * An Atom 1.0 Entry Document, containing a single Atom entry outside
- * of the context of a feed.
+ * \class Syndication::Atom::EntryDocument
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/EntryDocument
  *
- * @author Frank Osterfeld
+ * \brief An Atom 1.0 Entry Document, containing a single Atom entry outside
+ * of the context of a feed.
  */
 class SYNDICATION_EXPORT EntryDocument : public Syndication::SpecificDocument, public Syndication::ElementWrapper
 {
 public:
     /*!
      * default constructor, creates a null document, which is invalid.
-     * @see isValid()
+     * \sa isValid()
      */
     EntryDocument();
 
     /*!
      * creates an Atom Entry Document wrapping an atom:entry element.
+     *
      * \a element a DOM element, should be a atom:entry element
      * (although not enforced), otherwise this object will not parse
      * anything useful
@@ -203,27 +203,25 @@ public:
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
+     *
      * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 
     /*!
      * returns the single entry described in the source.
-     *
-     * @return the entry
      */
     Q_REQUIRED_RESULT Entry entry() const;
 
     /*!
      * returns a description of this entry document for debugging
      * purposes.
-     *
-     * @return debug string
      */
     Q_REQUIRED_RESULT QString debugInfo() const override;
 
     /*!
      * returns whether this document is valid or not.
+     *
      * Invalid documents do not contain any useful
      * information.
      */

@@ -19,7 +19,11 @@ class QDomDocument;
 namespace Syndication
 {
 /*!
- * Represents the source of a syndication document, as read from the
+ * \class Syndication::DocumentSource
+ * \inmodule Syndication
+ * \inheaderfile Syndication/DocumentSource
+ *
+ * \brief Represents the source of a syndication document, as read from the
  * downloaded file.
  *
  * It provides a (cached) DOM representation of the document, but keeps
@@ -29,8 +33,6 @@ namespace Syndication
  * This way the document can be passed to all available parsers (to find the
  * right one for the source), regardless whether they parse XML formats or
  * non-XML formats, without having every parser to do the XML parsing again.
- *
- * @author Frank Osterfeld
  */
 class SYNDICATION_EXPORT DocumentSource
 {
@@ -45,6 +47,7 @@ public:
      * Creates a DocumentSource object from a raw byte array
      *
      * \a source the raw source (of the downloaded feed file usually)
+     *
      * \a url the URL/path the source was read from
      */
     DocumentSource(const QByteArray &source, const QString &url);
@@ -57,9 +60,6 @@ public:
      */
     DocumentSource(const DocumentSource &other);
 
-    /*!
-     * destructor
-     */
     ~DocumentSource();
 
     /*!
@@ -67,32 +67,31 @@ public:
      * operation.
      *
      * \a other DocumentSource to assign to this instance
-     * @return reference to this instance
+     *
+     * Returns reference to this instance
      */
     DocumentSource &operator=(const DocumentSource &other);
 
     /*!
      * Returns the feed source as byte array.
-     *
-     * @return the feed source as raw byte array.
      */
     Q_REQUIRED_RESULT QByteArray asByteArray() const;
 
     /*!
      * returns the size the source array in bytes.
      *
-     * @return the size of the byte array in bytes.
      * See also QByteArray::size()
      */
     Q_REQUIRED_RESULT unsigned int size() const;
 
     /*!
-     * calculates a hash value for the source array.
+     * Calculates a hash value for the source array.
+     *
      * This can be used to decide whether the feed has changed since
      * the last fetch. If the hash hasn't changed since the last fetch,
      * the feed wasn't modified with high probability.
      *
-     * @return the hash calculated from the source, 0 if the
+     * Returns the hash calculated from the source, 0 if the
      * source is empty
      */
     Q_REQUIRED_RESULT unsigned int hash() const;
@@ -106,7 +105,7 @@ public:
      * returned DOM node will be null (eg. asDomDocument().isNull()
      * will return true)
      *
-     * @return XML representation parsed from the raw source
+     * Returns the XML representation parsed from the raw source
      */
     Q_REQUIRED_RESULT QDomDocument asDomDocument() const;
 

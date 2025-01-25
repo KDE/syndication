@@ -28,10 +28,12 @@ class Link;
 class Person;
 
 /*!
- * If an entry was copied from another feed, this class contains
- * a description of the source feed.
+ * \class Syndication::Atom::Source
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/Source
  *
- * @author Frank Osterfeld
+ * \brief If an entry was copied from another feed, this class contains
+ * a description of the source feed.
  */
 class SYNDICATION_EXPORT Source : public ElementWrapper
 {
@@ -74,14 +76,14 @@ public:
     /*!
      * URL of an image serving as a feed icon (optional)
      *
-     * @return icon URL, or a null string if not specified
+     * Returns icon URL, or a null string if not specified
      */
     Q_REQUIRED_RESULT QString icon() const;
 
     /*!
      * a string that unambiguously identifies the source feed (optional)
      *
-     * @return the ID of the source feed, or a null string if not
+     * Returns the ID of the source feed, or a null string if not
      * specified.
      */
     Q_REQUIRED_RESULT QString id() const;
@@ -95,14 +97,14 @@ public:
     /*!
      * URL of an image, the logo of the source feed (optional)
      *
-     * @return image URL, or a null string if not specified in the feed.
+     * Returns image URL, or a null string if not specified in the feed.
      */
     Q_REQUIRED_RESULT QString logo() const;
 
     /*!
      * copyright information (optional)
      *
-     * @return copyright information for the source,
+     * Returns copyright information for the source,
      * or a null string if not specified
      */
     Q_REQUIRED_RESULT QString rights() const;
@@ -110,7 +112,7 @@ public:
     /*!
      * description or subtitle of the source feed (optional).
      *
-     * @return subtitle string as HTML, or a null string
+     * Returns subtitle string as HTML, or a null string
      * if not specified.
      */
     Q_REQUIRED_RESULT QString subtitle() const;
@@ -118,7 +120,7 @@ public:
     /*!
      * source feed title (optional).
      *
-     * @return title string as HTML, or a null string if not specified
+     * Returns title string as HTML, or a null string if not specified
      */
     Q_REQUIRED_RESULT QString title() const;
 
@@ -126,14 +128,14 @@ public:
      * The datetime of the last modification of the source feed
      * content. (optional)
      *
-     * @return the modification date in seconds since epoch
+     * Returns the modification date in seconds since epoch
      */
     Q_REQUIRED_RESULT time_t updated() const;
 
     /*!
      * description of this source object for debugging purposes
      *
-     * @return debug string
+     * Returns debug string
      */
     Q_REQUIRED_RESULT QString debugInfo() const;
 };
