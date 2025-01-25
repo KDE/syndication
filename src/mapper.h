@@ -10,17 +10,23 @@
 
 #include "syndication_export.h"
 
+#include <QSharedPointer>
+
 namespace Syndication
 {
 class SpecificDocument;
-//@cond PRIVATE
 typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
-//@endcond
 
-/**
- * @brief A mapper maps an SpecificDocument to something else.
+/*!
+ * \class Syndication::Mapper
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Mapper
+ *
+ * \brief A mapper maps an SpecificDocument to something else.
+ *
  * The type of this "something else" is specified by the template
  * parameter T.
+ *
  * In the default implementation it is used with the Feed interface,
  * but it is not limited to that. T can be an arbitrary class.
  *
@@ -34,7 +40,7 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
  * implement AbstractParser and SpecificDocument for it and provide a
  * Mapper&lt;Feed>
  *
- * * @code
+ * \code
  * class OkayNewsMapper : public Mapper<Feed>
  * {
  *     public:
@@ -43,14 +49,14 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
  * };
  *
  * parserCollection()->registerParser(new OkayNews::Parser, new OkayNewsMapper);
- * @endcode
+ * \endcode
  *
  * 2) Implement your own mapper for the Feed abstraction, for an
  * existing parser. E.g. if you think Syndication does map Atom
  * all wrong, you can implement your own Atom mapper and use that instead
  * of the default one.
  *
- * @code
+ * \code
  * class MyAtomMapper : public Mapper<Feed>
  * {
  *     public:
@@ -59,14 +65,14 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
  * };
  *
  * parserCollection()->changeMapper("atom", new MyAtomMapper);
- * @endcode
+ * \endcode
  *
  * 3) Use your own abstraction. In case the Feed interface
  * does not fit your needs, you can use your own interface, let's
  * say "MyFeed". Be aware you have to implement custom mappings for
  * all feed formats then:
  *
- * @code
+ * \code
  * class MyFeed
  * {
  *     public:
@@ -82,35 +88,29 @@ typedef QSharedPointer<SpecificDocument> SpecificDocumentPtr;
  * ParserCollection<MyFeed>* coll = new ParserCollection<MyFeed>;
  * coll->registerParser(new Atom::Parser, new MyAtomMapper);
  * coll->registerParser(new RDF::Parser, new MyRDFMapper);
-   coll->registerParser(new RSS2::Parser, new MyRSS2Mapper);
- * @endcode
- *
- * @author Frank Osterfeld
+ * coll->registerParser(new RSS2::Parser, new MyRSS2Mapper);
+ * \endcode
  */
 template<class T>
 class SYNDICATION_EXPORT Mapper
 {
 public:
-    /**
-     * virtual destructor
-     */
     virtual ~Mapper()
     {
     }
 
-    /**
-     * maps a format-specific document to abstraction of type
-     * @c T.
+    /*!
+     * maps a format-specific document to abstraction of type T.
      *
-     * \note implementations may assume @c doc to have the
+     * \note implementations may assume \a doc to have the
      * type whose mapping they implement and may just statically cast
      * to the subclass without further checking. If you register your
      * own mapper, it's your responsibility to register the mapper
      * only for the format it actually handles.
      *
-     * @param doc the document to map.
-     * @return a newly created object implementing the abstraction
-     * @c T.
+     * \a doc the document to map.
+     *
+     * Returns a newly created object implementing the abstraction T.
      */
     virtual QSharedPointer<T> map(SpecificDocumentPtr doc) const = 0;
 };

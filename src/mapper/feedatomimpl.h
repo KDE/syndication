@@ -18,9 +18,6 @@ typedef QSharedPointer<FeedAtomImpl> FeedAtomImplPtr;
 class Image;
 typedef QSharedPointer<Image> ImagePtr;
 
-/**
- * @internal
- */
 class FeedAtomImpl : public Syndication::Feed
 {
 public:

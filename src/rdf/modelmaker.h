@@ -25,7 +25,7 @@ class Resource;
 typedef QSharedPointer<Resource> ResourcePtr;
 //@endcond
 
-/**
+/*!
  * An RDF parser, used to parse an RDF model from RDF/XML. It doesn't support
  * the complete RDF specification, but suffices for our purposes.
  *
@@ -34,9 +34,9 @@ typedef QSharedPointer<Resource> ResourcePtr;
 class ModelMaker
 {
 public:
-    /**
+    /*!
      * parses an RDF model from RDF/XML
-     * @param doc an DOM document, must contain RDF/XML
+     * \a doc an DOM document, must contain RDF/XML
      * @return the parsed model, or an empty model if parsing failed
      */
     Model createFromXML(const QDomDocument &doc);

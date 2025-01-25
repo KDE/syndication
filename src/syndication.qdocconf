@@ -1,0 +1,32 @@
+include($KDE_DOCS/global/qt-module-defaults.qdocconf)
+
+project = Syndication
+description = RSS/Atom parser library
+
+documentationinheaders = true
+
+headerdirs += .
+sourcedirs += .
+
+excludedirs = mapper rdf rss2
+
+outputformats = HTML
+
+depends += \
+    kde \
+    qtcore \
+    qtgui
+
+qhp.projects            = Syndication
+
+qhp.Syndication.file                = syndication.qhp
+qhp.Syndication.namespace           = org.kde.syndication.$QT_VERSION_TAG
+qhp.Syndication.virtualFolder       = syndication
+qhp.Syndication.indexTitle          = Syndication
+qhp.Syndication.indexRoot           =
+
+qhp.Syndication.subprojects         = classes
+qhp.Syndication.subprojects.classes.title = C++ Classes
+qhp.Syndication.subprojects.classes.indexTitle = Syndication C++ Classes
+qhp.Syndication.subprojects.classes.selectors = class fake:headerfile
+qhp.Syndication.subprojects.classes.sortPages = true

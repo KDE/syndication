@@ -22,9 +22,6 @@
 
 namespace Syndication
 {
-//@cond PRIVATE
-/** @internal
- */
 // default implementation of ParserCollection. This is separated
 // from the interface to move the implementation out of the public API
 // (template classes require implementations to be in the header)
@@ -54,8 +51,6 @@ private:
 
     ErrorCode m_lastError;
 };
-
-//@endcond
 
 // template <class T>
 // class ParserCollectionImpl<T>::ParserCollectionImplPrivate

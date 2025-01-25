@@ -18,7 +18,7 @@ namespace Syndication
 {
 namespace RDF
 {
-/**
+/*!
  * Wrapper to access syndication information for a feed.
  * The RSS 1.0 syndication module provides syndication hints to
  * aggregators regarding how often it is updated.
@@ -31,36 +31,36 @@ namespace RDF
 class SyndicationInfo : public ResourceWrapper
 {
 public:
-    /**
+    /*!
      * update period enum as used by updatePeriod().
      */
     enum Period {
-        Hourly, /**< the feed is updated hourly */
-        Daily, /**< the feed is updated daily */
-        Weekly, /**< the feed is updated weekly */
-        Monthly, /**< the feed is updated monthly */
-        Yearly, /**< the feed is updated yearly */
+        Hourly, /*!< the feed is updated hourly */
+        Daily, /*!< the feed is updated daily */
+        Weekly, /*!< the feed is updated weekly */
+        Monthly, /*!< the feed is updated monthly */
+        Yearly, /*!< the feed is updated yearly */
     };
 
-    /**
+    /*!
      * creates a wrapper wrapping a null resource.
      * isNull() will be true.
      */
     SyndicationInfo();
 
-    /**
+    /*!
      * creates a wrapper from a resource
-     * @param resource the feed resource to read syndication
+     * \a resource the feed resource to read syndication
      * information from
      */
     explicit SyndicationInfo(ResourcePtr resource);
 
-    /**
+    /*!
      * virtual destructor
      */
     ~SyndicationInfo() override;
 
-    /**
+    /*!
      * Describes the period over which the channel format is updated.
      * Acceptable values are: hourly, daily, weekly, monthly, yearly.
      * If omitted, daily is assumed.
@@ -69,7 +69,7 @@ public:
      */
     Period updatePeriod() const;
 
-    /** Used to describe the frequency of updates in relation to the
+    /*! Used to describe the frequency of updates in relation to the
      * update period. A positive integer indicates how many times in
      * that period the channel is updated. For example, an
      * updatePeriod of daily, and an updateFrequency of 2 indicates
@@ -80,7 +80,7 @@ public:
      */
     int updateFrequency() const;
 
-    /**
+    /*!
      * Defines a base date to be used in concert with updatePeriod
      * and updateFrequency to calculate the publishing schedule.
      *
@@ -89,7 +89,7 @@ public:
      */
     time_t updateBase() const;
 
-    /**
+    /*!
      * description of the syndication information
      * for debugging purposes
      *
@@ -98,17 +98,17 @@ public:
     QString debugInfo() const;
 
 protected:
-    /**
+    /*!
      * returns Period value as string.
-     * @param period period enum to convert to a string
+     * \a period period enum to convert to a string
      * @return the enum name in lower case, "daily", "hourly", etc.
      */
     static QString periodToString(Period period);
 
-    /**
+    /*!
      * parses a Period value from a string.
      *
-     * @param str a period string as defined in the syndication module
+     * \a str a period string as defined in the syndication module
      * @return the parsed period, Daily (the default) if the parsed
      * string is empty or invalid
      */

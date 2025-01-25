@@ -23,40 +23,45 @@ class DocumentSource;
 
 namespace Atom
 {
-/**
- * parser implementation for Atom 1.0 and 0.3.
+/*!
+ * \class Syndication::Atom::Parser
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/Parser
  *
- * @author Frank Osterfeld
+ * \brief parser implementation for Atom 1.0 and 0.3.
  */
 class SYNDICATION_EXPORT Parser : public Syndication::AbstractParser
 {
 public:
-    /** default constructor */
+    /*! default constructor */
     Parser();
 
-    /** destructor */
     ~Parser() override;
 
-    /**
+    /*!
      * returns whether the source looks like an Atom 1.0 or 0.3
      * document, by checking the root element.
-     * @param source document source to check
+     *
+     * \a source document source to check
      */
     bool accept(const Syndication::DocumentSource &source) const override;
 
-    /**
+    /*!
      * parses either an EntryDocument or a FeedDocument from a
      * document source. If the source is not an atom document,
      * an invalid FeedDocument is returned.
-     * @see SpecificDocument::isValid()
-     * @param source the document source to parse
+     *
+     * \a source the document source to parse
+     *
+     * \sa SpecificDocument::isValid()
      */
     Q_REQUIRED_RESULT Syndication::SpecificDocumentPtr parse(const Syndication::DocumentSource &source) const override;
 
-    /**
+    /*!
      * returns the format string for this parser implementation, which is
-     * @c "atom"
-     * @return @c "atom"
+     * \c "atom"
+     *
+     * Returns \c "atom"
      */
     Q_REQUIRED_RESULT QString format() const override;
 

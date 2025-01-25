@@ -25,7 +25,7 @@ class Resource;
 typedef QSharedPointer<Resource> ResourcePtr;
 //@endcond
 
-/**
+/*!
  * A resource wrapper providing convenient
  * access to Dublin Core metadata.
  *
@@ -35,26 +35,26 @@ typedef QSharedPointer<Resource> ResourcePtr;
 class DublinCore : public ResourceWrapper
 {
 public:
-    /**
+    /*!
      * creates a dublin core convenience wrapper for a resource
      *
-     * @param resource the resource to wrap
+     * \a resource the resource to wrap
      */
     explicit DublinCore(ResourcePtr resource);
 
-    /**
+    /*!
      * virtual destructor
      */
     ~DublinCore() override;
 
-    /**
+    /*!
      * A name given to the resource.
      * Typically, a Title will be a name by which the resource is
      * formally known.
      */
     QString title() const;
 
-    /**
+    /*!
      * "An entity primarily responsible for making the content of
      * the resource.
      * Examples of a Creator include a person, an organization,
@@ -64,13 +64,13 @@ public:
      */
     QString creator() const;
 
-    /**
+    /*!
      * like creator(), but returns all dc:creator properties,
      * not only one.
      */
     QStringList creators() const;
 
-    /**
+    /*!
      * "A date associated with an event in the life cycle of the resource.
      * Typically, Date will be associated with the creation or
      * availability of the resource.  Recommended best practice
@@ -79,7 +79,7 @@ public:
      */
     time_t date() const;
 
-    /**
+    /*!
      * "An account of the content of the resource.
      * Description may include but is not limited to: an abstract,
      * table of contents, reference to a graphical representation
@@ -87,7 +87,7 @@ public:
      */
     QString description() const;
 
-    /**
+    /*!
      * "The topic of the content of the resource.
      * Typically, a Subject will be expressed as keywords,
      * key phrases or classification codes that describe a topic
@@ -97,13 +97,13 @@ public:
      */
     QString subject() const;
 
-    /**
+    /*!
      * like subject(), but returns all dc:subject properties,
      * not only one.
      */
     QStringList subjects() const;
 
-    /**
+    /*!
      * "An entity responsible for making contributions to the content of the
      * resource.
      * Examples of a Contributor include a person, an organization, or a
@@ -112,13 +112,13 @@ public:
      * */
     QString contributor() const;
 
-    /**
+    /*!
      * like contributor(), but returns all dc:contributor properties,
      * not only one.
      */
     QStringList contributors() const;
 
-    /**
+    /*!
      * "Information about rights held in and over the resource.
      * Typically, a Rights element will contain a rights
      * management statement for the resource, or reference
@@ -131,7 +131,7 @@ public:
      */
     QString rights() const;
 
-    /**
+    /*!
      * "A language of the intellectual content of the resource.
      * Recommended best practice for the values of the Language
      * element is defined by RFC 1766 [RFC1766] which includes
@@ -143,7 +143,7 @@ public:
      */
     QString language() const;
 
-    /**
+    /*!
      * "The extent or scope of the content of the resource.
      * Coverage will typically include spatial location (a place name
      * or geographic coordinates), temporal period (a period label,
@@ -157,7 +157,7 @@ public:
      */
     QString coverage() const;
 
-    /**
+    /*!
      * "The physical or digital manifestation of the resource.
      * Typically, Format may include the media-type or dimensions of
      * the resource. Format may be used to determine the software,
@@ -169,7 +169,7 @@ public:
      */
     QString format() const;
 
-    /**
+    /*!
      * "An unambiguous reference to the resource within a given context.
      * Recommended best practice is to identify the resource by means
      * if a string or number conforming to a formal identification
@@ -181,7 +181,7 @@ public:
      */
     QString identifier() const;
 
-    /**
+    /*!
      * "An entity responsible for making the resource available.
      * Examples of a Publisher include a person, an organization, or a
      * service. Typically, the name of a Publisher should be used to
@@ -189,7 +189,7 @@ public:
      */
     QString publisher() const;
 
-    /**
+    /*!
      * "A reference to a related resource.
      * Recommended best practice is to reference the resource by means
      * of a string or number conforming to a formal identification
@@ -197,7 +197,7 @@ public:
      */
     QString relation() const;
 
-    /**
+    /*!
      * A Reference to a resource from which the present resource
      * is derived.
      * The present resource may be derived from the Source resource
@@ -207,7 +207,7 @@ public:
      */
     QString source() const;
 
-    /**
+    /*!
      * "The nature or genre of the content of the resource.
      * Type includes terms describing general categories, functions,
      * genres, or aggregation levels for content. Recommended best
@@ -218,7 +218,7 @@ public:
      */
     QString type() const;
 
-    /**
+    /*!
      * returns a debug string describing the available DC metadata
      * for debugging purposes
      *

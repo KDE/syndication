@@ -20,30 +20,30 @@ class Resource;
 typedef QSharedPointer<Resource> ResourcePtr;
 //@endcond
 
-/**
+/*!
  * An image to be associated with an HTML rendering of the channel.
  */
 class Image : public ResourceWrapper
 {
 public:
-    /**
+    /*!
      * creates a wrapper wrapping a null resource
      */
     Image();
 
-    /**
+    /*!
      * creates an image object by wrapping an image resource
      *
-     * @param resource the image resource to wrap
+     * \a resource the image resource to wrap
      */
     explicit Image(ResourcePtr resource);
 
-    /**
+    /*!
      * destructor
      */
     ~Image() override;
 
-    /**
+    /*!
      * Describes the image, can be used in the ALT attribute of the
      * HTML @c &lt;img> tag when the channel is rendered in HTML.
      *
@@ -51,18 +51,18 @@ public:
      */
     QString title() const;
 
-    /**
+    /*!
      * The URL of the site, when the channel is rendered, the image should
      * be a link to the site.
      */
     QString link() const;
 
-    /**
+    /*!
      * the URL of the image file
      */
     QString url() const;
 
-    /**
+    /*!
      * Returns a description of the image for debugging purposes.
      *
      * @return debug string

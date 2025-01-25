@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace RSS2
 {
-/**
+/*!
  * A category which can be assigned to items or whole feeds.
  * These can be simple tags as known from delicious or Technorati, or
  * a category from a hierarchical taxonomy or ontology.
@@ -27,20 +27,20 @@ namespace RSS2
 class Category : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * Creates a Category object wrapping a @c &lt;category> XML element.
      *
-     * @param element The @c &lt;category> element to wrap
+     * \a element The @c &lt;category> element to wrap
      */
     explicit Category(const QDomElement &element);
 
-    /**
+    /*!
      * Default constructor, creates a null object, for which isNull() is
      * @c true.
      */
     Category();
 
-    /**
+    /*!
      * Name of the category. This is both to be used as identifier and as
      * human-readable string. It can bea forward-slash-separated string
      * to identify a hierarchic location in the domain indicated by
@@ -53,7 +53,7 @@ public:
      */
     QString category() const;
 
-    /**
+    /*!
      * optional, identifies the domain of the category, i.e. a
      * categorization taxonomy.
      *
@@ -62,7 +62,7 @@ public:
      */
     QString domain() const;
 
-    /**
+    /*!
      * Returns a description of the object for debugging purposes.
      *
      * @return debug string

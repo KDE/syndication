@@ -17,11 +17,6 @@ namespace Syndication
 class EnclosureRSS2Impl;
 typedef QSharedPointer<EnclosureRSS2Impl> EnclosureRSS2ImplPtr;
 
-/**
- *
- * @internal
- * @author Frank Osterfeld
- */
 class EnclosureRSS2Impl : public Syndication::Enclosure
 {
 public:

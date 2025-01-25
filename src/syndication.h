@@ -29,11 +29,4 @@
 #include <syndication/specificitemvisitor.h>
 #include <syndication/tools.h>
 
-/**
- * TODO
- */
-namespace Syndication
-{
-}
-
 #endif // SYNDICATION_SYNDICATION_H
