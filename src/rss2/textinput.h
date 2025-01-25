@@ -36,7 +36,7 @@ public:
     /*!
      * Creates a TextInput object wrapping a @c &lt;textInput> XML element.
      *
-     * @param element The @c &lt;textInput> element to wrap
+     * \a element The @c &lt;textInput> element to wrap
      */
     explicit TextInput(const QDomElement &element);
 

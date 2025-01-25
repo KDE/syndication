@@ -45,7 +45,7 @@ public:
 
     /*!
      * creates an Entry object wrapping an atom:entry element.
-     * @param element a DOM element, should be a atom:entry element
+     * \a element a DOM element, should be a atom:entry element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */
@@ -54,7 +54,7 @@ public:
     /*!
      * Used by visitors for double dispatch. See SpecificVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
 
     bool accept(SpecificItemVisitor *visitor) override;
@@ -162,7 +162,7 @@ public:
      * Sets the list of the containing feed's authors, which will be used
      * as a fallback in authors() in case both the entry itself and its
      * source have no explicit author description.
-     * @param feedAuthors the list of feed's authors
+     * \a feedAuthors the list of feed's authors
      */
     void setFeedAuthors(const QList<Person> &feedAuthors);
 

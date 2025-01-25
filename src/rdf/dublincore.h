@@ -38,7 +38,7 @@ public:
     /*!
      * creates a dublin core convenience wrapper for a resource
      *
-     * @param resource the resource to wrap
+     * \a resource the resource to wrap
      */
     explicit DublinCore(ResourcePtr resource);
 

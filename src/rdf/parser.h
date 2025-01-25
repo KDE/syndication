@@ -36,7 +36,7 @@ public:
     /*!
      * returns whether the passed document looks like
      * an RSS 0.9 or RSS 1.0 document.
-     * @param source the document source to check
+     * \a source the document source to check
      */
     bool accept(const DocumentSource &source) const override;
 
@@ -44,7 +44,7 @@ public:
      * Parses an RSS 0.9/1.0 document from a feed source. RSS 0.9
      * documents are converted to RSS 1.0.
      *
-     * @param source The document source to parse
+     * \a source The document source to parse
      * @return parsed document (a Syndication::RDF::Document), or an
      * invalid document if parsing failed.
      * @see Document::isValid()

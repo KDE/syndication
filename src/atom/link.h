@@ -33,7 +33,7 @@ public:
 
     /*!
      * creates a Link object wrapping an atom:link element.
-     * @param element a DOM element, should be a atom:link element
+     * \a element a DOM element, should be a atom:link element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */

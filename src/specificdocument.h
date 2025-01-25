@@ -54,7 +54,7 @@ public:
      *
      * See also DocumentVisitor.
      *
-     * @param visitor the visitor "visiting" this object
+     * \a visitor the visitor "visiting" this object
      */
     virtual bool accept(DocumentVisitor *visitor) = 0;
 

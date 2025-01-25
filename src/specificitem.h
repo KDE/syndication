@@ -47,7 +47,7 @@ public:
      *
      * See also SpecificItemVisitor.
      *
-     * @param visitor the visitor "visiting" this object
+     * \a visitor the visitor "visiting" this object
      */
     virtual bool accept(SpecificItemVisitor *visitor) = 0;
 };

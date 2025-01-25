@@ -38,7 +38,7 @@ public:
      * Copy constructor.
      * Due to the shared d pointer, this is a cheap operation.
      *
-     * @param other resource wrapper to copy
+     * \a other resource wrapper to copy
      */
     ResourceWrapper(const ResourceWrapper &other);
 
@@ -47,7 +47,7 @@ public:
      * If a null pointer is passed, a null resource is
      * created internally (resource() will _not_ return a null
      * pointer!)
-     * @param resource a resource wrapper instance
+     * \a resource a resource wrapper instance
      */
     explicit ResourceWrapper(ResourcePtr resource);
 
@@ -60,7 +60,7 @@ public:
      * Assignment oeprator
      * Due to the shared d pointer, this is a cheap operation.
      *
-     * @param other resource wrapper to assign.
+     * \a other resource wrapper to assign.
      */
     ResourceWrapper &operator=(const ResourceWrapper &other);
 
@@ -69,7 +69,7 @@ public:
      * Two resource wrappers are equal when the wrapped resources
      * are equal, i.e. they have the same URI.
      * @see Resource::uri()
-     * @param other resource wrapper instance to compare to
+     * \a other resource wrapper instance to compare to
      */
     bool operator==(const ResourceWrapper &other) const;
 

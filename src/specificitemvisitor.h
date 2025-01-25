@@ -50,7 +50,7 @@ public:
      * call this method to handle an item. Depending on the concrete type
      * of the item, a specialized visit method is called.
      *
-     * @param item the item to process
+     * \a item the item to process
      * @return whether this visitor handles the type of the item
      */
     virtual bool visit(SpecificItem *item);
@@ -58,7 +58,7 @@ public:
     /*!
      * reimplement this method to handle RSS2 items.
      *
-     * @param item the RSS2 item to visit
+     * \a item the RSS2 item to visit
      * @return whether the visitor handled the item.
      * Reimplementations of this method must return @c true.
      */
@@ -67,7 +67,7 @@ public:
     /*!
      * reimplement this method to handle RDF items.
      *
-     * @param item the RDF item to visit
+     * \a item the RDF item to visit
      * @return whether the visitor handled the item.
      * Reimplementations of this method must return @c true.
      */
@@ -76,7 +76,7 @@ public:
     /*!
      * reimplement this method to handle Atom entries.
      *
-     * @param item the Atom entry to visit
+     * \a item the Atom entry to visit
      * @return whether the visitor handled the entry.
      * Reimplementations of this method must return @c true.
      */

@@ -38,7 +38,7 @@ public:
     /*!
      * Creates a source object wrapping a @c &lt;source&gt; XML element.
      *
-     * @param element The @c &lt;source&gt; element to wrap
+     * \a element The @c &lt;source&gt; element to wrap
      */
     explicit Source(const QDomElement &element);
 

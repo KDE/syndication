@@ -33,7 +33,7 @@ enum DateFormat {
  * (date: "2003-12-13",datetime: "2003-12-13T18:30:02.25",
  * datetime with timezone: "2003-12-13T18:30:02.25+01:00")
  *
- * @param str a string in ISO 8601 format
+ * \a str a string in ISO 8601 format
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
@@ -44,7 +44,7 @@ uint parseISODate(const QString &str);
  * parses a date string as defined in RFC 822.
  * (Sat, 07 Sep 2002 00:00:01 GMT)
  *
- * @param str a string in RFC 822 format
+ * \a str a string in RFC 822 format
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
@@ -59,8 +59,8 @@ uint parseRFCDate(const QString &str);
  * To speed up parsing, you can give a hint which format you expect.
  * The method will try the corresponding parser first then.
  *
- * @param str a date string
- * @param hint the expected format
+ * \a str a date string
+ * \a hint the expected format
  * @return parsed date in seconds since epoch, 0 if no date could
  * be parsed from the string.
  */
@@ -72,7 +72,7 @@ uint parseDate(const QString &str, DateFormat hint = RFCDate);
  * returns a string representation of a datetime.
  * this is used internally to create debugging output.
  *
- * @param date the date to convert
+ * \a date the date to convert
  * @return string representation of the date, or a null string if
  * @c date is 0
  */
@@ -82,21 +82,21 @@ QString dateTimeToString(uint date);
 /*!
  * resolves entities to respective unicode chars.
  *
- * @param str a string
+ * \a str a string
  */
 SYNDICATION_EXPORT
 QString resolveEntities(const QString &str);
 /*!
  * replaces the characters &lt; >, &, ", '
  * with &amp;lt; &amp;gt; &amp;amp;, &amp;quot; &amp;apos;.
- * @param str the string to escape
+ * \a str the string to escape
  */
 SYNDICATION_EXPORT
 QString escapeSpecialCharacters(const QString &str);
 
 /*!
  * replaces newlines ("\n") by &lt;br/>
- * @param str string to convert
+ * \a str string to convert
  */
 SYNDICATION_EXPORT
 QString convertNewlines(const QString &str);
@@ -104,7 +104,7 @@ QString convertNewlines(const QString &str);
 /*!
  * converts a plain text string to HTML
  *
- * @param plainText a string in plain text.
+ * \a plainText a string in plain text.
  */
 SYNDICATION_EXPORT
 QString plainTextToHtml(const QString &plainText);
@@ -112,7 +112,7 @@ QString plainTextToHtml(const QString &plainText);
 /*!
  * converts a HTML string to plain text
  *
- * @param html string in HTML format
+ * \a html string in HTML format
  * @return stripped text
  */
 SYNDICATION_EXPORT
@@ -121,7 +121,7 @@ QString htmlToPlainText(const QString &html);
 /*!
  * guesses whether a string contains plain text or HTML
  *
- * @param str the string in unknown format
+ * \a str the string in unknown format
  * @return @c true if the heuristic thinks it's HTML, @c false
  * if thinks it is plain text
  */
@@ -133,7 +133,7 @@ bool isHtml(const QString &str);
  * implements not an exact check for valid HTML markup, but a
  * simple (and relatively fast) heuristic.
  *
- * @param str the string that might or might not contain markup
+ * \a str the string that might or might not contain markup
  * @return @c true if the heuristic thinks it contains markup, @c false
  * if thinks it is markup-free plain text
  */
@@ -146,7 +146,7 @@ bool stringContainsMarkup(const QString &str);
  * plainTextToHtml(str) if it thinks it is plain text, or the unmodified @c str
  * otherwise.
  *
- * @param str a string with unknown content
+ * \a str a string with unknown content
  * @return string as HTML (as long as the heuristics work)
  */
 SYNDICATION_EXPORT
@@ -164,9 +164,9 @@ QString normalize(const QString &str);
  * Whitespace is collapsed, relevant whitespace is replaced by respective
  * HTML tags (&lt;br/>).
  *
- * @param str a string
- * @param isCDATA whether the feed uses CDATA for the tag @c str was read from
- * @param containsMarkup whether the feed uses HTML markup in the
+ * \a str a string
+ * \a isCDATA whether the feed uses CDATA for the tag @c str was read from
+ * \a containsMarkup whether the feed uses HTML markup in the
  *        tag @c str was read from.
  * @return string as HTML (as long as the heuristics work)
  */
@@ -178,7 +178,7 @@ QString normalize(const QString &str, bool isCDATA, bool containsMarkup);
  * in the string. Currently detected variants are:
  * "foo@bar.com", "Foo", "Foo &lt;foo@bar.com>", "foo@bar.com (Foo)".
  *
- * @param str the string to parse the person from.
+ * \a str the string to parse the person from.
  * @return a Person object containing the parsed information.
  */
 SYNDICATION_EXPORT

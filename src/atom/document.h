@@ -52,7 +52,7 @@ public:
 
     /*!
      * creates a FeedDocument wrapping an atom:feed element.
-     * @param element a DOM element, should be a atom:feed document
+     * \a element a DOM element, should be a atom:feed document
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */
@@ -61,7 +61,7 @@ public:
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 
@@ -194,7 +194,7 @@ public:
 
     /*!
      * creates an Atom Entry Document wrapping an atom:entry element.
-     * @param element a DOM element, should be a atom:entry element
+     * \a element a DOM element, should be a atom:entry element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */
@@ -203,7 +203,7 @@ public:
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 

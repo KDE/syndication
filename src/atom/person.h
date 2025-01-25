@@ -34,7 +34,7 @@ public:
     /*!
      * creates a Person object wrapping an Atom Person Construct (atom:author,
      * atom:contributor tags)
-     * @param element a DOM element, should be a Atom Person Construct
+     * \a element a DOM element, should be a Atom Person Construct
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */

@@ -80,7 +80,7 @@ public:
     /*!
      * compares two person instances. Persons are equal if and only if
      * their respective name(), uri() and email() values are equal.
-     * @param other another person instance
+     * \a other another person instance
      */
     virtual bool operator==(const Person &other) const;
 };

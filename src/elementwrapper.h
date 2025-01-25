@@ -37,13 +37,13 @@ public:
 
     /*!
      * Copy constructor.The instances share the same element.
-     * @param other the element wrapper to copy
+     * \a other the element wrapper to copy
      */
     ElementWrapper(const ElementWrapper &other);
 
     /*!
      * Creates an element wrapper wrapping the DOM element @c element
-     * @param element the element to wrap
+     * \a element the element to wrap
      */
     ElementWrapper(const QDomElement &element); // implicit
 
@@ -56,7 +56,7 @@ public:
      * Assigns another element wrapper to this one. Both instances
      * share the same wrapped element instance.
      *
-     * @param other the element wrapper to assign
+     * \a other the element wrapper to assign
      * @return reference to this instance
      */
     ElementWrapper &operator=(const ElementWrapper &other);
@@ -64,7 +64,7 @@ public:
     /*!
      * compares two wrappers. Two wrappers are equal if and only if
      * the wrapped elements are equal.
-     * @param other another element wrapper to compare to
+     * \a other another element wrapper to compare to
      */
     bool operator==(const ElementWrapper &other) const;
 
@@ -111,7 +111,7 @@ public:
      *
      * See also xmlBase().
      *
-     * @param uri a possibly relative URI
+     * \a uri a possibly relative URI
      * @return the resolved, absolute URI (using xml:base), if @c uri is
      * a relative, valid URI. If @c uri is not valid, absolute, or no
      * xml:base is set in the scope of this element, @c uri is returned
@@ -135,8 +135,8 @@ public:
      * will return the text content of @c atom:title, "Hi there".
      * (Assuming that "atom" is defined as "http://www.w3.org/2005/Atom")
      *
-     * @param namespaceURI the namespace URI of the element to extract
-     * @param localName the local name (local within its namespace) of the
+     * \a namespaceURI the namespace URI of the element to extract
+     * \a localName the local name (local within its namespace) of the
      * element to extract
      * @return the (trimmed) text content of @c localName, or a null string
      * if there is no such tag
@@ -155,7 +155,7 @@ public:
      * @c extractElementText("title") will return the text content
      * of @c title, "Hi there".
      *
-     * @param tagName the name of the element to extract
+     * \a tagName the name of the element to extract
      * @return the (trimmed) text content of @c tagName, or a null string if
      * there is no such tag
      */
@@ -166,7 +166,7 @@ public:
      * Contrary to QDomElement::elementsByTagName() only direct descendents
      * are returned.
      *
-     * @param tagName the tag name of the elements to extract
+     * \a tagName the tag name of the elements to extract
      * @return a list of child elements with the given tag name
      */
     Q_REQUIRED_RESULT QList<QDomElement> elementsByTagName(const QString &tagName) const;
@@ -192,7 +192,7 @@ public:
      *
      * namespace and xml:base information are preserved.
      *
-     * @param parent the DOM element whose children should be returned as
+     * \a parent the DOM element whose children should be returned as
      * XML
      * @return XML serialization of parent's children
      */
@@ -204,8 +204,8 @@ public:
      * Contrary to QDomElement::elementsByTagNameNS() only direct
      * descendents are returned
      *
-     * @param nsURI the namespace URI
-     * @param tagName the local name (local within its namespace) of the
+     * \a nsURI the namespace URI
+     * \a tagName the local name (local within its namespace) of the
      * element to search for
      * @return a list of child elements with the given namespace URI
      * and tag name
@@ -216,8 +216,8 @@ public:
      * searches the direct children of the wrapped element for an element
      * with a given namespace and tag name.
      *
-     * @param nsURI the namespace URI
-     * @param tagName the local name (local within its namespace) of the
+     * \a nsURI the namespace URI
+     * \a tagName the local name (local within its namespace) of the
      * element to search for
      * @return the first child element with the given namespace URI and tag
      * name, or a null element if no such element was found.
@@ -235,8 +235,8 @@ public:
      * defValue is returned.
      * (which is a null string by default).
      *
-     * @param name tag name
-     * @param defValue the default value
+     * \a name tag name
+     * \a defValue the default value
      */
     Q_REQUIRED_RESULT QString attribute(const QString &name, const QString &defValue = QString()) const;
 
@@ -246,9 +246,9 @@ public:
      * If the attribute does not exist @c defValue is returned (which is a
      * null string by default).
      *
-     * @param nsURI namespace URI
-     * @param localName local tag name
-     * @param defValue the default value
+     * \a nsURI namespace URI
+     * \a localName local tag name
+     * \a defValue the default value
      */
     Q_REQUIRED_RESULT QString attributeNS(const QString &nsURI, const QString &localName, const QString &defValue = QString()) const;
 
@@ -256,7 +256,7 @@ public:
      * Returns true if this element has an attribute called @c name;
      * otherwise returns @c false.
      *
-     * @param name the attribute name (without namespace)
+     * \a name the attribute name (without namespace)
      */
     Q_REQUIRED_RESULT bool hasAttribute(const QString &name) const;
 
@@ -264,8 +264,8 @@ public:
      * Returns true if this element has an attribute with the local name
      * localName and the namespace URI nsURI; otherwise returns false.
      *
-     * @param nsURI namespace URI
-     * @param localName local attribute name
+     * \a nsURI namespace URI
+     * \a localName local attribute name
      */
     Q_REQUIRED_RESULT bool hasAttributeNS(const QString &nsURI, const QString &localName) const;
 

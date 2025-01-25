@@ -34,7 +34,7 @@ public:
     /*!
      * creates an image object by wrapping an image resource
      *
-     * @param resource the image resource to wrap
+     * \a resource the image resource to wrap
      */
     explicit Image(ResourcePtr resource);
 

@@ -44,8 +44,8 @@ public:
     /*!
      * Creates a DocumentSource object from a raw byte array
      *
-     * @param source the raw source (of the downloaded feed file usually)
-     * @param url the URL/path the source was read from
+     * \a source the raw source (of the downloaded feed file usually)
+     * \a url the URL/path the source was read from
      */
     DocumentSource(const QByteArray &source, const QString &url);
 
@@ -53,7 +53,7 @@ public:
      * Copy constructor. The d pointer is shared, so this is a cheap
      * operation.
      *
-     * @param other DocumentSource to copy
+     * \a other DocumentSource to copy
      */
     DocumentSource(const DocumentSource &other);
 
@@ -66,7 +66,7 @@ public:
      * Assignment operator. The d pointer is shared, so this is a cheap
      * operation.
      *
-     * @param other DocumentSource to assign to this instance
+     * \a other DocumentSource to assign to this instance
      * @return reference to this instance
      */
     DocumentSource &operator=(const DocumentSource &other);

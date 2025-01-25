@@ -45,7 +45,7 @@ public:
     /*!
      * copies a sequence
      *
-     * @param other sequence
+     * \a other sequence
      */
     Sequence(const Sequence &other);
 
@@ -57,15 +57,15 @@ public:
     /*!
      * assigns another sequence
      *
-     * @param other the sequence to assign
+     * \a other the sequence to assign
      */
     virtual Sequence &operator=(const Sequence &other);
 
     /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
-     * @param visitor the visitor calling the method
-     * @param ptr a shared pointer object for this node
+     * \a visitor the visitor calling the method
+     * \a ptr a shared pointer object for this node
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
@@ -77,7 +77,7 @@ public:
     /*!
      * appends a node at the end of the sequence
      *
-     * @param node the RDF node to append to the sequence
+     * \a node the RDF node to append to the sequence
      */
     virtual void append(NodePtr node);
 

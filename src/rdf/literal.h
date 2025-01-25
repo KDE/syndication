@@ -36,14 +36,14 @@ public:
     /*!
      * copies a literal node
      *
-     * @param other the literal node to copy
+     * \a other the literal node to copy
      */
     Literal(const Literal &other);
 
     /*!
      * creates a new literal node with a given text
      *
-     * @param text the literal string
+     * \a text the literal string
      */
     explicit Literal(const QString &text);
 
@@ -55,7 +55,7 @@ public:
     /*!
      * assigns another literal
      *
-     * @param other the literal to assign
+     * \a other the literal to assign
      */
     virtual Literal &operator=(const Literal &other);
 
@@ -73,8 +73,8 @@ public:
     /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
-     * @param visitor the visitor calling the method
-     * @param ptr a shared pointer object for this node
+     * \a visitor the visitor calling the method
+     * \a ptr a shared pointer object for this node
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 

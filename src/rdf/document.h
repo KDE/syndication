@@ -50,14 +50,14 @@ public:
     /*!
      * creates a document by wrapping a channel resource
      *
-     * @param resource the channel resource to wrap
+     * \a resource the channel resource to wrap
      */
     explicit Document(ResourcePtr resource);
 
     /*!
      * creates a copy of another document
      *
-     * @param other the document to copy
+     * \a other the document to copy
      */
     Document(const Document &other);
 
@@ -70,21 +70,21 @@ public:
      * compares two documents. Two documents are equal if they wrap
      * the same resource. See ResourceWrapper::operator==()
      *
-     * @param other the document to compare to
+     * \a other the document to compare to
      */
     bool operator==(const Document &other) const;
 
     /*!
      * assigns another document
      *
-     * @param other the document to assign
+     * \a other the document to assign
      */
     Document &operator=(const Document &other);
 
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 
@@ -145,7 +145,7 @@ public:
      * @internal
      * checks the format of titles and returns the results
      *
-     * @param containsMarkup whether the heuristic found HTML markup in
+     * \a containsMarkup whether the heuristic found HTML markup in
      * titles
      */
     void getItemTitleFormatInfo(bool *containsMarkup) const;
@@ -154,7 +154,7 @@ public:
      * @internal
      * checks the format of descriptions and returns the results
      *
-     * @param containsMarkup whether the heuristic found HTML markup in
+     * \a containsMarkup whether the heuristic found HTML markup in
      * descriptions
      */
     void getItemDescriptionFormatInfo(bool *containsMarkup) const;

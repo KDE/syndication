@@ -46,7 +46,7 @@ public:
     /*!
      * copies a resource
      *
-     * @param other the resource to copy
+     * \a other the resource to copy
      */
     Resource(const Resource &other);
 
@@ -54,7 +54,7 @@ public:
      * creates a resource with a given URI.
      * Do not use this directly, use Model::createResource() instead.
      *
-     * @param uri the URI of the new resource
+     * \a uri the URI of the new resource
      */
     explicit Resource(const QString &uri);
 
@@ -66,7 +66,7 @@ public:
     /*!
      * assigns a resource
      *
-     * @param other the resource to assign
+     * \a other the resource to assign
      */
     Resource &operator=(const Resource &other);
 
@@ -74,15 +74,15 @@ public:
      * checks two resources for equality. Currently both URI (or anonID)
      * _and_ id() must be equal!
      *
-     * @param other the node to compare this node to
+     * \a other the node to compare this node to
      */
     bool operator==(const Resource &other) const;
 
     /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
-     * @param visitor the visitor calling the method
-     * @param ptr a shared pointer object for this node
+     * \a visitor the visitor calling the method
+     * \a ptr a shared pointer object for this node
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 
@@ -100,7 +100,7 @@ public:
      * returns whether the resource has a property @p property in the
      * associated model.
      *
-     * @param property the property to check for
+     * \a property the property to check for
      */
     virtual bool hasProperty(PropertyPtr property) const;
 
@@ -108,7 +108,7 @@ public:
      * returns a statement from the associated model where this resource is
      * the subject and the given property the predicate.
      *
-     * @param property the property to check for
+     * \a property the property to check for
      *
      * @return the first statement found that satisfies the conditions.
      * If there are multiple statements, an arbitrary one is returned.
@@ -119,7 +119,7 @@ public:
      * returns the list of all statements from the associated model where
      * this resource is the subject and the given property the predicate.
      *
-     * @param property the property to check for
+     * \a property the property to check for
      *
      * @return a list of the statements that satisfy the conditions.
      */

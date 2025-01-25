@@ -38,7 +38,7 @@ public:
 
     /*!
      * creates a Category object wrapping an atom:category element.
-     * @param element a DOM element, should be a atom:category element
+     * \a element a DOM element, should be a atom:category element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */

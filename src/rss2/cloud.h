@@ -54,7 +54,7 @@ public:
     /*!
      * Creates a Cloud object wrapping a @c &lt;cloud> XML element.
      *
-     * @param element The @c &lt;cloud> element to wrap
+     * \a element The @c &lt;cloud> element to wrap
      */
     explicit Cloud(const QDomElement &element);
 

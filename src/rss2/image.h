@@ -32,7 +32,7 @@ public:
     /*!
      * Creates an Image object wrapping an @c &lt;image> XML element.
      *
-     * @param element The @c &lt;image> element to wrap
+     * \a element The @c &lt;image> element to wrap
      */
     explicit Image(const QDomElement &element);
 

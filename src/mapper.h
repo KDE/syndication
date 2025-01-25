@@ -108,7 +108,7 @@ public:
      * own mapper, it's your responsibility to register the mapper
      * only for the format it actually handles.
      *
-     * @param doc the document to map.
+     * \a doc the document to map.
      * @return a newly created object implementing the abstraction
      * @c T.
      */

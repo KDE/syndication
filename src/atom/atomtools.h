@@ -22,8 +22,8 @@ namespace Atom
  *
  * TODO: examples
  *
- * @param parent the parent element to extract from. E.g. an atom:entry element.
- * @param tagname the child element of parent to extract from the text from.
+ * \a parent the parent element to extract from. E.g. an atom:entry element.
+ * \a tagname the child element of parent to extract from the text from.
  * Atom namespace is assumed. Example: &lt;atom:title>
  * @return the HTMLized version of the element content. If the content is
  * escaped HTML, the escaped markup is resolved. If it is XHTML, the XHTML

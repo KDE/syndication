@@ -39,8 +39,8 @@ public:
     /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
-     * @param visitor the visitor calling the method
-     * @param ptr a shared pointer object for this node
+     * \a visitor the visitor calling the method
+     * \a ptr a shared pointer object for this node
      */
     virtual void accept(NodeVisitor *visitor, NodePtr ptr);
 

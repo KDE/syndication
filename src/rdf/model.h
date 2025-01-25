@@ -55,7 +55,7 @@ public:
      * so adding/removing statements from one model also
      * modifies the other!
      *
-     * @param other another model
+     * \a other another model
      */
     Model(const Model &other);
 
@@ -69,7 +69,7 @@ public:
      * set of statements, so adding/removing statements from
      * one model also modifies the other!
      *
-     * @param other another model
+     * \a other another model
      */
     Model &operator=(const Model &other);
 
@@ -80,7 +80,7 @@ public:
      * Two independently created models containing the same statements
      * are not equal!
      *
-     * @param other the model to compare to
+     * \a other the model to compare to
      */
     bool operator==(const Model &other) const;
 
@@ -89,7 +89,7 @@ public:
      * already contains a resource with the given URI, the existing instance
      * is returned.
      *
-     * @param uri the URI of the resource. If a null string, a blank node
+     * \a uri the URI of the resource. If a null string, a blank node
      * is created.
      * @return a shared pointer to the requested resource
      */
@@ -100,7 +100,7 @@ public:
      * already contains a property with the given URI, the existing instance
      * is returned.
      *
-     * @param uri the URI of the property. This must be non-empty, otherwise
+     * \a uri the URI of the property. This must be non-empty, otherwise
      * null property is returned
      * @return a shared pointer to the requested property
      */
@@ -111,7 +111,7 @@ public:
      * already contains a sequence with the given URI, the existing
      * instance is returned.
      *
-     * @param uri the URI of the sequence, or a null string for an
+     * \a uri the URI of the sequence, or a null string for an
      * anonymous instance
      * @return a shared pointer to the requested sequence
      */
@@ -120,7 +120,7 @@ public:
     /*!
      * creates a literal and associates it with this model.
      *
-     * @param text the literal text
+     * \a text the literal text
      * @return a shared pointer to the requested literal
      */
     virtual LiteralPtr createLiteral(const QString &text);
@@ -128,9 +128,9 @@ public:
     /*!
      * adds a statement to the model.
      *
-     * @param subject
-     * @param predicate
-     * @param object
+     * \a subject
+     * \a predicate
+     * \a object
      * @return a shared pointer to a statement associated with this
      * model, with the given @c subject, @c predicate and @c object
      */
@@ -139,16 +139,16 @@ public:
     /*!
      * removes a statement from the model.
      *
-     * @param subject subject of the statement
-     * @param predicate predicate of the statement
-     * @param object object of the statement
+     * \a subject subject of the statement
+     * \a predicate predicate of the statement
+     * \a object object of the statement
      */
     virtual void removeStatement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
     /*!
      * removes a statement from the model.
      *
-     * @param statement the statement to remove
+     * \a statement the statement to remove
      */
     virtual void removeStatement(StatementPtr statement);
 
@@ -161,7 +161,7 @@ public:
      * returns all resources of a given type.
      * subClassOf semantics are ignored.
      *
-     * @param type a resource representing an RDFS class
+     * \a type a resource representing an RDFS class
      */
     virtual QList<ResourcePtr> resourcesWithType(ResourcePtr type) const;
 
@@ -174,7 +174,7 @@ public:
     /*!
      * searches the model for a node by ID.
      *
-     * @param id the ID to search for
+     * \a id the ID to search for
      * @return the node with the given ID, or a null node (which is of type
      * Literal) if the model doesn't contain the node with this ID
      */
@@ -183,7 +183,7 @@ public:
     /*!
      * searches the model for a resource by ID.
      *
-     * @param id the ID to search for
+     * \a id the ID to search for
      * @return the resource with the given ID, or a null resource if the
      * model doesn't contain a resource with this ID
      */
@@ -192,7 +192,7 @@ public:
     /*!
      * searches the model for a property by ID.
      *
-     * @param id the ID to search for
+     * \a id the ID to search for
      * @return the property with the given ID, or a null property if the
      * model doesn't contain a property with this ID
      */
@@ -201,7 +201,7 @@ public:
     /*!
      * searches the model for a literal by ID.
      *
-     * @param id the ID to search for
+     * \a id the ID to search for
      * @return the literal with the given ID, or a null literal if the
      * model doesn't contain a literal with this ID
      */

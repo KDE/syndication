@@ -51,7 +51,7 @@ public:
      * call this method to handle a document. Depending on the concrete type
      * of the document, a specialized visit method is called.
      *
-     * @param document the document to process
+     * \a document the document to process
      * @return whether this visitor handles the type of the document.
      */
     virtual bool visit(SpecificDocument *document);
@@ -59,7 +59,7 @@ public:
     /*!
      * reimplement this method to handle RSS2-like (RSS 0.9x, 2.0) documents.
      *
-     * @param document the RSS2 document to visit
+     * \a document the RSS2 document to visit
      * @return whether the visitor handled the document.
      * Reimplementations of this method must return @c true.
      */
@@ -68,7 +68,7 @@ public:
     /*!
      * reimplement this method to handle RDF (i.e. RSS 1.0) documents.
      *
-     * @param document the RDF document to visit
+     * \a document the RDF document to visit
      * @return whether the visitor handled the document.
      * Reimplementations of this method must return @c true.
      */
@@ -78,7 +78,7 @@ public:
      * reimplement this method to handle Atom feed documents (most Atom
      * feeds are of this type).
      *
-     * @param document the atom feed document to visit
+     * \a document the atom feed document to visit
      * @return whether the visitor handled the document.
      * Reimplementations of this method must return @c true.
      */
@@ -87,7 +87,7 @@ public:
     /*!
      * reimplement this method to handle Atom entry documents.
      *
-     * @param document the atom entry document to visit
+     * \a document the atom entry document to visit
      * @return whether the visitor handled the document.
      * Reimplementations of this method must return @c true.
      */

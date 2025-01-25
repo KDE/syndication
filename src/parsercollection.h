@@ -66,8 +66,8 @@ public:
      * tries to parse a given source with the parsers registered.
      * The source is passed to the first parser that accepts it.
      *
-     * @param source The source to be parsed
-     * @param formatHint An optional hint which parser to test first. If
+     * \a source The source to be parsed
+     * \a formatHint An optional hint which parser to test first. If
      * there is a parser with the given hint as format string (e.g.,
      * "rss2", "atom", "rdf"...), it is asked first to accept the source.
      * This can avoid unnecessary AbstractParser::accept() checks and speed
@@ -94,8 +94,8 @@ public:
      * @note ownership for both @c parser and @c mapper is taken by the
      * implementation, so don't delete them in your code!
      *
-     * @param parser The parser to be registered
-     * @param mapper the mapper that should be used for building the
+     * \a parser The parser to be registered
+     * \a mapper the mapper that should be used for building the
      * abstraction
      * @return whether the parser was successfully registered or not.
      */
@@ -104,9 +104,9 @@ public:
     /*!
      * Changes the specific format to abstraction mapping for a parser.
      *
-     * @param format the format string of the parser whose
+     * \a format the format string of the parser whose
      * mapping should be changed. See AbstractParser::format.
-     * @param mapper Mapper implementation doing the mapping from the
+     * \a mapper Mapper implementation doing the mapping from the
      * format specific representation to abstraction of type T.
      */
     virtual void changeMapper(const QString &format, Mapper<T> *mapper) = 0;

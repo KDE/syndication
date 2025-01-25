@@ -38,7 +38,7 @@ public:
     /*!
      * checks whether a document source looks like an RSS0.9x/2.0 document
      *
-     * @param source a document source to check
+     * \a source a document source to check
      * @return @c true if the source looks like an RSS2 document
      */
     bool accept(const DocumentSource &source) const override;
@@ -48,7 +48,7 @@ public:
      * The wrapper will only return useful values if the source is really
      * RSS 0.9x/2.0, so call accept() before to check.
      *
-     * @param source the source to wrap
+     * \a source the source to wrap
      * @return A Syndication::RSS2::Document instance wrapping the XML
      * source, or a null document (not a null pointer!) if there is no @c
      * &lt;channel> root element in the source.

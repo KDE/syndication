@@ -40,7 +40,7 @@ public:
     /*!
      * returns whether the source looks like an Atom 1.0 or 0.3
      * document, by checking the root element.
-     * @param source document source to check
+     * \a source document source to check
      */
     bool accept(const Syndication::DocumentSource &source) const override;
 
@@ -49,7 +49,7 @@ public:
      * document source. If the source is not an atom document,
      * an invalid FeedDocument is returned.
      * @see SpecificDocument::isValid()
-     * @param source the document source to parse
+     * \a source the document source to parse
      */
     Q_REQUIRED_RESULT Syndication::SpecificDocumentPtr parse(const Syndication::DocumentSource &source) const override;
 

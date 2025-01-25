@@ -89,8 +89,8 @@ public:
      * Convenience method. Does the same as the above method except that
      * it also does the job of connecting the loadingComplete() signal
      * to the given slot for you.
-     * @param object A QObject which features the specified slot
-     * @param slot Which slot to connect to.
+     * \a object A QObject which features the specified slot
+     * \a slot Which slot to connect to.
      */
     static Loader *create(QObject *object, const char *slot);
 
@@ -102,8 +102,8 @@ public:
      * \note A Loader object cannot load from multiple URLs simultaneously;
      * consequently, subsequent calls to loadFrom will be discarded
      * silently, only the first loadFrom request will be executed.
-     * @param url A URL referencing the input file.
-     * @param retriever A subclass of DataRetriever which implements a
+     * \a url A URL referencing the input file.
+     * \a retriever A subclass of DataRetriever which implements a
      * specialized retrieval behaviour. Note that the ownership of the
      * retriever is transferred to the Loader, i.e. the Loader will
      * delete it when it doesn't need it anymore.
@@ -138,12 +138,12 @@ Q_SIGNALS:
     /*!
      * This signal gets emitted when the loading process triggered by
      * calling loadFrom() finished.
-     * @param loader A pointer pointing to the loader object which
+     * \a loader A pointer pointing to the loader object which
      * emitted this signal; this is handy in case you connect multiple
      * loaders to a single slot.
-     * @param feed In case errortus is Success, this parameter holds the
+     * \a feed In case errortus is Success, this parameter holds the
      * parsed feed. If fetching/parsing failed, feed is NULL.
-     * @param error An error code telling whether there were any
+     * \a error An error code telling whether there were any
      * problems while retrieving or parsing the data.
      * @see Feed, ErrorCode
      */

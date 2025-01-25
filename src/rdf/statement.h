@@ -38,7 +38,7 @@ public:
     /*!
      * creates a copy of another statement
      *
-     * @param other the statement to copy
+     * \a other the statement to copy
      */
     Statement(const Statement &other);
 
@@ -46,9 +46,9 @@ public:
      * creates a statement
      * Do not call this in your code, use Model::createStatement() instead.
      *
-     * @param subject the subject resource of the statement
-     * @param predicate the predicate of the statement
-     * @param object the object node of the statement
+     * \a subject the subject resource of the statement
+     * \a predicate the predicate of the statement
+     * \a object the object node of the statement
      */
     Statement(ResourcePtr subject, PropertyPtr predicate, NodePtr object);
 
@@ -60,7 +60,7 @@ public:
     /*!
      * assigns another statement
      *
-     * @param other the statement to assign
+     * \a other the statement to assign
      */
     Statement &operator=(const Statement &other);
 
@@ -69,7 +69,7 @@ public:
      * Currently statements are equal, if they are from the same model (!)
      * and subject, predicate and object are equal.
      *
-     * @param other the statement to compare to
+     * \a other the statement to compare to
      */
     virtual bool operator==(const Statement &other) const;
 

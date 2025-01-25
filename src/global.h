@@ -58,8 +58,8 @@ ParserCollection<Feed> *parserCollection();
  * Shortcut for parserCollection()->parse().
  * See ParserCollection::parse() for more details.
  *
- * @param src the document source to parse
- * @param formatHint an optional hint which format to test first
+ * \a src the document source to parse
+ * \a formatHint an optional hint which format to test first
  */
 SYNDICATION_EXPORT
 FeedPtr parse(const DocumentSource &src, const QString &formatHint = QString());

@@ -39,7 +39,7 @@ public:
     /*!
      * creates a property with a given URI
      *
-     * @param uri the URI of the property
+     * \a uri the URI of the property
      */
     explicit Property(const QString &uri);
 
@@ -51,8 +51,8 @@ public:
     /*!
      * Used by visitors for double dispatch. See NodeVisitor
      * for more information.
-     * @param visitor the visitor calling the method
-     * @param ptr a shared pointer object for this node
+     * \a visitor the visitor calling the method
+     * \a ptr a shared pointer object for this node
      */
     void accept(NodeVisitor *visitor, NodePtr ptr) override;
 

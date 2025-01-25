@@ -44,7 +44,7 @@ public:
     /*!
      * creates a Source object wrapping a atom:source element.
      *
-     * @param element a DOM element, should be a atom:source element
+     * \a element a DOM element, should be a atom:source element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */

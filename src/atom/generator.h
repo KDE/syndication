@@ -32,7 +32,7 @@ public:
 
     /*!
      * creates a Generator wrapping an atom:generator element.
-     * @param element a DOM element, should be a atom:generator element
+     * \a element a DOM element, should be a atom:generator element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */

@@ -44,17 +44,17 @@ public:
 
     /*!
      * Creates an item wrapping the given resource
-     * @param resource resource to wrap, should be of type
+     * \a resource resource to wrap, should be of type
      * of rss1:item, otherwise the wrapper will not return useful
      * information.
-     * @param doc the document this item is part of. Used by Document
+     * \a doc the document this item is part of. Used by Document
      */
     explicit Item(ResourcePtr resource, DocumentPtr doc = DocumentPtr());
 
     /*!
      * copies an item
      *
-     * @param other item to copy
+     * \a other item to copy
      */
     Item(const Item &other);
 
@@ -66,7 +66,7 @@ public:
     /*!
      * assigns another item
      *
-     * @param other the item to assign
+     * \a other the item to assign
      */
     Item &operator=(const Item &other);
 
@@ -75,7 +75,7 @@ public:
      * if the wrapped resources are equal. See ResourceWrapper::operator==()
      * for details.
      *
-     * @param other the item to compare this item to
+     * \a other the item to compare this item to
      */
     bool operator==(const Item &other) const;
 
@@ -83,7 +83,7 @@ public:
      * interface for item visitors. See SpecificItemVisitor for
      * more information.
      *
-     * @param visitor a visitor visiting this object
+     * \a visitor a visitor visiting this object
      */
     bool accept(SpecificItemVisitor *visitor) override;
 

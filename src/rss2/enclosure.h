@@ -37,7 +37,7 @@ public:
     /*!
      * Creates an Enclosure object wrapping an @c &lt;enclosure> XML element.
      *
-     * @param element The @c &lt;enclosure> element to wrap
+     * \a element The @c &lt;enclosure> element to wrap
      */
     explicit Enclosure(const QDomElement &element);
 

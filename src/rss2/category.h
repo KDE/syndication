@@ -30,7 +30,7 @@ public:
     /*!
      * Creates a Category object wrapping a @c &lt;category> XML element.
      *
-     * @param element The @c &lt;category> element to wrap
+     * \a element The @c &lt;category> element to wrap
      */
     explicit Category(const QDomElement &element);
 

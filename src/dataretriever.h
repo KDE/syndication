@@ -41,7 +41,7 @@ public:
      * reimplemented by subclasses. It will be called by the Loader
      * class in case it needs to retrieve the data.
      *
-     * @param url the URL to retrieve data from
+     * \a url the URL to retrieve data from
      *
      * @see Loader::loadFrom()
      */
@@ -64,9 +64,9 @@ Q_SIGNALS:
     /*!
      * Emit this signal to tell the Loader class that the retrieval
      * process was finished.
-     * @param data Should contain the retrieved data and will get
+     * \a data Should contain the retrieved data and will get
      * parsed by the Loader class.
-     * @param success Indicates whether there were any problems during
+     * \a success Indicates whether there were any problems during
      * the retrieval process. Pass 'true' to indicate that everything
      * went seamlessy, 'false' to tell the Loader that something went
      * wrong and that the data parameter might contain no or invalid

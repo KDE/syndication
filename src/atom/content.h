@@ -47,8 +47,8 @@ public:
      * maps a mimetype to Format enum according to the Atom 1.0
      * specification
      *
-     * @param type a valid mimetype, or one of "text", "html", "xhtml"
-     * @param src content source, see src() for details.
+     * \a type a valid mimetype, or one of "text", "html", "xhtml"
+     * \a src content source, see src() for details.
      *
      */
     static Format mapTypeToFormat(const QString &type, const QString &src = QString());
@@ -60,7 +60,7 @@ public:
 
     /*!
      * creates a Content object wrapping an atom:content element.
-     * @param element a DOM element, should be a atom:content element
+     * \a element a DOM element, should be a atom:content element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */
@@ -69,7 +69,7 @@ public:
     /*!
      * creates a copy of another Content object
      *
-     * @param other the content object to copy
+     * \a other the content object to copy
      */
     Content(const Content &other);
 
@@ -81,7 +81,7 @@ public:
     /*!
      * assigns another content objecct
      *
-     * @param other the Content object to assign
+     * \a other the Content object to assign
      */
     Content &operator=(const Content &other);
 

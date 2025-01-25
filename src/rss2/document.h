@@ -47,7 +47,7 @@ public:
      * Parses an RSS2 document from an XML document.
      * TODO: More on supported formats etc.
      *
-     * @param document The dom document to parse the document from
+     * \a document The dom document to parse the document from
      * @return the document parsed from XML, or an invalid
      * document if parsing failed.
      */
@@ -73,14 +73,14 @@ public:
      * assigns another document. As the d pointer is shared,
      * this is a cheap operation.
      *
-     * @param other the document to assign
+     * \a other the document to assign
      */
     Document &operator=(const Document &other);
 
     /*!
      * Used by visitors for double dispatch. See DocumentVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(DocumentVisitor *visitor) override;
 
@@ -270,8 +270,8 @@ public:
     /*!
      * @internal
      * checks the format of title elements and returns the results
-     * @param isCDATA whether the titles are encapsulated in CDATA
-     * @param containsMarkup whether the heuristic found HTML markup in
+     * \a isCDATA whether the titles are encapsulated in CDATA
+     * \a containsMarkup whether the heuristic found HTML markup in
      * titles
      */
     void getItemTitleFormatInfo(bool *isCDATA, bool *containsMarkup) const;
@@ -279,8 +279,8 @@ public:
     /*!
      * @internal
      * checks the format of title elements and returns the results
-     * @param isCDATA whether the descriptions are encapsulated in CDATA
-     * @param containsMarkup whether the heuristic found HTML markup in
+     * \a isCDATA whether the descriptions are encapsulated in CDATA
+     * \a containsMarkup whether the heuristic found HTML markup in
      * descriptions
      */
     void getItemDescriptionFormatInfo(bool *isCDATA, bool *containsMarkup) const;

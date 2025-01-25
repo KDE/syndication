@@ -34,7 +34,7 @@ public:
     /*!
      * creates a text input object wrapping a rss:textinput resource
      *
-     * @param resource resource to wrap, must be of type
+     * \a resource resource to wrap, must be of type
      * rss:textinput, otherwise this object will not return
      * useful information.
      */

@@ -46,8 +46,8 @@ public:
     /*!
      * Creates an Item object wrapping an @c &lt;item> XML element.
      *
-     * @param element The @c &lt;item> element to wrap
-     * @param doc the document this item is part of
+     * \a element The @c &lt;item> element to wrap
+     * \a doc the document this item is part of
      */
     explicit Item(const QDomElement &element, QSharedPointer<Document> doc = QSharedPointer<Document>());
 
@@ -55,7 +55,7 @@ public:
      * creates a copy of an item. As the d pointer is shared,
      * this is a cheap operation.
      *
-     * @param other the item to copy
+     * \a other the item to copy
      */
     Item(const Item &other);
 
@@ -68,14 +68,14 @@ public:
      * assigns another item. As the d pointer is shared,
      * this is a cheap operation.
      *
-     * @param other the item to assign
+     * \a other the item to assign
      */
     Item &operator=(const Item &other);
 
     /*!
      * Used by visitors for double dispatch. See SpecificItemVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(SpecificItemVisitor *visitor) override;
 

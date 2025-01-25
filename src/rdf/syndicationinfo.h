@@ -50,7 +50,7 @@ public:
 
     /*!
      * creates a wrapper from a resource
-     * @param resource the feed resource to read syndication
+     * \a resource the feed resource to read syndication
      * information from
      */
     explicit SyndicationInfo(ResourcePtr resource);
@@ -100,7 +100,7 @@ public:
 protected:
     /*!
      * returns Period value as string.
-     * @param period period enum to convert to a string
+     * \a period period enum to convert to a string
      * @return the enum name in lower case, "daily", "hourly", etc.
      */
     static QString periodToString(Period period);
@@ -108,7 +108,7 @@ protected:
     /*!
      * parses a Period value from a string.
      *
-     * @param str a period string as defined in the syndication module
+     * \a str a period string as defined in the syndication module
      * @return the parsed period, Daily (the default) if the parsed
      * string is empty or invalid
      */
