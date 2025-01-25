@@ -16,11 +16,6 @@ namespace Syndication
 class CategoryAtomImpl;
 typedef QSharedPointer<CategoryAtomImpl> CategoryAtomImplPtr;
 
-/**
- *
- * @internal
- * @author Frank Osterfeld
- */
 class CategoryAtomImpl : public Syndication::Category
 {
 public:

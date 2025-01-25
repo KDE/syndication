@@ -29,7 +29,7 @@ class Category;
 class Enclosure;
 class Source;
 
-/**
+/*!
  * An Item, representing an entry in an RSS feed.
  *
  * @author Frank Osterfeld
@@ -37,49 +37,49 @@ class Source;
 class Item : public ElementWrapper, public Syndication::SpecificItem
 {
 public:
-    /**
+    /*!
      * Default constructor, creates a null object, for which isNull() is
      * @c true.
      */
     explicit Item(QSharedPointer<Document> doc = QSharedPointer<Document>());
 
-    /**
+    /*!
      * Creates an Item object wrapping an @c &lt;item> XML element.
      *
-     * @param element The @c &lt;item> element to wrap
-     * @param doc the document this item is part of
+     * \a element The @c &lt;item> element to wrap
+     * \a doc the document this item is part of
      */
     explicit Item(const QDomElement &element, QSharedPointer<Document> doc = QSharedPointer<Document>());
 
-    /**
+    /*!
      * creates a copy of an item. As the d pointer is shared,
      * this is a cheap operation.
      *
-     * @param other the item to copy
+     * \a other the item to copy
      */
     Item(const Item &other);
 
-    /**
+    /*!
      * destructor
      */
     ~Item() override;
 
-    /**
+    /*!
      * assigns another item. As the d pointer is shared,
      * this is a cheap operation.
      *
-     * @param other the item to assign
+     * \a other the item to assign
      */
     Item &operator=(const Item &other);
 
-    /**
+    /*!
      * Used by visitors for double dispatch. See SpecificItemVisitor
      * for more information.
-     * @param visitor the visitor calling the method
+     * \a visitor the visitor calling the method
      */
     bool accept(SpecificItemVisitor *visitor) override;
 
-    /**
+    /*!
      * The title of the item.
      *
      * @return The title in plain text. Note that e.g. characters like <,
@@ -88,7 +88,7 @@ public:
      */
     QString title() const;
 
-    /**
+    /*!
      * The URL of the item. This usually links to the web representation
      * of the item, e.g. the full news article.
      *
@@ -96,7 +96,7 @@ public:
      */
     QString link() const;
 
-    /**
+    /*!
      * The item synopsis. This might contain a short summary of the
      * item, but also the full content. If content() is set, that usually
      * contains the full content instead.
@@ -107,7 +107,7 @@ public:
      */
     QString description() const;
 
-    /**
+    /*!
      * Returns the actual content of the item. In RSS2, this can be stored
      * in various elements, e.g. in content:encoded, xhtml:body or
      * xhtml:div. If this is not set, description() might also contain the
@@ -119,21 +119,21 @@ public:
      */
     QString content() const;
 
-    /**
+    /*!
      * Set of categories this item is included in.
      *
      * @return a list of categories, possibly empty.
      */
     QList<Category> categories() const;
 
-    /**
+    /*!
      * URL of a page for comments relating to the item.
      *
      * @return an URL to the comments, or a null string if not set
      */
     QString comments() const;
 
-    /**
+    /*!
      * The email address of the author of this item. For newspapers and
      * magazines syndicating via RSS, the author is the person who wrote
      * the article that this item describes. For collaborative weblogs, the
@@ -148,7 +148,7 @@ public:
      */
     QString author() const;
 
-    /**
+    /*!
      * Descriptions of media objects that are attached to the item.
      * Note that the RSS2 spec is a bit unclear about whether an item can
      * have multiple enclosures or not. Originally it was not intended, but
@@ -158,7 +158,7 @@ public:
      */
     QList<Enclosure> enclosures() const;
 
-    /**
+    /*!
      * "guid stands for globally unique identifier. It's a string that
      * uniquely identifies the item. When present, an aggregator may choose
      * to use this string to determine if an item is new.
@@ -171,7 +171,7 @@ public:
      */
     QString guid() const;
 
-    /**
+    /*!
      * If @c true, it can be assumed that the guid is a permalink to the
      * item, that is, a url that can be opened in a Web browser, that
      * points to the full item.
@@ -181,7 +181,7 @@ public:
      */
     bool guidIsPermaLink() const;
 
-    /**
+    /*!
      * Indicates when the item was published. If it's a date in the future,
      * you may choose to not display the item until that date.
      * This returns the content of the @c &lt;pubDate> element. If @c
@@ -193,7 +193,7 @@ public:
      */
     time_t pubDate() const;
 
-    /**
+    /*!
      * expiration date, specifying a date when the item is not longer
      * available.
      * Only available in RSS 0.93.
@@ -203,7 +203,7 @@ public:
      */
     time_t expirationDate() const;
 
-    /**
+    /*!
      * A Platform for Internet Content Selection (PICS) rating tag.
      * More information on the format of the rating tag can be found here:
      * http://www.w3.org/PICS/
@@ -212,7 +212,7 @@ public:
      */
     QString rating() const;
 
-    /**
+    /*!
      * The RSS channel that the item came from. See Source class for more
      * information.
      *
@@ -221,13 +221,13 @@ public:
      */
     Source source() const;
 
-    /**
+    /*!
      * returns all child elements of this item not covered by this class.
      * You can use this to access additional metadata from RSS extensions.
      */
     QList<QDomElement> unhandledElements() const;
 
-    /**
+    /*!
      * Returns a description of the object and its children for debugging
      * purposes.
      *
@@ -236,14 +236,14 @@ public:
     QString debugInfo() const;
 
     //@cond PRIVATE
-    /**
+    /*!
      * @internal
      * returns the description content in unmodified form (no
      * plaintext/HTML conversions etc.)
      */
     QString originalDescription() const;
 
-    /**
+    /*!
      * @internal
      * returns the title content in unmodified form (no
      * plaintext/HTML conversions etc.)

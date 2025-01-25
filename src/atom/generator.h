@@ -17,48 +17,47 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
- * Description of the agent used to generate the feed.
+/*!
+ * \class Syndication::Atom::Generator
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Atom/Generator
  *
- * @author Frank Osterfeld
+ * \brief Description of the agent used to generate the feed.
  */
 class SYNDICATION_EXPORT Generator : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * default constructor, creates a null generator
      */
     Generator();
 
-    /**
+    /*!
      * creates a Generator wrapping an atom:generator element.
-     * @param element a DOM element, should be a atom:generator element
+     *
+     * \a element a DOM element, should be a atom:generator element
      * (although not enforced), otherwise this object will not parse
      * anything useful
      */
     explicit Generator(const QDomElement &element);
 
-    /**
+    /*!
      * A URI for the generator (e.g. its homepage) (optional)
      */
     Q_REQUIRED_RESULT QString uri() const;
 
-    /**
+    /*!
      * version of the agent (optional)
      */
     Q_REQUIRED_RESULT QString version() const;
 
-    /**
+    /*!
      * human-readable name of the generator. (optional)
-     *
-     * @return generator name as plain text
      */
     Q_REQUIRED_RESULT QString name() const;
 
-    /**
+    /*!
      * a description of this generator for debugging purposes.
-     *
-     * @return debug info
      */
     Q_REQUIRED_RESULT QString debugInfo() const;
 };

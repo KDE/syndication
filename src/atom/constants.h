@@ -16,13 +16,13 @@ namespace Syndication
 {
 namespace Atom
 {
-/**
+/*!
  * namespace used by Atom 1.0 elements
  */
 SYNDICATION_EXPORT
 QString atom1Namespace();
 
-/**
+/*!
  * namespace used by Atom 0.3 elements
  */
 SYNDICATION_EXPORT

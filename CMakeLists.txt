@@ -21,7 +21,7 @@ include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
-include(ECMAddQch)
+include(ECMGenerateQDoc)
 include(ECMDeprecationSettings)
 
 set(syndication_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/syndication_version.h")
@@ -41,9 +41,6 @@ ecm_set_disabled_deprecation_versions(
     KF 6.11.0
 )
 
-option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
-add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
-
 ########### Targets ###########
 if(BUILD_TESTING)
    add_definitions(-DBUILD_TESTING)
@@ -57,16 +54,6 @@ endif()
 
 ########### CMake Config Files ###########
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Syndication")
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KF6Syndication_QCH
-        FILE KF6SyndicationQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SyndicationQchTargets.cmake\")")
-endif()
 
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/KF6SyndicationConfig.cmake.in"

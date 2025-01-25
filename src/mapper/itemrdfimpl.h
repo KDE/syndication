@@ -18,9 +18,6 @@ namespace Syndication
 class ItemRDFImpl;
 typedef QSharedPointer<ItemRDFImpl> ItemRDFImplPtr;
 
-/**
- * @internal
- */
 class ItemRDFImpl : public Syndication::Item
 {
 public:

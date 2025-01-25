@@ -17,7 +17,7 @@ namespace Syndication
 {
 namespace RSS2
 {
-/**
+/*!
  * Class representing the @c &lt;source&gt; element in RSS2.
  * "The purpose of this element is to propagate credit for links, to publicize
  * the sources of news items. It's used in the post command in the Radio
@@ -29,20 +29,20 @@ namespace RSS2
 class Source : public ElementWrapper
 {
 public:
-    /**
+    /*!
      * Default constructor, creates a null object, for which isNull() is
      * @c true.
      */
     Source();
 
-    /**
+    /*!
      * Creates a source object wrapping a @c &lt;source&gt; XML element.
      *
-     * @param element The @c &lt;source&gt; element to wrap
+     * \a element The @c &lt;source&gt; element to wrap
      */
     explicit Source(const QDomElement &element);
 
-    /**
+    /*!
      * The name of the RSS channel that the item came from, derived from
      * its &lt;title>. Example: "Tomalak's Realm"
      *
@@ -51,7 +51,7 @@ public:
      */
     QString source() const;
 
-    /**
+    /*!
      * Required attribute, links to the XMLization of the source.
      *
      * @return A URL, or a null string if not set (though required from
@@ -59,7 +59,7 @@ public:
      */
     QString url() const;
 
-    /**
+    /*!
      * Returns a description of the object for debugging purposes.
      *
      * @return debug string

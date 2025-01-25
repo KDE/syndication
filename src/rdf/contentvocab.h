@@ -24,7 +24,7 @@ class Property;
 //@cond PRIVATE
 typedef QSharedPointer<Property> PropertyPtr;
 //@endcond
-/**
+/*!
  * Singleton holding RDF class and property constants of the RSS 1.0 content
  * module. See http://web.resource.org/rss/1.0/modules/content/ for a
  * specification.
@@ -34,24 +34,24 @@ typedef QSharedPointer<Property> PropertyPtr;
 class ContentVocab
 {
 public:
-    /**
+    /*!
      * returns the singleton instance
      */
     static ContentVocab *self();
 
-    /**
+    /*!
      * destructor
      */
     ~ContentVocab();
 
-    /**
+    /*!
      * Namespace of the Content module
      *
      * http://purl.org/rss/1.0/modules/content/
      **/
     const QString &namespaceURI() const;
 
-    /**
+    /*!
      * content:encoded property
      */
     PropertyPtr encoded() const;

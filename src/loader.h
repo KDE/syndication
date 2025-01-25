@@ -22,13 +22,16 @@ namespace Syndication
 {
 class DataRetriever;
 class Feed;
-//@cond PRIVATE
 typedef QSharedPointer<Feed> FeedPtr;
-//@endcond
 
-/**
- * This class is the preferred way of loading feed sources. Usage is very
- * straightforward:
+/*!
+ * \class Syndication::Loader
+ * \inmodule Syndication
+ * \inheaderfile Syndication/Loader
+ *
+ * \brief This class is the preferred way of loading feed sources.
+ *
+ * Usage is very straightforward:
  *
  * \code
  * Loader *loader = Loader::create();
@@ -75,77 +78,94 @@ class SYNDICATION_EXPORT Loader : public QObject
     Q_OBJECT
 
 public:
-    /**
-     * Constructs a Loader instance. This is pretty much what the
+    /*!
+     * Constructs a Loader instance.
+     *
+     * This is pretty much what the
      * default constructor would do, except that it ensures that all
      * Loader instances have been allocated on the heap (this is
      * required so that Loader's can delete themselves safely after they
      * emitted the loadingComplete() signal.).
-     * @return A pointer to a new Loader instance.
+     *
+     * Returns a pointer to a new Loader instance.
      */
     static Loader *create();
 
-    /**
-     * Convenience method. Does the same as the above method except that
+    /*!
+     * Convenience method.
+     *
+     * Does the same as the above method except that
      * it also does the job of connecting the loadingComplete() signal
      * to the given slot for you.
-     * @param object A QObject which features the specified slot
-     * @param slot Which slot to connect to.
+     *
+     * \a object A QObject which features the specified slot
+     *
+     * \a slot Which slot to connect to.
      */
     static Loader *create(QObject *object, const char *slot);
 
-    /**
+    /*!
      * Loads the feed source referenced by the given URL using the
-     * specified retrieval algorithm. Make sure that you connected
+     * specified retrieval algorithm.
+     *
+     * Make sure that you connected
      * to the loadingComplete() signal before calling this method so
      * that you're guaranteed to get notified when the loading finished.
+     *
      * \note A Loader object cannot load from multiple URLs simultaneously;
      * consequently, subsequent calls to loadFrom will be discarded
      * silently, only the first loadFrom request will be executed.
-     * @param url A URL referencing the input file.
-     * @param retriever A subclass of DataRetriever which implements a
+     *
+     * \a url A URL referencing the input file.
+     *
+     * \a retriever A subclass of DataRetriever which implements a
      * specialized retrieval behaviour. Note that the ownership of the
      * retriever is transferred to the Loader, i.e. the Loader will
      * delete it when it doesn't need it anymore.
-     * @see DataRetriever, Loader::loadingComplete()
+     *
+     * \sa DataRetriever, Loader::loadingComplete()
      */
     void loadFrom(const QUrl &url, DataRetriever *retriever);
 
-    /**
+    /*!
      * Retrieves the error code of the last loading process (if any).
      */
     Q_REQUIRED_RESULT ErrorCode errorCode() const;
 
-    /**
+    /*!
      * the error code returned from the retriever.
      * Use this if you use your custom retriever implementation and
      * need the specific error, not covered by errorCode().
      */
     Q_REQUIRED_RESULT int retrieverError() const;
 
-    /**
+    /*!
      * returns the URL of a feed discovered in the feed source
      */
     Q_REQUIRED_RESULT QUrl discoveredFeedURL() const;
 
-    /**
+    /*!
      * aborts the loading process
      */
     void abort();
 
 Q_SIGNALS:
 
-    /**
+    /*!
      * This signal gets emitted when the loading process triggered by
      * calling loadFrom() finished.
-     * @param loader A pointer pointing to the loader object which
+     *
+     * \a loader A pointer pointing to the loader object which
      * emitted this signal; this is handy in case you connect multiple
      * loaders to a single slot.
-     * @param feed In case errortus is Success, this parameter holds the
+     *
+     * \a feed In case errortus is Success, this parameter holds the
      * parsed feed. If fetching/parsing failed, feed is NULL.
-     * @param error An error code telling whether there were any
+     *
+     * \a error An error code telling whether there were any
      * problems while retrieving or parsing the data.
-     * @see Feed, ErrorCode
+     *
+     * \sa Feed, ErrorCode
      */
     void loadingComplete(Syndication::Loader *loader, Syndication::FeedPtr feed, Syndication::ErrorCode error);
 

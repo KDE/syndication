@@ -17,11 +17,6 @@ namespace Syndication
 class ImageAtomImpl;
 typedef QSharedPointer<ImageAtomImpl> ImageAtomImplPtr;
 
-/**
- *
- * @internal
- * @author Frank Osterfeld
- */
 class ImageAtomImpl : public Syndication::Image
 {
 public:

@@ -16,9 +16,6 @@ namespace Syndication
 class ItemRSS2Impl;
 typedef QSharedPointer<ItemRSS2Impl> ItemRSS2ImplPtr;
 
-/**
- * @internal
- */
 class ItemRSS2Impl : public Syndication::Item
 {
 public:
