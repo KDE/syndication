@@ -67,7 +67,7 @@ uint parseRFCDate(const QString &str)
 {
     QDateTime kdt = QDateTime::fromString(str, Qt::RFC2822Date);
     // Qt5 used to ignore invalid textual offsets but Qt6 rejects those, so handle that explictly
-    if (!kdt.isValid() && str.endsWith(QLatin1String(" GMT"))) {
+    if (!kdt.isValid()) {
         kdt = QDateTime::fromString(QStringView(str).chopped(4), Qt::RFC2822Date);
     }
     return toTimeT(kdt);
