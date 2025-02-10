@@ -38,7 +38,7 @@ find_package(KF6Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
     QT 6.8.0
-    KF 6.10.0
+    KF 6.11.0
 )
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
