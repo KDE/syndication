@@ -12,6 +12,8 @@ excludedirs = mapper rdf rss2
 
 outputformats = HTML
 
+navigation.landingpage = "Syndication"
+
 depends += \
     kde \
     qtcore \
