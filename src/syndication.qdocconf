@@ -32,3 +32,5 @@ qhp.Syndication.subprojects.classes.title = C++ Classes
 qhp.Syndication.subprojects.classes.indexTitle = Syndication C++ Classes
 qhp.Syndication.subprojects.classes.selectors = class fake:headerfile
 qhp.Syndication.subprojects.classes.sortPages = true
+
+tagfile = syndication.tags
