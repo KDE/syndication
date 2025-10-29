@@ -11,20 +11,20 @@ target_link_libraries(testlibsyndication KF6Syndication)
 
 ########### next target ###############
 
-add_executable(testpersonimpl testpersonimpl.cpp)
+add_executable(testpersonimpl testpersonimpl.cpp testpersonimpl.h)
 add_test(NAME testpersonimpl COMMAND testpersonimpl)
 ecm_mark_as_test(testpersonimpl)
 target_link_libraries(testpersonimpl KF6Syndication Qt6::Test)
 
 #########
-add_executable(syndicationtest syndicationtest.cpp)
+add_executable(syndicationtest syndicationtest.cpp syndicationtest.h)
 target_compile_definitions(syndicationtest PRIVATE -DSYNDICATION_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 add_test(NAME syndicationtest COMMAND syndicationtest)
 ecm_mark_as_test(syndicationtest)
 target_link_libraries(syndicationtest KF6Syndication Qt6::Test)
 
 #########
-add_executable(loaderutiltest loaderutiltest.cpp)
+add_executable(loaderutiltest loaderutiltest.cpp loaderutiltest.h)
 target_compile_definitions(loaderutiltest PRIVATE -DSYNDICATION_DATA_FEEDPARSING_DIR="${CMAKE_CURRENT_SOURCE_DIR}/feeds/")
 add_test(NAME loaderutiltest COMMAND loaderutiltest)
 ecm_mark_as_test(loaderutiltest)
