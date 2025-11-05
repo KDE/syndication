@@ -38,7 +38,7 @@ find_package(KF6Codecs ${KF_DEP_VERSION} CONFIG REQUIRED)
 
 ecm_set_disabled_deprecation_versions(
     QT 6.10.0
-    KF 6.18.0
+    KF 6.19.0
 )
 
 ########### Targets ###########
