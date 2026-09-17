@@ -23,6 +23,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMQtDeclareLoggingCategory)
 include(ECMGenerateQDoc)
 include(ECMDeprecationSettings)
+include(ECMInstalledLibraryCheck)
 
 set(syndication_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/syndication_version.h")
 ecm_setup_version(PROJECT VARIABLE_PREFIX SYNDICATION
