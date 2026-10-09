@@ -20,8 +20,6 @@
 
 namespace Syndication
 {
-QCryptographicHash md5Machine(QCryptographicHash::Md5);
-
 unsigned int calcHash(const QString &str)
 {
     return calcHash(str.toUtf8());
@@ -102,6 +100,7 @@ QString dateTimeToString(uint date)
 
 QString calcMD5Sum(const QString &str)
 {
+    static QCryptographicHash md5Machine(QCryptographicHash::Md5);
     md5Machine.reset();
     md5Machine.addData(str.toUtf8());
     return QLatin1String(md5Machine.result().toHex().constData());
