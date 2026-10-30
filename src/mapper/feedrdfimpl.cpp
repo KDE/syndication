@@ -10,7 +10,6 @@
 #include "itemrdfimpl.h"
 
 #include <category.h>
-#include <personimpl.h>
 #include <rdf/dublincore.h>
 #include <rdf/item.h>
 #include <tools.h>

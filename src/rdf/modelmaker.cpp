@@ -6,7 +6,6 @@
 */
 
 #include "modelmaker.h"
-#include "literal.h"
 #include "model.h"
 #include "property.h"
 #include "rdfvocab.h"

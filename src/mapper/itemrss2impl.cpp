@@ -9,7 +9,6 @@
 #include "enclosurerss2impl.h"
 #include <atom/constants.h>
 #include <constants.h>
-#include <personimpl.h>
 #include <rss2/category.h>
 #include <rss2/enclosure.h>
 #include <tools.h>
