@@ -6,7 +6,6 @@
 */
 
 #include "rdfvocab.h"
-#include "model.h"
 #include "property.h"
 
 #include <QCoreApplication>

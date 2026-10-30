@@ -10,7 +10,6 @@
 #include <category.h>
 #include <constants.h>
 #include <enclosure.h>
-#include <personimpl.h>
 #include <rdf/dublincore.h>
 #include <rdf/property.h>
 #include <rdf/resource.h>

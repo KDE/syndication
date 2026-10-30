@@ -9,7 +9,6 @@
 #include "contentvocab.h"
 #include "document.h"
 #include "dublincore.h"
-#include "model.h"
 #include "rssvocab.h"
 #include "statement.h"
 
